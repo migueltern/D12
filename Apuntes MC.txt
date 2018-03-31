@@ -1,0 +1,8 @@
+HE puesto en la solicitud un atributo que sea punto limpio y es opcional para indicar donde se tiene que llevar.
+
+Lo de el administrador sera el que configure el configuration system no iria en los requisitos de informacion.
+
+¿Cuando dice los usuarios podran escribir comentarios en la noticias a que se refiere a recycler nada mas o tambien a comprador?
+
+
+El sistema de incidencias, yo creo que tendria que estar asociado con mensajes o comentarios puesto que se tendran que comunicar varias veces el manager con los usuarios.

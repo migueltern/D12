@@ -1,41 +1,17 @@
 Correcciones modelo de dominio 
 
-- En los mensajes sender y recipient se pone como rol, no como atributo. 
-
-- En los mensageFolder si va haber carpetas por defecto, estas no se pondrán modificar, por tanto hace falta un atributo "modifiable" en messageFolder.  
-
-- Double del product ponerlo en mayúscula. 
-
-- En "pick up" pondría la description el notBlank. También en assessment. 
-
 - Poner en los requisitos que los que realizan las solicitudes son los manager. 
 
-- Nota del pick up ponerla en ingles. 
-
 - " Los recicladores podrán valorar la calidad del transporte." Esto no lo veo claro. 
-
-- El banner puede ser opcional?? y el welcome messages lo pondría de 1..*
 
 - En los requisitos, una query "La media de transportistas que han tenido incidencias.". Según el UML los transportistas no tienen incidencias, podríamos poner "la media de las incidencias creadas por un reciclador"
 
 - En la fecha de "new" hay un notBlank.
 
-- new con comment no tiene cardinalidad. 
-
-- Buyer tiene una relacion consigo mismo, borrarla. 
-
 - Creo que la parte de la "Request esta mal" porque lo crearía el en todo caso el que recicla, que su estado sería pendiente hasta que el manager cambiara ese estado. Entonces, el que la crea sería el recycler no el manager no?
-
-- Las notas en inglés. 
-
-- Falta la relación entre "Material" y "Category"
-
-- Poner la nota del totalPrice de material con ese atributo y no con la clase. 
 
 - La compra que hay que almacenar una tarjeta de credito y todo eso, debería de ser una clase asociación? No lo he puesto en el UML porque no estoy segura. 
 
 - Cambiar atributos de credit card. 
 
 - La clase opinion no está relacionada con nada.
-
-- Clear Point esta repetido. 

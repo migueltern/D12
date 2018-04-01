@@ -16,6 +16,8 @@ Correcciones modelo de dominio
 
 - El banner puede ser opcional?? y el welcome messages lo pondría de 1..*
 
+- En los requisitos, una query "La media de transportistas que han tenido incidencias.". Según el UML los transportistas no tienen incidencias, podríamos poner "la media de las incidencias creadas por un reciclador"
+
 - En la fecha de "new" hay un notBlank.
 
 - new con comment no tiene cardinalidad. 

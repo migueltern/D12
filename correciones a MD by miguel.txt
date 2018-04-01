@@ -1,0 +1,9 @@
+Los productos no estan relacionados con la puntacion, cada producto tendra una puntacion y la suma de tus productos sera la puntacion, no hace falta que la puntuacion este relacionada con el usuario ya se podria sacar mediante query.
+
+ahora mismo solo podria comentar una noticia un recyclador. si se especifica bien en los requisitos, no lo veo mal
+
+Una request tendra un producto y un producto una o ninguna request que se ira modificando, no veo esa multiplicidad.
+
+Las incidencias estan hechas como aplication for en ACME-EXPLORER, mejor sacar los comment a fuera la otra vez nos trajo muchos problemas.
+
+Cuando un comprador compra una materia prima se debe almacenar una tarjeta de credito, eso no esta reflejado en ninguna parte(No esta ni la clase de extraer materia que podria ser la compra ni esta la de añadir materia prima)

@@ -21,7 +21,7 @@ public class Material extends DomainEntity {
 	private String	title;
 	private String	description;
 	private double	pricePerQuantity;
-	private double	price;
+	private double	quantity;
 	private double	totalPrice;
 
 
@@ -51,12 +51,12 @@ public class Material extends DomainEntity {
 		this.pricePerQuantity = pricePerQuantity;
 	}
 
-	public double getPrice() {
-		return this.price;
+	public double getQuantity() {
+		return this.quantity;
 	}
 
-	public void setPrice(final double price) {
-		this.price = price;
+	public void setQuantity(final double quantity) {
+		this.quantity = quantity;
 	}
 
 	public double getTotalPrice() {

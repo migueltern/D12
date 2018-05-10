@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * PopulateDatabase.xml
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!-- * PopulateDatabase.xml * * Copyright (C) 2017 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
-	
-	<!-- User accounts admin-->
+
+	<!-- User accounts admin -->
 	<bean id="userAccountAdmin" class="security.UserAccount">
 		<property name="username" value="admin" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -28,7 +22,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountManager1" class="security.UserAccount">
 		<property name="username" value="manager1" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -40,7 +34,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountManager2" class="security.UserAccount">
 		<property name="username" value="manager2" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -52,7 +46,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountManager3" class="security.UserAccount">
 		<property name="username" value="manager3" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -64,7 +58,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountManager4" class="security.UserAccount">
 		<property name="username" value="manager4" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -76,7 +70,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountManager5" class="security.UserAccount">
 		<property name="username" value="manager5" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -88,7 +82,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountCarrier1" class="security.UserAccount">
 		<property name="username" value="carrier1" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -100,7 +94,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountCarrier2" class="security.UserAccount">
 		<property name="username" value="carrier2" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -112,7 +106,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountCarrier3" class="security.UserAccount">
 		<property name="username" value="carrier3" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -124,7 +118,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountCarrier4" class="security.UserAccount">
 		<property name="username" value="carrier4" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -136,7 +130,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccountCarrier5" class="security.UserAccount">
 		<property name="username" value="carrier5" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
@@ -148,14 +142,421 @@
 			</list>
 		</property>
 	</bean>
+
+
+	<bean id="userAccountRecycler1" class="security.UserAccount">
+		<property name="username" value="recycler1" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="RECYCLER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountEditor1" class="security.UserAccount">
+		<property name="username" value="editor1" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="EDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountBuyer1" class="security.UserAccount">
+		<property name="username" value="buyer1" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="BUYER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Admin -->
+
+	<bean id="admin" class="domain.Admin">
+		<property name="userAccount" ref="userAccountAdmin" />
+		<property name="name" value="admin 1" />
+		<property name="surname" value="surname admin 1" />
+		<property name="email" value="admin@acmenewspaper.com" />
+		<property name="phone" value="+34617557203" />
+		<property name="address" value="Adress admin 1" />
+		<property name="province" value="SEVILLA" />
+		<property name="opinions">
+			<list>
+
+			</list>
+		</property>
+	</bean>
 	
-	
-	
-	
+	<!-- EDITOR -->
+	<bean id="carrier1" class="domain.Carrier">
+		<property name="userAccount" ref="userAccountEditor1" />
+		<property name="name" value="editor 1" />
+		<property name="surname" value="surname editor 1" />
+		<property name="email" value="editor1@acmerecycling.com" />
+		<property name="phone" value="+34617557203" />
+		<property name="address" value="Adress editor 1" />
+		<property name="province" value="SEVILLA" />
+		<property name="opinions">
+			<list>
+
+			</list>
+		</property>
+		<property name="news">
+		<list>
+		<ref bean="new1"/>
+		</list>
+		</property>
+	</bean>
 	
 
+	<!-- Carriers -->
+
+
+	<bean id="carrier1" class="domain.Carrier">
+		<property name="userAccount" ref="userAccountCarrier1" />
+		<property name="name" value="carrier 1" />
+		<property name="surname" value="surname carrier 1" />
+		<property name="email" value="carrier1@acmerecycling.com" />
+		<property name="phone" value="+34617557203" />
+		<property name="address" value="Adress carrier 1" />
+		<property name="province" value="SEVILLA" />
+		<property name="opinions">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<!-- Manager -->
+
+
+	<bean id="manager1" class="domain.Manager">
+		<property name="userAccount" ref="userAccountManager1" />
+		<property name="name" value="manager 1" />
+		<property name="surname" value="surname manager 1" />
+		<property name="email" value="manager1@acmerecycling.com" />
+		<property name="phone" value="+34617557203" />
+		<property name="address" value="Adress manager 1" />
+		<property name="province" value="SEVILLA" />
+		<property name="opinions">
+			<list>
+
+			</list>
+		</property>
+		<property name="incidences">
+			<list>
+			</list>
+		</property>
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Recycler -->
+	<bean id="recycler1" class="domain.Recycler">
+		<property name="userAccount" ref="userAccountRecycler1" />
+		<property name="name" value="recycler 1" />
+		<property name="surname" value="surname recycler 1" />
+		<property name="email" value="recycler1@acmerecycling.com" />
+		<property name="phone" value="+34617557203" />
+		<property name="address" value="Adress recycler 1" />
+		<property name="province" value="SEVILLA" />
+		<property name="opinions">
+			<list>
+			<ref bean="opinion1"/>
+			</list>
+		</property>
+		<property name="products">
+			<list>
+				<ref bean="product1" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment1" />
+			</list>
+		</property>
+		<property name="courses">
+		<list>
+		<ref bean="course1"/>
+		</list>
+		</property>
+	</bean>
+
+	<!-- Buyer -->
+	<bean id="buyer1" class="domain.Buyer">
+		<property name="userAccount" ref="userAccountBuyer1" />
+		<property name="name" value="buyer 1" />
+		<property name="surname" value="surname buyer 1" />
+		<property name="email" value="buyer1@acmerecycling.com" />
+		<property name="phone" value="+34617557203" />
+		<property name="address" value="Adress buyer 1" />
+		<property name="province" value="ALMERIA" />
+		<property name="opinions">
+			<list>
+
+			</list>
+		</property>
+		<property name="buys">
+			<list>
+				<ref bean="buy1" />
+			</list>
+		</property>
+		<property name="courses">
+			<list>
+				<ref bean="course1" />
+			</list>
+		</property>
+	</bean>
 	
+	<!-- news -->
+	<bean id="new1" class="domain.New">
+	<property name="title" value="title 1"/>
+	<property name="content" value="content 1"/>
+	<property name="creationDate" value="2018/04/04 12:22"/>
+	<property name="pictures">
+	<list>
+	<value>http://www.picture1.com</value>
+	<value>http://www.picture2.com</value>
+	</list>
+	</property>
+	</bean>
+
+	<!-- GPS -->
+	<bean id="gps1" class="domain.GPS">
+		<property name="longitude" value="-5.98" />
+		<property name="latitude" value="37.35" />
+		<property name="name" value="Reina mercedes" />
+	</bean>
+	<bean id="gps2" class="domain.GPS">
+		<property name="longitude" value="-5.49" />
+		<property name="latitude" value="37.28" />
+		<property name="name" value="Paradas" />
+	</bean>
+	<bean id="gps3" class="domain.GPS">
+		<property name="longitude" value="5.5" />
+		<property name="latitude" value="40.60" />
+		<property name="name" value="Mar balear" />
+	</bean>
+	<bean id="gps4" class="domain.GPS">
+		<property name="longitude" value="2.09" />
+		<property name="latitude" value="41.34" />
+		<property name="name" value="Barcelona" />
+	</bean>
+	<bean id="gps5" class="domain.GPS">
+		<property name="longitude" value="7.08" />
+		<property name="latitude" value="43.65" />
+		<property name="name" value="Monaco" />
+	</bean>
+
+	<!-- Credits Cards -->
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="holder name 1" />
+		<property name="brandName" value="Brand name 1" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="06" />
+		<property name="expirationYear" value="20" />
+		<property name="cvv" value="123" />
+	</bean>
+
+	<!-- Buys -->
+
+	<bean id="buy1" class="domain.Buy">
+		<property name="creditCard" ref="creditCard1" />
+		<property name="quantity" value="8.0" />
+		<property name="comment" value="comment1" />
+		<property name="material" ref="material1" />
+	</bean>
+	<!-- Incidences -->
+
+	<bean id="incidence1" class="domain.Incidence">
+		<property name="title" value="title 1" />
+		<property name="reasonWhy" value="reason why 1" />
+		<property name="createdMoment" value="2018/01/01 11:20" />
+		<property name="comment" value="comment1" />
+		<property name="resolved" value="false" />
+		<property name="recycler" ref="recycler1" />
+	</bean>
+
+	<!-- Products -->
+	<bean id="product1" class="domain.Product">
+	<property name="createdMoment" value="2018/01/24 12:12"></property>
+		<property name="publicationMoment" value="2018/01/12 12:12" />
+		<property name="description" value="description 1" />
+		<property name="quantity" value="23.0" />
+		<property name="photo" value="http://wwww.photo1.com" />
+		<property name="categoryProducts">
+			<list>
+				<ref bean="categoryProduct1" />
+			</list>
+		</property>
+		<property name="puntuation" ref="puntuation1" />
+		<property name="carrier" ref="carrier1" />
+		<property name="recycler" ref="recycler1" />
+	</bean>
+
+	<!-- Category products -->
+	<bean id="categoryProduct1" class="domain.CategoryProduct">
+		<property name="name" value="categoryProduct 1" />
+		<property name="byDefault" value="false" />
+	</bean>
+
+	<!-- CategoryMaterials -->
+	<bean id="categoryMaterial1" class="domain.CategoryMaterial">
+		<property name="name" value="category material 1" />
+		<property name="byDefault" value="false" />
+	</bean>
+
+	<!-- Puntuations -->
+	<bean id="puntuation1" class="domain.Puntuation">
+		<property name="value" value="10" />
+	</bean>
+
+	<!-- Comments -->
+
+	<bean id="comment1" class="domain.Comment">
+		<property name="body" value="body 1" />
+		<property name="createdMoment" value="2018/01/02 13:31" />
+	</bean>
+
+	<!-- Courses -->
+
+	<!-- Configuration System -->
+
+	<bean id="configurationSystem" class="domain.ConfigurationSystem">
+		<property name="banner" value="http://www.banner.com"></property>
+		<property name="welcomeMessages">
+			<list>
+				<value>welcomeMessage1></value>
+				<value>welcomeMessage1></value>
+			</list>
+		</property>
+		<property name="defaultCategories">
+			<list>
+				<value>default categorie 1</value>
+			</list>
+		</property>
+		<property name="tabooWords">
+			<list>
+				<ref bean="tabooWord1" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Messages -->
+
+	<bean id="message1" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="HIGH" />
+		<property name="messageFolder" ref="messageFolder1" />
+		<property name="sender" ref="recycler1" />
+		<property name="recipient" ref="admin" />
+	</bean>
+
+	<!-- Messages Folders -->
+
+	<bean id="messageFolder1" class="domain.MessageFolder">
+		<property name="name" value="folder 1" />
+		<property name="modifiable" value="true" />
+		<property name="actor" ref="recycler1" />
+	</bean>
+	<!-- Taboo words -->
+	<bean id="tabooWord1" class="domain.TabooWord">
+		<property name="name" value="sex"></property>
+		<property name="default_word" value="true"></property>
+	</bean>
+
+	<bean id="course1" class="domain.Course">
+	<property name="createdMoment" value="2018/03/12 12:12"></property>
+		<property name="description" value="description 1" />
+		<property name="location" ref="gps1" />
+		<property name="realisedMoment" value="2018/12/12" />
+		<property name="picture" value="http://www.picture.com" />
+		<property name="draftMode" value="true" />
+		<property name="minimumScore" value="2" />
+		<property name="publications">
+			<list>
+				<ref bean="publication1" />
+			</list>
+		</property>
+		<property name="materials">
+			<list>
+				<ref bean="material1" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Publications -->
+	<bean id="publication1" class="domain.Publication">
+		<property name="photo" value="http://wwww.photo2.com" />
+		<property name="caption" value="caption 1" />
+		<property name="recycler" ref="recycler1" />
+	</bean>
+
+	<!-- Materials -->
+	<bean id="material1" class="domain.Material">
+		<property name="title" value="title 1"></property>
+		<property name="description" value="description 1" />
+		<property name="pricePerQuantity" value="2.0" />
+		<property name="quantity" value="2.2"></property>
+		<property name="totalPrice" value="4.4"></property>
+		<property name="categoryMaterials">
+			<list>
+				<ref bean="categoryMaterial1" />
+			</list>
+		</property>
+
+	</bean>
+	<!-- Opinions -->
+	<bean id="opinion1" class="domain.Opinion">
+	<property name="title" value="title 1"></property>
+	<property name="createdMoment" value="2018/02/27 14:01"/>
+	<property name="comment" value="comment1"></property>
 	
-	<!-- Other domain beans come here -->	
-	
+	</bean>
+
+	<!-- Requests -->
+	<bean id="request1" class="domain.Request">
+		<property name="code" value="code 1"></property>
+		<property name="title" value="title 1"></property>
+		<property name="observation" value="observation 1"></property>
+		<property name="status" value="FINISHED"></property>
+		<property name="cleanPoints">
+			<list>
+				<ref bean="cleanPoint1" />
+			</list>
+		</property>
+		<property name="pickUp" ref="pickUp1" />
+	</bean>
+
+	<!-- Clean points -->
+	<bean id="cleanPoint1" class="domain.CleanPoint">
+		<property name="address" value=""></property>
+		<property name="province" value=""></property>
+		<property name="locality" value=""></property>
+		<property name="mobile" value="false"></property>
+		<property name="location" ref="gps2"></property>
+	</bean>
+
+	<!-- Pick Ups -->
+	<bean id="pickUp1" class="domain.PickUp">
+		<property name="moment" value="2018/02/02" />
+		<property name="description" value="description 1"></property>
+		<property name="valuation" value="2.2"></property>
+	</bean>
+	<!-- Other domain beans come here -->
 </beans>

@@ -1,13 +1,19 @@
 #./src/main/resources/Entities.map
-#Thu May 10 22:17:24 CEST 2018
-userAccountManager5=17
-userAccountCarrier5=22
-userAccountManager4=16
-userAccountCarrier4=21
-userAccountManager3=15
-userAccountCarrier3=20
-userAccountManager2=14
-userAccountCarrier2=19
-userAccountManager1=13
-userAccountCarrier1=18
-userAccountAdmin=12
+#Thu May 10 22:37:55 CEST 2018
+userAccountEditor1=30
+userAccountManager5=23
+userAccountCarrier5=28
+userAccountManager4=22
+userAccountCarrier4=27
+userAccountManager3=21
+userAccountRecycler1=29
+userAccountCarrier3=26
+userAccountManager2=20
+userAccountCarrier2=25
+userAccountManager1=19
+userAccountCarrier1=24
+userAccountAdmin=18
+manager1=34
+carrier1=33
+admin=32
+userAccountBuyer1=31

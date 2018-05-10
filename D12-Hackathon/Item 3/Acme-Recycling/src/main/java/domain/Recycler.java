@@ -22,7 +22,7 @@ public class Recycler extends Actor {
 	private Collection<Course>	courses;
 
 
-	@OneToMany
+	@OneToMany(mappedBy = "recycler")
 	@Valid
 	@NotNull
 	public Collection<Product> getProducts() {
@@ -42,7 +42,7 @@ public class Recycler extends Actor {
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
 	}
-	@ManyToMany(mappedBy = "recycler")
+	@ManyToMany
 	@Valid
 	@NotNull
 	public Collection<Course> getCourses() {

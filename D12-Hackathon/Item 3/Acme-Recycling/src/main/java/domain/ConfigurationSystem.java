@@ -62,12 +62,13 @@ public class ConfigurationSystem extends DomainEntity {
 
 
 	// Relationships ---------------------------------------------------------------
-	@OneToMany
-	@Valid
-	@NotNull
+
 	private Collection<TabooWord>	tabooWords;
 
 
+	@OneToMany
+	@Valid
+	@NotNull
 	public Collection<TabooWord> getTabooWords() {
 		return this.tabooWords;
 	}

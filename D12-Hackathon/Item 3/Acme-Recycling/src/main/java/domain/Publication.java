@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -44,6 +45,7 @@ public class Publication extends DomainEntity {
 	private Recycler	recycler;
 
 
+	@ManyToOne(optional = false)
 	public Recycler getRecycler() {
 		return this.recycler;
 	}

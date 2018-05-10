@@ -26,24 +26,11 @@ public class Product extends Opinion {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	title;
 	private Date	publicationMoment;
 	private String	description;
 	private Double	quantity;
 	private String	photo;
 
-
-	@Override
-	@NotBlank
-	public String getTitle() {
-		return this.title;
-	}
-
-	@Override
-	@NotBlank
-	public void setTitle(final String title) {
-		this.title = title;
-	}
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm")

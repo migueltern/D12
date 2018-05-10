@@ -21,7 +21,6 @@ public class Course extends Opinion {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	title;
 	private String	description;
 	private GPS		location;
 	private Date	realisedMoment;
@@ -30,16 +29,6 @@ public class Course extends Opinion {
 	private int		minimumScore;
 
 
-	@Override
-	@NotBlank
-	public String getTitle() {
-		return this.title;
-	}
-
-	@Override
-	public void setTitle(final String title) {
-		this.title = title;
-	}
 	@NotBlank
 	public String getDescription() {
 		return this.description;

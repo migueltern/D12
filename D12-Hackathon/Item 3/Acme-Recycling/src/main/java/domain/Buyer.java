@@ -36,7 +36,7 @@ public class Buyer extends Actor {
 		return this.courses;
 	}
 
-	public void setCourse(final Collection<Course> courses) {
+	public void setCourses(final Collection<Course> courses) {
 		this.courses = courses;
 	}
 

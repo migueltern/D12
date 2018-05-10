@@ -37,8 +37,12 @@ public class Authority implements GrantedAuthority {
 
 	// Values -----------------------------------------------------------------
 
+	public static final String	CARRIER		= "CARRIER";
+	public static final String	MANAGER		= "MANAGER";
+	public static final String	RECYCLER	= "RECYCLER";
+	public static final String	BUYER		= "BUYER";
+	public static final String	EDITOR		= "EDITOR";
 	public static final String	ADMIN		= "ADMIN";
-	public static final String	CUSTOMER	= "CUSTOMER";
 
 	// Attributes -------------------------------------------------------------
 
@@ -46,7 +50,7 @@ public class Authority implements GrantedAuthority {
 
 
 	@NotBlank
-	@Pattern(regexp = "^" + Authority.ADMIN + "|" + Authority.CUSTOMER + "$")
+	@Pattern(regexp = "^" + Authority.CARRIER + "|" + Authority.MANAGER + Authority.RECYCLER + "|" + Authority.BUYER + "|" + Authority.EDITOR + "|" + Authority.ADMIN + "|" + "$")
 	@Override
 	public String getAuthority() {
 		return this.authority;
@@ -63,11 +67,27 @@ public class Authority implements GrantedAuthority {
 		result = new ArrayList<Authority>();
 
 		authority = new Authority();
-		authority.setAuthority(Authority.ADMIN);
+		authority.setAuthority(Authority.CARRIER);
 		result.add(authority);
 
 		authority = new Authority();
-		authority.setAuthority(Authority.CUSTOMER);
+		authority.setAuthority(Authority.MANAGER);
+		result.add(authority);
+
+		authority = new Authority();
+		authority.setAuthority(Authority.RECYCLER);
+		result.add(authority);
+
+		authority = new Authority();
+		authority.setAuthority(Authority.BUYER);
+		result.add(authority);
+
+		authority = new Authority();
+		authority.setAuthority(Authority.EDITOR);
+		result.add(authority);
+
+		authority = new Authority();
+		authority.setAuthority(Authority.ADMIN);
 		result.add(authority);
 
 		return result;

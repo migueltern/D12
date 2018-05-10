@@ -1,9 +1,14 @@
 
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -62,6 +67,21 @@ public class Material extends DomainEntity {
 		this.totalPrice = totalPrice;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Collection<CategoryMaterial>	categoryMaterials;
+
+
+	@OneToMany
+	@Valid
+	@NotNull
+	public Collection<CategoryMaterial> getCategoryMaterials() {
+		return this.categoryMaterials;
+	}
+
+	public void setCategoryMaterials(final Collection<CategoryMaterial> categoryMaterials) {
+		this.categoryMaterials = categoryMaterials;
+	}
 
 }

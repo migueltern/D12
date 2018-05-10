@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
@@ -64,6 +65,38 @@ public class Message extends DomainEntity {
 		this.priority = priority;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+	private MessageFolder	messageFolder;
+	private Actor			sender;
+	private Actor			recipient;
+
+
+	@ManyToOne(optional = false)
+	public MessageFolder getMessageFolder() {
+		return this.messageFolder;
+	}
+
+	public void setMessageFolder(final MessageFolder messageFolder) {
+		this.messageFolder = messageFolder;
+	}
+
+	@ManyToOne(optional = false)
+	public Actor getSender() {
+		return this.sender;
+	}
+
+	public void setSender(final Actor sender) {
+		this.sender = sender;
+	}
+
+	@ManyToOne(optional = false)
+	public Actor getRecipient() {
+		return this.recipient;
+	}
+
+	public void setRecipient(final Actor recipient) {
+		this.recipient = recipient;
+	}
 
 }

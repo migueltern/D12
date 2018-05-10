@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -34,6 +35,19 @@ public class MessageFolder extends DomainEntity {
 		this.modifiable = modifiable;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Actor	actor;
+
+
+	@ManyToOne(optional = false)
+	public Actor getActor() {
+		return this.actor;
+	}
+
+	public void setActor(final Actor actor) {
+		this.actor = actor;
+	}
 
 }

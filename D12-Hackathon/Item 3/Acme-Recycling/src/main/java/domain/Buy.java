@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -45,6 +46,18 @@ public class Buy extends DomainEntity {
 		this.comment = comment;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+	private Material	material;
+
+
+	@ManyToOne(optional = false)
+	public Material getMaterial() {
+		return this.material;
+	}
+
+	public void setMaterial(final Material material) {
+		this.material = material;
+	}
 
 }

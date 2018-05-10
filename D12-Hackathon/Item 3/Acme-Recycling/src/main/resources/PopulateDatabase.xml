@@ -16,9 +16,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
-	<!-- User accounts -->
-
-	<bean id="userAccount1" class="security.UserAccount">
+	<!-- User accounts admin-->
+	<bean id="userAccountAdmin" class="security.UserAccount">
 		<property name="username" value="admin" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
@@ -29,33 +28,133 @@
 			</list>
 		</property>
 	</bean>
-
-	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+	
+	<bean id="userAccountManager1" class="security.UserAccount">
+		<property name="username" value="manager1" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
-
-	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+	
+	<bean id="userAccountManager2" class="security.UserAccount">
+		<property name="username" value="manager2" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="userAccountManager3" class="security.UserAccount">
+		<property name="username" value="manager3" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountManager4" class="security.UserAccount">
+		<property name="username" value="manager4" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountManager5" class="security.UserAccount">
+		<property name="username" value="manager5" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountCarrier1" class="security.UserAccount">
+		<property name="username" value="carrier1" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CARRIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountCarrier2" class="security.UserAccount">
+		<property name="username" value="carrier2" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CARRIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountCarrier3" class="security.UserAccount">
+		<property name="username" value="carrier3" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CARRIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountCarrier4" class="security.UserAccount">
+		<property name="username" value="carrier4" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CARRIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountCarrier5" class="security.UserAccount">
+		<property name="username" value="carrier5" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CARRIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+
+	
 	
 	<!-- Other domain beans come here -->	
 	

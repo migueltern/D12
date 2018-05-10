@@ -1,11 +1,14 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -14,7 +17,7 @@ import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Course extends DomainEntity {
+public class Course extends Opinion {
 
 	// Attributes -------------------------------------------------------------
 
@@ -27,11 +30,13 @@ public class Course extends DomainEntity {
 	private int		minimumScore;
 
 
+	@Override
 	@NotBlank
 	public String getTitle() {
 		return this.title;
 	}
 
+	@Override
 	public void setTitle(final String title) {
 		this.title = title;
 	}
@@ -86,6 +91,33 @@ public class Course extends DomainEntity {
 		this.minimumScore = minimumScore;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Collection<Publication>	publications;
+	private Collection<Material>	materials;
+
+
+	@OneToMany
+	@Valid
+	@NotNull
+	public Collection<Publication> getPublications() {
+		return this.publications;
+	}
+
+	public void setPublications(final Collection<Publication> publications) {
+		this.publications = publications;
+	}
+
+	@ManyToMany
+	@Valid
+	@NotNull
+	public Collection<Material> getMaterials() {
+		return this.materials;
+	}
+
+	public void setMaterials(final Collection<Material> materials) {
+		this.materials = materials;
+	}
 
 }

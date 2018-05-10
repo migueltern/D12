@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
@@ -70,6 +71,19 @@ public class Incidence extends DomainEntity {
 		this.resolved = resolved;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Recycler	recycler;
+
+
+	@ManyToOne(optional = false)
+	public Recycler getRecycler() {
+		return this.recycler;
+	}
+
+	public void setRecycler(final Recycler recycler) {
+		this.recycler = recycler;
+	}
 
 }

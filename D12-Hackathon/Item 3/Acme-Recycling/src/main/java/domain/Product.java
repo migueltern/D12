@@ -1,13 +1,19 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -16,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Product extends DomainEntity {
+public class Product extends Opinion {
 
 	// Attributes -------------------------------------------------------------
 
@@ -27,11 +33,13 @@ public class Product extends DomainEntity {
 	private String	photo;
 
 
+	@Override
 	@NotBlank
 	public String getTitle() {
 		return this.title;
 	}
 
+	@Override
 	@NotBlank
 	public void setTitle(final String title) {
 		this.title = title;
@@ -74,6 +82,51 @@ public class Product extends DomainEntity {
 		this.photo = photo;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Collection<CategoryProduct>	categoryProducts;
+	private Puntuation					puntuation;
+	private Carrier						carrier;
+	private Recycler					recycler;
+
+
+	@OneToMany
+	@Valid
+	@NotNull
+	public Collection<CategoryProduct> getCategoryProducts() {
+		return this.categoryProducts;
+	}
+
+	public void setCategoryProducts(final Collection<CategoryProduct> categoryProducts) {
+		this.categoryProducts = categoryProducts;
+	}
+
+	@OneToOne(optional = false)
+	public Puntuation getPuntuation() {
+		return this.puntuation;
+	}
+
+	public void setPuntuation(final Puntuation puntuation) {
+		this.puntuation = puntuation;
+	}
+
+	@ManyToOne(optional = true)
+	public Carrier getCarrier() {
+		return this.carrier;
+	}
+
+	public void setCarrier(final Carrier carrier) {
+		this.carrier = carrier;
+	}
+
+	@ManyToOne(optional = false)
+	public Recycler getRecycler() {
+		return this.recycler;
+	}
+
+	public void setRecycler(final Recycler recycler) {
+		this.recycler = recycler;
+	}
 
 }

@@ -7,6 +7,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -21,7 +23,6 @@ public class ConfigurationSystem extends DomainEntity {
 	private String				banner;
 	private Collection<String>	welcomeMessages;
 	private Collection<String>	defaultCategories;
-	private Collection<String>	tabooWords;
 
 
 	@NotBlank
@@ -58,13 +59,20 @@ public class ConfigurationSystem extends DomainEntity {
 	public void setDefaultCategories(final Collection<String> defaultCategories) {
 		this.defaultCategories = defaultCategories;
 	}
+
+
+	// Relationships ---------------------------------------------------------------
+	@OneToMany
+	@Valid
 	@NotNull
-	@ElementCollection
-	public Collection<String> getTabooWords() {
+	private Collection<TabooWord>	tabooWords;
+
+
+	public Collection<TabooWord> getTabooWords() {
 		return this.tabooWords;
 	}
 
-	public void setTabooWords(final Collection<String> tabooWords) {
+	public void setTabooWords(final Collection<TabooWord> tabooWords) {
 		this.tabooWords = tabooWords;
 	}
 

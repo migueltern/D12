@@ -1,9 +1,13 @@
 
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -54,6 +58,29 @@ public class Request extends DomainEntity {
 		this.status = status;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Collection<CleanPoint>	cleanPoints;
+	private PickUp					pickUp;
+
+
+	@ManyToMany
+	public Collection<CleanPoint> getCleanPoints() {
+		return this.cleanPoints;
+	}
+
+	public void setCleanPoints(final Collection<CleanPoint> cleanPoints) {
+		this.cleanPoints = cleanPoints;
+	}
+
+	@OneToOne(optional = false)
+	public PickUp getPickUp() {
+		return this.pickUp;
+	}
+
+	public void setPickUp(final PickUp pickUp) {
+		this.pickUp = pickUp;
+	}
 
 }

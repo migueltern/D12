@@ -38,6 +38,18 @@ public class Publication extends DomainEntity {
 		this.caption = caption;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Recycler	recycler;
+
+
+	public Recycler getRecycler() {
+		return this.recycler;
+	}
+
+	public void setRecycler(final Recycler recycler) {
+		this.recycler = recycler;
+	}
 
 }

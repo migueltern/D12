@@ -6,8 +6,11 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -15,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public abstract class Opinion extends DomainEntity {
+public class Opinion extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
@@ -53,6 +56,21 @@ public abstract class Opinion extends DomainEntity {
 		this.comment = comment;
 	}
 
+
 	// Relationships ---------------------------------------------------------------
+
+	private Opinable	opinable;
+
+
+	@NotNull
+	@Valid
+	@ManyToOne
+	public Opinable getOpinable() {
+		return this.opinable;
+	}
+
+	public void setOpinable(final Opinable opinable) {
+		this.opinable = opinable;
+	}
 
 }

@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Product extends Opinion {
+public class Product extends Opinable {
 
 	// Attributes -------------------------------------------------------------
 

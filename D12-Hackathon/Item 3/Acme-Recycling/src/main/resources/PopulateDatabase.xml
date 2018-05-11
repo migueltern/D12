@@ -25,7 +25,7 @@
 
 	<bean id="userAccountManager1" class="security.UserAccount">
 		<property name="username" value="manager1" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="c240642ddef994358c96da82c0361a58" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -37,7 +37,7 @@
 
 	<bean id="userAccountManager2" class="security.UserAccount">
 		<property name="username" value="manager2" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="8df5127cd164b5bc2d2b78410a7eea0c" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -49,7 +49,7 @@
 
 	<bean id="userAccountManager3" class="security.UserAccount">
 		<property name="username" value="manager3" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="2d3a5db4a2a9717b43698520a8de57d0" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -61,7 +61,7 @@
 
 	<bean id="userAccountManager4" class="security.UserAccount">
 		<property name="username" value="manager4" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="e1ec6fc941af3ba79a4ac5242dd39735" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -73,7 +73,7 @@
 
 	<bean id="userAccountManager5" class="security.UserAccount">
 		<property name="username" value="manager5" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="029cb1d27c0b9c551703ccba2591c334" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -85,7 +85,7 @@
 
 	<bean id="userAccountCarrier1" class="security.UserAccount">
 		<property name="username" value="carrier1" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="8d2f089b195fc8ca1415db70968a461f" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -97,7 +97,7 @@
 
 	<bean id="userAccountCarrier2" class="security.UserAccount">
 		<property name="username" value="carrier2" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="e9c83d20abca1fe451b73b6f74d9f411" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -109,7 +109,7 @@
 
 	<bean id="userAccountCarrier3" class="security.UserAccount">
 		<property name="username" value="carrier3" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="8dee391cf2bfda3504283d0dc1af7a2e" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -121,7 +121,7 @@
 
 	<bean id="userAccountCarrier4" class="security.UserAccount">
 		<property name="username" value="carrier4" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="cde726b4067344e0cf4228f72f213c19" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -133,7 +133,7 @@
 
 	<bean id="userAccountCarrier5" class="security.UserAccount">
 		<property name="username" value="carrier5" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="447b827b64e3dbffe93784f27b09f112" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -146,7 +146,7 @@
 
 	<bean id="userAccountRecycler1" class="security.UserAccount">
 		<property name="username" value="recycler1" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="9125428c3007c097eab9a4afd9b0167b" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -158,7 +158,7 @@
 
 	<bean id="userAccountEditor1" class="security.UserAccount">
 		<property name="username" value="editor1" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="c9330587565205a5b8345f60c620ecc6" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -170,7 +170,7 @@
 
 	<bean id="userAccountBuyer1" class="security.UserAccount">
 		<property name="username" value="buyer1" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password" value="5cbd9d629096842872fdc665d2d03ba3" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -188,7 +188,7 @@
 		<property name="name" value="admin 1" />
 		<property name="surname" value="surname admin 1" />
 		<property name="email" value="admin@acmenewspaper.com" />
-		<property name="phone" value="+34617557203" />
+		<property name="phone" value="+34611111111" />
 		<property name="address" value="Adress admin 1" />
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
@@ -204,7 +204,7 @@
 		<property name="name" value="editor 1" />
 		<property name="surname" value="surname editor 1" />
 		<property name="email" value="editor1@acmerecycling.com" />
-		<property name="phone" value="+34617557203" />
+		<property name="phone" value="+34622222222" />
 		<property name="address" value="Adress editor 1" />
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
@@ -228,7 +228,7 @@
 		<property name="name" value="carrier 1" />
 		<property name="surname" value="surname carrier 1" />
 		<property name="email" value="carrier1@acmerecycling.com" />
-		<property name="phone" value="+34617557203" />
+		<property name="phone" value="+34633333333" />
 		<property name="address" value="Adress carrier 1" />
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
@@ -246,7 +246,7 @@
 		<property name="name" value="manager 1" />
 		<property name="surname" value="surname manager 1" />
 		<property name="email" value="manager1@acmerecycling.com" />
-		<property name="phone" value="+34617557203" />
+		<property name="phone" value="+34644444444" />
 		<property name="address" value="Adress manager 1" />
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
@@ -270,12 +270,12 @@
 		<property name="name" value="recycler 1" />
 		<property name="surname" value="surname recycler 1" />
 		<property name="email" value="recycler1@acmerecycling.com" />
-		<property name="phone" value="+34617557203" />
+		<property name="phone" value="+34655555555" />
 		<property name="address" value="Adress recycler 1" />
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
 			<list>
-			
+			<ref bean="opinion1"/>
 			</list>
 		</property>
 		<property name="products">
@@ -301,7 +301,7 @@
 		<property name="name" value="buyer 1" />
 		<property name="surname" value="surname buyer 1" />
 		<property name="email" value="buyer1@acmerecycling.com" />
-		<property name="phone" value="+34617557203" />
+		<property name="phone" value="+34666666666" />
 		<property name="address" value="Adress buyer 1" />
 		<property name="province" value="ALMERIA" />
 		<property name="opinions">
@@ -397,7 +397,6 @@
 
 	<!-- Products -->
 	<bean id="product1" class="domain.Product">
-	<property name="createdMoment" value="2018/01/24 12:12"></property>
 		<property name="publicationMoment" value="2018/01/12 12:12" />
 		<property name="description" value="description 1" />
 		<property name="quantity" value="23.0" />
@@ -410,6 +409,11 @@
 		<property name="puntuation" ref="puntuation1" />
 		<property name="carrier" ref="carrier1" />
 		<property name="recycler" ref="recycler1" />
+		<property name="opinion">
+		<list>
+		<ref bean="opinion1"/>
+		</list>
+		</property>
 	</bean>
 
 	<!-- Category products -->
@@ -437,6 +441,30 @@
 	</bean>
 
 	<!-- Courses -->
+	<bean id="course1" class="domain.Course">
+		<property name="description" value="description 1" />
+		<property name="location" ref="gps1" />
+		<property name="realisedMoment" value="2018/12/12" />
+		<property name="picture" value="http://www.picture.com" />
+		<property name="draftMode" value="true" />
+		<property name="minimumScore" value="2" />
+		<property name="publications">
+			<list>
+				<ref bean="publication1" />
+			</list>
+		</property>
+		<property name="materials">
+			<list>
+				<ref bean="material1" />
+			</list>
+		</property>
+		<property name="opinion">
+		<list>
+		
+		</list>
+		</property>
+	</bean>
+	
 
 	<!-- Configuration System -->
 
@@ -486,26 +514,7 @@
 		<property name="default_word" value="true"></property>
 	</bean>
 
-	<bean id="course1" class="domain.Course">
-	<property name="createdMoment" value="2018/03/12 12:12"></property>
-		<property name="description" value="description 1" />
-		<property name="location" ref="gps1" />
-		<property name="realisedMoment" value="2018/12/12" />
-		<property name="picture" value="http://www.picture.com" />
-		<property name="draftMode" value="true" />
-		<property name="minimumScore" value="2" />
-		<property name="publications">
-			<list>
-				<ref bean="publication1" />
-			</list>
-		</property>
-		<property name="materials">
-			<list>
-				<ref bean="material1" />
-			</list>
-		</property>
-	</bean>
-
+	
 	<!-- Publications -->
 	<bean id="publication1" class="domain.Publication">
 		<property name="photo" value="http://wwww.photo2.com" />
@@ -527,17 +536,24 @@
 		</property>
 
 	</bean>
-	<!-- Opinions -->
-	 <!-- <bean id="opinion1" class="domain.Opinion">
-	<property name="title" value="title 1"></property>
-	<property name="createdMoment" value="2018/02/27 14:01"/>
-	<property name="comment" value="comment1"></property>
 	
-	</bean>  -->
+	<!-- Opinable -->
+	<bean id="opinable1" class="domain.Opinable">
+	
+	</bean>	
+	<!-- Opinion -->
+
+	<bean id="opinion1" class="domain.Opinion">
+	<property name="title" value="title 1"/>
+	<property name="createdMoment" value="2018/03/04"/>
+	<property name="comment" value="comment1"/>
+	<property name="opinable" ref="opinable1"/>
+	</bean>
+	
 
 	<!-- Requests -->
 	<bean id="request1" class="domain.Request">
-		<property name="code" value="code 1"></property>
+		<property name="code" value="DG180131DF"></property>
 		<property name="title" value="title 1"></property>
 		<property name="observation" value="observation 1"></property>
 		<property name="status" value="FINISHED"></property>
@@ -551,9 +567,9 @@
 
 	<!-- Clean points -->
 	<bean id="cleanPoint1" class="domain.CleanPoint">
-		<property name="address" value=""></property>
-		<property name="province" value=""></property>
-		<property name="locality" value=""></property>
+		<property name="address" value="ctra arahal-paradas"></property>
+		<property name="province" value="SEVILLA"></property>
+		<property name="locality" value="PARADAS"></property>
 		<property name="mobile" value="false"></property>
 		<property name="location" ref="gps2"></property>
 	</bean>

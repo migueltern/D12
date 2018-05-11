@@ -16,8 +16,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import cz.jirutka.validator.collection.constraints.EachURL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -52,7 +53,7 @@ public class New extends DomainEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm")
 	@Past
-	@NotBlank
+	@NotNull
 	public Date getCreationDate() {
 		return this.creationDate;
 	}
@@ -62,7 +63,7 @@ public class New extends DomainEntity {
 	}
 
 	@ElementCollection
-	@URL
+	@EachURL
 	public Collection<String> getPictures() {
 		return this.pictures;
 	}

@@ -69,7 +69,7 @@ public abstract class Actor extends DomainEntity {
 		this.phone = phone;
 	}
 
-	@NotNull
+	@NotBlank
 	public String getAddress() {
 		return this.address;
 	}
@@ -78,7 +78,7 @@ public abstract class Actor extends DomainEntity {
 		this.address = address;
 	}
 
-	@NotNull
+	@NotBlank
 	public String getProvince() {
 		return this.province;
 	}

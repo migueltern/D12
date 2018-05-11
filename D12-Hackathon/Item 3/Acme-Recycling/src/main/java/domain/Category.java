@@ -16,7 +16,7 @@ public abstract class Category extends DomainEntity {
 	// Attributes -------------------------------------------------------------
 
 	private String	name;
-	private Boolean	byDefault;
+	private boolean	byDefault;
 
 
 	@Column(name = "name", unique = true)

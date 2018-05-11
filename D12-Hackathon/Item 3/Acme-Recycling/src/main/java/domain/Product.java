@@ -35,7 +35,7 @@ public class Product extends Opinion {
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm")
 	@Past
-	@NotBlank
+	@NotNull
 	public Date getPublicationMoment() {
 		return this.publicationMoment;
 	}
@@ -44,6 +44,7 @@ public class Product extends Opinion {
 		this.publicationMoment = publicationMoment;
 	}
 
+	@NotBlank
 	public String getDescription() {
 		return this.description;
 	}

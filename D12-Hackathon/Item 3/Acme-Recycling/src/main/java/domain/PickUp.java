@@ -28,6 +28,7 @@ public class PickUp extends DomainEntity {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Past
+	@NotNull
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -44,7 +45,6 @@ public class PickUp extends DomainEntity {
 		this.description = description;
 	}
 
-	@NotNull
 	public Double getValuation() {
 		return this.valuation;
 	}

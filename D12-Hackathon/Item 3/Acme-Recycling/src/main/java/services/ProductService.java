@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,12 @@ public class ProductService {
 		final Product result;
 
 		Assert.notNull(product);
+
+		if (product.getId() == 0) {
+			Date publicationMoment;
+			publicationMoment = new Date(System.currentTimeMillis() - 1000);
+			product.setPublicationMoment(publicationMoment);
+		}
 
 		result = this.productRepository.save(product);
 

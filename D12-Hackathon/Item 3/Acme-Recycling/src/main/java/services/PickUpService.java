@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,12 @@ public class PickUpService {
 		final PickUp result;
 
 		Assert.notNull(pickUp);
+
+		if (pickUp.getId() == 0) {
+			Date moment;
+			moment = new Date(System.currentTimeMillis() - 1000);
+			pickUp.setMoment(moment);
+		}
 
 		result = this.pickUpRepository.save(pickUp);
 

@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,12 @@ public class OpinionService {
 		final Opinion result;
 
 		Assert.notNull(opinion);
+
+		if (opinion.getId() == 0) {
+			Date createdMoment;
+			createdMoment = new Date(System.currentTimeMillis() - 1000);
+			opinion.setCreatedMoment(createdMoment);
+		}
 
 		result = this.opinionRepository.save(opinion);
 

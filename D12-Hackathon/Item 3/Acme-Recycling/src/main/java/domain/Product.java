@@ -101,7 +101,6 @@ public class Product extends Opinable {
 	}
 
 	@OneToOne(optional = true)
-	@NotNull
 	@Valid
 	public Puntuation getPuntuation() {
 		return this.puntuation;

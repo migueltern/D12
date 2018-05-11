@@ -199,7 +199,7 @@
 	</bean>
 	
 	<!-- EDITOR -->
-	<bean id="carrier1" class="domain.Carrier">
+	<bean id="editor1" class="domain.Editor">
 		<property name="userAccount" ref="userAccountEditor1" />
 		<property name="name" value="editor 1" />
 		<property name="surname" value="surname editor 1" />
@@ -275,7 +275,7 @@
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
 			<list>
-			<ref bean="opinion1"/>
+			
 			</list>
 		</property>
 		<property name="products">
@@ -322,7 +322,7 @@
 	</bean>
 	
 	<!-- news -->
-	<bean id="new1" class="domain.New">
+<bean id="new1" class="domain.New">
 	<property name="title" value="title 1"/>
 	<property name="content" value="content 1"/>
 	<property name="creationDate" value="2018/04/04 12:22"/>
@@ -332,7 +332,12 @@
 	<value>http://www.picture2.com</value>
 	</list>
 	</property>
-	</bean>
+	<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean> 
 
 	<!-- GPS -->
 	<bean id="gps1" class="domain.GPS">
@@ -436,6 +441,7 @@
 	<!-- Configuration System -->
 
 	<bean id="configurationSystem" class="domain.ConfigurationSystem">
+	<property name="name" value="Acme-Recycling"></property>
 		<property name="banner" value="http://www.banner.com"></property>
 		<property name="welcomeMessages">
 			<list>
@@ -522,12 +528,12 @@
 
 	</bean>
 	<!-- Opinions -->
-	<bean id="opinion1" class="domain.Opinion">
+	 <!-- <bean id="opinion1" class="domain.Opinion">
 	<property name="title" value="title 1"></property>
 	<property name="createdMoment" value="2018/02/27 14:01"/>
 	<property name="comment" value="comment1"></property>
 	
-	</bean>
+	</bean>  -->
 
 	<!-- Requests -->
 	<bean id="request1" class="domain.Request">

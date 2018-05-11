@@ -104,7 +104,7 @@ public class BuyerService {
 		UserAccount userAccount;
 		userAccount = LoginService.getPrincipal();
 		Assert.notNull(userAccount);
-		result = this.buyerRepository.findByUserAccountId(userAccount.getId());
+		result = this.buyerRepository.findByBuyerAccountId(userAccount.getId());
 		return result;
 	}
 

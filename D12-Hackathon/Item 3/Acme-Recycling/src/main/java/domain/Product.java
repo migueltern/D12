@@ -90,7 +90,9 @@ public class Product extends Opinable {
 		this.categoryProducts = categoryProducts;
 	}
 
-	@OneToOne(optional = false)
+	@OneToOne(optional = true)
+	@NotNull
+	@Valid
 	public Puntuation getPuntuation() {
 		return this.puntuation;
 	}
@@ -100,6 +102,7 @@ public class Product extends Opinable {
 	}
 
 	@ManyToOne(optional = true)
+	@Valid
 	public Carrier getCarrier() {
 		return this.carrier;
 	}
@@ -109,6 +112,8 @@ public class Product extends Opinable {
 	}
 
 	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
 	public Recycler getRecycler() {
 		return this.recycler;
 	}

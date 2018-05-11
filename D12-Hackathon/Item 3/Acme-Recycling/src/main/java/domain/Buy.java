@@ -52,6 +52,8 @@ public class Buy extends DomainEntity {
 
 
 	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
 	public Material getMaterial() {
 		return this.material;
 	}

@@ -19,7 +19,7 @@ public abstract class Opinable extends DomainEntity {
 	}
 
 
-	//RelationsShip
+	//Relationships--------------------------------------------------------------
 	private Collection<Opinion>	opinion;
 
 

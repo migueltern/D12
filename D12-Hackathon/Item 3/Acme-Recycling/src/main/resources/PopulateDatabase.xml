@@ -538,16 +538,14 @@
 	</bean>
 	
 	<!-- Opinable -->
-	<bean id="opinable1" class="domain.Opinable">
 	
-	</bean>	
 	<!-- Opinion -->
 
 	<bean id="opinion1" class="domain.Opinion">
 	<property name="title" value="title 1"/>
 	<property name="createdMoment" value="2018/03/04"/>
 	<property name="comment" value="comment1"/>
-	<property name="opinable" ref="opinable1"/>
+	<property name="opinable" ref="product1"/>
 	</bean>
 	
 

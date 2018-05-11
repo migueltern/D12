@@ -71,4 +71,10 @@ public class RequestService {
 
 		return result;
 	}
+
+	public void delete(final Request request) {
+		Assert.notNull(request);
+
+		this.requestRepository.delete(request);
+	}
 }

@@ -70,4 +70,10 @@ public class PickUpService {
 
 		return result;
 	}
+
+	public void delete(final PickUp pickUp) {
+		Assert.notNull(pickUp);
+
+		this.pickUpRepository.delete(pickUp);
+	}
 }

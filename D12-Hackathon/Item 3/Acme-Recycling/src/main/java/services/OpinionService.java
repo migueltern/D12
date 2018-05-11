@@ -70,4 +70,10 @@ public class OpinionService {
 
 		return result;
 	}
+
+	public void delete(final Opinion opinion) {
+		Assert.notNull(opinion);
+
+		this.opinionRepository.delete(opinion);
+	}
 }

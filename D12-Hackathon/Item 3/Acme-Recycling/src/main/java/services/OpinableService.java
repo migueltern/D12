@@ -50,4 +50,20 @@ public class OpinableService {
 
 	}
 
+	public Opinable save(final Opinable opinable) {
+		Opinable result;
+
+		Assert.notNull(opinable);
+
+		result = this.opinableRepository.save(opinable);
+
+		return result;
+	}
+
+	public void delete(final Opinable opinable) {
+		Assert.notNull(opinable);
+
+		this.opinableRepository.delete(opinable);
+	}
+
 }

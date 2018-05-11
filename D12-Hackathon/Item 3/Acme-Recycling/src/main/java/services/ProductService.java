@@ -83,4 +83,10 @@ public class ProductService {
 
 		return result;
 	}
+
+	public void delete(final Product product) {
+		Assert.notNull(product);
+
+		this.productRepository.delete(product);
+	}
 }

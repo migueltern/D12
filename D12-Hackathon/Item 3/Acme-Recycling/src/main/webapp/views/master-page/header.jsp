@@ -43,6 +43,8 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="opinion/recycler/myList.do?d-16544-p=1"><spring:message code="master.page.opinion.myList" /></a></li>
+					<li><a href="opinion/recycler/createOpinableProduct.do"><spring:message code="master.page.opinion.createOpinableProduct" /></a></li>
+					<li><a href="opinion/recycler/createOpinableCourse.do"><spring:message code="master.page.opinion.createOpinableCourse" /></a></li>
 					
 				</ul>
 			</li>

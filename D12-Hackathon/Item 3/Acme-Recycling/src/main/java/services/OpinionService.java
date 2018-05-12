@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.OpinionRepository;
+import domain.Actor;
 import domain.Opinion;
 
 @Service
@@ -19,6 +20,9 @@ public class OpinionService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private OpinionRepository	opinionRepository;
+
+	@Autowired
+	private ActorService		actorService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -38,7 +42,6 @@ public class OpinionService {
 
 		return result;
 	}
-
 	public Opinion findOne(final int opinionId) {
 		Opinion result;
 
@@ -57,16 +60,22 @@ public class OpinionService {
 
 	public Opinion save(final Opinion opinion) {
 		final Opinion result;
+		Actor actorPrincipal;
 
 		Assert.notNull(opinion);
 
 		if (opinion.getId() == 0) {
 			Date createdMoment;
+
 			createdMoment = new Date(System.currentTimeMillis() - 1000);
 			opinion.setCreatedMoment(createdMoment);
+
 		}
 
 		result = this.opinionRepository.save(opinion);
+		//Se le añade esa opinion instrumentada al actor logueado
+		actorPrincipal = this.actorService.findPrincipal();
+		actorPrincipal.getOpinions().add(result);
 
 		return result;
 	}

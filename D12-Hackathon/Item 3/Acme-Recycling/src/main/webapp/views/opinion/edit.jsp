@@ -21,10 +21,25 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="followUp/user/edit.do" modelAttribute="followUp">
+<form:form action="opinion/recycler/edit.do" modelAttribute="opinion">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	
+	<acme:textbox code="opinion.title" path="title"/>
+	<br />
+ 	<acme:textbox code="opinion.comment" path="comment"/>
+	<br /> 
+	
+	<jstl:if test="${selectProducts}" >
+	<acme:select items="${products}" itemLabel="title" code="opinion.product" path="opinable"/>
+	<br />
+	</jstl:if>
+	
+	<jstl:if test="${selectCourses}" >
+	<acme:select items="${courses}" itemLabel="title" code="opinion.course" path="opinable"/>
+	<br />
+	</jstl:if>
 	
 	
 	

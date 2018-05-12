@@ -397,6 +397,7 @@
 
 	<!-- Products -->
 	<bean id="product1" class="domain.Product">
+		<property name="title" value="title 1" />
 		<property name="publicationMoment" value="2018/01/12 12:12" />
 		<property name="description" value="description 1" />
 		<property name="quantity" value="23.0" />

@@ -30,8 +30,8 @@ public class IncidenceService {
 	@Autowired
 	private ActorService actorService;
 	
-	@Autowired 
-	private MessageService messageService;
+//	@Autowired 
+//	private MessageService messageService;
 	
 	// Constructors -----------------------------------------------------------
 	

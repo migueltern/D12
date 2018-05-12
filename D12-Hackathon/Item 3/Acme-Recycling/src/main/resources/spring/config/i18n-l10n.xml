@@ -29,6 +29,7 @@
 		<value>/views/configurationSystem/messages</value>
 		<value>/views/new/messages</value>
 		<value>/views/comment/messages</value>
+		<value>/views/cleanPoint/messages</value>
 	</util:list>
 
 </beans>

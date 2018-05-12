@@ -34,6 +34,13 @@
 					<li><a href="configurationSystem/admin/tabooWord/list.do?d-16544-p=1"><spring:message code="master.page.administrator.tabooWords" /></a></li>				
 				</ul>
 			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.administrator.cleanPoints" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="cleanPoint/admin/list.do?d-16544-p=1"><spring:message code="master.page.administrator.cleanPoints" /></a></li>				
+				</ul>
+			</li>
 		</security:authorize>
 		
 		

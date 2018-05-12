@@ -22,7 +22,7 @@
 		<put-attribute name="body" value="/views/cleanPoint/list.jsp" />
 	</definition>
 	
-	<definition name="CleanPoint/edit" extends="master.page">	
+	<definition name="cleanPoint/edit" extends="master.page">	
 		<put-attribute name="title" value="Edit clean point" />
 		<put-attribute name="body" value="/views/cleanPoint/edit.jsp" />
 	</definition>

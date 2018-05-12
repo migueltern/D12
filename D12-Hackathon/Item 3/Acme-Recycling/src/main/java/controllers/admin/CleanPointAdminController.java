@@ -116,6 +116,7 @@ public class CleanPointAdminController extends AbstractController {
 		result = new ModelAndView("cleanPoint/edit");
 		result.addObject("cleanPoint", cleanPoint);
 		result.addObject("message", messageCode);
+		result.addObject("requestURI", "cleanPoint/admin/edit.do");
 
 		return result;
 

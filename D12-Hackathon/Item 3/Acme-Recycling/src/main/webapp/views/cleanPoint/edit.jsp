@@ -27,27 +27,28 @@
 <!-- ATRIBUTOS -->
 	<B><acme:textbox code="cleanPoint.address" path="address"/></B>
 	<br />
-	<B><acme:textbox code="cleanPoint.province" path="province" readonly="true"/></B>
+	<B><acme:textbox code="cleanPoint.province" path="province" /></B>
 	<br />
-	<B><acme:textbox code="cleanPoint.locality" path="locality" readonly="true"/></B>
+	<B><acme:textbox code="cleanPoint.locality" path="locality"/></B>
 	<br />
 	<B><acme:booleanselect code="cleanPoint.mobile" path="mobile"/></B>
 	<br />
 	
+	<B><jstl:out value="Coordenadas GPS"></jstl:out></B>
 	<fieldset>
-	<B><acme:textbox code="cleanPoint.GPS.name" path="GPS.name"/></B>
+	<B><acme:textbox code="cleanPoint.GPS.name" path="location.name"/></B>
 	<br>
-	<B><acme:textbox code="cleanPoint.GPS.latitude" path="GPS.latitude"/></B>
+	<B><acme:textbox code="cleanPoint.GPS.latitude" path="location.latitude"/></B>
 	<br>
-	<B><acme:textbox code="cleanPoint.GPS.longitude" path="GPS.longitude"/></B>
+	<B><acme:textbox code="cleanPoint.GPS.longitude" path="location.longitude"/></B>
 	<br>
 	</fieldset>
-	
+	<br>
 <!-- BOTONES -->
 
 	<input type="submit" name="save" value="<spring:message code="cleanPoint.save" />" />&nbsp; 
 
 	<acme:cancel
-		url="cleanPoint/recycler/list.do?d-16544-p=1"
+		url="cleanPoint/admin/list.do?d-16544-p=1"
 		code="cleanPoint.cancel" />
 </form:form>

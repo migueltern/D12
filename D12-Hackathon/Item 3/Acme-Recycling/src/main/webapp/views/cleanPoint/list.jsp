@@ -39,3 +39,10 @@
 	
 
 </display:table>
+<security:authorize access="hasRole('ADMIN')">
+	<div>
+		<a href="cleanPoint/admin/create.do"> <spring:message
+				code="cleanPoint.create" />
+		</a>
+	</div>
+</security:authorize>

@@ -47,7 +47,10 @@
 		
 		
 		
-		
+<!-- 		ADMIN-->
+
+		<security:intercept-url pattern="/configurationSystem/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/tabooWord/admin/**" access="hasRole('ADMIN')"/>
 		
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />

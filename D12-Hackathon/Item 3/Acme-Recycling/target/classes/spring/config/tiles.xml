@@ -25,6 +25,8 @@
 		<value>/views/profile/tiles.xml</value>
 		<value>/views/opinion/tiles.xml</value>
 		<value>/views/messageFolder/tiles.xml</value>
+		<value>/views/tabooWord/tiles.xml</value>
+		<value>/views/configurationSystem/tiles.xml</value>
 		
 	</util:list>
 

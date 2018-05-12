@@ -38,6 +38,16 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('RECYCLER')">
+			<li><a class="fNiv"><spring:message	code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="opinion/recycler/myList.do?d-16544-p=1"><spring:message code="master.page.opinion.myList" /></a></li>
+					
+				</ul>
+			</li>
+		</security:authorize>
+		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>

@@ -76,4 +76,12 @@ public class OpinionService {
 
 		this.opinionRepository.delete(opinion);
 	}
+
+	public Collection<Opinion> findByActor(final int ActorId) {
+		Collection<Opinion> result;
+
+		result = this.opinionRepository.findByActor(ActorId);
+
+		return result;
+	}
 }

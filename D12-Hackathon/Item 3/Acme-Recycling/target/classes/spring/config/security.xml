@@ -39,6 +39,8 @@
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
 		<security:intercept-url pattern="/welcome/legal.do" access="permitAll"/>
 		
+		<security:intercept-url pattern="/opinion/recycler/myList.do" access="hasRole('RECYCLER')"/>
+		
 		
 		
 		

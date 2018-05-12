@@ -27,7 +27,7 @@
 <!-- ATRIBUTOS -->
 	<B><acme:textbox code="cleanPoint.address" path="address"/></B>
 	<br />
-	<B><acme:textbox code="cleanPoint.province" path="province" /></B>
+	<B><acme:provinceselect code="cleanPoint.province" path="province"/></B>
 	<br />
 	<B><acme:textbox code="cleanPoint.locality" path="locality"/></B>
 	<br />

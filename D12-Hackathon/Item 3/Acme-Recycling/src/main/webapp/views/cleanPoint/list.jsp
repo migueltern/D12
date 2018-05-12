@@ -35,9 +35,7 @@
 	
 	<spring:message code="cleanPoint.locality" var="titleHeader" />
 	<display:column property="locality" title="${titleHeader}" sortable="true" />
-
 	
-
 </display:table>
 <security:authorize access="hasRole('ADMIN')">
 	<div>

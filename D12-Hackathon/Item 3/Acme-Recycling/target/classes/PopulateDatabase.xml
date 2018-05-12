@@ -563,6 +563,7 @@
 			</list>
 		</property>
 		<property name="pickUp" ref="pickUp1" />
+		<property name="product" ref="product1" />
 	</bean>
 
 	<!-- Clean points -->

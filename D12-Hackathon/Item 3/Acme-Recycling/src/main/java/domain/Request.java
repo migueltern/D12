@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -65,6 +66,7 @@ public class Request extends DomainEntity {
 
 	private Collection<CleanPoint>	cleanPoints;
 	private PickUp					pickUp;
+	private Product					product;
 
 
 	@ManyToMany
@@ -85,6 +87,17 @@ public class Request extends DomainEntity {
 
 	public void setPickUp(final PickUp pickUp) {
 		this.pickUp = pickUp;
+	}
+
+	@OneToOne(optional = false)
+	@NotNull
+	@Valid
+	public Product getProduct() {
+		return this.product;
+	}
+
+	public void setProduct(final Product product) {
+		this.product = product;
 	}
 
 }

@@ -79,7 +79,7 @@ public class CommentRecyclerController extends AbstractController {
 				//Creamos un nuevo save para que el agent pueda salvar un periódico
 				this.newService.save(New);
 
-				result = new ModelAndView("redirect:/new/recycler/list.do");
+				result = new ModelAndView("redirect:/comment/recycler/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(comment, "comment.commit.error");
 			}

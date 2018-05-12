@@ -58,12 +58,14 @@ public class CommentService {
 		Date createdMoment;
 		Recycler principal;
 
+		principal = this.recyclerService.findByPrincipal();
+
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		comment.setCreatedMoment(createdMoment);
 
-		principal = this.recyclerService.findByPrincipal();
-		principal.getComments().add(comment);
 		result = this.commentRepository.save(comment);
+		//Le a“ado al reciclador que est∑ logueado el comentario
+		principal.getComments().add(result);
 
 		return result;
 	}

@@ -57,6 +57,22 @@
 	<!-- 	EDITOR -->
 		<security:intercept-url pattern="/new/editor/**" access="hasRole('EDITOR')"/>
 	
+	
+	<!-- 	RECYCLER -->
+		<security:intercept-url pattern="/comment/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/new/recycler/**" access="hasRole('RECYCLER')"/>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

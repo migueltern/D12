@@ -194,4 +194,16 @@ public class RecyclerService {
 		this.recyclerRepository.flush();
 	}
 
+	//Encontrar todos los comentarios del reciclador que est· logueado
+	public Collection<Comment> findAllCommentsByRecycler() {
+		Collection<Comment> result;
+		Recycler recycler;
+
+		recycler = this.findByPrincipal();
+
+		result = this.recyclerRepository.findAllCommentsByRecycler(recycler.getId());
+
+		return result;
+	}
+
 }

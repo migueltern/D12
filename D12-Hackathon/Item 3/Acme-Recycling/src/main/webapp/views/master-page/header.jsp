@@ -48,6 +48,15 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.comment" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="comment/recycler/list.do?d-16544-p=1"><spring:message code="master.page.comment.myList" /></a></li>
+					<li><a href="new/recycler/list.do?d-16544-p=1"><spring:message code="master.page.new.create.comment" /></a></li>
+					
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.opinion" /></a>
 				<ul>
 					<li class="arrow"></li>

@@ -56,6 +56,10 @@ public class NewService {
 	public New save(final New New) {
 		New result;
 		Assert.notNull(New);
+		Date createdMoment;
+
+		createdMoment = new Date(System.currentTimeMillis() - 1000);
+		New.setCreationDate(createdMoment);
 
 		result = this.newRepository.save(New);
 
@@ -95,11 +99,8 @@ public class NewService {
 		if (New.getId() == 0) {
 
 			Collection<Comment> comments;
-
 			comments = new ArrayList<Comment>();
-
 			New.setComments(comments);
-
 			result = New;
 		} else {
 			newBD = this.newRepository.findOne(New.getId());

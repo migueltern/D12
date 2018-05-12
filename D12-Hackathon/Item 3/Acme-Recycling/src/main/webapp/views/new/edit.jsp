@@ -22,7 +22,7 @@
 
 <form:form action="${requestURI}" modelAttribute="new">
 
-	<form:hidden path="id" />
+	
 <!-- ATRIBUTOS -->
 
 <fieldset>

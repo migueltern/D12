@@ -36,14 +36,7 @@
 			</li>
 		</security:authorize>
 		
-		<security:authorize access="hasRole('CUSTOMER')">
-			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
-				<ul>
-					<li class="arrow"></li>
-					
-				</ul>
-			</li>
-		</security:authorize>
+		
 		
 		<security:authorize access="hasRole('RECYCLER')">
 		
@@ -82,6 +75,16 @@
 					<li class="arrow"></li>
 					<li><a href="messageFolder/manager/list.do?d-16544-p=1"><spring:message code="master.page.messageFolder.myList" /></a></li>
 					<li><a href="messageFolder/manager/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('EDITOR')">
+			<li><a class="fNiv"><spring:message	code="master.page.new" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="new/editor/list.do?d-16544-p=1"><spring:message code="master.page.New.list" /></a></li>
+					<li><a href="new/editor/create.do"><spring:message code="master.page.New.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

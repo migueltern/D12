@@ -27,6 +27,7 @@
 		<value>/views/messageFolder/tiles.xml</value>
 		<value>/views/tabooWord/tiles.xml</value>
 		<value>/views/configurationSystem/tiles.xml</value>
+		<value>/views/new/tiles.xml</value>
 		
 	</util:list>
 

@@ -82,8 +82,12 @@ public class OpinionService {
 
 	public void delete(final Opinion opinion) {
 		Assert.notNull(opinion);
+		Actor actorPrincipal;
 
 		this.opinionRepository.delete(opinion);
+		//Eliminamos la opinion de la lista de opiniones del actor ya que es unidireccional y no se actualiza
+		actorPrincipal = this.actorService.findPrincipal();
+		actorPrincipal.getOpinions().remove(opinion);
 	}
 
 	public Collection<Opinion> findByActor(final int ActorId) {

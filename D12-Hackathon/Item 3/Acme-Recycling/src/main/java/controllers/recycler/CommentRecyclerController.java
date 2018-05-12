@@ -5,13 +5,18 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CommentService;
+import services.NewService;
 import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Comment;
+import domain.New;
 
 @Controller
 @RequestMapping("/comment/recycler")
@@ -19,11 +24,14 @@ public class CommentRecyclerController extends AbstractController {
 
 	//	Services --------------------------------------------------------
 
-	//	@Autowired
-	//	private CommentService	commentService;
+	@Autowired
+	private CommentService	commentService;
 
 	@Autowired
 	private RecyclerService	recyclerService;
+
+	@Autowired
+	private NewService		newService;
 
 
 	//	Listing ---------------------------------------------------------
@@ -38,6 +46,85 @@ public class CommentRecyclerController extends AbstractController {
 		result.addObject("requestURI", "comment/recycler/list.do");
 
 		return result;
+	}
+
+	//Creation-----------------------------------------------------------
+
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create(@RequestParam final int newId) {
+		ModelAndView result;
+		final Comment Comment;
+
+		Comment = this.commentService.create();
+
+		result = this.createEditModelAndView(Comment);
+		result.addObject("requestURI", "comment/recycler/addNew.do?newId=" + newId);
+		return result;
+
+	}
+
+	@RequestMapping(value = "/addNew", method = RequestMethod.POST, params = "save")
+	public ModelAndView addNewspaper(Comment comment, final BindingResult bindingResult, @RequestParam final int newId) {
+		ModelAndView result;
+		comment = this.commentService.reconstruct(comment, bindingResult);
+		New New;
+
+		if (bindingResult.hasErrors())
+			result = this.createEditModelAndView(comment);
+		else
+			try {
+				comment = this.commentService.save(comment);
+				New = this.newService.findOne(newId);
+				New.getComments().add(comment);
+				//Creamos un nuevo save para que el agent pueda salvar un periódico
+				this.newService.save(New);
+
+				result = new ModelAndView("redirect:/new/recycler/list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(comment, "comment.commit.error");
+			}
+		return result;
+
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(Comment comment, final BindingResult bindingResult) {
+		ModelAndView result;
+		comment = this.commentService.reconstruct(comment, bindingResult);
+		if (bindingResult.hasErrors())
+			result = this.createEditModelAndView(comment);
+		else
+			try {
+				this.commentService.save(comment);
+				result = new ModelAndView("redirect:list.do");
+
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(comment, "comment.commit.error");
+			}
+
+		return result;
+	}
+
+	// Ancillary methods ------------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(final Comment comment) {
+		assert comment != null;
+		ModelAndView result;
+		result = this.createEditModelAndView(comment, null);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final Comment comment, final String message) {
+
+		assert comment != null;
+		ModelAndView result;
+
+		result = new ModelAndView("comment/edit");
+		result.addObject("comment", comment);
+		result.addObject("message", message);
+
+		return result;
+
 	}
 
 }

@@ -59,6 +59,19 @@
 	<display:column property="creationDate" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
 
+<!-- CREAR UN COMENTARIO -->
+	<security:authorize access="hasRole('RECYCLER')">
+	<spring:message code="new.comment" var="Create" />
+	<display:column title="${Create}" sortable="true">
+	
+
+		<spring:url value="comment/recycler/create.do" var="createURL">
+			<spring:param name="newId" value="${row.id}" />
+		</spring:url>
+		<a href="${createURL}"><spring:message code="new.comment.create" /></a>
+	
+	</display:column>
+</security:authorize>
 		
 	
 </display:table>

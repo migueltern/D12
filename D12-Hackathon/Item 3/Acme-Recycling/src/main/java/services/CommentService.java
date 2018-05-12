@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 
 import repositories.CommentRepository;
 import domain.Comment;
+import domain.Recycler;
 
 @Service
 @Transactional
@@ -24,6 +25,8 @@ public class CommentService {
 
 	// Supporting services ----------------------------------------------------
 
+	@Autowired
+	private RecyclerService		recyclerService;
 	//Importar la que pertenece a Spring
 	@Autowired
 	private Validator			validator;
@@ -53,10 +56,13 @@ public class CommentService {
 		Comment result;
 		Assert.notNull(comment);
 		Date createdMoment;
+		Recycler principal;
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		comment.setCreatedMoment(createdMoment);
 
+		principal = this.recyclerService.findByPrincipal();
+		principal.getComments().add(comment);
 		result = this.commentRepository.save(comment);
 
 		return result;

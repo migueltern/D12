@@ -20,15 +20,15 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="requestURI" modelAttribute="comment">
+<form:form action="${requestURI}" modelAttribute="comment">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
 <!-- ATRIBUTOS -->
-	<acme:textbox code="comment.body" path="body"/>
+	<B><acme:textbox code="comment.body" path="body"/></B>
 	<br />
-	<acme:textbox code="comment.createdMoment" path="creadtedMoment" readonly="true"/>
+	<B><acme:textbox code="comment.createdMoment" path="createdMoment" readonly="true"/></B>
 	<br />
 	
 <!-- BOTONES -->

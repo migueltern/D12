@@ -8,12 +8,15 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.AdminRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Admin;
+import forms.AdminForm;
 
 @Service
 @Transactional
@@ -22,6 +25,8 @@ public class AdminService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private AdminRepository	adminRepository;
+	@Autowired
+	private Validator		validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -119,6 +124,35 @@ public class AdminService {
 		auth.setAuthority(Authority.ADMIN);
 
 		return (authorities.contains(auth));
+	}
+
+	public AdminForm reconstruct(final AdminForm adminForm, final BindingResult bindingResult) {
+		final AdminForm result;
+		final Admin adminBD;
+
+		if (adminForm.getAdministrator().getId() == 0) {
+			UserAccount userAccount;
+			Authority authority;
+
+			userAccount = adminForm.getAdministrator().getUserAccount();
+			authority = new Authority();
+			authority.setAuthority(Authority.ADMIN);
+			userAccount.addAuthority(authority);
+			adminForm.getAdministrator().setUserAccount(userAccount);
+			result = adminForm;
+		} else {
+			adminBD = this.adminRepository.findOne(adminForm.getAdministrator().getId());
+			adminForm.getAdministrator().setId(adminBD.getId());
+			adminForm.getAdministrator().setVersion(adminBD.getVersion());
+			adminForm.getAdministrator().setUserAccount(adminBD.getUserAccount());
+			result = adminForm;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
+	}
+
+	public void flush() {
+		this.adminRepository.flush();
 	}
 
 }

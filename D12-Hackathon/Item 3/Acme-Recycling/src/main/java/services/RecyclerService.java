@@ -9,6 +9,8 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.RecyclerRepository;
 import security.Authority;
@@ -18,6 +20,7 @@ import domain.Comment;
 import domain.Course;
 import domain.Product;
 import domain.Recycler;
+import forms.RecyclerForm;
 
 @Service
 @Transactional
@@ -26,6 +29,8 @@ public class RecyclerService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private RecyclerRepository	recyclerRepository;
+	@Autowired
+	private Validator			validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -137,6 +142,56 @@ public class RecyclerService {
 		auth.setAuthority(Authority.RECYCLER);
 
 		return (authorities.contains(auth));
+	}
+
+	public RecyclerForm reconstruct(final RecyclerForm recyclerForm, final BindingResult binding) {
+
+		RecyclerForm result = null;
+		Recycler recycler;
+		recycler = recyclerForm.getRecycler();
+
+		if (recycler.getId() == 0) {
+			UserAccount userAccount;
+			Authority authority;
+			final Collection<Product> products;
+			final Collection<Comment> comments;
+			final Collection<Course> courses;
+
+			userAccount = recyclerForm.getRecycler().getUserAccount();
+			authority = new Authority();
+			authority.setAuthority(Authority.RECYCLER);
+			userAccount.addAuthority(authority);
+			recyclerForm.getRecycler().setUserAccount(userAccount);
+			products = new ArrayList<>();
+			comments = new ArrayList<>();
+			courses = new ArrayList<>();
+			recyclerForm.getRecycler().setProducts(products);
+			recyclerForm.getRecycler().setComments(comments);
+			recyclerForm.getRecycler().setCourses(courses);
+			result = recyclerForm;
+
+		} else {
+
+			recycler = this.recyclerRepository.findOne(recyclerForm.getRecycler().getId());
+			recyclerForm.getRecycler().setId(recycler.getId());
+			recyclerForm.getRecycler().setVersion(recycler.getVersion());
+			recyclerForm.getRecycler().setUserAccount(recycler.getUserAccount());
+			recyclerForm.getRecycler().setProducts(recycler.getProducts());
+			recyclerForm.getRecycler().setComments(recycler.getComments());
+			recyclerForm.getRecycler().setCourses(recycler.getCourses());
+
+			result = recyclerForm;
+
+		}
+
+		this.validator.validate(result, binding);
+
+		return result;
+
+	}
+
+	public void flush() {
+		this.recyclerRepository.flush();
 	}
 
 }

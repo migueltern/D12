@@ -8,12 +8,15 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CarrierRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Carrier;
+import forms.CarrierForm;
 
 @Service
 @Transactional
@@ -22,6 +25,8 @@ public class CarrierService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private CarrierRepository	carrierRepository;
+	@Autowired
+	private Validator			validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -126,5 +131,34 @@ public class CarrierService {
 		auth.setAuthority(Authority.CARRIER);
 
 		return (authorities.contains(auth));
+	}
+
+	public CarrierForm reconstruct(final CarrierForm carrierForm, final BindingResult bindingResult) {
+		final CarrierForm result;
+		final Carrier carrierBD;
+
+		if (carrierForm.getCarrier().getId() == 0) {
+			UserAccount userAccount;
+			Authority authority;
+
+			userAccount = carrierForm.getCarrier().getUserAccount();
+			authority = new Authority();
+			authority.setAuthority(Authority.CARRIER);
+			userAccount.addAuthority(authority);
+			carrierForm.getCarrier().setUserAccount(userAccount);
+			result = carrierForm;
+		} else {
+			carrierBD = this.carrierRepository.findOne(carrierForm.getCarrier().getId());
+			carrierForm.getCarrier().setId(carrierBD.getId());
+			carrierForm.getCarrier().setVersion(carrierBD.getVersion());
+			carrierForm.getCarrier().setUserAccount(carrierBD.getUserAccount());
+			result = carrierForm;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
+	}
+
+	public void flush() {
+		this.carrierRepository.flush();
 	}
 }

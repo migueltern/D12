@@ -9,6 +9,8 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.EditorRepository;
 import security.Authority;
@@ -16,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Editor;
 import domain.New;
+import forms.EditorForm;
 
 @Service
 @Transactional
@@ -24,6 +27,8 @@ public class EditorService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private EditorRepository	editorRepository;
+	@Autowired
+	private Validator			validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -130,5 +135,47 @@ public class EditorService {
 		auth.setAuthority(Authority.EDITOR);
 
 		return (authorities.contains(auth));
+	}
+
+	public EditorForm reconstruct(final EditorForm editorForm, final BindingResult binding) {
+
+		EditorForm result = null;
+		Editor editor;
+		editor = editorForm.getEditor();
+
+		if (editor.getId() == 0) {
+			UserAccount userAccount;
+			Authority authority;
+			final Collection<New> news;
+
+			userAccount = editorForm.getEditor().getUserAccount();
+			authority = new Authority();
+			authority.setAuthority(Authority.EDITOR);
+			userAccount.addAuthority(authority);
+			editorForm.getEditor().setUserAccount(userAccount);
+			news = new ArrayList<>();
+			editorForm.getEditor().setNews(news);
+			result = editorForm;
+
+		} else {
+
+			editor = this.editorRepository.findOne(editorForm.getEditor().getId());
+			editorForm.getEditor().setId(editor.getId());
+			editorForm.getEditor().setVersion(editor.getVersion());
+			editorForm.getEditor().setUserAccount(editor.getUserAccount());
+			editorForm.getEditor().setNews(editor.getNews());
+
+			result = editorForm;
+
+		}
+
+		this.validator.validate(result, binding);
+
+		return result;
+
+	}
+
+	public void flush() {
+		this.editorRepository.flush();
 	}
 }

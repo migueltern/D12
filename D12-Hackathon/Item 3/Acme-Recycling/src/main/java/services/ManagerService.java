@@ -9,6 +9,8 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.ManagerRepository;
 import security.Authority;
@@ -17,6 +19,7 @@ import security.UserAccount;
 import domain.Incidence;
 import domain.Manager;
 import domain.Request;
+import forms.ManagerForm;
 
 @Service
 @Transactional
@@ -25,6 +28,8 @@ public class ManagerService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private ManagerRepository	managerRepository;
+	@Autowired
+	private Validator			validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -133,5 +138,51 @@ public class ManagerService {
 		auth.setAuthority(Authority.MANAGER);
 
 		return (authorities.contains(auth));
+	}
+
+	public ManagerForm reconstruct(final ManagerForm managerForm, final BindingResult binding) {
+
+		ManagerForm result = null;
+		Manager manager;
+		manager = managerForm.getManager();
+
+		if (manager.getId() == 0) {
+			UserAccount userAccount;
+			Authority authority;
+			final Collection<Incidence> incidences;
+			final Collection<Request> requests;
+
+			userAccount = managerForm.getManager().getUserAccount();
+			authority = new Authority();
+			authority.setAuthority(Authority.MANAGER);
+			userAccount.addAuthority(authority);
+			managerForm.getManager().setUserAccount(userAccount);
+			incidences = new ArrayList<>();
+			requests = new ArrayList<>();
+			managerForm.getManager().setIncidences(incidences);
+			managerForm.getManager().setRequests(requests);
+			result = managerForm;
+
+		} else {
+
+			manager = this.managerRepository.findOne(managerForm.getManager().getId());
+			managerForm.getManager().setId(manager.getId());
+			managerForm.getManager().setVersion(manager.getVersion());
+			managerForm.getManager().setUserAccount(manager.getUserAccount());
+			managerForm.getManager().setIncidences(manager.getIncidences());
+			managerForm.getManager().setRequests(manager.getRequests());
+
+			result = managerForm;
+
+		}
+
+		this.validator.validate(result, binding);
+
+		return result;
+
+	}
+
+	public void flush() {
+		this.managerRepository.flush();
 	}
 }

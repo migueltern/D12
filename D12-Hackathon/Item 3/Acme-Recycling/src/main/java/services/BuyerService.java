@@ -9,6 +9,8 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.BuyerRepository;
 import security.Authority;
@@ -17,6 +19,7 @@ import security.UserAccount;
 import domain.Buy;
 import domain.Buyer;
 import domain.Course;
+import forms.BuyerForm;
 
 @Service
 @Transactional
@@ -25,6 +28,8 @@ public class BuyerService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private BuyerRepository	buyerRepository;
+	@Autowired
+	private Validator		validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -133,5 +138,51 @@ public class BuyerService {
 		auth.setAuthority(Authority.BUYER);
 
 		return (authorities.contains(auth));
+	}
+
+	public BuyerForm reconstruct(final BuyerForm buyerForm, final BindingResult binding) {
+
+		BuyerForm result = null;
+		Buyer buyer;
+		buyer = buyerForm.getBuyer();
+
+		if (buyer.getId() == 0) {
+			UserAccount userAccount;
+			Authority authority;
+			final Collection<Buy> buys;
+			final Collection<Course> courses;
+
+			userAccount = buyerForm.getBuyer().getUserAccount();
+			authority = new Authority();
+			authority.setAuthority(Authority.BUYER);
+			userAccount.addAuthority(authority);
+			buyerForm.getBuyer().setUserAccount(userAccount);
+			buys = new ArrayList<>();
+			courses = new ArrayList<>();
+			buyerForm.getBuyer().setBuys(buys);
+			buyerForm.getBuyer().setCourses(courses);
+			result = buyerForm;
+
+		} else {
+
+			buyer = this.buyerRepository.findOne(buyerForm.getBuyer().getId());
+			buyerForm.getBuyer().setId(buyer.getId());
+			buyerForm.getBuyer().setVersion(buyer.getVersion());
+			buyerForm.getBuyer().setUserAccount(buyer.getUserAccount());
+			buyerForm.getBuyer().setBuys(buyer.getBuys());
+			buyerForm.getBuyer().setCourses(buyer.getCourses());
+
+			result = buyerForm;
+
+		}
+
+		this.validator.validate(result, binding);
+
+		return result;
+
+	}
+
+	public void flush() {
+		this.buyerRepository.flush();
 	}
 }

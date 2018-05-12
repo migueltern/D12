@@ -443,6 +443,7 @@
 
 	<!-- Courses -->
 	<bean id="course1" class="domain.Course">
+		<property name="title" value="title 1" />
 		<property name="description" value="description 1" />
 		<property name="location" ref="gps1" />
 		<property name="realisedMoment" value="2018/12/12" />

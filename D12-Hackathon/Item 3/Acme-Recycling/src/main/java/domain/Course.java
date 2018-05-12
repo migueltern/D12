@@ -24,6 +24,7 @@ public class Course extends Opinable {
 
 	// Attributes -------------------------------------------------------------
 
+	private String	title;
 	private String	description;
 	private GPS		location;
 	private Date	realisedMoment;
@@ -31,6 +32,15 @@ public class Course extends Opinable {
 	private boolean	draftMode;
 	private int		minimumScore;
 
+
+	@NotBlank
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(final String title) {
+		this.title = title;
+	}
 
 	@NotBlank
 	public String getDescription() {

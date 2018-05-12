@@ -42,6 +42,7 @@
 		<security:intercept-url pattern="/opinion/recycler/**" access="hasRole('RECYCLER')"/>
 		
 		<security:intercept-url pattern="/messageFolder/carrier/**" access="hasRole('CARRIER')"/>
+		<security:intercept-url pattern="/messageFolder/manager/**" access="hasRole('MANAGER')"/>
 		
 		
 		

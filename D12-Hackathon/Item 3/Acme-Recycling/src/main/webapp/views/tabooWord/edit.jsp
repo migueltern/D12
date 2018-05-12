@@ -38,6 +38,6 @@
 	 	<acme:submit_with_on_click name="delete" code="tabooWord.delete" code2="tabooWord.confirm.delete"/>
 	</jstl:if>
 	
-	<acme:cancel url="welcome/index.do" code="tabooWord.cancel"/>
+	<acme:cancel url="configurationSystem/admin/tabooWord/list.do?d-16544-p=1" code="tabooWord.cancel"/>
 	<br />
 </form:form>

@@ -50,6 +50,16 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('CARRIER')">
+			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="messageFolder/carrier/list.do?d-16544-p=1"><spring:message code="master.page.messageFolder.myList" /></a></li>
+					<li><a href="messageFolder/carrier/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>
+		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>

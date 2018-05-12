@@ -39,6 +39,15 @@
 		</security:authorize>
 		
 		<security:authorize access="hasRole('RECYCLER')">
+		
+			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="messageFolder/recycler/list.do?d-16544-p=1"><spring:message code="master.page.messageFolder.myList" /></a></li>
+					<li><a href="messageFolder/recycler/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.opinion" /></a>
 				<ul>
 					<li class="arrow"></li>

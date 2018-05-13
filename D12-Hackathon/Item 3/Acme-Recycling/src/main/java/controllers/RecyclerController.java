@@ -44,14 +44,14 @@ public class RecyclerController extends AbstractController {
 		cf = new RecyclerForm(recycler);
 
 		result = new ModelAndView("recycler/edit");
-		result.addObject("recyclertForm", cf);
+		result.addObject("recyclerForm", cf);
 
 		return result;
 	}
 
 	//Save	------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveRecycler(@ModelAttribute("recyclertForm") RecyclerForm recyclerForm, final BindingResult binding) {
+	public ModelAndView saveRecycler(@ModelAttribute("recyclerForm") RecyclerForm recyclerForm, final BindingResult binding) {
 		ModelAndView result;
 
 		recyclerForm = this.recyclerService.reconstruct(recyclerForm, binding);
@@ -70,7 +70,7 @@ public class RecyclerController extends AbstractController {
 				if (oops.getMessage().equals("password does not match"))
 					result = this.createEditModelAndView(recyclerForm, "recycler.password.match");
 				else if (oops.getMessage().equals("the conditions must be accepted"))
-					result = this.createEditModelAndView(recyclerForm, "actor.conditions.accept");
+					result = this.createEditModelAndView(recyclerForm, "recycler.conditions.accept");
 				else if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]" + "; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
 					result = this.createEditModelAndView(recyclerForm, "recycler.commit.error.duplicateProfile");
 				else

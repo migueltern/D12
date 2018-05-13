@@ -21,7 +21,7 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="recycler/edit.do" modelAttribute="recyclertForm">
+<form:form action="recycler/edit.do" modelAttribute="recyclerForm">
 	
 <form:hidden path="recycler.id" />
 	
@@ -56,7 +56,7 @@
 	<br/>
 	<jstl:if test="${recyclerForm.recycler.id == 0}">
    		<form:label path="conditions">
-		<spring:message code="actor.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="actor.legal.moreinfo"/></a>
+		<spring:message code="recycler.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="recycler.legal.moreinfo"/></a>
 		</form:label>
 		<form:checkbox id="conditions" path="conditions"/>
 		<form:errors cssClass="error" path="conditions"/>

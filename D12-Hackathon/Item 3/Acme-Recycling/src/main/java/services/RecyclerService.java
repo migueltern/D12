@@ -18,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Comment;
 import domain.Course;
+import domain.Opinion;
 import domain.Product;
 import domain.Recycler;
 import forms.RecyclerForm;
@@ -156,6 +157,7 @@ public class RecyclerService {
 			final Collection<Product> products;
 			final Collection<Comment> comments;
 			final Collection<Course> courses;
+			final Collection<Opinion> opinions;
 
 			userAccount = recyclerForm.getRecycler().getUserAccount();
 			authority = new Authority();
@@ -165,9 +167,11 @@ public class RecyclerService {
 			products = new ArrayList<>();
 			comments = new ArrayList<>();
 			courses = new ArrayList<>();
+			opinions = new ArrayList<>();
 			recyclerForm.getRecycler().setProducts(products);
 			recyclerForm.getRecycler().setComments(comments);
 			recyclerForm.getRecycler().setCourses(courses);
+			recyclerForm.getRecycler().setOpinions(opinions);
 			result = recyclerForm;
 
 		} else {
@@ -179,6 +183,7 @@ public class RecyclerService {
 			recyclerForm.getRecycler().setProducts(recycler.getProducts());
 			recyclerForm.getRecycler().setComments(recycler.getComments());
 			recyclerForm.getRecycler().setCourses(recycler.getCourses());
+			recyclerForm.getRecycler().setOpinions(recycler.getOpinions());
 
 			result = recyclerForm;
 

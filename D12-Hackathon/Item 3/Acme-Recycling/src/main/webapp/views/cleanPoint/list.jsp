@@ -24,7 +24,18 @@
 	name="cleanPoints" requestURI="${requestURI}" id="row">
 	
 
-
+ <!--  EDIT -->
+	<security:authorize access="hasRole('ADMIN')">
+		<spring:message code="cleanPoint.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+			<jstl:if test="${row.mobile==true}">
+				<spring:url value="cleanPoint/admin/edit.do" var="editURL">
+					<spring:param name="cleanPointId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="cleanPoint.edit" /></a>
+				</jstl:if>
+		</display:column>
+	</security:authorize> 
 	<!-- ATRIBUTOS -->
 
 	<spring:message code="cleanPoint.address" var="titleHeader" />

@@ -72,7 +72,7 @@ public class CleanPointAdminController extends AbstractController {
 		CleanPoint cleanPoint;
 
 		cleanPoint = this.cleanPointService.findOne(cleanPointId);
-		Assert.isTrue(cleanPoint.isMobile() == true, "cannot commit this operation because it's illegal");
+		Assert.isTrue(cleanPoint.isMobile() == true, "Cannot commit this operation, cleanPoint is not mobile");
 		Assert.notNull(cleanPoint);
 		result = this.createEditModelAndView(cleanPoint);
 		return result;

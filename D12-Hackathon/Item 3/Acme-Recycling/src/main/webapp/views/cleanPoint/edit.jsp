@@ -22,6 +22,7 @@
 
 <form:form action="${requestURI}" modelAttribute="cleanPoint">
 
+<form:hidden path="id" />
 	
 	
 <!-- ATRIBUTOS -->

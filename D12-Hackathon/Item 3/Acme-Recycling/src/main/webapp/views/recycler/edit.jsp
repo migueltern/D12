@@ -27,25 +27,25 @@
 	
 	
 <jstl:if test="${recyclerForm.recycler.id == 0}">
-			<acme:textbox code="recycler.username"
-				path="recycler.userAccount.username" /><br />
-			<acme:password code="recycler.password"
-				path="recycler.userAccount.password" /><br />
-			<acme:password code="recycler.password" path="passwordCheck" />
+			<B><acme:textbox code="recycler.username"
+				path="recycler.userAccount.username" /><br /></B>
+			<B><acme:password code="recycler.password"
+				path="recycler.userAccount.password" /><br /></B>
+			<B><acme:password code="recycler.password" path="passwordCheck" /></B>
 			<br />
 		</jstl:if>	
 	
-	<acme:textbox code="recycler.name" path="recycler.name"/>
+	<B><acme:textbox code="recycler.name" path="recycler.name"/></B>
 	<br />
-	<acme:textbox code="recycler.surname" path="recycler.surname"/>
+	<B><acme:textbox code="recycler.surname" path="recycler.surname"/></B>
 	<br />
-	<acme:textbox code="recycler.emailAddress" path="recycler.email"/>
+	<B><acme:textbox code="recycler.emailAddress" path="recycler.email"/></B>
 	<br />
-	<acme:textbox code="recycler.phoneNumber" path="recycler.phone" />
+	<B><acme:textbox code="recycler.phoneNumber" path="recycler.phone" /></B>
 	<br />
-	<acme:textbox code="recycler.postalAddress" path="recycler.address"/>
+	<B><acme:textbox code="recycler.postalAddress" path="recycler.address"/></B>
 	<br />
-	<acme:textbox code="recycler.province" path="recycler.province"/>
+	<B><acme:provinceselect code="recycler.province" path="recycler.province"/></B>
 	<br />
 	
 	

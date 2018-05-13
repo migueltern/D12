@@ -57,7 +57,6 @@ public class ProductServiceTest extends AbstractTest {
 			product.setDescription(description);
 			product.setQuantity(quantity);
 			product.setPhoto(photo);
-			product.setCategoryProducts(this.categoryProductService.findAll());
 			product = this.productService.save(product);
 			this.entityManager.flush();
 

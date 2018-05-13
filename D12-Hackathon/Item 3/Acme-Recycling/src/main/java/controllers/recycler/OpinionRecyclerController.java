@@ -120,7 +120,7 @@ public class OpinionRecyclerController extends AbstractController {
 		else if (this.opinableService.isCourse(opinion))
 			result = this.createEditModelAndView(opinion, false);
 		else
-			Assert.isTrue(true, "the opinable don't exist");
+			Assert.isTrue(false, "the opinable don't exist");
 		return result;
 	}
 

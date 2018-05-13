@@ -10,9 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import domain.Course;
 import domain.Opinable;
-import domain.Product;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -34,16 +32,6 @@ public class OpinableServiceTest {
 		//final Collection<Opinable> opinables = this.opinableService.findAll();
 		final Opinable opinable = this.opinableService.findOne(119);
 		Assert.notNull(opinable);
-		try {
-			final Course course = (Course) opinable;
-		} catch (final Throwable oops) {
-			try {
-				final Product product = (Product) opinable;
-			} catch (final Throwable oops2) {
-				Assert.isTrue(true);
-			}
-		}
-
 	}
 
 }

@@ -32,21 +32,29 @@
 	<br /> 
 	
 	<jstl:if test="${selectProducts}" >
-	<acme:select items="${products}" itemLabel="title" code="opinion.product" path="opinable"/>
-	<br />
+		<acme:select items="${products}" itemLabel="title" code="opinion.product" path="opinable"/>
+		<br />
+	
+		<!-- BOTON SAVE para producto -->
+		<input type="submit" name="saveOpinionProduct"
+			value="<spring:message code="opinion.save"/>" />&nbsp;
+		
 	</jstl:if>
 	
 	<jstl:if test="${selectCourses}" >
-	<acme:select items="${courses}" itemLabel="title" code="opinion.course" path="opinable"/>
-	<br />
+		<acme:select items="${courses}" itemLabel="title" code="opinion.course" path="opinable"/>
+		<br />
+		
+		<!-- BOTON SAVE para producto -->
+		<input type="submit" name="saveOpinionCourse"
+			value="<spring:message code="opinion.save"/>" />&nbsp;
+			
 	</jstl:if>
 	
 	
 	
 	
 	<!-- BOTONES -->
-	<input type="submit" name="save"
-		value="<spring:message code="opinion.save"/>" />&nbsp;
 		
 		<acme:cancel
 		url="opinion/recycler/myList.do?d-16544-p=1"

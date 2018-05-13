@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.OpinableRepository;
+import domain.Course;
 import domain.Opinable;
+import domain.Opinion;
+import domain.Product;
 
 @Service
 @Transactional
@@ -66,4 +69,25 @@ public class OpinableService {
 		this.opinableRepository.delete(opinable);
 	}
 
+	public boolean isProduct(final Opinion opinion) {
+		boolean res;
+		Product product;
+
+		res = false;
+		product = (Product) opinion.getOpinable();
+		if (product != null)
+			res = true;
+		return res;
+	}
+
+	public boolean isCourse(final Opinion opinion) {
+		boolean res;
+		Course course;
+
+		res = false;
+		course = (Course) opinion.getOpinable();
+		if (course != null)
+			res = true;
+		return res;
+	}
 }

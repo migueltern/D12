@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CourseService;
+import services.OpinableService;
 import services.OpinionService;
 import services.ProductService;
 import services.RecyclerService;
@@ -41,6 +42,9 @@ public class OpinionRecyclerController extends AbstractController {
 
 	@Autowired
 	private CourseService	courseService;
+
+	@Autowired
+	private OpinableService	opinableService;
 
 
 	//Constructor--------------------------------------------------------
@@ -76,9 +80,9 @@ public class OpinionRecyclerController extends AbstractController {
 		opinion = this.opinionService.create();
 		products = this.productService.findAll();
 
-		result = this.createEditModelAndView(opinion);
-		result.addObject("selectProducts", true);
+		result = this.createEditModelAndView(opinion, true);
 		result.addObject("products", products);
+		result.addObject("selectProducts", true);
 		return result;
 	}
 	// Create opinable product-----------------------------------------------------------------
@@ -92,9 +96,9 @@ public class OpinionRecyclerController extends AbstractController {
 		opinion = this.opinionService.create();
 		courses = this.courseService.findAll();
 
-		result = this.createEditModelAndView(opinion);
-		result.addObject("selectCourses", true);
+		result = this.createEditModelAndView(opinion, false);
 		result.addObject("courses", courses);
+		result.addObject("selectCourses", true);
 		return result;
 	}
 	//Edition--------------------------------------------------------------------------------
@@ -109,47 +113,83 @@ public class OpinionRecyclerController extends AbstractController {
 		opinion = this.opinionService.findOne(opinionId);
 		Assert.isTrue(recycler.getOpinions().contains(opinion), "Cannot commit this operation, because it's illegal");
 		Assert.notNull(opinion);
-		result = this.createEditModelAndView(opinion);
+
+		result = null;
+		if (this.opinableService.isProduct(opinion))
+			result = this.createEditModelAndView(opinion, true);
+		else if (this.opinableService.isCourse(opinion))
+			result = this.createEditModelAndView(opinion, false);
+		else
+			Assert.isTrue(true, "the opinable don't exist");
 		return result;
 	}
 
-	// Save -----------------------------------------------------------------
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Opinion opinion, final BindingResult binding) {
+	// Save Opinion Product-----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveOpinionProduct")
+	public ModelAndView saveOpinionProduct(@Valid final Opinion opinion, final BindingResult binding) {
 		ModelAndView result;
 
-		//opinion = this.opinionService.reconstruct(opinion, binding);
-
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(opinion);
+			result = this.createEditModelAndView(opinion, true);
 		else
 			try {
 
 				this.opinionService.save(opinion);
 				result = new ModelAndView("redirect:myList.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(opinion, "opinion.commit.error");
+				result = this.createEditModelAndView(opinion, "opinion.commit.error", true);
 			}
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final Opinion opinion) {
-		Assert.notNull(opinion);
+	// Save Opinion Course-----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveOpinionCourse")
+	public ModelAndView saveOpinionCourse(@Valid final Opinion opinion, final BindingResult binding) {
 		ModelAndView result;
-		result = this.createEditModelAndView(opinion, null);
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(opinion, false);
+		else
+			try {
+
+				this.opinionService.save(opinion);
+				result = new ModelAndView("redirect:myList.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(opinion, "opinion.commit.error", false);
+			}
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final Opinion opinion, final String messageCode) {
+	protected ModelAndView createEditModelAndView(final Opinion opinion, final boolean isProduct) {
+		Assert.notNull(opinion);
+		ModelAndView result;
+		result = this.createEditModelAndView(opinion, null, isProduct);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final Opinion opinion, final String messageCode, final boolean isProduct) {
 		assert opinion != null;
 
 		ModelAndView result;
 
 		result = new ModelAndView("opinion/edit");
+		if (isProduct) {
+			Collection<Product> products;
+
+			products = this.productService.findAll();
+			result.addObject("products", products);
+			result.addObject("selectProducts", true);
+		} else {
+			Collection<Course> courses;
+
+			courses = this.courseService.findAll();
+			result.addObject("courses", courses);
+			result.addObject("selectCourses", true);
+		}
+
 		result.addObject("opinion", opinion);
 		result.addObject("message", messageCode);
 		return result;
 
 	}
-
 }

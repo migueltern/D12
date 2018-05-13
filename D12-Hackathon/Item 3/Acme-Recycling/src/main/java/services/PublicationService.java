@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.PublicationRepository;
 import domain.Publication;
@@ -24,6 +26,10 @@ public class PublicationService {
 	//Suporting services----------------------------------------------------
 	@Autowired
 	private RecyclerService			recyclerService;
+
+	//Importar la que pertenece a Spring
+	@Autowired
+	private Validator				validator;
 
 
 	// Constructors -----------------------------------------------------------
@@ -88,4 +94,26 @@ public class PublicationService {
 
 		this.publicationRepository.delete(publication);
 	}
+
+	//	RECONSTRUCTOR
+
+	public Publication reconstruct(final Publication publication, final BindingResult bindingResult) {
+		Publication result;
+		Publication publicationBD;
+		if (publication.getId() == 0)
+			result = publication;
+		else {
+			publicationBD = this.publicationRepository.findOne(publication.getId());
+			publication.setId(publicationBD.getId());
+			publication.setVersion(publicationBD.getVersion());
+			publication.setCaption(publicationBD.getCaption());
+			publication.setPhoto(publicationBD.getPhoto());
+			publication.setRecycler(publicationBD.getRecycler());
+
+			result = publication;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
+	}
+
 }

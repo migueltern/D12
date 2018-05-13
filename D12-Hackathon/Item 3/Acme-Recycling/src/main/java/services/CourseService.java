@@ -13,6 +13,7 @@ import repositories.CourseRepository;
 import domain.Course;
 import domain.Material;
 import domain.Publication;
+import domain.Recycler;
 
 @Service
 @Transactional
@@ -24,6 +25,9 @@ public class CourseService {
 
 	@Autowired
 	private BuyerService		buyerService;
+
+	@Autowired
+	private RecyclerService		recyclerService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -81,5 +85,17 @@ public class CourseService {
 	}
 
 	// Other business methods -------------------------------------------------
+
+	public Collection<Course> coursesOfRecyclerFinished() {
+		Collection<Course> result;
+		Recycler recyclerConnected;
+
+		recyclerConnected = this.recyclerService.findByPrincipal();
+
+		result = this.courseRepository.coursesOfRecyclerFinished(recyclerConnected.getId());
+
+		return result;
+
+	}
 
 }

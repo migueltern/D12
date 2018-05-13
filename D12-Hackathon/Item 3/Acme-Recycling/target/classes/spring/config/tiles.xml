@@ -31,6 +31,14 @@
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/cleanPoint/tiles.xml</value>
 		
+		<value>/views/admin/tiles.xml</value>
+		<value>/views/carrier/tiles.xml</value>
+		<value>/views/manager/tiles.xml</value>
+		<value>/views/recycler/tiles.xml</value>
+		<value>/views/buyer/tiles.xml</value>
+		<value>/views/editor/tiles.xml</value>
+		<value>/views/course/tiles.xml</value>
+		
 	</util:list>
 
 </beans>

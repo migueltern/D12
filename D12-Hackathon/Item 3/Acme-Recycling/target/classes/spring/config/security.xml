@@ -28,6 +28,9 @@
 
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/recycler/**" access="permitAll" />
+		<security:intercept-url pattern="/buyer/**" access="permitAll" />
 
 		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
 		<security:intercept-url pattern="/images/**" access="permitAll" /> 

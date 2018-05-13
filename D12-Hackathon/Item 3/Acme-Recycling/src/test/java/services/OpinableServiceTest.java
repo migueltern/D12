@@ -29,6 +29,9 @@ public class OpinableServiceTest {
 	public void testFindOne() {
 		//Si pongo el id de un product no me devuelve null el opinable
 		//Si pongo el id de un course SI me devuelve NULL el opinable
+
+		//Cuando descomento la linea siguiente (findAll()), al introducir el id de un course funciona
+		//final Collection<Opinable> opinables = this.opinableService.findAll();
 		final Opinable opinable = this.opinableService.findOne(119);
 		Assert.notNull(opinable);
 		try {

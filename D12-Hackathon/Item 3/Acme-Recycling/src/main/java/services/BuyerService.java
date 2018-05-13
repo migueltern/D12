@@ -19,6 +19,7 @@ import security.UserAccount;
 import domain.Buy;
 import domain.Buyer;
 import domain.Course;
+import domain.Opinion;
 import forms.BuyerForm;
 
 @Service
@@ -151,6 +152,7 @@ public class BuyerService {
 			Authority authority;
 			final Collection<Buy> buys;
 			final Collection<Course> courses;
+			final Collection<Opinion> opinions;
 
 			userAccount = buyerForm.getBuyer().getUserAccount();
 			authority = new Authority();
@@ -159,8 +161,10 @@ public class BuyerService {
 			buyerForm.getBuyer().setUserAccount(userAccount);
 			buys = new ArrayList<>();
 			courses = new ArrayList<>();
+			opinions = new ArrayList<>();
 			buyerForm.getBuyer().setBuys(buys);
 			buyerForm.getBuyer().setCourses(courses);
+			buyerForm.getBuyer().setOpinions(opinions);
 			result = buyerForm;
 
 		} else {
@@ -171,6 +175,7 @@ public class BuyerService {
 			buyerForm.getBuyer().setUserAccount(buyer.getUserAccount());
 			buyerForm.getBuyer().setBuys(buyer.getBuys());
 			buyerForm.getBuyer().setCourses(buyer.getCourses());
+			buyerForm.getBuyer().setOpinions(buyer.getOpinions());
 
 			result = buyerForm;
 

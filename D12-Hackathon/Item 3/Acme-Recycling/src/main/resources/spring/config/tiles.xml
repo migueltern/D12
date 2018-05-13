@@ -35,11 +35,12 @@
 		<value>/views/carrier/tiles.xml</value>
 		<value>/views/manager/tiles.xml</value>
 		
-		<value>/views/buyer/tiles.xml</value>
+		
 		<value>/views/editor/tiles.xml</value>
 		<value>/views/course/tiles.xml</value> -->
 		
 		<value>/views/recycler/tiles.xml</value>
+		<value>/views/buyer/tiles.xml</value>
 		
 	</util:list>
 

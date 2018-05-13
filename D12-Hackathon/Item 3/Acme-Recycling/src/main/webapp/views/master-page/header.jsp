@@ -45,6 +45,18 @@
 		
 		
 		
+			<security:authorize access="hasRole('BUYER')">
+			<li><a class="fNiv"><spring:message	code="master.page.buyer.buyer1" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="profile/buyer/edit.do"><spring:message code="master.page.buyer.edit" /></a></li>
+					<li><a href="profile/buyer/display.do"><spring:message code="master.page.buyer.profile" /></a></li>
+				</ul>
+			</li>
+			</security:authorize>
+		
+		
+		
 		<security:authorize access="hasRole('RECYCLER')">
 			<li><a class="fNiv"><spring:message	code="master.page.recycler.recyler1" /></a>
 				<ul>

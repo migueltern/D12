@@ -46,7 +46,14 @@
 		
 		
 		<security:authorize access="hasRole('RECYCLER')">
-		
+			<li><a class="fNiv"><spring:message	code="master.page.recycler.recyler1" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="profile/recycler/edit.do"><spring:message code="master.page.recycler.edit" /></a></li>
+					<li><a href="profile/recycler/display.do"><spring:message code="master.page.recycler.profile" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
 				<ul>
 					<li class="arrow"></li>

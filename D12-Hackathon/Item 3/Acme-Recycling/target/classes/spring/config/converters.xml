@@ -73,8 +73,8 @@
 		<bean class="converters.CourseToStringConverter" /> 
 		<bean class="converters.StringToCourseConverter" />
 		
-		<bean class="converters.CategoryToStringConverter" /> 
-		<bean class="converters.StringToCategoryConverter" />
+		<bean class="converters.LabelToStringConverter" /> 
+		<bean class="converters.StringToLabelConverter" />
 		
 		<bean class="converters.GPSToStringConverter" /> 
 		<bean class="converters.StringToGPSConverter" />
@@ -97,9 +97,6 @@
 		<bean class="converters.RequestToStringConverter" /> 
 		<bean class="converters.StringToRequestConverter" />
 		
-		<bean class="converters.PuntuationToStringConverter" /> 
-		<bean class="converters.StringToPuntuationConverter" />
-		
 		<bean class="converters.ItemToStringConverter" /> 
 		<bean class="converters.StringToItemConverter" />
 		
@@ -112,11 +109,11 @@
 		<bean class="converters.OpinableToStringConverter" /> 
 		<bean class="converters.StringToOpinableConverter" />
 		
-		<bean class="converters.CategoryMaterialToStringConverter" /> 
-		<bean class="converters.StringToCategoryMaterialConverter" />
+		<bean class="converters.LabelMaterialToStringConverter" /> 
+		<bean class="converters.StringToLabelMaterialConverter" />
 		
-		<bean class="converters.CategoryProductToStringConverter" /> 
-		<bean class="converters.StringToCategoryProductConverter" />
+		<bean class="converters.LabelProductToStringConverter" /> 
+		<bean class="converters.StringToLabelProductConverter" />
 		
 		
 		

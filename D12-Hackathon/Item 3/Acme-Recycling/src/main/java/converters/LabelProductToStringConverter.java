@@ -5,20 +5,20 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.CategoryMaterial;
+import domain.LabelProduct;
 
 @Component
 @Transactional
-public class CategoryMaterialToStringConverter implements Converter<CategoryMaterial, String> {
+public class LabelProductToStringConverter implements Converter<LabelProduct, String> {
 
 	@Override
-	public String convert(final CategoryMaterial CategoryMaterial) {
+	public String convert(final LabelProduct CategoryProduct) {
 		String result;
 
-		if (CategoryMaterial == null)
+		if (CategoryProduct == null)
 			result = null;
 		else
-			result = String.valueOf(CategoryMaterial.getId());
+			result = String.valueOf(CategoryProduct.getId());
 		return result;
 	}
 }

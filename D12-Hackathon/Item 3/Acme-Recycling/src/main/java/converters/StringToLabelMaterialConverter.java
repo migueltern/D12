@@ -7,21 +7,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import repositories.PuntuationRepository;
-import domain.Puntuation;
+import repositories.LabelMaterialRepository;
+import domain.LabelMaterial;
 
 @Component
 @Transactional
-public class StringToPuntuationConverter implements Converter<String, Puntuation> {
+public class StringToLabelMaterialConverter implements Converter<String, LabelMaterial> {
 
 	@Autowired
-	private PuntuationRepository	puntuationRepository;
+	private LabelMaterialRepository	labelMaterialRepository;
 
 
 	@Override
-	public Puntuation convert(final String text) {
+	public LabelMaterial convert(final String text) {
 
-		Puntuation result;
+		LabelMaterial result;
 		int id;
 
 		try {
@@ -29,7 +29,7 @@ public class StringToPuntuationConverter implements Converter<String, Puntuation
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = this.puntuationRepository.findOne(id);
+				result = this.labelMaterialRepository.findOne(id);
 
 			}
 

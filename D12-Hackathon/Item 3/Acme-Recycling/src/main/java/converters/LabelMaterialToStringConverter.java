@@ -5,20 +5,20 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Puntuation;
+import domain.LabelMaterial;
 
 @Component
 @Transactional
-public class PuntuationToStringConverter implements Converter<Puntuation, String> {
+public class LabelMaterialToStringConverter implements Converter<LabelMaterial, String> {
 
 	@Override
-	public String convert(final Puntuation Puntuation) {
+	public String convert(final LabelMaterial CategoryMaterial) {
 		String result;
 
-		if (Puntuation == null)
+		if (CategoryMaterial == null)
 			result = null;
 		else
-			result = String.valueOf(Puntuation.getId());
+			result = String.valueOf(CategoryMaterial.getId());
 		return result;
 	}
 }

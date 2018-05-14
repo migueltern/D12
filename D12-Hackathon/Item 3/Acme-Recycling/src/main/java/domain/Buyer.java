@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +18,7 @@ public class Buyer extends Actor {
 	// Relationships ---------------------------------------------------------------
 	private Collection<Buy>		buys;
 	private Collection<Course>	courses;
+	private Finder				finder;
 
 
 	@NotNull
@@ -38,6 +40,15 @@ public class Buyer extends Actor {
 
 	public void setCourses(final Collection<Course> courses) {
 		this.courses = courses;
+	}
+
+	@OneToOne(optional = true)
+	public Finder getFinder() {
+		return this.finder;
+	}
+
+	public void setFinder(final Finder finder) {
+		this.finder = finder;
 	}
 
 }

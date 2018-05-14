@@ -12,6 +12,6 @@ import domain.LabelProduct;
 @Repository
 public interface LabelProductRepository extends JpaRepository<LabelProduct, Integer> {
 
-	@Query("select c.labelProducts from Product c")
+	@Query("select i.labelProduct from Item i")
 	Collection<LabelProduct> labelProductsOfAllProducts();
 }

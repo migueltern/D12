@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Admin;
+import domain.Opinion;
 import forms.AdminForm;
 
 @Service
@@ -130,21 +132,25 @@ public class AdminService {
 		final AdminForm result;
 		final Admin adminBD;
 
-		if (adminForm.getAdministrator().getId() == 0) {
+		if (adminForm.getAdmin().getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
+			final Collection<Opinion> opinions;
 
-			userAccount = adminForm.getAdministrator().getUserAccount();
+			userAccount = adminForm.getAdmin().getUserAccount();
 			authority = new Authority();
 			authority.setAuthority(Authority.ADMIN);
 			userAccount.addAuthority(authority);
-			adminForm.getAdministrator().setUserAccount(userAccount);
+			adminForm.getAdmin().setUserAccount(userAccount);
+			opinions = new ArrayList<>();
+			adminForm.getAdmin().setOpinions(opinions);
 			result = adminForm;
 		} else {
-			adminBD = this.adminRepository.findOne(adminForm.getAdministrator().getId());
-			adminForm.getAdministrator().setId(adminBD.getId());
-			adminForm.getAdministrator().setVersion(adminBD.getVersion());
-			adminForm.getAdministrator().setUserAccount(adminBD.getUserAccount());
+			adminBD = this.adminRepository.findOne(adminForm.getAdmin().getId());
+			adminForm.getAdmin().setId(adminBD.getId());
+			adminForm.getAdmin().setVersion(adminBD.getVersion());
+			adminForm.getAdmin().setUserAccount(adminBD.getUserAccount());
+			adminForm.getAdmin().setOpinions(adminBD.getOpinions());
 			result = adminForm;
 		}
 		this.validator.validate(result, bindingResult);

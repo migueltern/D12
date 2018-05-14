@@ -21,7 +21,7 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="admin/edit.do" modelAttribute="adminForm">
+<form:form action="${requestURI}" modelAttribute="adminForm">
 	
 <form:hidden path="admin.id" />
 	

@@ -17,18 +17,18 @@ public class AdminForm {
 		super();
 	}
 
-	public AdminForm(final Admin administrator) {
-		this.admin = administrator;
+	public AdminForm(final Admin admin) {
+		this.admin = admin;
 		this.passwordCheck = "";
 		this.conditions = false;
 	}
 
-	public Admin getAdministrator() {
+	public Admin getAdmin() {
 		return this.admin;
 	}
 
-	public void setAdministrator(final Admin administrator) {
-		this.admin = administrator;
+	public void setAdmin(final Admin admin) {
+		this.admin = admin;
 	}
 
 	public String getPasswordCheck() {
@@ -46,5 +46,4 @@ public class AdminForm {
 	public void setConditions(final Boolean conditions) {
 		this.conditions = conditions;
 	}
-
 }

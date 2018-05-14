@@ -108,7 +108,7 @@ public class ProfileBuyerController extends AbstractController {
 		result = new ModelAndView("buyer/edit");
 		result.addObject("buyerForm", buyerForm);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "buyer/edit.do");
+		result.addObject("RequestURI", "profile/buyer/edit.do");
 
 		return result;
 

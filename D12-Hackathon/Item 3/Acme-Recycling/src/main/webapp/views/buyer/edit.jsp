@@ -21,7 +21,7 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="buyer/edit.do" modelAttribute="buyerForm">
+<form:form action="${requestURI}" modelAttribute="buyerForm">
 	
 <form:hidden path="buyer.id" />
 	

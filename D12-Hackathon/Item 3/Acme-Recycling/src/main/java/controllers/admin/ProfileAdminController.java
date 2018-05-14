@@ -57,11 +57,11 @@ public class ProfileAdminController extends AbstractController {
 			result = this.createEditModelAndView(adminForm);
 		else
 			try {
-				if ((adminForm.getAdministrator().getId() == 0)) {
-					Assert.isTrue(adminForm.getAdministrator().getUserAccount().getPassword().equals(adminForm.getPasswordCheck()), "password does not match");
+				if ((adminForm.getAdmin().getId() == 0)) {
+					Assert.isTrue(adminForm.getAdmin().getUserAccount().getPassword().equals(adminForm.getPasswordCheck()), "password does not match");
 					Assert.isTrue(adminForm.getConditions(), "the conditions must be accepted");
 				}
-				this.adminService.save(adminForm.getAdministrator());
+				this.adminService.save(adminForm.getAdmin());
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("password does not match"))
@@ -107,7 +107,7 @@ public class ProfileAdminController extends AbstractController {
 		result = new ModelAndView("admin/edit");
 		result.addObject("adminForm", adminForm);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "admin/edit.do");
+		result.addObject("RequestURI", "profile/admin/edit.do");
 
 		return result;
 

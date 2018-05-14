@@ -8,21 +8,21 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import repositories.CategoryRepository;
-import domain.Category;
+import repositories.LabelRepository;
+import domain.Label;
 
 @Component
 @Transactional
-public class StringToCategoryConverter implements Converter<String, Category> {
+public class StringToLabelConverter implements Converter<String, Label> {
 
 	@Autowired
-	private CategoryRepository	categoryRepository;
+	private LabelRepository	labelRepository;
 
 
 	@Override
-	public Category convert(final String text) {
+	public Label convert(final String text) {
 
-		Category result;
+		Label result;
 		int id;
 
 		try {
@@ -30,7 +30,7 @@ public class StringToCategoryConverter implements Converter<String, Category> {
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = this.categoryRepository.findOne(id);
+				result = this.labelRepository.findOne(id);
 
 			}
 

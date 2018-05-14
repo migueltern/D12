@@ -1,13 +1,16 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,7 +24,7 @@ public class Finder extends DomainEntity {
 	private String	keyWord;
 	private Double	lowPrice;
 	private Double	highPrice;
-	private Date	starCacheTime;
+	private Date	startCacheTime;
 
 
 	@NotNull
@@ -52,12 +55,29 @@ public class Finder extends DomainEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm")
 	@NotNull
-	public Date getStarCacheTime() {
-		return this.starCacheTime;
+	public Date getStartCacheTime() {
+		return this.startCacheTime;
 	}
 
-	public void setStarCacheTime(final Date starCacheTime) {
-		this.starCacheTime = starCacheTime;
+	public void setStartCacheTime(final Date startCacheTime) {
+		this.startCacheTime = startCacheTime;
+	}
+
+
+	// Relationships ---------------------------------------------------------------
+
+	private Collection<Material>	materials;
+
+
+	@ManyToMany
+	@NotNull
+	@Valid
+	public Collection<Material> getMaterials() {
+		return this.materials;
+	}
+
+	public void setMaterials(final Collection<Material> materials) {
+		this.materials = materials;
 	}
 
 }

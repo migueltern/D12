@@ -50,6 +50,7 @@
 		<security:intercept-url pattern="/messageFolder/carrier/**" access="hasRole('CARRIER')"/>
 		<security:intercept-url pattern="/messageFolder/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/messageFolder/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/messageFolder/editor/**" access="hasRole('EDITOR')"/>
 		
 		
 		

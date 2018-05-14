@@ -108,7 +108,6 @@ public class ProfileRecyclerController extends AbstractController {
 		result = new ModelAndView("recycler/edit");
 		result.addObject("recyclerForm", recyclerForm);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "recycler/edit.do");
 
 		return result;
 

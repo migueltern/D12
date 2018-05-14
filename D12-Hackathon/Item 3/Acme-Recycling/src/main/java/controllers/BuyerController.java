@@ -93,7 +93,6 @@ public class BuyerController extends AbstractController {
 		result = new ModelAndView("buyer/edit");
 		result.addObject("buyer", buyerForm);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "buyer/edit.do");
 
 		return result;
 	}

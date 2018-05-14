@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -65,8 +66,9 @@ public class Request extends DomainEntity {
 	// Relationships ---------------------------------------------------------------
 
 	private Collection<CleanPoint>	cleanPoints;
-	private PickUp					pickUp;
-	private Product					product;
+	private Assesment				assesment;
+	private Item					item;
+	private Carrier					carrier;
 
 
 	@ManyToMany
@@ -81,23 +83,32 @@ public class Request extends DomainEntity {
 
 	@OneToOne(optional = true)
 	@Valid
-	public PickUp getPickUp() {
-		return this.pickUp;
+	public Assesment getAssesment() {
+		return this.assesment;
 	}
 
-	public void setPickUp(final PickUp pickUp) {
-		this.pickUp = pickUp;
+	public void setAssesment(final Assesment assesment) {
+		this.assesment = assesment;
 	}
 
 	@OneToOne(optional = false)
 	@NotNull
 	@Valid
-	public Product getProduct() {
-		return this.product;
+	public Item getItem() {
+		return this.item;
 	}
 
-	public void setProduct(final Product product) {
-		this.product = product;
+	public void setItem(final Item item) {
+		this.item = item;
+	}
+
+	@ManyToOne(optional = false)
+	public Carrier getCarrier() {
+		return this.carrier;
+	}
+
+	public void setCarrier(final Carrier carrier) {
+		this.carrier = carrier;
 	}
 
 }

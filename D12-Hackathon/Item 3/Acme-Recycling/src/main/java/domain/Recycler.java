@@ -17,7 +17,7 @@ public class Recycler extends Actor {
 
 	// Relationships ---------------------------------------------------------------
 
-	private Collection<Product>	products;
+	private Collection<Item>	items;
 	private Collection<Comment>	comments;
 	private Collection<Course>	courses;
 
@@ -25,12 +25,12 @@ public class Recycler extends Actor {
 	@OneToMany(mappedBy = "recycler")
 	@Valid
 	@NotNull
-	public Collection<Product> getProducts() {
-		return this.products;
+	public Collection<Item> getItems() {
+		return this.items;
 	}
 
-	public void setProducts(final Collection<Product> products) {
-		this.products = products;
+	public void setItems(final Collection<Item> items) {
+		this.items = items;
 	}
 	@OneToMany
 	@Valid

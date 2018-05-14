@@ -1,5 +1,5 @@
 
-package controllers.editor;
+package controllers.Editor;
 
 import java.util.Collection;
 

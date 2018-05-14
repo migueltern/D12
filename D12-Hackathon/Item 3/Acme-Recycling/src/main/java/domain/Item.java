@@ -1,15 +1,12 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -17,12 +14,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Product extends Opinable {
+public class Item extends Opinable {
 
 	// Attributes -------------------------------------------------------------
 
@@ -31,6 +29,7 @@ public class Product extends Opinable {
 	private String	description;
 	private Double	quantity;
 	private String	photo;
+	private int		value;
 
 
 	@NotBlank
@@ -80,44 +79,31 @@ public class Product extends Opinable {
 		this.photo = photo;
 	}
 
+	@Range(min = 0, max = 500)
+	public int getValue() {
+		return this.value;
+	}
+
+	public void setValue(final int value) {
+		this.value = value;
+	}
+
 
 	// Relationships ---------------------------------------------------------------
 
-	private Collection<CategoryProduct>	categoryProducts;
-	private Puntuation					puntuation;
-	private Carrier						carrier;
-	private Recycler					recycler;
+	private LabelProduct	labelProduct;
+	private Recycler		recycler;
 
 
-	@OneToMany
+	@ManyToOne(optional = false)
 	@Valid
 	@NotNull
-	public Collection<CategoryProduct> getCategoryProducts() {
-		return this.categoryProducts;
+	public LabelProduct getLabelProduct() {
+		return this.labelProduct;
 	}
 
-	public void setCategoryProducts(final Collection<CategoryProduct> categoryProducts) {
-		this.categoryProducts = categoryProducts;
-	}
-
-	@OneToOne(optional = true)
-	@Valid
-	public Puntuation getPuntuation() {
-		return this.puntuation;
-	}
-
-	public void setPuntuation(final Puntuation puntuation) {
-		this.puntuation = puntuation;
-	}
-
-	@ManyToOne(optional = true)
-	@Valid
-	public Carrier getCarrier() {
-		return this.carrier;
-	}
-
-	public void setCarrier(final Carrier carrier) {
-		this.carrier = carrier;
+	public void setLabelProduct(final LabelProduct labelProduct) {
+		this.labelProduct = labelProduct;
 	}
 
 	@ManyToOne(optional = false)

@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public abstract class Category extends DomainEntity {
+public abstract class Label extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 

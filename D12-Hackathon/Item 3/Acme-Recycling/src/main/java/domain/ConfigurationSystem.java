@@ -22,7 +22,6 @@ public class ConfigurationSystem extends DomainEntity {
 	private String				name;
 	private String				banner;
 	private Collection<String>	welcomeMessages;
-	private Collection<String>	defaultCategories;
 
 
 	@NotBlank
@@ -49,15 +48,6 @@ public class ConfigurationSystem extends DomainEntity {
 
 	public void setWelcomeMessages(final Collection<String> welcomeMessages) {
 		this.welcomeMessages = welcomeMessages;
-	}
-	@NotNull
-	@ElementCollection
-	public Collection<String> getDefaultCategories() {
-		return this.defaultCategories;
-	}
-
-	public void setDefaultCategories(final Collection<String> defaultCategories) {
-		this.defaultCategories = defaultCategories;
 	}
 
 

@@ -4,7 +4,6 @@ package services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ProductRepository;
-import domain.CategoryProduct;
 import domain.Opinion;
 import domain.Product;
 import domain.Recycler;
@@ -37,19 +35,16 @@ public class ProductService {
 
 	// Simple CRUD methods ----------------------------------------------------
 	public Product create() {
-		List<CategoryProduct> categoryProducts;
 		final Product result;
 		Recycler recyclerPrincipal;
 		Collection<Opinion> opinions;
 
-		categoryProducts = new ArrayList<CategoryProduct>();
 		recyclerPrincipal = this.recyclerService.findByPrincipal();
 		opinions = new ArrayList<Opinion>();
 		//No copiar la siguiente linea en el reconstruct
 		result = new Product();
 
 		result.setOpinion(opinions);
-		result.setCategoryProducts(categoryProducts);
 		result.setRecycler(recyclerPrincipal);
 
 		return result;

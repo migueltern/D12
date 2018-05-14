@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -30,7 +31,7 @@ public class Course extends Opinable {
 	private Date	realisedMoment;
 	private String	picture;
 	private boolean	draftMode;
-	private int		minimumScore;
+	private Integer	minimumScore;
 
 
 	@NotBlank
@@ -88,31 +89,20 @@ public class Course extends Opinable {
 	}
 
 	@NotNull
-	public int getMinimumScore() {
+	public Integer getMinimumScore() {
 		return this.minimumScore;
 	}
 
-	public void setMinimumScore(final int minimumScore) {
+	public void setMinimumScore(final Integer minimumScore) {
 		this.minimumScore = minimumScore;
 	}
 
 
 	// Relationships ---------------------------------------------------------------
 
-	private Collection<Publication>	publications;
 	private Collection<Material>	materials;
+	private Collection<Lesson>		lessons;
 
-
-	@OneToMany
-	@Valid
-	@NotNull
-	public Collection<Publication> getPublications() {
-		return this.publications;
-	}
-
-	public void setPublications(final Collection<Publication> publications) {
-		this.publications = publications;
-	}
 
 	@ManyToMany
 	@Valid
@@ -123,6 +113,15 @@ public class Course extends Opinable {
 
 	public void setMaterials(final Collection<Material> materials) {
 		this.materials = materials;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Lesson> getLessons() {
+		return this.lessons;
+	}
+
+	public void setLessons(final Collection<Lesson> lessons) {
+		this.lessons = lessons;
 	}
 
 }

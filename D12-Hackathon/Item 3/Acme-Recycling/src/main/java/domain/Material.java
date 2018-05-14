@@ -1,12 +1,10 @@
 
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -20,9 +18,9 @@ public class Material extends DomainEntity {
 
 	private String	title;
 	private String	description;
-	private double	pricePerQuantity;
-	private double	quantity;
-	private double	totalPrice;
+	private Double	unitPrice;
+	private Double	quantity;
+	private Double	totalPrice;
 
 
 	@NotBlank
@@ -42,46 +40,47 @@ public class Material extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
-
-	public double getPricePerQuantity() {
-		return this.pricePerQuantity;
+	@NotNull
+	public Double getUnitPrice() {
+		return this.unitPrice;
 	}
 
-	public void setPricePerQuantity(final double pricePerQuantity) {
-		this.pricePerQuantity = pricePerQuantity;
+	public void setUnitPrice(final Double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
-
-	public double getQuantity() {
+	@NotNull
+	public Double getQuantity() {
 		return this.quantity;
 	}
 
-	public void setQuantity(final double quantity) {
+	public void setQuantity(final Double quantity) {
 		this.quantity = quantity;
 	}
 
-	public double getTotalPrice() {
+	@NotNull
+	public Double getTotalPrice() {
 		return this.totalPrice;
 	}
 
-	public void setTotalPrice(final double totalPrice) {
+	public void setTotalPrice(final Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
 
 	// Relationships ---------------------------------------------------------------
 
-	private Collection<CategoryMaterial>	categoryMaterials;
+	private LabelMaterial	labelMaterial;
 
 
-	@OneToMany
+	@ManyToOne(optional = false)
 	@Valid
 	@NotNull
-	public Collection<CategoryMaterial> getCategoryMaterials() {
-		return this.categoryMaterials;
+	public LabelMaterial getLabelMaterial() {
+		return this.labelMaterial;
 	}
 
-	public void setCategoryMaterials(final Collection<CategoryMaterial> categoryMaterials) {
-		this.categoryMaterials = categoryMaterials;
+	public void setLabelMaterial(final LabelMaterial labelMaterial) {
+		this.labelMaterial = labelMaterial;
 	}
 
 }

@@ -7,6 +7,6 @@ import javax.persistence.Entity;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class CategoryProduct extends Category {
+public class LabelMaterial extends Label {
 
 }

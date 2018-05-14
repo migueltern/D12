@@ -100,8 +100,8 @@
 		<bean class="converters.ItemToStringConverter" /> 
 		<bean class="converters.StringToItemConverter" />
 		
-		<bean class="converters.PickUpToStringConverter" /> 
-		<bean class="converters.StringToPickUpConverter" />
+		<bean class="converters.AssesmentToStringConverter" /> 
+		<bean class="converters.StringToAssesmentConverter" />
 		
 		<bean class="converters.OpinionToStringConverter" /> 
 		<bean class="converters.StringToOpinionConverter" />

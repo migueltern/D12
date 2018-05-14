@@ -9,71 +9,71 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import repositories.PickUpRepository;
-import domain.PickUp;
+import repositories.AssesmentRepository;
+import domain.Assesment;
 
 @Service
 @Transactional
-public class PickUpService {
+public class AssesmentService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private PickUpRepository	pickUpRepository;
+	private AssesmentRepository	assesmentRepository;
 
 
 	// Supporting services ----------------------------------------------------
 
 	// Constructors -----------------------------------------------------------
-	public PickUpService() {
+	public AssesmentService() {
 		super();
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	public PickUp create() {
-		final PickUp result;
+	public Assesment create() {
+		final Assesment result;
 
 		//No copiar la siguiente linea en el reconstruct
-		result = new PickUp();
+		result = new Assesment();
 
 		return result;
 
 	}
 
-	public PickUp findOne(final int pickUpId) {
-		PickUp result;
+	public Assesment findOne(final int assesmentId) {
+		Assesment result;
 
-		result = this.pickUpRepository.findOne(pickUpId);
-
-		return result;
-	}
-
-	public Collection<PickUp> findAll() {
-		Collection<PickUp> result;
-
-		result = this.pickUpRepository.findAll();
+		result = this.assesmentRepository.findOne(assesmentId);
 
 		return result;
 	}
 
-	public PickUp save(final PickUp pickUp) {
-		final PickUp result;
+	public Collection<Assesment> findAll() {
+		Collection<Assesment> result;
 
-		Assert.notNull(pickUp);
+		result = this.assesmentRepository.findAll();
 
-		if (pickUp.getId() == 0) {
+		return result;
+	}
+
+	public Assesment save(final Assesment assesment) {
+		final Assesment result;
+
+		Assert.notNull(assesment);
+
+		if (assesment.getId() == 0) {
 			Date moment;
 			moment = new Date(System.currentTimeMillis() - 1000);
-			pickUp.setMoment(moment);
+			assesment.setMoment(moment);
 		}
 
-		result = this.pickUpRepository.save(pickUp);
+		result = this.assesmentRepository.save(assesment);
 
 		return result;
 	}
 
-	public void delete(final PickUp pickUp) {
-		Assert.notNull(pickUp);
+	public void delete(final Assesment assesment) {
+		Assert.notNull(assesment);
 
-		this.pickUpRepository.delete(pickUp);
+		this.assesmentRepository.delete(assesment);
 	}
 }

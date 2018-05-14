@@ -7,21 +7,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import repositories.PickUpRepository;
-import domain.PickUp;
+import repositories.AssesmentRepository;
+import domain.Assesment;
 
 @Component
 @Transactional
-public class StringToPickUpConverter implements Converter<String, PickUp> {
+public class StringToAssesmentConverter implements Converter<String, Assesment> {
 
 	@Autowired
-	private PickUpRepository	PickUpRepository;
+	private AssesmentRepository	AssesmentRepository;
 
 
 	@Override
-	public PickUp convert(final String text) {
+	public Assesment convert(final String text) {
 
-		PickUp result;
+		Assesment result;
 		int id;
 
 		try {
@@ -29,7 +29,7 @@ public class StringToPickUpConverter implements Converter<String, PickUp> {
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = this.PickUpRepository.findOne(id);
+				result = this.AssesmentRepository.findOne(id);
 
 			}
 

@@ -5,20 +5,20 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.PickUp;
+import domain.Assesment;
 
 @Component
 @Transactional
-public class PickUpToStringConverter implements Converter<PickUp, String> {
+public class AssesmentToStringConverter implements Converter<Assesment, String> {
 
 	@Override
-	public String convert(final PickUp PickUp) {
+	public String convert(final Assesment Assesment) {
 		String result;
 
-		if (PickUp == null)
+		if (Assesment == null)
 			result = null;
 		else
-			result = String.valueOf(PickUp.getId());
+			result = String.valueOf(Assesment.getId());
 		return result;
 	}
 }

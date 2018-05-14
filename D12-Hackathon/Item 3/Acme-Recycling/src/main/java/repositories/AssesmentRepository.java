@@ -4,9 +4,9 @@ package repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import domain.PickUp;
+import domain.Assesment;
 
 @Repository
-public interface PickUpRepository extends JpaRepository<PickUp, Integer> {
+public interface AssesmentRepository extends JpaRepository<Assesment, Integer> {
 
 }

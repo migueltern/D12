@@ -90,10 +90,18 @@ public class OpinionService {
 		actorPrincipal.getOpinions().remove(opinion);
 	}
 
-	public Collection<Opinion> findByActor(final int ActorId) {
+	public Collection<Opinion> findOpinableProductByActor(final int ActorId) {
 		Collection<Opinion> result;
 
-		result = this.opinionRepository.findByActor(ActorId);
+		result = this.opinionRepository.findOpinableProductByActor(ActorId);
+
+		return result;
+	}
+
+	public Collection<Opinion> findOpinableCourseByActor(final int ActorId) {
+		Collection<Opinion> result;
+
+		result = this.opinionRepository.findOpinableCourseByActor(ActorId);
 
 		return result;
 	}

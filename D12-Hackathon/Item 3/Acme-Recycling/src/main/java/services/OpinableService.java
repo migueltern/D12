@@ -69,6 +69,10 @@ public class OpinableService {
 		this.opinableRepository.delete(opinable);
 	}
 
+	public void flush() {
+		this.opinableRepository.flush();
+	}
+
 	public boolean isProduct(final Opinion opinion) {
 		boolean res;
 		Product product;

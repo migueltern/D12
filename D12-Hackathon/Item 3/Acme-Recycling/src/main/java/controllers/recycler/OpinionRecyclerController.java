@@ -53,19 +53,35 @@ public class OpinionRecyclerController extends AbstractController {
 		super();
 	}
 
-	//Listar mis opiniones 
-	@RequestMapping(value = "/myList", method = RequestMethod.GET)
-	public ModelAndView myList() {
+	//Listar mis opiniones de productos
+	@RequestMapping(value = "/myListOpinionProduct", method = RequestMethod.GET)
+	public ModelAndView myListOpinionProduct() {
 		ModelAndView result;
 		Collection<Opinion> myOpinions;
 		Recycler recyclerPrincipal;
 
 		recyclerPrincipal = this.recyclerService.findByPrincipal();
-		myOpinions = this.opinionService.findByActor(recyclerPrincipal.getId());
+		myOpinions = this.opinionService.findOpinableProductByActor(recyclerPrincipal.getId());
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);
-		result.addObject("requestURI", "opinion/recycler/myList.do?d-16544-p=1");
+		result.addObject("requestURI", "opinion/recycler/myListOpinionProduct.do?d-16544-p=1");
+		return result;
+	}
+
+	//Listar mis opiniones de cursos
+	@RequestMapping(value = "/myListOpinionCourse", method = RequestMethod.GET)
+	public ModelAndView myListOpinionCourse() {
+		ModelAndView result;
+		Collection<Opinion> myOpinions;
+		Recycler recyclerPrincipal;
+
+		recyclerPrincipal = this.recyclerService.findByPrincipal();
+		myOpinions = this.opinionService.findOpinableCourseByActor(recyclerPrincipal.getId());
+
+		result = new ModelAndView("opinion/list");
+		result.addObject("opinions", myOpinions);
+		result.addObject("requestURI", "opinion/recycler/myListOpinionCourse.do?d-16544-p=1");
 		return result;
 	}
 

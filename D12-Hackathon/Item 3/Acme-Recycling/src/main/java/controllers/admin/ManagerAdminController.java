@@ -44,6 +44,7 @@ public class ManagerAdminController extends AbstractController {
 
 		result = new ModelAndView("manager/edit");
 		result.addObject("managerForm", cf);
+		result.addObject("requestURI", "manager/admin/edit.do");
 
 		return result;
 	}

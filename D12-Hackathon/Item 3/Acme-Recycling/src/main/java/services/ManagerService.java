@@ -18,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Incidence;
 import domain.Manager;
+import domain.Opinion;
 import domain.Request;
 import forms.ManagerForm;
 
@@ -46,18 +47,21 @@ public class ManagerService {
 		Authority authority;
 		Collection<Incidence> incidences;
 		Collection<Request> requests;
+		Collection<Opinion> opinions;
 
 		result = new Manager();
 		userAccount = new UserAccount();
 		authority = new Authority();
 		incidences = new ArrayList<>();
 		requests = new ArrayList<>();
+		opinions = new ArrayList<>();
 
 		authority.setAuthority(Authority.MANAGER);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
 		result.setIncidences(incidences);
 		result.setRequests(requests);
+		result.setOpinions(opinions);
 		return result;
 	}
 
@@ -151,6 +155,7 @@ public class ManagerService {
 			Authority authority;
 			final Collection<Incidence> incidences;
 			final Collection<Request> requests;
+			final Collection<Opinion> opinions;
 
 			userAccount = managerForm.getManager().getUserAccount();
 			authority = new Authority();
@@ -159,8 +164,10 @@ public class ManagerService {
 			managerForm.getManager().setUserAccount(userAccount);
 			incidences = new ArrayList<>();
 			requests = new ArrayList<>();
+			opinions = new ArrayList<>();
 			managerForm.getManager().setIncidences(incidences);
 			managerForm.getManager().setRequests(requests);
+			managerForm.getManager().setOpinions(opinions);
 			result = managerForm;
 
 		} else {
@@ -171,6 +178,7 @@ public class ManagerService {
 			managerForm.getManager().setUserAccount(manager.getUserAccount());
 			managerForm.getManager().setIncidences(manager.getIncidences());
 			managerForm.getManager().setRequests(manager.getRequests());
+			managerForm.getManager().setOpinions(manager.getOpinions());
 
 			result = managerForm;
 

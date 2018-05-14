@@ -33,13 +33,11 @@
 		<value>/views/message/messages</value>
 		
 <!-- 		
+		
+		<value>/views/course/messages</value> -->
 		<value>/views/carrier/messages</value>
 		<value>/views/manager/messages</value>
-		
-		
 		<value>/views/editor/messages</value>
-		<value>/views/course/messages</value> -->
-		
 		<value>/views/admin/messages</value>
 		<value>/views/recycler/messages</value>
 		<value>/views/buyer/messages</value>

@@ -29,6 +29,15 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.administrator.register" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="carrier/admin/edit.do"><spring:message code="master.page.admin.carrier.edit" /></a></li>
+					<li><a href="manager/admin/edit.do"><spring:message code="master.page.admin.manager.edit" /></a></li>
+					<li><a href="editor/admin/edit.do"><spring:message code="master.page.admin.editor.edit" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
 				<ul>
 					<li class="arrow"></li>

@@ -21,42 +21,42 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${requestURI}" modelAttribute="adminForm">
+<form:form action="${requestURI}" modelAttribute="editorForm">
 	
-<form:hidden path="admin.id" />
+<form:hidden path="editor.id" />
 	
 	
-<jstl:if test="${adminForm.admin.id == 0}">
-			<B><acme:textbox code="admin.username"
-				path="admin.userAccount.username" /><br /></B>
-			<B><acme:password code="admin.password"
-				path="admin.userAccount.password" /><br /></B>
-			<B><acme:password code="admin.password" path="passwordCheck" /></B>
+<jstl:if test="${editorForm.editor.id == 0}">
+			<B><acme:textbox code="editor.username"
+				path="editor.userAccount.username" /><br /></B>
+			<B><acme:password code="editor.password"
+				path="editor.userAccount.password" /><br /></B>
+			<B><acme:password code="editor.password" path="passwordCheck" /></B>
 			<br />
 		</jstl:if>	
 	
-	<B><acme:textbox code="admin.name" path="admin.name"/></B>
+	<B><acme:textbox code="editor.name" path="editor.name"/></B>
 	<br />
-	<B><acme:textbox code="admin.surname" path="admin.surname"/></B>
+	<B><acme:textbox code="editor.surname" path="editor.surname"/></B>
 	<br />
-	<B><acme:textbox code="admin.emailAddress" path="admin.email"/></B>
+	<B><acme:textbox code="editor.emailAddress" path="editor.email"/></B>
 	<br />
-	<B><acme:textbox code="admin.phoneNumber" path="admin.phone" /></B>
+	<B><acme:textbox code="editor.phoneNumber" path="editor.phone" /></B>
 	<br />
-	<B><acme:textbox code="admin.postalAddress" path="admin.address"/></B>
+	<B><acme:textbox code="editor.postalAddress" path="editor.address"/></B>
 	<br />
-	<B><acme:provinceselect code="admin.province" path="admin.province"/></B>
+	<B><acme:provinceselect code="editor.province" path="editor.province"/></B>
 	<br />
 	
 	
 	
-	<acme:submit name="save" code="admin.save"/>
-	<acme:cancel url="welcome/index.do" code="admin.cancel"/>
+	<acme:submit name="save" code="editor.save"/>
+	<acme:cancel url="welcome/index.do" code="editor.cancel"/>
 	<br />
 	<br/>
-	<jstl:if test="${adminForm.admin.id == 0}">
+	<jstl:if test="${editorForm.editor.id == 0}">
    		<form:label path="conditions">
-		<spring:message code="admin.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="admin.legal.moreinfo"/></a>
+		<spring:message code="editor.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="editor.legal.moreinfo"/></a>
 		</form:label>
 		<form:checkbox id="conditions" path="conditions"/>
 		<form:errors cssClass="error" path="conditions"/>

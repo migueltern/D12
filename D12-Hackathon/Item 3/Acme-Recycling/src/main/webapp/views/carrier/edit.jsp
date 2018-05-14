@@ -21,42 +21,42 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${requestURI}" modelAttribute="adminForm">
+<form:form action="${requestURI}" modelAttribute="carrierForm">
 	
-<form:hidden path="admin.id" />
+<form:hidden path="carrier.id" />
 	
 	
-<jstl:if test="${adminForm.admin.id == 0}">
-			<B><acme:textbox code="admin.username"
-				path="admin.userAccount.username" /><br /></B>
-			<B><acme:password code="admin.password"
-				path="admin.userAccount.password" /><br /></B>
-			<B><acme:password code="admin.password" path="passwordCheck" /></B>
+<jstl:if test="${carrierForm.carrier.id == 0}">
+			<B><acme:textbox code="carrier.username"
+				path="carrier.userAccount.username" /><br /></B>
+			<B><acme:password code="carrier.password"
+				path="carrier.userAccount.password" /><br /></B>
+			<B><acme:password code="carrier.password" path="passwordCheck" /></B>
 			<br />
 		</jstl:if>	
 	
-	<B><acme:textbox code="admin.name" path="admin.name"/></B>
+	<B><acme:textbox code="carrier.name" path="carrier.name"/></B>
 	<br />
-	<B><acme:textbox code="admin.surname" path="admin.surname"/></B>
+	<B><acme:textbox code="carrier.surname" path="carrier.surname"/></B>
 	<br />
-	<B><acme:textbox code="admin.emailAddress" path="admin.email"/></B>
+	<B><acme:textbox code="carrier.emailAddress" path="carrier.email"/></B>
 	<br />
-	<B><acme:textbox code="admin.phoneNumber" path="admin.phone" /></B>
+	<B><acme:textbox code="carrier.phoneNumber" path="carrier.phone" /></B>
 	<br />
-	<B><acme:textbox code="admin.postalAddress" path="admin.address"/></B>
+	<B><acme:textbox code="carrier.postalAddress" path="carrier.address"/></B>
 	<br />
-	<B><acme:provinceselect code="admin.province" path="admin.province"/></B>
+	<B><acme:provinceselect code="carrier.province" path="carrier.province"/></B>
 	<br />
 	
 	
 	
-	<acme:submit name="save" code="admin.save"/>
-	<acme:cancel url="welcome/index.do" code="admin.cancel"/>
+	<acme:submit name="save" code="carrier.save"/>
+	<acme:cancel url="welcome/index.do" code="carrier.cancel"/>
 	<br />
 	<br/>
-	<jstl:if test="${adminForm.admin.id == 0}">
+	<jstl:if test="${carrierForm.carrier.id == 0}">
    		<form:label path="conditions">
-		<spring:message code="admin.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="admin.legal.moreinfo"/></a>
+		<spring:message code="carrier.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="carrier.legal.moreinfo"/></a>
 		</form:label>
 		<form:checkbox id="conditions" path="conditions"/>
 		<form:errors cssClass="error" path="conditions"/>

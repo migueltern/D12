@@ -17,14 +17,14 @@
 	
 <tiles-definitions>
 	
-		<definition name="admin/edit" extends="master.page">
-		<put-attribute name="title" value="Edit admin" />
-		<put-attribute name="body" value="/views/admin/edit.jsp" />
+		<definition name="carrier/edit" extends="master.page">
+		<put-attribute name="title" value="Edit carrier" />
+		<put-attribute name="body" value="/views/carrier/edit.jsp" />
 	</definition>
 
-	<definition name="admin/display" extends="master.page">
-		<put-attribute name="title" value="Display admin" />
-		<put-attribute name="body" value="/views/admin/display.jsp" />
+	<definition name="carrier/display" extends="master.page">
+		<put-attribute name="title" value="Display carrier" />
+		<put-attribute name="body" value="/views/carrier/display.jsp" />
 	</definition>
 		
 </tiles-definitions>

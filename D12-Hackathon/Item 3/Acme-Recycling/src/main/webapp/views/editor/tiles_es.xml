@@ -16,14 +16,14 @@
       
 <tiles-definitions>
 	
-		<definition name="admin/edit" extends="master.page">
-		<put-attribute name="title" value="Editar administrador" />
-		<put-attribute name="body" value="/views/admin/edit.jsp" />
+		<definition name="editor/edit" extends="master.page">
+		<put-attribute name="title" value="Editar redactor" />
+		<put-attribute name="body" value="/views/editor/edit.jsp" />
 	</definition>
 
-	<definition name="admin/display" extends="master.page">
-		<put-attribute name="title" value="Mostrar administrador" />
-		<put-attribute name="body" value="/views/admin/display.jsp" />
+	<definition name="editor/display" extends="master.page">
+		<put-attribute name="title" value="Mostrar redactor" />
+		<put-attribute name="body" value="/views/editor/display.jsp" />
 	</definition>
 	
 </tiles-definitions>

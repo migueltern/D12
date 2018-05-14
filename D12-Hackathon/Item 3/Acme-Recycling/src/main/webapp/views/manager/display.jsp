@@ -21,34 +21,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<display:table name="admin" class="displaytag"
+<display:table name="manager" class="displaytag"
   requestURI="${requestURI}" id="row">
   
   <!-- Attributes -->
 	
 	<display:column>
-	<B><spring:message code="admin.name" />:</B>
+	<B><spring:message code="manager.name" />:</B>
 	<jstl:out value="${row.name}"></jstl:out>
 	
 
 	<p>
-		<B><spring:message code="admin.surname" />:</B>
+		<B><spring:message code="manager.surname" />:</B>
 		<jstl:out value="${row.surname}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="admin.phoneNumber" />:</B>
+		<B><spring:message code="manager.phoneNumber" />:</B>
 		<jstl:out value="${row.phone}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="admin.emailAddress" />:</B>
+		<B><spring:message code="manager.emailAddress" />:</B>
 		<jstl:out value="${row.email}"></jstl:out>
 	</p>
 		<p>
-		<B><spring:message code="admin.postalAddress" />:</B>
+		<B><spring:message code="manager.postalAddress" />:</B>
 		<jstl:out value="${row.address}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="admin.province" />:</B>
+		<B><spring:message code="manager.province" />:</B>
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
 	

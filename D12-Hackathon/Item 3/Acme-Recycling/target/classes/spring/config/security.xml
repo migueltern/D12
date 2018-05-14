@@ -29,6 +29,8 @@
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" /> 
 		
+		<security:intercept-url pattern="/profile/admin/**" access="hasRole('ADMIN')"/>
+		
 		<security:intercept-url pattern="/profile/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/recycler/**" access="permitAll" />
 		

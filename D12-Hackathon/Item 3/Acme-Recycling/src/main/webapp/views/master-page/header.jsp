@@ -24,7 +24,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-				
+					<li><a href="profile/admin/edit.do"><spring:message code="master.page.buyer.edit" /></a></li>
+					<li><a href="profile/admin/display.do"><spring:message code="master.page.buyer.profile" /></a></li>
 				</ul>
 			</li>
 			

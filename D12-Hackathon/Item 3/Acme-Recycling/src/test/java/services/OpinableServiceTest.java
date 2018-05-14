@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -31,7 +33,7 @@ public class OpinableServiceTest extends AbstractTest {
 		//Si pongo el id de un course SI me devuelve NULL el opinable
 
 		//Cuando descomento la linea siguiente (findAll()), al introducir el id de un course funciona
-		//final Collection<Opinable> opinables = this.opinableService.findAll();
+		final Collection<Opinable> opinables = this.opinableService.findAll();
 
 		id = super.getEntityId("course1");
 

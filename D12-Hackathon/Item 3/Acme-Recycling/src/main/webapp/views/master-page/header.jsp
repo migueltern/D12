@@ -113,9 +113,9 @@
 			<li><a class="fNiv"><spring:message	code="master.page.opinion" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="opinion/recycler/myListOpinionProduct.do?d-16544-p=1"><spring:message code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a href="opinion/recycler/myListOpinionItem.do?d-16544-p=1"><spring:message code="master.page.opinion.myListOpinionProduct" /></a></li>
 					<li><a href="opinion/recycler/myListOpinionCourse.do?d-16544-p=1"><spring:message code="master.page.opinion.myListOpinionCourse" /></a></li>
-					<li><a href="opinion/recycler/createOpinableProduct.do"><spring:message code="master.page.opinion.createOpinableProduct" /></a></li>
+					<li><a href="opinion/recycler/createOpinableItem.do"><spring:message code="master.page.opinion.createOpinableProduct" /></a></li>
 					<li><a href="opinion/recycler/createOpinableCourse.do"><spring:message code="master.page.opinion.createOpinableCourse" /></a></li>
 					
 				</ul>

@@ -32,19 +32,19 @@
 	<acme:textbox code="opinion.comment" path="opinion.comment" />
 	<br />
 
-	<jstl:if test="${opinableProduct}">
+	<jstl:if test="${opinableItem}">
 		<acme:select items="${products}" itemLabel="title"
 			code="opinion.product" path="opinableId" />
 		<br />
-		<form:hidden path="opinableProduct" value="1" />
+		<form:hidden path="opinableItem" value="1" />
 	</jstl:if>
 
 
-	<jstl:if test="${!opinableProduct}">
+	<jstl:if test="${!opinableItem}">
 		<acme:select items="${courses}" itemLabel="title"
 			code="opinion.course" path="opinableId" />
 		<br />
-		<form:hidden path="opinableProduct" value="0" />
+		<form:hidden path="opinableItem" value="0" />
 	</jstl:if>
 
 
@@ -53,7 +53,14 @@
 	<input type="submit" name="save"
 		value="<spring:message code="opinion.save"/>" />&nbsp;
 		
-		<acme:cancel url="opinion/recycler/myList.do?d-16544-p=1"
-		code="opinion.cancel" />
+	<jstl:if test="${opinableItem}">
+		<acme:cancel url="opinion/recycler/myListOpinionItem.do?d-16544-p=1"
+			code="opinion.cancel" />
+	</jstl:if>
+	
+	<jstl:if test="${!opinableItem}">
+		<acme:cancel url="opinion/recycler/myListOpinionCourse.do?d-16544-p=1"
+			code="opinion.cancel" />
+	</jstl:if>
 </form:form>
 

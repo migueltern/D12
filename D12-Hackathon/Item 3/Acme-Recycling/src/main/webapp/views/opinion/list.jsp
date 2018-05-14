@@ -27,7 +27,7 @@
 
 	<!--  EDIT -->
 
-	<security:authorize access="hasRole('RECYCLER')">
+	<%-- <security:authorize access="hasRole('RECYCLER')">
 		<spring:message code="opinion.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="false">
 
@@ -36,7 +36,7 @@
 			</spring:url>
 			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
 		</display:column>
-	</security:authorize>
+	</security:authorize> --%>
 	
 	<!-- ATRIBUTOS -->
 

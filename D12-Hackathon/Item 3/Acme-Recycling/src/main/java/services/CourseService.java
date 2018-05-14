@@ -11,8 +11,8 @@ import org.springframework.util.Assert;
 
 import repositories.CourseRepository;
 import domain.Course;
+import domain.Lesson;
 import domain.Material;
-import domain.Publication;
 import domain.Recycler;
 
 @Service
@@ -40,19 +40,19 @@ public class CourseService {
 	// Simple CRUD methods ----------------------------------------------------
 	public Course create() {
 		Course result;
-		Collection<Publication> publications;
 		Collection<Material> materials;
+		Collection<Lesson> lessons;
 
-		publications = new ArrayList<Publication>();
 		materials = new ArrayList<Material>();
+		lessons = new ArrayList<Lesson>();
 
 		//Solo un buyer podrá crear un curso
 		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
 
 		result = new Course();
 
-		result.setPublications(publications);
 		result.setMaterials(materials);
+		result.setLessons(lessons);
 
 		return result;
 	}

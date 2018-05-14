@@ -18,8 +18,8 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Comment;
 import domain.Course;
+import domain.Item;
 import domain.Opinion;
-import domain.Product;
 import domain.Recycler;
 import forms.RecyclerForm;
 
@@ -46,21 +46,21 @@ public class RecyclerService {
 		Recycler result;
 		UserAccount userAccount;
 		Authority authority;
-		final Collection<Product> products;
+		final Collection<Item> items;
 		final Collection<Comment> comments;
 		final Collection<Course> courses;
 
 		result = new Recycler();
 		userAccount = new UserAccount();
 		authority = new Authority();
-		products = new ArrayList<>();
+		items = new ArrayList<>();
 		comments = new ArrayList<>();
 		courses = new ArrayList<>();
 
 		authority.setAuthority(Authority.RECYCLER);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
-		result.setProducts(products);
+		result.setItems(items);
 		result.setComments(comments);
 		result.setCourses(courses);
 		return result;
@@ -154,7 +154,7 @@ public class RecyclerService {
 		if (recycler.getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
-			final Collection<Product> products;
+			final Collection<Item> items;
 			final Collection<Comment> comments;
 			final Collection<Course> courses;
 			final Collection<Opinion> opinions;
@@ -164,11 +164,11 @@ public class RecyclerService {
 			authority.setAuthority(Authority.RECYCLER);
 			userAccount.addAuthority(authority);
 			recyclerForm.getRecycler().setUserAccount(userAccount);
-			products = new ArrayList<>();
+			items = new ArrayList<>();
 			comments = new ArrayList<>();
 			courses = new ArrayList<>();
 			opinions = new ArrayList<>();
-			recyclerForm.getRecycler().setProducts(products);
+			recyclerForm.getRecycler().setItems(items);
 			recyclerForm.getRecycler().setComments(comments);
 			recyclerForm.getRecycler().setCourses(courses);
 			recyclerForm.getRecycler().setOpinions(opinions);
@@ -180,7 +180,7 @@ public class RecyclerService {
 			recyclerForm.getRecycler().setId(recycler.getId());
 			recyclerForm.getRecycler().setVersion(recycler.getVersion());
 			recyclerForm.getRecycler().setUserAccount(recycler.getUserAccount());
-			recyclerForm.getRecycler().setProducts(recycler.getProducts());
+			recyclerForm.getRecycler().setItems(recycler.getItems());
 			recyclerForm.getRecycler().setComments(recycler.getComments());
 			recyclerForm.getRecycler().setCourses(recycler.getCourses());
 			recyclerForm.getRecycler().setOpinions(recycler.getOpinions());

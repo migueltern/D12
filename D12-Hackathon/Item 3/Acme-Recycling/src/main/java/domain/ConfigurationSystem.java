@@ -12,7 +12,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -23,8 +22,6 @@ public class ConfigurationSystem extends DomainEntity {
 	private String				name;
 	private String				banner;
 	private Collection<String>	welcomeMessages;
-	private int					maxNumberFinder;
-	private int					cacheMaxTime;
 
 
 	@NotBlank
@@ -51,24 +48,6 @@ public class ConfigurationSystem extends DomainEntity {
 
 	public void setWelcomeMessages(final Collection<String> welcomeMessages) {
 		this.welcomeMessages = welcomeMessages;
-	}
-
-	@Range(min = 1, max = 100)
-	public int getMaxNumberFinder() {
-		return this.maxNumberFinder;
-	}
-
-	public void setMaxNumberFinder(final int maxNumberFinder) {
-		this.maxNumberFinder = maxNumberFinder;
-	}
-
-	@Range(min = 1, max = 24)
-	public int getCacheMaxTime() {
-		return this.cacheMaxTime;
-	}
-
-	public void setCacheMaxTime(final int cacheMaxTime) {
-		this.cacheMaxTime = cacheMaxTime;
 	}
 
 

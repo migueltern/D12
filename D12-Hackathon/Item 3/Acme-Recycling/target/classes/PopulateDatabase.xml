@@ -1634,8 +1634,6 @@
 				<value>welcomeMessage1></value>
 			</list>
 		</property>
-		<property name="maxNumberFinder" value="40"/>
-		<property name="cacheMaxTime" value="2"/>
 		
 		<property name="tabooWords">
 			<list>

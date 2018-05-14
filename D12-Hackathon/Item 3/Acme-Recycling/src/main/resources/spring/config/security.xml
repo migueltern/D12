@@ -54,6 +54,8 @@
 		<security:intercept-url pattern="/messageFolder/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/messageFolder/admin/**" access="hasRole('ADMIN')"/>
 		
+		<security:intercept-url pattern="/message/recycler/**" access="hasRole('RECYCLER')"/>
+		
 		
 		
 	<!-- 	ADMIN-->

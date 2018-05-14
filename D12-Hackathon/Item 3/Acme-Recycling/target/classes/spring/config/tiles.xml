@@ -30,6 +30,7 @@
 		<value>/views/new/tiles.xml</value>
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/cleanPoint/tiles.xml</value>
+		<value>/views/message/tiles.xml</value>
 		
 	<!-- 	<value>/views/admin/tiles.xml</value>
 		<value>/views/carrier/tiles.xml</value>

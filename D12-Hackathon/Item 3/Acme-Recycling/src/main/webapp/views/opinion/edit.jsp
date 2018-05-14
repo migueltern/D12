@@ -21,43 +21,39 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="opinion/recycler/edit.do" modelAttribute="opinion">
+<form:form action="opinion/recycler/edit.do"
+	modelAttribute="opinionForm">
 
-	<form:hidden path="id" />
-	<form:hidden path="version" />
-	
-	<acme:textbox code="opinion.title" path="title"/>
+	<form:hidden path="opinion.id" />
+	<form:hidden path="opinion.version" />
+
+	<acme:textbox code="opinion.title" path="opinion.title" />
 	<br />
- 	<acme:textbox code="opinion.comment" path="comment"/>
-	<br /> 
-	
-	<jstl:if test="${selectProducts}" >
-		<acme:select items="${products}" itemLabel="title" code="opinion.product" path="opinable"/>
+	<acme:textbox code="opinion.comment" path="opinion.comment" />
+	<br />
+
+	<jstl:if test="${opinableProduct}">
+		<acme:select items="${products}" itemLabel="title"
+			code="opinion.product" path="opinableId" />
 		<br />
-	
-		<!-- BOTON SAVE para producto -->
-		<input type="submit" name="saveOpinionProduct"
-			value="<spring:message code="opinion.save"/>" />&nbsp;
-		
+		<form:hidden path="opinableProduct" value="1" />
 	</jstl:if>
-	
-	<jstl:if test="${selectCourses}" >
-		<acme:select items="${courses}" itemLabel="title" code="opinion.course" path="opinable"/>
+
+
+	<jstl:if test="${!opinableProduct}">
+		<acme:select items="${courses}" itemLabel="title"
+			code="opinion.course" path="opinableId" />
 		<br />
-		
-		<!-- BOTON SAVE para producto -->
-		<input type="submit" name="saveOpinionCourse"
-			value="<spring:message code="opinion.save"/>" />&nbsp;
-			
+		<form:hidden path="opinableProduct" value="0" />
 	</jstl:if>
-	
-	
-	
-	
+
+
 	<!-- BOTONES -->
+
+	<input type="submit" name="save"
+		value="<spring:message code="opinion.save"/>" />&nbsp;
 		
-		<acme:cancel
-		url="opinion/recycler/myList.do?d-16544-p=1"
+		<acme:cancel url="opinion/recycler/myList.do?d-16544-p=1"
 		code="opinion.cancel" />
 </form:form>
 

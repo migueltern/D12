@@ -25,6 +25,25 @@
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="opinions" requestURI="${requestURI}" id="row">
 
+	<!--  EDIT -->
+
+	<security:authorize access="hasRole('RECYCLER')">
+		<spring:message code="opinion.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="false">
+
+			<spring:url value="opinion/recycler/edit.do" var="editURL">
+				<spring:param name="opinableId" value="${row.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
+		</display:column>
+	</security:authorize>
+	
+	<!-- ATRIBUTOS -->
+
+	
+
+
+
 
 </display:table>
 

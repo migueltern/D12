@@ -10,39 +10,39 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import repositories.ProductRepository;
+import repositories.ItemRepository;
+import domain.Item;
 import domain.Opinion;
-import domain.Product;
 import domain.Recycler;
 
 @Service
 @Transactional
-public class ProductService {
+public class ItemService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private ProductRepository	productRepository;
+	private ItemRepository	itemRepository;
 
 	// Supporting services ----------------------------------------------------
 	@Autowired
-	private RecyclerService		recyclerService;
+	private RecyclerService	recyclerService;
 
 
 	// Constructors -----------------------------------------------------------
-	public ProductService() {
+	public ItemService() {
 		super();
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	public Product create() {
-		final Product result;
+	public Item create() {
+		final Item result;
 		Recycler recyclerPrincipal;
 		Collection<Opinion> opinions;
 
 		recyclerPrincipal = this.recyclerService.findByPrincipal();
 		opinions = new ArrayList<Opinion>();
 		//No copiar la siguiente linea en el reconstruct
-		result = new Product();
+		result = new Item();
 
 		result.setOpinion(opinions);
 		result.setRecycler(recyclerPrincipal);
@@ -51,41 +51,41 @@ public class ProductService {
 
 	}
 
-	public Product findOne(final int productId) {
-		Product result;
+	public Item findOne(final int itemId) {
+		Item result;
 
-		result = this.productRepository.findOne(productId);
-
-		return result;
-	}
-
-	public Collection<Product> findAll() {
-		Collection<Product> result;
-
-		result = this.productRepository.findAll();
+		result = this.itemRepository.findOne(itemId);
 
 		return result;
 	}
 
-	public Product save(final Product product) {
-		final Product result;
+	public Collection<Item> findAll() {
+		Collection<Item> result;
 
-		Assert.notNull(product);
+		result = this.itemRepository.findAll();
 
-		if (product.getId() == 0) {
+		return result;
+	}
+
+	public Item save(final Item item) {
+		final Item result;
+
+		Assert.notNull(item);
+
+		if (item.getId() == 0) {
 			Date publicationMoment;
 			publicationMoment = new Date(System.currentTimeMillis() - 1000);
-			product.setPublicationMoment(publicationMoment);
+			item.setPublicationMoment(publicationMoment);
 		}
 
-		result = this.productRepository.save(product);
+		result = this.itemRepository.save(item);
 
 		return result;
 	}
 
-	public void delete(final Product product) {
-		Assert.notNull(product);
+	public void delete(final Item item) {
+		Assert.notNull(item);
 
-		this.productRepository.delete(product);
+		this.itemRepository.delete(item);
 	}
 }

@@ -7,21 +7,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import repositories.ProductRepository;
-import domain.Product;
+import repositories.ItemRepository;
+import domain.Item;
 
 @Component
 @Transactional
-public class StringToProductConverter implements Converter<String, Product> {
+public class StringToItemConverter implements Converter<String, Item> {
 
 	@Autowired
-	private ProductRepository	ProductRepository;
+	private ItemRepository	ItemRepository;
 
 
 	@Override
-	public Product convert(final String text) {
+	public Item convert(final String text) {
 
-		Product result;
+		Item result;
 		int id;
 
 		try {
@@ -29,7 +29,7 @@ public class StringToProductConverter implements Converter<String, Product> {
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = this.ProductRepository.findOne(id);
+				result = this.ItemRepository.findOne(id);
 
 			}
 

@@ -100,8 +100,8 @@
 		<bean class="converters.PuntuationToStringConverter" /> 
 		<bean class="converters.StringToPuntuationConverter" />
 		
-		<bean class="converters.ProductToStringConverter" /> 
-		<bean class="converters.StringToProductConverter" />
+		<bean class="converters.ItemToStringConverter" /> 
+		<bean class="converters.StringToItemConverter" />
 		
 		<bean class="converters.PickUpToStringConverter" /> 
 		<bean class="converters.StringToPickUpConverter" />

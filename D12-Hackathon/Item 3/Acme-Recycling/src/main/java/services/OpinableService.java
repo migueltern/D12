@@ -11,9 +11,9 @@ import org.springframework.util.Assert;
 
 import repositories.OpinableRepository;
 import domain.Course;
+import domain.Item;
 import domain.Opinable;
 import domain.Opinion;
-import domain.Product;
 
 @Service
 @Transactional
@@ -73,13 +73,13 @@ public class OpinableService {
 		this.opinableRepository.flush();
 	}
 
-	public boolean isProduct(final Opinion opinion) {
+	public boolean isItem(final Opinion opinion) {
 		boolean res;
-		Product product;
+		Item item;
 
 		res = false;
-		product = (Product) opinion.getOpinable();
-		if (product != null)
+		item = (Item) opinion.getOpinable();
+		if (item != null)
 			res = true;
 		return res;
 	}

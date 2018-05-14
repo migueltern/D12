@@ -8,10 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.OpinionRepository;
 import domain.Actor;
+import domain.Course;
+import domain.Item;
 import domain.Opinion;
+import forms.OpinionForm;
 
 @Service
 @Transactional
@@ -23,6 +28,15 @@ public class OpinionService {
 
 	@Autowired
 	private ActorService		actorService;
+
+	@Autowired
+	private ItemService			itemService;
+
+	@Autowired
+	private CourseService		courseService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -90,10 +104,10 @@ public class OpinionService {
 		actorPrincipal.getOpinions().remove(opinion);
 	}
 
-	public Collection<Opinion> findOpinableProductByActor(final int ActorId) {
+	public Collection<Opinion> findOpinableItemByActor(final int ActorId) {
 		Collection<Opinion> result;
 
-		result = this.opinionRepository.findOpinableProductByActor(ActorId);
+		result = this.opinionRepository.findOpinableItemByActor(ActorId);
 
 		return result;
 	}
@@ -104,5 +118,31 @@ public class OpinionService {
 		result = this.opinionRepository.findOpinableCourseByActor(ActorId);
 
 		return result;
+	}
+
+	public OpinionForm reconstruct(final OpinionForm opinionForm, final BindingResult bindingResult) {
+		Opinion opinion;
+
+		opinion = opinionForm.getOpinion();
+
+		//Si no se ha elegido ningun opinable, hacemos que salte en mensaje de notNull
+		if (opinionForm.getOpinableId() == 0)
+			opinionForm.setOpinableId(null);
+
+		//añadimos el opinable a nuestra clase opinion
+		if (opinionForm.isOpinableItem() && opinionForm.getOpinableId() != null) {
+			Item item;
+			item = this.itemService.findOne(opinionForm.getOpinableId());
+			opinion.setOpinable(item);
+		} else if (!opinionForm.isOpinableItem() && opinionForm.getOpinableId() != null) {
+			Course course;
+			course = this.courseService.findOne(opinionForm.getOpinableId());
+			opinion.setOpinable(course);
+		}
+
+		opinionForm.setOpinion(opinion);
+		this.validator.validate(opinionForm, bindingResult);
+
+		return opinionForm;
 	}
 }

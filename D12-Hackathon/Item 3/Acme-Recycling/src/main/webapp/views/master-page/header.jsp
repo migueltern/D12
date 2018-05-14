@@ -28,6 +28,14 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="messageFolder/admin/list.do?d-16544-p=1"><spring:message code="master.page.messageFolder.myList" /></a></li>
+					<li><a href="messageFolder/admin/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.administrator.configurationSystem" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -46,6 +54,15 @@
 		
 		
 			<security:authorize access="hasRole('BUYER')">
+			
+			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="messageFolder/buyer/list.do?d-16544-p=1"><spring:message code="master.page.messageFolder.myList" /></a></li>
+					<li><a href="messageFolder/buyer/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.buyer.buyer1" /></a>
 				<ul>
 					<li class="arrow"></li>

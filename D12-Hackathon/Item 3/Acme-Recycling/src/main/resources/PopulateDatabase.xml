@@ -819,7 +819,7 @@
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
 			<list>
-
+				<ref bean="opinion4" />
 			</list>
 		</property>
 		<property name="items">
@@ -1824,6 +1824,7 @@
 		<property name="photo"
 			value="http://slideplayer.es/slide/4019554/13/images/21/RECICLAJE+DE+PAPEL+GR%C3%81FICO+RESUMEN.jpg" />
 		<property name="caption" value="caption 1" />
+		<property name="actor" ref="recycler1" />
 	</bean>
 
 
@@ -1835,6 +1836,7 @@
 		<property name="photo"
 			value="http://vadecuentos.com/wp-content/uploads/2015/05/taller-infantil-creatividad-reciclaje-jueguetes-carton1.png" />
 		<property name="caption" value="caption 2" />
+		<property name="actor" ref="recycler1" />
 	</bean>
 
 	<bean id="opinion3" class="domain.Opinion">
@@ -1845,6 +1847,7 @@
 		<property name="photo"
 			value="http://fece.org/wp-content/uploads/2016/12/materiales-reciclables-raee.jpg" />
 		<property name="caption" value="caption 3" />
+		<property name="actor" ref="recycler3" />
 	</bean>
 
 	<bean id="opinion4" class="domain.Opinion">
@@ -1855,6 +1858,7 @@
 		<property name="photo"
 			value="https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg" />
 		<property name="caption" value="caption 4" />
+		<property name="actor" ref="recycler4" />
 	</bean>
 
 
@@ -1866,6 +1870,7 @@
 		<property name="photo"
 			value="http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg" />
 		<property name="caption" value="caption 5" />
+		<property name="actor" ref="recycler5" />
 	</bean>
 
 	<!-- Requests -->

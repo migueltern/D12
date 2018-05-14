@@ -105,7 +105,7 @@ public abstract class Actor extends DomainEntity {
 		this.userAccount = userAccount;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "actor")
 	@NotNull
 	@Valid
 	public Collection<Opinion> getOpinions() {

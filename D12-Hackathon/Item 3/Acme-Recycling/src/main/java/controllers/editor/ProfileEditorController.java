@@ -1,5 +1,5 @@
 
-package controllers.admin;
+package controllers.editor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +16,8 @@ import domain.Editor;
 import forms.EditorForm;
 
 @Controller
-@RequestMapping("/editor/admin")
-public class EditorAdminController extends AbstractController {
+@RequestMapping("/profile/editor")
+public class ProfileEditorController extends AbstractController {
 
 	// Services---------------------------------------------------------
 
@@ -27,36 +27,35 @@ public class EditorAdminController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public EditorAdminController() {
+	public ProfileEditorController() {
 		super();
 	}
 
 	//Edition------------------------------------------------------------
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView createEditor() {
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit() {
 		ModelAndView result;
-		Editor editor;
+		final Editor editor;
+		final EditorForm editorForm;
 
-		editor = this.editorService.create();
+		editor = this.editorService.findByPrincipal();
+		Assert.notNull(editor);
+		editorForm = new EditorForm(editor);
 
-		EditorForm cf;
-		cf = new EditorForm(editor);
-
-		result = new ModelAndView("editor/edit");
-		result.addObject("editorForm", cf);
-		result.addObject("requestURI", "editor/admin/edit.do");
-
+		result = this.createEditModelAndView(editorForm);
+		//Esto nuevo
+		result.addObject("requestURI", "profile/editor/edit.do");
 		return result;
 	}
 
-	//Save	------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveEditor(@ModelAttribute("editorForm") EditorForm editorForm, final BindingResult binding) {
+	public ModelAndView saveEditor(@ModelAttribute("editorForm") EditorForm editorForm, final BindingResult bindingResult) {
 		ModelAndView result;
 
-		editorForm = this.editorService.reconstruct(editorForm, binding);
+		editorForm = this.editorService.reconstruct(editorForm, bindingResult);
 
-		if (binding.hasErrors())
+		if (bindingResult.hasErrors())
 			result = this.createEditModelAndView(editorForm);
 		else
 			try {
@@ -65,12 +64,12 @@ public class EditorAdminController extends AbstractController {
 					Assert.isTrue(editorForm.getConditions(), "the conditions must be accepted");
 				}
 				this.editorService.save(editorForm.getEditor());
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/profile/editor/display.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("password does not match"))
-					result = this.createEditModelAndView(editorForm, "editor.password.match");
+					result = this.createEditModelAndView(editorForm, "editor.commit.error.passwordDoesNotMatch");
 				else if (oops.getMessage().equals("the conditions must be accepted"))
-					result = this.createEditModelAndView(editorForm, "editor.conditions.accept");
+					result = this.createEditModelAndView(editorForm, "editor.commit.error.conditions");
 				else if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]" + "; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
 					result = this.createEditModelAndView(editorForm, "editor.commit.error.duplicateProfile");
 				else
@@ -80,21 +79,39 @@ public class EditorAdminController extends AbstractController {
 		return result;
 	}
 
+	//Display ------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView displayUser() {
+		ModelAndView result;
+		Editor editor;
+
+		editor = this.editorService.findByPrincipal();
+
+		result = new ModelAndView("editor/display");
+		result.addObject("editor", editor);
+		result.addObject("requestURI", "profile/editor/display.do");
+
+		return result;
+	}
+
 	// Ancillary methods ------------------------------------------------------
+
 	protected ModelAndView createEditModelAndView(final EditorForm editorForm) {
 		ModelAndView result;
-		result = this.createEditModelAndView(editorForm, null);
 
+		result = this.createEditModelAndView(editorForm, null);
 		return result;
 	}
 
 	protected ModelAndView createEditModelAndView(final EditorForm editorForm, final String message) {
 		ModelAndView result;
+
 		result = new ModelAndView("editor/edit");
-		result.addObject("editor", editorForm);
+		result.addObject("editorForm", editorForm);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "editor/admin/edit.do");
+		//result.addObject("RequestURI", "buyer/edit.do");
 
 		return result;
+
 	}
 }

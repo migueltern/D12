@@ -1,5 +1,5 @@
 
-package controllers.admin;
+package controllers.carrier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +16,8 @@ import domain.Carrier;
 import forms.CarrierForm;
 
 @Controller
-@RequestMapping("/carrier/admin")
-public class CarrierAdminController extends AbstractController {
+@RequestMapping("/profile/carrier")
+public class ProfileCarrierController extends AbstractController {
 
 	// Services---------------------------------------------------------
 
@@ -27,36 +27,35 @@ public class CarrierAdminController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public CarrierAdminController() {
+	public ProfileCarrierController() {
 		super();
 	}
 
 	//Edition------------------------------------------------------------
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView createCarrier() {
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit() {
 		ModelAndView result;
-		Carrier carrier;
+		final Carrier carrier;
+		final CarrierForm carrierForm;
 
-		carrier = this.carrierService.create();
+		carrier = this.carrierService.findByPrincipal();
+		Assert.notNull(carrier);
+		carrierForm = new CarrierForm(carrier);
 
-		CarrierForm cf;
-		cf = new CarrierForm(carrier);
-
-		result = new ModelAndView("carrier/edit");
-		result.addObject("carrierForm", cf);
-		result.addObject("requestURI", "carrier/admin/edit.do");
-
+		result = this.createEditModelAndView(carrierForm);
+		//Esto nuevo
+		result.addObject("requestURI", "profile/carrier/edit.do");
 		return result;
 	}
 
-	//Save	------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveCarrier(@ModelAttribute("carrierForm") CarrierForm carrierForm, final BindingResult binding) {
+	public ModelAndView saveCarrier(@ModelAttribute("carrierForm") CarrierForm carrierForm, final BindingResult bindingResult) {
 		ModelAndView result;
 
-		carrierForm = this.carrierService.reconstruct(carrierForm, binding);
+		carrierForm = this.carrierService.reconstruct(carrierForm, bindingResult);
 
-		if (binding.hasErrors())
+		if (bindingResult.hasErrors())
 			result = this.createEditModelAndView(carrierForm);
 		else
 			try {
@@ -65,12 +64,12 @@ public class CarrierAdminController extends AbstractController {
 					Assert.isTrue(carrierForm.getConditions(), "the conditions must be accepted");
 				}
 				this.carrierService.save(carrierForm.getCarrier());
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/profile/carrier/display.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("password does not match"))
-					result = this.createEditModelAndView(carrierForm, "carrier.password.match");
+					result = this.createEditModelAndView(carrierForm, "carrier.commit.error.passwordDoesNotMatch");
 				else if (oops.getMessage().equals("the conditions must be accepted"))
-					result = this.createEditModelAndView(carrierForm, "carrier.conditions.accept");
+					result = this.createEditModelAndView(carrierForm, "carrier.commit.error.conditions");
 				else if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]" + "; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
 					result = this.createEditModelAndView(carrierForm, "carrier.commit.error.duplicateProfile");
 				else
@@ -80,21 +79,39 @@ public class CarrierAdminController extends AbstractController {
 		return result;
 	}
 
+	//Display ------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView displayUser() {
+		ModelAndView result;
+		Carrier carrier;
+
+		carrier = this.carrierService.findByPrincipal();
+
+		result = new ModelAndView("carrier/display");
+		result.addObject("carrier", carrier);
+		result.addObject("requestURI", "profile/carrier/display.do");
+
+		return result;
+	}
+
 	// Ancillary methods ------------------------------------------------------
+
 	protected ModelAndView createEditModelAndView(final CarrierForm carrierForm) {
 		ModelAndView result;
-		result = this.createEditModelAndView(carrierForm, null);
 
+		result = this.createEditModelAndView(carrierForm, null);
 		return result;
 	}
 
 	protected ModelAndView createEditModelAndView(final CarrierForm carrierForm, final String message) {
 		ModelAndView result;
+
 		result = new ModelAndView("carrier/edit");
-		result.addObject("carrier", carrierForm);
+		result.addObject("carrierForm", carrierForm);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "carrier/admin/edit.do");
+		//result.addObject("RequestURI", "buyer/edit.do");
 
 		return result;
+
 	}
 }

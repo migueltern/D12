@@ -63,7 +63,7 @@ public class ProfileBuyerController extends AbstractController {
 					Assert.isTrue(buyerForm.getConditions(), "the conditions must be accepted");
 				}
 				this.buyerService.save(buyerForm.getBuyer());
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/profile/buyer/display.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("password does not match"))
 					result = this.createEditModelAndView(buyerForm, "Buyer.commit.error.passwordDoesNotMatch");

@@ -18,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Editor;
 import domain.New;
+import domain.Opinion;
 import forms.EditorForm;
 
 @Service
@@ -44,16 +45,19 @@ public class EditorService {
 		UserAccount userAccount;
 		Authority authority;
 		final Collection<New> news;
+		final Collection<Opinion> opinions;
 
 		result = new Editor();
 		userAccount = new UserAccount();
 		authority = new Authority();
 		news = new ArrayList<>();
+		opinions = new ArrayList<>();
 
 		authority.setAuthority(Authority.EDITOR);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
 		result.setNews(news);
+		result.setOpinions(opinions);
 
 		return result;
 	}
@@ -140,13 +144,14 @@ public class EditorService {
 	public EditorForm reconstruct(final EditorForm editorForm, final BindingResult binding) {
 
 		EditorForm result = null;
-		Editor editor;
-		editor = editorForm.getEditor();
+		Editor editorBD;
+		editorBD = editorForm.getEditor();
 
-		if (editor.getId() == 0) {
+		if (editorBD.getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
 			final Collection<New> news;
+			final Collection<Opinion> opinions;
 
 			userAccount = editorForm.getEditor().getUserAccount();
 			authority = new Authority();
@@ -154,16 +159,19 @@ public class EditorService {
 			userAccount.addAuthority(authority);
 			editorForm.getEditor().setUserAccount(userAccount);
 			news = new ArrayList<>();
+			opinions = new ArrayList<>();
 			editorForm.getEditor().setNews(news);
+			editorForm.getEditor().setOpinions(opinions);
 			result = editorForm;
 
 		} else {
 
-			editor = this.editorRepository.findOne(editorForm.getEditor().getId());
-			editorForm.getEditor().setId(editor.getId());
-			editorForm.getEditor().setVersion(editor.getVersion());
-			editorForm.getEditor().setUserAccount(editor.getUserAccount());
-			editorForm.getEditor().setNews(editor.getNews());
+			editorBD = this.editorRepository.findOne(editorForm.getEditor().getId());
+			editorForm.getEditor().setId(editorBD.getId());
+			editorForm.getEditor().setVersion(editorBD.getVersion());
+			editorForm.getEditor().setUserAccount(editorBD.getUserAccount());
+			editorForm.getEditor().setNews(editorBD.getNews());
+			editorForm.getEditor().setOpinions(editorBD.getOpinions());
 
 			result = editorForm;
 

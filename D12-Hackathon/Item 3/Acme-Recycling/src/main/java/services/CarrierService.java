@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Carrier;
+import domain.Opinion;
+import domain.Request;
 import forms.CarrierForm;
 
 @Service
@@ -41,14 +44,20 @@ public class CarrierService {
 		Carrier result;
 		UserAccount userAccount;
 		Authority authority;
+		final Collection<Opinion> opinions;
+		final Collection<Request> requests;
 
 		result = new Carrier();
 		userAccount = new UserAccount();
 		authority = new Authority();
+		opinions = new ArrayList<>();
+		requests = new ArrayList<>();
 
 		authority.setAuthority(Authority.CARRIER);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
+		result.setOpinions(opinions);
+		result.setRequests(requests);
 
 		return result;
 	}
@@ -140,18 +149,26 @@ public class CarrierService {
 		if (carrierForm.getCarrier().getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
+			final Collection<Opinion> opinions;
+			final Collection<Request> requests;
 
 			userAccount = carrierForm.getCarrier().getUserAccount();
 			authority = new Authority();
+			opinions = new ArrayList<>();
+			requests = new ArrayList<>();
 			authority.setAuthority(Authority.CARRIER);
 			userAccount.addAuthority(authority);
 			carrierForm.getCarrier().setUserAccount(userAccount);
+			carrierForm.getCarrier().setOpinions(opinions);
+			carrierForm.getCarrier().setRequests(requests);
 			result = carrierForm;
 		} else {
 			carrierBD = this.carrierRepository.findOne(carrierForm.getCarrier().getId());
 			carrierForm.getCarrier().setId(carrierBD.getId());
 			carrierForm.getCarrier().setVersion(carrierBD.getVersion());
 			carrierForm.getCarrier().setUserAccount(carrierBD.getUserAccount());
+			carrierForm.getCarrier().setOpinions(carrierBD.getOpinions());
+			carrierForm.getCarrier().setRequests(carrierBD.getRequests());
 			result = carrierForm;
 		}
 		this.validator.validate(result, bindingResult);

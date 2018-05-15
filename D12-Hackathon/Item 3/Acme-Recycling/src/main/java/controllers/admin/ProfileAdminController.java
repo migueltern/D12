@@ -62,7 +62,7 @@ public class ProfileAdminController extends AbstractController {
 					Assert.isTrue(adminForm.getConditions(), "the conditions must be accepted");
 				}
 				this.adminService.save(adminForm.getAdmin());
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/profile/admin/display.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("password does not match"))
 					result = this.createEditModelAndView(adminForm, "admin.commit.error.passwordDoesNotMatch");

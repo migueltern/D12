@@ -63,7 +63,7 @@ public class ProfileRecyclerController extends AbstractController {
 					Assert.isTrue(recyclerForm.getConditions(), "the conditions must be accepted");
 				}
 				this.recyclerService.save(recyclerForm.getRecycler());
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/profile/recycler/display.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("password does not match"))
 					result = this.createEditModelAndView(recyclerForm, "recycler.commit.error.passwordDoesNotMatch");

@@ -123,6 +123,14 @@
 		</security:authorize>
 		
 		<security:authorize access="hasRole('CARRIER')">
+		<li><a class="fNiv"><spring:message	code="master.page.buyer.carrier1" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="profile/carrier/edit.do"><spring:message code="master.page.buyer.edit" /></a></li>
+					<li><a href="profile/carrier/display.do"><spring:message code="master.page.buyer.profile" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -132,7 +140,15 @@
 			</li>
 		</security:authorize>
 		
-				<security:authorize access="hasRole('MANAGER')">
+		<security:authorize access="hasRole('MANAGER')">
+			<li><a class="fNiv"><spring:message	code="master.page.buyer.manager1" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="profile/manager/edit.do"><spring:message code="master.page.buyer.edit" /></a></li>
+					<li><a href="profile/manager/display.do"><spring:message code="master.page.buyer.profile" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -143,7 +159,14 @@
 		</security:authorize>
 		
 		<security:authorize access="hasRole('EDITOR')">
-		
+			<li><a class="fNiv"><spring:message	code="master.page.buyer.editor1" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="profile/editor/edit.do"><spring:message code="master.page.buyer.edit" /></a></li>
+					<li><a href="profile/editor/display.do"><spring:message code="master.page.buyer.profile" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.messageFolder" /></a>
 				<ul>
 					<li class="arrow"></li>

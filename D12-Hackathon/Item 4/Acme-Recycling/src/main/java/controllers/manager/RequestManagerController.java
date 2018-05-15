@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.CarrierService;
 import services.CleanPointService;
+import services.ItemService;
 import services.ManagerService;
 import services.RequestService;
 import controllers.AbstractController;
@@ -41,6 +42,9 @@ public class RequestManagerController extends AbstractController {
 
 	@Autowired
 	private CleanPointService	cleanPointService;
+
+	@Autowired
+	private ItemService			itemService;
 
 
 	//	Constructors
@@ -86,13 +90,17 @@ public class RequestManagerController extends AbstractController {
 	public ModelAndView create(@RequestParam final int itemId) {
 		final ModelAndView result;
 		final Request request;
+		final Item item;
+
+		//No se puede crear request en un item que ya tiene request
+		item = this.itemService.findOne(itemId);
+		Assert.isTrue(this.requestService.findItemsNonRequest().contains(item));
 
 		request = this.requestService.create(itemId);
 		result = this.createEditModelAndView(request);
 
 		return result;
 	}
-
 	//Save Request ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(Request request, final BindingResult binding) {
@@ -151,5 +159,39 @@ public class RequestManagerController extends AbstractController {
 
 		return result;
 
+	}
+
+	//Change Status
+	@RequestMapping(value = "/changeStatus", method = RequestMethod.GET)
+	public ModelAndView changeStatus(@RequestParam final int requestId) {
+		ModelAndView result;
+		Request request;
+
+		//Solo se puede cambiar el status de TUS requests
+		request = this.requestService.findOne(requestId);
+		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
+
+		result = new ModelAndView("request/changeStatus");
+		result.addObject("request", request);
+
+		return result;
+	}
+
+	//Save Request ---------------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveChangeStatus")
+	public ModelAndView saveChangeStatus(Request request, final BindingResult binding) {
+		ModelAndView result;
+
+		request = this.requestService.reconstruct(request, binding);
+		if (binding.hasErrors())
+			result = new ModelAndView("redirect:changeStatus.do?requestId=" + request.getItem());
+		else
+			try {
+				this.requestService.save(request);
+				result = new ModelAndView("redirect:listMyRequest.do");
+			} catch (final Throwable oops) {
+				result = new ModelAndView("redirect:changeStatus.do?requestId=" + request.getItem());
+			}
+		return result;
 	}
 }

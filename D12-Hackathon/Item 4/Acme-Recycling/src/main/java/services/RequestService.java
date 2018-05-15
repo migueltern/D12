@@ -32,6 +32,9 @@ public class RequestService {
 	@Autowired
 	private Validator			validator;
 
+	@Autowired
+	private ManagerService		managerService;
+
 
 	// Supporting services ----------------------------------------------------
 
@@ -82,6 +85,7 @@ public class RequestService {
 		final Request result;
 
 		Assert.notNull(request);
+		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
 
 		result = this.requestRepository.save(request);
 
@@ -172,11 +176,11 @@ public class RequestService {
 
 			result = request;
 		} else {
+			//Solo entra aqui cuando se cambia el status
 			requestBD = this.findOne(request.getId());
-			request.setCode(requestBD.getCode());
-			//El status no se pone el de bd porque se puede cambiar
+			requestBD.setStatus(request.getStatus());
 
-			result = request;
+			result = requestBD;
 		}
 		this.validator.validate(result, binding);
 		return result;

@@ -57,33 +57,33 @@ public class NewService {
 		return result;
 	}
 
-	public New save(final New New) {
+	public New save(final New new_) {
 		New result;
-		Assert.notNull(New);
+		Assert.notNull(new_);
 		Date createdMoment;
 		Editor principal;
 
 		principal = this.editorService.findByPrincipal();
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
-		New.setCreationDate(createdMoment);
+		new_.setCreationDate(createdMoment);
 
-		result = this.newRepository.save(New);
+		result = this.newRepository.save(new_);
 
 		principal.getNews().add(result);
 
 		return result;
 	}
 
-	public New saveA(final New New) {
+	public New saveA(final New new_) {
 		New result;
-		Assert.notNull(New);
+		Assert.notNull(new_);
 		Date createdMoment;
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
-		New.setCreationDate(createdMoment);
+		new_.setCreationDate(createdMoment);
 
-		result = this.newRepository.save(New);
+		result = this.newRepository.save(new_);
 
 		return result;
 	}
@@ -104,38 +104,38 @@ public class NewService {
 		return result;
 	}
 
-	public void delete(final New New) {
-		Assert.notNull(New);
-		Assert.isTrue(New.getId() != 0);
+	public void delete(final New new_) {
+		Assert.notNull(new_);
+		Assert.isTrue(this.editorService.checkPrincipalBoolean());
 
-		this.newRepository.delete(New);
+		this.newRepository.delete(new_);
 	}
 
 	//Other business methods---------------------------------------------------
 
 	//	RECONSTRUCTOR
 
-	public New reconstruct(final New New, final BindingResult bindingResult) {
+	public New reconstruct(final New new_, final BindingResult bindingResult) {
 		New result;
 		New newBD;
-		if (New.getId() == 0) {
+		if (new_.getId() == 0) {
 
 			Collection<Comment> comments;
 			comments = new ArrayList<Comment>();
-			New.setComments(comments);
-			result = New;
+			new_.setComments(comments);
+			result = new_;
 		} else {
-			newBD = this.newRepository.findOne(New.getId());
-			New.setId(newBD.getId());
-			New.setVersion(newBD.getVersion());
-			New.setCreationDate(newBD.getCreationDate());
+			newBD = this.newRepository.findOne(new_.getId());
+			new_.setId(newBD.getId());
+			new_.setVersion(newBD.getVersion());
+			new_.setCreationDate(newBD.getCreationDate());
 
-			if (New.getComments() == null)
-				New.setComments(new ArrayList<Comment>());
+			if (new_.getComments() == null)
+				new_.setComments(new ArrayList<Comment>());
 			else
-				New.setComments(newBD.getComments());
+				new_.setComments(newBD.getComments());
 
-			result = New;
+			result = new_;
 		}
 		this.validator.validate(result, bindingResult);
 		return result;

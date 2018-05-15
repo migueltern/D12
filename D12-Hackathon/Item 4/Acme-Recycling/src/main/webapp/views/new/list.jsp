@@ -22,7 +22,7 @@
 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="new" requestURI="${requestURI}" id="row">
+	name="new_" requestURI="${requestURI}" id="row">
 	
 	
 

@@ -39,7 +39,7 @@ public class NewRecyclerController extends AbstractController {
 		news = this.newService.findAll();
 
 		result = new ModelAndView("new/list");
-		result.addObject("new", news);
+		result.addObject("new_", news);
 		result.addObject("requestURI", "new/recycler/list.do");
 		result.addObject("message", messageCode);
 

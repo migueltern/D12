@@ -14,7 +14,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <div>
-	<img src="images/logo.png" alt="Acme-Recycling Co., Inc." />
+	<img src="${bannerURL}" alt="Acme-Recycling Co., Inc." />
 </div>
 
 <div>
@@ -224,4 +224,20 @@
 <div>
 	<a href="?language=en">en</a> | <a href="?language=es">es</a>
 </div>
+<%-- <br>
+<font size="6" color = "green" face="Georgia"><B><jstl:out value="${Name}"></jstl:out></B></font>
 
+<spring:message code="master.page.new" var="newLanguage" />
+<jstl:choose>
+	<jstl:when test="${newLanguage == 'News'}">
+		<br>
+		<br>
+		<i><jstl:out value="${EnglishWelcomeMessage}"></jstl:out></i>
+	</jstl:when>
+	
+	<jstl:when test="${newLanguage == 'Noticias'}">
+		<br>
+		<br>
+		<i><jstl:out value="${SpanishWelcomeMessage}"></jstl:out></i>
+	</jstl:when>
+</jstl:choose> --%>

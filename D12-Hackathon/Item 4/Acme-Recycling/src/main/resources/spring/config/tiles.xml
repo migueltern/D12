@@ -39,6 +39,7 @@
 		<value>/views/admin/tiles.xml</value>
 		<value>/views/recycler/tiles.xml</value>
 		<value>/views/buyer/tiles.xml</value>
+		<value>/views/request/tiles.xml</value>
 		
 	</util:list>
 

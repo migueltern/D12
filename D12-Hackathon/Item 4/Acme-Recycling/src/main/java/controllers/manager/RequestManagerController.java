@@ -40,7 +40,7 @@ public class RequestManagerController extends AbstractController {
 	}
 
 	//	Listing ItemNonRequest---------------------------------------------------------
-	@RequestMapping(value = "/listItemNonRequest", method = RequestMethod.GET)
+	@RequestMapping(value = "/listItemsNonRequest", method = RequestMethod.GET)
 	public ModelAndView listItemNonRequest() {
 		ModelAndView result;
 		Collection<Item> itemsNonRequest;

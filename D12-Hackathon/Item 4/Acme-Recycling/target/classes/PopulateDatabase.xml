@@ -1309,7 +1309,7 @@
 			value="https://pimientosytomates.files.wordpress.com/2009/08/lavadora-vieja.jpg" />
 		<property name="labelProduct" ref="labelProduct1" />
 		<property name="recycler" ref="recycler1" />
-		<property name="value" value="1"></property>
+		<property name="value" value="16"></property>
 		<property name="opinion">
 			<list>
 				<ref bean="opinion1" />
@@ -1557,7 +1557,7 @@
 		<property name="realisedMoment" value="2018/12/12" />
 		<property name="picture"
 			value="http://cuellar7.com/wp-content/uploads/2014/09/Curso-2-Coca.jpg" />
-		<property name="draftMode" value="true" />
+		<property name="draftMode" value="false" />
 		<property name="minimumScore" value="1" />
 
 		<property name="materials">

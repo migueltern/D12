@@ -83,6 +83,9 @@
 	<!-- 	RECYCLER -->
 		<security:intercept-url pattern="/comment/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/new/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/course/recycler/**" access="hasRole('RECYCLER')"/>
+		
+		
 	
 	
 	

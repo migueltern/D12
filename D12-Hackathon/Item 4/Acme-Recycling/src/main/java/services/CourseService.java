@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.CourseRepository;
 import domain.Course;
+import domain.Item;
 import domain.Lesson;
 import domain.Material;
 import domain.Recycler;
@@ -111,4 +112,37 @@ public class CourseService {
 
 	}
 
+	public Collection<Course> coursesAvailables(final Recycler recycler) {
+
+		Collection<Item> itemsOfRecycler;
+		Collection<Course> coursesAvailables;
+		Collection<Course> coursesOfRecycler;
+		itemsOfRecycler = recycler.getItems();
+
+		Integer puntuationOfRecycler = 0;
+		for (final Item i : itemsOfRecycler)
+			puntuationOfRecycler = puntuationOfRecycler + i.getValue();
+
+		coursesOfRecycler = recycler.getCourses();
+		coursesAvailables = this.courseRepository.coursesAvailables(puntuationOfRecycler);
+		coursesAvailables.removeAll(coursesOfRecycler);
+		return coursesAvailables;
+
+	}
+
+	public void assist(final Course course) {
+		Recycler recyclerConnected;
+		Recycler result;
+
+		recyclerConnected = this.recyclerService.findByPrincipal();
+
+		Assert.notNull(course);
+		Assert.notNull(recyclerConnected);
+
+		recyclerConnected.getCourses().add(course);
+
+		result = this.recyclerService.save(recyclerConnected);
+
+		Assert.notNull(result);
+	}
 }

@@ -115,6 +115,8 @@
 				</ul>
 			</li>
 			
+			<li><a href="message/recycler/send.do"><spring:message code="master.page.message.send" /></a></li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.comment" /></a>
 				<ul>
 					<li class="arrow"></li>

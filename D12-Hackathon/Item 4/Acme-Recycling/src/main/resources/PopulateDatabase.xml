@@ -2067,5 +2067,71 @@
 		
 	</bean>
 
+ <!--  Default folder of Recycler1 
+  --> 
+	
+	<bean id="InBoxRecycler1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler1" />
+	</bean>
+
+	<bean id="OutBoxRecycler1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler1" />
+	</bean>
+
+	<bean id="NotificationBoxRecycler1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler1" />
+	</bean>
+
+	<bean id="TrashBoxRecycler1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler1" />
+	</bean>
+
+	<bean id="SpamBoxRecycler1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler1" />
+	</bean>
+  
+  	<!-- Default folder of Admin -->
+	
+	<bean id="InBoxAdmin" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="admin" />
+	</bean>
+
+	<bean id="OutBoxAdmin" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="admin" />
+	</bean>
+
+	<bean id="NotificationBoxAdmin" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="admin" />
+	</bean>
+
+	<bean id="TrashBoxAdmin" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="admin" />
+	</bean>
+
+	<bean id="SpamBoxAdmin" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="admin" />
+	</bean>
+
+
 	<!-- Other domain beans come here -->
 </beans>

@@ -190,6 +190,15 @@
 			</li>
 			
 			<li><a href="message/manager/send.do"><spring:message code="master.page.message.send" /></a></li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.request" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="request/manager/listItemsNonRequest.do?d-16544-p=1"><spring:message code="master.page.request.listItemsNonRequest" /></a></li>
+					<li><a href="request/manager/listMyRequest.do?d-16544-p=1"><spring:message code="master.page.request.listMyRequest" /></a></li>
+				</ul>
+			</li>
+			
 		</security:authorize>
 		
 		<security:authorize access="hasRole('EDITOR')">

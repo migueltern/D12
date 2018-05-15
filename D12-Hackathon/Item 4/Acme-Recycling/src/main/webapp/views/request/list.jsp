@@ -25,24 +25,34 @@
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="requests" requestURI="${requestURI}" id="row">
 
-	<!--  EDIT -->
+	<!--  CHANGE STATUS -->
 
-<%-- 	<security:authorize access="hasRole('RECYCLER')">
-		<spring:message code="request.edit" var="Edit" />
-		<display:column title="${Edit}" sortable="false">
+	<security:authorize access="hasRole('MANAGER')">
+		<jstl:if test="${showButtonChangeStatus}">
+			<spring:message code="request.changeStatus" var="changeStatus" />
+			<display:column title="${changeStatus}" sortable="false">
 
-			<spring:url value="request/recycler/edit.do" var="editURL">
-				<spring:param name="requestId" value="${row.id}" />
-			</spring:url>
-			<a href="${editURL}"><spring:message code="request.edit" /></a>
-		</display:column>
-	</security:authorize> --%>
-	
+				<spring:url value="request/manager/changeStatus.do" var="editURL">
+					<spring:param name="requestId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="request.changeStatus" /></a>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
+
 	<!-- ATRIBUTOS -->
-
 	
-
-
+	<spring:message code="request.code" var="codeHeader" />
+	<display:column property="code" title="${codeHeader}" sortable="true" />
+	
+	<spring:message code="request.title" var="titleHeader" />
+	<display:column property="title" title="${titleHeader}" sortable="true" />
+	
+	<spring:message code="request.observation" var="observationHeader" />
+	<display:column property="observation" title="${observationHeader}" sortable="true" />
+	
+	<spring:message code="request.status" var="statusHeader" />
+	<display:column property="status" title="${statusHeader}" sortable="true" />
 
 
 </display:table>

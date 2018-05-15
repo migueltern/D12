@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CarrierService;
+import services.CleanPointService;
 import services.ManagerService;
 import services.RequestService;
 import controllers.AbstractController;
+import domain.Carrier;
+import domain.CleanPoint;
 import domain.Item;
 import domain.Manager;
 import domain.Request;
@@ -27,10 +31,16 @@ public class RequestManagerController extends AbstractController {
 	//	Services --------------------------------------------------------
 
 	@Autowired
-	private RequestService	requestService;
+	private RequestService		requestService;
 
 	@Autowired
-	private ManagerService	managerService;
+	private ManagerService		managerService;
+
+	@Autowired
+	private CarrierService		carrierService;
+
+	@Autowired
+	private CleanPointService	cleanPointService;
 
 
 	//	Constructors
@@ -113,14 +123,19 @@ public class RequestManagerController extends AbstractController {
 		assert request != null;
 
 		ModelAndView result;
+		Collection<Carrier> carriers;
+		Collection<CleanPoint> cleanPoints;
 
 		result = new ModelAndView("request/edit");
+		carriers = this.carrierService.findAll();
+		cleanPoints = this.cleanPointService.findAll();
 
 		result.addObject("request", request);
+		result.addObject("carriers", carriers);
+		result.addObject("cleanPoints", cleanPoints);
 		result.addObject("message", messageCode);
 
 		return result;
 
 	}
-
 }

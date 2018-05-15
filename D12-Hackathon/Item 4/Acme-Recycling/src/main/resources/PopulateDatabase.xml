@@ -2099,6 +2099,798 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="recycler1" />
 	</bean>
+	
+	 <!--  Default folder of Recycler2
+  --> 
+	
+	<bean id="InBoxRecycler2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler2" />
+	</bean>
+
+	<bean id="OutBoxRecycler2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler2" />
+	</bean>
+
+	<bean id="NotificationBoxRecycler2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler2" />
+	</bean>
+
+	<bean id="TrashBoxRecycler2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler2" />
+	</bean>
+
+	<bean id="SpamBoxRecycler2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler2" />
+	</bean>
+	
+ <!--  Default folder of Recycler3
+  --> 
+	
+	<bean id="InBoxRecycler3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler3" />
+	</bean>
+
+	<bean id="OutBoxRecycler3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler3" />
+	</bean>
+
+	<bean id="NotificationBoxRecycler3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler3" />
+	</bean>
+
+	<bean id="TrashBoxRecycler3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler3" />
+	</bean>
+
+	<bean id="SpamBoxRecycler3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler3" />
+	</bean>
+	
+ <!--  Default folder of Recycler4
+  --> 
+	
+	<bean id="InBoxRecycler4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler4" />
+	</bean>
+
+	<bean id="OutBoxRecycler4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler4" />
+	</bean>
+
+	<bean id="NotificationBoxRecycler4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler4" />
+	</bean>
+
+	<bean id="TrashBoxRecycler4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler4" />
+	</bean>
+
+	<bean id="SpamBoxRecycler4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler4" />
+	</bean>
+	
+ <!--  Default folder of Recycler5
+  --> 
+	
+	<bean id="InBoxRecycler5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler5" />
+	</bean>
+
+	<bean id="OutBoxRecycler5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler5" />
+	</bean>
+
+	<bean id="NotificationBoxRecycler5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler5" />
+	</bean>
+
+	<bean id="TrashBoxRecycler5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler5" />
+	</bean>
+
+	<bean id="SpamBoxRecycler5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="recycler5" />
+	</bean>
+	
+ <!--  Default folder of Buyer1
+  --> 
+	
+	<bean id="InBoxBuyer1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer1" />
+	</bean>
+
+	<bean id="OutBoxBuyer1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer1" />
+	</bean>
+
+	<bean id="NotificationBoxBuyer1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer1" />
+	</bean>
+
+	<bean id="TrashBoxBuyer1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer1" />
+	</bean>
+
+	<bean id="SpamBoxBuyer1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer1" />
+	</bean>
+	
+<!--  Default folder of Buyer2
+  --> 
+	
+	<bean id="InBoxBuyer2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer2" />
+	</bean>
+
+	<bean id="OutBoxBuyer2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer2" />
+	</bean>
+
+	<bean id="NotificationBoxBuyer2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer2" />
+	</bean>
+
+	<bean id="TrashBoxBuyer2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer2" />
+	</bean>
+
+	<bean id="SpamBoxBuyer2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer2" />
+	</bean>
+	
+<!--  Default folder of Buyer3
+  --> 
+	
+	<bean id="InBoxBuyer3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer3" />
+	</bean>
+
+	<bean id="OutBoxBuyer3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer3" />
+	</bean>
+
+	<bean id="NotificationBoxBuyer3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer3" />
+	</bean>
+
+	<bean id="TrashBoxBuyer3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer3" />
+	</bean>
+
+	<bean id="SpamBoxBuyer3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer3" />
+	</bean>
+	
+<!--  Default folder of Buyer4
+  --> 
+	
+	<bean id="InBoxBuyer4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer4" />
+	</bean>
+
+	<bean id="OutBoxBuyer4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer4" />
+	</bean>
+
+	<bean id="NotificationBoxBuyer4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer4" />
+	</bean>
+
+	<bean id="TrashBoxBuyer4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer4" />
+	</bean>
+
+	<bean id="SpamBoxBuyer4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer4" />
+	</bean>
+	
+<!--  Default folder of Buyer5
+  --> 
+	
+	<bean id="InBoxBuyer5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer5" />
+	</bean>
+
+	<bean id="OutBoxBuyer5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer5" />
+	</bean>
+
+	<bean id="NotificationBoxBuyer5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer5" />
+	</bean>
+
+	<bean id="TrashBoxBuyer5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer5" />
+	</bean>
+
+	<bean id="SpamBoxBuyer5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="buyer5" />
+	</bean>
+	
+<!--  Default folder of Manager1
+  --> 
+	
+	<bean id="InBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager1" />
+	</bean>
+
+	<bean id="OutBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager1" />
+	</bean>
+
+	<bean id="NotificationBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager1" />
+	</bean>
+
+	<bean id="TrashBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager1" />
+	</bean>
+
+	<bean id="SpamBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager1" />
+	</bean>
+	
+<!--  Default folder of Manager2
+  --> 
+	
+	<bean id="InBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager2" />
+	</bean>
+
+	<bean id="OutBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager2" />
+	</bean>
+
+	<bean id="NotificationBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager2" />
+	</bean>
+
+	<bean id="TrashBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager2" />
+	</bean>
+
+	<bean id="SpamBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager2" />
+	</bean>
+	
+<!--  Default folder of Manager3
+  --> 
+	
+	<bean id="InBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager3" />
+	</bean>
+
+	<bean id="OutBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager3" />
+	</bean>
+
+	<bean id="NotificationBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager3" />
+	</bean>
+
+	<bean id="TrashBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager3" />
+	</bean>
+
+	<bean id="SpamBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager3" />
+	</bean>
+	
+<!--  Default folder of Manager4
+  --> 
+	
+	<bean id="InBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager4" />
+	</bean>
+
+	<bean id="OutBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager4" />
+	</bean>
+
+	<bean id="NotificationBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager4" />
+	</bean>
+
+	<bean id="TrashBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager4" />
+	</bean>
+
+	<bean id="SpamBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager4" />
+	</bean>
+	
+<!--  Default folder of Manager5
+  --> 
+	
+	<bean id="InBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager5" />
+	</bean>
+
+	<bean id="OutBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager5" />
+	</bean>
+
+	<bean id="NotificationBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager5" />
+	</bean>
+
+	<bean id="TrashBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager5" />
+	</bean>
+
+	<bean id="SpamBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="manager5" />
+	</bean>
+	
+<!--  Default folder of Editor1
+  --> 
+	
+	<bean id="InBoxEditor1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor1" />
+	</bean>
+
+	<bean id="OutBoxEditor1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor1" />
+	</bean>
+
+	<bean id="NotificationBoxEditor1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor1" />
+	</bean>
+
+	<bean id="TrashBoxEditor1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor1" />
+	</bean>
+
+	<bean id="SpamBoxEditor1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor1" />
+	</bean>
+	
+<!--  Default folder of Editor2
+  --> 
+	
+	<bean id="InBoxEditor2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor2" />
+	</bean>
+
+	<bean id="OutBoxEditor2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor2" />
+	</bean>
+
+	<bean id="NotificationBoxEditor2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor2" />
+	</bean>
+
+	<bean id="TrashBoxEditor2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor2" />
+	</bean>
+
+	<bean id="SpamBoxEditor2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor2" />
+	</bean>
+	
+<!--  Default folder of Editor3
+  --> 
+	
+	<bean id="InBoxEditor3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor3" />
+	</bean>
+
+	<bean id="OutBoxEditor3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor3" />
+	</bean>
+
+	<bean id="NotificationBoxEditor3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor3" />
+	</bean>
+
+	<bean id="TrashBoxEditor3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor3" />
+	</bean>
+
+	<bean id="SpamBoxEditor3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor3" />
+	</bean>
+	
+<!--  Default folder of Editor4
+  --> 
+	
+	<bean id="InBoxEditor4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor4" />
+	</bean>
+
+	<bean id="OutBoxEditor4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor4" />
+	</bean>
+
+	<bean id="NotificationBoxEditor4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor4" />
+	</bean>
+
+	<bean id="TrashBoxEditor4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor4" />
+	</bean>
+
+	<bean id="SpamBoxEditor4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor4" />
+	</bean>
+	
+<!--  Default folder of Editor5
+  --> 
+	
+	<bean id="InBoxEditor5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor5" />
+	</bean>
+
+	<bean id="OutBoxEditor5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor5" />
+	</bean>
+
+	<bean id="NotificationBoxEditor5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor5" />
+	</bean>
+
+	<bean id="TrashBoxEditor5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor5" />
+	</bean>
+
+	<bean id="SpamBoxEditor5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="editor5" />
+	</bean>
+	
+<!--  Default folder of Carrier1
+  --> 
+	
+	<bean id="InBoxCarrier1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier1" />
+	</bean>
+
+	<bean id="OutBoxCarrier1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier1" />
+	</bean>
+
+	<bean id="NotificationBoxCarrier1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier1" />
+	</bean>
+
+	<bean id="TrashBoxCarrier1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier1" />
+	</bean>
+
+	<bean id="SpamBoxCarrier1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier1" />
+	</bean>
+	
+<!--  Default folder of Carrier2
+  --> 
+	
+	<bean id="InBoxCarrier2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier2" />
+	</bean>
+
+	<bean id="OutBoxCarrier2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier2" />
+	</bean>
+
+	<bean id="NotificationBoxCarrier2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier2" />
+	</bean>
+
+	<bean id="TrashBoxCarrier2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier2" />
+	</bean>
+
+	<bean id="SpamBoxCarrier2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier2" />
+	</bean>
+	
+<!--  Default folder of Carrier3
+  --> 
+	
+	<bean id="InBoxCarrier3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier3" />
+	</bean>
+
+	<bean id="OutBoxCarrier3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier3" />
+	</bean>
+
+	<bean id="NotificationBoxCarrier3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier3" />
+	</bean>
+
+	<bean id="TrashBoxCarrier3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier3" />
+	</bean>
+
+	<bean id="SpamBoxCarrier3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier3" />
+	</bean>
+	
+<!--  Default folder of Carrier4
+  --> 
+	
+	<bean id="InBoxCarrier4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier4" />
+	</bean>
+
+	<bean id="OutBoxCarrier4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier4" />
+	</bean>
+
+	<bean id="NotificationBoxCarrier4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier4" />
+	</bean>
+
+	<bean id="TrashBoxCarrier4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier4" />
+	</bean>
+
+	<bean id="SpamBoxCarrier4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier4" />
+	</bean>
+	
+<!--  Default folder of Carrier5
+  --> 
+	
+	<bean id="InBoxCarrier5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier5" />
+	</bean>
+
+	<bean id="OutBoxCarrier5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier5" />
+	</bean>
+
+	<bean id="NotificationBoxCarrier5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier5" />
+	</bean>
+
+	<bean id="TrashBoxCarrier5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier5" />
+	</bean>
+
+	<bean id="SpamBoxCarrier5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="actor" ref="carrier5" />
+	</bean>
   
   	<!-- Default folder of Admin -->
 	

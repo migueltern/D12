@@ -12,6 +12,9 @@ import domain.Course;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
+	@Query("select b.courses from Buyer b where b.id=?1")
+	Collection<Course> findCoursesCreatedByBuyer(int buyerId);
+
 	@Query("select r.courses from Recycler r join r.courses c where c.realisedMoment<current_date and r.id=?1")
 	Collection<Course> coursesOfRecyclerFinished(int recyclerId);
 

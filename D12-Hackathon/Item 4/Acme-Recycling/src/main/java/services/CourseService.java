@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.CourseRepository;
+import domain.Buyer;
 import domain.Course;
 import domain.Item;
 import domain.Lesson;
@@ -107,6 +108,17 @@ public class CourseService {
 		recyclerConnected = this.recyclerService.findByPrincipal();
 
 		result = this.courseRepository.coursesOfRecyclerFinished(recyclerConnected.getId());
+
+		return result;
+
+	}
+	public Collection<Course> findCoursesCreatedByBuyer() {
+		Collection<Course> result;
+		Buyer buyerConnected;
+
+		buyerConnected = this.buyerService.findByPrincipal();
+
+		result = this.courseRepository.findCoursesCreatedByBuyer(buyerConnected.getId());
 
 		return result;
 

@@ -85,13 +85,23 @@
 	</security:authorize> --%>
 
 
+
 	<spring:message code="course.display" var="Display" />
-		<display:column title="${Display}" sortable="true">
-			<spring:url value="course/buyer/display.do" var="editURL">
+		<display:column title="${Display}" sortable="false">
+			<spring:url value="course/buyer/display.do" var="displayURL">
 				<spring:param name="courseId" value="${row.id}" />
 			</spring:url>
-			<a href="${editURL}"><spring:message code="course.display" /></a>
+			<a href="${displayURL}"><spring:message code="course.display" /></a>
 		</display:column>
+		
+	<spring:message code="course.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="false">
+			<spring:url value="course/buyer/edit.do" var="editURL">
+				<spring:param name="courseId" value="${row.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="course.edit" /></a>
+	</display:column>
+		
 	<!-- ATRIBUTOS -->
 	
 	<spring:message code="course.title" var="titleHeader" />

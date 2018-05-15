@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CourseRepository;
 import domain.Buyer;
@@ -30,6 +32,9 @@ public class CourseService {
 
 	@Autowired
 	private RecyclerService		recyclerService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -62,7 +67,15 @@ public class CourseService {
 	public Course save(final Course course) {
 		Assert.notNull(course);
 		final Course result;
+		Collection<Course> courses;
+		Buyer buyer;
 
+		buyer = new Buyer();
+		buyer = this.buyerService.findByPrincipal();
+		courses = new ArrayList<>(this.courseRepository.findCoursesCreatedByBuyer(buyer.getId()));
+
+		//Un buyer solo podrá editar un curso que haya creado él.
+		Assert.isTrue(courses.contains(course));
 		//Solo un buyer podrá crear un curso
 		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
 		//Sólo si está en modo borrar se podrá editar el course
@@ -156,5 +169,35 @@ public class CourseService {
 		result = this.recyclerService.save(recyclerConnected);
 
 		Assert.notNull(result);
+	}
+
+	//	RECONSTRUCTOR
+	public Course reconstruct(final Course course, final BindingResult bindingResult) {
+		Course result;
+		Course courseBd;
+
+		if (course.getId() == 0) {
+			Collection<Lesson> lessons;
+			Collection<Material> materials;
+			result = course;
+
+			lessons = new ArrayList<Lesson>();
+			materials = new ArrayList<Material>();
+
+			result.setLessons(lessons);
+			result.setMaterials(materials);
+		}
+
+		else {
+			courseBd = this.courseRepository.findOne(course.getId());
+			course.setId(courseBd.getId());
+			course.setVersion(courseBd.getVersion());
+			course.setLessons(courseBd.getLessons());
+			course.setMaterials(courseBd.getMaterials());
+
+			result = course;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
 	}
 }

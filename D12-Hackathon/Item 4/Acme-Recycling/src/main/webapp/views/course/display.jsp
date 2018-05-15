@@ -43,7 +43,8 @@
 	</display:column>
 	</jstl:if>
 	
-	<display:column>
+	<spring:message code="course.information" var="titleHeader" />
+	<display:column title="${titleHeader}">
 
 	<B><spring:message code="course.title" />:</B>
 	<jstl:out value="${row.title}"></jstl:out>
@@ -51,6 +52,10 @@
 	<B><spring:message code="course.description" />:</B>
 	<jstl:out value="${row.description}"></jstl:out>
 	</p>
+	
+
+	
+	
 	<p>
 	<spring:message code="course.format.realisedMoment1" var="pattern"></spring:message>
 	<fmt:formatDate value="${row.realisedMoment}" pattern="${pattern}" var="newdatevar" />
@@ -80,8 +85,27 @@
 			</jstl:if>
 		</display:column>
 
-	</display:table>
+	<spring:message code="course.location" var="titleHeader" />
+	<display:column title="${titleHeader}">
 	
+	<p>
+	<B><spring:message code="course.location.name" />:</B>
+	<jstl:out value="${row.location.name}"></jstl:out>
+	</p>
+	
+	<p>
+	<B><spring:message code="course.location.longitude" />:</B>
+	<jstl:out value="${row.location.longitude}"></jstl:out>
+	</p>
+	
+	<p>
+	<B><spring:message code="course.location.latitude" />:</B>
+	<jstl:out value="${row.location.latitude}"></jstl:out>
+	</p>
+	
+	</display:column>
+	
+	</display:table>
 	
 	<h2><spring:message code="course.lessons" /></h2>	
 	<display:table name="lessons" id="row" class="displaytag">

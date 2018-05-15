@@ -1,6 +1,7 @@
 
 package controllers.recycler;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,7 @@ public class OpinionRecyclerController extends AbstractController {
 		Recycler recyclerPrincipal;
 
 		recyclerPrincipal = this.recyclerService.findByPrincipal();
-		myOpinions = this.opinionService.findOpinableCourseByActor(recyclerPrincipal.getId());
+		myOpinions = new ArrayList<Opinion>(this.opinionService.findOpinableCourseByActor(recyclerPrincipal.getId()));
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);
@@ -99,6 +100,7 @@ public class OpinionRecyclerController extends AbstractController {
 		opinionForm.setOpinableItem(true);
 
 		result = this.createEditModelAndView(opinionForm);
+		result.addObject("showItem", true);
 
 		return result;
 	}
@@ -117,6 +119,7 @@ public class OpinionRecyclerController extends AbstractController {
 		opinionForm.setOpinableItem(false);
 
 		result = this.createEditModelAndView(opinionForm);
+		result.addObject("showItem", false);
 
 		return result;
 	}
@@ -188,12 +191,14 @@ public class OpinionRecyclerController extends AbstractController {
 			items = this.itemService.findAll();
 			result.addObject("items", items);
 			result.addObject("selectItems", true);
+			result.addObject("showItem", true);
 		} else {
 			Collection<Course> courses;
 
 			courses = this.courseService.findAll();
 			result.addObject("courses", courses);
 			result.addObject("selectCourses", true);
+			result.addObject("showItem", false);
 		}
 
 		result.addObject("opinionForm", opinionForm);

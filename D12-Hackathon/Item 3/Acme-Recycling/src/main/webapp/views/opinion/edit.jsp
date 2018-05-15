@@ -31,8 +31,12 @@
 	<br />
 	<acme:textbox code="opinion.comment" path="opinion.comment" />
 	<br />
+	<acme:textbox code="opinion.photo" path="opinion.photo" />
+	<br />
+	<acme:textbox code="opinion.caption" path="opinion.caption" />
+	<br />
 
-	<jstl:if test="${opinableItem}">
+	<jstl:if test="${showItem}">
 		<acme:select items="${products}" itemLabel="title"
 			code="opinion.product" path="opinableId" />
 		<br />
@@ -40,7 +44,7 @@
 	</jstl:if>
 
 
-	<jstl:if test="${!opinableItem}">
+	<jstl:if test="${!showItem}">
 		<acme:select items="${courses}" itemLabel="title"
 			code="opinion.course" path="opinableId" />
 		<br />

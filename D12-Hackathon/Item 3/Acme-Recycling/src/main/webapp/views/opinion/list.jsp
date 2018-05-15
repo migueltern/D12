@@ -27,16 +27,21 @@
 
 	<!--  EDIT -->
 
-	<%-- <security:authorize access="hasRole('RECYCLER')">
+	<security:authorize access="hasRole('RECYCLER')">
 		<spring:message code="opinion.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="false">
 
 			<spring:url value="opinion/recycler/edit.do" var="editURL">
-				<spring:param name="opinableId" value="${row.id}" />
+				<spring:param name="opinionId" value="${row.id}" />
 			</spring:url>
 			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
 		</display:column>
-	</security:authorize> --%>
+	</security:authorize>
+	
+	<spring:message code="opinion.comment" var="commentHeader" />
+	<display:column property="comment" title="${commentHeader}" sortable="true" />
+	
+	
 	
 	<!-- ATRIBUTOS -->
 

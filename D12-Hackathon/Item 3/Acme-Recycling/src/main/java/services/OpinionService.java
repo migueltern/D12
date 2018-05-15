@@ -74,7 +74,6 @@ public class OpinionService {
 
 	public Opinion save(final Opinion opinion) {
 		final Opinion result;
-		Actor actorPrincipal;
 
 		Assert.notNull(opinion);
 
@@ -87,9 +86,6 @@ public class OpinionService {
 		}
 
 		result = this.opinionRepository.save(opinion);
-		//Se le añade esa opinion instrumentada al actor logueado
-		actorPrincipal = this.actorService.findPrincipal();
-		actorPrincipal.getOpinions().add(result);
 
 		return result;
 	}

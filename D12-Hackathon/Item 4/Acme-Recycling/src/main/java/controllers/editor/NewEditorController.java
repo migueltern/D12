@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.EditorService;
 import services.NewService;
 import controllers.AbstractController;
+import domain.Editor;
 import domain.New;
 
 @Controller
@@ -23,7 +25,10 @@ public class NewEditorController extends AbstractController {
 	//Services--------------------------------------------
 
 	@Autowired
-	private NewService	newService;
+	private NewService		newService;
+
+	@Autowired
+	private EditorService	editorService;
 
 
 	//Constructor--------------------------------------------------------
@@ -38,7 +43,7 @@ public class NewEditorController extends AbstractController {
 		ModelAndView result;
 		Collection<New> news;
 
-		news = this.newService.findAll();
+		news = this.editorService.findAllNewByEditor();
 
 		result = new ModelAndView("new/list");
 		result.addObject("new", news);
@@ -68,16 +73,19 @@ public class NewEditorController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int newId) {
 		ModelAndView result;
 		New New;
+		Editor principal;
+
+		principal = this.editorService.findByPrincipal();
 
 		New = this.newService.findOne(newId);
-		Assert.notNull(New);
 
+		Assert.notNull(New);
+		Assert.isTrue(principal.getNews().contains(New), "This new is  not yours");
 		result = this.createEditModelAndView(New);
 
 		return result;
 
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(New New, final BindingResult bindingResult) {
 		ModelAndView result;

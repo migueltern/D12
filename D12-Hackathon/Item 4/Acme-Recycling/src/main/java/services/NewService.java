@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 
 import repositories.NewRepository;
 import domain.Comment;
+import domain.Editor;
 import domain.New;
 
 @Service
@@ -25,6 +26,9 @@ public class NewService {
 	private NewRepository	newRepository;
 
 	// Supporting services ----------------------------------------------------
+
+	@Autowired
+	private EditorService	editorService;
 
 	//Importar la que pertenece a Spring
 	@Autowired
@@ -57,11 +61,16 @@ public class NewService {
 		New result;
 		Assert.notNull(New);
 		Date createdMoment;
+		Editor principal;
+
+		principal = this.editorService.findByPrincipal();
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		New.setCreationDate(createdMoment);
 
 		result = this.newRepository.save(New);
+
+		principal.getNews().add(result);
 
 		return result;
 	}

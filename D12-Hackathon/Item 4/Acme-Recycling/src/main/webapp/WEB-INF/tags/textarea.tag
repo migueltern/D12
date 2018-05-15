@@ -25,6 +25,7 @@
 <%@ attribute name="path" required="true" %>
 <%@ attribute name="code" required="true" %>
 <%@ attribute name="readonly" required="false" %>
+<%@ attribute name="placeHolder" required="false"%>
 
 <jstl:if test="${readonly == null}">
 	<jstl:set var="readonly" value="false" />
@@ -32,10 +33,19 @@
 
 <%-- Definition --%>
 
-<div class="form-group">
+
+<table id="miestilo" >
+	<tr> 
+	<th>
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>
-	<form:textarea path="${path}" readonly="${readonly}" />
+	</th>
+	<th>
+	<form:textarea path="${path}" readonly="${readonly}" placeHolder="${placeHolder }" />
+	
 	<form:errors path="${path}" cssClass="error" />
-</div>
+	</th>
+	</tr>
+	</table>
+

@@ -30,7 +30,7 @@
 	<!--  EDIT -->
 	
 	<security:authorize access="hasRole('EDITOR')">
-	<jstl:if test="${showButtonEdit}">
+	
 		<spring:message code="new.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
 			
@@ -38,9 +38,9 @@
 					<spring:param name="newId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="new.edit" /></a>
-			<
+		
 		</display:column>
-	</jstl:if>
+
 	</security:authorize>
 
 	

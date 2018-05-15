@@ -28,6 +28,7 @@ public class EditorService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private EditorRepository	editorRepository;
+
 	@Autowired
 	private Validator			validator;
 
@@ -185,5 +186,15 @@ public class EditorService {
 
 	public void flush() {
 		this.editorRepository.flush();
+	}
+
+	public Collection<New> findAllNewByEditor() {
+		Collection<New> result;
+		Editor principal;
+
+		principal = this.findByPrincipal();
+		result = this.editorRepository.findAllNewByEditor(principal.getId());
+
+		return result;
 	}
 }

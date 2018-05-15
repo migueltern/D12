@@ -21,22 +21,22 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="new">
-
+<form:hidden path="id" />
 	
 <!-- ATRIBUTOS -->
 
 <fieldset>
-<B><acme:textbox code="new.title" path="title"/></B>
-	<br />
-	<B><acme:textbox code="new.content" path="content"/></B>
-	<br />
-	<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true"/></B>
-	<br />
 	
+	
+<B><acme:textarea code="new.title" path="title"/></B></th>
 
-	
-	<B><acme:textbox code="new.pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
+
+<B><acme:textarea code="new.content" path="content"/></B>
+<B><acme:textarea code="new.pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
+</br>
+<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true"/></B>
 	</fieldset>
+
 	<br>
 <!-- BOTONES -->
 

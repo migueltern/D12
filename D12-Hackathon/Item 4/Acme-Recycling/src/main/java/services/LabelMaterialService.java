@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.LabelMaterialRepository;
 import domain.LabelMaterial;
@@ -25,6 +27,9 @@ public class LabelMaterialService {
 
 	@Autowired
 	private ManagerService			managerService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	// Constructors -----------------------------------------------------------
@@ -96,5 +101,32 @@ public class LabelMaterialService {
 		Assert.isTrue(labelMaterial.getByDefault() == false);
 
 		this.labelMaterialRepository.delete(labelMaterial);
+	}
+
+	public Collection<LabelMaterial> labelMaterialsOfAllMaterials() {
+		Collection<LabelMaterial> labelMaterialsOfAllMaterials;
+
+		labelMaterialsOfAllMaterials = this.labelMaterialRepository.labelMaterialsOfAllMaterials();
+		return labelMaterialsOfAllMaterials;
+	}
+
+	//	RECONSTRUCTOR
+
+	public LabelMaterial reconstruct(final LabelMaterial labelMaterial, final BindingResult bindingResult) {
+		LabelMaterial result;
+		LabelMaterial labelMaterialBD;
+		if (labelMaterial.getId() == 0)
+			result = labelMaterial;
+		else {
+			labelMaterialBD = this.labelMaterialRepository.findOne(labelMaterial.getId());
+			labelMaterial.setId(labelMaterialBD.getId());
+			labelMaterial.setVersion(labelMaterialBD.getVersion());
+			labelMaterial.setName(labelMaterialBD.getName());
+			labelMaterial.setByDefault(labelMaterialBD.getByDefault());
+
+			result = labelMaterial;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
 	}
 }

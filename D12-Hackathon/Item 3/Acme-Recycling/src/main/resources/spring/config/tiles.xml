@@ -31,11 +31,8 @@
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/cleanPoint/tiles.xml</value>
 		<value>/views/message/tiles.xml</value>
-		
-	<!-- 	
-		
-		<value>/views/course/tiles.xml</value> -->
-		
+				
+		<value>/views/course/tiles.xml</value>	
 		<value>/views/carrier/tiles.xml</value>
 		<value>/views/manager/tiles.xml</value>	
 		<value>/views/editor/tiles.xml</value>

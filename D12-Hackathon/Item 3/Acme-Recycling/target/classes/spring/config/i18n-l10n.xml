@@ -32,9 +32,7 @@
 		<value>/views/cleanPoint/messages</value>
 		<value>/views/message/messages</value>
 		
-<!-- 		
-		
-		<value>/views/course/messages</value> -->
+		<value>/views/course/messages</value> 
 		<value>/views/carrier/messages</value>
 		<value>/views/manager/messages</value>
 		<value>/views/editor/messages</value>

@@ -57,6 +57,32 @@ public class CourseService {
 		return result;
 	}
 
+	public Course save(final Course course) {
+		Assert.notNull(course);
+		final Course result;
+
+		//Solo un buyer podrá crear un curso
+		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
+		//Sólo si está en modo borrar se podrá editar el course
+		Assert.isTrue(course.isDraftMode());
+		//Si está en modo final la fecha es obligatoria
+		if (!course.isDraftMode())
+			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
+
+		result = this.courseRepository.save(course);
+
+		return result;
+	}
+
+	public void delete(final Course course) {
+		Assert.notNull(course);
+		//Solo un buyer podrá eliminar un curso
+		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
+		//Sólo si está en modo borrar se podrá eliminar el course
+		Assert.isTrue(course.isDraftMode());
+		this.courseRepository.delete(course);
+	}
+
 	public Collection<Course> findAll() {
 		Collection<Course> result;
 		result = this.courseRepository.findAll();
@@ -68,19 +94,6 @@ public class CourseService {
 		Assert.isTrue(courseId != 0);
 		Course result;
 		result = this.courseRepository.findOne(courseId);
-		return result;
-	}
-
-	public Course save(final Course course) {
-		Assert.notNull(course);
-		final Course result;
-
-		//Si está en modo final la fecha es obligatoria
-		if (!course.isDraftMode())
-			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
-
-		result = this.courseRepository.save(course);
-
 		return result;
 	}
 

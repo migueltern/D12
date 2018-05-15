@@ -49,7 +49,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator.configurationSystem" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="configurationSystem/admin/tabooWord/list.do?d-16544-p=1"><spring:message code="master.page.administrator.tabooWords" /></a></li>				
+					<li><a href="configurationSystem/admin/tabooWord/list.do?d-16544-p=1"><spring:message code="master.page.administrator.tabooWords" /></a></li>
+					<li><a href="configurationSystem/admin/edit.do"><spring:message code="master.page.administrator.configurationSystem.edit" /></a></li>								
 				</ul>
 			</li>
 			

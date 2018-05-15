@@ -21,18 +21,19 @@ public class ConfigurationSystemService {
 	private ConfigurationSystemRepository	configurationSystemRepository;
 
 	// Supporting services ----------------------------------------------------
-	
+
 	@Autowired
-	private AdminService	adminService;
+	private AdminService					adminService;
+
 
 	// Constructors -----------------------------------------------------------
-	
+
 	public ConfigurationSystemService() {
 		super();
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	
+
 	public Collection<ConfigurationSystem> findAll() {
 		Collection<ConfigurationSystem> result;
 
@@ -43,22 +44,19 @@ public class ConfigurationSystemService {
 		return result;
 	}
 
-	public ConfigurationSystem findOne(int configurationSystemId) {
-		
-		Assert.isTrue(configurationSystemId != 0);
-		
+	public ConfigurationSystem findOne() {
 		ConfigurationSystem res;
-		
-		res = this.configurationSystemRepository.findOne(configurationSystemId);
-		
+
+		res = this.findAll().iterator().next();
+		Assert.notNull(res);
 
 		return res;
 
 	}
 
-	public ConfigurationSystem save(ConfigurationSystem configurationSystem) {
+	public ConfigurationSystem save(final ConfigurationSystem configurationSystem) {
 		Assert.notNull(configurationSystem);
-		
+
 		this.adminService.checkPrincipal();
 
 		ConfigurationSystem result;
@@ -68,19 +66,17 @@ public class ConfigurationSystemService {
 		return result;
 	}
 
-
 	// Other business methods -------------------------------------------------
 	public void flush() {
 		this.configurationSystemRepository.flush();
 	}
-	
-	
-	public ConfigurationSystem findConfigurationSystem(){
-		
+
+	public ConfigurationSystem findConfigurationSystem() {
+
 		ConfigurationSystem result;
-		
+
 		result = this.configurationSystemRepository.findConfigurationSystem();
-		
+
 		return result;
 	}
 

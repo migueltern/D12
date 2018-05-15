@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -93,6 +94,7 @@ public class Item extends Opinable {
 
 	private LabelProduct	labelProduct;
 	private Recycler		recycler;
+	private Request			request;
 
 
 	@ManyToOne(optional = false)
@@ -115,6 +117,16 @@ public class Item extends Opinable {
 
 	public void setRecycler(final Recycler recycler) {
 		this.recycler = recycler;
+	}
+
+	@Valid
+	@OneToOne(optional = true)
+	public Request getRequest() {
+		return this.request;
+	}
+
+	public void setRequest(final Request request) {
+		this.request = request;
 	}
 
 }

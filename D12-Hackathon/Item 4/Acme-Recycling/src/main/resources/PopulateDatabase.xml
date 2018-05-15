@@ -1315,6 +1315,7 @@
 				<ref bean="opinion1" />
 			</list>
 		</property>
+		<property name="request" ref="request1" />
 	</bean>
 
 
@@ -1333,6 +1334,7 @@
 				<ref bean="opinion2" />
 			</list>
 		</property>
+		<property name="request" ref="request2" />
 	</bean>
 
 	<bean id="item3" class="domain.Item">
@@ -1350,6 +1352,7 @@
 				<ref bean="opinion3" />
 			</list>
 		</property>
+		<property name="request" ref="request3" />
 	</bean>
 
 	<bean id="item4" class="domain.Item">
@@ -1367,6 +1370,7 @@
 				<ref bean="opinion4" />
 			</list>
 		</property>
+		<property name="request" ref="request4" />
 	</bean>
 
 	<bean id="item5" class="domain.Item">
@@ -1384,6 +1388,7 @@
 				<ref bean="opinion5" />
 			</list>
 		</property>
+		<property name="request" ref="request5" />
 	</bean>
 
 

@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -8,9 +9,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.ConfigurationSystemRepository;
 import domain.ConfigurationSystem;
+import domain.TabooWord;
 
 @Service
 @Transactional
@@ -24,6 +28,10 @@ public class ConfigurationSystemService {
 
 	@Autowired
 	private AdminService					adminService;
+
+	//Importar la que pertenece a Spring
+	@Autowired
+	private Validator						validator;
 
 
 	// Constructors -----------------------------------------------------------
@@ -77,6 +85,28 @@ public class ConfigurationSystemService {
 
 		result = this.configurationSystemRepository.findConfigurationSystem();
 
+		return result;
+	}
+
+	//RECONSTRUCTOR----
+	public ConfigurationSystem reconstruct(final ConfigurationSystem conf, final BindingResult bindingResult) {
+		ConfigurationSystem result;
+		ConfigurationSystem confBD;
+		if (conf.getId() == 0) {
+
+			Collection<TabooWord> tabooWords;
+			tabooWords = new ArrayList<TabooWord>();
+			conf.setTabooWords(tabooWords);
+			result = conf;
+		} else {
+			confBD = this.configurationSystemRepository.findOne(conf.getId());
+			conf.setId(confBD.getId());
+			conf.setVersion(confBD.getVersion());
+			conf.setTabooWords(confBD.getTabooWords());
+
+			result = conf;
+		}
+		this.validator.validate(result, bindingResult);
 		return result;
 	}
 

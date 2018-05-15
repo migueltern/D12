@@ -3,8 +3,6 @@ package controllers.admin;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -73,8 +71,9 @@ public class ConfigurationSystemAdminController extends AbstractController {
 	//Saving-----------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final ConfigurationSystem configurationSystem, final BindingResult binding) {
+	public ModelAndView save(ConfigurationSystem configurationSystem, final BindingResult binding) {
 
+		configurationSystem = this.configurationSystemService.reconstruct(configurationSystem, binding);
 		ModelAndView result;
 
 		if (binding.hasErrors())

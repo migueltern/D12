@@ -9,6 +9,8 @@ item 6: pruebas de rendimiento
 item 7: pruebas de aceptación
 	a:	"My-Project-Tests.pdf", las pruebas de aceptacion con respecto a nuestro proyecto y los resultados del grupo asociado
 	b:	"My-Project-Bugs.pdf", errores intencionales que su grupo  inyecto
+	c:	“My-Partners-Tests.pdf”, pruebas aceptacion cliente
+	d:   	“My-Partners-Bugs.pdf”, bug cliente
 item 8:scrip creacion, .war y delete
 item 9: descripcion de A+
 item 10: informe de solucion de A+

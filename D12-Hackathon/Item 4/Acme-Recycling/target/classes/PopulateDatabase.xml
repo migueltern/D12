@@ -2027,36 +2027,47 @@
 		<property name="title" value="title 1" />
 		<property name="sumary" value="sumary of lesson 1" />
 		<property name="number" value="11" />
+		<property name="course" ref="course1" />
 	</bean>
 
 	<bean id="lesson2" class="domain.Lesson">
 		<property name="title" value="title 2" />
 		<property name="sumary" value="sumary of lesson 2" />
 		<property name="number" value="12" />
+		<property name="course" ref="course2" />
+		
 	</bean>
 
 	<bean id="lesson3" class="domain.Lesson">
 		<property name="title" value="title 3" />
 		<property name="sumary" value="sumary of lesson 3" />
 		<property name="number" value="13" />
+		<property name="course" ref="course3" />
+		
 	</bean>
 
 	<bean id="lesson4" class="domain.Lesson">
 		<property name="title" value="title 4" />
 		<property name="sumary" value="sumary of lesson 4" />
 		<property name="number" value="14" />
+		<property name="course" ref="course4" />
+
 	</bean>
 
 	<bean id="lesson5" class="domain.Lesson">
 		<property name="title" value="title 5" />
 		<property name="sumary" value="sumary of lesson 5" />
 		<property name="number" value="15" />
+		<property name="course" ref="course5" />
+	
 	</bean>
 
 	<bean id="lesson6" class="domain.Lesson">
 		<property name="title" value="title 6" />
 		<property name="sumary" value="sumary of lesson 6" />
 		<property name="number" value="16" />
+		<property name="course" ref="course1" />
+		
 	</bean>
 
 	<!-- Other domain beans come here -->

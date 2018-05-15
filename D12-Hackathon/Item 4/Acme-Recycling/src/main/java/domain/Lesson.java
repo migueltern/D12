@@ -4,6 +4,8 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -44,6 +46,21 @@ public class Lesson extends DomainEntity {
 
 	public void setNumber(final int number) {
 		this.number = number;
+	}
+
+
+	//relations
+	private Course	course;
+
+
+	@ManyToOne
+	@Valid
+	public Course getCourse() {
+		return this.course;
+	}
+
+	public void setCourse(final Course course) {
+		this.course = course;
 	}
 
 }

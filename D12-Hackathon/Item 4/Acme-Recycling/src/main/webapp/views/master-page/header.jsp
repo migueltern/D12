@@ -8,10 +8,15 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div>
 	<img src="${bannerURL}" alt="Acme-Recycling Co., Inc." />
@@ -232,7 +237,7 @@
 <div>
 	<a href="?language=en">en</a> | <a href="?language=es">es</a>
 </div>
-<%-- <br>
+<br>
 <font size="6" color = "green" face="Georgia"><B><jstl:out value="${Name}"></jstl:out></B></font>
 
 <spring:message code="master.page.new" var="newLanguage" />
@@ -248,4 +253,4 @@
 		<br>
 		<i><jstl:out value="${SpanishWelcomeMessage}"></jstl:out></i>
 	</jstl:when>
-</jstl:choose> --%>
+</jstl:choose>

@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 
 import repositories.RequestRepository;
 import domain.CleanPoint;
+import domain.Item;
 import domain.Request;
 
 @Service
@@ -41,6 +42,7 @@ public class RequestService {
 		//No copiar la siguiente linea en el reconstruct
 		result = new Request();
 
+		result.setStatus("PENDING");
 		result.setCleanPoints(cleanPoints);
 
 		return result;
@@ -76,5 +78,21 @@ public class RequestService {
 		Assert.notNull(request);
 
 		this.requestRepository.delete(request);
+	}
+
+	public Collection<Item> findItemsNonRequest() {
+		Collection<Item> result;
+
+		result = this.requestRepository.findItemsNonRequest();
+
+		return result;
+	}
+
+	public Collection<Request> findByActorId(final int id) {
+		Collection<Request> result;
+
+		result = this.requestRepository.findByActorId(id);
+
+		return result;
 	}
 }

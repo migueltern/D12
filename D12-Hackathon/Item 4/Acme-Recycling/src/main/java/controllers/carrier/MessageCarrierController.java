@@ -114,14 +114,14 @@ public class MessageCarrierController extends AbstractController{
 	public ModelAndView send(@ModelAttribute("m") Message m, BindingResult bindingResult) {
 		ModelAndView result;
 		m = this.messageService.reconstruct(m, bindingResult);
+		Message messageSend;
 		
 		if (bindingResult.hasErrors())
 			result = this.createNewModelAndView(m);
 		else
 			try {
-				MessageFolder folderToReturn = m.getMessageFolder();
-				this.messageService.send(m);
-				result = new ModelAndView("redirect:list.do?messageFolderId=" + folderToReturn.getId());
+				messageSend =this.messageService.send(m);
+				result = new ModelAndView("redirect:display.do?messageId=" + messageSend.getId());
 			} catch (Throwable oops) {
 
 				result = this.createNewModelAndView(m, "message.commit.error");

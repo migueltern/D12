@@ -73,16 +73,15 @@ public class MessageService {
 		Actor principal;
 		Actor sender;
 		Actor recipient;
-		Collection<MessageFolder> messageFolders;
 		
 		principal = this.actorService.findPrincipal();
-		messageFolders = this.messageFolderService.findMessageFolderByActor(principal.getId());
+		
 		result = this.messageRepository.findOne(messageId);
 		sender = result.getSender();
 		recipient = result.getRecipient();
 		
 		
-		Assert.isTrue((principal.equals(sender) || principal.equals(recipient)) && messageFolders.contains(result.getMessageFolder()));
+		Assert.isTrue((principal.equals(sender) || principal.equals(recipient)));
 		
 		return result;
 		

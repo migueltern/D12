@@ -23,6 +23,9 @@
 			<%-- </jstl:if> --%>
 			</jstl:if>
 			
+			<acme:textbox code="message.moment" path="moment" readonly="true"/>
+			<br/>
+			
  			<form:label path="priority">
 				<spring:message code="message.priority" />:
 			</form:label>

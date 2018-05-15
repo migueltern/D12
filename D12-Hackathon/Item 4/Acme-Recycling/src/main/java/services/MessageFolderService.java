@@ -146,6 +146,8 @@ public class MessageFolderService {
 			
 			MessageFolder inBox;
 			MessageFolder outBox;
+			MessageFolder spamBox;
+			MessageFolder notificationBox;
 			MessageFolder trashBox;
 			Collection<MessageFolder> result;
 			
@@ -153,29 +155,41 @@ public class MessageFolderService {
 			inBox = new MessageFolder();
 			outBox = new MessageFolder();
 			trashBox = new MessageFolder();
+			spamBox = new MessageFolder();
+			notificationBox = new MessageFolder();
 			result = new ArrayList<>();
 			
 			inBox.setName("In box");
 			outBox.setName("Out box");
 			trashBox.setName("Trash box");
+			spamBox.setName("Spam box");
+			notificationBox.setName("Notification box");
 			
 			inBox.setActor(actor);
 			outBox.setActor(actor);
 			trashBox.setActor(actor);
+			spamBox.setActor(actor);
+			notificationBox.setActor(actor);
 
 			
 			inBox.setModifiable(false);
 			outBox.setModifiable(false);
 			trashBox.setModifiable(false);
+			spamBox.setModifiable(false);
+			notificationBox.setModifiable(false);
 			
 					
 			this.save(inBox);
 			this.save(outBox);
 			this.save(trashBox);
+			this.save(spamBox);
+			this.save(notificationBox);
 			
 			result.add(inBox);
 			result.add(outBox);
 			result.add(trashBox);
+			result.add(spamBox);
+			result.add(notificationBox);
 			
 			return result;
 			

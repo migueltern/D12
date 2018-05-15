@@ -102,7 +102,8 @@ public class Request extends DomainEntity {
 		this.item = item;
 	}
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
+	@Valid
 	public Carrier getCarrier() {
 		return this.carrier;
 	}

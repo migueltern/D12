@@ -23,22 +23,26 @@
 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="requests" requestURI="${requestURI}" id="row">
+	name="items" requestURI="${requestURI}" id="row">
 
 	<!--  EDIT -->
 
-<%-- 	<security:authorize access="hasRole('RECYCLER')">
-		<spring:message code="request.edit" var="Edit" />
+ 	<security:authorize access="hasRole('MANAGER')">
+		<spring:message code="request.request" var="Edit" />
 		<display:column title="${Edit}" sortable="false">
 
-			<spring:url value="request/recycler/edit.do" var="editURL">
-				<spring:param name="requestId" value="${row.id}" />
+			<spring:url value="request/manager/create.do" var="editURL">
+				<spring:param name="itemId" value="${row.id}" />
 			</spring:url>
-			<a href="${editURL}"><spring:message code="request.edit" /></a>
+			<a href="${editURL}"><spring:message code="request.request" /></a>
 		</display:column>
-	</security:authorize> --%>
+	</security:authorize>
 	
 	<!-- ATRIBUTOS -->
+	
+	<spring:message code="request.title" var="titleHeader" />
+	<display:column property="title" title="${titleHeader}" sortable="true" />
+	
 
 	
 

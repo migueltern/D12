@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.RequestRepository;
 import domain.CleanPoint;
@@ -24,6 +26,12 @@ public class RequestService {
 	@Autowired
 	private RequestRepository	requestRepository;
 
+	@Autowired
+	private ItemService			itemService;
+
+	@Autowired
+	private Validator			validator;
+
 
 	// Supporting services ----------------------------------------------------
 
@@ -34,15 +42,19 @@ public class RequestService {
 
 	// Simple CRUD methods ----------------------------------------------------
 
-	public Request create() {
+	public Request create(final int itemId) {
 		Request result;
 		List<CleanPoint> cleanPoints;
+		Item item;
 
 		cleanPoints = new ArrayList<CleanPoint>();
 
 		//No copiar la siguiente linea en el reconstruct
 		result = new Request();
+		item = this.itemService.findOne(itemId);
+		Assert.notNull(item, "item is null");
 
+		result.setItem(item);
 		result.setCode(this.generatedTicker());
 		result.setStatus("PENDING");
 		result.setCleanPoints(cleanPoints);
@@ -147,5 +159,41 @@ public class RequestService {
 		ticker = cadenaAleatoria2 + ticker + cadenaAleatoria;
 
 		return ticker;
+	}
+
+	public Request reconstruct(final Request request, final BindingResult binding) {
+		final Request result;
+		final Request requestBD;
+
+		if (request.getId() == 0) {
+
+			request.setCode(this.generatedTicker());
+			request.setStatus("PENDING");
+
+			result = request;
+		} else {
+			requestBD = this.findOne(request.getId());
+			request.setCode(requestBD.getCode());
+			//El status no se pone el de bd porque se puede cambiar
+
+			result = request;
+		}
+		this.validator.validate(result, binding);
+		return result;
+	}
+
+	public Request checkCreateRequest(final Request request) {
+		Assert.notNull(request);
+		if (request.getCarrier() != null) {
+			Assert.isTrue(request.getCleanPoints().isEmpty(), "if you select a carrier,you can not select clean points");
+			//Si se ha seleccionado un carrier se pone el status a IN COLLECTION
+			request.setStatus("IN COLLECTION");
+		} else {
+			Assert.isTrue(!request.getCleanPoints().isEmpty(), "if you dont select a carrier, you have to select clean points");
+			//Si se ha seleccionado puntos limpios se pone el status a CLEAN POINT
+			request.setStatus("CLEAN POINT");
+		}
+
+		return request;
 	}
 }

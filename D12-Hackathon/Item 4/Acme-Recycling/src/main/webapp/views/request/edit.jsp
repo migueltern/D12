@@ -25,13 +25,13 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="code" />
-	<form:hidden path="status" />
+<%-- 	<form:hidden path="code" />
+	<form:hidden path="status" /> --%>
 	<form:hidden path="item" />
 
-	<acme:textbox code="title" path="title" />
+	<acme:textbox code="request.title" path="title" />
 	<br />
-	<acme:textbox code="observation" path="observation" />
+	<acme:textbox code="request.observation" path="observation" />
 	<br />
 	<acme:select items="${carriers}" itemLabel="name"
 		code="request.carrier" path="carrier" />
@@ -44,8 +44,8 @@
 
 	<input type="submit" name="save"
 		value="<spring:message code="request.save"/>" />&nbsp;
->
-		<acme:cancel url="request/manager/myListOpinionCourse.do?d-16544-p=1"
+		
+		<acme:cancel url="request/manager/listItemsNonRequest.do?d-16544-p=1"
 		code="request.cancel" />
 </form:form>
 

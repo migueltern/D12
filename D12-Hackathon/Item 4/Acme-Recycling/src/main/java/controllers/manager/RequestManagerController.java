@@ -1,9 +1,8 @@
 
 package controllers.manager;
 
+import java.util.ArrayList;
 import java.util.Collection;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,7 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CarrierService;
@@ -83,11 +83,11 @@ public class RequestManagerController extends AbstractController {
 	// Create Request-----------------------------------------------------------------
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(@RequestParam final int itemId) {
 		final ModelAndView result;
 		final Request request;
 
-		request = this.requestService.create();
+		request = this.requestService.create(itemId);
 		result = this.createEditModelAndView(request);
 
 		return result;
@@ -95,22 +95,36 @@ public class RequestManagerController extends AbstractController {
 
 	//Save Request ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Request request, final BindingResult binding) {
+	public ModelAndView save(Request request, final BindingResult binding) {
 		ModelAndView result;
 
-		//opinionForm = this.opinionService.reconstruct(opinionForm, binding);
+		//Si la lista de cleanPoint es null la ponemos vacia para que no de problemas en los checkeos que se realiza del request en el reconstruct
+		if (request.getCleanPoints() == null)
+			request.setCleanPoints(new ArrayList<CleanPoint>());
+		//Se elimina de la lista el null por si se ha seleccionado en el formulario la opcion de " ------ " ademas de otros puntos limpios
+		if (request.getCleanPoints().contains(null))
+			request.getCleanPoints().remove(null);
+
+		request = this.requestService.reconstruct(request, binding);
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(request);
 		else
 			try {
+				//Devuelve el request con el status cambiado en funcion de tenga carrier o punto limpio
+				request = this.requestService.checkCreateRequest(request);
+
 				this.requestService.save(request);
 				result = new ModelAndView("redirect:listMyRequest.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(request, "request.commit.error");
+				if (oops.getMessage().equals("if you select a carrier,you can not select clean points"))
+					result = this.createEditModelAndView(request, "request.dontSelectCleanPoint.error");
+				else if (oops.getMessage().equals("if you dont select a carrier, you have to select clean points"))
+					result = this.createEditModelAndView(request, "request.dontSelectCarrier.error");
+				else
+					result = this.createEditModelAndView(request, "request.commit.error");
 			}
 		return result;
 	}
-
 	protected ModelAndView createEditModelAndView(final Request request) {
 		Assert.notNull(request);
 		ModelAndView result;

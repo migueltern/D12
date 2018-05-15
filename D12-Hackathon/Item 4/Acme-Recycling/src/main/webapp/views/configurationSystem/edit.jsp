@@ -24,6 +24,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="tabooWords" />
 	
 	<B><acme:textbox code="configurationSystem.name" path="name"/></B>
 	<br />

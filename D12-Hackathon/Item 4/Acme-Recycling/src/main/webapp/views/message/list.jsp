@@ -21,14 +21,14 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<security:authorize access="hasRole('USER')">
+<security:authorize access="hasRole('RECYCLER')">
 <script type="text/javascript">
 	function confirmDelete(messageId, messageFolderId) {
 		confirm=confirm('<spring:message code="message.confirm.delete"/>');
 		if (confirm)
-		  window.location.href ="message/user/delete.do?messageId=" + messageId;
+		  window.location.href ="message/recycler/delete.do?messageId=" + messageId;
 		  else
-			  window.location.href ="message/user/list.do?messageFolderId=" + messageFolderId;
+			  window.location.href ="message/recycler/list.do?messageFolderId=" + messageFolderId;
 	}
 </script>
 </security:authorize>

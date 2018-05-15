@@ -1,18 +1,22 @@
 
 package controllers.buyer;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BuyerService;
 import services.CourseService;
+import services.LessonService;
 import controllers.AbstractController;
 import domain.Course;
+import domain.Lesson;
 
 @Controller
 @RequestMapping("/course/buyer")
@@ -23,12 +27,35 @@ public class CourseBuyerController extends AbstractController {
 	private CourseService	courseService;
 	@Autowired
 	private BuyerService	buyerService;
+	@Autowired
+	private LessonService	lessonService;
 
 
 	//Constructor--------------------------------------------------------
 
 	public CourseBuyerController() {
 		super();
+	}
+
+	//Display-----------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView displayCourse(@RequestParam final int courseId) {
+		final ModelAndView result;
+		Course course = new Course();
+		Collection<Lesson> lessons;
+
+		course = this.courseService.findOne(courseId);
+		lessons = new ArrayList<>();
+
+		lessons = this.lessonService.findLessonsByCourseId(courseId);
+
+		result = new ModelAndView("course/display");
+		result.addObject("course", course);
+		result.addObject("lessons", lessons);
+		//result.addObject("advertisementrandom", advertisement);
+		result.addObject("requestURI", "course/buyer/display.do");
+
+		return result;
 	}
 
 	//Listing-----------------------------------------------------------------

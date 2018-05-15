@@ -84,8 +84,15 @@
 	</display:column>
 	</security:authorize> --%>
 
-	<!-- ATRIBUTOS -->
 
+	<spring:message code="course.display" var="Display" />
+		<display:column title="${Display}" sortable="true">
+			<spring:url value="course/buyer/display.do" var="editURL">
+				<spring:param name="courseId" value="${row.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="course.display" /></a>
+		</display:column>
+	<!-- ATRIBUTOS -->
 	
 	<spring:message code="course.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="true" />

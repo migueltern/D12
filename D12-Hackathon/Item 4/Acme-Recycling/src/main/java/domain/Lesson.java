@@ -17,7 +17,7 @@ public class Lesson extends DomainEntity {
 	// Attributes -------------------------------------------------------------
 
 	private String	title;
-	private String	sumary;
+	private String	summary;
 	private int		number;
 
 
@@ -32,12 +32,12 @@ public class Lesson extends DomainEntity {
 
 	@NotBlank
 	@Size(min = 10, max = 50)
-	public String getSumary() {
-		return this.sumary;
+	public String getSummary() {
+		return this.summary;
 	}
 
-	public void setSumary(final String sumary) {
-		this.sumary = sumary;
+	public void setSummary(final String summary) {
+		this.summary = summary;
 	}
 
 	public int getNumber() {

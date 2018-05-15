@@ -1,0 +1,16 @@
+item 1: requesitos del proyecto.
+item 2: costos del proyecto
+item 3: modelo conceptual y modelo uml
+item 4: proyecto de eclipse/ maven
+item 5: conjunto de pruebas funcionales(un listado con al menos 10 pruebas) los demas uno positivo y otro negativo		
+item 6: pruebas de rendimiento
+	a: 	pruebas jmeter por caso de uso
+	b:	informe del rendimiento del sistema
+item 7: pruebas de aceptación
+	a:	"My-Project-Tests.pdf", las pruebas de aceptacion con respecto a nuestro proyecto y los resultados del grupo asociado
+	b:	"My-Project-Bugs.pdf", errores intencionales que su grupo  inyecto
+item 8:scrip creacion, .war y delete
+item 9: descripcion de A+
+item 10: informe de solucion de A+
+item 11: projecto con A+ implementado
+item 12: Un documento de las cosas buenas y de las malas

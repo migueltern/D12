@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * security.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    ">
+
+	<!-- Security infrastructure -->
+
+	<bean id="loginService" class="security.LoginService" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- Access control -->
+
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/profile/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
+			
+		<security:intercept-url pattern="/profile/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/recycler/**" access="permitAll" />
+		
+		<security:intercept-url pattern="/profile/buyer/**" access="hasRole('BUYER')"/>
+		<security:intercept-url pattern="/buyer/**" access="permitAll" />
+		
+		<security:intercept-url pattern="/profile/carrier/**" access="hasRole('CARRIER')"/>
+		<security:intercept-url pattern="/profile/manager/**" access="hasRole('MANAGER')"/>
+		<security:intercept-url pattern="/profile/editor/**" access="hasRole('EDITOR')"/>
+		<security:intercept-url pattern="/carrier/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/manager/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/editor/admin/**" access="hasRole('ADMIN')" />
+
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
+		<security:intercept-url pattern="/images/**" access="permitAll" /> 
+		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
+		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+		<security:intercept-url pattern="/security/login.do" access="permitAll"/> 
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll"/> 
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
+		<security:intercept-url pattern="/welcome/legal.do" access="permitAll"/>
+		
+		<security:intercept-url pattern="/opinion/recycler/**" access="hasRole('RECYCLER')"/>
+		
+		<security:intercept-url pattern="/messageFolder/carrier/**" access="hasRole('CARRIER')"/>
+		<security:intercept-url pattern="/messageFolder/manager/**" access="hasRole('MANAGER')"/>
+		<security:intercept-url pattern="/messageFolder/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/messageFolder/editor/**" access="hasRole('EDITOR')"/>
+		<security:intercept-url pattern="/messageFolder/buyer/**" access="hasRole('BUYER')"/>
+		<security:intercept-url pattern="/messageFolder/admin/**" access="hasRole('ADMIN')"/>
+		
+		<security:intercept-url pattern="/message/recycler/**" access="hasRole('RECYCLER')"/>
+		
+	<!-- 	BUYER-->
+		<security:intercept-url pattern="/course/buyer/**" access="hasRole('BUYER')"/>
+		
+	<!-- 	ADMIN-->
+
+		<security:intercept-url pattern="/configurationSystem/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/tabooWord/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/cleanPoint/admin/**" access="hasRole('ADMIN')"/>
+		
+		
+	<!-- 	EDITOR -->
+		<security:intercept-url pattern="/new/editor/**" access="hasRole('EDITOR')"/>
+	
+	
+	<!-- 	RECYCLER -->
+		<security:intercept-url pattern="/comment/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/new/recycler/**" access="hasRole('RECYCLER')"/>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+
+		<security:form-login 
+			login-page="/security/login.do"
+			password-parameter="password" 
+			username-parameter="username"
+			authentication-failure-url="/security/loginFailure.do" />
+
+		<security:logout 
+			logout-success-url="/" 
+			invalidate-session="true" />
+	</security:http>
+
+</beans>

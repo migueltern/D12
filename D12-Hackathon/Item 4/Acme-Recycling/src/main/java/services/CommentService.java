@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -100,18 +101,56 @@ public class CommentService {
 		Comment result;
 		Comment CommentBd;
 
-		if (comment.getId() == 0)
+		if (comment.getId() == 0) {
+			Collection<Comment> replys;
+			Date moment;
+
 			result = comment;
+			moment = new Date(System.currentTimeMillis() - 1000);
+			replys = new ArrayList<Comment>();
+
+			result.setReplys(replys);
+			result.setCreatedMoment(moment);
+		}
+
 		else {
 			CommentBd = this.commentRepository.findOne(comment.getId());
 			comment.setId(CommentBd.getId());
 			comment.setVersion(CommentBd.getVersion());
 			comment.setCreatedMoment(CommentBd.getCreatedMoment());
+			comment.setReplys(CommentBd.getReplys());
 
 			result = comment;
 		}
 		this.validator.validate(result, bindingResult);
 		return result;
 	}
+	//	public Comment reconstruct(final Comment comment, final BindingResult binding) {
+	//		Comment result;
+	//		Comment commentBD;
+	//		User userPrincipal;
+	//		if (comment.getId() == 0) {
+	//			Collection<Comment> replys;
+	//			Date moment;
+	//
+	//			result = comment;
+	//			moment = new Date(System.currentTimeMillis() - 1000);
+	//			replys = new ArrayList<Comment>();
+	//			userPrincipal = this.userService.findByPrincipal();
+	//			result.setUser(userPrincipal);
+	//			result.setReplys(replys);
+	//			result.setWrittenMoment(moment);
+	//		} else {
+	//			commentBD = this.commentRepository.findOne(comment.getId());
+	//			comment.setId(commentBD.getId());
+	//			comment.setVersion(commentBD.getVersion());
+	//			comment.setUser(commentBD.getUser());
+	//			comment.setReplys(commentBD.getReplys());
+	//			comment.setWrittenMoment(commentBD.getWrittenMoment());
+	//			result = comment;
+	//		}
+	//		this.validator.validate(result, binding);
+	//		return result;
+	//	}
 
 }

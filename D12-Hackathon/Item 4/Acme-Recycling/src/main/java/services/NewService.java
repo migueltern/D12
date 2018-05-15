@@ -75,6 +75,19 @@ public class NewService {
 		return result;
 	}
 
+	public New saveA(final New New) {
+		New result;
+		Assert.notNull(New);
+		Date createdMoment;
+
+		createdMoment = new Date(System.currentTimeMillis() - 1000);
+		New.setCreationDate(createdMoment);
+
+		result = this.newRepository.save(New);
+
+		return result;
+	}
+
 	public Collection<New> findAll() {
 		Collection<New> result;
 

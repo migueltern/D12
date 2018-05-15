@@ -76,8 +76,8 @@ public class CommentRecyclerController extends AbstractController {
 				comment = this.commentService.save(comment);
 				New = this.newService.findOne(newId);
 				New.getComments().add(comment);
-				//Creamos un nuevo save para que el agent pueda salvar un periódico
-				this.newService.save(New);
+
+				this.newService.saveA(New);
 
 				result = new ModelAndView("redirect:/comment/recycler/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {

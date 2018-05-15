@@ -12,10 +12,12 @@ import domain.Opinion;
 @Repository
 public interface OpinionRepository extends JpaRepository<Opinion, Integer> {
 
-	@Query("select (select o from Item i where i.id=o.opinable.id) from Actor a join a.opinions o where a.id=?1")
+	//Las queries no se utilizan de momento
+	@Query("select o from Item i join i.opinion o where o.actor.id=?1")
 	Collection<Opinion> findOpinableItemByActor(int actorId);
 
-	@Query("select (select o from Course c where c.id=o.opinable.id) from Actor a join a.opinions o where a.id=?1")
+	//Las queries no se utilizan de momento
+	@Query("select o from Course c join c.opinion o where o.actor.id=?1")
 	Collection<Opinion> findOpinableCourseByActor(int actorId);
 
 }

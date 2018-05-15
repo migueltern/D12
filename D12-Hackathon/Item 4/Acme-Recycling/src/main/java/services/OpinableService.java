@@ -78,12 +78,18 @@ public class OpinableService {
 		Item item;
 
 		res = false;
-		item = (Item) opinion.getOpinable();
-		if (item != null)
-			res = true;
+		//Lo hago en bloque try porque si peta o devuelve null en el casting significa que es un course
+		try {
+			item = (Item) opinion.getOpinable();
+			if (item != null)
+				res = true;
+			else
+				res = false;
+		} catch (final Throwable oops) {
+			res = false;
+		}
 		return res;
 	}
-
 	public boolean isCourse(final Opinion opinion) {
 		boolean res;
 		Course course;

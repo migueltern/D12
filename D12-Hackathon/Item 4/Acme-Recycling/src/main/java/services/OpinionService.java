@@ -136,9 +136,11 @@ public class OpinionService {
 			opinion.setOpinable(course);
 		}
 
+		opinion.setActor(this.actorService.findPrincipal());
 		opinionForm.setOpinion(opinion);
 		this.validator.validate(opinionForm, bindingResult);
 
 		return opinionForm;
 	}
+
 }

@@ -1,7 +1,6 @@
 
 package controllers.recycler;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +76,7 @@ public class OpinionRecyclerController extends AbstractController {
 		Recycler recyclerPrincipal;
 
 		recyclerPrincipal = this.recyclerService.findByPrincipal();
-		myOpinions = new ArrayList<Opinion>(this.opinionService.findOpinableCourseByActor(recyclerPrincipal.getId()));
+		myOpinions = this.opinionService.findOpinableCourseByActor(recyclerPrincipal.getId());
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);

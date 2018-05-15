@@ -53,7 +53,7 @@ public class Request extends DomainEntity {
 		this.observation = observation;
 	}
 
-	@Pattern(regexp = "(PENDING)|(FINISHED)|(IN COLLECTION) | (CLEAN POINT) | (CANCELLED)")
+	@Pattern(regexp = "(PENDING)|(FINISHED)|(IN COLLECTION)|(CLEAN POINT)|(CANCELLED)")
 	public String getStatus() {
 		return this.status;
 	}

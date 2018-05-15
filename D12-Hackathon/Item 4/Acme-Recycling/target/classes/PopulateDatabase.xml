@@ -1880,7 +1880,7 @@
 		<property name="code" value="DG180131DF"></property>
 		<property name="title" value="title 1"></property>
 		<property name="observation" value="observation 1"></property>
-		<property name="status" value="FINISHED"></property>
+		<property name="status" value="CLEAN POINT"></property>
 		<property name="cleanPoints">
 			<list>
 				<ref bean="cleanPoint1" />
@@ -1895,7 +1895,7 @@
 		<property name="code" value="DG180231BB"></property>
 		<property name="title" value="title 2"></property>
 		<property name="observation" value="observation 2"></property>
-		<property name="status" value="FINISHED"></property>
+		<property name="status" value="CLEAN POINT"></property>
 		<property name="cleanPoints">
 			<list>
 				<ref bean="cleanPoint2" />
@@ -1926,7 +1926,7 @@
 		<property name="code" value="DG180431DD"></property>
 		<property name="title" value="title 4"></property>
 		<property name="observation" value="observation 4"></property>
-		<property name="status" value="FINISHED"></property>
+		<property name="status" value="IN COLLECTION"></property>
 		<property name="cleanPoints">
 			<list>
 
@@ -1940,7 +1940,7 @@
 		<property name="code" value="DG180131EE"></property>
 		<property name="title" value="title 5"></property>
 		<property name="observation" value="observation 5"></property>
-		<property name="status" value="FINISHED"></property>
+		<property name="status" value="PENDING"></property>
 		<property name="cleanPoints">
 			<list>
 

@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
@@ -20,12 +19,31 @@ public class ConfigurationSystem extends DomainEntity {
 
 	// Relationships---------------------------------------------------------------
 
-	private String				name;
-	private String				banner;
-	private Collection<String>	welcomeMessages;
-	private int					maxNumberFinder;
-	private int					cacheMaxTime;
+	private String	name;
+	private String	banner;
+	private String	englishWelcomeMessage;
+	private String	spanishWelcomeMessage;
+	private int		maxNumberFinder;
+	private int		cacheMaxTime;
 
+
+	@NotBlank
+	public String getEnglishWelcomeMessage() {
+		return this.englishWelcomeMessage;
+	}
+
+	public void setEnglishWelcomeMessage(final String englishWelcomeMessage) {
+		this.englishWelcomeMessage = englishWelcomeMessage;
+	}
+
+	@NotBlank
+	public String getSpanishWelcomeMessage() {
+		return this.spanishWelcomeMessage;
+	}
+
+	public void setSpanishWelcomeMessage(final String spanishWelcomeMessage) {
+		this.spanishWelcomeMessage = spanishWelcomeMessage;
+	}
 
 	@NotBlank
 	public String getName() {
@@ -42,15 +60,6 @@ public class ConfigurationSystem extends DomainEntity {
 
 	public void setBanner(final String banner) {
 		this.banner = banner;
-	}
-	@NotNull
-	@ElementCollection
-	public Collection<String> getWelcomeMessages() {
-		return this.welcomeMessages;
-	}
-
-	public void setWelcomeMessages(final Collection<String> welcomeMessages) {
-		this.welcomeMessages = welcomeMessages;
 	}
 
 	@Range(min = 1, max = 100)

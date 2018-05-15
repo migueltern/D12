@@ -1696,14 +1696,11 @@
 
 	<bean id="configurationSystem" class="domain.ConfigurationSystem">
 		<property name="name" value="Acme-Recycling"></property>
+		<property name="englishWelcomeMessage" value="Welcome to Acme-Recycling"></property>
+		<property name="spanishWelcomeMessage" value="Bienvenido a Acme-Recycling"></property>
 		<property name="banner"
 			value="http://www.masciudadania.es/wp-content/uploads/2016/04/z-Banner.jpg"></property>
-		<property name="welcomeMessages">
-			<list>
-				<value>welcomeMessage1></value>
-				<value>welcomeMessage1></value>
-			</list>
-		</property>
+		
 		<property name="maxNumberFinder" value="40"/>
 		<property name="cacheMaxTime" value="2"/>
 		

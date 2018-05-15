@@ -33,26 +33,50 @@
 </script>
 </security:authorize>
 
-<security:authorize access="hasRole('CUSTOMER')">
+<security:authorize access="hasRole('EDITOR')">
 <script type="text/javascript">
 	function confirmDelete(messageId, messageFolderId) {
 		confirm=confirm('<spring:message code="message.confirm.delete"/>');
 		if (confirm)
-		  window.location.href ="message/customer/delete.do?messageId=" + messageId;
+		  window.location.href ="message/editor/delete.do?messageId=" + messageId;
 		  else
-			  window.location.href ="message/customer/list.do?messageFolderId=" + messageFolderId;
+			  window.location.href ="message/editor/list.do?messageFolderId=" + messageFolderId;
 	}
 </script>
 </security:authorize>
 
-<security:authorize access="hasRole('AGENT')">
+<security:authorize access="hasRole('MANAGER')">
 <script type="text/javascript">
 	function confirmDelete(messageId, messageFolderId) {
 		confirm=confirm('<spring:message code="message.confirm.delete"/>');
 		if (confirm)
-		  window.location.href ="message/agent/delete.do?messageId=" + messageId;
+		  window.location.href ="message/manager/delete.do?messageId=" + messageId;
 		  else
-			  window.location.href ="message/agent/list.do?messageFolderId=" + messageFolderId;
+			  window.location.href ="message/manager/list.do?messageFolderId=" + messageFolderId;
+	}
+</script>
+</security:authorize>
+
+<security:authorize access="hasRole('BUYER')">
+<script type="text/javascript">
+	function confirmDelete(messageId, messageFolderId) {
+		confirm=confirm('<spring:message code="message.confirm.delete"/>');
+		if (confirm)
+		  window.location.href ="message/buyer/delete.do?messageId=" + messageId;
+		  else
+			  window.location.href ="message/buyer/list.do?messageFolderId=" + messageFolderId;
+	}
+</script>
+</security:authorize>
+
+<security:authorize access="hasRole('CARRIER')">
+<script type="text/javascript">
+	function confirmDelete(messageId, messageFolderId) {
+		confirm=confirm('<spring:message code="message.confirm.delete"/>');
+		if (confirm)
+		  window.location.href ="message/carrier/delete.do?messageId=" + messageId;
+		  else
+			  window.location.href ="message/carrier/list.do?messageFolderId=" + messageFolderId;
 	}
 </script>
 </security:authorize>

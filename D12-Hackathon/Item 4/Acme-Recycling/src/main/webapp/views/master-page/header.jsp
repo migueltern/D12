@@ -51,6 +51,8 @@
 				</ul>
 			</li>
 			
+			<li><a href="message/admin/send.do"><spring:message code="master.page.message.send" /></a></li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.administrator.configurationSystem" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -87,6 +89,8 @@
 					<li><a href="messageFolder/buyer/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a href="message/buyer/send.do"><spring:message code="master.page.message.send" /></a></li>
 			
 			<li><a class="fNiv"><spring:message
 						code="master.page.course" /></a>
@@ -163,6 +167,9 @@
 					<li><a href="messageFolder/carrier/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a href="message/carrier/send.do"><spring:message code="master.page.message.send" /></a></li>
+			
 		</security:authorize>
 		
 		<security:authorize access="hasRole('MANAGER')">
@@ -181,6 +188,8 @@
 					<li><a href="messageFolder/manager/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a href="message/manager/send.do"><spring:message code="master.page.message.send" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('EDITOR')">
@@ -199,6 +208,8 @@
 					<li><a href="messageFolder/editor/create.do"><spring:message code="master.page.messageFolder.create" /></a></li>
 				</ul>
 			</li>
+		
+			<li><a href="message/editor/send.do"><spring:message code="master.page.message.send" /></a></li>
 		
 			<li><a class="fNiv"><spring:message	code="master.page.new" /></a>
 				<ul>

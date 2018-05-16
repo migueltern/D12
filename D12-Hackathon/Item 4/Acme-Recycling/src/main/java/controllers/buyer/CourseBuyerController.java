@@ -16,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import services.BuyerService;
 import services.CourseService;
 import services.LessonService;
+import services.MaterialService;
 import controllers.AbstractController;
 import domain.Course;
 import domain.Lesson;
+import domain.Material;
 
 @Controller
 @RequestMapping("/course/buyer")
@@ -31,6 +33,8 @@ public class CourseBuyerController extends AbstractController {
 	private BuyerService	buyerService;
 	@Autowired
 	private LessonService	lessonService;
+	@Autowired
+	private MaterialService	materialService;
 
 
 	//Constructor--------------------------------------------------------
@@ -91,20 +95,15 @@ public class CourseBuyerController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int courseId) {
 		ModelAndView result;
 		final Course course;
-		//final Buyer buyer;
 		Assert.notNull(courseId);
 
 		course = this.courseService.findOne(courseId);
-		//user = this.userService.findByPrincipal();
-		//volume = this.volumeService.findOne(volumeId);
-		//Assert.isTrue(user.getVolumes().contains(volume), "Cannot commit this operation, because it's illegal");
 
 		//Sólo si está en modo borrador se podrá editar el course
 		Assert.isTrue(course.isDraftMode());
 		result = this.createEditModelAndView(course);
 		return result;
 	}
-
 	// Save -----------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(Course course, final BindingResult binding) {
@@ -137,11 +136,17 @@ public class CourseBuyerController extends AbstractController {
 	protected ModelAndView createEditModelAndView(final Course course, final String message) {
 
 		assert course != null;
+		Collection<Material> materials;
 		ModelAndView result;
+
+		materials = new ArrayList<>();
+
+		materials = this.materialService.findAll();
 
 		result = new ModelAndView("course/edit");
 		result.addObject("course", course);
 		result.addObject("message", message);
+		result.addObject("materials", materials);
 
 		return result;
 

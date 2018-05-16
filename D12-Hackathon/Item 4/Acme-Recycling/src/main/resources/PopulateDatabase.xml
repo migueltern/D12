@@ -1765,7 +1765,7 @@
 
 	<!-- Materials -->
 	<bean id="material1" class="domain.Material">
-		<property name="title" value="title 1"></property>
+		<property name="title" value="material title 1"></property>
 		<property name="description" value="description 1" />
 		<property name="unitPrice" value="2.0" />
 		<property name="quantity" value="2.2"></property>
@@ -1775,7 +1775,7 @@
 	</bean>
 
 	<bean id="material2" class="domain.Material">
-		<property name="title" value="title 2"></property>
+		<property name="title" value="material title 2"></property>
 		<property name="description" value="description 2" />
 		<property name="unitPrice" value="2.0" />
 		<property name="quantity" value="2.2"></property>
@@ -1784,7 +1784,7 @@
 	</bean>
 
 	<bean id="material3" class="domain.Material">
-		<property name="title" value="title 3"></property>
+		<property name="title" value="material title 3"></property>
 		<property name="description" value="description 3" />
 		<property name="unitPrice" value="3.1" />
 		<property name="quantity" value="3.2"></property>
@@ -1794,7 +1794,7 @@
 	</bean>
 
 	<bean id="material4" class="domain.Material">
-		<property name="title" value="title 4"></property>
+		<property name="title" value="material title 4"></property>
 		<property name="description" value="description 4" />
 		<property name="unitPrice" value="4.2" />
 		<property name="quantity" value="4.2"></property>
@@ -1804,7 +1804,7 @@
 	</bean>
 
 	<bean id="material5" class="domain.Material">
-		<property name="title" value="title 5"></property>
+		<property name="title" value="material title 5"></property>
 		<property name="description" value="description 5" />
 		<property name="unitPrice" value="5.0" />
 		<property name="quantity" value="5.2"></property>

@@ -23,6 +23,7 @@
 <form:form action="course/buyer/edit.do" modelAttribute="course">
 
 <form:hidden path="id" />
+<form:hidden path="version" />
 	<B><acme:textbox code="course.title" path="title"/></B>
 	<br />
 	
@@ -34,7 +35,10 @@
 	
 	<B><acme:booleanselect code="course.draftMode" path="draftMode"/></B>
 	<br />
-		
+	
+	<B><acme:selectmultiple items="${materials}" itemLabel="title" code="course.materials" path="materials"/></B>
+	<br />
+	
 	<acme:textarea code="course.description" path="description" />
 	<br />	
 	

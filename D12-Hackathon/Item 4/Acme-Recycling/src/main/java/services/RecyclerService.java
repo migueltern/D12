@@ -212,11 +212,9 @@ public class RecyclerService {
 	}
 
 	public Recycler findRecyclerByComment(final int commentId) {
-		Recycler recycler;
+		final Recycler recycler;
 
-		recycler = new Recycler();
-
-		this.recyclerRepository.findRecyclerByComment(commentId);
+		recycler = this.recyclerRepository.findRecyclerByComment(commentId);
 
 		return recycler;
 	}

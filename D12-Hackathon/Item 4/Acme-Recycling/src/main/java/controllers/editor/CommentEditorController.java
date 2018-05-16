@@ -41,7 +41,6 @@ public class CommentEditorController extends AbstractController {
 		Recycler recycler;
 
 		comment = this.commentService.findOne(commentId);
-		recycler = new Recycler();
 
 		recycler = this.recyclerService.findRecyclerByComment(commentId);
 

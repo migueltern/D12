@@ -44,7 +44,7 @@ public class ItemService {
 		//No copiar la siguiente linea en el reconstruct
 		result = new Item();
 
-		result.setOpinion(opinions);
+		result.setOpinions(opinions);
 		result.setRecycler(recyclerPrincipal);
 
 		return result;
@@ -88,16 +88,16 @@ public class ItemService {
 
 		this.itemRepository.delete(item);
 	}
-	
+
 	//Other methods
-	
-	public Collection<Item> findItemsByRecycler(int recyclerId){
-		
+
+	public Collection<Item> findItemsByRecycler(final int recyclerId) {
+
 		Collection<Item> result;
-		
+
 		result = this.itemRepository.findItemsByRecycler(recyclerId);
-		
+
 		return result;
-		
+
 	}
 }

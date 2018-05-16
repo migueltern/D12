@@ -79,7 +79,8 @@ public class CourseService {
 		courses = new ArrayList<>(this.courseRepository.findCoursesCreatedByBuyer(buyer.getId()));
 
 		//Un buyer solo podrá editar un curso que haya creado él.
-		Assert.isTrue(courses.contains(course));
+		if (courses.size() != 0)
+			Assert.isTrue(courses.contains(course));
 		//Solo un buyer podrá crear un curso
 		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
 		//Sólo si está en modo borrador se podrá editar el course

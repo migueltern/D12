@@ -41,6 +41,7 @@
 		<value>/views/buyer/tiles.xml</value>
 		<value>/views/request/tiles.xml</value>
 		<value>/views/item/tiles.xml</value>
+		<value>/views/labelMaterial/tiles.xml</value>
 		
 		
 	</util:list>

@@ -82,6 +82,7 @@
 		
 	<!-- 	EDITOR -->
 		<security:intercept-url pattern="/new/editor/**" access="hasRole('EDITOR')"/>
+		<security:intercept-url pattern="/comment/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/messageFolder/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/message/editor/**" access="hasRole('EDITOR')"/>
 	

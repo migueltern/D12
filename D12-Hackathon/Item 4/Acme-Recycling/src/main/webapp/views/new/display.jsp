@@ -71,6 +71,18 @@
 	<spring:message code="comment.body" var="titleHeader" />
 	<display:column property="body" title="${titleHeader}" sortable="true" />
 	
+	<!--  EDIT -->
+	
+	<security:authorize access="hasRole('EDITOR')">
+		<spring:message code="new.display.comment" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+			
+				<spring:url value="comment/editor/display.do" var="editURL">
+					<spring:param name="commentId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="new.display.comment" /></a>
+		</display:column>
+	</security:authorize>
 	
 
 </display:table>

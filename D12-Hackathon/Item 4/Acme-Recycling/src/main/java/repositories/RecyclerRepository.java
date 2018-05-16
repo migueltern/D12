@@ -19,4 +19,9 @@ public interface RecyclerRepository extends JpaRepository<Recycler, Integer> {
 	//Query que me devuelve todos los comentarios dado un reciclador
 	@Query("select c from Recycler r join r.comments c where r.id=?1")
 	Collection<Comment> findAllCommentsByRecycler(int recyclerId);
+
+	//Me devuelve el reciclador que ha hecho un comentario concreto
+	@Query("select r from Recycler r join r.comments c where c.id=?1")
+	Recycler findRecyclerByComment(int commentId);
+
 }

@@ -41,6 +41,11 @@
 		<put-attribute name="title" value="Editar comentario" />
 		<put-attribute name="body" value="/views/comment/edit.jsp" />
 	</definition>
+	
+	<definition name="comment/display" extends="master.page">	
+		<put-attribute name="title" value="Ver comentario" />
+		<put-attribute name="body" value="/views/comment/display.jsp" />
+	</definition>
 
  
 </tiles-definitions>

@@ -46,11 +46,39 @@
 
 </display:table>
 
+<h2><spring:message code="comment.recycler" /></h2>	
 <display:table name="recycler" class="displaytag"
 	id="row">
+	
 	<display:column>
-	<h2><spring:message code="comment.recycler" /></h2>	
+	
+	<B><spring:message code="recycler.name" />:</B>
 	<jstl:out value="${row.name}"></jstl:out>
+	
+
+	<p>
+		<B><spring:message code="recycler.surname" />:</B>
+		<jstl:out value="${row.surname}"></jstl:out>
+	</p>
+	<p>
+		<B><spring:message code="recycler.phoneNumber" />:</B>
+		<jstl:out value="${row.phone}"></jstl:out>
+	</p>
+	<p>
+		<B><spring:message code="recycler.emailAddress" />:</B>
+		<jstl:out value="${row.email}"></jstl:out>
+	</p>
+		<p>
+		<B><spring:message code="recycler.postalAddress" />:</B>
+		<jstl:out value="${row.address}"></jstl:out>
+	</p>
+	<p>
+		<B><spring:message code="recycler.province" />:</B>
+		<jstl:out value="${row.province}"></jstl:out>
+	</p>
+	
+	
+	
 	</display:column>
 </display:table>
 	

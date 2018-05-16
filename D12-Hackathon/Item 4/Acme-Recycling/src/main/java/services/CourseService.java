@@ -90,7 +90,7 @@ public class CourseService {
 			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
 
 		result = this.courseRepository.save(course);
-
+		buyer.getCourses().add(result);
 		return result;
 	}
 

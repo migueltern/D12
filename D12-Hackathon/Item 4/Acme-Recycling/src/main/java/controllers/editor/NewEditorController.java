@@ -1,6 +1,7 @@
 
 package controllers.editor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.EditorService;
 import services.NewService;
 import controllers.AbstractController;
+import domain.Comment;
 import domain.Editor;
 import domain.New;
 
@@ -38,6 +40,27 @@ public class NewEditorController extends AbstractController {
 		super();
 	}
 
+	//Display------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int newId) {
+		final ModelAndView result;
+		New new_ = new New();
+		Collection<Comment> comments;
+
+		new_ = this.newService.findOne(newId);
+		comments = new ArrayList<>();
+
+		comments = this.newService.findCommentsByNew(newId);
+
+		result = new ModelAndView("new/display");
+		result.addObject("new_", new_);
+		result.addObject("comments", comments);
+		result.addObject("requestURI", "new/editor/display.do");
+
+		return result;
+	}
+
+	//Listing-------------------------------------------------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(final String messageCode) {
 

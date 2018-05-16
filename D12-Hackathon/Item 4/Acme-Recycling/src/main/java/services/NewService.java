@@ -106,7 +106,11 @@ public class NewService {
 
 	public void delete(final New new_) {
 		Assert.notNull(new_);
-		Assert.isTrue(this.editorService.checkPrincipalBoolean());
+		Editor editor;
+
+		editor = this.editorService.findByPrincipal();
+
+		editor.getNews().remove(new_);
 
 		this.newRepository.delete(new_);
 	}
@@ -138,6 +142,14 @@ public class NewService {
 			result = new_;
 		}
 		this.validator.validate(result, bindingResult);
+		return result;
+	}
+
+	public Collection<Comment> findCommentsByNew(final int newId) {
+		Collection<Comment> result;
+
+		result = this.newRepository.findCommentsByNew(newId);
+
 		return result;
 	}
 

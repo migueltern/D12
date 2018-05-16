@@ -40,6 +40,7 @@
 		<value>/views/recycler/messages</value>
 		<value>/views/buyer/messages</value>
 		<value>/views/request/messages</value>
+		<value>/views/item/messages</value>
 	</util:list>
 
 </beans>

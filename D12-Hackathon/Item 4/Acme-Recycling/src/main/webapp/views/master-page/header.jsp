@@ -131,6 +131,17 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.item" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="item/recycler/list.do?d-16544-p=1"><spring:message code="master.page.item.myList" /></a></li>
+					
+					
+				</ul>
+			</li>
+			
+			
+			
 			<li><a class="fNiv"><spring:message	code="master.page.opinion" /></a>
 				<ul>
 					<li class="arrow"></li>

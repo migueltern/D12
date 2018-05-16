@@ -92,6 +92,7 @@
 		<security:intercept-url pattern="/course/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/message/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/messageFolder/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/item/recycler/**" access="hasRole('RECYCLER')"/>
 		
 	<!-- 	CARRIER -->
 		<security:intercept-url pattern="/messageFolder/carrier/**" access="hasRole('CARRIER')"/>

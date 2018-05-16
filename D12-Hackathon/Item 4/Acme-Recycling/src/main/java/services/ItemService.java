@@ -88,4 +88,16 @@ public class ItemService {
 
 		this.itemRepository.delete(item);
 	}
+	
+	//Other methods
+	
+	public Collection<Item> findItemsByRecycler(int recyclerId){
+		
+		Collection<Item> result;
+		
+		result = this.itemRepository.findItemsByRecycler(recyclerId);
+		
+		return result;
+		
+	}
 }

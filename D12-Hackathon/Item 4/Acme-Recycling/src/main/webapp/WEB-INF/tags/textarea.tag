@@ -42,7 +42,7 @@
 	</form:label>
 	</th>
 	<th>
-	<form:textarea path="${path}" readonly="${readonly}" placeHolder="${placeHolder }" />
+	<form:textarea path="${path}" rows="5px" cols="22px" readonly="${readonly}" placeHolder="${placeHolder }" />
 	
 	<form:errors path="${path}" cssClass="error" />
 	</th>

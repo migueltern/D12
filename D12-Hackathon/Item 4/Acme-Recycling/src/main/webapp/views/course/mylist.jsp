@@ -93,14 +93,18 @@
 			</spring:url>
 			<a href="${displayURL}"><spring:message code="course.display" /></a>
 		</display:column>
-		
+	
+	
 	<spring:message code="course.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="false">
+		<jstl:if test="${row.draftMode}">
 			<spring:url value="course/buyer/edit.do" var="editURL">
 				<spring:param name="courseId" value="${row.id}" />
 			</spring:url>
 			<a href="${editURL}"><spring:message code="course.edit" /></a>
+		</jstl:if>
 	</display:column>
+	
 		
 	<!-- ATRIBUTOS -->
 	

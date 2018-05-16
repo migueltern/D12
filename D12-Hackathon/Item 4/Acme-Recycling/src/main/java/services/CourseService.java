@@ -17,6 +17,7 @@ import domain.Course;
 import domain.Item;
 import domain.Lesson;
 import domain.Material;
+import domain.Opinion;
 import domain.Recycler;
 
 @Service
@@ -49,9 +50,11 @@ public class CourseService {
 		Course result;
 		Collection<Material> materials;
 		Collection<Lesson> lessons;
+		Collection<Opinion> opinions;
 
 		materials = new ArrayList<Material>();
 		lessons = new ArrayList<Lesson>();
+		opinions = new ArrayList<Opinion>();
 
 		//Solo un buyer podrá crear un curso
 		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
@@ -60,6 +63,7 @@ public class CourseService {
 
 		result.setMaterials(materials);
 		result.setLessons(lessons);
+		result.setOpinions(opinions);
 
 		return result;
 	}
@@ -78,8 +82,8 @@ public class CourseService {
 		Assert.isTrue(courses.contains(course));
 		//Solo un buyer podrá crear un curso
 		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
-		//Sólo si está en modo borrar se podrá editar el course
-		Assert.isTrue(course.isDraftMode());
+		//Sólo si está en modo borrador se podrá editar el course
+		//Assert.isTrue(course.isDraftMode());
 		//Si está en modo final la fecha es obligatoria
 		if (!course.isDraftMode())
 			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
@@ -179,13 +183,16 @@ public class CourseService {
 		if (course.getId() == 0) {
 			Collection<Lesson> lessons;
 			Collection<Material> materials;
+			final Collection<Opinion> opinions;
 			result = course;
 
 			lessons = new ArrayList<Lesson>();
 			materials = new ArrayList<Material>();
+			opinions = new ArrayList<Opinion>();
 
 			result.setLessons(lessons);
 			result.setMaterials(materials);
+			result.setOpinions(opinions);
 		}
 
 		else {
@@ -194,6 +201,7 @@ public class CourseService {
 			course.setVersion(courseBd.getVersion());
 			course.setLessons(courseBd.getLessons());
 			course.setMaterials(courseBd.getMaterials());
+			course.setOpinions(courseBd.getOpinions());
 
 			result = course;
 		}

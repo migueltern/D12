@@ -23,6 +23,31 @@
 <form:form action="course/buyer/edit.do" modelAttribute="course">
 
 <form:hidden path="id" />
+	<B><acme:textbox code="course.title" path="title"/></B>
+	<br />
+	
+	<B><acme:textbox code="course.realisedMoment" path="realisedMoment" placeHolder="yyyy/MM/dd"/></B>
+	<br />
+	
+	<B><acme:textbox code="course.minimumScore" path="minimumScore"/></B>
+	<br />
+	
+	<B><acme:booleanselect code="course.draftMode" path="draftMode"/></B>
+	<br />
+		
+	<acme:textarea code="course.description" path="description" />
+	<br />	
+	
+	<B><jstl:out value="Coordenadas GPS"></jstl:out></B>
+	<fieldset>
+	<B><acme:textbox code="course.location.name" path="location.name"/></B>
+	<br>
+	<B><acme:textbox code="course.location.latitude" path="location.latitude"/></B>
+	<br>
+	<B><acme:textbox code="course.location.longitude" path="location.longitude"/></B>
+	<br>
+	</fieldset>
+	<br>
 
 
 <input type="submit" name="save" value="<spring:message code="course.save" />" />&nbsp; 

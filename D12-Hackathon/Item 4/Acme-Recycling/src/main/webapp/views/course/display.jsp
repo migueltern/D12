@@ -46,10 +46,10 @@
 	<spring:message code="course.information" var="titleHeader" />
 	<display:column title="${titleHeader}">
 
-	<B><spring:message code="course.title" />:</B>
+	<B><spring:message code="course.title" /></B>
 	<jstl:out value="${row.title}"></jstl:out>
 	<p>
-	<B><spring:message code="course.description" />:</B>
+	<B><spring:message code="course.description" /></B>
 	<jstl:out value="${row.description}"></jstl:out>
 	</p>
 	
@@ -59,11 +59,11 @@
 	<p>
 	<spring:message code="course.format.realisedMoment1" var="pattern"></spring:message>
 	<fmt:formatDate value="${row.realisedMoment}" pattern="${pattern}" var="newdatevar" />
-	<B><spring:message code="course.realisedMoment"></spring:message>:</B>
+	<B><spring:message code="course.realisedMoment"></spring:message></B>
 	<c:out value="${newdatevar}" />
 	</p>
 		<p>
-	<B><spring:message code="course.minimumScore" />:</B>
+	<B><spring:message code="course.minimumScore" /></B>
 	<jstl:out value="${row.minimumScore}"></jstl:out>
 	</p>
 	<p>
@@ -71,14 +71,14 @@
 	
 			<jstl:if test="${row.draftMode==true}">
 				<div style="vertical-align: middle; height=100;">
-				<B><spring:message code="course.draftMode" />:</B>	
+				<B><spring:message code="course.draftMode" /></B>	
 					
 				</div>
 				<img src="images/yes.png" width="60" height="60">
 			</jstl:if>
 			<jstl:if test="${row.draftMode==false}">
 				<div style="vertical-align: middle; height=100;">
-				<B><spring:message code="course.draftMode" />:</B>	
+				<B><spring:message code="course.draftMode" /></B>	
 					
 				</div>
 				<img src="images/no.png" width="100" height="100">
@@ -89,17 +89,17 @@
 	<display:column title="${titleHeader}">
 	
 	<p>
-	<B><spring:message code="course.location.name" />:</B>
+	<B><spring:message code="course.location.name" /></B>
 	<jstl:out value="${row.location.name}"></jstl:out>
 	</p>
 	
 	<p>
-	<B><spring:message code="course.location.longitude" />:</B>
+	<B><spring:message code="course.location.longitude" /></B>
 	<jstl:out value="${row.location.longitude}"></jstl:out>
 	</p>
 	
 	<p>
-	<B><spring:message code="course.location.latitude" />:</B>
+	<B><spring:message code="course.location.latitude" /></B>
 	<jstl:out value="${row.location.latitude}"></jstl:out>
 	</p>
 	

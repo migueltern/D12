@@ -20,18 +20,18 @@ public abstract class Opinable extends DomainEntity {
 
 
 	//Relationships--------------------------------------------------------------
-	private Collection<Opinion>	opinion;
+	private Collection<Opinion>	opinions;
 
 
 	@Valid
 	@NotNull
 	@OneToMany(mappedBy = "opinable")
-	public Collection<Opinion> getOpinion() {
-		return this.opinion;
+	public Collection<Opinion> getOpinions() {
+		return this.opinions;
 	}
 
-	public void setOpinion(final Collection<Opinion> opinion) {
-		this.opinion = opinion;
+	public void setOpinions(final Collection<Opinion> opinions) {
+		this.opinions = opinions;
 	}
 
 }

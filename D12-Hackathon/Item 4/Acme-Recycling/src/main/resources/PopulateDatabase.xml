@@ -1310,7 +1310,7 @@
 		<property name="labelProduct" ref="labelProduct1" />
 		<property name="recycler" ref="recycler1" />
 		<property name="value" value="16"></property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 				<ref bean="opinion1" />
 			</list>
@@ -1329,7 +1329,7 @@
 		<property name="labelProduct" ref="labelProduct1" />
 		<property name="recycler" ref="recycler2" />
 		<property name="value" value="2"></property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 				<ref bean="opinion2" />
 			</list>
@@ -1347,7 +1347,7 @@
 		<property name="labelProduct" ref="labelProduct2" />
 		<property name="recycler" ref="recycler3" />
 		<property name="value" value="3"></property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 				<ref bean="opinion3" />
 			</list>
@@ -1365,7 +1365,7 @@
 		<property name="labelProduct" ref="labelProduct3" />
 		<property name="recycler" ref="recycler4" />
 		<property name="value" value="4"></property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 				<ref bean="opinion4" />
 			</list>
@@ -1383,7 +1383,7 @@
 		<property name="labelProduct" ref="labelProduct3" />
 		<property name="recycler" ref="recycler5" />
 		<property name="value" value="5"></property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 				<ref bean="opinion5" />
 			</list>
@@ -1570,7 +1570,7 @@
 				<ref bean="material1" />
 			</list>
 		</property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 
 			</list>
@@ -1598,7 +1598,7 @@
 				<ref bean="material2" />
 			</list>
 		</property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 
 			</list>
@@ -1627,7 +1627,7 @@
 				<ref bean="material3" />
 			</list>
 		</property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 
 			</list>
@@ -1655,7 +1655,7 @@
 				<ref bean="material4" />
 			</list>
 		</property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 
 			</list>
@@ -1683,7 +1683,7 @@
 				<ref bean="material5" />
 			</list>
 		</property>
-		<property name="opinion">
+		<property name="opinions">
 			<list>
 
 			</list>

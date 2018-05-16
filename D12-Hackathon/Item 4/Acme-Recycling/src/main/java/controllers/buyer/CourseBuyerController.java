@@ -7,6 +7,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,6 @@ import services.BuyerService;
 import services.CourseService;
 import services.LessonService;
 import controllers.AbstractController;
-import domain.Buyer;
 import domain.Course;
 import domain.Lesson;
 
@@ -91,15 +91,39 @@ public class CourseBuyerController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int courseId) {
 		ModelAndView result;
 		final Course course;
-		final Buyer buyer;
+		//final Buyer buyer;
 		Assert.notNull(courseId);
 
 		course = this.courseService.findOne(courseId);
 		//user = this.userService.findByPrincipal();
 		//volume = this.volumeService.findOne(volumeId);
 		//Assert.isTrue(user.getVolumes().contains(volume), "Cannot commit this operation, because it's illegal");
-		//Assert.notNull(volume);
+
+		//Sólo si está en modo borrador se podrá editar el course
+		Assert.isTrue(course.isDraftMode());
 		result = this.createEditModelAndView(course);
+		return result;
+	}
+
+	// Save -----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(Course course, final BindingResult binding) {
+		ModelAndView result;
+
+		course = this.courseService.reconstruct(course, binding);
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(course);
+		else
+			try {
+				this.courseService.save(course);
+				result = new ModelAndView("redirect:list.do?d-16544-p=1");
+			} catch (final Throwable oops) {
+				if (oops.getMessage().equals("La fecha no puede ser nula"))
+					result = this.createEditModelAndView(course, "request.course.moment.error");
+				else
+					result = this.createEditModelAndView(course, "request.commit.error");
+			}
 		return result;
 	}
 

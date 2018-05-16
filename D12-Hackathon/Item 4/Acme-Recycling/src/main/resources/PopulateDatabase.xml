@@ -468,7 +468,6 @@
 		<property name="requests">
 			<list>
 				<ref bean="request1" />
-				<ref bean="request2" />
 			</list>
 		</property>
 	</bean>
@@ -578,7 +577,6 @@
 		<property name="requests">
 			<list>
 				<ref bean="request1" />
-				<ref bean="request2" />
 			</list>
 		</property>
 	</bean>
@@ -1334,7 +1332,7 @@
 				<ref bean="opinion2" />
 			</list>
 		</property>
-		<property name="request" ref="request2" />
+		
 	</bean>
 
 	<bean id="item3" class="domain.Item">
@@ -1891,20 +1889,19 @@
 		<property name="carrier" ref="carrier1" />
 	</bean>
 
-	<bean id="request2" class="domain.Request">
+	<!-- <bean id="request2" class="domain.Request">
 		<property name="code" value="DG180231BB"></property>
 		<property name="title" value="title 2"></property>
 		<property name="observation" value="observation 2"></property>
-		<property name="status" value="CLEAN POINT"></property>
+		<property name="status" value="FINISHED"></property>
 		<property name="cleanPoints">
 			<list>
-				<ref bean="cleanPoint2" />
+				
 			</list>
 		</property>
 		<property name="assesment" ref="assesment2" />
-		<property name="item" ref="item2" />
 		<property name="carrier" ref="carrier1" />
-	</bean>
+	</bean> -->
 
 	<bean id="request3" class="domain.Request">
 		<property name="code" value="DG180331CC"></property>

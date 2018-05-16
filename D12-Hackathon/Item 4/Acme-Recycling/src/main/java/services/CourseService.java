@@ -79,7 +79,7 @@ public class CourseService {
 		courses = new ArrayList<>(this.courseRepository.findCoursesCreatedByBuyer(buyer.getId()));
 
 		//Un buyer solo podrá editar un curso que haya creado él.
-		if (courses.size() != 0)
+		if (course.getId() != 0)
 			Assert.isTrue(courses.contains(course));
 		//Solo un buyer podrá crear un curso
 		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
@@ -90,7 +90,8 @@ public class CourseService {
 			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
 
 		result = this.courseRepository.save(course);
-		buyer.getCourses().add(result);
+		if (course.getId() == 0)
+			buyer.getCourses().add(result);
 		return result;
 	}
 

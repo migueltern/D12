@@ -117,9 +117,9 @@ public class LabelProductManagerController extends AbstractController {
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
 			if (oops.getMessage().equals("This label is asociated with one product or more"))
-				result = this.createEditModelAndView(labelProduct, "labelProduct.labelContainsProduct.error");
+				result = this.createDeleteModelAndView(labelProduct, "labelProduct.labelContainsProduct.error");
 			else
-				result = this.createEditModelAndView(labelProduct, "labelProduct.commit.error");
+				result = this.createDeleteModelAndView(labelProduct, "labelProduct.commit.error");
 
 		}
 		return result;
@@ -139,6 +139,28 @@ public class LabelProductManagerController extends AbstractController {
 		result.addObject("labelProduct", labelProduct);
 		result.addObject("message", messageCode);
 		result.addObject("requestURI", "labelProduct/manager/edit.do");
+
+		return result;
+
+	}
+
+	// Ancillary methods ------------------------------------------------------
+	protected ModelAndView createDeleteModelAndView(final LabelProduct labelProduct) {
+		ModelAndView result;
+		result = this.createEditModelAndView(labelProduct, null);
+		return result;
+	}
+
+	protected ModelAndView createDeleteModelAndView(final LabelProduct labelProduct, final String messageCode) {
+		ModelAndView result;
+		Collection<LabelProduct> labelProducts;
+		labelProducts = this.labelProductService.findAll();
+
+		result = new ModelAndView("labelProduct/list");
+		result.addObject("labelProduct", labelProduct);
+		result.addObject("labelProducts", labelProducts);
+		result.addObject("message", messageCode);
+		result.addObject("requestURI", "labelProduct/manager/list.do");
 
 		return result;
 

@@ -63,6 +63,7 @@
 		<security:intercept-url pattern="/message/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/request/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/labelMaterial/manager/**" access="hasRole('MANAGER')"/>
+		<security:intercept-url pattern="/labelProduct/manager/**" access="hasRole('MANAGER')"/>
 		
 		
 		

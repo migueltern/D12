@@ -210,10 +210,11 @@
 				</ul>
 			</li>
 			
-			<li><a class="fNiv"><spring:message	code="master.page.labelMaterial" /></a>
+			<li><a class="fNiv"><spring:message	code="master.page.label" /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="labelMaterial/manager/list.do?d-16544-p=1"><spring:message code="master.page.labelMaterial.list" /></a></li>
+					<li><a href="labelProduct/manager/list.do?d-16544-p=1"><spring:message code="master.page.labelProduct.list" /></a></li>
 				</ul>
 			</li>
 			

@@ -77,7 +77,7 @@ public class LabelProductService {
 		LabelProduct result;
 		if (labelProduct.getId() != 0) {
 			Assert.isTrue(labelProduct.getByDefault() == false);
-			Assert.isTrue(!labelProductsWithProduct.contains(labelProduct));
+			Assert.isTrue(!labelProductsWithProduct.contains(labelProduct), "This label is asociated with one product or more");
 		}
 		result = this.labelProductRepository.save(labelProduct);
 
@@ -95,7 +95,7 @@ public class LabelProductService {
 		Assert.notNull(manager);
 		Assert.notNull(labelProduct);
 
-		Assert.isTrue(!labelProductsWithProduct.contains(labelProduct));
+		Assert.isTrue(!labelProductsWithProduct.contains(labelProduct), "This label is asociated with one product or more");
 
 		Assert.isTrue(labelProduct.getId() != 0);
 		Assert.isTrue(labelProduct.getByDefault() == false);

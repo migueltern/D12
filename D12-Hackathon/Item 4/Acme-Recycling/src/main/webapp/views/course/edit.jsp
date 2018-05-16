@@ -23,6 +23,7 @@
 <form:form action="course/buyer/edit.do" modelAttribute="course">
 
 <form:hidden path="id" />
+<form:hidden path="version" />
 	<B><acme:textbox code="course.title" path="title"/></B>
 	<br />
 	

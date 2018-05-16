@@ -120,6 +120,10 @@ public class CourseBuyerController extends AbstractController {
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("La fecha no puede ser nula"))
 					result = this.createEditModelAndView(course, "request.course.moment.error");
+				else if (oops.getMessage().equals("Al menos un material es obligatorio"))
+					result = this.createEditModelAndView(course, "request.course.materials.error");
+				else if (oops.getMessage().equals("Fecha de realizacion debe ser posterior a la actual"))
+					result = this.createEditModelAndView(course, "request.course.date.error");
 				else
 					result = this.createEditModelAndView(course, "request.commit.error");
 			}

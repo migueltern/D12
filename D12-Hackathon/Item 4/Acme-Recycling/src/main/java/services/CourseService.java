@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,7 +74,9 @@ public class CourseService {
 		final Course result;
 		Collection<Course> courses;
 		Buyer buyer;
+		Date date;
 
+		date = new Date();
 		buyer = new Buyer();
 		buyer = this.buyerService.findByPrincipal();
 		courses = new ArrayList<>(this.courseRepository.findCoursesCreatedByBuyer(buyer.getId()));
@@ -88,6 +91,11 @@ public class CourseService {
 		//Si está en modo final la fecha es obligatoria
 		if (!course.isDraftMode())
 			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
+		//Al menos un material es obligatorio
+		Assert.isTrue(course.getMaterials().size() > 0, "Al menos un material es obligatorio");
+		//
+		if (course.getRealisedMoment() != null)
+			Assert.isTrue(course.getRealisedMoment().after(date), "Fecha de realizacion debe ser posterior a la actual");
 
 		result = this.courseRepository.save(course);
 		if (course.getId() == 0)
@@ -185,17 +193,16 @@ public class CourseService {
 
 		if (course.getId() == 0) {
 			Collection<Lesson> lessons;
-			Collection<Material> materials;
 			final Collection<Opinion> opinions;
 			result = course;
 
 			lessons = new ArrayList<Lesson>();
-			materials = new ArrayList<Material>();
 			opinions = new ArrayList<Opinion>();
 
 			result.setLessons(lessons);
-			result.setMaterials(materials);
 			result.setOpinions(opinions);
+			if (course.getMaterials().contains(null))
+				course.setMaterials(new ArrayList<Material>());
 		}
 
 		else {
@@ -203,9 +210,10 @@ public class CourseService {
 			course.setId(courseBd.getId());
 			course.setVersion(courseBd.getVersion());
 			course.setLessons(courseBd.getLessons());
-			course.setMaterials(courseBd.getMaterials());
+			//course.setMaterials(courseBd.getMaterials());
 			course.setOpinions(courseBd.getOpinions());
-
+			if (course.getMaterials().contains(null))
+				course.setMaterials(new ArrayList<Material>());
 			result = course;
 		}
 		this.validator.validate(result, bindingResult);

@@ -12,6 +12,6 @@ import domain.LabelMaterial;
 @Repository
 public interface LabelMaterialRepository extends JpaRepository<LabelMaterial, Integer> {
 
-	@Query("select m.labelMaterial from Material m")
+	@Query("select distinct(m.labelMaterial) from Material m")
 	Collection<LabelMaterial> labelMaterialsOfAllMaterials();
 }

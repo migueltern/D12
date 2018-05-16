@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.LabelProductRepository;
 import domain.LabelProduct;
@@ -25,6 +27,9 @@ public class LabelProductService {
 
 	@Autowired
 	private ManagerService			managerService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	// Constructors -----------------------------------------------------------
@@ -96,5 +101,25 @@ public class LabelProductService {
 		Assert.isTrue(labelProduct.getByDefault() == false);
 
 		this.labelProductRepository.delete(labelProduct);
+	}
+
+	//	RECONSTRUCTOR
+
+	public LabelProduct reconstruct(final LabelProduct labelProduct, final BindingResult bindingResult) {
+		LabelProduct result;
+		LabelProduct labelProductBD;
+		if (labelProduct.getId() == 0)
+			result = labelProduct;
+		else {
+			labelProductBD = this.labelProductRepository.findOne(labelProduct.getId());
+			labelProduct.setId(labelProductBD.getId());
+			labelProduct.setVersion(labelProductBD.getVersion());
+			labelProduct.setName(labelProductBD.getName());
+			labelProduct.setByDefault(labelProductBD.getByDefault());
+
+			result = labelProduct;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
 	}
 }

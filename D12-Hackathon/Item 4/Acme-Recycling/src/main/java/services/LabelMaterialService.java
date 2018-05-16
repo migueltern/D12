@@ -65,6 +65,7 @@ public class LabelMaterialService {
 		LabelMaterial result;
 
 		result = new LabelMaterial();
+		result.setByDefault(false);
 		return result;
 	}
 
@@ -77,7 +78,7 @@ public class LabelMaterialService {
 		LabelMaterial result;
 		if (labelMaterial.getId() != 0) {
 			Assert.isTrue(labelMaterial.getByDefault() == false);
-			Assert.isTrue(!labelMaterialsWithMaterial.contains(labelMaterial));
+			Assert.isTrue(!labelMaterialsWithMaterial.contains(labelMaterial), "This label is asociated with one material or more");
 		}
 		result = this.labelMaterialRepository.save(labelMaterial);
 
@@ -95,7 +96,7 @@ public class LabelMaterialService {
 		Assert.notNull(manager);
 		Assert.notNull(labelMaterial);
 
-		Assert.isTrue(!labelMaterialsWithMaterial.contains(labelMaterial));
+		Assert.isTrue(!labelMaterialsWithMaterial.contains(labelMaterial), "This label is asociated with one material or more");
 
 		Assert.isTrue(labelMaterial.getId() != 0);
 		Assert.isTrue(labelMaterial.getByDefault() == false);

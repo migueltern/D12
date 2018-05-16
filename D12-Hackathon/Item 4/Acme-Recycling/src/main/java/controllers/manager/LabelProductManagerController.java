@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.LabelMaterialService;
+import services.LabelProductService;
 import services.ManagerService;
 import controllers.AbstractController;
-import domain.LabelMaterial;
+import domain.LabelProduct;
 import domain.Manager;
 
 @Controller
-@RequestMapping("/labelMaterial/manager")
-public class LabelMaterialManagerController extends AbstractController {
+@RequestMapping("/labelProduct/manager")
+public class LabelProductManagerController extends AbstractController {
 
 	//	Services --------------------------------------------------------
 
 	@Autowired
-	private LabelMaterialService	labelMaterialService;
+	private LabelProductService	labelProductService;
 
 	@Autowired
-	private ManagerService			managerService;
+	private ManagerService		managerService;
 
 
 	//	Listing ---------------------------------------------------------
@@ -36,17 +36,17 @@ public class LabelMaterialManagerController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Manager managerConnected;
-		Collection<LabelMaterial> labelMaterials;
+		Collection<LabelProduct> labelProducts;
 
 		managerConnected = this.managerService.findByPrincipal();
 
 		Assert.isTrue(managerConnected instanceof Manager);
 
-		labelMaterials = this.labelMaterialService.findAll();
+		labelProducts = this.labelProductService.findAll();
 
-		result = new ModelAndView("labelMaterial/list");
-		result.addObject("labelMaterials", labelMaterials);
-		result.addObject("requestURI", "labelMaterial/manager/list.do");
+		result = new ModelAndView("labelProduct/list");
+		result.addObject("labelProducts", labelProducts);
+		result.addObject("requestURI", "labelProduct/manager/list.do");
 		result.addObject("RequestURIedit", "messageFolder/manager/edit.do");
 		result.addObject("RequestURImessages", "message/manager/list.do?d-16544-p=1");
 
@@ -58,10 +58,10 @@ public class LabelMaterialManagerController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView result;
-		LabelMaterial labelMaterial;
+		LabelProduct labelProduct;
 
-		labelMaterial = this.labelMaterialService.create();
-		result = this.createEditModelAndView(labelMaterial);
+		labelProduct = this.labelProductService.create();
+		result = this.createEditModelAndView(labelProduct);
 
 		return result;
 
@@ -69,13 +69,13 @@ public class LabelMaterialManagerController extends AbstractController {
 	// Edit---------------------------------------------------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam final int labelMaterialId) {
+	public ModelAndView edit(@RequestParam final int labelProductId) {
 		ModelAndView result;
-		LabelMaterial labelMaterial;
+		LabelProduct labelProduct;
 
-		labelMaterial = this.labelMaterialService.findOne(labelMaterialId);
-		Assert.notNull(labelMaterial);
-		result = this.createEditModelAndView(labelMaterial);
+		labelProduct = this.labelProductService.findOne(labelProductId);
+		Assert.notNull(labelProduct);
+		result = this.createEditModelAndView(labelProduct);
 
 		return result;
 
@@ -84,21 +84,21 @@ public class LabelMaterialManagerController extends AbstractController {
 	//	Save-------------------------------------------------------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(LabelMaterial labelMaterial, final BindingResult bindingResult) {
+	public ModelAndView save(LabelProduct labelProduct, final BindingResult bindingResult) {
 		ModelAndView result;
 
-		labelMaterial = this.labelMaterialService.reconstruct(labelMaterial, bindingResult);
+		labelProduct = this.labelProductService.reconstruct(labelProduct, bindingResult);
 		if (bindingResult.hasErrors())
 			result = new ModelAndView("redirect:list.do?");
 		else
 			try {
-				this.labelMaterialService.save(labelMaterial);
-				result = new ModelAndView("redirect:/labelMaterial/manager/list.do");
+				this.labelProductService.save(labelProduct);
+				result = new ModelAndView("redirect:/labelProduct/manager/list.do");
 			} catch (final Throwable oops) {
-				if (oops.getMessage().equals("This label is asociated with one material or more"))
-					result = this.createEditModelAndView(labelMaterial, "labelMaterial.labelContainsMaterial.error");
+				if (oops.getMessage().equals("This label is asociated with one product or more"))
+					result = this.createEditModelAndView(labelProduct, "labelProduct.labelContainsProduct.error");
 				else
-					result = this.createEditModelAndView(labelMaterial, "labelMaterial.commit.error");
+					result = this.createEditModelAndView(labelProduct, "labelProduct.commit.error");
 
 			}
 		return result;
@@ -106,39 +106,39 @@ public class LabelMaterialManagerController extends AbstractController {
 
 	//Delete---------------------------------------------------------------------
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(final int labelMaterialId) {
+	public ModelAndView delete(final int labelProductId) {
 		ModelAndView result;
-		LabelMaterial labelMaterial;
+		LabelProduct labelProduct;
 
-		labelMaterial = this.labelMaterialService.findOne(labelMaterialId);
-		Assert.notNull(labelMaterial);
+		labelProduct = this.labelProductService.findOne(labelProductId);
+		Assert.notNull(labelProduct);
 		try {
-			this.labelMaterialService.delete(labelMaterial);
+			this.labelProductService.delete(labelProduct);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
-			if (oops.getMessage().equals("This label is asociated with one material or more"))
-				result = this.createEditModelAndView(labelMaterial, "labelMaterial.labelContainsMaterial.error");
+			if (oops.getMessage().equals("This label is asociated with one product or more"))
+				result = this.createEditModelAndView(labelProduct, "labelProduct.labelContainsProduct.error");
 			else
-				result = this.createEditModelAndView(labelMaterial, "labelMaterial.commit.error");
+				result = this.createEditModelAndView(labelProduct, "labelProduct.commit.error");
 
 		}
 		return result;
 	}
 
 	// Ancillary methods ------------------------------------------------------
-	protected ModelAndView createEditModelAndView(final LabelMaterial labelMaterial) {
+	protected ModelAndView createEditModelAndView(final LabelProduct labelProduct) {
 		ModelAndView result;
-		result = this.createEditModelAndView(labelMaterial, null);
+		result = this.createEditModelAndView(labelProduct, null);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final LabelMaterial labelMaterial, final String messageCode) {
+	protected ModelAndView createEditModelAndView(final LabelProduct labelProduct, final String messageCode) {
 		ModelAndView result;
 
-		result = new ModelAndView("labelMaterial/edit");
-		result.addObject("labelMaterial", labelMaterial);
+		result = new ModelAndView("labelProduct/edit");
+		result.addObject("labelProduct", labelProduct);
 		result.addObject("message", messageCode);
-		result.addObject("requestURI", "labelMaterial/manager/edit.do");
+		result.addObject("requestURI", "labelProduct/manager/edit.do");
 
 		return result;
 

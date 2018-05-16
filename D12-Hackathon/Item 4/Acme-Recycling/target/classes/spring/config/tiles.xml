@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
-  * tiles.xml 
-  * 
-  * Copyright (C) 2017 Universidad de Sevilla 
-  * 
-  * The use of this project is hereby constrained to the conditions of the 
-  * TDG Licence, a copy of which you may download from 
-  * http://www.tdg-seville.info/License.html 
--->
+<!-- * tiles.xml * * Copyright (C) 2017 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -18,8 +12,8 @@
 	">
 
 	<util:list id="tiles">
-		<value>/views/master-page/tiles.xml</value>		
-		<value>/views/misc/tiles.xml</value>		
+		<value>/views/master-page/tiles.xml</value>
+		<value>/views/misc/tiles.xml</value>
 		<value>/views/security/tiles.xml</value>
 		<value>/views/welcome/tiles.xml</value>
 		<value>/views/profile/tiles.xml</value>
@@ -31,18 +25,20 @@
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/cleanPoint/tiles.xml</value>
 		<value>/views/message/tiles.xml</value>
-				
-		<value>/views/course/tiles.xml</value>	
+
+		<value>/views/course/tiles.xml</value>
 		<value>/views/carrier/tiles.xml</value>
-		<value>/views/manager/tiles.xml</value>	
+		<value>/views/manager/tiles.xml</value>
 		<value>/views/editor/tiles.xml</value>
 		<value>/views/admin/tiles.xml</value>
 		<value>/views/recycler/tiles.xml</value>
 		<value>/views/buyer/tiles.xml</value>
 		<value>/views/request/tiles.xml</value>
 		<value>/views/item/tiles.xml</value>
-		
-		
+		<value>/views/labelMaterial/tiles.xml</value>
+		<value>/views/labelProduct/tiles.xml</value>
+
+
 	</util:list>
 
 </beans>

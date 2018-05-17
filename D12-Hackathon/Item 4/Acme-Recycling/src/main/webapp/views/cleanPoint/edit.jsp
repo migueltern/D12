@@ -23,6 +23,7 @@
 <form:form action="${requestURI}" modelAttribute="cleanPoint">
 
 <form:hidden path="id" />
+<form:hidden path="version" />
 	
 	
 <!-- ATRIBUTOS -->

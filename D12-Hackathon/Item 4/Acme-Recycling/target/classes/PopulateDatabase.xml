@@ -863,7 +863,7 @@
 				<ref bean="course1" />
 			</list>
 		</property>
-		<property name="finder" ref="finder1"/>
+		<property name="finder" ref="finder1" />
 	</bean>
 
 	<bean id="buyer2" class="domain.Buyer">
@@ -891,7 +891,7 @@
 				<ref bean="course3" />
 			</list>
 		</property>
-		<property name="finder" ref="finder2"/>
+		<property name="finder" ref="finder2" />
 	</bean>
 
 	<bean id="buyer3" class="domain.Buyer">
@@ -917,7 +917,7 @@
 
 			</list>
 		</property>
-		<property name="finder" ref="finder3"/>
+		<property name="finder" ref="finder3" />
 	</bean>
 
 	<bean id="buyer4" class="domain.Buyer">
@@ -943,7 +943,7 @@
 				<ref bean="course4" />
 			</list>
 		</property>
-		<property name="finder" ref="finder4"/>
+		<property name="finder" ref="finder4" />
 	</bean>
 
 	<bean id="buyer5" class="domain.Buyer">
@@ -969,7 +969,7 @@
 				<ref bean="course5" />
 			</list>
 		</property>
-		<property name="finder" ref="finder5"/>
+		<property name="finder" ref="finder5" />
 	</bean>
 
 	<!-- news -->
@@ -987,7 +987,9 @@
 		</property>
 		<property name="comments">
 			<list>
-
+				<ref bean="comment1" />
+				<ref bean="comment2" />
+				<ref bean="comment6" />
 			</list>
 		</property>
 	</bean>
@@ -1022,7 +1024,7 @@
 		</property>
 		<property name="comments">
 			<list>
-
+				<ref bean="comment3" />
 			</list>
 		</property>
 	</bean>
@@ -1039,7 +1041,7 @@
 		</property>
 		<property name="comments">
 			<list>
-
+				<ref bean="comment4" />
 			</list>
 		</property>
 	</bean>
@@ -1056,77 +1058,78 @@
 		</property>
 		<property name="comments">
 			<list>
+				<ref bean="comment5" />
 
 			</list>
 		</property>
 	</bean>
 
-<!--  finder -->
-<bean id="finder1" class="domain.Finder">
-<property name="keyWord" value="sex"/>
-<property name="lowPrice" value="1.0"/>
-<property name="highPrice" value="3.1"/>
-<property name="startCacheTime" value="2018/12/12 18:34"/>
-<property name="materials">
-<list>
-<ref bean="material1"/>
-<ref bean="material2"/>
-</list>
-</property>
+	<!-- finder -->
+	<bean id="finder1" class="domain.Finder">
+		<property name="keyWord" value="sex" />
+		<property name="lowPrice" value="1.0" />
+		<property name="highPrice" value="3.1" />
+		<property name="startCacheTime" value="2018/12/12 18:34" />
+		<property name="materials">
+			<list>
+				<ref bean="material1" />
+				<ref bean="material2" />
+			</list>
+		</property>
 
-</bean>
+	</bean>
 
-<bean id="finder2" class="domain.Finder">
-<property name="keyWord" value="sex2"/>
-<property name="lowPrice" value="1.0"/>
-<property name="highPrice" value="3.1"/>
-<property name="startCacheTime" value="2018/12/12 18:34"/>
-<property name="materials">
-<list>
+	<bean id="finder2" class="domain.Finder">
+		<property name="keyWord" value="sex2" />
+		<property name="lowPrice" value="1.0" />
+		<property name="highPrice" value="3.1" />
+		<property name="startCacheTime" value="2018/12/12 18:34" />
+		<property name="materials">
+			<list>
 
-</list>
-</property>
+			</list>
+		</property>
 
-</bean>
+	</bean>
 
-<bean id="finder3" class="domain.Finder">
-<property name="keyWord" value="sex3"/>
-<property name="lowPrice" value="1.0"/>
-<property name="highPrice" value="3.1"/>
-<property name="startCacheTime" value="2018/12/12 18:34"/>
-<property name="materials">
-<list>
-<ref bean="material3"/>
-</list>
-</property>
+	<bean id="finder3" class="domain.Finder">
+		<property name="keyWord" value="sex3" />
+		<property name="lowPrice" value="1.0" />
+		<property name="highPrice" value="3.1" />
+		<property name="startCacheTime" value="2018/12/12 18:34" />
+		<property name="materials">
+			<list>
+				<ref bean="material3" />
+			</list>
+		</property>
 
-</bean>
+	</bean>
 
-<bean id="finder4" class="domain.Finder">
-<property name="keyWord" value="sex4"/>
-<property name="lowPrice" value="1.0"/>
-<property name="highPrice" value="3.1"/>
-<property name="startCacheTime" value="2018/12/12 18:34"/>
-<property name="materials">
-<list>
-<ref bean="material4"/>
-</list>
-</property>
+	<bean id="finder4" class="domain.Finder">
+		<property name="keyWord" value="sex4" />
+		<property name="lowPrice" value="1.0" />
+		<property name="highPrice" value="3.1" />
+		<property name="startCacheTime" value="2018/12/12 18:34" />
+		<property name="materials">
+			<list>
+				<ref bean="material4" />
+			</list>
+		</property>
 
-</bean>
+	</bean>
 
-<bean id="finder5" class="domain.Finder">
-<property name="keyWord" value="sex5"/>
-<property name="lowPrice" value="1.0"/>
-<property name="highPrice" value="3.1"/>
-<property name="startCacheTime" value="2018/12/12 18:34"/>
-<property name="materials">
-<list>
-<ref bean="material5"/>
-</list>
-</property>
+	<bean id="finder5" class="domain.Finder">
+		<property name="keyWord" value="sex5" />
+		<property name="lowPrice" value="1.0" />
+		<property name="highPrice" value="3.1" />
+		<property name="startCacheTime" value="2018/12/12 18:34" />
+		<property name="materials">
+			<list>
+				<ref bean="material5" />
+			</list>
+		</property>
 
-</bean>
+	</bean>
 
 
 	<!-- GPS -->
@@ -1332,7 +1335,7 @@
 				<ref bean="opinion2" />
 			</list>
 		</property>
-		
+
 	</bean>
 
 	<bean id="item3" class="domain.Item">
@@ -1420,51 +1423,56 @@
 	<!-- Label products -->
 	<bean id="labelProduct1" class="domain.LabelProduct">
 		<property name="name" value="Aluminio" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct2" class="domain.LabelProduct">
 		<property name="name" value="Cemento" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct3" class="domain.LabelProduct">
 		<property name="name" value="Papel" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct4" class="domain.LabelProduct">
 		<property name="name" value="Pilas y baterias" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct5" class="domain.LabelProduct">
 		<property name="name" value="Plastico" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct6" class="domain.LabelProduct">
 		<property name="name" value="Ordenador" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct7" class="domain.LabelProduct">
 		<property name="name" value="Telefono" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct8" class="domain.LabelProduct">
 		<property name="name" value="Textil" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct9" class="domain.LabelProduct">
 		<property name="name" value="Vidrio" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
 
 	<bean id="labelProduct10" class="domain.LabelProduct">
 		<property name="name" value="Otros" />
+		<property name="byDefault" value="true" />
+	</bean>
+	
+	<bean id="labelProduct11" class="domain.LabelProduct">
+		<property name="name" value="Cables" />
 		<property name="byDefault" value="false" />
 	</bean>
 
@@ -1703,10 +1711,10 @@
 		<property name="spanishWelcomeMessage" value="Bienvenido a Acme-Recycling"></property>
 		<property name="banner"
 			value="http://www.masciudadania.es/wp-content/uploads/2016/04/z-Banner.jpg"></property>
-		
-		<property name="maxNumberFinder" value="40"/>
-		<property name="cacheMaxTime" value="2"/>
-		
+
+		<property name="maxNumberFinder" value="40" />
+		<property name="cacheMaxTime" value="2" />
+
 		<property name="tabooWords">
 			<list>
 				<ref bean="tabooWord1" />
@@ -1889,19 +1897,11 @@
 		<property name="carrier" ref="carrier1" />
 	</bean>
 
-	<!-- <bean id="request2" class="domain.Request">
-		<property name="code" value="DG180231BB"></property>
-		<property name="title" value="title 2"></property>
-		<property name="observation" value="observation 2"></property>
-		<property name="status" value="FINISHED"></property>
-		<property name="cleanPoints">
-			<list>
-				
-			</list>
-		</property>
-		<property name="assesment" ref="assesment2" />
-		<property name="carrier" ref="carrier1" />
-	</bean> -->
+	<!-- <bean id="request2" class="domain.Request"> <property name="code" value="DG180231BB"></property> 
+		<property name="title" value="title 2"></property> <property name="observation" 
+		value="observation 2"></property> <property name="status" value="FINISHED"></property> 
+		<property name="cleanPoints"> <list> </list> </property> <property name="assesment" 
+		ref="assesment2" /> <property name="carrier" ref="carrier1" /> </bean> -->
 
 	<bean id="request3" class="domain.Request">
 		<property name="code" value="DG180331CC"></property>
@@ -2034,7 +2034,7 @@
 		<property name="summary" value="summary of lesson 2" />
 		<property name="number" value="12" />
 		<property name="course" ref="course2" />
-		
+
 	</bean>
 
 	<bean id="lesson3" class="domain.Lesson">
@@ -2042,7 +2042,7 @@
 		<property name="summary" value="summary of lesson 3" />
 		<property name="number" value="13" />
 		<property name="course" ref="course3" />
-		
+
 	</bean>
 
 	<bean id="lesson4" class="domain.Lesson">
@@ -2058,7 +2058,7 @@
 		<property name="summary" value="summary of lesson 5" />
 		<property name="number" value="15" />
 		<property name="course" ref="course5" />
-	
+
 	</bean>
 
 	<bean id="lesson6" class="domain.Lesson">
@@ -2066,12 +2066,11 @@
 		<property name="summary" value="summary of lesson 6" />
 		<property name="number" value="16" />
 		<property name="course" ref="course1" />
-		
+
 	</bean>
 
- <!--  Default folder of Recycler1 
-  --> 
-	
+	<!-- Default folder of Recycler1 -->
+
 	<bean id="InBoxRecycler1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2101,10 +2100,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="recycler1" />
 	</bean>
-	
-	 <!--  Default folder of Recycler2
-  --> 
-	
+
+	<!-- Default folder of Recycler2 -->
+
 	<bean id="InBoxRecycler2" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2134,10 +2132,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="recycler2" />
 	</bean>
-	
- <!--  Default folder of Recycler3
-  --> 
-	
+
+	<!-- Default folder of Recycler3 -->
+
 	<bean id="InBoxRecycler3" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2167,10 +2164,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="recycler3" />
 	</bean>
-	
- <!--  Default folder of Recycler4
-  --> 
-	
+
+	<!-- Default folder of Recycler4 -->
+
 	<bean id="InBoxRecycler4" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2200,10 +2196,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="recycler4" />
 	</bean>
-	
- <!--  Default folder of Recycler5
-  --> 
-	
+
+	<!-- Default folder of Recycler5 -->
+
 	<bean id="InBoxRecycler5" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2233,10 +2228,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="recycler5" />
 	</bean>
-	
- <!--  Default folder of Buyer1
-  --> 
-	
+
+	<!-- Default folder of Buyer1 -->
+
 	<bean id="InBoxBuyer1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2266,10 +2260,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="buyer1" />
 	</bean>
-	
-<!--  Default folder of Buyer2
-  --> 
-	
+
+	<!-- Default folder of Buyer2 -->
+
 	<bean id="InBoxBuyer2" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2299,10 +2292,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="buyer2" />
 	</bean>
-	
-<!--  Default folder of Buyer3
-  --> 
-	
+
+	<!-- Default folder of Buyer3 -->
+
 	<bean id="InBoxBuyer3" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2332,10 +2324,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="buyer3" />
 	</bean>
-	
-<!--  Default folder of Buyer4
-  --> 
-	
+
+	<!-- Default folder of Buyer4 -->
+
 	<bean id="InBoxBuyer4" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2365,10 +2356,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="buyer4" />
 	</bean>
-	
-<!--  Default folder of Buyer5
-  --> 
-	
+
+	<!-- Default folder of Buyer5 -->
+
 	<bean id="InBoxBuyer5" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2398,10 +2388,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="buyer5" />
 	</bean>
-	
-<!--  Default folder of Manager1
-  --> 
-	
+
+	<!-- Default folder of Manager1 -->
+
 	<bean id="InBoxManager1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2431,10 +2420,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="manager1" />
 	</bean>
-	
-<!--  Default folder of Manager2
-  --> 
-	
+
+	<!-- Default folder of Manager2 -->
+
 	<bean id="InBoxManager2" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2464,10 +2452,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="manager2" />
 	</bean>
-	
-<!--  Default folder of Manager3
-  --> 
-	
+
+	<!-- Default folder of Manager3 -->
+
 	<bean id="InBoxManager3" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2497,10 +2484,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="manager3" />
 	</bean>
-	
-<!--  Default folder of Manager4
-  --> 
-	
+
+	<!-- Default folder of Manager4 -->
+
 	<bean id="InBoxManager4" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2530,10 +2516,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="manager4" />
 	</bean>
-	
-<!--  Default folder of Manager5
-  --> 
-	
+
+	<!-- Default folder of Manager5 -->
+
 	<bean id="InBoxManager5" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2563,10 +2548,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="manager5" />
 	</bean>
-	
-<!--  Default folder of Editor1
-  --> 
-	
+
+	<!-- Default folder of Editor1 -->
+
 	<bean id="InBoxEditor1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2596,10 +2580,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="editor1" />
 	</bean>
-	
-<!--  Default folder of Editor2
-  --> 
-	
+
+	<!-- Default folder of Editor2 -->
+
 	<bean id="InBoxEditor2" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2629,10 +2612,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="editor2" />
 	</bean>
-	
-<!--  Default folder of Editor3
-  --> 
-	
+
+	<!-- Default folder of Editor3 -->
+
 	<bean id="InBoxEditor3" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2662,10 +2644,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="editor3" />
 	</bean>
-	
-<!--  Default folder of Editor4
-  --> 
-	
+
+	<!-- Default folder of Editor4 -->
+
 	<bean id="InBoxEditor4" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2695,10 +2676,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="editor4" />
 	</bean>
-	
-<!--  Default folder of Editor5
-  --> 
-	
+
+	<!-- Default folder of Editor5 -->
+
 	<bean id="InBoxEditor5" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2728,10 +2708,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="editor5" />
 	</bean>
-	
-<!--  Default folder of Carrier1
-  --> 
-	
+
+	<!-- Default folder of Carrier1 -->
+
 	<bean id="InBoxCarrier1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2761,10 +2740,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="carrier1" />
 	</bean>
-	
-<!--  Default folder of Carrier2
-  --> 
-	
+
+	<!-- Default folder of Carrier2 -->
+
 	<bean id="InBoxCarrier2" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2794,10 +2772,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="carrier2" />
 	</bean>
-	
-<!--  Default folder of Carrier3
-  --> 
-	
+
+	<!-- Default folder of Carrier3 -->
+
 	<bean id="InBoxCarrier3" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2827,10 +2804,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="carrier3" />
 	</bean>
-	
-<!--  Default folder of Carrier4
-  --> 
-	
+
+	<!-- Default folder of Carrier4 -->
+
 	<bean id="InBoxCarrier4" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2860,10 +2836,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="carrier4" />
 	</bean>
-	
-<!--  Default folder of Carrier5
-  --> 
-	
+
+	<!-- Default folder of Carrier5 -->
+
 	<bean id="InBoxCarrier5" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -2893,9 +2868,9 @@
 		<property name="modifiable" value="false" />
 		<property name="actor" ref="carrier5" />
 	</bean>
-  
-  	<!-- Default folder of Admin -->
-	
+
+	<!-- Default folder of Admin -->
+
 	<bean id="InBoxAdmin" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />

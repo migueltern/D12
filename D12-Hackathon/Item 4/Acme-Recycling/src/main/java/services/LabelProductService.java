@@ -122,4 +122,8 @@ public class LabelProductService {
 		this.validator.validate(result, bindingResult);
 		return result;
 	}
+
+	public void flush() {
+		this.labelProductRepository.flush();
+	}
 }

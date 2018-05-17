@@ -49,6 +49,14 @@
 
 	<input type="submit" name="save" value="<spring:message code="cleanPoint.save" />" />&nbsp; 
 
+
+<jstl:if test="${cleanPoint.id != 0}">
+		<input type="submit" name="delete"
+			value="<spring:message code="cleanPoint.delete" />"
+			onclick="javascript: return confirm('<spring:message code="cleanPoint.confirm.delete" />')" />&nbsp;
+	</jstl:if>
+	
+	
 	<acme:cancel
 		url="cleanPoint/admin/list.do?d-16544-p=1"
 		code="cleanPoint.cancel" />

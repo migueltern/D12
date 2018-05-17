@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -94,6 +95,20 @@ public class CleanPointAdminController extends AbstractController {
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(cleanPoint, "cleanPoint.commit.error");
 			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@ModelAttribute final CleanPoint cleanPoint, final BindingResult bindingResult) {
+		ModelAndView result;
+
+		try {
+			this.cleanPointService.delete(cleanPoint);
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(cleanPoint, "cleanPoint.commit.error");
+		}
 
 		return result;
 	}

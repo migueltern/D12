@@ -6,6 +6,9 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -150,6 +153,17 @@ public class NewService {
 
 		result = this.newRepository.findCommentsByNew(newId);
 
+		return result;
+	}
+
+	public Collection<New> findAllNewsInDescOrder() {
+		Collection<New> result;
+		final Page<New> resPage;
+		final Pageable pageable;
+
+		pageable = new PageRequest(0, 5);
+		resPage = this.newRepository.findAllNewsInDescOrder(pageable);
+		result = resPage.getContent();
 		return result;
 	}
 

@@ -86,5 +86,8 @@
 	
 </display:table>
 
-
+<B><spring:message code="aviso1" /></B>
+<a href="buyer/create.do"><spring:message code="aviso2"  /></a>
+<B><spring:message code="aviso4" /></B>
+<a href="recycler/create.do"><spring:message code="aviso3"  /></a>
 

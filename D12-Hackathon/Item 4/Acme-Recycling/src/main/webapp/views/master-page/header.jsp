@@ -256,6 +256,13 @@
 					<li class="arrow"></li>
 					<li><a href="recycler/create.do"><spring:message code="master.page.recycler.register" /></a></li>
 					<li><a href="buyer/create.do"><spring:message code="master.page.buyer.register" /></a></li>
+					
+				</ul>
+			</li>
+			<li><a class="fNiv"><spring:message	code="master.page.new" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="new_/list.do?d-16544-p=1"><spring:message code="master.page.New.list" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

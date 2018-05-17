@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -10,8 +12,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Actor;
 import domain.LabelProduct;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,6 +28,9 @@ public class LabelItemServiceTest extends AbstractTest {
 	//Supporting services ----------------------------------------------------
 	@Autowired
 	LabelProductService	labelProductService;
+
+	@Autowired
+	ActorService		actorService;
 	//
 	//	@Autowired
 	//	CategoryProductService	categoryProductService;
@@ -107,6 +114,39 @@ public class LabelItemServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 
 		super.unauthenticate();
+	}
+
+	@Test
+	public void driverList() {
+		final Object testingData[][] = {
+			{
+				//El user 1 tiene 5 chirps en sus seguidores
+				"manager1", 11, null
+			}, {
+				//El user 2 no tiene un total de 4 chirps asociadas a sus seguidores.
+				"admin", 12, IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateList(super.getEntityId((String) testingData[i][0]), (int) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+
+	private void templateList(final int usernameId, final int size, final Class<?> expected) {
+		Class<?> caught;
+		Actor actorConnected;
+		actorConnected = this.actorService.findOne(usernameId);
+		Collection<LabelProduct> labelItems;
+
+		caught = null;
+		try {
+			super.authenticate(actorConnected.getUserAccount().getUsername());
+			labelItems = this.labelProductService.findAll();
+			Assert.isTrue(labelItems.size() == size);
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
 	}
 
 }

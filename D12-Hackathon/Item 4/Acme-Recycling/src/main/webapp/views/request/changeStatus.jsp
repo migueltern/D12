@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="request/manager/edit.do" modelAttribute="request">
+<form:form action="${requestURI}" modelAttribute="request">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -42,8 +42,15 @@
 	<input type="submit" name="saveChangeStatus"
 		value="<spring:message code="request.save"/>" />&nbsp;
 		
+		<security:authorize access="hasRole('MANAGER')">
 		<acme:cancel url="request/manager/listMyRequest.do?d-16544-p=1"
 		code="request.cancel" />
+		</security:authorize>
+		
+		<security:authorize access="hasRole('CARRIER')">
+		<acme:cancel url="request/carrier/listMyRequest.do?d-16544-p=1"
+		code="request.cancel" />
+		</security:authorize>
 
 </form:form>
 

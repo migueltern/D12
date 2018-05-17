@@ -75,7 +75,7 @@ public class RequestManagerController extends AbstractController {
 		Manager managerPrincipal;
 
 		managerPrincipal = this.managerService.findByPrincipal();
-		myRequests = this.requestService.findByActorId(managerPrincipal.getId());
+		myRequests = managerPrincipal.getRequests();
 
 		result = new ModelAndView("request/list");
 		result.addObject("requests", myRequests);
@@ -174,10 +174,10 @@ public class RequestManagerController extends AbstractController {
 
 		result = new ModelAndView("request/changeStatus");
 		result.addObject("request", request);
+		result.addObject("requestURI", "request/manager/edit.do");
 
 		return result;
 	}
-
 	//Save Request ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveChangeStatus")
 	public ModelAndView saveChangeStatus(Request request, final BindingResult binding) {

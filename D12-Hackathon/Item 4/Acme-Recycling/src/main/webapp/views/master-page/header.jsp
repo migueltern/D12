@@ -181,6 +181,13 @@
 			
 			<li><a href="message/carrier/send.do"><spring:message code="master.page.message.send" /></a></li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.request" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="request/carrier/listMyRequest.do?d-16544-p=1"><spring:message code="master.page.request.listMyRequest" /></a></li>
+				</ul>
+			</li>
+			
 		</security:authorize>
 		
 		<security:authorize access="hasRole('MANAGER')">

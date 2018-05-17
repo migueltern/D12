@@ -40,6 +40,19 @@
 		</jstl:if>
 	</security:authorize>
 	
+	<security:authorize access="hasRole('CARRIER')">
+		<jstl:if test="${showButtonChangeStatus}">
+			<spring:message code="request.changeStatus" var="changeStatus" />
+			<display:column title="${changeStatus}" sortable="false">
+
+				<spring:url value="request/carrier/changeStatus.do" var="editURL">
+					<spring:param name="requestId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="request.changeStatus" /></a>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
+	
 	<!-- MANAGER ADD PUNTUATION  -->
 
  	<security:authorize access="hasRole('MANAGER')">

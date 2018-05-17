@@ -36,6 +36,9 @@ public class RequestService {
 	@Autowired
 	private ManagerService		managerService;
 
+	@Autowired
+	private CarrierService		carrierService;
+
 
 	// Supporting services ----------------------------------------------------
 
@@ -86,7 +89,13 @@ public class RequestService {
 		final Request result;
 
 		Assert.notNull(request);
-		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
+		//Comprobamos que lo realiza un manager o un carrier que tiene esa request
+		try {
+			Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
+		} catch (final Throwable oops) {
+			//No es un manager, por lo tanto tiene que ser un carrier
+			Assert.isTrue(this.carrierService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
+		}
 
 		result = this.requestRepository.save(request);
 
@@ -111,6 +120,14 @@ public class RequestService {
 		Collection<Request> result;
 
 		result = this.requestRepository.findByActorId(id);
+
+		return result;
+	}
+
+	public Collection<Request> findByCarrierId(final int id) {
+		Collection<Request> result;
+
+		result = this.requestRepository.findByCarrierId(id);
 
 		return result;
 	}
@@ -217,4 +234,5 @@ public class RequestService {
 		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(itemDB.getRequest()), "Can not commit this operation because its illegal");
 		return itemDB;
 	}
+
 }

@@ -91,7 +91,7 @@ public class Request extends DomainEntity {
 		this.assesment = assesment;
 	}
 
-	@OneToOne(optional = false)
+	@OneToOne(optional = false, mappedBy = "request")
 	@NotNull
 	@Valid
 	public Item getItem() {

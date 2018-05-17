@@ -16,6 +16,7 @@ import org.springframework.validation.Validator;
 import repositories.RequestRepository;
 import domain.CleanPoint;
 import domain.Item;
+import domain.Manager;
 import domain.Request;
 
 @Service
@@ -199,5 +200,21 @@ public class RequestService {
 		}
 
 		return request;
+	}
+
+	public Item reconstructAddPuntuation(final Item item, final BindingResult binding) {
+		Assert.notNull(item);
+		Item itemDB;
+
+		itemDB = null;
+		if (item.getId() == 0)
+			Assert.isTrue(false, "the item must be in the system");
+		else {
+			itemDB = this.itemService.findOne(item.getId());
+			itemDB.setValue(item.getValue());
+		}
+		final Manager manager = this.managerService.findByPrincipal();
+		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(itemDB.getRequest()), "Can not commit this operation because its illegal");
+		return itemDB;
 	}
 }

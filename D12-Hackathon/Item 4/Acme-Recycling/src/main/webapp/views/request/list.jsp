@@ -39,6 +39,20 @@
 			</display:column>
 		</jstl:if>
 	</security:authorize>
+	
+	<!-- MANAGER ADD PUNTUATION  -->
+
+ 	<security:authorize access="hasRole('MANAGER')">
+		<spring:message code="request.addPuntuation" var="addPuntuation" />
+		<display:column title="${addPuntuation}" sortable="false">
+
+			<spring:url value="request/manager/addPuntuation.do" var="editURL">
+				<spring:param name="itemId" value="${row.item.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="request.addPuntuation" /></a>
+		</display:column>
+	</security:authorize>
+	
 
 	<!-- ATRIBUTOS -->
 	

@@ -80,6 +80,7 @@ public class RequestManagerController extends AbstractController {
 		result = new ModelAndView("request/list");
 		result.addObject("requests", myRequests);
 		result.addObject("showButtonChangeStatus", true);
+		result.addObject("showButtonAddPuntuation", true);
 		result.addObject("requestURI", "request/manager/listMyRequest.do?d-16544-p=1");
 		return result;
 	}
@@ -194,4 +195,41 @@ public class RequestManagerController extends AbstractController {
 			}
 		return result;
 	}
+
+	//Add puntuation
+	@RequestMapping(value = "/addPuntuation", method = RequestMethod.GET)
+	public ModelAndView addPuntuation(@RequestParam final int itemId) {
+		ModelAndView result;
+		Item item;
+
+		//Solo se puede añadir puntuation a los items de TUS requests
+		item = this.itemService.findOne(itemId);
+		final Manager manager = this.managerService.findByPrincipal();
+		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(item.getRequest()), "Can not commit this operation because its illegal");
+
+		result = new ModelAndView("request/addPuntuation");
+		result.addObject("item", item);
+
+		return result;
+	}
+
+	//Save Request ---------------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveAddPuntuation")
+	public ModelAndView saveAddPuntutation(Item item, final BindingResult binding) {
+		ModelAndView result;
+		final Manager manager = this.managerService.findByPrincipal();
+
+		item = this.requestService.reconstructAddPuntuation(item, binding);
+		if (binding.hasErrors())
+			result = new ModelAndView("redirect:addPuntuation.do?itemId=" + item);
+		else
+			try {
+				this.itemService.save(item);
+				result = new ModelAndView("redirect:listMyRequest.do");
+			} catch (final Throwable oops) {
+				result = new ModelAndView("redirect:addPuntuation.do?itemId=" + item);
+			}
+		return result;
+	}
+
 }

@@ -1,5 +1,5 @@
 <%--
- * list.jsp
+ * edit.jsp
  *
  * Copyright (C) 2017 Universidad de Sevilla
  * 
@@ -21,34 +21,21 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<form:form action="request/manager/edit.do" modelAttribute="item">
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="items" requestURI="${requestURI}" id="row">
+	<form:hidden path="id" />
+	<form:hidden path="version" />
 
-	<!-- MANAGER CREATE REQUEST -->
+	<jstl:out value="Puntuation"></jstl:out>
+	<form:input path="value" type="number" value = "${item.value}" max="500" min ="0"/>
 
- 	<security:authorize access="hasRole('MANAGER')">
-		<spring:message code="request.request" var="Edit" />
-		<display:column title="${Edit}" sortable="false">
+	<!-- BOTONES -->
 
-			<spring:url value="request/manager/create.do" var="editURL">
-				<spring:param name="itemId" value="${row.id}" />
-			</spring:url>
-			<a href="${editURL}"><spring:message code="request.request" /></a>
-		</display:column>
-	</security:authorize>
-	
-	<!-- ATRIBUTOS -->
-	
-	<spring:message code="request.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" sortable="true" />
-	
+	<input type="submit" name="saveAddPuntuation"
+		value="<spring:message code="request.save"/>" />&nbsp;
+		
+		<acme:cancel url="request/manager/listMyRequest.do?d-16544-p=1"
+		code="request.cancel" />
 
-	
-
-
-
-
-</display:table>
-
+</form:form>
 

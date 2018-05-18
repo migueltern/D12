@@ -86,7 +86,8 @@ public class AssesmentService {
 			Date moment;
 			moment = new Date(System.currentTimeMillis() - 1000);
 			assesment.setMoment(moment);
-		}
+		} else
+			Assert.isTrue(this.findByCarrierId(this.carrierService.findByPrincipal().getId()).contains(assesmentForm.getAssessment()));
 
 		result = this.assesmentRepository.save(assesment);
 

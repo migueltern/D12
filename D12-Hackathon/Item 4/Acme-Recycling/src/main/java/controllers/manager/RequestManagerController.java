@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AssesmentService;
 import services.CarrierService;
 import services.CleanPointService;
 import services.ItemService;
@@ -45,6 +46,9 @@ public class RequestManagerController extends AbstractController {
 
 	@Autowired
 	private ItemService			itemService;
+
+	@Autowired
+	private AssesmentService	assessmentService;
 
 
 	//	Constructors

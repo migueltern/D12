@@ -22,43 +22,18 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<script type="text/javascript">
-	function confirmDelete(itemId) {
-		confirm=confirm('<spring:message code="item.confirm.delete"/>');
-		if (confirm)
-		  window.location.href ="item/recycler/delete.do?itemId=" + itemId;
-		  else
-			  window.location.href ="item/recycler/list.do";
-	}
-</script>
-
 <!-- Listing messageFodler -->
-<display:table name="items" id="row" requestURI="${requestURI}"
+<display:table name="incidences" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 	
 	<!-- Attributes -->
 
-	<acme:column code="item.title" property="title" sortable ="true"/>
+	<acme:column code="incidence.title" property="title" sortable ="true"/>
 	
 	<spring:message code="message.format.date" var="pattern"></spring:message>
-	<spring:message code="item.publicationMoment" var="postedHeader" />
-	<display:column property="publicationMoment" title="${postedHeader}"
+	<spring:message code="incidence.createdMoment" var="postedHeader" />
+	<display:column property="createdMoment" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
-	
-	<acme:column code="item.quantity" property="quantity" sortable ="true"/>
-	
-	<acme:column code="item.value" property="value" sortable ="true"/>
-	
-	<acme:column code="item.labelProduct" property="labelProduct.name" sortable ="true"/>
-	
- 	<spring:message code="item.delete" var="deleteHeader" />
-		<display:column title="${deleteHeader}" sortable="true">
-			<input type="button" name="delete"
-				value="<spring:message code="item.delete" />"
-				onclick="confirmDelete(${row.id});" />
-	</display:column>
-	
-	
 	
 
 

@@ -45,6 +45,7 @@
 		<value>/views/labelMaterial/messages</value>
 		<value>/views/labelProduct/messages</value>
 		<value>/views/assessment/messages</value>
+		<value>/views/incidence/messages</value>
 	</util:list>
 
 </beans>

@@ -116,5 +116,17 @@ public class IncidenceService {
 		
 		
 	}
+	
+	//Other method
+	
+	public Collection<Incidence> findIncidencesByRecycler(int recyclerId){
+		
+		Collection<Incidence> result;
+		
+		result = this.incidenceRepository.findIncidencesByRecycler(recyclerId);
+		
+		return result;
+		
+	}
 
 }

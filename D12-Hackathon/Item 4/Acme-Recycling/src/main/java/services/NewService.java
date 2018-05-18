@@ -33,8 +33,8 @@ public class NewService {
 	@Autowired
 	private EditorService	editorService;
 
-	//	@Autowired
-	//	private CommentService	commentService;
+	@Autowired
+	private CommentService	commentService;
 
 	//Importar la que pertenece a Spring
 	@Autowired
@@ -119,12 +119,12 @@ public class NewService {
 
 		editor.getNews().remove(new_);
 
-		//Collection<Comment> comments;
+		Collection<Comment> comments;
 
-		//	comments = this.newRepository.findCommentsByNew(new_.getId());
+		comments = this.newRepository.findCommentsByNew(new_.getId());
 
-		//		for (final Comment c : comments)
-		//			this.commentService.delete(c);
+		for (final Comment c : comments)
+			this.commentService.delete(c);
 
 		this.newRepository.delete(new_);
 	}

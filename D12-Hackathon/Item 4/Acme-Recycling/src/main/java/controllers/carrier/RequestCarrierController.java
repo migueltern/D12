@@ -76,7 +76,7 @@ public class RequestCarrierController extends AbstractController {
 		requestForm.setItemId(item.getId());
 
 		result = new ModelAndView("request/changeStatus");
-		result.addObject("requestForm", request);
+		result.addObject("requestForm", requestForm);
 		result.addObject("requestURI", "request/carrier/edit.do");
 
 		return result;

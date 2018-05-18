@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.RequestRepository;
+import security.Authority;
 import domain.CleanPoint;
 import domain.Item;
 import domain.Request;
@@ -97,18 +98,31 @@ public class RequestService {
 
 		Assert.notNull(requestForm);
 
-		if (this.actorService.findPrincipal().getUserAccount().getAuthorities().contains("CARRIER"))
-			Assert.isTrue(this.carrierService.findByPrincipal().getRequests().contains(requestForm.getRequest()), "Can not commit this operation because its illegal");
-
 		result = this.requestRepository.save(requestForm.getRequest());
 		if (requestForm.getRequest().getId() == 0) {
-			//Añadimos el request al item`
-			final Item item = this.itemService.findOne(requestForm.getItemId());
-			item.setRequest(result);
-			this.itemService.save(item);
-			//Añadimos el request al manager cuando lo creamos
+			Item item;
 
+			item = this.itemService.findOne(requestForm.getItemId());
+
+			//No se puede crear request en un item que ya tiene request
+			Assert.isTrue(this.findItemsNonRequest().contains(item));
+
+			//Añadimos el request al item`
+			item.setRequest(result);
+
+			this.itemService.save(item);
+
+			//Añadimos el request al manager cuando lo creamos
 			this.managerService.findByPrincipal().getRequests().add(result);
+		} else {
+			final Authority authorityForCarrier = new Authority();
+			authorityForCarrier.setAuthority("CARRIER");
+			if (this.actorService.findPrincipal().getUserAccount().getAuthorities().contains(authorityForCarrier))
+				Assert.isTrue(this.carrierService.findByPrincipal().getRequests().contains(requestForm.getRequest()), "Can not commit this operation because its illegal");
+			final Authority authorityForManager = new Authority();
+			authorityForManager.setAuthority("MANAGER");
+			if (this.actorService.findPrincipal().getUserAccount().getAuthorities().contains(authorityForManager))
+				Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(requestForm.getRequest()), "Can not commit this operation because its illegal");
 		}
 
 		return result;

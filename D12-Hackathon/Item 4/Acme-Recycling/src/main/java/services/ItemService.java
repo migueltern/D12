@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.ItemRepository;
+import security.Authority;
 import domain.Item;
 import domain.Opinion;
 import domain.Recycler;
@@ -28,9 +29,15 @@ public class ItemService {
 	// Supporting services ----------------------------------------------------
 	@Autowired
 	private RecyclerService	recyclerService;
-	
+
 	@Autowired
-	private Validator	validator;
+	private Validator		validator;
+
+	@Autowired
+	private ActorService	actorService;
+
+	@Autowired
+	private ManagerService	managerService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -40,22 +47,22 @@ public class ItemService {
 
 	// Simple CRUD methods ----------------------------------------------------
 	public Item create() {
-		
+
 		Item result;
 		Recycler recyclerPrincipal;
 		Collection<Opinion> opinions;
 		Date publicationMoment;
-	
+
 		recyclerPrincipal = this.recyclerService.findByPrincipal();
 		opinions = new ArrayList<Opinion>();
 		publicationMoment = new Date(System.currentTimeMillis() - 1000);
 		//No copiar la siguiente linea en el reconstruct
 		result = new Item();
-	
+
 		result.setOpinions(opinions);
 		result.setRecycler(recyclerPrincipal);
 		result.setPublicationMoment(publicationMoment);
-	
+
 		return result;
 
 	}
@@ -87,11 +94,16 @@ public class ItemService {
 			item.setPublicationMoment(publicationMoment);
 		}
 
+		//Si eres MANAGER Solo se puede añadir puntuation a los items de TUS requests
+		final Authority authorityForManager = new Authority();
+		authorityForManager.setAuthority("MANAGER");
+		if (this.actorService.findPrincipal().getUserAccount().getAuthorities().contains(authorityForManager))
+			Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(item.getRequest()), "Can not commit this operation because its illegal");
+
 		result = this.itemRepository.save(item);
 
 		return result;
 	}
-
 	public void delete(final Item item) {
 		Assert.notNull(item);
 
@@ -109,22 +121,22 @@ public class ItemService {
 		return result;
 
 	}
-	
-	public Item reconstruct(Item item, BindingResult bindingResult){
+
+	public Item reconstruct(final Item item, final BindingResult bindingResult) {
 		Item result;
 		Item itemBD;
 		Recycler recyclerPrincipal;
 		Collection<Opinion> opinions;
-		
+
 		opinions = new ArrayList<>();
-		
+
 		if (item.getId() == 0) {
-			
+
 			recyclerPrincipal = this.recyclerService.findByPrincipal();
 			item.setPublicationMoment(new Date(System.currentTimeMillis() - 1000));
 			item.setRecycler(recyclerPrincipal);
 			item.setOpinions(opinions);
-			
+
 			result = item;
 		} else {
 			itemBD = this.itemRepository.findOne(item.getId());
@@ -140,12 +152,11 @@ public class ItemService {
 			item.setRequest(item.getRequest());
 			item.setTitle(itemBD.getTitle());
 			item.setValue(itemBD.getValue());
-		
+
 			result = item;
 		}
 		this.validator.validate(result, bindingResult);
 		return result;
 	}
-	
-	
+
 }

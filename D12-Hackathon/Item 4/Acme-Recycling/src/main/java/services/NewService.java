@@ -33,6 +33,9 @@ public class NewService {
 	@Autowired
 	private EditorService	editorService;
 
+	//	@Autowired
+	//	private CommentService	commentService;
+
 	//Importar la que pertenece a Spring
 	@Autowired
 	private Validator		validator;
@@ -73,7 +76,8 @@ public class NewService {
 
 		result = this.newRepository.save(new_);
 
-		principal.getNews().add(result);
+		if (new_.getId() == 0)
+			principal.getNews().add(result);
 
 		return result;
 	}
@@ -114,6 +118,13 @@ public class NewService {
 		editor = this.editorService.findByPrincipal();
 
 		editor.getNews().remove(new_);
+
+		//Collection<Comment> comments;
+
+		//	comments = this.newRepository.findCommentsByNew(new_.getId());
+
+		//		for (final Comment c : comments)
+		//			this.commentService.delete(c);
 
 		this.newRepository.delete(new_);
 	}

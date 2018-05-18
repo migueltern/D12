@@ -76,4 +76,11 @@ public class AssesmentService {
 
 		this.assesmentRepository.delete(assesment);
 	}
+
+	public Collection<Assesment> findByCarrierId(final int id) {
+		Collection<Assesment> result;
+		result = this.assesmentRepository.findByCarrierId(id);
+		return result;
+	}
+
 }

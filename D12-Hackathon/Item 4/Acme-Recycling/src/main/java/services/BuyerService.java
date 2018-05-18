@@ -114,6 +114,14 @@ public class BuyerService {
 		return result;
 	}
 
+	public Buyer findBuyerByCourse(final Course course) {
+		Buyer result;
+
+		result = this.buyerRepository.findBuyerByCourse(course.getId());
+
+		return result;
+	}
+
 	public void checkPrincipal() {
 
 		final UserAccount userAccount = LoginService.getPrincipal();

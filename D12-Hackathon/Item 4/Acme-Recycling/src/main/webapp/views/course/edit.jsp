@@ -55,6 +55,14 @@
 
 
 <input type="submit" name="save" value="<spring:message code="course.save" />" />&nbsp; 
+	
+	<jstl:if test="${course.id !=0 }">
+			<acme:submit_with_on_click name="delete" code="course.delete" code2="course.confirm.delete"/>
+			
+			
+			
+	</jstl:if>
+	
 <acme:cancel url="course/buyer/list.do?d-16544-p=1"	code="course.cancel" />
 
 </form:form>

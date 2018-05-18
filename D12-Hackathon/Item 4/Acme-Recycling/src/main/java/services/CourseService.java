@@ -105,6 +105,12 @@ public class CourseService {
 
 	public void delete(final Course course) {
 		Assert.notNull(course);
+		Buyer buyer;
+
+		if (this.buyerService.findBuyerByCourse(course) != null) {
+			buyer = this.buyerService.findBuyerByCourse(course);
+			buyer.getCourses().remove(course);
+		}
 		//Solo un buyer podrá eliminar un curso
 		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
 		//Sólo si está en modo borrar se podrá eliminar el course

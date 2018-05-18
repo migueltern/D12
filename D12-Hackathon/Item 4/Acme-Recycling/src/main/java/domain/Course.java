@@ -115,7 +115,7 @@ public class Course extends Opinable {
 		this.materials = materials;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+	@OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true, mappedBy = "course")
 	public Collection<Lesson> getLessons() {
 		return this.lessons;
 	}

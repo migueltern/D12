@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ import services.CourseService;
 import services.LessonService;
 import services.MaterialService;
 import controllers.AbstractController;
+import domain.Buyer;
 import domain.Course;
 import domain.Lesson;
 import domain.Material;
@@ -127,6 +129,24 @@ public class CourseBuyerController extends AbstractController {
 				else
 					result = this.createEditModelAndView(course, "request.commit.error");
 			}
+		return result;
+	}
+
+	//Delete -----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@ModelAttribute final Course course, final BindingResult bindingResult) {
+		ModelAndView result;
+		Buyer buyer;
+
+		buyer = new Buyer();
+		buyer = this.buyerService.findByPrincipal();
+		try {
+			buyer.getCourses().remove(course);
+			this.courseService.delete(course);
+			result = new ModelAndView("redirect:list.do?d-16544-p=1");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(course, "course.commit.error");
+		}
 		return result;
 	}
 

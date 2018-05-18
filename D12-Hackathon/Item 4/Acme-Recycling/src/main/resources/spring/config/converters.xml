@@ -115,6 +115,9 @@
 		<bean class="converters.LabelProductToStringConverter" /> 
 		<bean class="converters.StringToLabelProductConverter" />
 		
+		<bean class="converters.LessonToStringConverter" /> 
+		<bean class="converters.StringToLessonConverter" />
+		
 		
 		
 	</util:list>

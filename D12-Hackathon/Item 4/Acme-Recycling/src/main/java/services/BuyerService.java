@@ -91,15 +91,19 @@ public class BuyerService {
 			buyer.getUserAccount().setPassword(passwordHash);
 		}
 
+		result = this.buyerRepository.save(buyer);
+
+		//Codigo para añadir el finder al buyer, este codigo no funciona en controlador pero si en el finderServiceTest, descomentar para probarlo
 		//		if (buyer.getFinder() == null) {
 		//			Finder finder;
 		//
 		//			finder = this.finderService.create();
 		//			finder = this.finderService.save(finder);
-		//			buyer.setFinder(finder);
-		//			result = this.buyerRepository.save(buyer);
-		//		} else
-		result = this.buyerRepository.save(buyer);
+		//			result = this.findOne(result.getId());
+		//			result.setFinder(finder);
+		//			result = this.buyerRepository.save(result);
+		//
+		//		}
 
 		Assert.notNull(result);
 

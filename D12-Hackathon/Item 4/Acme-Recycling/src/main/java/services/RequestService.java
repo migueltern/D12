@@ -259,4 +259,11 @@ public class RequestService {
 		return result;
 	}
 
+	public Request findByAssessmentId(final int assessmentId) {
+		Request result;
+
+		result = this.requestRepository.findByAssessmentId(assessmentId);
+		return result;
+	}
+
 }

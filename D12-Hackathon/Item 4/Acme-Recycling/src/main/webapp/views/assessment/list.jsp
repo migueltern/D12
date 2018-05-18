@@ -26,11 +26,35 @@
 	name="assessments" requestURI="${requestURI}" id="row">
 
 	<!--  EDIT -->
-	
-	
+	<security:authorize access="hasRole('CARRIER')">
+		<spring:message code="assessment.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+
+			<spring:url value="assessment/carrier/edit.do" var="editURL">
+				<spring:param name="assessmentId" value="${row.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="assessment.edit" /></a>
+		</display:column>
+	</security:authorize>
+
 	<!-- ATRIBUTOS -->
 
-	
+	<spring:message code="assessment.format.moment" var="pattern"></spring:message>
+	<spring:message code="assessment.moment" var="momentHeader" />
+	<display:column property="moment" title="${momentHeader}"
+		sortable="true" format="${pattern}" />
+
+	<spring:message code="assessment.description" var="descriptionHeader" />
+	<display:column property="description" title="${descriptionHeader}"
+		sortable="true" />
+
+	<spring:message code="assessment.valuation" var="valuationHeader" />
+	<display:column property="valuation" title="${valuationHeader}"
+		sortable="true" />
+
+
+
+
 
 
 

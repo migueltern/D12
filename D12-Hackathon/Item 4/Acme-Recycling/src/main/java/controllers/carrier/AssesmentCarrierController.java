@@ -30,7 +30,7 @@ public class AssesmentCarrierController extends AbstractController {
 	//	Services --------------------------------------------------------
 
 	@Autowired
-	AssesmentService	assesmentService;
+	AssesmentService	assessmentService;
 
 	@Autowired
 	CarrierService		carrierService;
@@ -53,7 +53,7 @@ public class AssesmentCarrierController extends AbstractController {
 		Carrier carrier;
 
 		carrier = this.carrierService.findByPrincipal();
-		myAssessments = this.assesmentService.findByCarrierId(carrier.getId());
+		myAssessments = this.assessmentService.findByCarrierId(carrier.getId());
 		result = new ModelAndView("assessment/list");
 		result.addObject("assessments", myAssessments);
 		result.addObject("requestURI", "/assessment/carrier/listMyAssessment.do?d-16544-p=1");
@@ -74,13 +74,33 @@ public class AssesmentCarrierController extends AbstractController {
 		final Collection<Request> requests = this.requestService.findByCarrierId(this.carrierService.findByPrincipal().getId());
 		Assert.isTrue(requests.contains(request));
 
-		assessmentForm = this.assesmentService.create(requestId);
+		assessmentForm = this.assessmentService.create(requestId);
 
 		result = this.createEditModelAndView(assessmentForm);
+		result.addObject("cancelRedirectToListRequest", true);
 
 		return result;
 	}
+	//Edit
 
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int assessmentId) {
+		ModelAndView result;
+		final AssessmentForm assessmentForm;
+
+		assessmentForm = new AssessmentForm();
+		assessmentForm.setAssessment(this.assessmentService.findOne(assessmentId));
+		final Request request = this.requestService.findByAssessmentId(assessmentId);
+		assessmentForm.setRequestId(request.getId());
+
+		Assert.isTrue(this.assessmentService.findByCarrierId(this.carrierService.findByPrincipal().getId()).contains(assessmentForm.getAssessment()));
+
+		result = this.createEditModelAndView(assessmentForm);
+		result.addObject("cancelRedirectToListAssessment", true);
+
+		return result;
+
+	}
 	//Save Assessment ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView saveChangeStatus(@Valid final AssessmentForm assessmentForm, final BindingResult binding) {
@@ -90,7 +110,7 @@ public class AssesmentCarrierController extends AbstractController {
 			result = this.createEditModelAndView(assessmentForm);
 		else
 			try {
-				this.assesmentService.save(assessmentForm);
+				this.assessmentService.save(assessmentForm);
 				result = new ModelAndView("redirect:listMyAssessment.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(assessmentForm, "assessment.commit.error");

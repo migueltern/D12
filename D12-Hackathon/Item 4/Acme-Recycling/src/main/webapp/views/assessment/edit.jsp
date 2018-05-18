@@ -28,13 +28,15 @@
 	<form:hidden path="assessment.version" />
 	<form:hidden path="assessment.moment" />
 	<form:hidden path="requestId" />
-	
-	<acme:textbox code="assessment.description" path="assessment.description" />
+
+	<acme:textbox code="assessment.description"
+		path="assessment.description" />
 	<br />
-	
-	<spring:message code="assessment.valuation" var="valuation"/>
+
+	<spring:message code="assessment.valuation" var="valuation" />
 	<jstl:out value="${valuation}"></jstl:out>
-	<form:input path="assessment.valuation" type="number" value = "${assessmentForm.assessment.valuation}" max="5" min ="1"/>
+	<form:input path="assessment.valuation" type="number"
+		value="${assessmentForm.assessment.valuation}" max="5" min="1" />
 	<br />
 
 
@@ -43,8 +45,15 @@
 	<input type="submit" name="save"
 		value="<spring:message code="assessment.save"/>" />&nbsp;
 		
+		<jstl:if test="${cancelRedirectToListRequest}">
 		<acme:cancel url="request/carrier/listMyRequest.do?d-16544-p=1"
 			code="assessment.cancel" />
-			
+		</jstl:if>
+		
+		<jstl:if test="${cancelRedirectToListAssessment}">
+		<acme:cancel url="request/carrier/listMyAssessment.do?d-16544-p=1"
+			code="assessment.cancel" />
+		</jstl:if>
+
 </form:form>
 

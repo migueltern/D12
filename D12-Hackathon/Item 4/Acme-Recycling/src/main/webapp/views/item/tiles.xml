@@ -23,13 +23,13 @@
 	</definition>
 	
 	
-	<!-- <definition name="messageFolder/edit" extends="master.page">	
-		<put-attribute name="title" value="Edit a message Folder" />
-		<put-attribute name="body" value="/views/messageFolder/edit.jsp" />
+	<definition name="item/edit" extends="master.page">	
+		<put-attribute name="title" value="Edit a item" />
+		<put-attribute name="body" value="/views/item/edit.jsp" />
 	</definition>
 	
 	
-	<definition name="messageFolder/display" extends="master.page">	
+	<!-- <definition name="messageFolder/display" extends="master.page">	
 		<put-attribute name="title" value="Display a message Folder" />
 		<put-attribute name="body" value="/views/messageFolder/display.jsp" />
 	</definition> -->

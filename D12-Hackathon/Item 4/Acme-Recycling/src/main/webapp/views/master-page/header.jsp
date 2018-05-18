@@ -149,6 +149,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="item/recycler/list.do?d-16544-p=1"><spring:message code="master.page.item.myList" /></a></li>
+					<li><a href="item/recycler/create.do"><spring:message code="master.page.item.create" /></a></li>
 					
 					
 				</ul>

@@ -25,22 +25,6 @@
 <display:table name="items" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 
-		
-		<spring:message code="item.edit" var="Edit"/>
-		
-		<display:column title="${Edit}" sortable="true">
-		
-		
-		<spring:url value="${RequestURIedit}" var="editURL">
-			<spring:param name="itemId" value="${row.id}" />
-		</spring:url>
-		<a href="${editURL}"><spring:message code="item.edit" /></a>
-		
-		
-		</display:column>
-	
-
-	
 	
 	<!-- Attributes -->
 

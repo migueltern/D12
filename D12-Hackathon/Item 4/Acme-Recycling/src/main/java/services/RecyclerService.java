@@ -211,6 +211,14 @@ public class RecyclerService {
 		return result;
 	}
 
+	public Collection<Recycler> findRecyclerByCourse(final Course course) {
+		Collection<Recycler> result;
+
+		result = this.recyclerRepository.findRecyclerByCourse(course.getId());
+
+		return result;
+	}
+
 	public Recycler findRecyclerByComment(final int commentId) {
 		final Recycler recycler;
 

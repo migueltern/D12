@@ -36,6 +36,9 @@ public class CourseService {
 	private RecyclerService		recyclerService;
 
 	@Autowired
+	private LessonService		lessonService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -106,15 +109,29 @@ public class CourseService {
 	public void delete(final Course course) {
 		Assert.notNull(course);
 		Buyer buyer;
+		final Collection<Recycler> recyclers;
+
+		Collection<Lesson> lessons;
+		//Solo un buyer podrá eliminar un curso
+		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
+		//Sólo si está en modo borrar se podrá eliminar el course
+		Assert.isTrue(course.isDraftMode());
+
+		lessons = this.lessonService.findLessonsByCourseId(course.getId());
+		for (final Lesson l : lessons) {
+			l.setCourse(null);
+			this.lessonService.delete(l);
+		}
 
 		if (this.buyerService.findBuyerByCourse(course) != null) {
 			buyer = this.buyerService.findBuyerByCourse(course);
 			buyer.getCourses().remove(course);
 		}
-		//Solo un buyer podrá eliminar un curso
-		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
-		//Sólo si está en modo borrar se podrá eliminar el course
-		Assert.isTrue(course.isDraftMode());
+
+		recyclers = this.recyclerService.findRecyclerByCourse(course);
+		for (final Recycler r : recyclers)
+			r.getCourses().remove(course);
+
 		this.courseRepository.delete(course);
 	}
 

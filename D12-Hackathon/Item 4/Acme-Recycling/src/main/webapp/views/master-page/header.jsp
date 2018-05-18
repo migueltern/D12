@@ -67,6 +67,13 @@
 					<li><a href="cleanPoint/admin/list.do?d-16544-p=1"><spring:message code="master.page.administrator.cleanPoints" /></a></li>				
 				</ul>
 			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message code="master.page.aboutUs" /></a></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 		
@@ -99,6 +106,13 @@
 					<li><a href="course/buyer/list.do?d-16544-p=1"><spring:message
 								code="master.page.buyer.course" /></a></li>
 				</ul></li>
+				
+				<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message code="master.page.aboutUs" /></a></li>
+				</ul>
+			</li>
 			</security:authorize>
 		
 		
@@ -140,8 +154,6 @@
 				</ul>
 			</li>
 			
-			
-			
 			<li><a class="fNiv"><spring:message	code="master.page.opinion" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -158,6 +170,13 @@
 					<li class="arrow"></li>
 					<li><a href="course/recycler/listCoursesAvailables.do?d-16544-p=1"><spring:message code="master.page.course.listCoursesAvailables" /></a></li>
 					
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message code="master.page.aboutUs" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -192,6 +211,13 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="assessment/carrier/listMyAssessment.do?d-16544-p=1"><spring:message code="master.page.assessment.listMyAssessment" /></a></li>
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message code="master.page.aboutUs" /></a></li>
 				</ul>
 			</li>
 			
@@ -232,6 +258,13 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message code="master.page.aboutUs" /></a></li>
+				</ul>
+			</li>
+			
 		</security:authorize>
 		
 		<security:authorize access="hasRole('EDITOR')">
@@ -260,6 +293,13 @@
 					<li><a href="new/editor/create.do"><spring:message code="master.page.New.create" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message code="master.page.aboutUs" /></a></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
@@ -277,6 +317,13 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="new_/list.do?d-16544-p=1"><spring:message code="master.page.New.list" /></a></li>
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message code="master.page.aboutUs" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

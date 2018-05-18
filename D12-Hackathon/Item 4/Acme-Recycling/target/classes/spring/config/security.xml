@@ -54,6 +54,7 @@
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll"/> 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
 		<security:intercept-url pattern="/welcome/legal.do" access="permitAll"/>
+		<security:intercept-url pattern="/welcome/aboutUs.do" access="permitAll"/>
 		<security:intercept-url pattern="/new_/list.do" access="permitAll"/>
 		
 		<security:intercept-url pattern="/opinion/recycler/**" access="hasRole('RECYCLER')"/>	

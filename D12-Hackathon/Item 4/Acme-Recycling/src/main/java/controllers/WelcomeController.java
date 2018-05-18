@@ -43,4 +43,12 @@ public class WelcomeController extends AbstractController {
 		result = new ModelAndView("welcome/legal");
 		return result;
 	}
+
+	@RequestMapping(value = "/aboutUs")
+	public ModelAndView aboutUs() {
+		ModelAndView result;
+
+		result = new ModelAndView("welcome/aboutUs");
+		return result;
+	}
 }

@@ -71,7 +71,8 @@ public class AssesmentCarrierController extends AbstractController {
 
 		//No se puede crear assessment en un request que no te pertenece
 		request = this.requestService.findOne(requestId);
-		Assert.isTrue(this.assesmentService.findByCarrierId(this.carrierService.findByPrincipal().getId()).contains(request));
+		final Collection<Request> requests = this.requestService.findByCarrierId(this.carrierService.findByPrincipal().getId());
+		Assert.isTrue(requests.contains(request));
 
 		assessmentForm = this.assesmentService.create(requestId);
 

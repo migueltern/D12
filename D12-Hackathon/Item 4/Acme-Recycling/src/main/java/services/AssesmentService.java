@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.AssesmentRepository;
 import domain.Assesment;
+import domain.Request;
 import forms.AssessmentForm;
 
 @Service
@@ -44,6 +45,10 @@ public class AssesmentService {
 		result.setAssessment(new Assesment());
 		result.setRequestId(requestId);
 
+		Date moment;
+		moment = new Date(System.currentTimeMillis() - 1000);
+		result.getAssessment().setMoment(moment);
+
 		return result;
 
 	}
@@ -66,11 +71,16 @@ public class AssesmentService {
 	public Assesment save(final AssessmentForm assesmentForm) {
 		final Assesment result;
 		Assesment assesment;
+		Request request;
 
 		assesment = assesmentForm.getAssessment();
 
 		Assert.notNull(assesment);
-		Assert.isTrue(this.findByCarrierId(this.carrierService.findByPrincipal().getId()).contains(this.requestService.findOne(assesmentForm.getRequestId())));
+
+		//No se puede crear assessment en un request que no te pertenece
+		request = this.requestService.findOne(assesmentForm.getRequestId());
+		final Collection<Request> requests = this.requestService.findByCarrierId(this.carrierService.findByPrincipal().getId());
+		Assert.isTrue(requests.contains(request));
 
 		if (assesment.getId() == 0) {
 			Date moment;

@@ -26,7 +26,8 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
-	<jstl:out value="Puntuation"></jstl:out>
+	<spring:message code="item.puntuation" var="puntuation"/>
+	<jstl:out value="${puntuation}"></jstl:out>
 	<form:input path="value" type="number" value = "${item.value}" max="500" min ="0"/>
 
 	<!-- BOTONES -->

@@ -22,10 +22,20 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="assessment/carrier/edit.do"
-	modelAttribute="assessment">
+	modelAttribute="assessmentForm">
 
-	<form:hidden path="id" />
-	<form:hidden path="version" />
+	<form:hidden path="assessment.id" />
+	<form:hidden path="assessment.version" />
+	<form:hidden path="assessment.moment" />
+	<form:hidden path="requestId" />
+	
+	<acme:textbox code="assessment.description" path="assessment.description" />
+	<br />
+	
+	<spring:message code="assessment.valuation" var="valuation"/>
+	<jstl:out value="${valuation}"></jstl:out>
+	<form:input path="assessment.valuation" type="number" value = "${assessmentForm.assessment.valuation}" max="5" min ="1"/>
+	<br />
 
 
 	<!-- BOTONES -->
@@ -33,7 +43,7 @@
 	<input type="submit" name="save"
 		value="<spring:message code="assessment.save"/>" />&nbsp;
 		
-		<acme:cancel url="assessment/carrier/listMyAssessment.do?d-16544-p=1"
+		<acme:cancel url="request/carrier/listMyRequest.do?d-16544-p=1"
 			code="assessment.cancel" />
 			
 </form:form>

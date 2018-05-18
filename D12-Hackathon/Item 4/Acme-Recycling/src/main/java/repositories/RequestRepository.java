@@ -19,7 +19,7 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
 	@Query("select m.requests from Manager m where m.id=?1")
 	Collection<Request> findByActorId(int id);
 
-	@Query("select c.requests from Carrier c where c.id=22")
+	@Query("select c.requests from Carrier c where c.id=?1")
 	Collection<Request> findByCarrierId(int id);
 
 	@Query("select i from Item i where i.request.id=?1")

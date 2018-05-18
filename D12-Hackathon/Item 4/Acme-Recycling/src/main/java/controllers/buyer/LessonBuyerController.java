@@ -13,7 +13,7 @@ import controllers.AbstractController;
 import domain.Lesson;
 
 @Controller
-@RequestMapping("/course/buyer")
+@RequestMapping("/lesson/buyer")
 public class LessonBuyerController extends AbstractController {
 
 	// Services---------------------------------------------------------

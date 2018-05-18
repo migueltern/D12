@@ -21,20 +21,20 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${requestURI}" modelAttribute="request">
+<form:form action="${requestURI}" modelAttribute="requestForm">
 
-	<form:hidden path="id" />
-	<form:hidden path="version" />
+	<form:hidden path="request.id" />
+	<form:hidden path="request.version" />
 
 	<div>
-		<form:label path="status">
+		<form:label path="request.status">
 			<spring:message code="request.status" />
 		</form:label>
-		<form:select path="status">
+		<form:select path="request.status">
 			<form:option value="FINISHED" label="FINISHED" />
 			<form:option value="CANCELLED" label="CANCELLED" />
 		</form:select>
-		<form:errors path="status" cssClass="error" />
+		<form:errors path="request.status" cssClass="error" />
 	</div>
 
 	<!-- BOTONES -->

@@ -16,7 +16,9 @@ import services.CarrierService;
 import services.RequestService;
 import controllers.AbstractController;
 import domain.Carrier;
+import domain.Item;
 import domain.Request;
+import forms.RequestForm;
 
 @Controller
 @RequestMapping("/request/carrier")
@@ -61,13 +63,20 @@ public class RequestCarrierController extends AbstractController {
 	public ModelAndView changeStatus(@RequestParam final int requestId) {
 		ModelAndView result;
 		Request request;
+		Item item;
+		final RequestForm requestForm;
 
 		//Solo se puede cambiar el status de TUS requests
 		request = this.requestService.findOne(requestId);
 		Assert.isTrue(this.carrierService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
 
+		requestForm = new RequestForm();
+		requestForm.setRequest(request);
+		item = (this.requestService.findItemByRequestId(request.getId()));
+		requestForm.setItemId(item.getId());
+
 		result = new ModelAndView("request/changeStatus");
-		result.addObject("request", request);
+		result.addObject("requestForm", request);
 		result.addObject("requestURI", "request/carrier/edit.do");
 
 		return result;
@@ -75,18 +84,18 @@ public class RequestCarrierController extends AbstractController {
 
 	//Save Request ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveChangeStatus")
-	public ModelAndView saveChangeStatus(Request request, final BindingResult binding) {
+	public ModelAndView saveChangeStatus(RequestForm requestForm, final BindingResult binding) {
 		ModelAndView result;
 
-		request = this.requestService.reconstruct(request, binding);
+		requestForm = this.requestService.reconstruct(requestForm, binding);
 		if (binding.hasErrors())
-			result = new ModelAndView("redirect:changeStatus.do?requestId=" + request.getItem());
+			result = new ModelAndView("redirect:changeStatus.do?requestId=" + requestForm.getItemId());
 		else
 			try {
-				this.requestService.save(request);
+				this.requestService.save(requestForm);
 				result = new ModelAndView("redirect:listMyRequest.do");
 			} catch (final Throwable oops) {
-				result = new ModelAndView("redirect:changeStatus.do?requestId=" + request.getItem());
+				result = new ModelAndView("redirect:changeStatus.do?requestId=" + requestForm.getItemId());
 			}
 		return result;
 	}

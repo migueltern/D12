@@ -16,8 +16,8 @@ import org.springframework.validation.Validator;
 import repositories.RequestRepository;
 import domain.CleanPoint;
 import domain.Item;
-import domain.Manager;
 import domain.Request;
+import forms.RequestForm;
 
 @Service
 @Transactional
@@ -52,22 +52,26 @@ public class RequestService {
 
 	// Simple CRUD methods ----------------------------------------------------
 
-	public Request create(final int itemId) {
-		Request result;
+	public RequestForm create(final int itemId) {
+		RequestForm result;
 		List<CleanPoint> cleanPoints;
 		Item item;
+		final Request request;
 
 		cleanPoints = new ArrayList<CleanPoint>();
 
 		//No copiar la siguiente linea en el reconstruct
-		result = new Request();
+		request = new Request();
 		item = this.itemService.findOne(itemId);
 		Assert.notNull(item, "item is null");
 
-		result.setItem(item);
-		result.setCode(this.generatedTicker());
-		result.setStatus("PENDING");
-		result.setCleanPoints(cleanPoints);
+		request.setCode(this.generatedTicker());
+		request.setStatus("PENDING");
+		request.setCleanPoints(cleanPoints);
+
+		result = new RequestForm();
+		result.setRequest(request);
+		result.setItemId(itemId);
 
 		return result;
 	}
@@ -88,19 +92,27 @@ public class RequestService {
 		return result;
 	}
 
-	public Request save(final Request request) {
+	public Request save(final RequestForm requestForm) {
 		final Request result;
 
-		Assert.notNull(request);
+		Assert.notNull(requestForm);
 
 		if (this.actorService.findPrincipal().getUserAccount().getAuthorities().contains("CARRIER"))
-			Assert.isTrue(this.carrierService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
+			Assert.isTrue(this.carrierService.findByPrincipal().getRequests().contains(requestForm.getRequest()), "Can not commit this operation because its illegal");
 
-		result = this.requestRepository.save(request);
+		result = this.requestRepository.save(requestForm.getRequest());
+		if (requestForm.getRequest().getId() == 0) {
+			//Añadimos el request al item`
+			final Item item = this.itemService.findOne(requestForm.getItemId());
+			item.setRequest(result);
+			this.itemService.save(item);
+			//Añadimos el request al manager cuando lo creamos
+
+			this.managerService.findByPrincipal().getRequests().add(result);
+		}
 
 		return result;
 	}
-
 	public void delete(final Request request) {
 		Assert.notNull(request);
 
@@ -182,22 +194,27 @@ public class RequestService {
 		return ticker;
 	}
 
-	public Request reconstruct(final Request request, final BindingResult binding) {
-		final Request result;
+	public RequestForm reconstruct(final RequestForm requestForm, final BindingResult binding) {
+		final RequestForm result;
 		final Request requestBD;
+		Request request;
+
+		request = requestForm.getRequest();
 
 		if (request.getId() == 0) {
 
 			request.setCode(this.generatedTicker());
 			request.setStatus("PENDING");
 
-			result = request;
+			requestForm.setRequest(request);
+			result = requestForm;
 		} else {
 			//Solo entra aqui cuando se cambia el status
 			requestBD = this.findOne(request.getId());
 			requestBD.setStatus(request.getStatus());
 
-			result = requestBD;
+			requestForm.setRequest(requestBD);
+			result = requestForm;
 		}
 		this.validator.validate(result, binding);
 		return result;
@@ -229,9 +246,17 @@ public class RequestService {
 			itemDB = this.itemService.findOne(item.getId());
 			itemDB.setValue(item.getValue());
 		}
-		final Manager manager = this.managerService.findByPrincipal();
+
 		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(itemDB.getRequest()), "Can not commit this operation because its illegal");
 		return itemDB;
+	}
+
+	public Item findItemByRequestId(final int requestId) {
+		Item result;
+
+		result = this.requestRepository.findItemByRequestId(requestId);
+
+		return result;
 	}
 
 }

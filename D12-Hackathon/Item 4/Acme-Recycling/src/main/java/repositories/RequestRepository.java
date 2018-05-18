@@ -22,4 +22,7 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
 	@Query("select c.requests from Carrier c where c.id=22")
 	Collection<Request> findByCarrierId(int id);
 
+	@Query("select i from Item i where i.request.id=?1")
+	Item findItemByRequestId(int requestId);
+
 }

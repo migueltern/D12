@@ -25,6 +25,7 @@ import domain.CleanPoint;
 import domain.Item;
 import domain.Manager;
 import domain.Request;
+import forms.RequestForm;
 
 @Controller
 @RequestMapping("/request/manager")
@@ -96,21 +97,24 @@ public class RequestManagerController extends AbstractController {
 		final ModelAndView result;
 		final Request request;
 		final Item item;
+		final RequestForm requestForm;
 
 		//No se puede crear request en un item que ya tiene request
 		item = this.itemService.findOne(itemId);
 		Assert.isTrue(this.requestService.findItemsNonRequest().contains(item));
 
-		request = this.requestService.create(itemId);
-		result = this.createEditModelAndView(request);
+		requestForm = this.requestService.create(itemId);
+		result = this.createEditModelAndView(requestForm);
 
 		return result;
 	}
 	//Save Request ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(Request request, final BindingResult binding) {
+	public ModelAndView save(RequestForm requestForm, final BindingResult binding) {
 		ModelAndView result;
+		Request request;
 
+		request = requestForm.getRequest();
 		//Si la lista de cleanPoint es null la ponemos vacia para que no de problemas en los checkeos que se realiza del request en el reconstruct
 		if (request.getCleanPoints() == null)
 			request.setCleanPoints(new ArrayList<CleanPoint>());
@@ -118,36 +122,37 @@ public class RequestManagerController extends AbstractController {
 		if (request.getCleanPoints().contains(null))
 			request.getCleanPoints().remove(null);
 
-		request = this.requestService.reconstruct(request, binding);
+		requestForm = this.requestService.reconstruct(requestForm, binding);
+		request = requestForm.getRequest();
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(request);
+			result = this.createEditModelAndView(requestForm);
 		else
 			try {
 				//Devuelve el request con el status cambiado en funcion de tenga carrier o punto limpio
 				request = this.requestService.checkCreateRequest(request);
 
-				this.requestService.save(request);
+				this.requestService.save(requestForm);
 				result = new ModelAndView("redirect:listMyRequest.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("if you select a carrier,you can not select clean points"))
-					result = this.createEditModelAndView(request, "request.dontSelectCleanPoint.error");
+					result = this.createEditModelAndView(requestForm, "request.dontSelectCleanPoint.error");
 				else if (oops.getMessage().equals("if you dont select a carrier, you have to select clean points"))
-					result = this.createEditModelAndView(request, "request.dontSelectCarrier.error");
+					result = this.createEditModelAndView(requestForm, "request.dontSelectCarrier.error");
 				else
-					result = this.createEditModelAndView(request, "request.commit.error");
+					result = this.createEditModelAndView(requestForm, "request.commit.error");
 			}
 		return result;
 	}
-	protected ModelAndView createEditModelAndView(final Request request) {
-		Assert.notNull(request);
+	protected ModelAndView createEditModelAndView(final RequestForm requestForm) {
+		Assert.notNull(requestForm);
 		ModelAndView result;
-		result = this.createEditModelAndView(request, null);
+		result = this.createEditModelAndView(requestForm, null);
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final Request request, final String messageCode) {
-		assert request != null;
+	protected ModelAndView createEditModelAndView(final RequestForm requestForm, final String messageCode) {
+		assert requestForm != null;
 
 		ModelAndView result;
 		Collection<Carrier> carriers;
@@ -157,7 +162,7 @@ public class RequestManagerController extends AbstractController {
 		carriers = this.carrierService.findAll();
 		cleanPoints = this.cleanPointService.findAll();
 
-		result.addObject("request", request);
+		result.addObject("requestForm", requestForm);
 		result.addObject("carriers", carriers);
 		result.addObject("cleanPoints", cleanPoints);
 		result.addObject("message", messageCode);
@@ -171,43 +176,47 @@ public class RequestManagerController extends AbstractController {
 	public ModelAndView changeStatus(@RequestParam final int requestId) {
 		ModelAndView result;
 		Request request;
+		final RequestForm requestForm;
 
 		//Solo se puede cambiar el status de TUS requests
 		request = this.requestService.findOne(requestId);
 		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
 
+		requestForm = new RequestForm();
+		requestForm.setRequest(request);
+
 		result = new ModelAndView("request/changeStatus");
-		result.addObject("request", request);
+		result.addObject("requestForm", requestForm);
 		result.addObject("requestURI", "request/manager/edit.do");
 
 		return result;
 	}
 	//Save Request ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveChangeStatus")
-	public ModelAndView saveChangeStatus(Request request, final BindingResult binding) {
+	public ModelAndView saveChangeStatus(RequestForm requestForm, final BindingResult binding) {
 		ModelAndView result;
 
-		request = this.requestService.reconstruct(request, binding);
+		requestForm = this.requestService.reconstruct(requestForm, binding);
 		if (binding.hasErrors())
-			result = new ModelAndView("redirect:changeStatus.do?requestId=" + request.getItem());
+			result = new ModelAndView("redirect:changeStatus.do?requestId=" + requestForm.getItemId());
 		else
 			try {
-				this.requestService.save(request);
+				this.requestService.save(requestForm);
 				result = new ModelAndView("redirect:listMyRequest.do");
 			} catch (final Throwable oops) {
-				result = new ModelAndView("redirect:changeStatus.do?requestId=" + request.getItem());
+				result = new ModelAndView("redirect:changeStatus.do?requestId=" + requestForm.getItemId());
 			}
 		return result;
 	}
 
 	//Add puntuation
 	@RequestMapping(value = "/addPuntuation", method = RequestMethod.GET)
-	public ModelAndView addPuntuation(@RequestParam final int itemId) {
+	public ModelAndView addPuntuation(@RequestParam final int requestId) {
 		ModelAndView result;
 		Item item;
 
 		//Solo se puede añadir puntuation a los items de TUS requests
-		item = this.itemService.findOne(itemId);
+		item = this.requestService.findItemByRequestId(requestId);
 		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(item.getRequest()), "Can not commit this operation because its illegal");
 
 		result = new ModelAndView("request/addPuntuation");
@@ -223,13 +232,13 @@ public class RequestManagerController extends AbstractController {
 
 		item = this.requestService.reconstructAddPuntuation(item, binding);
 		if (binding.hasErrors())
-			result = new ModelAndView("redirect:addPuntuation.do?itemId=" + item);
+			result = new ModelAndView("redirect:addPuntuation.do?requestId=" + item.getRequest().getId());
 		else
 			try {
 				this.itemService.save(item);
 				result = new ModelAndView("redirect:listMyRequest.do");
 			} catch (final Throwable oops) {
-				result = new ModelAndView("redirect:addPuntuation.do?itemId=" + item);
+				result = new ModelAndView("redirect:addPuntuation.do?requestId=" + item.getRequest().getId());
 			}
 		return result;
 	}

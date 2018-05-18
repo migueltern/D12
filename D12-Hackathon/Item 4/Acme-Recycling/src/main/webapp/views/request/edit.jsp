@@ -21,23 +21,23 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="request/manager/edit.do" modelAttribute="request">
+<form:form action="request/manager/edit.do" modelAttribute="requestForm">
 
-	<form:hidden path="id" />
-	<form:hidden path="version" />
+	<form:hidden path="request.id" />
+	<form:hidden path="request.version" />
 <%-- 	<form:hidden path="code" />
 	<form:hidden path="status" /> --%>
-	<form:hidden path="item" />
+	<form:hidden path="itemId" />
 
-	<acme:textbox code="request.title" path="title" />
+	<acme:textbox code="request.title" path="request.title" />
 	<br />
-	<acme:textbox code="request.observation" path="observation" />
+	<acme:textbox code="request.observation" path="request.observation" />
 	<br />
 	<acme:select items="${carriers}" itemLabel="name"
-		code="request.carrier" path="carrier" />
+		code="request.carrier" path="request.carrier" />
 	<br />
 	<acme:selectmultiple items="${cleanPoints}" itemLabel="address"
-		code="request.cleanPoint" path="cleanPoints" />
+		code="request.cleanPoint" path="request.cleanPoints" />
 	<br />
 
 	<!-- BOTONES -->

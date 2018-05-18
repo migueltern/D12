@@ -1961,7 +1961,6 @@
 			</list>
 		</property>
 		<property name="assesment" ref="assesment1" />
-		<property name="item" ref="item1" />
 		<property name="carrier" ref="carrier1" />
 	</bean>
 
@@ -1983,7 +1982,6 @@
 			</list>
 		</property>
 		<property name="assesment" ref="assesment3" />
-		<property name="item" ref="item3" />
 		<property name="carrier" ref="carrier3" />
 	</bean>
 
@@ -1997,7 +1995,6 @@
 
 			</list>
 		</property>
-		<property name="item" ref="item4" />
 		<property name="carrier" ref="carrier4" />
 	</bean>
 
@@ -2011,7 +2008,6 @@
 
 			</list>
 		</property>
-		<property name="item" ref="item5" />
 		<property name="carrier" ref="carrier5" />
 	</bean>
 

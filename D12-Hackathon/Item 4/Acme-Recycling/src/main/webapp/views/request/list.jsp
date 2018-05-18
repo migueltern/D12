@@ -71,7 +71,7 @@
 		<display:column title="${addPuntuation}" sortable="false">
 
 			<spring:url value="request/manager/addPuntuation.do" var="editURL">
-				<spring:param name="itemId" value="${row.item.id}" />
+				<spring:param name="requestId" value="${row.id}" />
 			</spring:url>
 			<a href="${editURL}"><spring:message code="request.addPuntuation" /></a>
 		</display:column>

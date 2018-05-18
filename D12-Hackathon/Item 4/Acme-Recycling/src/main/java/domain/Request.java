@@ -10,7 +10,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -67,7 +66,6 @@ public class Request extends DomainEntity {
 
 	private Collection<CleanPoint>	cleanPoints;
 	private Assesment				assesment;
-	private Item					item;
 	private Carrier					carrier;
 
 
@@ -89,17 +87,6 @@ public class Request extends DomainEntity {
 
 	public void setAssesment(final Assesment assesment) {
 		this.assesment = assesment;
-	}
-
-	@OneToOne(optional = false, mappedBy = "request")
-	@NotNull
-	@Valid
-	public Item getItem() {
-		return this.item;
-	}
-
-	public void setItem(final Item item) {
-		this.item = item;
 	}
 
 	@ManyToOne(optional = true)

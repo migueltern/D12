@@ -1391,6 +1391,24 @@
 		</property>
 		<property name="request" ref="request5" />
 	</bean>
+	
+		<bean id="item6" class="domain.Item">
+		<property name="title" value="title 6" />
+		<property name="publicationMoment" value="2018/05/12 15:12" />
+		<property name="description" value="description 6" />
+		<property name="quantity" value="5.0" />
+		<property name="photo"
+			value="http://fotografias.lasexta.com/clipping/cmsimages01/2014/11/25/AE4222C6-A8BC-470C-BB56-73743D2FBD16/58.jpg" />
+		<property name="labelProduct" ref="labelProduct3" />
+		<property name="recycler" ref="recycler5" />
+		<property name="value" value="5"></property>
+		<property name="opinions">
+			<list>
+				<ref bean="opinion5" />
+			</list>
+		</property>
+		<property name="request" ref="request5" />
+	</bean>
 
 
 
@@ -1424,56 +1442,106 @@
 	<bean id="labelProduct1" class="domain.LabelProduct">
 		<property name="name" value="Aluminio" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+				<ref bean="item1" />
+				<ref bean="item2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct2" class="domain.LabelProduct">
 		<property name="name" value="Cemento" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+				<ref bean="item3" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct3" class="domain.LabelProduct">
 		<property name="name" value="Papel" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+				<ref bean="item4" />
+				<ref bean="item5" />
+				<ref bean="item6" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct4" class="domain.LabelProduct">
 		<property name="name" value="Pilas y baterias" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct5" class="domain.LabelProduct">
 		<property name="name" value="Plastico" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct6" class="domain.LabelProduct">
 		<property name="name" value="Ordenador" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct7" class="domain.LabelProduct">
 		<property name="name" value="Telefono" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct8" class="domain.LabelProduct">
 		<property name="name" value="Textil" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct9" class="domain.LabelProduct">
 		<property name="name" value="Vidrio" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelProduct10" class="domain.LabelProduct">
 		<property name="name" value="Otros" />
 		<property name="byDefault" value="true" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="labelProduct11" class="domain.LabelProduct">
 		<property name="name" value="Cables" />
 		<property name="byDefault" value="false" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 

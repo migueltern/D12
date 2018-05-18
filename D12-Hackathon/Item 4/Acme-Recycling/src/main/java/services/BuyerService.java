@@ -32,6 +32,9 @@ public class BuyerService {
 	@Autowired
 	private Validator		validator;
 
+	@Autowired
+	FinderService			finderService;
+
 
 	// Supporting services ----------------------------------------------------
 
@@ -87,7 +90,17 @@ public class BuyerService {
 			passwordHash = encoder.encodePassword(buyer.getUserAccount().getPassword(), null);
 			buyer.getUserAccount().setPassword(passwordHash);
 		}
+
+		//		if (buyer.getFinder() == null) {
+		//			Finder finder;
+		//
+		//			finder = this.finderService.create();
+		//			finder = this.finderService.save(finder);
+		//			buyer.setFinder(finder);
+		//			result = this.buyerRepository.save(buyer);
+		//		} else
 		result = this.buyerRepository.save(buyer);
+
 		Assert.notNull(result);
 
 		//TODO: Falta método creacion de carpetas por defecto

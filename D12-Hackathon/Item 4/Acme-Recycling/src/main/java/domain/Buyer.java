@@ -42,6 +42,7 @@ public class Buyer extends Actor {
 		this.courses = courses;
 	}
 
+	@Valid
 	@OneToOne(optional = true)
 	public Finder getFinder() {
 		return this.finder;

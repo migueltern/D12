@@ -69,6 +69,8 @@ public class Finder extends DomainEntity {
 	private Collection<Material>	materials;
 
 
+	//private Buyer					buyer;
+
 	@ManyToMany
 	@NotNull
 	@Valid
@@ -79,5 +81,16 @@ public class Finder extends DomainEntity {
 	public void setMaterials(final Collection<Material> materials) {
 		this.materials = materials;
 	}
+
+	//	@Valid
+	//	@NotNull
+	//	@OneToOne(mappedBy = "finder")
+	//	public Buyer getBuyer() {
+	//		return this.buyer;
+	//	}
+	//
+	//	public void setBuyer(final Buyer buyer) {
+	//		this.buyer = buyer;
+	//	}
 
 }

@@ -137,6 +137,27 @@
 				</div>
 			</jstl:if>
 		</display:column>
+		
+			
+			<spring:message code="course.createLesson" var="createLesson" />
+			<display:column title="${createLesson}" sortable="false">
+				<%-- <jstl:if test="${(row.newspaper.publicationDate!=null)and(row.draftMode==false)}"> --%>
+					<jstl:if test="${row.draftMode}">
+					<spring:url value="lesson/buyer/create.do" var="createURL">
+						<spring:param name="courseId" value="${row.id}" />
+					</spring:url>
+					<a href="${createURL}"><spring:message code="course.lesson.create" /></a>
+				</jstl:if>
+			</display:column>
+			
+			<spring:message code="course.lesson.list" var="lessonHeader" />
+			<display:column title="${lessonHeader}" sortable="false">
+				<spring:url value="lesson/buyer/list.do" var="lessonURL">
+					<spring:param name="courseId" value="${row.id }" />
+				</spring:url>
+				<a href="${lessonURL}"><spring:message code="course.lesson.list2" /></a>
+			</display:column>
+			
 	</security:authorize>
 	
 	<!-- ENLACES -->

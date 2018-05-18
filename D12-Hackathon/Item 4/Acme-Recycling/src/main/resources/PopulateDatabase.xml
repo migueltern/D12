@@ -2020,7 +2020,7 @@
 	<bean id="cleanPoint1" class="domain.CleanPoint">
 		<property name="address" value="ctra arahal-paradas"></property>
 		<property name="province" value="SEVILLA"></property>
-		<property name="locality" value="PARADAS"></property>
+		<property name="phone" value="+652582643"></property>
 		<property name="mobile" value="false"></property>
 		<property name="location" ref="gps1"></property>
 	</bean>
@@ -2028,7 +2028,7 @@
 	<bean id="cleanPoint2" class="domain.CleanPoint">
 		<property name="address" value="address2"></property>
 		<property name="province" value="HUELVA"></property>
-		<property name="locality" value="MAZAGON"></property>
+		<property name="phone" value="+654769645"></property>
 		<property name="mobile" value="false"></property>
 		<property name="location" ref="gps2"></property>
 	</bean>
@@ -2036,7 +2036,7 @@
 	<bean id="cleanPoint3" class="domain.CleanPoint">
 		<property name="address" value="address 3"></property>
 		<property name="province" value="MALAGA"></property>
-		<property name="locality" value="MIJAS"></property>
+		<property name="phone" value="+689354723"></property>
 		<property name="mobile" value="false"></property>
 		<property name="location" ref="gps3"></property>
 	</bean>
@@ -2044,7 +2044,7 @@
 	<bean id="cleanPoint4" class="domain.CleanPoint">
 		<property name="address" value="address 4"></property>
 		<property name="province" value="MALAGA"></property>
-		<property name="locality" value="NERJA"></property>
+		<property name="phone" value="+7656573211"></property>
 		<property name="mobile" value="true"></property>
 		<property name="location" ref="gps4"></property>
 	</bean>
@@ -2052,7 +2052,7 @@
 	<bean id="cleanPoint5" class="domain.CleanPoint">
 		<property name="address" value="address"></property>
 		<property name="province" value="ALMERIA"></property>
-		<property name="locality" value="roquetas de mar"></property>
+		<property name="phone" value="+676543234"></property>
 		<property name="mobile" value="false"></property>
 		<property name="location" ref="gps5"></property>
 	</bean>

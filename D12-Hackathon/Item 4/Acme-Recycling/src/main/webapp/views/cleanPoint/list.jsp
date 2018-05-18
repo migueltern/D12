@@ -44,8 +44,8 @@
 	<spring:message code="cleanPoint.province" var="titleHeader" />
 	<display:column property="province" title="${titleHeader}" sortable="true" />
 	
-	<spring:message code="cleanPoint.locality" var="titleHeader" />
-	<display:column property="locality" title="${titleHeader}" sortable="true" />
+	<spring:message code="cleanPoint.phone" var="titleHeader" />
+	<display:column property="phone" title="${titleHeader}" sortable="true" />
 	
 </display:table>
 <security:authorize access="hasRole('ADMIN')">

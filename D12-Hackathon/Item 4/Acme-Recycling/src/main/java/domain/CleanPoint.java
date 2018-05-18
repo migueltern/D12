@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -16,7 +17,7 @@ public class CleanPoint extends DomainEntity {
 
 	private String	address;
 	private String	province;
-	private String	locality;
+	private String	phone;
 	private boolean	mobile;
 	private GPS		location;
 
@@ -39,13 +40,13 @@ public class CleanPoint extends DomainEntity {
 		this.province = province;
 	}
 
-	@NotBlank
-	public String getLocality() {
-		return this.locality;
+	@Pattern(regexp = "(^(\\+\\d{1,3})?\\s?(\\(\\d{3}\\))?\\s?\\d{4,9}$)|(^$)")
+	public String getPhone() {
+		return this.phone;
 	}
 
-	public void setLocality(final String locality) {
-		this.locality = locality;
+	public void setPhone(final String phone) {
+		this.phone = phone;
 	}
 
 	public boolean isMobile() {

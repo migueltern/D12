@@ -31,7 +31,7 @@
 	<br />
 	<B><acme:provinceselect code="cleanPoint.province" path="province"/></B>
 	<br />
-	<B><acme:textbox code="cleanPoint.locality" path="locality"/></B>
+	<B><acme:textbox code="cleanPoint.phone" path="phone"/></B>
 	<br />
 	<B><acme:booleanselect code="cleanPoint.mobile" path="mobile"/></B>
 	<br />

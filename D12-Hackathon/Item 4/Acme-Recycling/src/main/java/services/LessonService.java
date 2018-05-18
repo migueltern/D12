@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.LessonRepository;
 import domain.Buyer;
@@ -23,6 +25,8 @@ public class LessonService {
 	private LessonRepository	lessonRepository;
 	@Autowired
 	private BuyerService		buyerService;
+	@Autowired
+	private Validator			validator;
 
 
 	// Supporting services ----------------------------------------------------
@@ -48,7 +52,7 @@ public class LessonService {
 		Assert.isTrue(course.isDraftMode());
 		//No puedo crear lecciones para un curso que ya ha pasado
 		if (course.getRealisedMoment() != null)
-			Assert.isTrue(course.getRealisedMoment().before(date));
+			Assert.isTrue(course.getRealisedMoment().after(date));
 		//No puedo crear lecciones para un curso que no sea del buyer conectado
 		Assert.isTrue(buyer.getCourses().contains(course));
 
@@ -61,6 +65,8 @@ public class LessonService {
 		Assert.notNull(lesson);
 		Lesson result;
 
+		Assert.isTrue(lesson.getSummary().length() >= 10, "Summary demasiado pequeño");
+		Assert.isTrue(lesson.getSummary().length() <= 50, "Summary demasiado grande");
 		result = this.lessonRepository.save(lesson);
 
 		Assert.notNull(result);
@@ -103,5 +109,27 @@ public class LessonService {
 
 		return result;
 
+	}
+
+	public void flush() {
+		this.lessonRepository.flush();
+	}
+
+	public Lesson reconstruct(final Lesson lesson, final BindingResult bindingResult) {
+		Lesson result;
+		final Lesson lessonBd;
+
+		if (lesson.getId() == 0)
+			result = lesson;
+		else {
+			lessonBd = this.lessonRepository.findOne(lesson.getId());
+			lesson.setId(lessonBd.getId());
+			lesson.setVersion(lessonBd.getVersion());
+			lesson.setCourse(lessonBd.getCourse());
+
+			result = lesson;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
 	}
 }

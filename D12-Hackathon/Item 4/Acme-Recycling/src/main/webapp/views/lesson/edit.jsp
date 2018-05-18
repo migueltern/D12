@@ -21,15 +21,16 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="lesson/buyer/edit.do" modelAttribute="followUp">
+<form:form action="lesson/buyer/edit.do" modelAttribute="lesson">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="course" />
 
 	<!-- ATRIBUTOS -->
 	<acme:textbox code="lesson.title" path="title" />
 	<br />	
-	<acme:textbox code="lesson.summary" path="summary" />
+	<acme:textarea code="lesson.summary" path="summary" />
 	<br />
 	<acme:textbox code="lesson.number" path="number" />
 	<br />

@@ -51,6 +51,17 @@
 				<a href="${editURL}"><spring:message code="request.changeStatus" /></a>
 			</display:column>
 		</jstl:if>
+		
+		<jstl:if test="${showButtonAddAssessment and row.assesment==null}">
+			<spring:message code="request.addAssessment" var="addAssessment" />
+			<display:column title="${addAssessment}" sortable="false">
+
+				<spring:url value="assessment/carrier/create.do" var="editURL">
+					<spring:param name="requestId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="request.addAssessment" /></a>
+			</display:column>
+		</jstl:if>
 	</security:authorize>
 	
 	<!-- MANAGER ADD PUNTUATION  -->

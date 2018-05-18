@@ -204,7 +204,6 @@ public class RequestManagerController extends AbstractController {
 
 		//Solo se puede añadir puntuation a los items de TUS requests
 		item = this.itemService.findOne(itemId);
-		final Manager manager = this.managerService.findByPrincipal();
 		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(item.getRequest()), "Can not commit this operation because its illegal");
 
 		result = new ModelAndView("request/addPuntuation");
@@ -217,7 +216,6 @@ public class RequestManagerController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveAddPuntuation")
 	public ModelAndView saveAddPuntutation(Item item, final BindingResult binding) {
 		ModelAndView result;
-		final Manager manager = this.managerService.findByPrincipal();
 
 		item = this.requestService.reconstructAddPuntuation(item, binding);
 		if (binding.hasErrors())

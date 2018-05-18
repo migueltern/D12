@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.AssesmentRepository;
 import domain.Assesment;
+import forms.AssessmentForm;
 
 @Service
 @Transactional
@@ -19,6 +20,12 @@ public class AssesmentService {
 	// Managed repository -----------------------------------------------------
 	@Autowired
 	private AssesmentRepository	assesmentRepository;
+
+	@Autowired
+	private RequestService		requestService;
+
+	@Autowired
+	private CarrierService		carrierService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -29,16 +36,17 @@ public class AssesmentService {
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	public Assesment create() {
-		final Assesment result;
+	public AssessmentForm create(final int requestId) {
+		AssessmentForm result;
 
 		//No copiar la siguiente linea en el reconstruct
-		result = new Assesment();
+		result = new AssessmentForm();
+		result.setAssessment(new Assesment());
+		result.setRequestId(requestId);
 
 		return result;
 
 	}
-
 	public Assesment findOne(final int assesmentId) {
 		Assesment result;
 
@@ -55,10 +63,14 @@ public class AssesmentService {
 		return result;
 	}
 
-	public Assesment save(final Assesment assesment) {
+	public Assesment save(final AssessmentForm assesmentForm) {
 		final Assesment result;
+		Assesment assesment;
+
+		assesment = assesmentForm.getAssessment();
 
 		Assert.notNull(assesment);
+		Assert.isTrue(this.findByCarrierId(this.carrierService.findByPrincipal().getId()).contains(this.requestService.findOne(assesmentForm.getRequestId())));
 
 		if (assesment.getId() == 0) {
 			Date moment;
@@ -67,6 +79,9 @@ public class AssesmentService {
 		}
 
 		result = this.assesmentRepository.save(assesment);
+
+		//Añadimos el assessment al request que le pertenece
+		this.requestService.findOne(assesmentForm.getRequestId()).setAssesment(result);
 
 		return result;
 	}

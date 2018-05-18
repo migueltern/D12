@@ -70,6 +70,7 @@
 		
 	<!-- 	BUYER-->
 		<security:intercept-url pattern="/course/buyer/**" access="hasRole('BUYER')"/>
+		<security:intercept-url pattern="/lesson/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/messageFolder/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/message/buyer/**" access="hasRole('BUYER')"/>
 		

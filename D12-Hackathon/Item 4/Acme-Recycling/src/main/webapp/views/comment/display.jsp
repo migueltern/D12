@@ -52,38 +52,70 @@
 	
 	<display:column>
 	
-	<B><spring:message code="recycler.name" />:</B>
+	<B><spring:message code="recycler.name" /></B>
 	<jstl:out value="${row.name}"></jstl:out>
 	
 
 	<p>
-		<B><spring:message code="recycler.surname" />:</B>
+		<B><spring:message code="recycler.surname" /></B>
 		<jstl:out value="${row.surname}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.phoneNumber" />:</B>
+		<B><spring:message code="recycler.phoneNumber" /></B>
 		<jstl:out value="${row.phone}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.emailAddress" />:</B>
+		<B><spring:message code="recycler.emailAddress" /></B>
 		<jstl:out value="${row.email}"></jstl:out>
 	</p>
 		<p>
-		<B><spring:message code="recycler.postalAddress" />:</B>
+		<B><spring:message code="recycler.postalAddress" /></B>
 		<jstl:out value="${row.address}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.province" />:</B>
+		<B><spring:message code="recycler.province" /></B>
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
 	
 	
 	
 	</display:column>
+	
+	
 </display:table>
 	
 	
+	<h2><spring:message code="comment.recycler.items" /></h2>	
+<display:table name="items" class="displaytag"
+	id="row">
 	
+	<display:column>
+	<p>
+	<B><spring:message code="recycler.items.title" /></B>
+	<jstl:out value="${row.title}"></jstl:out>
+	
+</p>
+<spring:message code="article.format.publishedMoment1" var="pattern"></spring:message>
+	<fmt:formatDate value="${row.publicationMoment}" pattern="${pattern}" var="newdatevar" />
+	<B><spring:message code="recycler.publicationMoment"></spring:message></B>
+	<c:out value="${newdatevar}" />
+	
+	<p>
+		<B><spring:message code="recycler.descripción" /></B>
+		<jstl:out value="${row.description}"></jstl:out>
+	</p>
+	
+	<p>
+		<B><spring:message code="recycler.quantity" /></B>
+		<jstl:out value="${row.quantity}"></jstl:out>
+	</p>
+	
+	<p>
+		<a href="${row.photo}"><spring:message code = "recycler.photo"></spring:message></a>
+	</p>
+	
+	</display:column>
+	</display:table>
 
 	
 

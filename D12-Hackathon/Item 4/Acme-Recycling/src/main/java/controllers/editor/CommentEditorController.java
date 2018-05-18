@@ -1,6 +1,9 @@
 
 package controllers.editor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import services.CommentService;
 import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Comment;
+import domain.Item;
 import domain.Recycler;
 
 @Controller
@@ -41,12 +45,13 @@ public class CommentEditorController extends AbstractController {
 		Recycler recycler;
 
 		comment = this.commentService.findOne(commentId);
-
 		recycler = this.recyclerService.findRecyclerByComment(commentId);
+		final Set<Item> items = new HashSet<Item>((recycler.getItems()));
 
 		result = new ModelAndView("comment/display");
 		result.addObject("comment", comment);
 		result.addObject("recycler", recycler);
+		result.addObject("items", items);
 		result.addObject("requestURI", "comment/editor/display.do");
 
 		return result;

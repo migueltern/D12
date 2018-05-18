@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +21,9 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Admin;
+import domain.Editor;
+import domain.LabelProduct;
+import domain.New;
 import domain.Opinion;
 import forms.AdminForm;
 
@@ -159,6 +166,56 @@ public class AdminService {
 
 	public void flush() {
 		this.adminRepository.flush();
+	}
+
+	//QUERY I Las noticias que contengan más comentarios.
+	Collection<New> findNewWithMoreComments() {
+		Collection<New> result;
+		this.checkPrincipal();
+
+		result = this.adminRepository.findNewWithMoreComments();
+		return result;
+	}
+
+	//QUERY II Los redactores con mayor número de noticias redactadas.
+	public Collection<Editor> findEditorsWithMoreNewsRedacted() {
+		Collection<Editor> result;
+
+		this.checkPrincipal();
+		result = this.adminRepository.findEditorsWithMoreNewsRedacted();
+		return result;
+	}
+
+	//QUERY III Las 5 categorías de productos con más productos asociados
+	public Collection<LabelProduct> findTop5LabelProducts() {
+		Collection<LabelProduct> result;
+		final Page<LabelProduct> resPage;
+		final Pageable pageable;
+
+		this.checkPrincipal();
+
+		pageable = new PageRequest(0, 5);
+		resPage = this.adminRepository.findTop5LabelProducts(pageable);
+		result = resPage.getContent();
+		return result;
+	}
+
+	//QUERY IV La media, el mínimo, el máximo y la desviación típica de productos manejados por los manager.
+	public Double[] avgMinMaxAndStddevOfCoursesByBuyer() {
+
+		this.checkPrincipal();
+		Double[] result;
+		result = this.adminRepository.avgMinMaxAndStddevOfCoursesByBuyer();
+		return result;
+	}
+
+	//QUERY V La media de la solicitudes con el estado Finalizadas
+	@Query("select count(i)*1.0/(select count(st) from Incidence st) from Incidence i where i.resolved=true")
+	Double avgOfIncidencesResolved() {
+		this.checkPrincipal();
+		Double result;
+		result = this.adminRepository.avgOfIncidencesResolved();
+		return result;
 	}
 
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.IncidenceRepository;
 import domain.Actor;
@@ -29,6 +31,9 @@ public class IncidenceService {
 	
 	@Autowired
 	private ActorService actorService;
+	
+	@Autowired
+	private Validator		validator;
 	
 //	@Autowired 
 //	private MessageService messageService;
@@ -95,14 +100,9 @@ public class IncidenceService {
 		
 		Assert.isTrue(principal instanceof Manager || principal instanceof Recycler);
 		
-		result = this.save(incidence);
+		result = this.incidenceRepository.save(incidence);
 		
-		//TODO: CREATE MESSAGE DE NOTIFICACIÓN
-		
-//		if(result.isResolved()){
-//			
-//		}
-		
+
 		return result;
 		
 	}
@@ -111,6 +111,8 @@ public class IncidenceService {
 		
 		Assert.notNull(incidence);
 		Assert.isTrue(incidence.getId() != 0);
+		
+		Assert.isTrue(incidence.isResolved()==false);
 		
 		this.incidenceRepository.delete(incidence);
 		
@@ -125,6 +127,36 @@ public class IncidenceService {
 		
 		result = this.incidenceRepository.findIncidencesByRecycler(recyclerId);
 		
+		return result;
+		
+	}
+	
+	public Incidence reconstruct(final Incidence incidence, final BindingResult bindingResult) {
+		
+		Incidence result;
+		Incidence incedenceBD;
+		Recycler recyclerPrincipal;
+
+
+		if (incidence.getId() == 0) {
+
+			recyclerPrincipal = this.recyclerService.findByPrincipal();
+			incidence.setCreatedMoment(new Date(System.currentTimeMillis() - 1000));
+			incidence.setRecycler(recyclerPrincipal);
+			incidence.setResolved(false);
+		
+
+			result = incidence;
+		} else {
+			incedenceBD = this.incidenceRepository.findOne(incidence.getId());
+			incidence.setId(incedenceBD.getId());
+			incidence.setVersion(incedenceBD.getVersion());
+			incidence.setRecycler(incedenceBD.getRecycler());
+			incidence.setResolved(incedenceBD.isResolved());
+
+			result = incidence;
+		}
+		this.validator.validate(result, bindingResult);
 		return result;
 		
 	}

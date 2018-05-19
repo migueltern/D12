@@ -197,4 +197,12 @@ public class EditorService {
 
 		return result;
 	}
+
+	public Editor findEditorByNew(final int newId) {
+		Editor editor;
+
+		editor = this.editorRepository.findEditorByNew(newId);
+
+		return editor;
+	}
 }

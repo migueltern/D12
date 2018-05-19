@@ -21,11 +21,18 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
+<script type="text/javascript">
+	function confirmDelete(newId) {
+		confirm=confirm('<spring:message code="new.confirm.delete"/>');
+		if (confirm)
+		  window.location.href ="new_/admin/delete.do?newId=" + newId;
+		  else
+			  window.location.href ="new_/admin/list.do";
+	}
+</script>
+
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="new_" requestURI="${requestURI}" id="row">
-	
-	
-
 	
 	<!--  EDIT -->
 	
@@ -83,6 +90,18 @@
 	</display:column>
 </security:authorize>
 		
+	
+	<!-- Boton de delete para el admin ya que puede borrar las noticias que quiera pero no editarlas -->
+	<security:authorize access="hasRole('ADMIN')">
+	
+	<spring:message code="new.delete" var="deleteHeader" />
+		<display:column title="${deleteHeader}" sortable="true">
+			<input type="button" name="delete"
+				value="<spring:message code="new.delete" />"
+				onclick="confirmDelete(${row.id});" />
+		</display:column>
+
+	</security:authorize>
 	
 </display:table>
 <security:authorize access="isAnonymous()">

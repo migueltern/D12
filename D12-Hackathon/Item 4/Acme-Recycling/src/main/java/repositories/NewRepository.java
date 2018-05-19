@@ -23,4 +23,9 @@ public interface NewRepository extends JpaRepository<New, Integer> {
 	@Query("select n from New n order by creationDate desc")
 	Page<New> findAllNewsInDescOrder(Pageable pageable);
 
+	//Me devuelve las noticias con alguna palabra en el título, 
+	//o content(para las palabras tabú)
+	@Query("select c from New c where c.title like %?1% or c.content like %?1%")
+	Collection<New> findNewsWithTabooWord(String tabooWord);
+
 }

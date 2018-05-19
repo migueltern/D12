@@ -68,6 +68,13 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.tabooWord" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="new_/admin/list.do?d-16544-p=1"><spring:message code="master.page.news.tabooWord" /></a></li>				
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
 				<ul>
 					<li class="arrow"></li>

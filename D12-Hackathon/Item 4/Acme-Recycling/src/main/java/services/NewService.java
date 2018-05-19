@@ -4,6 +4,9 @@ package services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,19 +29,25 @@ public class NewService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private NewRepository	newRepository;
+	private NewRepository		newRepository;
 
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private EditorService	editorService;
+	private EditorService		editorService;
 
 	@Autowired
-	private CommentService	commentService;
+	private CommentService		commentService;
+
+	@Autowired
+	private TabooWordService	tabooWordService;
+
+	@Autowired
+	private AdminService		adminService;
 
 	//Importar la que pertenece a Spring
 	@Autowired
-	private Validator		validator;
+	private Validator			validator;
 
 
 	// Constructors -----------------------------------------------------------
@@ -129,6 +138,26 @@ public class NewService {
 		this.newRepository.delete(new_);
 	}
 
+	public void deleteAdmin(final New new_) {
+		Assert.notNull(new_);
+		this.adminService.checkPrincipal();
+
+		Editor editor;
+
+		editor = this.editorService.findEditorByNew(new_.getId());
+
+		editor.getNews().remove(new_);
+
+		Collection<Comment> comments;
+
+		comments = this.newRepository.findCommentsByNew(new_.getId());
+
+		for (final Comment c : comments)
+			this.commentService.delete(c);
+
+		this.newRepository.delete(new_);
+	}
+
 	//Other business methods---------------------------------------------------
 
 	//	RECONSTRUCTOR
@@ -167,6 +196,7 @@ public class NewService {
 		return result;
 	}
 
+	//Para que los no autenticados solo vieran las 5 últimas noticias siempre.
 	public Collection<New> findAllNewsInDescOrder() {
 		Collection<New> result;
 		final Page<New> resPage;
@@ -176,6 +206,32 @@ public class NewService {
 		resPage = this.newRepository.findAllNewsInDescOrder(pageable);
 		result = resPage.getContent();
 		return result;
+	}
+
+	//Para las palabrá tabú
+	public Collection<New> findNewsWithTabooWord(final String tabooWord) {
+		Collection<New> result;
+
+		result = this.newRepository.findNewsWithTabooWord(tabooWord);
+
+		return result;
+	}
+
+	//	//Para listar todas las noticias con palabras tabú
+	public Set<New> newWithTabooWord() {
+
+		Set<New> result;
+		Collection<String> tabooWords;
+		Iterator<String> it;
+
+		result = new HashSet<>();
+		tabooWords = this.tabooWordService.findTabooWordByName();
+		it = tabooWords.iterator();
+		while (it.hasNext())
+			result.addAll(this.findNewsWithTabooWord(it.next()));
+
+		return result;
+
 	}
 
 }

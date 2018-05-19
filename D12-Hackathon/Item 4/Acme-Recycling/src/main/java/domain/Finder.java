@@ -27,7 +27,6 @@ public class Finder extends DomainEntity {
 	private Date	startCacheTime;
 
 
-	@NotNull
 	public String getKeyWord() {
 		return this.keyWord;
 	}

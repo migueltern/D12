@@ -51,6 +51,7 @@ public class FinderService {
 
 		materials = this.materialService.findAll();
 		result.setStartCacheTime(new Date());
+		result.setKeyWord("");
 
 		result.setMaterials(materials);
 

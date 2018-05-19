@@ -19,6 +19,7 @@ import security.UserAccount;
 import domain.Buy;
 import domain.Buyer;
 import domain.Course;
+import domain.Finder;
 import domain.Opinion;
 import forms.BuyerForm;
 
@@ -92,18 +93,21 @@ public class BuyerService {
 		}
 
 		result = this.buyerRepository.save(buyer);
+		this.buyerRepository.flush();
 
 		//Codigo para añadir el finder al buyer, este codigo no funciona en controlador pero si en el finderServiceTest, descomentar para probarlo
-		//		if (buyer.getFinder() == null) {
-		//			Finder finder;
-		//
-		//			finder = this.finderService.create();
-		//			finder = this.finderService.save(finder);
-		//			result = this.findOne(result.getId());
-		//			result.setFinder(finder);
-		//			result = this.buyerRepository.save(result);
-		//
-		//		}
+		if (buyer.getFinder() == null) {
+			Finder finder;
+
+			finder = this.finderService.create();
+			finder = this.finderService.save(finder);
+			this.buyerRepository.flush();
+			result = this.findOne(result.getId());
+			result.setFinder(finder);
+			result = this.buyerRepository.save(result);
+			this.buyerRepository.flush();
+
+		}
 
 		Assert.notNull(result);
 

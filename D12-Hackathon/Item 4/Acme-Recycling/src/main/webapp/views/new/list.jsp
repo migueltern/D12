@@ -39,7 +39,6 @@
 	<security:authorize access="hasRole('EDITOR')">
 		<spring:message code="new.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
-			
 				<spring:url value="new_/editor/edit.do" var="editURL">
 					<spring:param name="newId" value="${row.id}" />
 				</spring:url>
@@ -78,7 +77,7 @@
 
 
 
-			
+<security:authorize access="hasRole('ADMIN')">			
 <spring:message code="new.pictures" var="titleHeader" />
 <jstl:if test="${row.pictures.size()!=0}">
 <display:column  title="${titleHeader}" sortable="true">
@@ -97,7 +96,7 @@
 	<B><spring:message code="new.pictures"></spring:message></B>
 	<B><spring:message code ="nothing.found.images"></spring:message></B>
 </jstl:if>
-			
+	</security:authorize>		
 			
 <!-- CREAR UN COMENTARIO -->
 	<security:authorize access="hasRole('RECYCLER')">

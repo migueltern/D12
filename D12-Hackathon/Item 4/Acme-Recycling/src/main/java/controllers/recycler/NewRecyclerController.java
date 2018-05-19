@@ -14,7 +14,7 @@ import controllers.AbstractController;
 import domain.New;
 
 @Controller
-@RequestMapping(value = "/new/recycler")
+@RequestMapping(value = "/new_/recycler")
 public class NewRecyclerController extends AbstractController {
 
 	//Services--------------------------------------------
@@ -40,7 +40,7 @@ public class NewRecyclerController extends AbstractController {
 
 		result = new ModelAndView("new/list");
 		result.addObject("new_", news);
-		result.addObject("requestURI", "new/recycler/list.do");
+		result.addObject("requestURI", "new_/recycler/list.do");
 		result.addObject("message", messageCode);
 
 		return result;

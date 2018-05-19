@@ -149,7 +149,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="comment/recycler/list.do?d-16544-p=1"><spring:message code="master.page.comment.myList" /></a></li>
-					<li><a href="new/recycler/list.do?d-16544-p=1"><spring:message code="master.page.new.create.comment" /></a></li>
+					<li><a href="new_/recycler/list.do?d-16544-p=1"><spring:message code="master.page.new.create.comment" /></a></li>
 					
 				</ul>
 			</li>
@@ -310,6 +310,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.new" /></a>
 				<ul>
 					<li class="arrow"></li>
+					
 					<li><a href="new_/editor/list.do?d-16544-p=1"><spring:message code="master.page.New.list" /></a></li>
 					<li><a href="new_/editor/create.do"><spring:message code="master.page.New.create" /></a></li>
 				</ul>
@@ -337,6 +338,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.new" /></a>
 				<ul>
 					<li class="arrow"></li>
+					
 					<li><a href="new_/list.do?d-16544-p=1"><spring:message code="master.page.New.list" /></a></li>
 				</ul>
 			</li>

@@ -54,7 +54,7 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
 	//QUERY VIII La media, el mínimo, el máximo y la desviación típica de comentarios por noticias.
 	@Query(" select avg(n.comments.size),min(n.comments.size),max(n.comments.size),stddev(n.comments.size) from New n")
-	Double avgMinMaxAndStddevOfCommentsByNews();
+	Double[] avgMinMaxAndStddevOfCommentsByNews();
 
 	//QUERY IX Items que se han subido al sistema en el último mes.
 	@Query("select i from Item i where i.publicationMoment >= ?1 order by i.publicationMoment desc")

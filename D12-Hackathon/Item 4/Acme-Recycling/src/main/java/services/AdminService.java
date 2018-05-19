@@ -172,7 +172,7 @@ public class AdminService {
 	}
 
 	//QUERY I Las noticias que contengan más comentarios.
-	Collection<New> findNewWithMoreComments() {
+	public Collection<New> findNewWithMoreComments() {
 		Collection<New> result;
 		this.checkPrincipal();
 
@@ -240,9 +240,9 @@ public class AdminService {
 	 */
 
 	//QUERY VIII La media, el mínimo, el máximo y la desviación típica de comentarios por noticias.
-	public Double avgMinMaxAndStddevOfCommentsByNews() {
+	public Double[] avgMinMaxAndStddevOfCommentsByNews() {
 		this.checkPrincipal();
-		Double result;
+		Double[] result;
 		result = this.adminRepository.avgMinMaxAndStddevOfCommentsByNews();
 		return result;
 	}

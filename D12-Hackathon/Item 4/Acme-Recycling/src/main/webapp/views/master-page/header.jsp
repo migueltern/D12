@@ -31,6 +31,7 @@
 					<li class="arrow"></li>
 					<li><a href="profile/admin/edit.do"><spring:message code="master.page.buyer.edit" /></a></li>
 					<li><a href="profile/admin/display.do"><spring:message code="master.page.buyer.profile" /></a></li>
+					<li><a href="admin/dashboard.do"><spring:message code="master.page.statistics" /></a>
 				</ul>
 			</li>
 			

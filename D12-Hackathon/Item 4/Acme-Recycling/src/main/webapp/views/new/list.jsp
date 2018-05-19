@@ -76,6 +76,29 @@
 	<display:column property="creationDate" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
 
+
+
+			
+<spring:message code="new.pictures" var="titleHeader" />
+<jstl:if test="${row.pictures.size()!=0}">
+<display:column  title="${titleHeader}" sortable="true">
+	<table>
+	<tr>
+	<jstl:forEach items="${row.pictures}" var="picture">
+	<td><img src="${picture}" width="100" height="100"></td>
+	</jstl:forEach>
+</tr>
+</table> 
+
+</display:column>
+</jstl:if>
+
+<jstl:if test="${row.pictures.size()==0}">
+	<B><spring:message code="new.pictures"></spring:message></B>
+	<B><spring:message code ="nothing.found.images"></spring:message></B>
+</jstl:if>
+			
+			
 <!-- CREAR UN COMENTARIO -->
 	<security:authorize access="hasRole('RECYCLER')">
 	<spring:message code="new.comment" var="Create" />

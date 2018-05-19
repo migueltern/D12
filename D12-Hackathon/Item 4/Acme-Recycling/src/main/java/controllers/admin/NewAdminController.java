@@ -42,7 +42,6 @@ public class NewAdminController extends AbstractController {
 		result = new ModelAndView("new/list");
 		result.addObject("new_", news);
 		result.addObject("requestURI", "new_/admin/list.do");
-		result.addObject("showDelete", false);
 		result.addObject("message", messageCode);
 
 		return result;
@@ -75,7 +74,6 @@ public class NewAdminController extends AbstractController {
 		news = this.newService.findAll();
 		result = new ModelAndView("new/list");
 		result.addObject("news", news);
-		result.addObject("showDelete", true);
 		result.addObject("requestURI", "/new_/admin/list.do");
 		result.addObject("message", message);
 		return result;

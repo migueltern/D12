@@ -162,6 +162,16 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.incidence" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="incidence/recycler/list.do?d-16544-p=1"><spring:message code="master.page.incidence.myList" /></a></li>
+					<li><a href="incidence/recycler/create.do"><spring:message code="master.page.incidence.create" /></a></li>
+					
+					
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.opinion" /></a>
 				<ul>
 					<li class="arrow"></li>

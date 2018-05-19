@@ -26,6 +26,19 @@
 <display:table name="incidences" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 	
+	<spring:message code="incidence.edit" var="Edit"/>
+		
+		<display:column title="${Edit}" sortable="true">
+		
+		<jstl:if test="${row.resolved==false}">
+			<spring:url value="${RequestURIedit}" var="editURL">
+				<spring:param name="incidenceId" value="${row.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="incidence.edit" /></a>
+		
+		</jstl:if>
+		</display:column>
+	
 	<!-- Attributes -->
 
 	<acme:column code="incidence.title" property="title" sortable ="true"/>

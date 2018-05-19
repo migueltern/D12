@@ -44,6 +44,9 @@ public class IncidenceService {
 
 	@Autowired
 	private MessageService		messageService;
+	
+	@Autowired
+	private ManagerService managerService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -131,6 +134,12 @@ public class IncidenceService {
 		Assert.isTrue(incidence.getId() != 0);
 
 		Assert.isTrue(incidence.isResolved() == false);
+		
+		Manager manager;
+		
+		manager = this.managerService.findManagerByIncidence(incidence.getId());
+		
+		manager.getIncidences().remove(incidence);
 
 		this.incidenceRepository.delete(incidence);
 

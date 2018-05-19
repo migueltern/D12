@@ -193,4 +193,13 @@ public class ManagerService {
 	public void flush() {
 		this.managerRepository.flush();
 	}
+	
+	public Manager findManagerByIncidence(int incidenceId){
+		Manager result;
+		
+		result = this.managerRepository.findManagerByIncidence(incidenceId);
+		
+		return result;
+		
+	}
 }

@@ -14,6 +14,7 @@ import repositories.IncidenceRepository;
 import domain.Actor;
 import domain.Incidence;
 import domain.Manager;
+import domain.Message;
 import domain.Recycler;
 
 @Service
@@ -35,8 +36,8 @@ public class IncidenceService {
 	@Autowired
 	private Validator		validator;
 	
-//	@Autowired 
-//	private MessageService messageService;
+	@Autowired 
+	private MessageService messageService;
 	
 	// Constructors -----------------------------------------------------------
 	
@@ -92,6 +93,7 @@ public class IncidenceService {
 		Date createdMoment;
 		Actor principal;
 		Incidence result;
+		Message message = null;
 		
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		principal = this.actorService.findPrincipal();
@@ -100,9 +102,20 @@ public class IncidenceService {
 		
 		Assert.isTrue(principal instanceof Manager || principal instanceof Recycler);
 		
+		if(incidence.isResolved() && principal instanceof Manager){
+			
+			message = this.messageService.create();
+			message.setBody("Your incidence has been resolved");
+			message.setPriority("HIGH");
+			message.setRecipient(incidence.getRecycler());
+			message.setSubject(incidence.getTitle());
+			
+			this.messageService.saveMessageInFolder(incidence.getRecycler(), "Notification box", message);
+		}
 		result = this.incidenceRepository.save(incidence);
 		
-
+		
+			
 		return result;
 		
 	}

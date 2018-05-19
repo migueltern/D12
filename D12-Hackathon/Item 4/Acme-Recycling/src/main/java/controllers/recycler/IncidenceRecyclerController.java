@@ -16,8 +16,6 @@ import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Actor;
 import domain.Incidence;
-import domain.Item;
-import domain.MessageFolder;
 
 @Controller
 @RequestMapping("/incidence/recycler")

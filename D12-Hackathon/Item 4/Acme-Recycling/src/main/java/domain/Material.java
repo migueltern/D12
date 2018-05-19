@@ -1,10 +1,13 @@
 
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -70,6 +73,7 @@ public class Material extends DomainEntity {
 	// Relationships ---------------------------------------------------------------
 
 	private LabelMaterial	labelMaterial;
+	private Collection<Buy>	buys;
 
 
 	@ManyToOne(optional = false)
@@ -81,6 +85,17 @@ public class Material extends DomainEntity {
 
 	public void setLabelMaterial(final LabelMaterial labelMaterial) {
 		this.labelMaterial = labelMaterial;
+	}
+
+	@OneToMany(mappedBy = "material")
+	@Valid
+	@NotNull
+	public Collection<Buy> getBuys() {
+		return this.buys;
+	}
+
+	public void setBuys(final Collection<Buy> buys) {
+		this.buys = buys;
 	}
 
 }

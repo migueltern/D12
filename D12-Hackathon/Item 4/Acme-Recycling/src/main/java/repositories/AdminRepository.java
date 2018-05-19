@@ -14,6 +14,7 @@ import domain.Admin;
 import domain.Editor;
 import domain.Item;
 import domain.LabelProduct;
+import domain.Material;
 import domain.New;
 
 @Repository
@@ -67,7 +68,11 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	@Query("select avg(m.requests.size),min(m.requests.size),max(m.requests.size),stddev(m.requests.size) from Manager m")
 	Double[] avgMinMaxAndStddevOfRequestByManager();
 
-	//QUERY XII Material más demandado y el menos demandado.
+	//QUERY XII Los 3 materiales más demandaos
+	@Query("select m from Material m where m.buys.size!=0 order by m.buys.size desc")
+	Page<Material> findTop3Materials(Pageable pageable);
 
 	//QUERY XIII La media de transportistas que han tenido al menos una solicitud frente a los que no han tenido ninguna.
+	@Query("select (select count(c) from Carrier c where c.requests.size>=1)*1.0/count(ce) from Carrier ce where ce.requests.size=0")
+	Double ratioCarrierWithAtLeastOneRequestVersusCarrierWithNoOneRequest();
 }

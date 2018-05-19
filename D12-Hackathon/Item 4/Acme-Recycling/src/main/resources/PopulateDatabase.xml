@@ -1850,7 +1850,11 @@
 		<property name="quantity" value="2.2"></property>
 		<property name="totalPrice" value="4.4"></property>
 		<property name="labelMaterial" ref="labelMaterial1" />
-
+		<property name="buys">
+			<list>
+				<ref bean="buy1" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="material2" class="domain.Material">
@@ -1860,6 +1864,11 @@
 		<property name="quantity" value="2.2"></property>
 		<property name="totalPrice" value="4.4"></property>
 		<property name="labelMaterial" ref="labelMaterial1" />
+		<property name="buys">
+			<list>
+				<ref bean="buy2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="material3" class="domain.Material">
@@ -1869,7 +1878,11 @@
 		<property name="quantity" value="3.2"></property>
 		<property name="totalPrice" value="3.4"></property>
 		<property name="labelMaterial" ref="labelMaterial2" />
-
+		<property name="buys">
+			<list>
+				<ref bean="buy3" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="material4" class="domain.Material">
@@ -1879,7 +1892,11 @@
 		<property name="quantity" value="4.2"></property>
 		<property name="totalPrice" value="4.4"></property>
 		<property name="labelMaterial" ref="labelMaterial2" />
-
+		<property name="buys">
+			<list>
+				<ref bean="buy4" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="material5" class="domain.Material">
@@ -1889,7 +1906,11 @@
 		<property name="quantity" value="5.2"></property>
 		<property name="totalPrice" value="5.4"></property>
 		<property name="labelMaterial" ref="labelMaterial3" />
-
+		<property name="buys">
+			<list>
+				<ref bean="buy5" />
+			</list>
+		</property>
 	</bean>
 
 

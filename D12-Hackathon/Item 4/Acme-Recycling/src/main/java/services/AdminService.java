@@ -25,6 +25,7 @@ import domain.Admin;
 import domain.Editor;
 import domain.Item;
 import domain.LabelProduct;
+import domain.Material;
 import domain.New;
 import domain.Opinion;
 import forms.AdminForm;
@@ -277,8 +278,25 @@ public class AdminService {
 		return result;
 	}
 
-	//QUERY XII Material más demandado y el menos demandado.
+	//QUERY XII Los 3 materiales más demandados.
+	public Collection<Material> findTop3Materials() {
+		Collection<Material> result;
+		final Page<Material> resPage;
+		final Pageable pageable;
+
+		this.checkPrincipal();
+
+		pageable = new PageRequest(0, 3);
+		resPage = this.adminRepository.findTop3Materials(pageable);
+		result = resPage.getContent();
+		return result;
+	}
 
 	//QUERY XIII La media de transportistas que han tenido al menos una solicitud frente a los que no han tenido ninguna.
-
+	public Double ratioCarrierWithAtLeastOneRequestVersusCarrierWithNoOneRequest() {
+		this.checkPrincipal();
+		Double result;
+		result = this.adminRepository.ratioCarrierWithAtLeastOneRequestVersusCarrierWithNoOneRequest();
+		return result;
+	}
 }

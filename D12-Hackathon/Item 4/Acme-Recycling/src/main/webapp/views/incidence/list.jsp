@@ -26,6 +26,7 @@
 <display:table name="incidences" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 	
+	<security:authorize access="hasRole('RECYCLER')">
 	<spring:message code="incidence.edit" var="Edit"/>
 		
 		<display:column title="${Edit}" sortable="true">
@@ -38,7 +39,7 @@
 		
 		</jstl:if>
 		</display:column>
-	
+	</security:authorize>
 	<!-- Attributes -->
 
 	<acme:column code="incidence.title" property="title" sortable ="true"/>
@@ -49,7 +50,33 @@
 		sortable="true" format="${pattern}" />
 	
 
+<!-- Attributes PARA EL ADMIN -->
+<security:authorize access="hasRole('ADMIN')">
 
+<acme:column code="incidence.reasonWhy" property="reasonWhy" sortable ="true"/>
+
+<acme:column code="incidence.comment" property="comment" sortable ="true"/>
+
+<spring:message code="resolved" var="resolved" />
+	<display:column title="${resolved}">
+		<jstl:if test="${row.resolved==true}">
+			<div
+				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
+
+				<img src="images/no.jpeg" width="30" height="30">
+			</div>
+		</jstl:if>
+		<jstl:if test="${row.resolved==false}">
+			<div
+				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
+
+				<img src="images/yes.jpeg" width="30" height="30">
+			</div>
+		</jstl:if>
+		
+</display:column>
+		
+</security:authorize>
 </display:table>
 
 

@@ -1,7 +1,11 @@
+
 package services;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,136 +24,135 @@ import domain.Recycler;
 @Service
 @Transactional
 public class IncidenceService {
-	
+
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private IncidenceRepository incidenceRepository;
-	
-	
+	private IncidenceRepository	incidenceRepository;
+
 	// Supporting services ----------------------------------------------------
 	@Autowired
-	private RecyclerService recyclerService;
-	
+	private RecyclerService		recyclerService;
+
 	@Autowired
-	private ActorService actorService;
-	
+	private ActorService		actorService;
+
 	@Autowired
-	private Validator		validator;
-	
-	@Autowired 
-	private MessageService messageService;
-	
+	private TabooWordService	tabooWordService;
+
+	@Autowired
+	private Validator			validator;
+
+	@Autowired
+	private MessageService		messageService;
+
+
 	// Constructors -----------------------------------------------------------
-	
-	public IncidenceService(){
+
+	public IncidenceService() {
 		super();
 	}
-	
+
 	// Simple CRUD methods ----------------------------------------------------
-	
-	public Incidence create(){
-		
+
+	public Incidence create() {
+
 		Incidence result;
 		Date createdMoment;
 		boolean resolved;
 		Recycler recycler;
-		
+
 		result = new Incidence();
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		resolved = false;
 		recycler = this.recyclerService.findByPrincipal();
-		
+
 		result.setCreatedMoment(createdMoment);
 		result.setResolved(resolved);
 		result.setRecycler(recycler);
-		
+
 		return result;
 	}
-	
-	public Collection<Incidence> findAll(){
-		
+
+	public Collection<Incidence> findAll() {
+
 		Collection<Incidence> result;
-		
+
 		result = this.incidenceRepository.findAll();
-		
+
 		return result;
 	}
-	
-	public Incidence findOne(int incidenceId){
-		
+
+	public Incidence findOne(final int incidenceId) {
+
 		Assert.notNull(incidenceId);
 		Assert.isTrue(incidenceId != 0);
-		
+
 		Incidence result;
-		
+
 		result = this.incidenceRepository.findOne(incidenceId);
-		
+
 		return result;
 	}
-	
-	public Incidence save(Incidence incidence){
-		
+
+	public Incidence save(final Incidence incidence) {
+
 		Assert.notNull(incidence);
 		Date createdMoment;
 		Actor principal;
 		Incidence result;
 		Message message = null;
-		
+
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		principal = this.actorService.findPrincipal();
-		
+
 		incidence.setCreatedMoment(createdMoment);
-		
+
 		Assert.isTrue(principal instanceof Manager || principal instanceof Recycler);
-		
-		if(incidence.isResolved() && principal instanceof Manager){
-			
+
+		if (incidence.isResolved() && principal instanceof Manager) {
+
 			message = this.messageService.create();
 			message.setBody("Your incidence has been resolved");
 			message.setPriority("HIGH");
 			message.setRecipient(incidence.getRecycler());
 			message.setSubject(incidence.getTitle());
-			
+
 			this.messageService.saveMessageInFolder(incidence.getRecycler(), "Notification box", message);
 		}
 		result = this.incidenceRepository.save(incidence);
-		
-		
-			
+
 		return result;
-		
+
 	}
-	
-	public void delete(Incidence incidence){
-		
+
+	public void delete(final Incidence incidence) {
+
 		Assert.notNull(incidence);
 		Assert.isTrue(incidence.getId() != 0);
-		
-		Assert.isTrue(incidence.isResolved()==false);
-		
+
+		Assert.isTrue(incidence.isResolved() == false);
+
 		this.incidenceRepository.delete(incidence);
-		
-		
+
 	}
-	
+
 	//Other method
-	
-	public Collection<Incidence> findIncidencesByRecycler(int recyclerId){
-		
+
+	public Collection<Incidence> findIncidencesByRecycler(final int recyclerId) {
+
 		Collection<Incidence> result;
-		
+
 		result = this.incidenceRepository.findIncidencesByRecycler(recyclerId);
-		
+
 		return result;
-		
+
 	}
-	
+
 	public Incidence reconstruct(final Incidence incidence, final BindingResult bindingResult) {
-		
+
 		Incidence result;
 		Incidence incedenceBD;
 		Recycler recyclerPrincipal;
-
 
 		if (incidence.getId() == 0) {
 
@@ -157,7 +160,6 @@ public class IncidenceService {
 			incidence.setCreatedMoment(new Date(System.currentTimeMillis() - 1000));
 			incidence.setRecycler(recyclerPrincipal);
 			incidence.setResolved(false);
-		
 
 			result = incidence;
 		} else {
@@ -171,7 +173,32 @@ public class IncidenceService {
 		}
 		this.validator.validate(result, bindingResult);
 		return result;
-		
+
+	}
+
+	public Collection<Incidence> findIncidencesWithTabooWord(final String tabooWord) {
+		Collection<Incidence> result;
+
+		result = this.incidenceRepository.findIncidencesWithTabooWord(tabooWord);
+
+		return result;
+	}
+
+	//	//Para listar todas las incidencias con palabras tabú
+	public Set<Incidence> incidencesWithTabooWord() {
+
+		Set<Incidence> result;
+		Collection<String> tabooWords;
+		Iterator<String> it;
+
+		result = new HashSet<>();
+		tabooWords = this.tabooWordService.findTabooWordByName();
+		it = tabooWords.iterator();
+		while (it.hasNext())
+			result.addAll(this.findIncidencesWithTabooWord(it.next()));
+
+		return result;
+
 	}
 
 }

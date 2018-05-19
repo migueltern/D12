@@ -22,7 +22,7 @@ import domain.Editor;
 import domain.New;
 
 @Controller
-@RequestMapping(value = "/new/editor")
+@RequestMapping(value = "/new_/editor")
 public class NewEditorController extends AbstractController {
 
 	//Services--------------------------------------------
@@ -55,7 +55,7 @@ public class NewEditorController extends AbstractController {
 		result = new ModelAndView("new/display");
 		result.addObject("new_", new_);
 		result.addObject("comments", comments);
-		result.addObject("requestURI", "new/editor/display.do");
+		result.addObject("requestURI", "new_/editor/display.do");
 
 		return result;
 	}
@@ -71,7 +71,7 @@ public class NewEditorController extends AbstractController {
 
 		result = new ModelAndView("new/list");
 		result.addObject("new_", news);
-		result.addObject("requestURI", "new/editor/list.do");
+		result.addObject("requestURI", "new_/editor/list.do");
 		result.addObject("message", messageCode);
 
 		return result;
@@ -158,7 +158,7 @@ public class NewEditorController extends AbstractController {
 		result = new ModelAndView("new/edit");
 		result.addObject("new_", new_);
 		result.addObject("message", message);
-		result.addObject("requestURI", "new/editor/edit.do");
+		result.addObject("requestURI", "new_/editor/edit.do");
 
 		return result;
 

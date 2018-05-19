@@ -40,7 +40,7 @@
 		<spring:message code="new.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
 			
-				<spring:url value="new/editor/edit.do" var="editURL">
+				<spring:url value="new_/editor/edit.do" var="editURL">
 					<spring:param name="newId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="new.edit" /></a>
@@ -53,7 +53,7 @@
 		<spring:message code="new.display" var="Display" />
 		<display:column title="${Display}" sortable="true">
 			
-				<spring:url value="new/editor/display.do" var="editURL">
+				<spring:url value="new_/editor/display.do" var="editURL">
 					<spring:param name="newId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="new.display" /></a>

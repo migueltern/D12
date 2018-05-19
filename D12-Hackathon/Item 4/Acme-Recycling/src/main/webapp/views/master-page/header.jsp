@@ -307,8 +307,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.new" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="new/editor/list.do?d-16544-p=1"><spring:message code="master.page.New.list" /></a></li>
-					<li><a href="new/editor/create.do"><spring:message code="master.page.New.create" /></a></li>
+					<li><a href="new_/editor/list.do?d-16544-p=1"><spring:message code="master.page.New.list" /></a></li>
+					<li><a href="new_/editor/create.do"><spring:message code="master.page.New.create" /></a></li>
 				</ul>
 			</li>
 			

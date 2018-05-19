@@ -2,13 +2,14 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Admin;
 import domain.Editor;
+import domain.Item;
 import domain.LabelProduct;
 import domain.New;
 import domain.Opinion;
@@ -210,12 +212,73 @@ public class AdminService {
 	}
 
 	//QUERY V La media de la solicitudes con el estado Finalizadas
-	@Query("select count(i)*1.0/(select count(st) from Incidence st) from Incidence i where i.resolved=true")
-	Double avgOfIncidencesResolved() {
+	public Double avgOfIncidencesResolved() {
 		this.checkPrincipal();
 		Double result;
 		result = this.adminRepository.avgOfIncidencesResolved();
 		return result;
 	}
+
+	//QUERY VI La media de recicladores que han reciclado al menos un producto.
+	public Double avgOfRecyclerWithAtLeastOneProduct() {
+		this.checkPrincipal();
+		Double result;
+		result = this.adminRepository.avgOfRecyclerWithAtLeastOneProduct();
+		return result;
+	}
+
+	//QUERY VII La media de usuarios baneados en el sistema.
+	//TODO: POR HACER A FALTA DE LEU
+	/*
+	 * public Double avgOfUsersBanned() {
+	 * this.checkPrincipal();
+	 * Double result;
+	 * result = this.adminRepository.avgOfUsersBanned();
+	 * return result;
+	 * }
+	 */
+
+	//QUERY VIII La media, el mínimo, el máximo y la desviación típica de comentarios por noticias.
+	public Double avgMinMaxAndStddevOfCommentsByNews() {
+		this.checkPrincipal();
+		Double result;
+		result = this.adminRepository.avgMinMaxAndStddevOfCommentsByNews();
+		return result;
+	}
+
+	//QUERY IX Items que se han subido al sistema en el último mes.
+	public Collection<Item> findLatestItems() {
+		Collection<Item> result;
+		Calendar calendar;
+		Date since;
+
+		calendar = Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_MONTH, -31);
+		since = calendar.getTime();
+
+		result = this.adminRepository.findLatestItems(since);
+
+		return result;
+	}
+
+	//QUERY X Nombre del reciclador y título del Item que más valor tiene del sistema.
+	public String[] nameTitleRecyclerWithItemMostValue() {
+		this.checkPrincipal();
+		String[] result;
+		result = this.adminRepository.nameTitleRecyclerWithItemMostValue();
+		return result;
+	}
+
+	//QUERY XI La media, el mínimo, el máximo y la desviación típica peticiones por manager.
+	public Double[] avgMinMaxAndStddevOfRequestByManager() {
+		this.checkPrincipal();
+		Double[] result;
+		result = this.adminRepository.avgMinMaxAndStddevOfRequestByManager();
+		return result;
+	}
+
+	//QUERY XII Material más demandado y el menos demandado.
+
+	//QUERY XIII La media de transportistas que han tenido al menos una solicitud frente a los que no han tenido ninguna.
 
 }

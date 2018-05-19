@@ -2,6 +2,7 @@
 package repositories;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.Admin;
 import domain.Editor;
+import domain.Item;
 import domain.LabelProduct;
 import domain.New;
 
@@ -40,17 +42,32 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	@Query("select count(i)*1.0/(select count(st) from Incidence st) from Incidence i where i.resolved=true")
 	Double avgOfIncidencesResolved();
 
-	//QUERY VI La media de usuarios que han reciclado al menos un producto.
+	//QUERY VI La media de recicladores que han reciclado al menos un producto.
+	@Query("select avg(r.items.size) from Recycler r where r.items.size>0")
+	Double avgOfRecyclerWithAtLeastOneProduct();
 
 	//QUERY VII La media de usuarios baneados en el sistema.
+	//TODO: POR HACER A FALTA DE LEU
+	//@Query("select count(a)*1.0/(select count(ta) from Actor ta) from Actor a where a.isAccountNonLocked=false")
+	//Double avgOfUsersBanned();
 
 	//QUERY VIII La media, el mínimo, el máximo y la desviación típica de comentarios por noticias.
+	@Query(" select avg(n.comments.size),min(n.comments.size),max(n.comments.size),stddev(n.comments.size) from New n")
+	Double avgMinMaxAndStddevOfCommentsByNews();
 
-	//QUERY IX Número de productos(Items) que se han subido al sistema en el día de hoy.
+	//QUERY IX Items que se han subido al sistema en el último mes.
+	@Query("select i from Item i where i.publicationMoment >= ?1 order by i.publicationMoment desc")
+	Collection<Item> findLatestItems(Date since);
 
-	//QUERY X Dado un recicler la puntuación media de sus productos(Items).
+	//QUERY X Nombre del reciclador y título del Item que más valor tiene del sistema.
+	@Query("select r.name,i.title from Recycler r join r.items i where i.value=(select max(it.value) from Item it)")
+	String[] nameTitleRecyclerWithItemMostValue();
 
 	//QUERY XI La media, el mínimo, el máximo y la desviación típica peticiones por manager.
+	@Query("select avg(m.requests.size),min(m.requests.size),max(m.requests.size),stddev(m.requests.size) from Manager m")
+	Double[] avgMinMaxAndStddevOfRequestByManager();
 
 	//QUERY XII Material más demandado y el menos demandado.
+
+	//QUERY XIII La media de transportistas que han tenido al menos una solicitud frente a los que no han tenido ninguna.
 }

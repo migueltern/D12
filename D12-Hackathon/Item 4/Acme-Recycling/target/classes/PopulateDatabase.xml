@@ -1258,7 +1258,7 @@
 	<!-- Incidences -->
 
 	<bean id="incidence1" class="domain.Incidence">
-		<property name="title" value="title 1" />
+		<property name="title" value="title 1 viagra" />
 		<property name="reasonWhy" value="reason why 1" />
 		<property name="createdMoment" value="2018/01/01 11:20" />
 		<property name="comment" value="comment1" />

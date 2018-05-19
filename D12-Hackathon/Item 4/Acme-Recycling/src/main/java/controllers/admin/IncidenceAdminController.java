@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,22 +49,22 @@ public class IncidenceAdminController extends AbstractController {
 	}
 
 	//Delete---------------------------------------------------------------------
-	// @RequestMapping(value = "/delete", method = RequestMethod.GET)
-	// public ModelAndView delete(final int incidenceId) {
-	// ModelAndView result;
-	// Incidence incidence;
-	//
-	// incidence = this.incidenceService.findOne(incidenceId);
-	// Assert.notNull(incidence);
-	// try {
-	// this.incidenceService.deleteAdmin(incidence);
-	// result = new ModelAndView("redirect:list.do");
-	// } catch (final Throwable oops) {
-	// result = this.listWithMessage("incidence.commit.error");
-	// }
-	//
-	// return result;
-	// }
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(final int incidenceId) {
+		ModelAndView result;
+		Incidence incidence;
+
+		incidence = this.incidenceService.findOne(incidenceId);
+		Assert.notNull(incidence);
+		try {
+			this.incidenceService.delete(incidence);
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = this.listWithMessage("incidence.commit.error");
+		}
+
+		return result;
+	}
 
 	//ancially methods---------------------------------------------------------------------------
 

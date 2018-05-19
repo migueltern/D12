@@ -21,7 +21,15 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-
+<script type="text/javascript">
+	function confirmDelete(incidenceId) {
+		confirm=confirm('<spring:message code="incidence.confirm.delete"/>');
+		if (confirm)
+		  window.location.href ="incidence/admin/delete.do?incidenceId=" + incidenceId;
+		  else
+			  window.location.href ="incidence/admin/list.do";
+	}
+</script>
 <!-- Listing messageFodler -->
 <display:table name="incidences" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
@@ -63,18 +71,30 @@
 			<div
 				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
 
-				<img src="images/no.jpeg" width="30" height="30">
+				<img src="images/yes.jpeg" width="30" height="30">
 			</div>
 		</jstl:if>
 		<jstl:if test="${row.resolved==false}">
 			<div
 				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
 
-				<img src="images/yes.jpeg" width="30" height="30">
+				<img src="images/no.jpeg" width="30" height="30">
 			</div>
 		</jstl:if>
 		
 </display:column>
+
+<!-- Boton de delete para el admin ya que puede borrar las noticias que quiera pero no editarlas -->
+	<security:authorize access="hasRole('ADMIN')">
+	
+	<spring:message code="incidence.delete" var="deleteHeader" />
+		<display:column title="${deleteHeader}" sortable="true">
+			<input type="button" name="delete"
+				value="<spring:message code="incidence.delete" />"
+				onclick="confirmDelete(${row.id});" />
+		</display:column>
+
+	</security:authorize>
 		
 </security:authorize>
 </display:table>

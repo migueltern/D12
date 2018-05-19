@@ -736,7 +736,8 @@
 		</property>
 		<property name="comments">
 			<list>
-
+				<ref bean="comment6" />
+				<ref bean="comment7" />
 			</list>
 		</property>
 		<property name="courses">
@@ -767,7 +768,8 @@
 		</property>
 		<property name="comments">
 			<list>
-
+				<ref bean="comment3" />
+				<ref bean="comment8" />
 			</list>
 		</property>
 		<property name="courses">
@@ -990,6 +992,7 @@
 				<ref bean="comment1" />
 				<ref bean="comment2" />
 				<ref bean="comment6" />
+				<ref bean="comment7" />
 			</list>
 		</property>
 	</bean>

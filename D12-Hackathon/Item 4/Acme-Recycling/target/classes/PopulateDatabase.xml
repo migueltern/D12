@@ -1410,7 +1410,6 @@
 				<ref bean="opinion5" />
 			</list>
 		</property>
-		<property name="request" ref="request5" />
 	</bean>
 
 
@@ -1876,7 +1875,7 @@
 		<property name="description" value="description 3" />
 		<property name="unitPrice" value="3.1" />
 		<property name="quantity" value="3.2"></property>
-		<property name="totalPrice" value="3.4"></property>
+		<property name="totalPrice" value="9.92"></property>
 		<property name="labelMaterial" ref="labelMaterial2" />
 		<property name="buys">
 			<list>
@@ -1890,7 +1889,7 @@
 		<property name="description" value="description 4" />
 		<property name="unitPrice" value="4.2" />
 		<property name="quantity" value="4.2"></property>
-		<property name="totalPrice" value="4.4"></property>
+		<property name="totalPrice" value="17.64"></property>
 		<property name="labelMaterial" ref="labelMaterial2" />
 		<property name="buys">
 			<list>
@@ -1904,7 +1903,7 @@
 		<property name="description" value="description 5" />
 		<property name="unitPrice" value="5.0" />
 		<property name="quantity" value="5.2"></property>
-		<property name="totalPrice" value="5.4"></property>
+		<property name="totalPrice" value="26.0"></property>
 		<property name="labelMaterial" ref="labelMaterial3" />
 		<property name="buys">
 			<list>

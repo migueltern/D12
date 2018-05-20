@@ -51,7 +51,7 @@
 		<p>
 
 			<B><spring:message code="material.totalPrice" />:</B>
-			<jstl:out value="${row.totalPrice }"></jstl:out>
+			<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${row.totalPrice}" />
 		</p>
 
 		<p>

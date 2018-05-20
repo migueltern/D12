@@ -60,8 +60,9 @@ public class MaterialService {
 	public Material save(final Material material) {
 		Material result;
 		Assert.notNull(material);
-		if (material.getId() == 0)
-			material.setTotalPrice(material.getQuantity() * material.getUnitPrice());
+
+		material.setTotalPrice(material.getQuantity() * material.getUnitPrice());
+
 		result = this.materialRepository.save(material);
 
 		return result;

@@ -31,6 +31,9 @@ public class EditorService {
 
 	@Autowired
 	private Validator			validator;
+	
+	@Autowired 
+	private MessageFolderService messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -91,9 +94,8 @@ public class EditorService {
 		result = this.editorRepository.save(editor);
 		Assert.notNull(result);
 
-		//TODO: Falta método creacion de carpetas por defecto
-		//if (editor.getId() == 0)
-		//this.messageFolderService.createDefaultMessageFolder(result);
+		if (editor.getId() == 0)
+			this.messageFolderService.createDefaultMessageFolder(result);
 
 		return result;
 	}

@@ -31,6 +31,9 @@ public class ManagerService {
 	private ManagerRepository	managerRepository;
 	@Autowired
 	private Validator			validator;
+	
+	@Autowired 
+	private MessageFolderService messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -93,9 +96,8 @@ public class ManagerService {
 		result = this.managerRepository.save(manager);
 		Assert.notNull(result);
 
-		//TODO: Falta método creacion de carpetas por defecto
-		//if (manager.getId() == 0)
-		//this.messageFolderService.createDefaultMessageFolder(result);
+		if (manager.getId() == 0)
+			this.messageFolderService.createDefaultMessageFolder(result);
 
 		return result;
 	}

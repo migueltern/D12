@@ -39,6 +39,9 @@ public class AdminService {
 	private AdminRepository	adminRepository;
 	@Autowired
 	private Validator		validator;
+	
+	@Autowired 
+	private MessageFolderService messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -94,9 +97,8 @@ public class AdminService {
 		result = this.adminRepository.save(admin);
 		Assert.notNull(result);
 
-		//TODO: METODO DE CREAR CARPETAS POR DEFECTO
-		//if (admin.getId() == 0)
-		//this.messageFolderService.createDefaultMessageFolder(result);
+		if (admin.getId() == 0)
+			this.messageFolderService.createDefaultMessageFolder(result);
 
 		return result;
 	}

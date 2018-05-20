@@ -32,6 +32,9 @@ public class RecyclerService {
 	private RecyclerRepository	recyclerRepository;
 	@Autowired
 	private Validator			validator;
+	
+	@Autowired 
+	private MessageFolderService messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -94,9 +97,9 @@ public class RecyclerService {
 		result = this.recyclerRepository.save(recycler);
 		Assert.notNull(result);
 
-		//TODO: Falta método creacion de carpetas por defecto
-		//if (recycler.getId() == 0)
-		//this.messageFolderService.createDefaultMessageFolder(result);
+		
+		if (recycler.getId() == 0)
+			this.messageFolderService.createDefaultMessageFolder(result);
 
 		return result;
 	}

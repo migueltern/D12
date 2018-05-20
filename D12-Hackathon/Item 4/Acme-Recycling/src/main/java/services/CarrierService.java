@@ -30,6 +30,9 @@ public class CarrierService {
 	private CarrierRepository	carrierRepository;
 	@Autowired
 	private Validator			validator;
+	
+	@Autowired 
+	private MessageFolderService messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -91,9 +94,9 @@ public class CarrierService {
 		result = this.carrierRepository.save(carrier);
 		Assert.notNull(result);
 
-		//TODO: METODO DE CREAR CARPETAS POR DEFECTO
-		//if (carrier.getId() == 0)
-		//this.messageFolderService.createDefaultMessageFolder(result);
+		
+		if (carrier.getId() == 0)
+			this.messageFolderService.createDefaultMessageFolder(result);
 
 		return result;
 	}

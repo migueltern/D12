@@ -108,6 +108,7 @@ public class ItemService {
 		Assert.notNull(item);
 		
 		Assert.isTrue(item.getRequest().getCarrier() != null);
+		Assert.isTrue(!item.getRequest().getStatus().equals("FINISHED"));
 
 		this.itemRepository.delete(item);
 	}

@@ -139,7 +139,9 @@ public class IncidenceService {
 		
 		manager = this.managerService.findManagerByIncidence(incidence.getId());
 		
-		manager.getIncidences().remove(incidence);
+		if(manager != null)
+		
+			manager.getIncidences().remove(incidence);
 
 		this.incidenceRepository.delete(incidence);
 

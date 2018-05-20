@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 
 import repositories.BuyRepository;
 import domain.Buy;
+import domain.Buyer;
 import domain.CreditCard;
 import domain.Material;
 
@@ -27,6 +28,9 @@ public class BuyService {
 
 	@Autowired
 	MaterialService		materialService;
+
+	@Autowired
+	BuyerService		buyerService;
 
 	@Autowired
 	private Validator	validator;
@@ -68,6 +72,17 @@ public class BuyService {
 		return result;
 	}
 
+	public void delete(final Buy buy) {
+		Assert.notNull(buy);
+		Assert.isTrue(buy.getId() != 0);
+		Buyer buyer;
+
+		buyer = this.buyerService.findBuyerOfBuy(buy.getId());
+
+		buyer.getBuys().remove(buy);
+
+		this.buyRepository.delete(buy);
+	}
 	//	public Buy reconstruct(final Buy buy, final BindingResult binding) {
 	//		Buy result;
 	//		if (buy.getId() == 0)
@@ -105,4 +120,13 @@ public class BuyService {
 	public void flush() {
 		this.buyRepository.flush();
 	}
+
+	public Collection<Buy> findBuysOfMaterial(final int materialId) {
+		Collection<Buy> buysOfMaterial;
+
+		buysOfMaterial = this.buyRepository.findBuysOfMaterial(materialId);
+
+		return buysOfMaterial;
+	}
+
 }

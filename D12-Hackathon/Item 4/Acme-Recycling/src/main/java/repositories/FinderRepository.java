@@ -1,6 +1,8 @@
 
 package repositories;
 
+import java.util.Collection;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,5 +23,8 @@ public interface FinderRepository extends JpaRepository<Finder, Integer> {
 
 	@Query("select m from Material m where m.totalPrice<=?1")
 	Page<Material> findByHighPrice(Double highPrice, Pageable pageable);
+
+	@Query("select f from Finder f join f.materials m where m.id=?1")
+	Collection<Finder> findFindersOfMaterial(int materialId);
 
 }

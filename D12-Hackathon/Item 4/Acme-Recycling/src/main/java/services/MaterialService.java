@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.MaterialRepository;
-
+import domain.Buy;
+import domain.Course;
+import domain.Finder;
 import domain.Material;
 
 @Service
@@ -18,6 +20,18 @@ public class MaterialService {
 
 	@Autowired
 	MaterialRepository	materialRepository;
+
+	@Autowired
+	AdminService		adminService;
+
+	@Autowired
+	BuyService			buyService;
+
+	@Autowired
+	FinderService		finderService;
+
+	@Autowired
+	CourseService		courseService;
 
 
 	public MaterialService() {
@@ -45,11 +59,31 @@ public class MaterialService {
 
 	public Material save(final Material material) {
 		Material result;
-		//TODO comprobar
 		Assert.notNull(material);
+		if (material.getId() == 0)
+			material.setTotalPrice(material.getQuantity() * material.getUnitPrice());
 		result = this.materialRepository.save(material);
 
 		return result;
 	}
 
+	public void delete(final Material material) {
+		this.adminService.checkPrincipal();
+		Assert.notNull(material);
+		Assert.isTrue(material.getId() != 0);
+		Collection<Buy> buysOfMaterial;
+		Collection<Finder> findersOfMaterial;
+		Collection<Course> coursesOfMaterial;
+		buysOfMaterial = this.buyService.findBuysOfMaterial(material.getId());
+		findersOfMaterial = this.finderService.findFindersOfMaterial(material.getId());
+		coursesOfMaterial = this.courseService.findCoursesOfMaterial(material.getId());
+
+		for (final Buy b : buysOfMaterial)
+			this.buyService.delete(b);
+		for (final Finder f : findersOfMaterial)
+			this.finderService.delete(f);
+		for (final Course c : coursesOfMaterial)
+			this.courseService.delete(c);
+		this.materialRepository.delete(material);
+	}
 }

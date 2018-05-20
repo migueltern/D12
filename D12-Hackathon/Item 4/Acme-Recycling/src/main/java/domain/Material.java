@@ -62,6 +62,7 @@ public class Material extends DomainEntity {
 
 	@NotNull
 	public Double getTotalPrice() {
+		this.totalPrice = this.getQuantity() * this.getUnitPrice();
 		return this.totalPrice;
 	}
 

@@ -21,4 +21,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 	@Query("select c from Course c where c.realisedMoment>current_date and c.minimumScore<?1 and c.draftMode=false")
 	Collection<Course> coursesAvailables(int puntuation);
 
+	@Query("select c from Course c join c.materials m where m.id =?1")
+	Collection<Course> findCoursesOfMaterial(int materialId);
+
 }

@@ -112,10 +112,9 @@ public class CourseService {
 		final Collection<Recycler> recyclers;
 
 		Collection<Lesson> lessons;
-		//Solo un buyer podrá eliminar un curso
-		Assert.isTrue(this.buyerService.checkPrincipalBoolean());
+
 		//Sólo si está en modo borrar se podrá eliminar el course
-		Assert.isTrue(course.isDraftMode());
+		Assert.isTrue(course.isDraftMode(), "Existe un curso que no esta en modo final");
 
 		lessons = this.lessonService.findLessonsByCourseId(course.getId());
 		for (final Lesson l : lessons) {
@@ -241,5 +240,11 @@ public class CourseService {
 		}
 		this.validator.validate(result, bindingResult);
 		return result;
+	}
+
+	public Collection<Course> findCoursesOfMaterial(final int materialId) {
+		Collection<Course> courses;
+		courses = this.courseRepository.findCoursesOfMaterial(materialId);
+		return courses;
 	}
 }

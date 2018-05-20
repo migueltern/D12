@@ -147,7 +147,7 @@ public class LabelProductManagerController extends AbstractController {
 	// Ancillary methods ------------------------------------------------------
 	protected ModelAndView createDeleteModelAndView(final LabelProduct labelProduct) {
 		ModelAndView result;
-		result = this.createEditModelAndView(labelProduct, null);
+		result = this.createDeleteModelAndView(labelProduct, null);
 		return result;
 	}
 

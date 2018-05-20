@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * i18n-l10n.xml
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!-- * i18n-l10n.xml * * Copyright (C) 2017 Universidad de Sevilla * * The 
+	use of this project is hereby constrained to the conditions of the * TDG 
+	Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
@@ -20,7 +14,7 @@
 	<util:list id="messages">
 		<value>/views/master-page/messages</value>
 		<value>/views/misc/messages</value>
-		<value>/views/security/messages</value>		
+		<value>/views/security/messages</value>
 		<value>/views/welcome/messages</value>
 		<value>/views/profile/messages</value>
 		<value>/views/opinion/messages</value>
@@ -31,9 +25,9 @@
 		<value>/views/comment/messages</value>
 		<value>/views/cleanPoint/messages</value>
 		<value>/views/message/messages</value>
-		
+
 		<value>/views/course/messages</value>
-		<value>/views/lesson/messages</value>  
+		<value>/views/lesson/messages</value>
 		<value>/views/carrier/messages</value>
 		<value>/views/manager/messages</value>
 		<value>/views/editor/messages</value>
@@ -46,6 +40,7 @@
 		<value>/views/labelProduct/messages</value>
 		<value>/views/assessment/messages</value>
 		<value>/views/incidence/messages</value>
+		<value>/views/material/messages</value>
 	</util:list>
 
 </beans>

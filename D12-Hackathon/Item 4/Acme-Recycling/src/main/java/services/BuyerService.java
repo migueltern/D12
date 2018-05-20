@@ -219,4 +219,19 @@ public class BuyerService {
 	public void flush() {
 		this.buyerRepository.flush();
 	}
+
+	public Buyer findBuyerOfBuy(final int buyId) {
+		Buyer result;
+
+		result = this.buyerRepository.findBuyerOfBuy(buyId);
+		return result;
+	}
+
+	public Buyer findBuyerOfFinder(final int finderId) {
+		Buyer buyer;
+
+		buyer = this.buyerRepository.findBuyerOfFinder(finderId);
+
+		return buyer;
+	}
 }

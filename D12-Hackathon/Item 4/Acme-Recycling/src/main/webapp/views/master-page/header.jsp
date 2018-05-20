@@ -77,6 +77,14 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.admin.material" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="material/admin/list.do?d-16544-p=1"><spring:message code="master.page.admin.material.list" /></a></li>	
+					
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.aboutUs" /></a>
 				<ul>
 					<li class="arrow"></li>

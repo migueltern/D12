@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.FinderRepository;
+import domain.Buyer;
 import domain.Finder;
 import domain.Material;
 
@@ -32,6 +33,9 @@ public class FinderService {
 	private ConfigurationSystemService	configurationSystemService;
 	@Autowired
 	private MaterialService				materialService;
+
+	@Autowired
+	private BuyerService				buyerService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -88,6 +92,9 @@ public class FinderService {
 	}
 
 	public void delete(final Finder finder) {
+		Buyer buyer;
+		buyer = this.buyerService.findBuyerOfFinder(finder.getId());
+		buyer.setFinder(null);
 
 		this.finderRepository.delete(finder);
 	}
@@ -170,5 +177,12 @@ public class FinderService {
 		else if (keyWord.equals(keyWord2))
 			result = true;
 		return result;
+	}
+
+	public Collection<Finder> findFindersOfMaterial(final int materialId) {
+		Collection<Finder> finders;
+
+		finders = this.finderRepository.findFindersOfMaterial(materialId);
+		return finders;
 	}
 }

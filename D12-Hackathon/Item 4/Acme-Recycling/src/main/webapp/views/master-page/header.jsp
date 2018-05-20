@@ -35,6 +35,13 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.course.administrator" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="course/admin/list.do?d-16544-p=1"><spring:message code="master.page.course.list" /></a></li>
+				</ul>
+			</li>
+			
 			<li><a class="fNiv"><spring:message	code="master.page.administrator.register" /></a>
 				<ul>
 					<li class="arrow"></li>

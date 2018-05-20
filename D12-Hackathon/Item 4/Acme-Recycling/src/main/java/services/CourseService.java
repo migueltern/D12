@@ -134,9 +134,54 @@ public class CourseService {
 		this.courseRepository.delete(course);
 	}
 
+	public void deleteAdmin(final Course course) {
+		Assert.notNull(course);
+		Buyer buyer;
+		final Collection<Recycler> recyclers;
+
+		Collection<Lesson> lessons;
+
+		recyclers = this.recyclerService.findRecyclerByCourse(course);
+		Assert.isTrue(recyclers.size() == 0, "No puede tener recicladores");
+
+		lessons = this.lessonService.findLessonsByCourseId(course.getId());
+		for (final Lesson l : lessons) {
+			l.setCourse(null);
+			this.lessonService.delete(l);
+		}
+
+		if (this.buyerService.findBuyerByCourse(course) != null) {
+			buyer = this.buyerService.findBuyerByCourse(course);
+			buyer.getCourses().remove(course);
+		}
+
+		//recyclers = this.recyclerService.findRecyclerByCourse(course);
+		//for (final Recycler r : recyclers)
+		//r.getCourses().remove(course);
+
+		this.courseRepository.delete(course);
+	}
+
 	public Collection<Course> findAll() {
 		Collection<Course> result;
 		result = this.courseRepository.findAll();
+		Assert.notNull(result);
+		return result;
+	}
+
+	public Collection<Course> findAllWithoutRecyclers() {
+		Collection<Course> courses;
+		Collection<Course> result;
+		Collection<Recycler> recyclers;
+
+		result = new ArrayList<>();
+		courses = this.courseRepository.findAll();
+
+		for (final Course c : courses) {
+			recyclers = this.recyclerService.findRecyclerByCourse(c);
+			if (recyclers.isEmpty())
+				result.add(c);
+		}
 		Assert.notNull(result);
 		return result;
 	}

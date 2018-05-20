@@ -20,6 +20,16 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<script type="text/javascript">
+	function confirmDelete(courseId) {
+		confirm=confirm('<spring:message code="course.confirm.delete"/>');
+		if (confirm)
+		  window.location.href ="course/admin/delete.do?courseId=" + courseId;
+		  else
+			  window.location.href ="course/admin/list.do?d-16544-p=1";
+	}
+</script>
+
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="courses" requestURI="${requestURI}" id="row">
 
@@ -52,7 +62,14 @@
 		</display:column>
 	</security:authorize> 
 	
-		
+	<security:authorize access="hasRole('ADMIN')">
+			<spring:message code="course.delete" var="deleteHeader" />
+			<display:column title="${deleteHeader}" sortable="true">
+				<input type="button" name="delete"
+					value="<spring:message code="course.delete" />"
+					onclick="confirmDelete(${row.id});" />
+			</display:column>
+	</security:authorize>
 		
 		
 		

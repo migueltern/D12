@@ -830,7 +830,6 @@
 		</property>
 		<property name="courses">
 			<list>
-				<ref bean="course4" />
 			</list>
 		</property>
 	</bean>
@@ -860,7 +859,6 @@
 		</property>
 		<property name="courses">
 			<list>
-				<ref bean="course5" />
 			</list>
 		</property>
 	</bean>

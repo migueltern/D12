@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.ItemService;
 import services.LabelProductService;
+import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Actor;
 import domain.Item;
@@ -34,6 +35,9 @@ public class ItemRecyclerController extends AbstractController{
 	
 	@Autowired
 	private LabelProductService labelProductService;
+	
+	@Autowired
+	private RecyclerService recyclerService;
 	
 	
 	//	Constructors
@@ -103,6 +107,26 @@ public class ItemRecyclerController extends AbstractController{
 		
 	}
 	
+	//Delete --------------------------------------------------------------------------
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(int itemId) {
+		ModelAndView result;
+		Item item;
+
+		item = this.itemService.findOne(itemId);
+		Assert.notNull(item);
+		try {
+			this.itemService.delete(item);
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			
+			result = this.listWithMessage("item.commit.error");
+		}
+
+		return result;
+	}
+	
 	// Ancillary methods ------------------------------------------------------
 		protected ModelAndView createEditModelAndView(Item item) {
 			ModelAndView result;
@@ -122,6 +146,22 @@ public class ItemRecyclerController extends AbstractController{
 			result.addObject("requestURI", "item/recycler/create.do");
 			result.addObject("RequestURIcancel", "item/recycler/list.do");
 
+			return result;
+
+		}
+		
+		protected ModelAndView listWithMessage(final String message) {
+			ModelAndView result;
+			Collection<Item> items;
+			Recycler principal;
+			
+			principal = this.recyclerService.findByPrincipal();
+			items = this.itemService.findItemsByRecycler(principal.getId());
+
+			result = new ModelAndView("item/list");
+			result.addObject("items", items);
+			result.addObject("requestURI", "item/recycler/list.do");
+			result.addObject("message", message);
 			return result;
 
 		}

@@ -32,6 +32,11 @@
 	}
 </script>
 
+<security:authorize access="hasRole('RECYCLER')">
+<jstl:if test="${showScore}">
+<h2><spring:message code="item.score" /></h2>
+</jstl:if>
+</security:authorize>
 <!-- Listing messageFodler -->
 <display:table name="items" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
@@ -51,12 +56,14 @@
 	
 	<acme:column code="item.labelProduct" property="labelProduct.name" sortable ="true"/>
 	
+	<jstl:if test="${showDelete}">
  	<spring:message code="item.delete" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">
 			<input type="button" name="delete"
 				value="<spring:message code="item.delete" />"
 				onclick="confirmDelete(${row.id});" />
 	</display:column>
+	</jstl:if>
 	
 	
 	

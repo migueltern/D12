@@ -1,6 +1,8 @@
 
 package controllers.recycler;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ItemService;
 import services.RecyclerService;
 import controllers.AbstractController;
+import domain.Item;
 import domain.Recycler;
 import forms.RecyclerForm;
 
@@ -23,6 +27,9 @@ public class ProfileRecyclerController extends AbstractController {
 
 	@Autowired
 	private RecyclerService	recyclerService;
+
+	@Autowired
+	private ItemService		itemService;
 
 
 	//Constructor--------------------------------------------------------
@@ -80,19 +87,23 @@ public class ProfileRecyclerController extends AbstractController {
 
 	//Display ------------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView displayUser() {
+	public ModelAndView displayRecycler() {
 		ModelAndView result;
 		Recycler recycler;
+		final Collection<Item> items;
 
 		recycler = this.recyclerService.findByPrincipal();
+		items = this.itemService.findItemsByRecycler(recycler.getId());
 
 		result = new ModelAndView("recycler/display");
 		result.addObject("recycler", recycler);
+		result.addObject("items", items);
+		result.addObject("showDelete", true);
 		result.addObject("requestURI", "profile/recycler/display.do");
+		result.addObject("requestItemsURL", "item/recycler/list.do");
 
 		return result;
 	}
-
 	// Ancillary methods ------------------------------------------------------
 
 	protected ModelAndView createEditModelAndView(final RecyclerForm recyclerForm) {

@@ -1,7 +1,7 @@
+
 package controllers.recycler;
 
 import java.util.Collection;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,52 +23,51 @@ import domain.Recycler;
 
 @Controller
 @RequestMapping("/item/recycler")
-public class ItemRecyclerController extends AbstractController{
-	
+public class ItemRecyclerController extends AbstractController {
+
 	//	Services --------------------------------------------------------
 
 	@Autowired
-	private ItemService itemService;
-	
+	private ItemService			itemService;
+
 	@Autowired
-	private ActorService actorService;
-	
+	private ActorService		actorService;
+
 	@Autowired
-	private LabelProductService labelProductService;
-	
+	private LabelProductService	labelProductService;
+
 	@Autowired
-	private RecyclerService recyclerService;
-	
-	
+	private RecyclerService		recyclerService;
+
+
 	//	Constructors
 
 	public ItemRecyclerController() {
 		super();
 	}
-	
+
 	//	Listing ---------------------------------------------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Item> items;
 		Actor principal;
-		
+
 		principal = this.actorService.findPrincipal();
 		items = this.itemService.findItemsByRecycler(principal.getId());
-		
+
 		Assert.isTrue(principal instanceof Recycler);
 
 		result = new ModelAndView("item/list");
 		result.addObject("items", items);
+		result.addObject("showScore", true);
 		result.addObject("requestURI", "item/recycler/list.do?d-16544-p=1");
-
 
 		return result;
 	}
-	
-	
+
 	// Create-------------------------------------------------------------
-	
+
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView result;
@@ -81,17 +80,15 @@ public class ItemRecyclerController extends AbstractController{
 
 	}
 
-	
-//	Save-------------------------------------------------------------------
-	
+	//	Save-------------------------------------------------------------------
+
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(Item item, BindingResult bindingResult) {
+	public ModelAndView save(final Item item, final BindingResult bindingResult) {
 		ModelAndView result;
 		Item itemReconstruct;
-		
-		
+
 		itemReconstruct = this.itemService.reconstruct(item, bindingResult);
-		
+
 		if (bindingResult.hasErrors())
 			result = this.createEditModelAndView(itemReconstruct);
 		else
@@ -99,18 +96,18 @@ public class ItemRecyclerController extends AbstractController{
 				this.itemService.save(itemReconstruct);
 				result = new ModelAndView("redirect:/item/recycler/list.do");
 			} catch (final Throwable oops) {
-				
+
 				result = this.createEditModelAndView(itemReconstruct, "item.commit.error");
 			}
 
 		return result;
-		
+
 	}
-	
+
 	//Delete --------------------------------------------------------------------------
-	
+
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(int itemId) {
+	public ModelAndView delete(final int itemId) {
 		ModelAndView result;
 		Item item;
 
@@ -120,50 +117,50 @@ public class ItemRecyclerController extends AbstractController{
 			this.itemService.delete(item);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
-			
+
 			result = this.listWithMessage("item.commit.error");
 		}
 
 		return result;
 	}
-	
+
 	// Ancillary methods ------------------------------------------------------
-		protected ModelAndView createEditModelAndView(Item item) {
-			ModelAndView result;
-			result = this.createEditModelAndView(item, null);
-			return result;
-		}
+	protected ModelAndView createEditModelAndView(final Item item) {
+		ModelAndView result;
+		result = this.createEditModelAndView(item, null);
+		return result;
+	}
 
-		protected ModelAndView createEditModelAndView(Item item, String messageCode) {
-			ModelAndView result;
-			Collection<LabelProduct> labelsProduct;
-			
-			labelsProduct = this.labelProductService.findAll();
+	protected ModelAndView createEditModelAndView(final Item item, final String messageCode) {
+		ModelAndView result;
+		Collection<LabelProduct> labelsProduct;
 
-			result = new ModelAndView("item/edit");
-			result.addObject("item", item);
-			result.addObject("labelsProduct", labelsProduct);
-			result.addObject("requestURI", "item/recycler/create.do");
-			result.addObject("RequestURIcancel", "item/recycler/list.do");
+		labelsProduct = this.labelProductService.findAll();
 
-			return result;
+		result = new ModelAndView("item/edit");
+		result.addObject("item", item);
+		result.addObject("labelsProduct", labelsProduct);
+		result.addObject("requestURI", "item/recycler/create.do");
+		result.addObject("RequestURIcancel", "item/recycler/list.do");
 
-		}
-		
-		protected ModelAndView listWithMessage(final String message) {
-			ModelAndView result;
-			Collection<Item> items;
-			Recycler principal;
-			
-			principal = this.recyclerService.findByPrincipal();
-			items = this.itemService.findItemsByRecycler(principal.getId());
+		return result;
 
-			result = new ModelAndView("item/list");
-			result.addObject("items", items);
-			result.addObject("requestURI", "item/recycler/list.do");
-			result.addObject("message", message);
-			return result;
+	}
 
-		}
+	protected ModelAndView listWithMessage(final String message) {
+		ModelAndView result;
+		Collection<Item> items;
+		Recycler principal;
+
+		principal = this.recyclerService.findByPrincipal();
+		items = this.itemService.findItemsByRecycler(principal.getId());
+
+		result = new ModelAndView("item/list");
+		result.addObject("items", items);
+		result.addObject("requestURI", "item/recycler/list.do");
+		result.addObject("message", message);
+		return result;
+
+	}
 
 }

@@ -51,6 +51,14 @@
 		<B><spring:message code="recycler.province" />:</B>
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
+	<p>
+		<B><spring:message code="recycler.items" />:</B>
+			<spring:url value="${requestItemsURL}" var="itemsURL">
+			<spring:param name="recyclerId" value="${row.id }" />
+			<spring:param name="d-16544-p" value="1" />
+			</spring:url>
+			<a href="${itemsURL}"><spring:message code="recycler.items1" /></a>
+	</p>
 	
 	
 </display:column>

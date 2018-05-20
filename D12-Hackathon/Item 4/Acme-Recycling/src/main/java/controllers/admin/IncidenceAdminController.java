@@ -39,6 +39,8 @@ public class IncidenceAdminController extends AbstractController {
 
 		incidences = this.incidenceService.incidencesWithTabooWord();
 
+		incidences.removeAll(this.incidenceService.findIncidenceResolved());
+
 		result = new ModelAndView("incidence/list");
 		result.addObject("incidences", incidences);
 		result.addObject("requestURI", "incidence/admin/list.do");
@@ -70,10 +72,9 @@ public class IncidenceAdminController extends AbstractController {
 
 	protected ModelAndView listWithMessage(final String message) {
 		final ModelAndView result;
-		Collection<Incidence> incidences;
-		incidences = this.incidenceService.findAll();
+
 		result = new ModelAndView("incidence/list");
-		result.addObject("incidences", incidences);
+
 		result.addObject("requestURI", "/incidence/admin/list.do");
 		result.addObject("message", message);
 		return result;

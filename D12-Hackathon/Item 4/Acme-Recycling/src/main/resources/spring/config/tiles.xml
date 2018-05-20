@@ -41,6 +41,7 @@
 		<value>/views/assessment/tiles.xml</value>
 		<value>/views/incidence/tiles.xml</value>
 		<value>/views/material/tiles.xml</value>
+		<value>/views/actor/tiles.xml</value>
 
 
 	</util:list>

@@ -87,6 +87,7 @@
 		<security:intercept-url pattern="/new_/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/incidence/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/material/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/actor/admin/**" access="hasRole('ADMIN')"/>
 	<!-- 	EDITOR -->
 		<security:intercept-url pattern="/new_/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/comment/editor/**" access="hasRole('EDITOR')"/>

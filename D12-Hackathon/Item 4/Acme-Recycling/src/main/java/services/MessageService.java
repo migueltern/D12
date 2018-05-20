@@ -197,6 +197,7 @@ public class MessageService {
 		
 		return result;
 	}
+	
 
 	public Message reconstruct(Message message, BindingResult bindingResult){
 		Message result;
@@ -231,6 +232,17 @@ public class MessageService {
 	
 	public void flush(){
 		this.messageRepository.flush();
+	}
+	
+	
+	public Collection<Message> findMessageWithTabooWord(int actorId, String tabooWord){
+		
+		Collection<Message> result;
+		
+		result = this.messageRepository.findMessageWithTabooWord(actorId, tabooWord);
+		
+		return result;
+		
 	}
 	
 

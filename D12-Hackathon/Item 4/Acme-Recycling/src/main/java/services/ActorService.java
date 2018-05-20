@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,8 @@ import repositories.ActorRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Actor;
+import domain.Message;
+import domain.TabooWord;
 
 @Service
 @Transactional
@@ -24,6 +27,12 @@ public class ActorService {
 
 
 	// Supporting services ----------------------------------------------------
+	
+	@Autowired
+	private MessageService messageService;
+	
+	@Autowired
+	private TabooWordService tabooWordService;
 
 	// Constructors -----------------------------------------------------------
 	public ActorService() {
@@ -74,4 +83,58 @@ public class ActorService {
 		return result;
 	} 
 
+	
+	
+	
+	public Collection<Actor> actorForBan(){
+		
+		Collection<Actor> result;
+		Collection<Message> messages;
+		Collection<TabooWord> tabooWords;
+		Collection<Actor> actors;
+		
+		tabooWords = this.tabooWordService.findAll();
+		result = new ArrayList<>();
+		actors = this.actorRepository.findAll();
+		
+		
+		for(Actor a: actors){
+			for(TabooWord t: tabooWords){
+				
+				messages = this.messageService.findMessageWithTabooWord(a.getId(), t.getName());
+				
+				if(messages.size() >= 5){
+					result.add(a);
+					
+				}
+				
+			}
+		}
+		
+		return result;
+	}
+	
+	public boolean ban(UserAccount userAcount) {
+
+		boolean result;
+
+		userAcount.setActivated(false);
+
+		result = userAcount.isActivated();
+
+		return result;
+
+	}
+
+	public boolean unban(UserAccount userAccount) {
+
+		boolean result;
+
+		userAccount.setActivated(true);
+
+		result = userAccount.isActivated();
+
+		return result;
+
+	}
 }

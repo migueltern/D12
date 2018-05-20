@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 
 import repositories.CommentRepository;
 import domain.Comment;
+import domain.New;
 import domain.Recycler;
 
 @Service
@@ -28,6 +29,9 @@ public class CommentService {
 
 	@Autowired
 	private RecyclerService		recyclerService;
+
+	@Autowired
+	private NewService			newService;
 	//Importar la que pertenece a Spring
 	@Autowired
 	private Validator			validator;
@@ -87,6 +91,14 @@ public class CommentService {
 		result = this.commentRepository.save(comment);
 		//Le a“ado al reciclador que est∑ logueado el comentario
 		principal.getComments().add(result);
+
+		if (comment.getCommentTo() != null) {
+			New new_;
+
+			new_ = this.newService.findNewByComment(result.getCommentTo().getId());
+
+			new_.getComments().add(result);
+		}
 
 		return result;
 	}

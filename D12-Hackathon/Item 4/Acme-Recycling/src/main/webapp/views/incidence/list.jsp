@@ -56,6 +56,25 @@
 	<spring:message code="incidence.createdMoment" var="postedHeader" />
 	<display:column property="createdMoment" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
+		
+<!-- Enlace para cambiar a resuelta la incidencia --->
+<security:authorize access="hasRole('MANAGER')">
+
+	<jstl:if test="${row.resolved==false}">
+	<spring:message code="incidence.resolve" var="resolve"/>
+		
+		<display:column title="${resolve}" sortable="true">
+		
+		
+			<spring:url value="${RequestURIresolve}" var="resolveURL">
+				<spring:param name="incidenceId" value="${row.id}" />
+			</spring:url>
+			<a href="${resolveURL}"><spring:message code="incidence.resolve" /></a>
+		
+		
+		</display:column>
+		</jstl:if>
+	</security:authorize>
 	
 
 <!-- Attributes PARA EL ADMIN -->
@@ -83,6 +102,7 @@
 		</jstl:if>
 		
 </display:column>
+
 
 <!-- Boton de delete para el admin ya que puede borrar las noticias que quiera pero no editarlas -->
 	<security:authorize access="hasRole('ADMIN')">

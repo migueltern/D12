@@ -294,6 +294,14 @@
 				</ul>
 			</li>
 			
+			<li><a class="fNiv"><spring:message	code="master.page.incidence" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="incidence/manager/list.do?d-16544-p=1"><spring:message code="master.page.incidences.listNoResolved" /></a></li>
+					<li><a href="incidence/manager/listResolved.do?d-16544-p=1"><spring:message code="master.page.incidences.listResolved" /></a></li>
+				</ul>
+			</li>
+			
 		</security:authorize>
 		
 		<security:authorize access="hasRole('EDITOR')">

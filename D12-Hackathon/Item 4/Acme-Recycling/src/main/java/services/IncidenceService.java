@@ -104,6 +104,7 @@ public class IncidenceService {
 		Actor principal;
 		Incidence result;
 		Message message = null;
+		Message messageSend = null;
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		principal = this.actorService.findPrincipal();
@@ -119,8 +120,9 @@ public class IncidenceService {
 			message.setPriority("HIGH");
 			message.setRecipient(incidence.getRecycler());
 			message.setSubject(incidence.getTitle());
+			messageSend = this.messageService.send(message);
 
-			this.messageService.saveMessageInFolder(incidence.getRecycler(), "Notification box", message);
+			this.messageService.saveMessageInFolder(incidence.getRecycler(), "Notification box", messageSend);
 		}
 		result = this.incidenceRepository.save(incidence);
 
@@ -210,6 +212,26 @@ public class IncidenceService {
 
 		return result;
 
+	}
+	
+	public Collection<Incidence> findIncidenceNoResolved(){
+		
+		Collection<Incidence> result;
+		
+		result = this.incidenceRepository.findIncidenceNoResolved();
+		
+		return result;
+		
+	}
+	
+public Collection<Incidence> findIncidenceResolved(){
+		
+		Collection<Incidence> result;
+		
+		result = this.incidenceRepository.findIncidenceResolved();
+		
+		return result;
+		
 	}
 
 }

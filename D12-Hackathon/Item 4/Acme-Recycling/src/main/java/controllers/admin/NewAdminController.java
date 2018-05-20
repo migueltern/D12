@@ -1,6 +1,7 @@
 
 package controllers.admin;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.NewService;
 import controllers.AbstractController;
+import domain.Comment;
 import domain.New;
 
 @Controller
@@ -28,6 +31,25 @@ public class NewAdminController extends AbstractController {
 
 	public NewAdminController() {
 		super();
+	}
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView displayNew(@RequestParam final int newId) {
+		final ModelAndView result;
+		New new_ = new New();
+		Collection<Comment> comments;
+
+		new_ = this.newService.findOne(newId);
+		comments = new ArrayList<>();
+
+		comments = this.newService.findCommentsByNew(newId);
+
+		result = new ModelAndView("new/display");
+		result.addObject("new_", new_);
+		result.addObject("comments", comments);
+		result.addObject("requestURI", "new_/admin/display.do");
+
+		return result;
 	}
 
 	//Listing-------------------------------------------------------------

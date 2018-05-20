@@ -43,6 +43,21 @@ public class MaterialAdminController extends AbstractController {
 		super();
 	}
 
+	//Display ------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView displayMaterial(@RequestParam final int materialId) {
+		ModelAndView result;
+		Material material;
+
+		material = this.materialService.findOne(materialId);
+
+		result = new ModelAndView("material/display");
+		result.addObject("material", material);
+		result.addObject("requestURI", "material/admin/display.do");
+
+		return result;
+	}
+
 	//Creating--------------
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {

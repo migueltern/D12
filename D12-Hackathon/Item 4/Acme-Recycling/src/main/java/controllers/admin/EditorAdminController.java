@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.EditorService;
@@ -29,6 +30,21 @@ public class EditorAdminController extends AbstractController {
 
 	public EditorAdminController() {
 		super();
+	}
+
+	//Display ------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView displayEditor(@RequestParam final int editorId) {
+		ModelAndView result;
+		Editor editor;
+
+		editor = this.editorService.findOne(editorId);
+
+		result = new ModelAndView("editor/display");
+		result.addObject("editor", editor);
+		result.addObject("requestURI", "editor/admin/display.do");
+
+		return result;
 	}
 
 	//Edition------------------------------------------------------------

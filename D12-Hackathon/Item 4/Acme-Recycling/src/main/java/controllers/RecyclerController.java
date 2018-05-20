@@ -1,6 +1,8 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -23,12 +25,31 @@ public class RecyclerController extends AbstractController {
 	private RecyclerService	recyclerService;
 
 
+
 	//Constructor--------------------------------------------------------
 	public RecyclerController() {
 		super();
 	}
 
 	//Listing-----------------------------------------------------------
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Recycler> recyclers;
+		
+		recyclers = this.recyclerService.findAll();
+
+		result = new ModelAndView("actor/list");
+		result.addObject("actors", recyclers);
+		result.addObject("requestURI", "recycler/list.do?d-16544-p=1");
+		result.addObject("RequestURIitems", "/item/list.do");
+		result.addObject("showbun", false);
+		result.addObject("showunbun", false);
+
+
+		return result;
+	}
 
 	//Displaying--------------------------------------------------------
 

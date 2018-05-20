@@ -40,9 +40,18 @@
 	
 	<acme:column code="actor.province" property="province" sortable ="true"/>
 	
+	<spring:message code="actor.items" var="items"/>
+		<display:column title="${items}" sortable="true">
+			<spring:url value="${RequestURIitems}" var="itemsURL">
+				<spring:param name="actorId" value="${row.id}" />
+			</spring:url>
+			<a href="${itemsURL}"><spring:message code="actor.items" /></a>
+		</display:column>
+	
+	
 	<security:authorize access="hasRole('ADMIN')">
 
-	
+	<jstl:if test="${showbun}">
 	<spring:message code="actor.ban" var="ban"/>
 		
 		<display:column title="${ban}" sortable="true">
@@ -55,11 +64,13 @@
 			</jstl:if>
 		
 		</display:column>
+	</jstl:if>
 		
 	</security:authorize>
 	
-	<security:authorize access="hasRole('ADMIN')">
 	
+	<security:authorize access="hasRole('ADMIN')">
+	<jstl:if test="${showunbun}">
 	<spring:message code="actor.unban" var="unban"/>
 		
 		<display:column title="${unban}" sortable="true">
@@ -72,7 +83,7 @@
 			</jstl:if>
 		
 		</display:column>
-		
+	</jstl:if>
 	</security:authorize>
 	
 

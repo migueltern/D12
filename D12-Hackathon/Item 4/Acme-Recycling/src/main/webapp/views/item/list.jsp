@@ -56,6 +56,7 @@
 	
 	<acme:column code="item.labelProduct" property="labelProduct.name" sortable ="true"/>
 	
+	
 	<jstl:if test="${showDelete}">
  	<spring:message code="item.delete" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">

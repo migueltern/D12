@@ -108,6 +108,14 @@
 								code="master.page.admin.material.list" /></a></li>
 
 				</ul></li>
+				
+			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
+				<ul>
+					<li class="arrow"></li>
+					
+					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
 
 			<li><a class="fNiv"><spring:message code="master.page.actor" /></a>
 				<ul>
@@ -115,6 +123,8 @@
 					<li><a href="actor/admin/list.do?d-16544-p=1"><spring:message
 								code="master.page.ban" /></a></li>
 				</ul></li>
+				
+			
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
@@ -162,6 +172,14 @@
 					<li><a href="course/buyer/list.do?d-16544-p=1"><spring:message
 								code="master.page.buyer.course" /></a></li>
 				</ul></li>
+				
+				<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
+				<ul>
+					<li class="arrow"></li>
+					
+					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
@@ -258,6 +276,14 @@
 								code="master.page.course.listCoursesAvailables" /></a></li>
 
 				</ul></li>
+				
+			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
+				<ul>
+					<li class="arrow"></li>
+					
+					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
@@ -308,6 +334,14 @@
 						href="assessment/carrier/listMyAssessment.do?d-16544-p=1"><spring:message
 								code="master.page.assessment.listMyAssessment" /></a></li>
 				</ul></li>
+				
+				<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
+				<ul>
+					<li class="arrow"></li>
+					
+					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
@@ -362,15 +396,7 @@
 					<li><a href="labelProduct/manager/list.do?d-16544-p=1"><spring:message
 								code="master.page.labelProduct.list" /></a></li>
 				</ul></li>
-
-			<li><a class="fNiv"><spring:message
-						code="master.page.aboutUs" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="welcome/aboutUs.do"><spring:message
-								code="master.page.aboutUs" /></a></li>
-				</ul></li>
-
+				
 			<li><a class="fNiv"><spring:message
 						code="master.page.incidence" /></a>
 				<ul>
@@ -380,6 +406,24 @@
 					<li><a href="incidence/manager/listResolved.do?d-16544-p=1"><spring:message
 								code="master.page.incidences.listResolved" /></a></li>
 				</ul></li>
+				
+			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
+				<ul>
+					<li class="arrow"></li>
+					
+					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
+
+			<li><a class="fNiv"><spring:message
+						code="master.page.aboutUs" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="welcome/aboutUs.do"><spring:message
+								code="master.page.aboutUs" /></a></li>
+				</ul></li>
+
+			
 
 		</security:authorize>
 
@@ -416,6 +460,14 @@
 					<li><a href="new_/editor/create.do"><spring:message
 								code="master.page.New.create" /></a></li>
 				</ul></li>
+				
+			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
+				<ul>
+					<li class="arrow"></li>
+					
+					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
@@ -454,6 +506,14 @@
 					<li><a href="material/list.do?d-16544-p=1"><spring:message
 								code="master.page.admin.material.list" /></a></li>
 				</ul></li>
+				
+			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
+				<ul>
+					<li class="arrow"></li>
+					
+					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
 				<ul>

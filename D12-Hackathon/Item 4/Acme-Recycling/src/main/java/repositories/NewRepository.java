@@ -28,4 +28,7 @@ public interface NewRepository extends JpaRepository<New, Integer> {
 	@Query("select c from New c where c.title like %?1% or c.content like %?1%")
 	Collection<New> findNewsWithTabooWord(String tabooWord);
 
+	//Dado un comentario devuelveme su noticia
+	@Query("select n from New n join n.comments c where c.id=?1")
+	New findNewByComment(int commentId);
 }

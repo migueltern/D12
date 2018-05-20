@@ -63,6 +63,21 @@ public class CommentRecyclerController extends AbstractController {
 
 	}
 
+	@RequestMapping(value = "/createReply", method = RequestMethod.GET)
+	public ModelAndView createReply(@RequestParam final int commentId) {
+		ModelAndView result;
+
+		Comment comment;
+		Comment reply;
+
+		comment = this.commentService.findOne(commentId);
+
+		reply = this.commentService.create(comment);
+
+		result = this.createEditModelAndView(reply);
+
+		return result;
+	}
 	@RequestMapping(value = "/addNew", method = RequestMethod.POST, params = "save")
 	public ModelAndView addNewspaper(Comment comment, final BindingResult bindingResult, @RequestParam final int newId) {
 		ModelAndView result;
@@ -96,6 +111,7 @@ public class CommentRecyclerController extends AbstractController {
 		else
 			try {
 				this.commentService.save(comment);
+
 				result = new ModelAndView("redirect:list.do");
 
 			} catch (final Throwable oops) {
@@ -122,6 +138,7 @@ public class CommentRecyclerController extends AbstractController {
 		result = new ModelAndView("comment/edit");
 		result.addObject("comment", comment);
 		result.addObject("message", message);
+		result.addObject("requestURI", "comment/recycler/edit.do");
 
 		return result;
 

@@ -234,4 +234,12 @@ public class NewService {
 
 	}
 
+	public New findNewByComment(final int commentId) {
+		New result;
+
+		result = this.newRepository.findNewByComment(commentId);
+
+		return result;
+	}
+
 }

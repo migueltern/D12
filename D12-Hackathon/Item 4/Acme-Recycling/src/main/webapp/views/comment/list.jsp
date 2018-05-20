@@ -46,4 +46,17 @@
 	<display:column property="createdMoment" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
 
+
+<!-- Boton para responder a un comentario -->
+	<security:authorize access="hasRole('RECYCLER')">
+		<spring:message code="reply" var="CreateComments" />
+		<display:column title="${CreateComments}" sortable="true">
+			<spring:url value="comment/recycler/createReply.do"
+				var="createReplyCommentURL">
+				<spring:param name="commentId" value="${row.id}" />
+			</spring:url>
+			<a href="${createReplyCommentURL}"><spring:message
+					code="reply" /></a>
+		</display:column>
+	</security:authorize>
 </display:table>

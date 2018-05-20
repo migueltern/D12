@@ -42,13 +42,33 @@ public class CommentService {
 
 	public Comment create() {
 		Comment result;
+		Collection<Comment> replys;
 
 		Date createdMoment;
 
 		result = new Comment();
+		replys = new ArrayList<Comment>();
 		createdMoment = new Date();
 
 		result.setCreatedMoment(createdMoment);
+		result.setReplys(replys);
+
+		return result;
+	}
+
+	public Comment create(final Comment comment) {
+		Comment result;
+		Collection<Comment> replys;
+
+		Date createdMoment;
+
+		result = new Comment();
+		replys = new ArrayList<Comment>();
+		createdMoment = new Date();
+
+		result.setCreatedMoment(createdMoment);
+		result.setReplys(replys);
+		result.setCommentTo(comment);
 
 		return result;
 	}
@@ -113,12 +133,12 @@ public class CommentService {
 
 		if (comment.getId() == 0) {
 			Collection<Comment> replys;
+
 			Date moment;
 
 			result = comment;
 			moment = new Date(System.currentTimeMillis() - 1000);
 			replys = new ArrayList<Comment>();
-
 			result.setReplys(replys);
 			result.setCreatedMoment(moment);
 		}

@@ -24,6 +24,25 @@
 <!-- Listing messageFodler -->
 <display:table name="materials" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
+	
+	<!-- Finder para el Buyer -->
+	<security:authorize access="hasRole('BUYER')">
+	<form:form action="finder/buyer/search.do" modelAttribute="finder" >
+
+		<form:hidden path="id" />
+		<form:hidden path="version" />
+		<form:hidden path="materials" />
+
+		<acme:textbox code="finder.keyWord" path="keyWord" />
+		<br />
+		<acme:textbox code="finder.lowPrice" path="lowPrice" />
+		<br />
+		<acme:textbox code="finder.highPrice" path="highPrice" />
+		<br />
+	
+		<input type="submit" name="search" value="<spring:message code="finder.search" />" /> &nbsp; 	 
+	</form:form> 
+	</security:authorize>
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('ADMIN')">

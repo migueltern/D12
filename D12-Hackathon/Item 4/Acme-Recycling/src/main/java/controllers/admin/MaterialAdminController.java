@@ -53,6 +53,7 @@ public class MaterialAdminController extends AbstractController {
 
 		result = new ModelAndView("material/display");
 		result.addObject("material", material);
+		result.addObject("buys", material.getBuys());
 		result.addObject("requestURI", "material/admin/display.do");
 
 		return result;

@@ -38,6 +38,19 @@
 	</security:authorize>
 
 
+<!--  Display -->
+	<security:authorize access="hasRole('ADMIN')">
+		<spring:message code="material.display" var="display" />
+		<display:column title="${display}" sortable="true">
+
+			<spring:url value="material/admin/display.do" var="displayURL">
+				<spring:param name="materialId" value="${row.id}" />
+			</spring:url>
+			<a href="${displayURL}"><spring:message code="material.display" /></a>
+		</display:column>
+	</security:authorize>
+
+
 
 	<!-- Attributes -->
 

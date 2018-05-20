@@ -27,5 +27,9 @@ public interface RecyclerRepository extends JpaRepository<Recycler, Integer> {
 	//Me hace falta para el delete de course para el recycler
 	@Query("select r from Recycler r join r.courses c where c.id=?1")
 	Collection<Recycler> findRecyclerByCourse(int buyerId);
+	
+	//Saco al recyclador que tiene esa solicitud
+	@Query("select r from Recycler r join r.items i where i.request.id=?1")
+	Recycler findRecyclerByRequest(int requestId);
 
 }

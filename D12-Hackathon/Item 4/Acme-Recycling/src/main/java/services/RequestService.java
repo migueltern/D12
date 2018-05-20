@@ -17,6 +17,8 @@ import repositories.RequestRepository;
 import security.Authority;
 import domain.CleanPoint;
 import domain.Item;
+import domain.Message;
+import domain.Recycler;
 import domain.Request;
 import forms.RequestForm;
 
@@ -42,6 +44,12 @@ public class RequestService {
 
 	@Autowired
 	private ActorService		actorService;
+	
+	@Autowired
+	private MessageService	messageService;
+	
+	@Autowired
+	private RecyclerService recyclerService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -212,6 +220,13 @@ public class RequestService {
 		final RequestForm result;
 		final Request requestBD;
 		Request request;
+		Message message;
+		Message messageSend;
+		Recycler recycler;
+		
+		message = null;
+		messageSend = null;
+		recycler = null;
 
 		request = requestForm.getRequest();
 
@@ -224,10 +239,25 @@ public class RequestService {
 			result = requestForm;
 		} else {
 			//Solo entra aqui cuando se cambia el status
+			
+			
+			
 			requestBD = this.findOne(request.getId());
 			requestBD.setStatus(request.getStatus());
 
 			requestForm.setRequest(requestBD);
+			
+			recycler = this.recyclerService.findRecyclerByRequest(requestBD.getId());
+			
+			message = this.messageService.create();
+			message.setBody("Your status request has been changed to " + requestBD.getStatus());
+			message.setPriority("HIGH");
+			message.setRecipient(recycler);
+			message.setSubject(requestBD.getCode());
+			messageSend = this.messageService.send(message);
+
+			this.messageService.saveMessageInFolder(recycler, "Notification box", messageSend);
+			
 			result = requestForm;
 		}
 		this.validator.validate(result, binding);

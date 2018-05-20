@@ -229,5 +229,14 @@ public class RecyclerService {
 
 		return recycler;
 	}
+	
+	public Recycler findRecyclerByRequest(int requestId){
+		
+		Recycler result;
+		
+		result = this.recyclerRepository.findRecyclerByRequest(requestId);
+		
+		return result;
+	}
 
 }

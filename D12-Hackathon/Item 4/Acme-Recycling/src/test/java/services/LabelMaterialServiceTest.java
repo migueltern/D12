@@ -16,39 +16,39 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Actor;
-import domain.LabelProduct;
+import domain.LabelMaterial;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
 })
 @Transactional
-public class LabelItemServiceTest extends AbstractTest {
+public class LabelMaterialServiceTest extends AbstractTest {
 
 	//Supporting services ----------------------------------------------------
 	@Autowired
-	LabelProductService	labelProductService;
+	LabelMaterialService	labelMaterialService;
 
 	@Autowired
-	ActorService		actorService;
+	ActorService			actorService;
 
 	@PersistenceContext
-	EntityManager		entityManager;
+	EntityManager			entityManager;
 
 	@Autowired
-	ManagerService		managerService;
+	ManagerService			managerService;
 
 
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
 			{
-
-				"manager1", "prueba labelProduct", false, null
+				//Se crea un chirp correctamenre estando logeado como user1
+				"manager1", "prueba labelMaterial", false, null
 
 			}, {
-
-				"admin", "prueba labelProduct", false, IllegalArgumentException.class
+				//Se crea un chirp incorrectamente ya que estamos logeados como admin
+				"admin", "prueba labelMaterial", false, IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
@@ -56,17 +56,17 @@ public class LabelItemServiceTest extends AbstractTest {
 	}
 	private void templateCreateAndSave(final String username, final String name, final Boolean byDefault, final Class<?> expected) {
 		Class<?> caught;
-		LabelProduct labelProduct;
+		LabelMaterial labelMaterial;
 		caught = null;
 
 		try {
 			super.authenticate(username);
-			labelProduct = this.labelProductService.create();
+			labelMaterial = this.labelMaterialService.create();
 
-			labelProduct.setName(name);
-			labelProduct.setByDefault(byDefault);
-			labelProduct = this.labelProductService.save(labelProduct);
-			this.labelProductService.flush();
+			labelMaterial.setName(name);
+			labelMaterial.setByDefault(byDefault);
+			labelMaterial = this.labelMaterialService.save(labelMaterial);
+			this.labelMaterialService.flush();
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
@@ -84,26 +84,26 @@ public class LabelItemServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			{
 
-				"manager1", "labelProduct11", null
+				"manager1", "labelMaterial4", null
 			}, {
 
-				"manager1", "labelProduct10", IllegalArgumentException.class
+				"manager1", "labelMaterial1", IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
 			this.templateDelete((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
 	}
-	private void templateDelete(final String username, final int labelProductId, final Class<?> expected) {
-		LabelProduct labelProduct;
+	private void templateDelete(final String username, final int labelMaterialId, final Class<?> expected) {
+		LabelMaterial labelMaterial;
 		Class<?> caught;
 
 		caught = null;
 		try {
 			super.authenticate(username);
-			labelProduct = this.labelProductService.findOne(labelProductId);
-			this.labelProductService.delete(labelProduct);
+			labelMaterial = this.labelMaterialService.findOne(labelMaterialId);
+			this.labelMaterialService.delete(labelMaterial);
 
-			this.labelProductService.flush();
+			this.labelMaterialService.flush();
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
@@ -121,10 +121,10 @@ public class LabelItemServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			{
 
-				"manager1", 11, null
+				"manager1", 5, null
 			}, {
 
-				"admin", 12, IllegalArgumentException.class
+				"admin", 5, IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
@@ -135,14 +135,14 @@ public class LabelItemServiceTest extends AbstractTest {
 		Class<?> caught;
 		Actor actorConnected;
 		actorConnected = this.actorService.findOne(usernameId);
-		Collection<LabelProduct> labelItems;
+		Collection<LabelMaterial> labelMaterials;
 
 		caught = null;
 		try {
 			super.authenticate(actorConnected.getUserAccount().getUsername());
 			this.managerService.checkPrincipal();
-			labelItems = this.labelProductService.findAll();
-			Assert.isTrue(labelItems.size() == size);
+			labelMaterials = this.labelMaterialService.findAll();
+			Assert.isTrue(labelMaterials.size() == size);
 			this.unauthenticate();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();

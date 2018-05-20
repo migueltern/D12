@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.LabelProductRepository;
+import domain.Item;
 import domain.LabelProduct;
 import domain.Manager;
 
@@ -63,8 +65,13 @@ public class LabelProductService {
 
 	public LabelProduct create() {
 		LabelProduct result;
+		Collection<Item> items;
+		items = new ArrayList<Item>();
 
 		result = new LabelProduct();
+		result.setItems(items);
+		result.setByDefault(false);
+
 		return result;
 	}
 

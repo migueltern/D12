@@ -27,16 +27,17 @@
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('MANAGER')">
-		<jstl:if test="${row.byDefault==false }">
-			<spring:message code="labelMaterial.edit" var="Edit" />
-			<display:column title="${Edit}" sortable="true">
 
+		<spring:message code="labelMaterial.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+			<jstl:if test="${row.byDefault==false }">
 				<spring:url value="labelMaterial/manager/edit.do" var="editURL">
 					<spring:param name="labelMaterialId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="labelMaterial.edit" /></a>
-			</display:column>
-		</jstl:if>
+			</jstl:if>
+		</display:column>
+
 	</security:authorize>
 
 
@@ -51,17 +52,19 @@
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('MANAGER')">
-		<jstl:if test="${row.byDefault==false }">
-			<spring:message code="labelMaterial.delete" var="delete" />
-			<display:column title="${delete}" sortable="true">
+
+		<spring:message code="labelMaterial.delete" var="delete" />
+		<display:column title="${delete}" sortable="true">
+			<jstl:if test="${row.byDefault==false }">
 
 				<spring:url value="labelMaterial/manager/delete.do" var="deleteURL">
 					<spring:param name="labelMaterialId" value="${row.id}" />
 				</spring:url>
 				<a href="${deleteURL}"><spring:message
 						code="labelMaterial.delete" /></a>
-			</display:column>
-		</jstl:if>
+			</jstl:if>
+		</display:column>
+
 
 
 

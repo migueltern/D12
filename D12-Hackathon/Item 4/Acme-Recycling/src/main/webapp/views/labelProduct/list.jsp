@@ -27,16 +27,17 @@
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('MANAGER')">
-		<jstl:if test="${row.byDefault==false }">
+		
 			<spring:message code="labelProduct.edit" var="Edit" />
 			<display:column title="${Edit}" sortable="true">
-
+				<jstl:if test="${row.byDefault==false }">
 				<spring:url value="labelProduct/manager/edit.do" var="editURL">
 					<spring:param name="labelProductId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="labelProduct.edit" /></a>
+					</jstl:if>
 			</display:column>
-		</jstl:if>
+	
 	</security:authorize>
 
 
@@ -51,17 +52,19 @@
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('MANAGER')">
-		<jstl:if test="${row.byDefault==false }">
+		
 			<spring:message code="labelProduct.delete" var="delete" />
 			<display:column title="${delete}" sortable="true">
+			<jstl:if test="${row.byDefault==false }">
 
 				<spring:url value="labelProduct/manager/delete.do" var="deleteURL">
 					<spring:param name="labelProductId" value="${row.id}" />
 				</spring:url>
 				<a href="${deleteURL}"><spring:message
 						code="labelProduct.delete" /></a>
+						</jstl:if>
 			</display:column>
-		</jstl:if>
+	
 
 
 

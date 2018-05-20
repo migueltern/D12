@@ -130,4 +130,7 @@ public class LabelMaterialService {
 		this.validator.validate(result, bindingResult);
 		return result;
 	}
+	public void flush() {
+		this.labelMaterialRepository.flush();
+	}
 }

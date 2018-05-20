@@ -16,7 +16,7 @@ import domain.New;
 public interface NewRepository extends JpaRepository<New, Integer> {
 
 	//Me devuelve todos los comentarios que tiene una noticia
-	@Query("select c from New n join n.comments c where n.id=?1")
+	@Query("select c from New n join n.comments c where n.id=?1 and c.commentTo=null")
 	Collection<Comment> findCommentsByNew(int newId);
 
 	//Me devuelve todas las noticias en order descendiente

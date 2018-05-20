@@ -50,6 +50,6 @@
 	</jstl:if>
 
 	<acme:cancel
-		url="new/editor/list.do?d-16544-p=1"
+		url="new_/editor/list.do?d-16544-p=1"
 		code="new.cancel" />
 </form:form>

@@ -110,17 +110,13 @@ public class CommentService {
 	public void delete(final Comment comment) {
 		Assert.notNull(comment);
 		Assert.isTrue(comment.getId() != 0);
-		Assert.isTrue(this.commentRepository.findOne(comment.getId()) != null);
 		Recycler recycler;
 
+		if (comment.getReplys().size() != 0)
+			for (final Comment c : comment.getReplys())
+				this.delete(c);
 		recycler = this.recyclerService.findRecyclerByComment(comment.getId());
-
 		recycler.getComments().remove(comment);
-
-		//		if (comment.getReplys().size() != 0)
-		//			for (final Comment c : comment.getReplys())
-		//				this.delete(c);
-
 		this.commentRepository.delete(comment);
 	}
 

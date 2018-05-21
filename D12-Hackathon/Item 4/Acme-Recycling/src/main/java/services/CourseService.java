@@ -96,6 +96,7 @@ public class CourseService {
 			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
 		//Al menos un material es obligatorio
 		Assert.isTrue(course.getMaterials().size() > 0, "Al menos un material es obligatorio");
+		//Assert.isTrue(!course.getMaterials().contains(null), "Al menos un material es obligatorio");
 		//
 		if (course.getRealisedMoment() != null)
 			Assert.isTrue(course.getRealisedMoment().after(date), "Fecha de realizacion debe ser posterior a la actual");
@@ -257,19 +258,23 @@ public class CourseService {
 	public Course reconstruct(final Course course, final BindingResult bindingResult) {
 		Course result;
 		Course courseBd;
+		final Collection<Material> materials;
+		materials = new ArrayList<Material>();
 
 		if (course.getId() == 0) {
 			Collection<Lesson> lessons;
-			final Collection<Opinion> opinions;
+			Collection<Opinion> opinions;
+
 			result = course;
 
 			lessons = new ArrayList<Lesson>();
 			opinions = new ArrayList<Opinion>();
 
+			if (course.getMaterials() == null || course.getMaterials().contains(null))
+				course.setMaterials(materials);
+
 			result.setLessons(lessons);
 			result.setOpinions(opinions);
-			if (course.getMaterials().contains(null))
-				course.setMaterials(new ArrayList<Material>());
 		}
 
 		else {
@@ -277,10 +282,11 @@ public class CourseService {
 			course.setId(courseBd.getId());
 			course.setVersion(courseBd.getVersion());
 			course.setLessons(courseBd.getLessons());
-			//course.setMaterials(courseBd.getMaterials());
+
+			if (course.getMaterials() == null || course.getMaterials().contains(null))
+				course.setMaterials(materials);
+
 			course.setOpinions(courseBd.getOpinions());
-			if (course.getMaterials().contains(null))
-				course.setMaterials(new ArrayList<Material>());
 			result = course;
 		}
 		this.validator.validate(result, bindingResult);

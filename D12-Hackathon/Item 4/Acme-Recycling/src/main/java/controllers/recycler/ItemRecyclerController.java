@@ -46,6 +46,27 @@ public class ItemRecyclerController extends AbstractController {
 		super();
 	}
 
+	//	Listing PERSONAL ---------------------------------------------------------
+	@RequestMapping(value = "/listb", method = RequestMethod.GET)
+	public ModelAndView listPersonal() {
+		ModelAndView result;
+		Collection<Item> items;
+		Actor principal;
+
+		principal = this.actorService.findPrincipal();
+		items = this.itemService.findItemsByRecycler(principal.getId());
+
+		Assert.isTrue(principal instanceof Recycler);
+
+		result = new ModelAndView("item/list");
+		result.addObject("items", items);
+		result.addObject("showScore", true);
+		result.addObject("showDelete", false);
+		result.addObject("requestURI", "item/recycler/listb.do?d-16544-p=1");
+
+		return result;
+	}
+
 	//	Listing ---------------------------------------------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
@@ -60,7 +81,8 @@ public class ItemRecyclerController extends AbstractController {
 
 		result = new ModelAndView("item/list");
 		result.addObject("items", items);
-		result.addObject("showScore", true);
+		result.addObject("showScore", false);
+		result.addObject("showDelete", true);
 		result.addObject("requestURI", "item/recycler/list.do?d-16544-p=1");
 
 		return result;

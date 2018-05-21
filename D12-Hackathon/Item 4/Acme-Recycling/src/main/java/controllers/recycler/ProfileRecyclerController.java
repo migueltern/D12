@@ -100,7 +100,7 @@ public class ProfileRecyclerController extends AbstractController {
 		result.addObject("items", items);
 		result.addObject("showDelete", true);
 		result.addObject("requestURI", "profile/recycler/display.do");
-		result.addObject("requestItemsURL", "item/recycler/list.do");
+		result.addObject("requestItemsURL", "item/recycler/listb.do");
 
 		return result;
 	}

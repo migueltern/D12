@@ -2007,7 +2007,6 @@
 				<ref bean="cleanPoint1" />
 			</list>
 		</property>
-		<property name="assesment" ref="assesment1" />
 		<property name="carrier" ref="carrier1" />
 	</bean>
 
@@ -2102,17 +2101,17 @@
 
 
 	<!-- Assesments -->
-	<bean id="assesment1" class="domain.Assesment">
+<!-- 	<bean id="assesment1" class="domain.Assesment">
 		<property name="moment" value="2018/01/02" />
 		<property name="description" value="description 1"></property>
 		<property name="valuation" value="1.2"></property>
-	</bean>
+	</bean> -->
 
-	<bean id="assesment2" class="domain.Assesment">
+	<!-- <bean id="assesment2" class="domain.Assesment">
 		<property name="moment" value="2018/02/02" />
 		<property name="description" value="description 2"></property>
 		<property name="valuation" value="2.2"></property>
-	</bean>
+	</bean> -->
 
 	<bean id="assesment3" class="domain.Assesment">
 		<property name="moment" value="2018/03/02" />
@@ -2120,7 +2119,7 @@
 		<property name="valuation" value="3.2"></property>
 	</bean>
 
-	<bean id="assesment4" class="domain.Assesment">
+	<!-- <bean id="assesment4" class="domain.Assesment">
 		<property name="moment" value="2018/04/02" />
 		<property name="description" value="description 4"></property>
 		<property name="valuation" value="4.2"></property>
@@ -2130,7 +2129,7 @@
 		<property name="moment" value="2018/05/02" />
 		<property name="description" value="description 5"></property>
 		<property name="valuation" value="5.2"></property>
-	</bean>
+	</bean> -->
 
 	<!-- Lessons -->
 	<bean id="lesson1" class="domain.Lesson">

@@ -79,7 +79,8 @@ public class AssesmentService {
 
 		//No se puede crear assessment en un request que no te pertenece
 		request = this.requestService.findOne(assesmentForm.getRequestId());
-		Assert.isTrue(request.getStatus().equals("FINISHED"));
+		if (assesment.getId() == 0)
+			Assert.isTrue(request.getStatus().equals("FINISHED"));
 		final Collection<Request> requests = this.requestService.findByCarrierId(this.carrierService.findByPrincipal().getId());
 		Assert.isTrue(requests.contains(request));
 

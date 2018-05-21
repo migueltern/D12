@@ -38,7 +38,7 @@ public class DashboardAdminController extends AbstractController {
 		Double avgMinMaxAndStddevOfCoursesByBuyer[];
 		Double avgOfIncidencesResolved;
 		Double avgOfRecyclerWithAtLeastOneProduct;
-		//Double avgOfUsersBanned();
+		Double avgOfUsersBanned;
 		Double avgMinMaxAndStddevOfCommentsByNews[];
 		Collection<Item> findLatestItems;
 		String nameTitleRecyclerWithItemMostValue[];
@@ -52,6 +52,7 @@ public class DashboardAdminController extends AbstractController {
 		avgMinMaxAndStddevOfCoursesByBuyer = this.adminService.avgMinMaxAndStddevOfCoursesByBuyer();
 		avgOfIncidencesResolved = this.adminService.avgOfIncidencesResolved();
 		avgOfRecyclerWithAtLeastOneProduct = this.adminService.avgOfRecyclerWithAtLeastOneProduct();
+		avgOfUsersBanned = this.adminService.avgOfUsersBanned();
 		avgMinMaxAndStddevOfCommentsByNews = this.adminService.avgMinMaxAndStddevOfCommentsByNews();
 		findLatestItems = this.adminService.findLatestItems();
 		nameTitleRecyclerWithItemMostValue = this.adminService.nameTitleRecyclerWithItemMostValue();
@@ -65,6 +66,7 @@ public class DashboardAdminController extends AbstractController {
 		result.addObject("avgMinMaxAndStddevOfCoursesByBuyer", avgMinMaxAndStddevOfCoursesByBuyer);
 		result.addObject("avgOfIncidencesResolved", avgOfIncidencesResolved);
 		result.addObject("avgOfRecyclerWithAtLeastOneProduct", avgOfRecyclerWithAtLeastOneProduct);
+		result.addObject("avgOfUsersBanned", avgOfUsersBanned);
 		result.addObject("avgMinMaxAndStddevOfCommentsByNews", avgMinMaxAndStddevOfCommentsByNews);
 		result.addObject("findLatestItems", findLatestItems);
 		result.addObject("nameTitleRecyclerWithItemMostValue", nameTitleRecyclerWithItemMostValue);

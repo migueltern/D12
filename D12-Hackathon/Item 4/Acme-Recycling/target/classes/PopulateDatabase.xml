@@ -86,7 +86,7 @@
 				</bean>
 			</list>
 		</property>
-		<property name="activated" value="True"></property>
+		<property name="activated" value="False"></property>
 	</bean>
 
 	<bean id="userAccountCarrier1" class="security.UserAccount">
@@ -282,7 +282,7 @@
 				</bean>
 			</list>
 		</property>
-		<property name="activated" value="True"></property>
+		<property name="activated" value="False"></property>
 	</bean>
 
 	<bean id="userAccountBuyer1" class="security.UserAccount">
@@ -347,7 +347,7 @@
 				</bean>
 			</list>
 		</property>
-		<property name="activated" value="True"></property>
+		<property name="activated" value="False"></property>
 	</bean>
 
 

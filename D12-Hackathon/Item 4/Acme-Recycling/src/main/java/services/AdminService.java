@@ -234,15 +234,12 @@ public class AdminService {
 	}
 
 	//QUERY VII La media de usuarios baneados en el sistema.
-	//TODO: POR HACER A FALTA DE LEU
-	/*
-	 * public Double avgOfUsersBanned() {
-	 * this.checkPrincipal();
-	 * Double result;
-	 * result = this.adminRepository.avgOfUsersBanned();
-	 * return result;
-	 * }
-	 */
+	public Double avgOfUsersBanned() {
+		this.checkPrincipal();
+		Double result;
+		result = this.adminRepository.avgOfUsersBanned();
+		return result;
+	}
 
 	//QUERY VIII La media, el mínimo, el máximo y la desviación típica de comentarios por noticias.
 	public Double[] avgMinMaxAndStddevOfCommentsByNews() {

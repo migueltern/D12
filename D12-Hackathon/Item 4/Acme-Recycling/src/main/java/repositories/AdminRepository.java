@@ -49,8 +49,8 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
 	//QUERY VII La media de usuarios baneados en el sistema.
 	//TODO: POR HACER A FALTA DE LEU
-	//@Query("select count(a)*1.0/(select count(ta) from Actor ta) from Actor a where a.isAccountNonLocked=false")
-	//Double avgOfUsersBanned();
+	@Query("select count(a)*1.0/(select count(ta) from Actor ta) from Actor a where a.userAccount.activated=false")
+	Double avgOfUsersBanned();
 
 	//QUERY VIII La media, el mínimo, el máximo y la desviación típica de comentarios por noticias.
 	@Query(" select avg(n.comments.size),min(n.comments.size),max(n.comments.size),stddev(n.comments.size) from New n")

@@ -120,8 +120,18 @@
 	</tr>
 </table>
 
-<!-- C7 -->
 
+<table>
+<!-- C7 -->
+	<caption class="caption">
+		<spring:message
+			code="dashboard.avgOfUsersBanned" />
+	</caption>
+
+	<tr>
+		<td><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${avgOfUsersBanned}" /></td>
+	</tr>
+</table>
 
 <table>
 <!-- C8 -->

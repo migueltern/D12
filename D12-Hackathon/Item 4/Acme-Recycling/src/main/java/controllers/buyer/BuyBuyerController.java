@@ -48,7 +48,7 @@ public class BuyBuyerController extends AbstractController {
 		else
 			try {
 				this.buyService.save(buy);
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:/material/buyer/listYourMaterials.do?d-16544-p=1");
 			} catch (final Throwable oops) {
 
 				result = this.createEditModelAndView(buy, "buy.commit.error");

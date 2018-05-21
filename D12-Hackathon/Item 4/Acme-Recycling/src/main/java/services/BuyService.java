@@ -63,11 +63,17 @@ public class BuyService {
 	}
 
 	public Buy save(final Buy buy) {
-		//TODO no comprobado
 		Assert.notNull(buy);
 		Buy result;
+		Buyer buyer;
+
+		buyer = this.buyerService.findByPrincipal();
 
 		result = this.buyRepository.save(buy);
+
+		if (buy.getId() == 0)
+			buyer.getBuys().add(result);
+
 		Assert.notNull(result);
 
 		return result;

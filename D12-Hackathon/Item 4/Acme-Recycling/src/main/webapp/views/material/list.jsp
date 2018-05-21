@@ -26,7 +26,7 @@
 	pagesize="5" class="displaytag">
 	
 	<!-- Finder para el Buyer -->
-	<security:authorize access="hasRole('BUYER')">
+	<%-- <security:authorize access="hasRole('BUYER')">
 	<form:form action="finder/buyer/search.do" modelAttribute="finder" >
 
 		<form:hidden path="id" />
@@ -42,7 +42,7 @@
 	
 		<input type="submit" name="search" value="<spring:message code="finder.search" />" /> &nbsp; 	 
 	</form:form> 
-	</security:authorize>
+	</security:authorize> --%>
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('ADMIN')">
@@ -79,6 +79,12 @@
 		sortable="true" />
 
 	<acme:column code="material.unitPrice" property="unitPrice"
+		sortable="true" />
+		
+		<acme:column code="material.quantity" property="unitPrice"
+		sortable="true" />
+		
+		<acme:column code="material.totalPrice" property="unitPrice"
 		sortable="true" />
 
 

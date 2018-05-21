@@ -188,6 +188,14 @@
 					<li><a href="welcome/aboutUs.do"><spring:message
 								code="master.page.aboutUs" /></a></li>
 				</ul></li>
+				
+			<li><a class="fNiv"><spring:message
+						code="master.page.material.buy" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="material/buyer/list.do?d-16544-p=1"><spring:message
+								code="master.page.material" /></a></li>
+				</ul></li>
 		</security:authorize>
 
 

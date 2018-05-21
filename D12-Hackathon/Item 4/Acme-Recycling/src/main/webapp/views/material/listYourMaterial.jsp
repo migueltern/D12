@@ -44,30 +44,9 @@
 	</form:form> 
 	</security:authorize> --%>
 
-	<!--  EDIT -->
-	<security:authorize access="hasRole('ADMIN')">
-		<spring:message code="material.edit" var="Edit" />
-		<display:column title="${Edit}" sortable="true">
-
-			<spring:url value="material/admin/edit.do" var="editURL">
-				<spring:param name="materialId" value="${row.id}" />
-			</spring:url>
-			<a href="${editURL}"><spring:message code="material.edit" /></a>
-		</display:column>
-	</security:authorize>
+	
 
 
-<!--  Display -->
-	<security:authorize access="hasRole('ADMIN')">
-		<spring:message code="material.display" var="display" />
-		<display:column title="${display}" sortable="true">
-
-			<spring:url value="material/admin/display.do" var="displayURL">
-				<spring:param name="materialId" value="${row.id}" />
-			</spring:url>
-			<a href="${displayURL}"><spring:message code="material.display" /></a>
-		</display:column>
-	</security:authorize>
 
 
 
@@ -87,40 +66,8 @@
 		<acme:column code="material.totalPrice" property="unitPrice"
 		sortable="true" />
 
-<!--  COMPRAR -->
-	<security:authorize access="hasRole('BUYER')">
-		<spring:message code="material.buy" var="buy" />
-		<display:column title="${buy}" sortable="true">
-
-			<spring:url value="buy/buyer/create.do" var="deleteURL">
-				<spring:param name="materialId" value="${row.id}" />
-			</spring:url>
-			<a href="${deleteURL}"><spring:message code="material.buy" /></a>
-		</display:column>
-	</security:authorize>
-
-	<!--  DELETE -->
-	<security:authorize access="hasRole('ADMIN')">
-		<spring:message code="material.delete" var="delete" />
-		<display:column title="${delete}" sortable="true">
-
-			<spring:url value="material/admin/delete.do" var="deleteURL">
-				<spring:param name="materialId" value="${row.id}" />
-			</spring:url>
-			<a href="${deleteURL}"><spring:message code="material.delete" /></a>
-		</display:column>
-
-
-
-	</security:authorize>
-
 
 </display:table>
 
-<security:authorize access="hasRole('ADMIN')">
 
-	<spring:url value="material/admin/create.do" var="createURL" />
-	<a href="${createURL}"><spring:message code="material.create" /></a>
-
-</security:authorize>
 

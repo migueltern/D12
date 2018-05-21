@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.BuyerService;
 import services.MaterialService;
 import controllers.AbstractController;
+import domain.Buyer;
 import domain.Material;
 
 @Controller
@@ -53,11 +54,14 @@ public class MaterialBuyerController extends AbstractController {
 	public ModelAndView listYourMaterials() {
 		ModelAndView result;
 		final Collection<Material> materials;
+		Buyer buyer;
 
+		buyer = this.buyerService.findByPrincipal();
 		materials = this.buyerService.findAllMaterialsBuyByABuyer();
 
-		result = new ModelAndView("material/list");
+		result = new ModelAndView("material/listYourMaterial");
 		result.addObject("materials", materials);
+		result.addObject("buyer", buyer);
 		result.addObject("requestURI", "material/buyer/listYourMaterials.do");
 
 		return result;

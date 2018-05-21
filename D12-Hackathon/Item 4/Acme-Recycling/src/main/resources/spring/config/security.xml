@@ -80,6 +80,7 @@
 		<security:intercept-url pattern="/message/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/finder/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/material/buyer/**" access="hasRole('BUYER')"/>
+		<security:intercept-url pattern="/buy/buyer/**" access="hasRole('BUYER')"/>
 		
 	<!-- 	ADMIN-->
 

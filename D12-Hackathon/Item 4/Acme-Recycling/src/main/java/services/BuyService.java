@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.BuyRepository;
@@ -127,6 +128,19 @@ public class BuyService {
 		buysOfMaterial = this.buyRepository.findBuysOfMaterial(materialId);
 
 		return buysOfMaterial;
+	}
+
+	public Buy reconstruct(final Buy buy, final BindingResult binding) {
+		Buy result;
+
+		if (buy.getId() == 0)
+			result = buy;
+		else {
+			Assert.notNull(null, "u buy can not be modified");
+			result = buy;
+		}
+		this.validator.validate(result, binding);
+		return result;
 	}
 
 }

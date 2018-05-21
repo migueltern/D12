@@ -22,6 +22,11 @@
 		<put-attribute name="body" value="/views/material/list.jsp" />
 	</definition>
 	
+	<definition name="material/listYourMaterial" extends="master.page">	
+		<put-attribute name="title" value="Tus materiales" />
+		<put-attribute name="body" value="/views/material/listYourMaterial.jsp" />
+	</definition>
+	
 	<definition name="material/edit" extends="master.page">	
 		<put-attribute name="title" value="Editar material" />
 		<put-attribute name="body" value="/views/material/edit.jsp" />

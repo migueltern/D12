@@ -27,12 +27,12 @@ public class CarrierService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private CarrierRepository	carrierRepository;
+	private CarrierRepository		carrierRepository;
 	@Autowired
-	private Validator			validator;
-	
-	@Autowired 
-	private MessageFolderService messageFolderService;
+	private Validator				validator;
+
+	@Autowired
+	private MessageFolderService	messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -58,6 +58,7 @@ public class CarrierService {
 
 		authority.setAuthority(Authority.CARRIER);
 		userAccount.addAuthority(authority);
+		userAccount.setActivated(true);
 		result.setUserAccount(userAccount);
 		result.setOpinions(opinions);
 		result.setRequests(requests);
@@ -94,7 +95,6 @@ public class CarrierService {
 		result = this.carrierRepository.save(carrier);
 		Assert.notNull(result);
 
-		
 		if (carrier.getId() == 0)
 			this.messageFolderService.createDefaultMessageFolder(result);
 
@@ -161,6 +161,7 @@ public class CarrierService {
 			requests = new ArrayList<>();
 			authority.setAuthority(Authority.CARRIER);
 			userAccount.addAuthority(authority);
+			userAccount.setActivated(true);
 			carrierForm.getCarrier().setUserAccount(userAccount);
 			carrierForm.getCarrier().setOpinions(opinions);
 			carrierForm.getCarrier().setRequests(requests);
@@ -170,6 +171,7 @@ public class CarrierService {
 			carrierForm.getCarrier().setId(carrierBD.getId());
 			carrierForm.getCarrier().setVersion(carrierBD.getVersion());
 			carrierForm.getCarrier().setUserAccount(carrierBD.getUserAccount());
+			carrierForm.getCarrier().getUserAccount().setActivated(carrierBD.getUserAccount().isActivated());
 			carrierForm.getCarrier().setOpinions(carrierBD.getOpinions());
 			carrierForm.getCarrier().setRequests(carrierBD.getRequests());
 			result = carrierForm;

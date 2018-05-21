@@ -29,12 +29,12 @@ public class RecyclerService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private RecyclerRepository	recyclerRepository;
+	private RecyclerRepository		recyclerRepository;
 	@Autowired
-	private Validator			validator;
-	
-	@Autowired 
-	private MessageFolderService messageFolderService;
+	private Validator				validator;
+
+	@Autowired
+	private MessageFolderService	messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -62,6 +62,7 @@ public class RecyclerService {
 
 		authority.setAuthority(Authority.RECYCLER);
 		userAccount.addAuthority(authority);
+		userAccount.setActivated(true);
 		result.setUserAccount(userAccount);
 		result.setItems(items);
 		result.setComments(comments);
@@ -97,7 +98,6 @@ public class RecyclerService {
 		result = this.recyclerRepository.save(recycler);
 		Assert.notNull(result);
 
-		
 		if (recycler.getId() == 0)
 			this.messageFolderService.createDefaultMessageFolder(result);
 
@@ -151,10 +151,10 @@ public class RecyclerService {
 	public RecyclerForm reconstruct(final RecyclerForm recyclerForm, final BindingResult binding) {
 
 		RecyclerForm result = null;
-		Recycler recycler;
-		recycler = recyclerForm.getRecycler();
+		Recycler recyclerBD;
+		recyclerBD = recyclerForm.getRecycler();
 
-		if (recycler.getId() == 0) {
+		if (recyclerBD.getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
 			final Collection<Item> items;
@@ -165,6 +165,7 @@ public class RecyclerService {
 			userAccount = recyclerForm.getRecycler().getUserAccount();
 			authority = new Authority();
 			authority.setAuthority(Authority.RECYCLER);
+			userAccount.setActivated(true);
 			userAccount.addAuthority(authority);
 			recyclerForm.getRecycler().setUserAccount(userAccount);
 			items = new ArrayList<>();
@@ -179,14 +180,15 @@ public class RecyclerService {
 
 		} else {
 
-			recycler = this.recyclerRepository.findOne(recyclerForm.getRecycler().getId());
-			recyclerForm.getRecycler().setId(recycler.getId());
-			recyclerForm.getRecycler().setVersion(recycler.getVersion());
-			recyclerForm.getRecycler().setUserAccount(recycler.getUserAccount());
-			recyclerForm.getRecycler().setItems(recycler.getItems());
-			recyclerForm.getRecycler().setComments(recycler.getComments());
-			recyclerForm.getRecycler().setCourses(recycler.getCourses());
-			recyclerForm.getRecycler().setOpinions(recycler.getOpinions());
+			recyclerBD = this.recyclerRepository.findOne(recyclerForm.getRecycler().getId());
+			recyclerForm.getRecycler().setId(recyclerBD.getId());
+			recyclerForm.getRecycler().setVersion(recyclerBD.getVersion());
+			recyclerForm.getRecycler().setUserAccount(recyclerBD.getUserAccount());
+			recyclerForm.getRecycler().getUserAccount().setActivated(recyclerBD.getUserAccount().isActivated());
+			recyclerForm.getRecycler().setItems(recyclerBD.getItems());
+			recyclerForm.getRecycler().setComments(recyclerBD.getComments());
+			recyclerForm.getRecycler().setCourses(recyclerBD.getCourses());
+			recyclerForm.getRecycler().setOpinions(recyclerBD.getOpinions());
 
 			result = recyclerForm;
 
@@ -197,7 +199,6 @@ public class RecyclerService {
 		return result;
 
 	}
-
 	public void flush() {
 		this.recyclerRepository.flush();
 	}
@@ -229,13 +230,13 @@ public class RecyclerService {
 
 		return recycler;
 	}
-	
-	public Recycler findRecyclerByRequest(int requestId){
-		
+
+	public Recycler findRecyclerByRequest(final int requestId) {
+
 		Recycler result;
-		
+
 		result = this.recyclerRepository.findRecyclerByRequest(requestId);
-		
+
 		return result;
 	}
 

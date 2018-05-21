@@ -36,12 +36,12 @@ public class AdminService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private AdminRepository	adminRepository;
+	private AdminRepository			adminRepository;
 	@Autowired
-	private Validator		validator;
-	
-	@Autowired 
-	private MessageFolderService messageFolderService;
+	private Validator				validator;
+
+	@Autowired
+	private MessageFolderService	messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -63,6 +63,7 @@ public class AdminService {
 
 		authority.setAuthority(Authority.ADMIN);
 		userAccount.addAuthority(authority);
+		userAccount.setActivated(true);
 		result.setUserAccount(userAccount);
 
 		return result;
@@ -153,6 +154,7 @@ public class AdminService {
 			authority = new Authority();
 			authority.setAuthority(Authority.ADMIN);
 			userAccount.addAuthority(authority);
+			userAccount.setActivated(true);
 			adminForm.getAdmin().setUserAccount(userAccount);
 			opinions = new ArrayList<>();
 			adminForm.getAdmin().setOpinions(opinions);
@@ -162,6 +164,7 @@ public class AdminService {
 			adminForm.getAdmin().setId(adminBD.getId());
 			adminForm.getAdmin().setVersion(adminBD.getVersion());
 			adminForm.getAdmin().setUserAccount(adminBD.getUserAccount());
+			adminForm.getAdmin().getUserAccount().setActivated(adminBD.getUserAccount().isActivated());
 			adminForm.getAdmin().setOpinions(adminBD.getOpinions());
 			result = adminForm;
 		}

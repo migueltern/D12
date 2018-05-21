@@ -59,6 +59,7 @@ public class BuyerService {
 		courses = new ArrayList<>();
 
 		authority.setAuthority(Authority.BUYER);
+		userAccount.setActivated(true);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
 		result.setBuys(buys);
@@ -173,10 +174,10 @@ public class BuyerService {
 	public BuyerForm reconstruct(final BuyerForm buyerForm, final BindingResult binding) {
 
 		BuyerForm result = null;
-		Buyer buyer;
-		buyer = buyerForm.getBuyer();
+		Buyer buyerBD;
+		buyerBD = buyerForm.getBuyer();
 
-		if (buyer.getId() == 0) {
+		if (buyerBD.getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
 			final Collection<Buy> buys;
@@ -188,6 +189,7 @@ public class BuyerService {
 			authority.setAuthority(Authority.BUYER);
 			userAccount.addAuthority(authority);
 			buyerForm.getBuyer().setUserAccount(userAccount);
+			userAccount.setActivated(true);
 			buys = new ArrayList<>();
 			courses = new ArrayList<>();
 			opinions = new ArrayList<>();
@@ -198,13 +200,14 @@ public class BuyerService {
 
 		} else {
 
-			buyer = this.buyerRepository.findOne(buyerForm.getBuyer().getId());
-			buyerForm.getBuyer().setId(buyer.getId());
-			buyerForm.getBuyer().setVersion(buyer.getVersion());
-			buyerForm.getBuyer().setUserAccount(buyer.getUserAccount());
-			buyerForm.getBuyer().setBuys(buyer.getBuys());
-			buyerForm.getBuyer().setCourses(buyer.getCourses());
-			buyerForm.getBuyer().setOpinions(buyer.getOpinions());
+			buyerBD = this.buyerRepository.findOne(buyerForm.getBuyer().getId());
+			buyerForm.getBuyer().setId(buyerBD.getId());
+			buyerForm.getBuyer().setVersion(buyerBD.getVersion());
+			buyerForm.getBuyer().setUserAccount(buyerBD.getUserAccount());
+			buyerForm.getBuyer().getUserAccount().setActivated(buyerBD.getUserAccount().isActivated());
+			buyerForm.getBuyer().setBuys(buyerBD.getBuys());
+			buyerForm.getBuyer().setCourses(buyerBD.getCourses());
+			buyerForm.getBuyer().setOpinions(buyerBD.getOpinions());
 
 			result = buyerForm;
 

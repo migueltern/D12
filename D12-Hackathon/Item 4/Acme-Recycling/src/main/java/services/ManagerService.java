@@ -28,12 +28,12 @@ public class ManagerService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private ManagerRepository	managerRepository;
+	private ManagerRepository		managerRepository;
 	@Autowired
-	private Validator			validator;
-	
-	@Autowired 
-	private MessageFolderService messageFolderService;
+	private Validator				validator;
+
+	@Autowired
+	private MessageFolderService	messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -62,6 +62,7 @@ public class ManagerService {
 		authority.setAuthority(Authority.MANAGER);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
+		userAccount.setActivated(true);
 		result.setIncidences(incidences);
 		result.setRequests(requests);
 		result.setOpinions(opinions);
@@ -149,10 +150,10 @@ public class ManagerService {
 	public ManagerForm reconstruct(final ManagerForm managerForm, final BindingResult binding) {
 
 		ManagerForm result = null;
-		Manager manager;
-		manager = managerForm.getManager();
+		Manager managerBD;
+		managerBD = managerForm.getManager();
 
-		if (manager.getId() == 0) {
+		if (managerBD.getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
 			final Collection<Incidence> incidences;
@@ -162,6 +163,7 @@ public class ManagerService {
 			userAccount = managerForm.getManager().getUserAccount();
 			authority = new Authority();
 			authority.setAuthority(Authority.MANAGER);
+			userAccount.setActivated(true);
 			userAccount.addAuthority(authority);
 			managerForm.getManager().setUserAccount(userAccount);
 			incidences = new ArrayList<>();
@@ -174,13 +176,14 @@ public class ManagerService {
 
 		} else {
 
-			manager = this.managerRepository.findOne(managerForm.getManager().getId());
-			managerForm.getManager().setId(manager.getId());
-			managerForm.getManager().setVersion(manager.getVersion());
-			managerForm.getManager().setUserAccount(manager.getUserAccount());
-			managerForm.getManager().setIncidences(manager.getIncidences());
-			managerForm.getManager().setRequests(manager.getRequests());
-			managerForm.getManager().setOpinions(manager.getOpinions());
+			managerBD = this.managerRepository.findOne(managerForm.getManager().getId());
+			managerForm.getManager().setId(managerBD.getId());
+			managerForm.getManager().setVersion(managerBD.getVersion());
+			managerForm.getManager().setUserAccount(managerBD.getUserAccount());
+			managerForm.getManager().getUserAccount().setActivated(managerBD.getUserAccount().isActivated());
+			managerForm.getManager().setIncidences(managerBD.getIncidences());
+			managerForm.getManager().setRequests(managerBD.getRequests());
+			managerForm.getManager().setOpinions(managerBD.getOpinions());
 
 			result = managerForm;
 
@@ -195,13 +198,13 @@ public class ManagerService {
 	public void flush() {
 		this.managerRepository.flush();
 	}
-	
-	public Manager findManagerByIncidence(int incidenceId){
+
+	public Manager findManagerByIncidence(final int incidenceId) {
 		Manager result;
-		
+
 		result = this.managerRepository.findManagerByIncidence(incidenceId);
-		
+
 		return result;
-		
+
 	}
 }

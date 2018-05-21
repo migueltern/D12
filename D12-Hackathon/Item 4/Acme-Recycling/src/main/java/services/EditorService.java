@@ -27,13 +27,13 @@ public class EditorService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private EditorRepository	editorRepository;
+	private EditorRepository		editorRepository;
 
 	@Autowired
-	private Validator			validator;
-	
-	@Autowired 
-	private MessageFolderService messageFolderService;
+	private Validator				validator;
+
+	@Autowired
+	private MessageFolderService	messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -59,6 +59,7 @@ public class EditorService {
 
 		authority.setAuthority(Authority.EDITOR);
 		userAccount.addAuthority(authority);
+		userAccount.setActivated(true);
 		result.setUserAccount(userAccount);
 		result.setNews(news);
 		result.setOpinions(opinions);
@@ -161,6 +162,7 @@ public class EditorService {
 			authority.setAuthority(Authority.EDITOR);
 			userAccount.addAuthority(authority);
 			editorForm.getEditor().setUserAccount(userAccount);
+			userAccount.setActivated(true);
 			news = new ArrayList<>();
 			opinions = new ArrayList<>();
 			editorForm.getEditor().setNews(news);
@@ -173,6 +175,7 @@ public class EditorService {
 			editorForm.getEditor().setId(editorBD.getId());
 			editorForm.getEditor().setVersion(editorBD.getVersion());
 			editorForm.getEditor().setUserAccount(editorBD.getUserAccount());
+			editorForm.getEditor().getUserAccount().setActivated(editorBD.getUserAccount().isActivated());
 			editorForm.getEditor().setNews(editorBD.getNews());
 			editorForm.getEditor().setOpinions(editorBD.getOpinions());
 

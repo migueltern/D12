@@ -32,7 +32,7 @@ public class Buy extends DomainEntity {
 	}
 
 	@NotNull
-	@Range(min = 1, max = 1000)
+	@Range(min = 0, max = 1000)
 	public Double getQuantity() {
 		return this.quantity;
 	}

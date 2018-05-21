@@ -26,13 +26,12 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="course" />
+	<form:hidden path="number" />
 
 	<!-- ATRIBUTOS -->
-	<acme:textbox code="lesson.title" path="title" />
+	<B><acme:textbox code="lesson.title" path="title" /></B>
 	<br />	
 	<acme:textarea code="lesson.summary" path="summary" />
-	<br />
-	<acme:textbox code="lesson.number" path="number" />
 	<br />
 
 	<!-- BOTONES -->

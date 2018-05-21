@@ -42,6 +42,9 @@ public class LessonService {
 		Date date;
 		Buyer buyer;
 		Lesson lesson;
+		Integer number;
+
+		number = this.lessonRepository.findLessonsByCourseId(course.getId()).size() + 1;
 
 		date = new Date();
 		buyer = this.buyerService.findByPrincipal();
@@ -58,6 +61,7 @@ public class LessonService {
 
 		lesson = new Lesson();
 		lesson.setCourse(course);
+		lesson.setNumber(number);
 		return lesson;
 	}
 
@@ -126,7 +130,7 @@ public class LessonService {
 			lesson.setId(lessonBd.getId());
 			lesson.setVersion(lessonBd.getVersion());
 			lesson.setCourse(lessonBd.getCourse());
-
+			lesson.setNumber(lessonBd.getNumber());
 			result = lesson;
 		}
 		this.validator.validate(result, bindingResult);

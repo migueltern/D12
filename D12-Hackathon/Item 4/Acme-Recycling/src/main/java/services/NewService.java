@@ -129,34 +129,12 @@ public class NewService {
 		if (new_.getComments().size() != 0)
 			for (final Comment c : new_.getComments())
 				if (c.getCommentTo() == null)
-					try {
-						this.commentService.delete(c);
-						this.newRepository.flush();
-					} catch (final Throwable oops1) {
-						System.out.println("oops1");
-					}
+					this.commentService.delete(c);
 
-		try {
-			editor.getNews().remove(new_);
-			this.newRepository.flush();
-		} catch (final Throwable oops2) {
-			System.out.println("oops2");
-		}
+		editor.getNews().remove(new_);
+		new_ = this.findOne(new_.getId());
+		this.newRepository.delete(new_);
 
-		try {
-			new_ = this.findOne(new_.getId());
-			this.newRepository.delete(new_);
-			this.newRepository.flush();
-		} catch (final Throwable oops3) {
-			System.out.println("oops3");
-		}
-
-		//editor.getNews().remove(new_);
-		Collection<Comment> aux;
-		aux = new ArrayList<Comment>();
-		new_.setComments(aux);
-
-		//this.newRepository.delete(new_);
 	}
 	public void deleteAdmin(final New new_) {
 		Assert.notNull(new_);

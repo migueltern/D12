@@ -37,6 +37,6 @@
 	<input type="submit" name="save" value="<spring:message code="comment.save" />" />&nbsp; 
 
 	<acme:cancel
-		url="comment/recycler/list.do?d-16544-p=1"
+		url="new_/recycler/list.do?d-16544-p=1"
 		code="comment.cancel" />
 </form:form>

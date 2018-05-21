@@ -58,6 +58,19 @@
 				<a href="${editURL}"><spring:message code="new.display" /></a>
 		</display:column>
 	</security:authorize>
+	
+	<!--  DISPLAY -->
+	
+	<security:authorize access="hasRole('RECYCLER')">
+		<spring:message code="new.display" var="Display" />
+		<display:column title="${Display}" sortable="true">
+			
+				<spring:url value="new_/recycler/display.do" var="editURL">
+					<spring:param name="newId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="new.display" /></a>
+		</display:column>
+	</security:authorize>
 
 	
 	

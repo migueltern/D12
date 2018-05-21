@@ -1,11 +1,14 @@
 
 package repositories;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import domain.Buyer;
+import domain.Material;
 
 @Repository
 public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
@@ -22,5 +25,9 @@ public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
 
 	@Query("select b from Buyer b where b.finder.id=?1")
 	Buyer findBuyerOfFinder(int finderId);
+
+	//Me devuelve todos los materiales que ha comprado un buyer 
+	@Query("select c.material from Buyer b join b.buys c where b.id=?1")
+	Collection<Material> findAllMaterialsBuyByABuyer(int buyerId);
 
 }

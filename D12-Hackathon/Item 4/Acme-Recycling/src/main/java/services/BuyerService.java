@@ -20,6 +20,7 @@ import domain.Buy;
 import domain.Buyer;
 import domain.Course;
 import domain.Finder;
+import domain.Material;
 import domain.Opinion;
 import forms.BuyerForm;
 
@@ -236,5 +237,16 @@ public class BuyerService {
 		buyer = this.buyerRepository.findBuyerOfFinder(finderId);
 
 		return buyer;
+	}
+
+	public Collection<Material> findAllMaterialsBuyByABuyer() {
+		Collection<Material> result;
+		Buyer principal;
+
+		principal = this.findByPrincipal();
+
+		result = this.buyerRepository.findAllMaterialsBuyByABuyer(principal.getId());
+
+		return result;
 	}
 }

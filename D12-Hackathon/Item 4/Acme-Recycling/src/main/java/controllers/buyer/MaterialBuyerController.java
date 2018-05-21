@@ -33,16 +33,32 @@ public class MaterialBuyerController extends AbstractController {
 		super();
 	}
 
-	//	Listing ---------------------------------------------------------
+	//	Lista de los materiales que no has comprado aún------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
 		final Collection<Material> materials;
 
 		materials = this.materialService.findAll();
+
 		result = new ModelAndView("material/list");
 		result.addObject("materials", materials);
 		result.addObject("requestURI", "material/buyer/list.do");
+
+		return result;
+	}
+
+	//	Lista de los materiales que ya has comprado ------------------
+	@RequestMapping(value = "/listYourMaterials", method = RequestMethod.GET)
+	public ModelAndView listYourMaterials() {
+		ModelAndView result;
+		final Collection<Material> materials;
+
+		materials = this.buyerService.findAllMaterialsBuyByABuyer();
+
+		result = new ModelAndView("material/list");
+		result.addObject("materials", materials);
+		result.addObject("requestURI", "material/buyer/listYourMaterials.do");
 
 		return result;
 	}

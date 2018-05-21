@@ -90,7 +90,8 @@ public class CommentService {
 
 		result = this.commentRepository.save(comment);
 		//Le a“ado al reciclador que est∑ logueado el comentario
-		principal.getComments().add(result);
+		if (comment.getId() == 0)
+			principal.getComments().add(result);
 
 		if (comment.getCommentTo() != null) {
 			New new_;

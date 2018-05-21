@@ -5,7 +5,9 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,6 +80,23 @@ public class CommentRecyclerController extends AbstractController {
 
 		return result;
 	}
+
+	// Edit---------------------------------------------------------------
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int commentId) {
+		ModelAndView result;
+		Comment comment;
+
+		comment = this.commentService.findOne(commentId);
+		Assert.notNull(comment);
+
+		result = this.createEditModelAndView(comment);
+
+		return result;
+
+	}
+
 	@RequestMapping(value = "/addNew", method = RequestMethod.POST, params = "save")
 	public ModelAndView addNewspaper(Comment comment, final BindingResult bindingResult, @RequestParam final int newId) {
 		ModelAndView result;
@@ -117,6 +136,20 @@ public class CommentRecyclerController extends AbstractController {
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(comment, "comment.commit.error");
 			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@ModelAttribute final Comment comment, final BindingResult bindingResult) {
+		ModelAndView result;
+
+		try {
+			this.commentService.delete(comment);
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(comment, "comment.commit.error");
+		}
 
 		return result;
 	}

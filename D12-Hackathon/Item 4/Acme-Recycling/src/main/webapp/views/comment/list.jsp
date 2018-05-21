@@ -23,7 +23,7 @@
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="comments" requestURI="${requestURI}" id="row">
 	
-	<%-- <!--  EDIT -->
+<!--  EDIT -->
 	<security:authorize access="hasRole('RECYCLER')">
 		<spring:message code="comment.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
@@ -33,7 +33,7 @@
 				</spring:url>
 				<a href="${editURL}"><spring:message code="comment.edit" /></a>
 		</display:column>
-	</security:authorize> --%>
+	</security:authorize>
 
 
 	<!-- ATRIBUTOS -->

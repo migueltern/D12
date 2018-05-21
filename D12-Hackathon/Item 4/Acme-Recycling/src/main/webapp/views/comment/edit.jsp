@@ -36,6 +36,12 @@
 
 	<input type="submit" name="save" value="<spring:message code="comment.save" />" />&nbsp; 
 
+<jstl:if test="${comment.id != 0}">
+		<input type="submit" name="delete"
+			value="<spring:message code="comment.delete" />"
+			onclick="javascript: return confirm('<spring:message code="comment.confirm.delete" />')" />&nbsp;
+</jstl:if>
+	
 	<acme:cancel
 		url="new_/recycler/list.do?d-16544-p=1"
 		code="comment.cancel" />

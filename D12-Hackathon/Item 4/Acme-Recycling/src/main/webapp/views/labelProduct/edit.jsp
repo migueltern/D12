@@ -24,6 +24,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="items"/>
 	
 <!-- ATRIBUTOS -->
 	<B><acme:textbox code="labelProduct.name" path="name"/></B>

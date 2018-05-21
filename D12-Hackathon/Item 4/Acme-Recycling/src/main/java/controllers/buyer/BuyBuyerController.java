@@ -69,7 +69,7 @@ public class BuyBuyerController extends AbstractController {
 		else
 			try {
 				this.buyService.save(buy);
-				result = new ModelAndView("redirect:/material/buyer/list.do?d-16544-p=1");
+				result = new ModelAndView("redirect:/buy/buyer/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("Invalid credit card"))
 					result = this.createEditModelAndView(buy, "buy.creditCard.Error");

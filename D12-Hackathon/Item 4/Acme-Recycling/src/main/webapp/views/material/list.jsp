@@ -81,10 +81,10 @@
 	<acme:column code="material.unitPrice" property="unitPrice"
 		sortable="true" />
 		
-		<acme:column code="material.quantity" property="unitPrice"
+		<acme:column code="material.quantity" property="quantity"
 		sortable="true" />
 		
-		<acme:column code="material.totalPrice" property="unitPrice"
+		<acme:column code="material.totalPrice" property="totalPrice"
 		sortable="true" />
 
 <!--  COMPRAR -->

@@ -117,7 +117,7 @@ public class IncidenceService {
 		Assert.isTrue(principal instanceof Manager || principal instanceof Recycler);
 		
 		if(principal instanceof Recycler)
-			Assert.isTrue(this.itemService.findItemsByRecycler(principal.getId()).size() != 0, "You don't create incidence because you don't have any item");
+			Assert.isTrue(!this.itemService.findItemsWithFinishedRequest(principal.getId()).isEmpty(), "You don't create incidence because you don't have any item with Finished request");
 
 		if (incidence.isResolved() && principal instanceof Manager) {
 

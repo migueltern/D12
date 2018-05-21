@@ -103,7 +103,7 @@ public class IncidenceRecyclerController extends AbstractController{
 				result = new ModelAndView("redirect:/incidence/recycler/list.do");
 			} catch (final Throwable oops) {
 				
-				if(oops.getMessage().equals("You don't create incidence because you don't have any item")){
+				if(oops.getMessage().equals("You don't create incidence because you don't have any item with Finished request")){
 					result = this.createEditModelAndView(incidenceReconstruct, "incidence.commit.donItem");
 				}else{
 				result = this.createEditModelAndView(incidenceReconstruct, "incidence.commit.error");

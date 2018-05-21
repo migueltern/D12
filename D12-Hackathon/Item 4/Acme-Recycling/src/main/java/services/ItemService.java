@@ -127,6 +127,16 @@ public class ItemService {
 		return result;
 
 	}
+	
+	public Collection<Item> findItemsWithFinishedRequest(int recyclerId){
+		
+		Collection<Item> result;
+		
+		result = this.itemRepository.findItemsWithFinishedRequest(recyclerId);
+		
+		return result;
+		
+	}
 
 	public Item reconstruct(final Item item, final BindingResult bindingResult) {
 		Item result;

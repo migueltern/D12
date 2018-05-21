@@ -27,5 +27,7 @@ public interface IncidenceRepository extends JpaRepository<Incidence, Integer> {
 	//Incidencias resueltas
 	@Query("select i from Incidence i where i.resolved = true")
 	Collection<Incidence> findIncidenceResolved();
+	
+	
 
 }

@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -52,6 +53,7 @@ public class Material extends DomainEntity {
 		this.unitPrice = unitPrice;
 	}
 	@NotNull
+	@Range(min = 1, max = 1000)
 	public Double getQuantity() {
 		return this.quantity;
 	}

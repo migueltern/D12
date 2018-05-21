@@ -1,6 +1,8 @@
 
 package controllers.buyer;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -23,6 +25,21 @@ public class BuyBuyerController extends AbstractController {
 	@Autowired
 	private BuyService	buyService;
 
+
+	//	Lista las compras realizadas ------------------
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		final Collection<Buy> buys;
+
+		buys = this.buyService.findAll();
+
+		result = new ModelAndView("buy/list");
+		result.addObject("buys", buys);
+		result.addObject("requestURI", "buy/buyer/list.do");
+
+		return result;
+	}
 
 	// Create -----------------------------------------------------------------
 
@@ -52,8 +69,10 @@ public class BuyBuyerController extends AbstractController {
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("Invalid credit card"))
 					result = this.createEditModelAndView(buy, "buy.creditCard.Error");
-
-				result = this.createEditModelAndView(buy, "buy.commit.error");
+				else if (oops.getMessage().equals("Invalid ammount"))
+					result = this.createEditModelAndView(buy, "buy.quantity.error");
+				else
+					result = this.createEditModelAndView(buy, "buy.commit.error");
 
 			}
 		return result;

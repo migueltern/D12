@@ -195,8 +195,8 @@
 					<li class="arrow"></li>
 					<li><a href="material/buyer/list.do?d-16544-p=1"><spring:message
 								code="master.page.material" /></a></li>
-					<li><a href="material/buyer/listYourMaterials.do?d-16544-p=1"><spring:message
-								code="master.page.yourmaterials" /></a></li>
+					<li><a href="buy/buyer/list.do?d-16544-p=1"><spring:message
+								code="master.page.miscompras" /></a></li>
 				</ul></li>
 		</security:authorize>
 

@@ -69,7 +69,14 @@ public class BuyService {
 
 		buyer = this.buyerService.findByPrincipal();
 		Assert.isTrue(this.checkCreditCard(buy.getCreditCard()), "Invalid credit card");
+
+		Assert.isTrue(!(buy.getMaterial().getQuantity() <= buy.getQuantity()), "Invalid ammount");
+
 		result = this.buyRepository.save(buy);
+
+		//Tengo que restarle al material lo que he comprado 
+
+		//result.getMaterial().setQuantity(result.getMaterial().getQuantity() - result.getQuantity());
 
 		if (buy.getId() == 0)
 			buyer.getBuys().add(result);

@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Buy extends DomainEntity {
@@ -30,6 +32,7 @@ public class Buy extends DomainEntity {
 	}
 
 	@NotNull
+	@Range(min = 1, max = 1000)
 	public Double getQuantity() {
 		return this.quantity;
 	}

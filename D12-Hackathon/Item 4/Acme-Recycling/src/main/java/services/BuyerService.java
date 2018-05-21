@@ -249,4 +249,17 @@ public class BuyerService {
 
 		return result;
 	}
+
+	public Collection<Buy> findAllBuysByABuyer() {
+		Collection<Buy> result;
+
+		Buyer principal;
+
+		principal = this.findByPrincipal();
+
+		result = this.buyerRepository.findAllBuysByABuyer(principal.getId());
+
+		return result;
+	}
+
 }

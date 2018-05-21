@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import domain.Buy;
 import domain.Buyer;
 import domain.Material;
 
@@ -29,5 +30,9 @@ public interface BuyerRepository extends JpaRepository<Buyer, Integer> {
 	//Me devuelve todos los materiales que ha comprado un buyer 
 	@Query("select c.material from Buyer b join b.buys c where b.id=?1")
 	Collection<Material> findAllMaterialsBuyByABuyer(int buyerId);
+
+	//Me devuelve todas las compras que ha comprado un buyer 
+	@Query("select c from Buyer b join b.buys c where b.id=?1")
+	Collection<Buy> findAllBuysByABuyer(int buyerId);
 
 }

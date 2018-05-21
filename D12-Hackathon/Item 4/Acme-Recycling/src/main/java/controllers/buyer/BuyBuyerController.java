@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BuyService;
+import services.BuyerService;
 import controllers.AbstractController;
 import domain.Buy;
 
@@ -23,7 +24,10 @@ public class BuyBuyerController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private BuyService	buyService;
+	private BuyService		buyService;
+
+	@Autowired
+	private BuyerService	buyerService;
 
 
 	//	Lista las compras realizadas ------------------
@@ -32,7 +36,7 @@ public class BuyBuyerController extends AbstractController {
 		ModelAndView result;
 		final Collection<Buy> buys;
 
-		buys = this.buyService.findAll();
+		buys = this.buyerService.findAllBuysByABuyer();
 
 		result = new ModelAndView("buy/list");
 		result.addObject("buys", buys);
@@ -65,7 +69,7 @@ public class BuyBuyerController extends AbstractController {
 		else
 			try {
 				this.buyService.save(buy);
-				result = new ModelAndView("redirect:/material/buyer/listYourMaterials.do?d-16544-p=1");
+				result = new ModelAndView("redirect:/material/buyer/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("Invalid credit card"))
 					result = this.createEditModelAndView(buy, "buy.creditCard.Error");

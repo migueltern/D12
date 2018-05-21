@@ -76,8 +76,7 @@ public class BuyService {
 
 		//Tengo que restarle al material lo que he comprado 
 
-		//result.getMaterial().setQuantity(result.getMaterial().getQuantity() - result.getQuantity());
-
+		result.getMaterial().setQuantity(result.getMaterial().getQuantity() - result.getQuantity());
 		if (buy.getId() == 0)
 			buyer.getBuys().add(result);
 

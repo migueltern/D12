@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -54,6 +55,7 @@ public class Material extends DomainEntity {
 	}
 	@NotNull
 	@Range(min = 0, max = 100000)
+	@Digits(integer = 99, fraction = 2)
 	public Double getQuantity() {
 		return this.quantity;
 	}

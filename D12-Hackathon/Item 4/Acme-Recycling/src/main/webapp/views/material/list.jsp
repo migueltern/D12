@@ -84,8 +84,10 @@
 		<acme:column code="material.quantity" property="quantity"
 		sortable="true" />
 		
-		<acme:column code="material.totalPrice" property="totalPrice"
-		sortable="true" />
+		
+		<spring:message code="material.format.price" var="patternPrice"/>
+	<spring:message code="material.totalPrice" var="totalPrice" />
+	<display:column property="totalPrice" title="${totalPrice}" sortable="true" format="${patternPrice}"/>
 
 <!--  COMPRAR -->
 	<security:authorize access="hasRole('BUYER')">

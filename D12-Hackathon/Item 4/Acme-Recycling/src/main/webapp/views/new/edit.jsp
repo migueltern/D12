@@ -31,12 +31,12 @@
 <fieldset>
 	
 	
-<B><acme:textarea code="new.title" path="title"/></B></th>
+<B><acme:textarea code="new.title" path="title"/></B>
 
 
 <B><acme:textarea code="new.content" path="content"/></B>
 <B><acme:textarea code="new.pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
-</br>
+
 <B><acme:textbox code="new.creationDate" path="creationDate" readonly="true"/></B>
 	</fieldset>
 

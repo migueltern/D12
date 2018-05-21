@@ -228,8 +228,9 @@ public class CourseService {
 
 		Integer puntuationOfRecycler = 0;
 		for (final Item i : itemsOfRecycler)
-			if (i.getRequest().getStatus().equals("FINISHED"))
-				puntuationOfRecycler = puntuationOfRecycler + i.getValue();
+			if (i.getRequest() != null)
+				if (i.getRequest().getStatus().equals("FINISHED"))
+					puntuationOfRecycler = puntuationOfRecycler + i.getValue();
 
 		coursesOfRecycler = recycler.getCourses();
 		coursesAvailables = this.courseRepository.coursesAvailables(puntuationOfRecycler);

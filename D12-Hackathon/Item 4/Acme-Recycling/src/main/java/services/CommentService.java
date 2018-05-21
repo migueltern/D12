@@ -122,16 +122,23 @@ public class CommentService {
 	public void delete(final Comment comment) {
 		Assert.notNull(comment);
 		Assert.isTrue(comment.getId() != 0);
-		Recycler recycler;
+		New new_;
+		final Recycler recycler;
 
 		if (comment.getReplys().size() != 0)
 			for (final Comment c : comment.getReplys())
 				this.delete(c);
+		new_ = this.findNewbyComment(comment);
 		recycler = this.recyclerService.findRecyclerByComment(comment.getId());
+		new_.getComments().remove(comment);
 		recycler.getComments().remove(comment);
 		this.commentRepository.delete(comment);
+		try {
+			this.commentRepository.flush();
+		} catch (final Throwable oops) {
+			System.out.println(oops);
+		}
 	}
-
 	//Other business methods---------------------------------------------------
 
 	//	RECONSTRUCTOR
@@ -162,6 +169,15 @@ public class CommentService {
 		}
 		this.validator.validate(result, bindingResult);
 		return result;
+	}
+
+	public New findNewbyComment(final Comment comment) {
+		New new_;
+		new_ = this.commentRepository.findNewbyComment(comment.getId());
+		return new_;
+	}
+	public void flush() {
+		this.commentRepository.flush();
 	}
 	//	public Comment reconstruct(final Comment comment, final BindingResult binding) {
 	//		Comment result;

@@ -120,24 +120,44 @@ public class NewService {
 		return result;
 	}
 
-	public void delete(final New new_) {
+	public void delete(New new_) {
 		Assert.notNull(new_);
 		Editor editor;
 
 		editor = this.editorService.findByPrincipal();
 
-		editor.getNews().remove(new_);
+		if (new_.getComments().size() != 0)
+			for (final Comment c : new_.getComments())
+				if (c.getCommentTo() == null)
+					try {
+						this.commentService.delete(c);
+						this.newRepository.flush();
+					} catch (final Throwable oops1) {
+						System.out.println("oops1");
+					}
 
-		Collection<Comment> comments;
+		try {
+			editor.getNews().remove(new_);
+			this.newRepository.flush();
+		} catch (final Throwable oops2) {
+			System.out.println("oops2");
+		}
 
-		comments = this.newRepository.findCommentsByNew(new_.getId());
+		try {
+			new_ = this.findOne(new_.getId());
+			this.newRepository.delete(new_);
+			this.newRepository.flush();
+		} catch (final Throwable oops3) {
+			System.out.println("oops3");
+		}
 
-		for (final Comment c : comments)
-			this.commentService.delete(c);
+		//editor.getNews().remove(new_);
+		Collection<Comment> aux;
+		aux = new ArrayList<Comment>();
+		new_.setComments(aux);
 
-		this.newRepository.delete(new_);
+		//this.newRepository.delete(new_);
 	}
-
 	public void deleteAdmin(final New new_) {
 		Assert.notNull(new_);
 		this.adminService.checkPrincipal();
@@ -154,10 +174,8 @@ public class NewService {
 
 		for (final Comment c : comments)
 			this.commentService.delete(c);
-
 		this.newRepository.delete(new_);
 	}
-
 	//Other business methods---------------------------------------------------
 
 	//	RECONSTRUCTOR

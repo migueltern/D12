@@ -23,6 +23,8 @@
 <form:form action="${requestURI}" modelAttribute="new_">
 <form:hidden path="id" />
 <form:hidden path="version" />
+<form:hidden path="comments" />
+
 	
 <!-- ATRIBUTOS -->
 

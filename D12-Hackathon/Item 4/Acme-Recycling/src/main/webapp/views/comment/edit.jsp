@@ -25,6 +25,7 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="commentTo" />
+	<form:hidden path="replys" />
 	
 <!-- ATRIBUTOS -->
 	<B><acme:textbox code="comment.body" path="body"/></B>

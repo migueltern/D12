@@ -126,7 +126,7 @@ public class CommentService {
 		New new_;
 		final Recycler recycler;
 
-		if (comment.getReplys().size() != 0)
+		if (comment.getReplys() != null)
 			for (final Comment c : comment.getReplys())
 				this.delete(c);
 		new_ = this.findNewbyComment(comment);

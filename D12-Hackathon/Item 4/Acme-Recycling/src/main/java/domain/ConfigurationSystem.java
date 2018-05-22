@@ -86,6 +86,7 @@ public class ConfigurationSystem extends DomainEntity {
 	// Relationships ---------------------------------------------------------------
 
 	private Collection<TabooWord>	tabooWords;
+	private Collection<Legislation>	laws;
 
 
 	@OneToMany
@@ -97,6 +98,17 @@ public class ConfigurationSystem extends DomainEntity {
 
 	public void setTabooWords(final Collection<TabooWord> tabooWords) {
 		this.tabooWords = tabooWords;
+	}
+
+	@OneToMany
+	@Valid
+	@NotNull
+	public Collection<Legislation> getLaws() {
+		return this.laws;
+	}
+
+	public void setLaws(final Collection<Legislation> laws) {
+		this.laws = laws;
 	}
 
 }

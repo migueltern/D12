@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 
 import repositories.ConfigurationSystemRepository;
 import domain.ConfigurationSystem;
+import domain.Legislation;
 import domain.TabooWord;
 
 @Service
@@ -95,14 +96,18 @@ public class ConfigurationSystemService {
 		if (conf.getId() == 0) {
 
 			Collection<TabooWord> tabooWords;
+			Collection<Legislation> laws;
 			tabooWords = new ArrayList<TabooWord>();
+			laws = new ArrayList<Legislation>();
 			conf.setTabooWords(tabooWords);
+			conf.setLaws(laws);
 			result = conf;
 		} else {
 			confBD = this.configurationSystemRepository.findOne(conf.getId());
 			conf.setId(confBD.getId());
 			conf.setVersion(confBD.getVersion());
 			conf.setTabooWords(confBD.getTabooWords());
+			conf.setLaws(confBD.getLaws());
 
 			result = conf;
 		}

@@ -71,6 +71,15 @@
 	<spring:message code="comment.body" var="titleHeader" />
 	<display:column property="body" title="${titleHeader}" sortable="true" />
 	
+	<spring:message code="new.comment.reply" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+			
+				<spring:url value="comment/recycler/createReply.do" var="editURL">
+					<spring:param name="commentId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="new.comment.reply" /></a>
+		</display:column>
+	
 	<!--  EDIT -->
 	
 	<security:authorize access="hasRole('EDITOR')">

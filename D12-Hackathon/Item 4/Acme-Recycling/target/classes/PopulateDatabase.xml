@@ -1086,6 +1086,7 @@
 		<property name="comments">
 			<list>
 				<ref bean="comment5" />
+				<ref bean="comment8" />
 
 			</list>
 		</property>

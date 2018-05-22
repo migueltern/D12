@@ -11,17 +11,17 @@
 <tiles-definitions>
 
 	<definition name="newscast/edit" extends="master.page">
-		<put-attribute name="title" value="Edit new" />
+		<put-attribute name="title" value="Edit newscast" />
 		<put-attribute name="body" value="/views/newscast/edit.jsp" />
 	</definition>
 
 	<definition name="newscast/list" extends="master.page">
-		<put-attribute name="title" value="List news" />
+		<put-attribute name="title" value="List newscasts" />
 		<put-attribute name="body" value="/views/newscast/list.jsp" />
 	</definition>
 
 <definition name="newscast/display" extends="master.page">	
-		<put-attribute name="title" value="Display new" />
+		<put-attribute name="title" value="Display newscast" />
 		<put-attribute name="body" value="/views/newscast/display.jsp" />
 	</definition>
 </tiles-definitions>

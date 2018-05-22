@@ -65,6 +65,8 @@
 	<display:column property="caption" title="${captionHeader}"
 		sortable="true" />
 
+	<!-- MOSTRAR ITEM O COURSE DE ESA OPINION -->
+	<jstl:if test="${isItem}" >
 	<spring:message code="opinion.displayItem" var="displayItem" />
 	<display:column title="${displayItem}" sortable="false">
 
@@ -73,6 +75,29 @@
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="opinion.displayItem" /></a>
 	</display:column>
+	</jstl:if>
+	
+	<jstl:if test="${isCourse}" >
+	<spring:message code="opinion.displayCourse" var="displayCourse" />
+	<display:column title="${displayCourse}" sortable="false">
+
+		<spring:url value="course/display.do" var="displayURL">
+			<spring:param name="CourseId" value="${courseId}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="opinion.displayCourse" /></a>
+	</display:column>
+	</jstl:if>
+	
+	<security:authorize access="hasRole('RECYCLER')">
+	<spring:message code="opinion.displayOpinable" var="displayOpinable" />
+	<display:column title="${displayOpinable}" sortable="false">
+
+		<spring:url value="opinion/displayOpinable.do" var="displayURL">
+			<spring:param name="opinionId" value="${row.id}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="opinion.displayOpinable" /></a>
+	</display:column>
+	</security:authorize>
 
 
 

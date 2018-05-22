@@ -95,7 +95,7 @@
 	<spring:message code="item.opinions" var="opinions"/>		
 	<display:column title="${opinions}" sortable="true">
 		<spring:url value="opinion/list.do" var="displayURL">
-			<spring:param name="itemId" value="${row.id}" />
+			<spring:param name="opinableId" value="${row.id}" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="item.opinions" /></a>
 	</display:column>

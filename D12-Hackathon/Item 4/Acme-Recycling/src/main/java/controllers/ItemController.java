@@ -45,7 +45,7 @@ public class ItemController extends AbstractController {
 		return result;
 	}
 
-	//Listing-----------------------------------------------------------
+	//display-----------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam final int itemId) {
 		ModelAndView result;

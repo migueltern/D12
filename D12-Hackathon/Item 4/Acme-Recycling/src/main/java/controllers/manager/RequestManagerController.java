@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AssesmentService;
 import services.CarrierService;
 import services.CleanPointService;
 import services.ItemService;
@@ -47,9 +46,6 @@ public class RequestManagerController extends AbstractController {
 
 	@Autowired
 	private ItemService			itemService;
-
-	@Autowired
-	private AssesmentService	assessmentService;
 
 
 	//	Constructors
@@ -95,7 +91,6 @@ public class RequestManagerController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create(@RequestParam final int itemId) {
 		final ModelAndView result;
-		final Request request;
 		final Item item;
 		final RequestForm requestForm;
 

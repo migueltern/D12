@@ -89,7 +89,7 @@ public class LabelProductManagerController extends AbstractController {
 
 		labelProduct = this.labelProductService.reconstruct(labelProduct, bindingResult);
 		if (bindingResult.hasErrors())
-			result = new ModelAndView("redirect:list.do?");
+			result = this.createEditModelAndView(labelProduct);
 		else
 			try {
 				this.labelProductService.save(labelProduct);

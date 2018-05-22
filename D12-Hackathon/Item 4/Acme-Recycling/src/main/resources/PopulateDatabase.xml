@@ -1000,7 +1000,7 @@
 
 	<!-- news -->
 	<bean id="new1" class="domain.Newscast">
-		<property name="title" value="title new 1" />
+		<property name="title" value="title new viagra 1" />
 		<property name="content" value="content new 1" />
 		<property name="creationDate" value="2018/04/04 12:22" />
 		<property name="pictures">

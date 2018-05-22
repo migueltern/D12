@@ -62,7 +62,7 @@ public class NewscastAdminController extends AbstractController {
 		newscasts = this.newscastService.newWithTabooWord();
 
 		result = new ModelAndView("newscast/list");
-		result.addObject("newscasts", newscasts);
+		result.addObject("newscast", newscasts);
 		result.addObject("requestURI", "newscast/admin/list.do");
 		result.addObject("message", messageCode);
 

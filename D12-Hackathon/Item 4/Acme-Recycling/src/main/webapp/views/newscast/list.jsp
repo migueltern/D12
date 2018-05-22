@@ -22,10 +22,10 @@
 
 
 <script type="text/javascript">
-	function confirmDelete(newId) {
+	function confirmDelete(newscastId) {
 		confirm=confirm('<spring:message code="new.confirm.delete"/>');
 		if (confirm)
-		  window.location.href ="newscast/admin/delete.do?newId=" + newId;
+		  window.location.href ="newscast/admin/delete.do?newscastId=" + newscastId;
 		  else
 			  window.location.href ="newscast/admin/list.do";
 	}

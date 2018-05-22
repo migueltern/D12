@@ -136,7 +136,7 @@ public class NewscastService {
 		this.newscastRepository.delete(newscast);
 
 	}
-	public void deleteAdmin(final Newscast newscast) {
+	public void deleteAdmin(Newscast newscast) {
 		Assert.notNull(newscast);
 		this.adminService.checkPrincipal();
 
@@ -146,12 +146,13 @@ public class NewscastService {
 
 		editor.getNews().remove(newscast);
 
-		Collection<Comment> comments;
+		if (newscast.getComments().size() != 0)
+			for (final Comment c : newscast.getComments())
+				if (c.getCommentTo() == null)
+					this.commentService.delete(c);
 
-		comments = this.newscastRepository.findCommentsByNewscast(newscast.getId());
-
-		for (final Comment c : comments)
-			this.commentService.delete(c);
+		editor.getNews().remove(newscast);
+		newscast = this.findOne(newscast.getId());
 		this.newscastRepository.delete(newscast);
 	}
 	//Other business methods---------------------------------------------------

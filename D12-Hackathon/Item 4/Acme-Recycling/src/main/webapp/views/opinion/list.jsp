@@ -38,6 +38,9 @@
 		</display:column>
 	</security:authorize>
 	
+	<spring:message code="opinion.title" var="titleHeader" />
+	<display:column property="title" title="${titleHeader}" sortable="true" />
+	
 	<spring:message code="opinion.comment" var="commentHeader" />
 	<display:column property="comment" title="${commentHeader}" sortable="true" />
 	

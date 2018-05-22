@@ -91,13 +91,16 @@ public class ProfileRecyclerController extends AbstractController {
 		ModelAndView result;
 		Recycler recycler;
 		final Collection<Item> items;
+		Double puntuation;
 
 		recycler = this.recyclerService.findByPrincipal();
 		items = this.itemService.findItemsByRecycler(recycler.getId());
+		puntuation = this.recyclerService.puntuationOfRecycler();
 
 		result = new ModelAndView("recycler/display");
 		result.addObject("recycler", recycler);
 		result.addObject("items", items);
+		result.addObject("puntuation", puntuation);
 		result.addObject("showDelete", true);
 		result.addObject("requestURI", "profile/recycler/display.do");
 		result.addObject("requestItemsURL", "item/recycler/listb.do");

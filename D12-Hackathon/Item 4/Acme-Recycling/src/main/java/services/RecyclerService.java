@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -212,6 +213,19 @@ public class RecyclerService {
 
 		result = this.recyclerRepository.findAllCommentsByRecycler(recycler.getId());
 
+		return result;
+	}
+
+	//Query que me devuelve la puntuación dado un recycler
+	@Query("select sum(i.value) from Recycler r join r.items i where r.id=?1")
+	public Double puntuationOfRecycler() {
+		Double result;
+		Recycler recycler;
+
+		recycler = this.findByPrincipal();
+		result = this.recyclerRepository.puntuationOfRecycler(recycler.getId());
+		if (result == null)
+			result = 0.;
 		return result;
 	}
 

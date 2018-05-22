@@ -33,9 +33,9 @@
 </script>
 
 <security:authorize access="hasRole('RECYCLER')">
-<jstl:if test="${showScore}">
+<%-- <jstl:if test="${showScore}">
 <h2><spring:message code="item.score" /></h2>
-</jstl:if>
+</jstl:if> --%>
 </security:authorize>
 <!-- Listing messageFodler -->
 <display:table name="items" id="row" requestURI="${requestURI}"

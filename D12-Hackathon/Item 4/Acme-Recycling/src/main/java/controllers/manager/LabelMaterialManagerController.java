@@ -97,6 +97,8 @@ public class LabelMaterialManagerController extends AbstractController {
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("This label is asociated with one material or more"))
 					result = this.createEditModelAndView(labelMaterial, "labelMaterial.labelContainsMaterial.error");
+				else if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
+					result = this.createEditModelAndView(labelMaterial, "labelMaterial.nameUnique");
 				else
 					result = this.createEditModelAndView(labelMaterial, "labelMaterial.commit.error");
 

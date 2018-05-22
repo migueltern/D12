@@ -97,6 +97,8 @@ public class LabelProductManagerController extends AbstractController {
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("This label is asociated with one product or more"))
 					result = this.createEditModelAndView(labelProduct, "labelProduct.labelContainsProduct.error");
+				else if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
+					result = this.createEditModelAndView(labelProduct, "labelProduct.nameUnique");
 				else
 					result = this.createEditModelAndView(labelProduct, "labelProduct.commit.error");
 

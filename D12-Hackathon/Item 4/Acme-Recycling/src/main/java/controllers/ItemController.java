@@ -1,3 +1,4 @@
+
 package controllers;
 
 import java.util.Collection;
@@ -14,34 +15,50 @@ import domain.Item;
 
 @Controller
 @RequestMapping("/item")
-public class ItemController extends AbstractController{
-	
+public class ItemController extends AbstractController {
+
 	// Services---------------------------------------------------------
-		@Autowired
-		private ItemService	 itemService;
+	@Autowired
+	private ItemService	itemService;
 
 
-		//Constructor--------------------------------------------------------
-		public ItemController() {
-			super();
-		}
-		
-		//Listing-----------------------------------------------------------
-		
-		@RequestMapping(value = "/list", method = RequestMethod.GET)
-		public ModelAndView list(@RequestParam int actorId) {
-			ModelAndView result;
-			Collection<Item> items;
-			
-			items = this.itemService.findItemsByRecycler(actorId);
+	//Constructor--------------------------------------------------------
+	public ItemController() {
+		super();
+	}
 
-			result = new ModelAndView("item/list");
-			result.addObject("items", items);
-			result.addObject("showScore", true);
-			result.addObject("requestURI", "item/list.do?d-16544-p=1");
+	//Listing-----------------------------------------------------------
 
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list(@RequestParam final int actorId) {
+		ModelAndView result;
+		Collection<Item> items;
 
-			return result;
-		}
+		items = this.itemService.findItemsByRecycler(actorId);
+
+		result = new ModelAndView("item/list");
+		result.addObject("items", items);
+		result.addObject("showScore", true);
+		result.addObject("RequestUriDisplay", "item/display.do");
+		result.addObject("requestURI", "item/list.do?d-16544-p=1");
+
+		return result;
+	}
+
+	//Listing-----------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int itemId) {
+		ModelAndView result;
+		Item item;
+
+		item = this.itemService.findOne(itemId);
+
+		result = new ModelAndView("item/display");
+		result.addObject("item", item);
+		result.addObject("hiddenRequest", true);
+		result.addObject("requestURI", "opinion/display.do?itemId=" + itemId);
+
+		return result;
+	}
 
 }

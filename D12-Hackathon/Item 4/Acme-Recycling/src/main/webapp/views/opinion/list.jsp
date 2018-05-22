@@ -37,18 +37,44 @@
 			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
 		</display:column>
 	</security:authorize>
-	
-	<spring:message code="opinion.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" sortable="true" />
-	
-	<spring:message code="opinion.comment" var="commentHeader" />
-	<display:column property="comment" title="${commentHeader}" sortable="true" />
-	
-	
-	
+
 	<!-- ATRIBUTOS -->
 
-	
+	<spring:message code="opinion.title" var="titleHeader" />
+	<display:column property="title" title="${titleHeader}" sortable="true" />
+
+	<spring:message code="opinion.comment" var="commentHeader" />
+	<display:column property="comment" title="${commentHeader}"
+		sortable="true" />
+
+	<spring:message code="opinion.format.createdMoment" var="pattern"></spring:message>
+	<spring:message code="opinion.createdMoment" var="postedHeader" />
+	<display:column property="createdMoment" title="${postedHeader}"
+		sortable="true" format="${pattern}" />
+
+	<spring:message code="opinion.photo" var="photoVar" />
+	<display:column title="${photoVar}" sortable="true">
+		<div
+			style="position: relative; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
+
+			<img src="${row.photo}" width="100" height="100">
+		</div>
+	</display:column>
+
+	<spring:message code="opinion.caption" var="captionHeader" />
+	<display:column property="caption" title="${captionHeader}"
+		sortable="true" />
+
+	<spring:message code="opinion.displayItem" var="displayItem" />
+	<display:column title="${displayItem}" sortable="false">
+
+		<spring:url value="item/display.do" var="displayURL">
+			<spring:param name="itemId" value="${itemId}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="opinion.displayItem" /></a>
+	</display:column>
+
+
 
 
 

@@ -37,6 +37,7 @@ public class OpinionController extends AbstractController {
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", opinions);
+		result.addObject("itemId", itemId);
 		result.addObject("requestURI", "opinion/list.do?d-16544-p=1");
 
 		return result;

@@ -61,7 +61,7 @@
 		<jstl:out value=":" />
 		<jstl:out value="${row.labelProduct.name}"></jstl:out>
 		</p>
-		<jstl:if test="${row.request != null}">
+		<jstl:if test="${row.request != null and !hiddenRequest}">
 		<p>
 		<B><spring:message code="item.request" /></B>
 		<jstl:out value=":" />

@@ -44,21 +44,8 @@ public class OpinionController extends AbstractController {
 	public ModelAndView list(@RequestParam final int opinableId) {
 		ModelAndView result;
 		Collection<Opinion> opinions;
-		final Item item;
-		final Course course;
 
 		result = new ModelAndView("opinion/list");
-
-		item = this.itemService.findOne(opinableId);
-		course = this.courseService.findOne(opinableId);
-		if (item != null) {
-			result.addObject("isItem", true);
-			result.addObject("itemId", opinableId);
-		} else if (course != null) {
-			result.addObject("isCourse", true);
-			result.addObject("courseId", opinableId);
-		} else
-			Assert.isTrue(false, "The opinable isn't a item or course");
 
 		opinions = this.opinableService.findOne(opinableId).getOpinions();
 

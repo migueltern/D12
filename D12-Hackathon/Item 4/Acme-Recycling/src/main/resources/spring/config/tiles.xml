@@ -43,6 +43,7 @@
 		<value>/views/material/tiles.xml</value>
 		<value>/views/actor/tiles.xml</value>
 		<value>/views/buy/tiles.xml</value>
+		<value>/views/legislation/tiles.xml</value>
 
 
 	</util:list>

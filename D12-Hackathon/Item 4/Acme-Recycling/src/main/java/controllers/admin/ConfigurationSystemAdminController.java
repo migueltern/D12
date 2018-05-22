@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ConfigurationSystemService;
 import controllers.AbstractController;
 import domain.ConfigurationSystem;
+import domain.Legislation;
 import domain.TabooWord;
 
 @Controller
@@ -47,6 +48,25 @@ public class ConfigurationSystemAdminController extends AbstractController {
 		result = new ModelAndView("configurationSystem/listTabooWord");
 		result.addObject("tabooWords", tabooWords);
 		result.addObject("requestURI", "configurationSystem/admin/tabooWord/list.do?d-16544-p=1");
+		return result;
+
+	}
+
+	//Listing------------------------------------------------------------
+
+	@RequestMapping(value = "legislation/list", method = RequestMethod.GET)
+	public ModelAndView listLegislation() {
+
+		ModelAndView result;
+		ConfigurationSystem configurationSystem;
+		Collection<Legislation> laws;
+
+		configurationSystem = this.configurationSystemService.findConfigurationSystem();
+		laws = configurationSystem.getLaws();
+
+		result = new ModelAndView("configurationSystem/listLegislation");
+		result.addObject("laws", laws);
+		result.addObject("requestURI", "configurationSystem/admin/legislation/list.do?d-16544-p=1");
 		return result;
 
 	}

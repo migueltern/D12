@@ -118,6 +118,9 @@
 		<bean class="converters.LessonToStringConverter" /> 
 		<bean class="converters.StringToLessonConverter" />
 		
+		<bean class="converters.LegislationToStringConverter" /> 
+		<bean class="converters.StringToLegislationConverter" />
+		
 		
 		
 	</util:list>

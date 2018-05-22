@@ -1,16 +1,12 @@
 
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
-
-import cz.jirutka.validator.collection.constraints.EachURL;
+import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -18,9 +14,9 @@ public class Legislation extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String				title;
-	private String				body;
-	private Collection<String>	links;
+	private String	title;
+	private String	body;
+	private String	link;
 
 
 	@NotBlank
@@ -41,14 +37,13 @@ public class Legislation extends DomainEntity {
 		this.body = body;
 	}
 
-	@EachURL
-	@ElementCollection
-	public Collection<String> getLinks() {
-		return this.links;
+	@URL
+	public String getLink() {
+		return this.link;
 	}
 
-	public void setLinks(final Collection<String> links) {
-		this.links = links;
+	public void setLink(final String link) {
+		this.link = link;
 	}
 
 }

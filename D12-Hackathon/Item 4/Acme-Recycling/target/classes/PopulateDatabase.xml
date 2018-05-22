@@ -1889,55 +1889,27 @@
 	<bean id="law1" class="domain.Legislation">
 		<property name="title" value="title 1"></property>
 		<property name="body" value="body 1"></property>
-		<property name="links">
-			<list>
-				<value>http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png
-				</value>
-				<value>http://www.cantillana.es/opencms/export/sites/default/cantillana/galeriaInterior/noticias/Elreciclajetienesupunto.jpg
-				</value>
-			</list>
-		</property>
+		<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 	<bean id="law2" class="domain.Legislation">
 		<property name="title" value="title 2"></property>
 		<property name="body" value="body 2"></property>
-		<property name="links">
-			<list>
-				<value>http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png
-				</value>
-				<value>http://www.cantillana.es/opencms/export/sites/default/cantillana/galeriaInterior/noticias/Elreciclajetienesupunto.jpg
-				</value>
-			</list>
-		</property>
+		<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 
 	<bean id="law3" class="domain.Legislation">
 		<property name="title" value="title 3"></property>
 		<property name="body" value="body 3"></property>
-		<property name="links">
-			<list>
-				<value>http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png
-				</value>
-				<value>http://www.cantillana.es/opencms/export/sites/default/cantillana/galeriaInterior/noticias/Elreciclajetienesupunto.jpg
-				</value>
-			</list>
-		</property>
+		<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 
 	<bean id="law4" class="domain.Legislation">
 		<property name="title" value="title 4"></property>
 		<property name="body" value="body 4"></property>
-		<property name="links">
-			<list>
-				<value>http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png
-				</value>
-				<value>http://www.cantillana.es/opencms/export/sites/default/cantillana/galeriaInterior/noticias/Elreciclajetienesupunto.jpg
-				</value>
-			</list>
-		</property>
+	<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 

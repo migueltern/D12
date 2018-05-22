@@ -24,13 +24,13 @@
 	
 	
 	<definition name="incidence/edit" extends="master.page">	
-		<put-attribute name="title" value="Edit a incidence" />
+		<put-attribute name="title" value="Edit an incidence" />
 		<put-attribute name="body" value="/views/incidence/edit.jsp" />
 	</definition>
 	
 	
-	<!-- <definition name="messageFolder/display" extends="master.page">	
-		<put-attribute name="title" value="Display a message Folder" />
-		<put-attribute name="body" value="/views/messageFolder/display.jsp" />
-	</definition> -->
+	<definition name="incidence/display" extends="master.page">	
+		<put-attribute name="title" value="Display an incidence" />
+		<put-attribute name="body" value="/views/incidence/display.jsp" />
+	</definition> 
 </tiles-definitions>

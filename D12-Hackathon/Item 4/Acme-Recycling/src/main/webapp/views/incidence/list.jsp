@@ -34,6 +34,16 @@
 <display:table name="incidences" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 	
+	<spring:message code="incidence.display" var="Display"/>
+		
+		<display:column title="${Display}" sortable="true">
+
+			<spring:url value="${RequestURIdisplay}" var="displayURL">
+				<spring:param name="incidenceId" value="${row.id}" />
+			</spring:url>
+			<a href="${displayURL}"><spring:message code="incidence.display" /></a>
+		</display:column>
+	
 	<security:authorize access="hasRole('RECYCLER')">
 	<spring:message code="incidence.edit" var="Edit"/>
 		
@@ -56,6 +66,28 @@
 	<spring:message code="incidence.createdMoment" var="postedHeader" />
 	<display:column property="createdMoment" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
+
+	<spring:message code="incidence.resolved" var="resolved" />
+	<display:column title="${resolved}">
+		<jstl:if test="${row.resolved==true}">
+			<div
+				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
+
+				<img src="images/yes.png" width="30" height="30">
+			</div>
+		</jstl:if>
+		<jstl:if test="${row.resolved==false}">
+			<div
+				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
+
+				<img src="images/no.png" width="30" height="30">
+			</div>
+		</jstl:if>
+		
+</display:column>
+	
+		
+	
 		
 <!-- Enlace para cambiar a resuelta la incidencia --->
 <security:authorize access="hasRole('MANAGER')">

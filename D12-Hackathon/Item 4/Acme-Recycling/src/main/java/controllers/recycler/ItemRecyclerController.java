@@ -39,9 +39,6 @@ public class ItemRecyclerController extends AbstractController {
 
 	@Autowired
 	private RecyclerService		recyclerService;
-	
-	@Autowired
-	private RequestRecyclerController requestRecyclerController;
 
 
 	//	Constructors

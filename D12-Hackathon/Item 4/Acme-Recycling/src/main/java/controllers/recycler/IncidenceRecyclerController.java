@@ -49,7 +49,24 @@ public class IncidenceRecyclerController extends AbstractController{
 		result.addObject("incidences", incidences);
 		result.addObject("requestURI", "incidence/recycler/list.do?d-16544-p=1");
 		result.addObject("RequestURIedit", "incidence/recycler/edit.do");
+		result.addObject("RequestURIdisplay", "incidence/recycler/display.do");
 
+
+		return result;
+	}
+	
+	//Display
+	
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView Display(@RequestParam int incidenceId) {
+		final ModelAndView result;
+		Incidence incidence;
+
+		incidence = this.incidenceService.findOne(incidenceId);
+
+		result = new ModelAndView("incidence/display");
+		result.addObject("incidence", incidence);
+		result.addObject("requestURI", "incidence/recycler/display.do");
 
 		return result;
 	}

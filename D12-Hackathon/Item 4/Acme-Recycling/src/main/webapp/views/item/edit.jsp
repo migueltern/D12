@@ -34,7 +34,7 @@
 	<B><acme:textbox code="item.publicationMoment" path="publicationMoment" readonly="true"/></B>
 	<br />
 	
-	<B><acme:textbox code="item.description" path="description"/></B>
+	<B><acme:textarea code="item.description" path="description"/></B>
 	<br />
 	
 	<B><acme:textbox code="item.quantity" path="quantity"/></B>

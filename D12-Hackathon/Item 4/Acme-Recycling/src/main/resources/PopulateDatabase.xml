@@ -1000,8 +1000,8 @@
 
 	<!-- news -->
 	<bean id="new1" class="domain.New">
-		<property name="title" value="title 1" />
-		<property name="content" value="content 1" />
+		<property name="title" value="title new 1" />
+		<property name="content" value="content new 1" />
 		<property name="creationDate" value="2018/04/04 12:22" />
 		<property name="pictures">
 			<list>
@@ -1022,8 +1022,8 @@
 	</bean>
 
 	<bean id="new2" class="domain.New">
-		<property name="title" value="title 2 viagra" />
-		<property name="content" value="content 2" />
+		<property name="title" value="title new 2 viagra" />
+		<property name="content" value="content new 2" />
 		<property name="creationDate" value="2018/04/01 13:01" />
 		<property name="pictures">
 			<list>
@@ -1040,8 +1040,8 @@
 	</bean>
 
 	<bean id="new3" class="domain.New">
-		<property name="title" value="title 3" />
-		<property name="content" value="content 3" />
+		<property name="title" value="title new 3" />
+		<property name="content" value="content new 3" />
 		<property name="creationDate" value="2018/04/03 13:33" />
 		<property name="pictures">
 			<list>
@@ -1057,8 +1057,8 @@
 	</bean>
 
 	<bean id="new4" class="domain.New">
-		<property name="title" value="title 4" />
-		<property name="content" value="content 4" />
+		<property name="title" value="title new 4" />
+		<property name="content" value="content new 4" />
 		<property name="creationDate" value="2018/04/04 14:44" />
 		<property name="pictures">
 			<list>
@@ -1074,8 +1074,8 @@
 	</bean>
 
 	<bean id="new5" class="domain.New">
-		<property name="title" value="title 5" />
-		<property name="content" value="content 5" />
+		<property name="title" value="title new 5" />
+		<property name="content" value="content new 5" />
 		<property name="creationDate" value="2018/04/05 15:55" />
 		<property name="pictures">
 			<list>
@@ -1657,8 +1657,8 @@
 
 	<!-- Courses -->
 	<bean id="course1" class="domain.Course">
-		<property name="title" value="title 1" />
-		<property name="description" value="description 1" />
+		<property name="title" value="title course 1" />
+		<property name="description" value="description course 1" />
 		<property name="location" ref="gps1" />
 		<property name="realisedMoment" value="2018/12/12" />
 		<property name="picture"
@@ -1679,14 +1679,14 @@
 		<property name="lessons">
 			<list>
 				<ref bean="lesson1" />
-				<ref bean="lesson6" />
+				<ref bean="lesson2" />
 			</list>
 		</property>
 	</bean>
 
 	<bean id="course2" class="domain.Course">
-		<property name="title" value="title 2" />
-		<property name="description" value="description 2" />
+		<property name="title" value="title course 2" />
+		<property name="description" value="description course 2" />
 		<property name="location" ref="gps2" />
 		<property name="realisedMoment" value="2018/02/12" />
 		<property name="picture"
@@ -1706,16 +1706,19 @@
 		</property>
 		<property name="lessons">
 			<list>
-				<ref bean="lesson2" />
-
+			<ref bean="lesson1" />
+			<ref bean="lesson2" />
+			<ref bean="lesson3" />
+			<ref bean="lesson4" />
+			<ref bean="lesson5" />
 			</list>
 		</property>
 	</bean>
 
 
 	<bean id="course3" class="domain.Course">
-		<property name="title" value="title 3" />
-		<property name="description" value="description 3" />
+		<property name="title" value="title course 3" />
+		<property name="description" value="description course 3" />
 		<property name="location" ref="gps3" />
 		<property name="realisedMoment" value="2018/12/13" />
 		<property name="picture"
@@ -1735,15 +1738,13 @@
 		</property>
 		<property name="lessons">
 			<list>
-				<ref bean="lesson3" />
-
 			</list>
 		</property>
 	</bean>
 
 	<bean id="course4" class="domain.Course">
-		<property name="title" value="title 4" />
-		<property name="description" value="description 4" />
+		<property name="title" value="title course 4" />
+		<property name="description" value="description course 4" />
 		<property name="location" ref="gps4" />
 		<property name="realisedMoment" value="2018/04/12" />
 		<property name="picture"
@@ -1763,15 +1764,16 @@
 		</property>
 		<property name="lessons">
 			<list>
-				<ref bean="lesson4" />
-
+				<ref bean="lesson1" />
+				<ref bean="lesson2" />
+				<ref bean="lesson3" />
 			</list>
 		</property>
 	</bean>
 
 	<bean id="course5" class="domain.Course">
-		<property name="title" value="title 5" />
-		<property name="description" value="description 5" />
+		<property name="title" value="title course 5" />
+		<property name="description" value="description course 5" />
 		<property name="location" ref="gps5" />
 		<property name="realisedMoment" value="2018/12/15" />
 		<property name="picture"
@@ -1791,8 +1793,12 @@
 		</property>
 		<property name="lessons">
 			<list>
+				<ref bean="lesson1" />
+				<ref bean="lesson2" />
+				<ref bean="lesson3" />
+				<ref bean="lesson4" />
 				<ref bean="lesson5" />
-
+				<ref bean="lesson6" />
 			</list>
 		</property>
 	</bean>

@@ -40,7 +40,7 @@
 	<B><acme:textbox code="item.quantity" path="quantity"/></B>
 	<br />
 	
-	<B><acme:textbox code="item.photo" path="photo"/></B>
+	<B><acme:textbox code="item.photo" path="photo" placeHolder="http://"/></B>
 	<br />
 	
 	<B><acme:select items="${labelsProduct}" itemLabel="name" code="item.labelProduct" path="labelProduct"/></B>

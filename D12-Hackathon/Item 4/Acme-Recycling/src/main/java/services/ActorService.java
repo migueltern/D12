@@ -3,6 +3,8 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -15,6 +17,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Actor;
 import domain.Message;
+import domain.MessageFolder;
 import domain.TabooWord;
 
 @Service
@@ -33,6 +36,9 @@ public class ActorService {
 	
 	@Autowired
 	private TabooWordService tabooWordService;
+	
+	@Autowired
+	private MessageFolderService messageFolderService;
 
 	// Constructors -----------------------------------------------------------
 	public ActorService() {
@@ -89,24 +95,31 @@ public class ActorService {
 	public Collection<Actor> actorForBan(){
 		
 		Collection<Actor> result;
-		Collection<Message> messages;
+		Set<Message> messages;
 		Collection<TabooWord> tabooWords;
 		Collection<Actor> actors;
+		MessageFolder messageFolder;
 		
 		tabooWords = this.tabooWordService.findAll();
 		result = new ArrayList<>();
 		actors = this.actorRepository.findAll();
+		messageFolder = null;
+		
 		
 		
 		for(Actor a: actors){
+			messages = new HashSet<>();
 			for(TabooWord t: tabooWords){
 				
-				messages = this.messageService.findMessageWithTabooWord(a.getId(), t.getName());
+				messageFolder = this.messageFolderService.findMessageFolderByNameAndActor("Out box", a.getId());
+								
+				messages.addAll(this.messageService.findMessageWithTabooWord(messageFolder.getId(), t.getName()));
 				
-				if(messages.size() >= 5){
-					result.add(a);
-					
-				}
+				
+				
+			}
+			if(messages.size() > 5){
+				result.add(a);
 				
 			}
 		}

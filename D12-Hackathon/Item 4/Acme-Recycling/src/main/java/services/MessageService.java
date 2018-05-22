@@ -235,11 +235,11 @@ public class MessageService {
 	}
 	
 	
-	public Collection<Message> findMessageWithTabooWord(int actorId, String tabooWord){
+	public Collection<Message> findMessageWithTabooWord(int messageFolderId, String tabooWord){
 		
 		Collection<Message> result;
 		
-		result = this.messageRepository.findMessageWithTabooWord(actorId, tabooWord);
+		result = this.messageRepository.findMessageWithTabooWord(messageFolderId, tabooWord);
 		
 		return result;
 		

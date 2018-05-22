@@ -32,7 +32,20 @@ public class CleanPointAdminController extends AbstractController {
 	public CleanPointAdminController() {
 		super();
 	}
+	//Display------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int cleanPointId) {
+		final ModelAndView result;
+		CleanPoint cleanpoint;
 
+		cleanpoint = this.cleanPointService.findOne(cleanPointId);
+
+		result = new ModelAndView("cleanPoint/display");
+		result.addObject("cleanpoint", cleanpoint);
+		result.addObject("requestURI", "cleanPoint/admin/display.do");
+
+		return result;
+	}
 	//Listing----------------------------------------------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(final String messageCode) {

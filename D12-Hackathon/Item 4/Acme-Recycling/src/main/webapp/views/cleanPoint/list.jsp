@@ -36,6 +36,18 @@
 				</jstl:if>
 		</display:column>
 	</security:authorize> 
+	
+	<!-- DISplay -->
+	
+		<security:authorize access="hasRole('ADMIN')">
+		<spring:message code="cleanPoint.display" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+				<spring:url value="cleanPoint/admin/display.do" var="editURL">
+					<spring:param name="cleanPointId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="cleanPoint.display" /></a>
+		</display:column>
+	</security:authorize> 
 	<!-- ATRIBUTOS -->
 
 	<spring:message code="cleanPoint.address" var="titleHeader" />

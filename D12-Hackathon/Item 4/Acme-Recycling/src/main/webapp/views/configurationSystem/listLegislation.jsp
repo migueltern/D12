@@ -46,9 +46,11 @@
 	<acme:column code="configurationSystem.legislation.body" property="body"/>
 	
 	<spring:message code="configurationSystem.legislation.link" var="Edit" />
-<display:column title="${Edit}" sortable="true">
 	
+<display:column title="${Edit}" sortable="true">
+	<jstl:if test="${!(row.link=='')}">
 	<a href="${row.link}"><spring:message code = "configurationSystem.legislation.link"></spring:message></a>
+</jstl:if>
 </display:column>
 
 </display:table>

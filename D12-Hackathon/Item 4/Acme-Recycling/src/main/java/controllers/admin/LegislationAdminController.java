@@ -93,7 +93,14 @@ public class LegislationAdminController extends AbstractController {
 				result = new ModelAndView("redirect:/configurationSystem/admin/legislation/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {
 
-				result = this.createEditModelAndView(legislation, "legislation.commit.error");
+				if (oops.getMessage().equals("palabra tabu en el titulo"))
+					result = this.createEditModelAndView(legislation, "legislation.error.title");
+				else if (oops.getMessage().equals("palabra tabu en el cuerpo"))
+					result = this.createEditModelAndView(legislation, "legislation.error.body");
+
+				else
+
+					result = this.createEditModelAndView(legislation, "legislation.commit.error");
 			}
 
 		return result;

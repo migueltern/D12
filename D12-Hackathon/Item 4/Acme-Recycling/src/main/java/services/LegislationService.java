@@ -28,6 +28,9 @@ public class LegislationService {
 	private AdminService			adminService;
 
 	@Autowired
+	private TabooWordService		tabooWordService;
+
+	@Autowired
 	private Validator				validator;
 
 
@@ -76,6 +79,14 @@ public class LegislationService {
 	public Legislation save(final Legislation law) {
 
 		Assert.notNull(law);
+		Collection<String> tabooWords;
+
+		tabooWords = this.tabooWordService.findTabooWordByName();
+
+		for (final String t : tabooWords) {
+			Assert.isTrue(!law.getTitle().contains(t), "palabra tabu en el titulo");
+			Assert.isTrue(!law.getBody().contains(t), "palabra tabu en el cuerpo");
+		}
 
 		this.adminService.checkPrincipal();
 

@@ -1461,8 +1461,15 @@
 
 	<bean id="labelMaterial5" class="domain.LabelMaterial">
 		<property name="name" value="Baterias" />
-		<property name="byDefault" value="false" />
+		<property name="byDefault" value="true" />
 	</bean>
+	
+		
+	<bean id="labelMaterial6" class="domain.LabelMaterial">
+		<property name="name" value="Vidrio" />
+		<property name="byDefault" value="true" />
+	</bean>
+	
 
 	<!-- Label products -->
 	<bean id="labelProduct1" class="domain.LabelProduct">

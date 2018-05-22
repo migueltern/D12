@@ -16,6 +16,7 @@ import repositories.ActorRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Actor;
+import domain.Admin;
 import domain.Message;
 import domain.MessageFolder;
 import domain.TabooWord;
@@ -39,6 +40,9 @@ public class ActorService {
 	
 	@Autowired
 	private MessageFolderService messageFolderService;
+	
+	@Autowired
+	private AdminService adminService;
 
 	// Constructors -----------------------------------------------------------
 	public ActorService() {
@@ -99,16 +103,23 @@ public class ActorService {
 		Collection<TabooWord> tabooWords;
 		Collection<Actor> actors;
 		MessageFolder messageFolder;
+		Admin princial;
 		
 		tabooWords = this.tabooWordService.findAll();
 		result = new ArrayList<>();
 		actors = this.actorRepository.findAll();
 		messageFolder = null;
+		princial = this.adminService.findByPrincipal();
+		
+		Assert.isTrue(princial instanceof Admin);
+		
+		actors.remove(princial);
 		
 		
 		
 		for(Actor a: actors){
 			messages = new HashSet<>();
+			
 			for(TabooWord t: tabooWords){
 				
 				messageFolder = this.messageFolderService.findMessageFolderByNameAndActor("Out box", a.getId());

@@ -22,7 +22,7 @@ import cz.jirutka.validator.collection.constraints.EachURL;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class New extends DomainEntity {
+public class Newscast extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 

@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${requestURI}" modelAttribute="new_">
+<form:form action="${requestURI}" modelAttribute="newscast">
 <form:hidden path="id" />
 <form:hidden path="version" />
 <form:hidden path="comments" />
@@ -45,13 +45,13 @@
 
 	<input type="submit" name="save" value="<spring:message code="new.save" />" />&nbsp; 
 
-	<jstl:if test="${new_.id != 0}">
+	<jstl:if test="${newscast.id != 0}">
 		<input type="submit" name="delete"
 			value="<spring:message code="new.delete" />"
 			onclick="javascript: return confirm('<spring:message code="new.confirm.delete" />')" />&nbsp;
 	</jstl:if>
 
 	<acme:cancel
-		url="new_/editor/list.do?d-16544-p=1"
+		url="newscast/editor/list.do?d-16544-p=1"
 		code="new.cancel" />
 </form:form>

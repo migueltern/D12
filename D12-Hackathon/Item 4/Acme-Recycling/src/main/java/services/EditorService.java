@@ -17,7 +17,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Editor;
-import domain.New;
+import domain.Newscast;
 import domain.Opinion;
 import forms.EditorForm;
 
@@ -48,7 +48,7 @@ public class EditorService {
 		Editor result;
 		UserAccount userAccount;
 		Authority authority;
-		final Collection<New> news;
+		final Collection<Newscast> news;
 		final Collection<Opinion> opinions;
 
 		result = new Editor();
@@ -154,7 +154,7 @@ public class EditorService {
 		if (editorBD.getId() == 0) {
 			UserAccount userAccount;
 			Authority authority;
-			final Collection<New> news;
+			final Collection<Newscast> news;
 			final Collection<Opinion> opinions;
 
 			userAccount = editorForm.getEditor().getUserAccount();
@@ -193,8 +193,8 @@ public class EditorService {
 		this.editorRepository.flush();
 	}
 
-	public Collection<New> findAllNewByEditor() {
-		Collection<New> result;
+	public Collection<Newscast> findAllNewByEditor() {
+		Collection<Newscast> result;
 		Editor principal;
 
 		principal = this.findByPrincipal();

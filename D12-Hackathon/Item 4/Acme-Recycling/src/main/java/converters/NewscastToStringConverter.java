@@ -5,20 +5,20 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.New;
+import domain.Newscast;
 
 @Component
 @Transactional
-public class NewToStringConverter implements Converter<New, String> {
+public class NewscastToStringConverter implements Converter<Newscast, String> {
 
 	@Override
-	public String convert(final New New) {
+	public String convert(final Newscast newscast) {
 		String result;
 
-		if (New == null)
+		if (newscast == null)
 			result = null;
 		else
-			result = String.valueOf(New.getId());
+			result = String.valueOf(newscast.getId());
 		return result;
 	}
 }

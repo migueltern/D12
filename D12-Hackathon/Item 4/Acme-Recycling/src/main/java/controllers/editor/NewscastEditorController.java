@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.EditorService;
-import services.NewService;
+import services.NewscastService;
 import controllers.AbstractController;
 import domain.Comment;
 import domain.Editor;
-import domain.New;
+import domain.Newscast;
 
 @Controller
-@RequestMapping(value = "/new_/editor")
-public class NewEditorController extends AbstractController {
+@RequestMapping(value = "/newscast/editor")
+public class NewscastEditorController extends AbstractController {
 
 	//Services--------------------------------------------
 
 	@Autowired
-	private NewService		newService;
+	private NewscastService	newscastService;
 
 	@Autowired
 	private EditorService	editorService;
@@ -36,26 +36,26 @@ public class NewEditorController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public NewEditorController() {
+	public NewscastEditorController() {
 		super();
 	}
 
 	//Display------------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int newId) {
+	public ModelAndView display(@RequestParam final int newscastId) {
 		final ModelAndView result;
-		New new_ = new New();
+		Newscast newscast = new Newscast();
 		Collection<Comment> comments;
 
-		new_ = this.newService.findOne(newId);
+		newscast = this.newscastService.findOne(newscastId);
 		comments = new ArrayList<>();
 
-		comments = this.newService.findCommentsByNew(newId);
+		comments = this.newscastService.findCommentsByNew(newscastId);
 
-		result = new ModelAndView("new/display");
-		result.addObject("new_", new_);
+		result = new ModelAndView("newscast/display");
+		result.addObject("newscast", newscast);
 		result.addObject("comments", comments);
-		result.addObject("requestURI", "new_/editor/display.do");
+		result.addObject("requestURI", "newscast/editor/display.do");
 
 		return result;
 	}
@@ -65,13 +65,13 @@ public class NewEditorController extends AbstractController {
 	public ModelAndView list(final String messageCode) {
 
 		ModelAndView result;
-		Collection<New> news;
+		Collection<Newscast> news;
 
 		news = this.editorService.findAllNewByEditor();
 
-		result = new ModelAndView("new/list");
-		result.addObject("new_", news);
-		result.addObject("requestURI", "new_/editor/list.do");
+		result = new ModelAndView("newscast/list");
+		result.addObject("newscast", news);
+		result.addObject("requestURI", "newscast/editor/list.do");
 		result.addObject("message", messageCode);
 
 		return result;
@@ -83,82 +83,82 @@ public class NewEditorController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView result;
-		final New New;
+		final Newscast newscast;
 
-		New = this.newService.create();
+		newscast = this.newscastService.create();
 
-		result = this.createEditModelAndView(New);
+		result = this.createEditModelAndView(newscast);
 		return result;
 	}
 
 	// Edit---------------------------------------------------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam final int newId) {
+	public ModelAndView edit(@RequestParam final int newscastId) {
 		ModelAndView result;
-		New new_;
+		Newscast newscast;
 		Editor principal;
 
 		principal = this.editorService.findByPrincipal();
 
-		new_ = this.newService.findOne(newId);
+		newscast = this.newscastService.findOne(newscastId);
 
-		Assert.notNull(new_);
-		Assert.isTrue(principal.getNews().contains(new_), "This new is  not yours");
-		result = this.createEditModelAndView(new_);
+		Assert.notNull(newscast);
+		Assert.isTrue(principal.getNews().contains(newscast), "This new is  not yours");
+		result = this.createEditModelAndView(newscast);
 
 		return result;
 
 	}
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(New new_, final BindingResult bindingResult) {
+	public ModelAndView save(Newscast newscast, final BindingResult bindingResult) {
 		ModelAndView result;
-		new_ = this.newService.reconstruct(new_, bindingResult);
+		newscast = this.newscastService.reconstruct(newscast, bindingResult);
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(new_);
+			result = this.createEditModelAndView(newscast);
 		else
 			try {
-				this.newService.save(new_);
+				this.newscastService.save(newscast);
 				result = new ModelAndView("redirect:list.do");
 
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(new_, "new.commit.error");
+				result = this.createEditModelAndView(newscast, "new.commit.error");
 			}
 
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(@ModelAttribute final New new_, final BindingResult bindingResult) {
+	public ModelAndView delete(@ModelAttribute final Newscast newscast, final BindingResult bindingResult) {
 		ModelAndView result;
 
 		try {
-			this.newService.delete(new_);
+			this.newscastService.delete(newscast);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(new_, "new.commit.error");
+			result = this.createEditModelAndView(newscast, "new.commit.error");
 		}
 
 		return result;
 	}
 	// Ancillary methods ------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(final New new_) {
-		assert new_ != null;
+	protected ModelAndView createEditModelAndView(final Newscast newscast) {
+		assert newscast != null;
 		ModelAndView result;
-		result = this.createEditModelAndView(new_, null);
+		result = this.createEditModelAndView(newscast, null);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final New new_, final String message) {
+	protected ModelAndView createEditModelAndView(final Newscast newscast, final String message) {
 
-		assert new_ != null;
+		assert newscast != null;
 		ModelAndView result;
 
-		result = new ModelAndView("new/edit");
-		result.addObject("new_", new_);
+		result = new ModelAndView("newscast/edit");
+		result.addObject("newscast", newscast);
 		result.addObject("message", message);
-		result.addObject("requestURI", "new_/editor/edit.do");
+		result.addObject("requestURI", "newscast/editor/edit.do");
 
 		return result;
 

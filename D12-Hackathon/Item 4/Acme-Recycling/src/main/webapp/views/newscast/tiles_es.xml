@@ -16,19 +16,19 @@
       
 <tiles-definitions>
 	
-	<definition name="new/edit" extends="master.page">	
+	<definition name="newscast/edit" extends="master.page">	
 		<put-attribute name="title" value="Editar noticias" />
-		<put-attribute name="body" value="/views/new/edit.jsp" />
+		<put-attribute name="body" value="/views/newscast/edit.jsp" />
 	</definition>
 	
-	<definition name="new/list" extends="master.page">	
+	<definition name="newscast/list" extends="master.page">	
 		<put-attribute name="title" value="Listar noticias" />
-		<put-attribute name="body" value="/views/new/list.jsp" />
+		<put-attribute name="body" value="/views/newscast/list.jsp" />
 	</definition>
 	
-	<definition name="new/display" extends="master.page">	
+	<definition name="newscast/display" extends="master.page">	
 		<put-attribute name="title" value="Ver noticia" />
-		<put-attribute name="body" value="/views/new/display.jsp" />
+		<put-attribute name="body" value="/views/newscast/display.jsp" />
 	</definition>
 	
 	

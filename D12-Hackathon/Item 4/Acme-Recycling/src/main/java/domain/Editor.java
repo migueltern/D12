@@ -15,17 +15,17 @@ import javax.validation.constraints.NotNull;
 public class Editor extends Actor {
 
 	// Relationships ---------------------------------------------------------------
-	private Collection<New>	news;
+	private Collection<Newscast>	news;
 
 
 	@OneToMany
 	@Valid
 	@NotNull
-	public Collection<New> getNews() {
+	public Collection<Newscast> getNews() {
 		return this.news;
 	}
 
-	public void setNews(final Collection<New> news) {
+	public void setNews(final Collection<Newscast> news) {
 		this.news = news;
 	}
 

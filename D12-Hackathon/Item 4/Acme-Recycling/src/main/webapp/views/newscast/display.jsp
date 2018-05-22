@@ -23,7 +23,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<display:table name="new_" class="displaytag"
+<display:table name="newscast" class="displaytag"
 	requestURI="${requestURI}" id="row">
 
 	
@@ -70,7 +70,7 @@
 	<display:table name="comments" id="row" class="displaytag">
 	<spring:message code="comment.body" var="titleHeader" />
 	<display:column property="body" title="${titleHeader}" sortable="true" />
-	
+	<security:authorize access="hasRole('RECYCLER')">
 	<spring:message code="new.comment.reply" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
 			
@@ -79,7 +79,7 @@
 				</spring:url>
 				<a href="${editURL}"><spring:message code="new.comment.reply" /></a>
 		</display:column>
-	
+	</security:authorize>
 	<!--  EDIT -->
 	
 	<security:authorize access="hasRole('EDITOR')">

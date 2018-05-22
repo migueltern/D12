@@ -14,7 +14,7 @@ import org.springframework.validation.Validator;
 
 import repositories.CommentRepository;
 import domain.Comment;
-import domain.New;
+import domain.Newscast;
 import domain.Recycler;
 
 @Service
@@ -30,7 +30,7 @@ public class CommentService {
 	@Autowired
 	private RecyclerService		recyclerService;
 	@Autowired
-	private NewService			newService;
+	private NewscastService			newService;
 	//Importar la que pertenece a Spring
 	@Autowired
 	private Validator			validator;
@@ -93,7 +93,7 @@ public class CommentService {
 			principal.getComments().add(result);
 
 		if (comment.getCommentTo() != null) {
-			New new_;
+			Newscast new_;
 
 			new_ = this.newService.findNewByComment(result.getCommentTo().getId());
 
@@ -122,7 +122,7 @@ public class CommentService {
 	public void delete(final Comment comment) {
 		Assert.notNull(comment);
 		Assert.isTrue(comment.getId() != 0);
-		New new_;
+		Newscast new_;
 		final Recycler recycler;
 
 		if (comment.getReplys() != null)
@@ -169,8 +169,8 @@ public class CommentService {
 		return result;
 	}
 
-	public New findNewbyComment(final Comment comment) {
-		New new_;
+	public Newscast findNewbyComment(final Comment comment) {
+		Newscast new_;
 		new_ = this.commentRepository.findNewbyComment(comment.getId());
 		return new_;
 	}

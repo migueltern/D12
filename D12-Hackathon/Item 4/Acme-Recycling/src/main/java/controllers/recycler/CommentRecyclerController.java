@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CommentService;
-import services.NewService;
+import services.NewscastService;
 import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Comment;
-import domain.New;
+import domain.Newscast;
 
 @Controller
 @RequestMapping("/comment/recycler")
@@ -33,7 +33,7 @@ public class CommentRecyclerController extends AbstractController {
 	private RecyclerService	recyclerService;
 
 	@Autowired
-	private NewService		newService;
+	private NewscastService	newService;
 
 
 	//	Listing ---------------------------------------------------------
@@ -53,14 +53,14 @@ public class CommentRecyclerController extends AbstractController {
 	//Creation-----------------------------------------------------------
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(@RequestParam final int newId) {
+	public ModelAndView create(@RequestParam final int newscastId) {
 		ModelAndView result;
 		final Comment Comment;
 
 		Comment = this.commentService.create();
 
 		result = this.createEditModelAndView(Comment);
-		result.addObject("requestURI", "comment/recycler/addNew.do?newId=" + newId);
+		result.addObject("requestURI", "comment/recycler/addNewscast.do?newscastId=" + newscastId);
 		return result;
 
 	}
@@ -97,21 +97,21 @@ public class CommentRecyclerController extends AbstractController {
 
 	}
 
-	@RequestMapping(value = "/addNew", method = RequestMethod.POST, params = "save")
-	public ModelAndView addNewspaper(Comment comment, final BindingResult bindingResult, @RequestParam final int newId) {
+	@RequestMapping(value = "/addNewscast", method = RequestMethod.POST, params = "save")
+	public ModelAndView addNewspaper(Comment comment, final BindingResult bindingResult, @RequestParam final int newscastId) {
 		ModelAndView result;
 		comment = this.commentService.reconstruct(comment, bindingResult);
-		New New;
+		Newscast newscast;
 
 		if (bindingResult.hasErrors())
 			result = this.createEditModelAndView(comment);
 		else
 			try {
 				comment = this.commentService.save(comment);
-				New = this.newService.findOne(newId);
-				New.getComments().add(comment);
+				newscast = this.newService.findOne(newscastId);
+				newscast.getComments().add(comment);
 
-				this.newService.saveA(New);
+				this.newService.saveA(newscast);
 
 				result = new ModelAndView("redirect:/comment/recycler/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {

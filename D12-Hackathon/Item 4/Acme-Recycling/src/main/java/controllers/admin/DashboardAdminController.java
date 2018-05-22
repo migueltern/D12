@@ -15,7 +15,7 @@ import domain.Editor;
 import domain.Item;
 import domain.LabelProduct;
 import domain.Material;
-import domain.New;
+import domain.Newscast;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -32,7 +32,7 @@ public class DashboardAdminController extends AbstractController {
 		ModelAndView result;
 		result = new ModelAndView("admin/dashboard");
 
-		Collection<New> findNewWithMoreComments;
+		Collection<Newscast> findNewWithMoreComments;
 		Collection<Editor> findEditorsWithMoreNewsRedacted;
 		Collection<LabelProduct> findTop5LabelProducts;
 		Double avgMinMaxAndStddevOfCoursesByBuyer[];

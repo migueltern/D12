@@ -15,7 +15,7 @@ import domain.Editor;
 import domain.Item;
 import domain.LabelProduct;
 import domain.Material;
-import domain.New;
+import domain.Newscast;
 
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
@@ -24,8 +24,8 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	Admin findByUserAccountId(int id);
 
 	//QUERY I Las noticias que contengan más comentarios.
-	@Query("select c from New c where c.comments.size=(select max(t.comments.size) from New t)")
-	Collection<New> findNewWithMoreComments();
+	@Query("select c from Newscast c where c.comments.size=(select max(t.comments.size) from Newscast t)")
+	Collection<Newscast> findNewWithMoreComments();
 
 	//QUERY II Los redactores con mayor número de noticias redactadas.
 	@Query("select e from Editor e where e.news.size=(select max(n.news.size) from Editor n)")
@@ -53,7 +53,7 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	Double avgOfUsersBanned();
 
 	//QUERY VIII La media, el mínimo, el máximo y la desviación típica de comentarios por noticias.
-	@Query(" select avg(n.comments.size),min(n.comments.size),max(n.comments.size),stddev(n.comments.size) from New n")
+	@Query(" select avg(n.comments.size),min(n.comments.size),max(n.comments.size),stddev(n.comments.size) from Newscast n")
 	Double[] avgMinMaxAndStddevOfCommentsByNews();
 
 	//QUERY IX Items que se han subido al sistema en el último mes.

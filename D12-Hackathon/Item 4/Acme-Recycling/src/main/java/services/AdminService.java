@@ -26,7 +26,7 @@ import domain.Editor;
 import domain.Item;
 import domain.LabelProduct;
 import domain.Material;
-import domain.New;
+import domain.Newscast;
 import domain.Opinion;
 import forms.AdminForm;
 
@@ -177,8 +177,8 @@ public class AdminService {
 	}
 
 	//QUERY I Las noticias que contengan más comentarios.
-	public Collection<New> findNewWithMoreComments() {
-		Collection<New> result;
+	public Collection<Newscast> findNewWithMoreComments() {
+		Collection<Newscast> result;
 		this.checkPrincipal();
 
 		result = this.adminRepository.findNewWithMoreComments();

@@ -25,22 +25,22 @@
 	function confirmDelete(newId) {
 		confirm=confirm('<spring:message code="new.confirm.delete"/>');
 		if (confirm)
-		  window.location.href ="new_/admin/delete.do?newId=" + newId;
+		  window.location.href ="newscast/admin/delete.do?newId=" + newId;
 		  else
-			  window.location.href ="new_/admin/list.do";
+			  window.location.href ="newscast/admin/list.do";
 	}
 </script>
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="new_" requestURI="${requestURI}" id="row">
+	name="newscast" requestURI="${requestURI}" id="row">
 	
 	<!--  EDIT -->
 	
 	<security:authorize access="hasRole('EDITOR')">
 		<spring:message code="new.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
-				<spring:url value="new_/editor/edit.do" var="editURL">
-					<spring:param name="newId" value="${row.id}" />
+				<spring:url value="newscast/editor/edit.do" var="editURL">
+					<spring:param name="newscastId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="new.edit" /></a>
 		</display:column>
@@ -52,8 +52,8 @@
 		<spring:message code="new.display" var="Display" />
 		<display:column title="${Display}" sortable="true">
 			
-				<spring:url value="new_/editor/display.do" var="editURL">
-					<spring:param name="newId" value="${row.id}" />
+				<spring:url value="newscast/editor/display.do" var="editURL">
+					<spring:param name="newscastId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="new.display" /></a>
 		</display:column>
@@ -65,8 +65,8 @@
 		<spring:message code="new.display" var="Display" />
 		<display:column title="${Display}" sortable="true">
 			
-				<spring:url value="new_/recycler/display.do" var="editURL">
-					<spring:param name="newId" value="${row.id}" />
+				<spring:url value="newscast/recycler/display.do" var="editURL">
+					<spring:param name="newscastId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="new.display" /></a>
 		</display:column>
@@ -118,7 +118,7 @@
 	
 
 		<spring:url value="comment/recycler/create.do" var="createURL">
-			<spring:param name="newId" value="${row.id}" />
+			<spring:param name="newscastId" value="${row.id}" />
 		</spring:url>
 		<a href="${createURL}"><spring:message code="new.comment.create" /></a>
 	

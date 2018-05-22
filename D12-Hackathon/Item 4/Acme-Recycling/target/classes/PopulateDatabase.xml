@@ -999,7 +999,7 @@
 	</bean>
 
 	<!-- news -->
-	<bean id="new1" class="domain.New">
+	<bean id="new1" class="domain.Newscast">
 		<property name="title" value="title new 1" />
 		<property name="content" value="content new 1" />
 		<property name="creationDate" value="2018/04/04 12:22" />
@@ -1021,7 +1021,7 @@
 		</property>
 	</bean>
 
-	<bean id="new2" class="domain.New">
+	<bean id="new2" class="domain.Newscast">
 		<property name="title" value="title new 2 viagra" />
 		<property name="content" value="content new 2" />
 		<property name="creationDate" value="2018/04/01 13:01" />
@@ -1039,7 +1039,7 @@
 		</property>
 	</bean>
 
-	<bean id="new3" class="domain.New">
+	<bean id="new3" class="domain.Newscast">
 		<property name="title" value="title new 3" />
 		<property name="content" value="content new 3" />
 		<property name="creationDate" value="2018/04/03 13:33" />
@@ -1056,7 +1056,7 @@
 		</property>
 	</bean>
 
-	<bean id="new4" class="domain.New">
+	<bean id="new4" class="domain.Newscast">
 		<property name="title" value="title new 4" />
 		<property name="content" value="content new 4" />
 		<property name="creationDate" value="2018/04/04 14:44" />
@@ -1073,7 +1073,7 @@
 		</property>
 	</bean>
 
-	<bean id="new5" class="domain.New">
+	<bean id="new5" class="domain.Newscast">
 		<property name="title" value="title new 5" />
 		<property name="content" value="content new 5" />
 		<property name="creationDate" value="2018/04/05 15:55" />

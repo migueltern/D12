@@ -18,18 +18,18 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
-import repositories.NewRepository;
+import repositories.NewscastRepository;
 import domain.Comment;
 import domain.Editor;
-import domain.New;
+import domain.Newscast;
 
 @Service
 @Transactional
-public class NewService {
+public class NewscastService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private NewRepository		newRepository;
+	private NewscastRepository	newscastRepository;
 
 	// Supporting services ----------------------------------------------------
 
@@ -51,19 +51,19 @@ public class NewService {
 
 
 	// Constructors -----------------------------------------------------------
-	public NewService() {
+	public NewscastService() {
 		super();
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
 
-	public New create() {
-		New result;
+	public Newscast create() {
+		Newscast result;
 		Collection<Comment> comments;
 		Date creationDate;
 
 		comments = new ArrayList<Comment>();
-		result = new New();
+		result = new Newscast();
 		creationDate = new Date();
 
 		result.setComments(comments);
@@ -72,113 +72,113 @@ public class NewService {
 		return result;
 	}
 
-	public New save(final New new_) {
-		New result;
-		Assert.notNull(new_);
+	public Newscast save(final Newscast newscast) {
+		Newscast result;
+		Assert.notNull(newscast);
 		Date createdMoment;
 		Editor principal;
 
 		principal = this.editorService.findByPrincipal();
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
-		new_.setCreationDate(createdMoment);
+		newscast.setCreationDate(createdMoment);
 
-		result = this.newRepository.save(new_);
+		result = this.newscastRepository.save(newscast);
 
-		if (new_.getId() == 0)
+		if (newscast.getId() == 0)
 			principal.getNews().add(result);
 
 		return result;
 	}
 
-	public New saveA(final New new_) {
-		New result;
-		Assert.notNull(new_);
+	public Newscast saveA(final Newscast newscast) {
+		Newscast result;
+		Assert.notNull(newscast);
 		Date createdMoment;
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
-		new_.setCreationDate(createdMoment);
+		newscast.setCreationDate(createdMoment);
 
-		result = this.newRepository.save(new_);
+		result = this.newscastRepository.save(newscast);
 
 		return result;
 	}
 
-	public Collection<New> findAll() {
-		Collection<New> result;
+	public Collection<Newscast> findAll() {
+		Collection<Newscast> result;
 
-		result = this.newRepository.findAll();
+		result = this.newscastRepository.findAll();
 		return result;
 	}
 
-	public New findOne(final int newId) {
+	public Newscast findOne(final int newId) {
 		Assert.isTrue(newId != 0);
 
-		New result;
+		Newscast result;
 
-		result = this.newRepository.findOne(newId);
+		result = this.newscastRepository.findOne(newId);
 		return result;
 	}
 
-	public void delete(New new_) {
-		Assert.notNull(new_);
+	public void delete(Newscast newscast) {
+		Assert.notNull(newscast);
 		Editor editor;
 
 		editor = this.editorService.findByPrincipal();
 
-		if (new_.getComments().size() != 0)
-			for (final Comment c : new_.getComments())
+		if (newscast.getComments().size() != 0)
+			for (final Comment c : newscast.getComments())
 				if (c.getCommentTo() == null)
 					this.commentService.delete(c);
 
-		editor.getNews().remove(new_);
-		new_ = this.findOne(new_.getId());
-		this.newRepository.delete(new_);
+		editor.getNews().remove(newscast);
+		newscast = this.findOne(newscast.getId());
+		this.newscastRepository.delete(newscast);
 
 	}
-	public void deleteAdmin(final New new_) {
-		Assert.notNull(new_);
+	public void deleteAdmin(final Newscast newscast) {
+		Assert.notNull(newscast);
 		this.adminService.checkPrincipal();
 
 		Editor editor;
 
-		editor = this.editorService.findEditorByNew(new_.getId());
+		editor = this.editorService.findEditorByNew(newscast.getId());
 
-		editor.getNews().remove(new_);
+		editor.getNews().remove(newscast);
 
 		Collection<Comment> comments;
 
-		comments = this.newRepository.findCommentsByNew(new_.getId());
+		comments = this.newscastRepository.findCommentsByNewscast(newscast.getId());
 
 		for (final Comment c : comments)
 			this.commentService.delete(c);
-		this.newRepository.delete(new_);
+		this.newscastRepository.delete(newscast);
 	}
 	//Other business methods---------------------------------------------------
 
 	//	RECONSTRUCTOR
 
-	public New reconstruct(final New new_, final BindingResult bindingResult) {
-		New result;
-		New newBD;
-		if (new_.getId() == 0) {
+	public Newscast reconstruct(final Newscast newscast, final BindingResult bindingResult) {
+		Newscast result;
+		Newscast newBD;
+		if (newscast.getId() == 0) {
 
 			Collection<Comment> comments;
 			comments = new ArrayList<Comment>();
-			new_.setComments(comments);
-			result = new_;
+			newscast.setComments(comments);
+			result = newscast;
 		} else {
-			newBD = this.newRepository.findOne(new_.getId());
-			new_.setId(newBD.getId());
-			new_.setVersion(newBD.getVersion());
-			new_.setCreationDate(newBD.getCreationDate());
+			newBD = this.newscastRepository.findOne(newscast.getId());
+			newscast.setId(newBD.getId());
+			newscast.setVersion(newBD.getVersion());
+			newscast.setCreationDate(newBD.getCreationDate());
 
-			if (new_.getComments() == null)
-				new_.setComments(new ArrayList<Comment>());
+			if (newscast.getComments() == null)
+				newscast.setComments(new ArrayList<Comment>());
 			else
-				new_.setComments(newBD.getComments());
+				newscast.setComments(newBD.getComments());
 
-			result = new_;
+			result = newscast;
 		}
 		this.validator.validate(result, bindingResult);
 		return result;
@@ -187,36 +187,36 @@ public class NewService {
 	public Collection<Comment> findCommentsByNew(final int newId) {
 		Collection<Comment> result;
 
-		result = this.newRepository.findCommentsByNew(newId);
+		result = this.newscastRepository.findCommentsByNewscast(newId);
 
 		return result;
 	}
 
 	//Para que los no autenticados solo vieran las 5 últimas noticias siempre.
-	public Collection<New> findAllNewsInDescOrder() {
-		Collection<New> result;
-		final Page<New> resPage;
+	public Collection<Newscast> findAllNewsInDescOrder() {
+		Collection<Newscast> result;
+		final Page<Newscast> resPage;
 		final Pageable pageable;
 
 		pageable = new PageRequest(0, 5);
-		resPage = this.newRepository.findAllNewsInDescOrder(pageable);
+		resPage = this.newscastRepository.findAllNewscastsInDescOrder(pageable);
 		result = resPage.getContent();
 		return result;
 	}
 
 	//Para las palabrá tabú
-	public Collection<New> findNewsWithTabooWord(final String tabooWord) {
-		Collection<New> result;
+	public Collection<Newscast> findNewsWithTabooWord(final String tabooWord) {
+		Collection<Newscast> result;
 
-		result = this.newRepository.findNewsWithTabooWord(tabooWord);
+		result = this.newscastRepository.findNewscastsWithTabooWord(tabooWord);
 
 		return result;
 	}
 
 	//	//Para listar todas las noticias con palabras tabú
-	public Set<New> newWithTabooWord() {
+	public Set<Newscast> newWithTabooWord() {
 
-		Set<New> result;
+		Set<Newscast> result;
 		Collection<String> tabooWords;
 		Iterator<String> it;
 
@@ -230,10 +230,10 @@ public class NewService {
 
 	}
 
-	public New findNewByComment(final int commentId) {
-		New result;
+	public Newscast findNewByComment(final int commentId) {
+		Newscast result;
 
-		result = this.newRepository.findNewByComment(commentId);
+		result = this.newscastRepository.findNewscastByComment(commentId);
 
 		return result;
 	}

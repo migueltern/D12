@@ -12,42 +12,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.NewService;
+import services.NewscastService;
 import controllers.AbstractController;
 import domain.Comment;
-import domain.New;
+import domain.Newscast;
 
 @Controller
-@RequestMapping("/new_/admin")
-public class NewAdminController extends AbstractController {
+@RequestMapping("/newscast/admin")
+public class NewscastAdminController extends AbstractController {
 
 	// Services---------------------------------------------------------
 
 	@Autowired
-	private NewService	newService;
+	private NewscastService	newscastService;
 
 
 	//Constructor--------------------------------------------------------
 
-	public NewAdminController() {
+	public NewscastAdminController() {
 		super();
 	}
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView displayNew(@RequestParam final int newId) {
+	public ModelAndView displayNewscast(@RequestParam final int newscastId) {
 		final ModelAndView result;
-		New new_ = new New();
+		Newscast newscast = new Newscast();
 		Collection<Comment> comments;
 
-		new_ = this.newService.findOne(newId);
+		newscast = this.newscastService.findOne(newscastId);
 		comments = new ArrayList<>();
 
-		comments = this.newService.findCommentsByNew(newId);
+		comments = this.newscastService.findCommentsByNew(newscastId);
 
-		result = new ModelAndView("new/display");
-		result.addObject("new_", new_);
+		result = new ModelAndView("newscast/display");
+		result.addObject("newscast", newscast);
 		result.addObject("comments", comments);
-		result.addObject("requestURI", "new_/admin/display.do");
+		result.addObject("requestURI", "newscast/admin/display.do");
 
 		return result;
 	}
@@ -57,13 +57,13 @@ public class NewAdminController extends AbstractController {
 	public ModelAndView list(final String messageCode) {
 
 		ModelAndView result;
-		Collection<New> news;
+		Collection<Newscast> newscasts;
 
-		news = this.newService.newWithTabooWord();
+		newscasts = this.newscastService.newWithTabooWord();
 
-		result = new ModelAndView("new/list");
-		result.addObject("new_", news);
-		result.addObject("requestURI", "new_/admin/list.do");
+		result = new ModelAndView("newscast/list");
+		result.addObject("newscasts", newscasts);
+		result.addObject("requestURI", "newscast/admin/list.do");
 		result.addObject("message", messageCode);
 
 		return result;
@@ -72,14 +72,14 @@ public class NewAdminController extends AbstractController {
 
 	//Delete---------------------------------------------------------------------
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(final int newId) {
+	public ModelAndView delete(final int newscastId) {
 		ModelAndView result;
-		New new_;
+		Newscast newscast;
 
-		new_ = this.newService.findOne(newId);
-		Assert.notNull(new_);
+		newscast = this.newscastService.findOne(newscastId);
+		Assert.notNull(newscast);
 		try {
-			this.newService.deleteAdmin(new_);
+			this.newscastService.deleteAdmin(newscast);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
 			result = this.listWithMessage("new.commit.error");
@@ -92,11 +92,11 @@ public class NewAdminController extends AbstractController {
 
 	protected ModelAndView listWithMessage(final String message) {
 		final ModelAndView result;
-		Collection<New> news;
-		news = this.newService.findAll();
-		result = new ModelAndView("new/list");
-		result.addObject("news", news);
-		result.addObject("requestURI", "/new_/admin/list.do");
+		Collection<Newscast> newscasts;
+		newscasts = this.newscastService.findAll();
+		result = new ModelAndView("newscast/list");
+		result.addObject("newscasts", newscasts);
+		result.addObject("requestURI", "/newscast/admin/list.do");
 		result.addObject("message", message);
 		return result;
 

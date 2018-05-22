@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.NewService;
+import services.NewscastService;
 import controllers.AbstractController;
 import domain.Comment;
-import domain.New;
+import domain.Newscast;
 
 @Controller
-@RequestMapping(value = "/new_/recycler")
-public class NewRecyclerController extends AbstractController {
+@RequestMapping(value = "/newscast/recycler")
+public class NewscastRecyclerController extends AbstractController {
 
 	//Services--------------------------------------------
 
 	@Autowired
-	private NewService	newService;
+	private NewscastService	newscastService;
 
 
 	//Constructor--------------------------------------------------------
 
-	public NewRecyclerController() {
+	public NewscastRecyclerController() {
 		super();
 	}
 
@@ -37,13 +37,13 @@ public class NewRecyclerController extends AbstractController {
 	public ModelAndView list(final String messageCode) {
 
 		ModelAndView result;
-		Collection<New> news;
+		Collection<Newscast> news;
 
-		news = this.newService.findAll();
+		news = this.newscastService.findAll();
 
-		result = new ModelAndView("new/list");
-		result.addObject("new_", news);
-		result.addObject("requestURI", "new_/recycler/list.do");
+		result = new ModelAndView("newscast/list");
+		result.addObject("newscast", news);
+		result.addObject("requestURI", "newscast/recycler/list.do");
 		result.addObject("message", messageCode);
 
 		return result;
@@ -52,20 +52,20 @@ public class NewRecyclerController extends AbstractController {
 
 	//Display------------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int newId) {
+	public ModelAndView display(@RequestParam final int newscastId) {
 		final ModelAndView result;
-		New new_ = new New();
+		Newscast newscast = new Newscast();
 		Collection<Comment> comments;
 
-		new_ = this.newService.findOne(newId);
+		newscast = this.newscastService.findOne(newscastId);
 		comments = new ArrayList<>();
 
-		comments = this.newService.findCommentsByNew(newId);
+		comments = this.newscastService.findCommentsByNew(newscastId);
 
-		result = new ModelAndView("new/display");
-		result.addObject("new_", new_);
+		result = new ModelAndView("newscast/display");
+		result.addObject("newscast", newscast);
 		result.addObject("comments", comments);
-		result.addObject("requestURI", "new_/recycler/display.do");
+		result.addObject("requestURI", "newscast/recycler/display.do");
 
 		return result;
 	}

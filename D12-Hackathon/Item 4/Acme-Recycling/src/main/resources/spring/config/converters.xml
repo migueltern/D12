@@ -91,8 +91,8 @@
 		<bean class="converters.MaterialToStringConverter" /> 
 		<bean class="converters.StringToMaterialConverter" />
 		
-		<bean class="converters.NewToStringConverter" /> 
-		<bean class="converters.StringToNewConverter" />
+		<bean class="converters.NewscastToStringConverter" /> 
+		<bean class="converters.StringToNewscastConverter" />
 		
 		<bean class="converters.RequestToStringConverter" /> 
 		<bean class="converters.StringToRequestConverter" />

@@ -55,7 +55,7 @@
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
 		<security:intercept-url pattern="/welcome/legal.do" access="permitAll"/>
 		<security:intercept-url pattern="/welcome/aboutUs.do" access="permitAll"/>
-		<security:intercept-url pattern="/new_/list.do" access="permitAll"/>
+		<security:intercept-url pattern="/newscast/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/material/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/item/**" access="permitAll"/>
 		
@@ -91,12 +91,12 @@
 		<security:intercept-url pattern="/admin/dashboard/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/message/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/messageFolder/admin/**" access="hasRole('ADMIN')"/>
-		<security:intercept-url pattern="/new_/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/newscast/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/incidence/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/material/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/actor/admin/**" access="hasRole('ADMIN')"/>
 	<!-- 	EDITOR -->
-		<security:intercept-url pattern="/new_/editor/**" access="hasRole('EDITOR')"/>
+		<security:intercept-url pattern="/newscast/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/comment/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/messageFolder/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/message/editor/**" access="hasRole('EDITOR')"/>
@@ -104,7 +104,7 @@
 	
 	<!-- 	RECYCLER -->
 		<security:intercept-url pattern="/comment/recycler/**" access="hasRole('RECYCLER')"/>
-		<security:intercept-url pattern="/new_/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/newscast/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/course/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/message/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/messageFolder/recycler/**" access="hasRole('RECYCLER')"/>

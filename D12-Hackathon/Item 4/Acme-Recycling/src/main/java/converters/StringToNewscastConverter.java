@@ -7,21 +7,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import repositories.NewRepository;
-import domain.New;
+import repositories.NewscastRepository;
+import domain.Newscast;
 
 @Component
 @Transactional
-public class StringToNewConverter implements Converter<String, New> {
+public class StringToNewscastConverter implements Converter<String, Newscast> {
 
 	@Autowired
-	private NewRepository	newRepository;
+	private NewscastRepository	newRepository;
 
 
 	@Override
-	public New convert(final String text) {
+	public Newscast convert(final String text) {
 
-		New result;
+		Newscast result;
 		int id;
 
 		try {

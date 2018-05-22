@@ -534,6 +534,7 @@
 		</property>
 		<property name="requests">
 			<list>
+				<ref bean="request2" />
 				<ref bean="request3" />
 			</list>
 		</property>
@@ -736,8 +737,7 @@
 		</property>
 		<property name="courses">
 			<list>
-				<ref bean="course1" />
-				<ref bean="course2" />
+				
 			</list>
 		</property>
 	</bean>
@@ -1247,35 +1247,35 @@
 	<bean id="buy1" class="domain.Buy">
 		<property name="creditCard" ref="creditCard1" />
 		<property name="quantity" value="8.0" />
-		<property name="comment" value="comment1" />
+		<property name="comment" value="comment buy 1" />
 		<property name="material" ref="material1" />
 	</bean>
 
 	<bean id="buy2" class="domain.Buy">
 		<property name="creditCard" ref="creditCard2" />
 		<property name="quantity" value="2.0" />
-		<property name="comment" value="comment2" />
+		<property name="comment" value="comment buy 2" />
 		<property name="material" ref="material2" />
 	</bean>
 
 	<bean id="buy3" class="domain.Buy">
 		<property name="creditCard" ref="creditCard3" />
 		<property name="quantity" value="3.0" />
-		<property name="comment" value="comment3" />
+		<property name="comment" value="comment buy 3" />
 		<property name="material" ref="material3" />
 	</bean>
 
 	<bean id="buy4" class="domain.Buy">
 		<property name="creditCard" ref="creditCard4" />
 		<property name="quantity" value="4.0" />
-		<property name="comment" value="comment4" />
+		<property name="comment" value="comment buy 4" />
 		<property name="material" ref="material4" />
 	</bean>
 
 	<bean id="buy5" class="domain.Buy">
 		<property name="creditCard" ref="creditCard5" />
 		<property name="quantity" value="5.0" />
-		<property name="comment" value="comment5" />
+		<property name="comment" value="comment buy 5" />
 		<property name="material" ref="material5" />
 	</bean>
 
@@ -1283,46 +1283,46 @@
 	<!-- Incidences -->
 
 	<bean id="incidence1" class="domain.Incidence">
-		<property name="title" value="title 1 viagra" />
+		<property name="title" value="title incidence 1 viagra" />
 		<property name="reasonWhy" value="reason why 1" />
 		<property name="createdMoment" value="2018/01/01 11:20" />
-		<property name="comment" value="comment1" />
+		<property name="comment" value="comment incidence 1" />
 		<property name="resolved" value="false" />
 		<property name="recycler" ref="recycler1" />
 	</bean>
 
 	<bean id="incidence2" class="domain.Incidence">
-		<property name="title" value="title 2" />
+		<property name="title" value="title incidence 2" />
 		<property name="reasonWhy" value="reason why 2" />
 		<property name="createdMoment" value="2018/02/02 12:20" />
-		<property name="comment" value="comment2" />
+		<property name="comment" value="comment incidence 2" />
 		<property name="resolved" value="true" />
 		<property name="recycler" ref="recycler2" />
 	</bean>
 
 	<bean id="incidence3" class="domain.Incidence">
-		<property name="title" value="title 3" />
+		<property name="title" value="title incidence 3" />
 		<property name="reasonWhy" value="reason why 3" />
 		<property name="createdMoment" value="2018/03/03 13:30" />
-		<property name="comment" value="comment3" />
+		<property name="comment" value="comment incidence 3" />
 		<property name="resolved" value="true" />
 		<property name="recycler" ref="recycler3" />
 	</bean>
 
 	<bean id="incidence4" class="domain.Incidence">
-		<property name="title" value="title 4" />
+		<property name="title" value="title incidence 4" />
 		<property name="reasonWhy" value="reason why 4" />
 		<property name="createdMoment" value="2018/04/04 14:40" />
-		<property name="comment" value="comment4" />
+		<property name="comment" value="comment incidence 4" />
 		<property name="resolved" value="false" />
 		<property name="recycler" ref="recycler4" />
 	</bean>
 
 	<bean id="incidence5" class="domain.Incidence">
-		<property name="title" value="title 5" />
+		<property name="title" value="title incidence 5" />
 		<property name="reasonWhy" value="reason why 5" />
 		<property name="createdMoment" value="2018/05/05 15:50" />
-		<property name="comment" value="comment5" />
+		<property name="comment" value="comment incidence 5" />
 		<property name="resolved" value="false" />
 		<property name="recycler" ref="recycler5" />
 	</bean>
@@ -1330,9 +1330,9 @@
 
 	<!-- Items -->
 	<bean id="item1" class="domain.Item">
-		<property name="title" value="title 1" />
+		<property name="title" value="title item 1" />
 		<property name="publicationMoment" value="2018/01/12 12:12" />
-		<property name="description" value="description 1" />
+		<property name="description" value="description item 1" />
 		<property name="quantity" value="23.0" />
 		<property name="photo"
 			value="https://pimientosytomates.files.wordpress.com/2009/08/lavadora-vieja.jpg" />
@@ -1349,9 +1349,9 @@
 
 
 	<bean id="item2" class="domain.Item">
-		<property name="title" value="title 2" />
+		<property name="title" value="title item 2" />
 		<property name="publicationMoment" value="2018/02/12 12:12" />
-		<property name="description" value="description 2" />
+		<property name="description" value="description item 2" />
 		<property name="quantity" value="2.0" />
 		<property name="photo"
 			value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSWZaE9DvgcQGN3ekP2yPWphBpe78dohdbXxsLnkGy7ed1QeQ4QA" />
@@ -1367,9 +1367,9 @@
 	</bean>
 
 	<bean id="item3" class="domain.Item">
-		<property name="title" value="title 3" />
+		<property name="title" value="title item 3" />
 		<property name="publicationMoment" value="2018/03/12 12:12" />
-		<property name="description" value="description 3" />
+		<property name="description" value="description item 3" />
 		<property name="quantity" value="3.0" />
 		<property name="photo"
 			value="http://www.cafedelescritor.com/wp-content/uploads/libros-viejos.jpg" />
@@ -1385,9 +1385,9 @@
 	</bean>
 
 	<bean id="item4" class="domain.Item">
-		<property name="title" value="title 4" />
+		<property name="title" value="title item 4" />
 		<property name="publicationMoment" value="2018/04/12 14:12" />
-		<property name="description" value="description 4" />
+		<property name="description" value="description item 4" />
 		<property name="quantity" value="4.0" />
 		<property name="photo"
 			value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2KrmU5hxR4s8lRbGN-XIyBeoyrdYVQHW-PUni2vXNDdK7obBlTw" />
@@ -1403,9 +1403,9 @@
 	</bean>
 
 	<bean id="item5" class="domain.Item">
-		<property name="title" value="title 5" />
+		<property name="title" value="title item 5" />
 		<property name="publicationMoment" value="2018/05/12 15:12" />
-		<property name="description" value="description 5" />
+		<property name="description" value="description item 5" />
 		<property name="quantity" value="5.0" />
 		<property name="photo"
 			value="http://fotografias.lasexta.com/clipping/cmsimages01/2014/11/25/AE4222C6-A8BC-470C-BB56-73743D2FBD16/58.jpg" />
@@ -1419,11 +1419,11 @@
 		</property>
 		<property name="request" ref="request5" />
 	</bean>
-	
-		<bean id="item6" class="domain.Item">
-		<property name="title" value="title 6" />
+
+	<bean id="item6" class="domain.Item">
+		<property name="title" value="title item 6" />
 		<property name="publicationMoment" value="2018/05/12 15:12" />
-		<property name="description" value="description 6" />
+		<property name="description" value="description item 6" />
 		<property name="quantity" value="5.0" />
 		<property name="photo"
 			value="http://fotografias.lasexta.com/clipping/cmsimages01/2014/11/25/AE4222C6-A8BC-470C-BB56-73743D2FBD16/58.jpg" />
@@ -1436,6 +1436,23 @@
 		</property>
 	</bean>
 
+	<bean id="item7" class="domain.Item">
+		<property name="title" value="title item 7" />
+		<property name="publicationMoment" value="2018/01/16 12:12" />
+		<property name="description" value="description item 7" />
+		<property name="quantity" value="7.0" />
+		<property name="photo"
+			value="https://pimientosytomates.files.wordpress.com/2009/08/lavadora-vieja.jpg" />
+		<property name="labelProduct" ref="labelProduct1" />
+		<property name="recycler" ref="recycler1" />
+		<property name="value" value="16"></property>
+		<property name="opinions">
+			<list>
+				
+			</list>
+		</property>
+		<property name="request" ref="request2" />
+	</bean>
 
 
 	<!-- Label materials -->
@@ -1463,13 +1480,13 @@
 		<property name="name" value="Baterias" />
 		<property name="byDefault" value="true" />
 	</bean>
-	
-		
+
+
 	<bean id="labelMaterial6" class="domain.LabelMaterial">
 		<property name="name" value="Vidrio" />
 		<property name="byDefault" value="true" />
 	</bean>
-	
+
 
 	<!-- Label products -->
 	<bean id="labelProduct1" class="domain.LabelProduct">
@@ -1567,7 +1584,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="labelProduct11" class="domain.LabelProduct">
 		<property name="name" value="Cables" />
 		<property name="byDefault" value="false" />
@@ -1712,11 +1729,11 @@
 		</property>
 		<property name="lessons">
 			<list>
-			<ref bean="lesson1" />
-			<ref bean="lesson2" />
-			<ref bean="lesson3" />
-			<ref bean="lesson4" />
-			<ref bean="lesson5" />
+				<ref bean="lesson1" />
+				<ref bean="lesson2" />
+				<ref bean="lesson3" />
+				<ref bean="lesson4" />
+				<ref bean="lesson5" />
 			</list>
 		</property>
 	</bean>
@@ -1831,7 +1848,7 @@
 
 			</list>
 		</property>
-		
+
 		<property name="laws">
 			<list>
 				<ref bean="law1" />
@@ -1884,32 +1901,36 @@
 		<property name="name" value="viagra"></property>
 		<property name="default_word" value="true"></property>
 	</bean>
-	
+
 	<!-- laws -->
 	<bean id="law1" class="domain.Legislation">
 		<property name="title" value="title 1"></property>
 		<property name="body" value="body 1"></property>
-		<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
+		<property name="link"
+			value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 	<bean id="law2" class="domain.Legislation">
 		<property name="title" value="title 2"></property>
 		<property name="body" value="body 2"></property>
-		<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
+		<property name="link"
+			value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 
 	<bean id="law3" class="domain.Legislation">
 		<property name="title" value="title 3"></property>
 		<property name="body" value="body 3"></property>
-		<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
+		<property name="link"
+			value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 
 	<bean id="law4" class="domain.Legislation">
 		<property name="title" value="title 4"></property>
 		<property name="body" value="body 4"></property>
-	<property name="link" value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
+		<property name="link"
+			value="http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png"></property>
 	</bean>
 
 
@@ -2055,11 +2076,18 @@
 		<property name="carrier" ref="carrier1" />
 	</bean>
 
-	<!-- <bean id="request2" class="domain.Request"> <property name="code" value="DG180231BB"></property> 
-		<property name="title" value="title 2"></property> <property name="observation" 
-		value="observation 2"></property> <property name="status" value="FINISHED"></property> 
-		<property name="cleanPoints"> <list> </list> </property> <property name="assesment" 
-		ref="assesment2" /> <property name="carrier" ref="carrier1" /> </bean> -->
+	<bean id="request2" class="domain.Request">
+		<property name="code" value="DG180231BB"></property>
+		<property name="title" value="title 2"></property>
+		<property name="observation" value="observation 2"></property>
+		<property name="status" value="FINISHED"></property>
+		<property name="cleanPoints">
+			<list>
+			</list>
+		</property>
+		<property name="assesment" ref="assesment2" />
+		<property name="carrier" ref="carrier3" />
+	</bean>
 
 	<bean id="request3" class="domain.Request">
 		<property name="code" value="DG180331CC"></property>
@@ -2146,17 +2174,15 @@
 
 
 	<!-- Assesments -->
-<!-- 	<bean id="assesment1" class="domain.Assesment">
-		<property name="moment" value="2018/01/02" />
-		<property name="description" value="description 1"></property>
-		<property name="valuation" value="1.2"></property>
-	</bean> -->
+	<!-- <bean id="assesment1" class="domain.Assesment"> <property name="moment" 
+		value="2018/01/02" /> <property name="description" value="description 1"></property> 
+		<property name="valuation" value="1.2"></property> </bean> -->
 
-	<!-- <bean id="assesment2" class="domain.Assesment">
+	<bean id="assesment2" class="domain.Assesment">
 		<property name="moment" value="2018/02/02" />
 		<property name="description" value="description 2"></property>
 		<property name="valuation" value="2.2"></property>
-	</bean> -->
+	</bean>
 
 	<bean id="assesment3" class="domain.Assesment">
 		<property name="moment" value="2018/03/02" />
@@ -2164,17 +2190,12 @@
 		<property name="valuation" value="3.2"></property>
 	</bean>
 
-	<!-- <bean id="assesment4" class="domain.Assesment">
-		<property name="moment" value="2018/04/02" />
-		<property name="description" value="description 4"></property>
-		<property name="valuation" value="4.2"></property>
-	</bean>
-
-	<bean id="assesment5" class="domain.Assesment">
-		<property name="moment" value="2018/05/02" />
-		<property name="description" value="description 5"></property>
-		<property name="valuation" value="5.2"></property>
-	</bean> -->
+	<!-- <bean id="assesment4" class="domain.Assesment"> <property name="moment" 
+		value="2018/04/02" /> <property name="description" value="description 4"></property> 
+		<property name="valuation" value="4.2"></property> </bean> <bean id="assesment5" 
+		class="domain.Assesment"> <property name="moment" value="2018/05/02" /> <property 
+		name="description" value="description 5"></property> <property name="valuation" 
+		value="5.2"></property> </bean> -->
 
 	<!-- Lessons -->
 	<bean id="lesson1" class="domain.Lesson">

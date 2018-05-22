@@ -207,4 +207,12 @@ public class ManagerService {
 		return result;
 
 	}
+
+	public Manager findByRequestId(final int requestId) {
+		Manager result;
+
+		result = this.managerRepository.findByRequestId(requestId);
+
+		return result;
+	}
 }

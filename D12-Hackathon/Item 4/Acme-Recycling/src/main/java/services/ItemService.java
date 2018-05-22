@@ -52,16 +52,19 @@ public class ItemService {
 		Recycler recyclerPrincipal;
 		Collection<Opinion> opinions;
 		Date publicationMoment;
+		Integer value;
 
 		recyclerPrincipal = this.recyclerService.findByPrincipal();
 		opinions = new ArrayList<Opinion>();
 		publicationMoment = new Date(System.currentTimeMillis() - 1000);
+		value = 0;
 		//No copiar la siguiente linea en el reconstruct
 		result = new Item();
 
 		result.setOpinions(opinions);
 		result.setRecycler(recyclerPrincipal);
 		result.setPublicationMoment(publicationMoment);
+		result.setValue(value);
 
 		return result;
 
@@ -143,8 +146,10 @@ public class ItemService {
 		Item itemBD;
 		Recycler recyclerPrincipal;
 		Collection<Opinion> opinions;
+		Integer value;
 
 		opinions = new ArrayList<>();
+		value = 0;
 
 		if (item.getId() == 0) {
 
@@ -152,6 +157,7 @@ public class ItemService {
 			item.setPublicationMoment(new Date(System.currentTimeMillis() - 1000));
 			item.setRecycler(recyclerPrincipal);
 			item.setOpinions(opinions);
+			item.setValue(value);
 
 			result = item;
 		} else {

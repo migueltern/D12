@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
@@ -38,6 +39,9 @@ public class ItemRecyclerController extends AbstractController {
 
 	@Autowired
 	private RecyclerService		recyclerService;
+	
+	@Autowired
+	private RequestRecyclerController requestRecyclerController;
 
 
 	//	Constructors
@@ -63,6 +67,7 @@ public class ItemRecyclerController extends AbstractController {
 		result.addObject("showScore", true);
 		result.addObject("showDelete", false);
 		result.addObject("requestURI", "item/recycler/listb.do?d-16544-p=1");
+		result.addObject("RequestUriDisplay", "item/recycler/display.do");
 
 		return result;
 	}
@@ -84,9 +89,29 @@ public class ItemRecyclerController extends AbstractController {
 		result.addObject("showScore", false);
 		result.addObject("showDelete", true);
 		result.addObject("requestURI", "item/recycler/list.do?d-16544-p=1");
+		result.addObject("RequestUriDisplay", "item/recycler/display.do");
 
 		return result;
 	}
+	
+	//Display
+	
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView Display(@RequestParam int itemId) {
+		final ModelAndView result;
+		Item item;
+
+		item = this.itemService.findOne(itemId);
+
+		result = new ModelAndView("item/display");
+		result.addObject("item", item);
+		result.addObject("requestURI", "item/recycler/display.do");
+		result.addObject("RequestURIedit", "/request/recycler/display.do");
+
+		return result;
+	}
+	
+	
 
 	// Create-------------------------------------------------------------
 
@@ -179,6 +204,8 @@ public class ItemRecyclerController extends AbstractController {
 
 		result = new ModelAndView("item/list");
 		result.addObject("items", items);
+		result.addObject("showScore", false);
+		result.addObject("showDelete", true);
 		result.addObject("requestURI", "item/recycler/list.do");
 		result.addObject("message", message);
 		return result;

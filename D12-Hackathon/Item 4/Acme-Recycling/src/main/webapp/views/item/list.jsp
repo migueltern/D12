@@ -41,6 +41,19 @@
 <display:table name="items" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 	
+	<spring:message code="item.display" var="display"/>
+		
+		<display:column title="${display}" sortable="true">
+		
+		
+		<spring:url value="${RequestUriDisplay}" var="displayURL">
+			<spring:param name="itemId" value="${row.id}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="item.display" /></a>
+		
+		
+	</display:column>
+	
 	<!-- Attributes -->
 
 	<acme:column code="item.title" property="title" sortable ="true"/>
@@ -55,6 +68,17 @@
 	<acme:column code="item.value" property="value" sortable ="true"/>
 	
 	<acme:column code="item.labelProduct" property="labelProduct.name" sortable ="true"/>
+	
+	<spring:message code="item.photo" var="photoVar" />
+		<display:column title="${photoVar}" sortable="true">
+			<div
+				style="position: relative; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
+
+				<img src="${row.photo}" width="100" height="100">
+			</div>
+			
+			
+		</display:column>
 	
 	
 	<jstl:if test="${showDelete}">

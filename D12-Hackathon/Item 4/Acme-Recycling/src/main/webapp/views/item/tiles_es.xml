@@ -29,8 +29,8 @@
 	</definition>
 	
 	
-	<!-- <definition name="messageFolder/display" extends="master.page">	
-		<put-attribute name="title" value="Mostrar una carpeta de mensajes" />
-		<put-attribute name="body" value="/views/messageFolder/display.jsp" />
-	</definition> -->
+	<definition name="item/display" extends="master.page">	
+		<put-attribute name="title" value="Mostrar un item" />
+		<put-attribute name="body" value="/views/item/display.jsp" />
+	</definition>
 </tiles-definitions>

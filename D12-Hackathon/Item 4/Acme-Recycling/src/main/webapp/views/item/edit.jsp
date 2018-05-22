@@ -40,13 +40,10 @@
 	<B><acme:textbox code="item.quantity" path="quantity"/></B>
 	<br />
 	
-	<B><acme:textbox code="item.value" path="value"/></B>
-	<br />
-	
 	<B><acme:textbox code="item.photo" path="photo"/></B>
 	<br />
 	
-	<acme:select items="${labelsProduct}" itemLabel="name" code="item.labelProduct" path="labelProduct"/>
+	<B><acme:select items="${labelsProduct}" itemLabel="name" code="item.labelProduct" path="labelProduct"/></B>
 	<br />
 	
 	

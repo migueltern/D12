@@ -89,7 +89,7 @@ public class LabelMaterialManagerController extends AbstractController {
 
 		labelMaterial = this.labelMaterialService.reconstruct(labelMaterial, bindingResult);
 		if (bindingResult.hasErrors())
-			result = new ModelAndView("redirect:list.do?");
+			result = this.createEditModelAndView(labelMaterial);
 		else
 			try {
 				this.labelMaterialService.save(labelMaterial);
@@ -144,7 +144,6 @@ public class LabelMaterialManagerController extends AbstractController {
 
 	}
 
-	// Ancillary methods ------------------------------------------------------
 	protected ModelAndView createDeleteModelAndView(final LabelMaterial labelMaterial) {
 		ModelAndView result;
 		result = this.createEditModelAndView(labelMaterial, null);

@@ -74,14 +74,14 @@
 				<B><spring:message code="course.draftMode" /></B>	
 					
 				</div>
-				<img src="images/yes.png" width="60" height="60">
+				<img src="images/yes1.png" width="60" height="60">
 			</jstl:if>
 			<jstl:if test="${row.draftMode==false}">
 				<div style="vertical-align: middle; height=100;">
 				<B><spring:message code="course.draftMode" /></B>	
 					
 				</div>
-				<img src="images/no.png" width="100" height="100">
+				<img src="images/no1.png" width="100" height="100">
 			</jstl:if>
 		</display:column>
 

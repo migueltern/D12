@@ -72,7 +72,16 @@
 		</display:column>
 	</security:authorize>
 
-	
+	<security:authorize access="isAnonymous()">
+	<spring:message code="new.display" var="Display" />
+		<display:column title="${Display}" sortable="true">
+			
+				<spring:url value="newscast/display.do" var="editURL">
+					<spring:param name="newscastId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="new.display" /></a>
+		</display:column>
+	</security:authorize>
 	
 
 	<!-- ATRIBUTOS -->

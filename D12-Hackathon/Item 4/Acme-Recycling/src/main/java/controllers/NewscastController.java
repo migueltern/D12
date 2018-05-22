@@ -1,15 +1,18 @@
 
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.NewscastService;
+import domain.Comment;
 import domain.Newscast;
 
 @Controller
@@ -43,5 +46,25 @@ public class NewscastController extends AbstractController {
 
 		return result;
 
+	}
+
+	//Display------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int newscastId) {
+		final ModelAndView result;
+		Newscast newscast = new Newscast();
+		Collection<Comment> comments;
+
+		newscast = this.newscastService.findOne(newscastId);
+		comments = new ArrayList<>();
+
+		comments = this.newscastService.findCommentsByNew(newscastId);
+
+		result = new ModelAndView("newscast/display");
+		result.addObject("newscast", newscast);
+		result.addObject("comments", comments);
+		result.addObject("requestURI", "newscast/display.do");
+
+		return result;
 	}
 }

@@ -58,6 +58,7 @@
 		<security:intercept-url pattern="/newscast/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/material/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/item/**" access="permitAll"/>
+		<security:intercept-url pattern="/newscast/display.do**" access="permitAll"/>
 		
 		
 		<security:intercept-url pattern="/opinion/recycler/**" access="hasRole('RECYCLER')"/>	

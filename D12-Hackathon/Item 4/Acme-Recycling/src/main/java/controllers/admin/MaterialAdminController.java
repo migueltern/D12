@@ -89,7 +89,7 @@ public class MaterialAdminController extends AbstractController {
 	//Saving-----------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(final Material material, final BindingResult binding) {
+	public ModelAndView save(@Valid final Material material, final BindingResult binding) {
 
 		ModelAndView result;
 

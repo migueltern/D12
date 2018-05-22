@@ -284,7 +284,9 @@
 					<li><a
 						href="course/recycler/listCoursesAvailables.do?d-16544-p=1"><spring:message
 								code="master.page.course.listCoursesAvailables" /></a></li>
-
+					<li><a
+						href="course/recycler/listOfCoursesThatIAttend.do?d-16544-p=1"><spring:message
+								code="master.page.course.listOfCoursesThatIAttend" /></a></li>
 				</ul></li>
 				
 			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>

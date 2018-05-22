@@ -46,11 +46,15 @@
 	<display:column property="realisedMoment" title="${realisedHeader}"
 		sortable="true" format="${pattern}" />
 		
+	<spring:message code="course.minimumScore" var="minimumScoreHeader" />
+	<display:column property="minimumScore" title="${minimumScoreHeader}" sortable="true" />
+		
 	
 
 		
 	
 	 <!--  EDIT -->
+	<jstl:if test="${assist==true }">
 	<security:authorize access="hasRole('RECYCLER')">
 		<spring:message code="course.assist" var="assist" />
 		<display:column title="${assist}" sortable="true">
@@ -60,7 +64,8 @@
 				</spring:url>
 				<a href="${assistURL}"><spring:message code="course.assist" /></a>
 		</display:column>
-	</security:authorize> 
+	</security:authorize>
+	</jstl:if> 
 	
 	<security:authorize access="hasRole('ADMIN')">
 			<spring:message code="course.delete" var="deleteHeader" />

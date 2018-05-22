@@ -42,11 +42,28 @@ public class CourseRecyclerController extends AbstractController {
 		coursesAvailables = this.courseService.coursesAvailables(recyclerConnected);
 		result = new ModelAndView("course/list");
 		result.addObject("courses", coursesAvailables);
-		result.addObject("requestURI", "course/recycler/list.do");
+		result.addObject("requestURI", "course/recycler/listCoursesAvailables.do");
+		result.addObject("assist", true);
 
 		return result;
 	}
 
+	@RequestMapping(value = "/listOfCoursesThatIAttend", method = RequestMethod.GET)
+	public ModelAndView listOfCoursesThatIAttend() {
+		ModelAndView result;
+		final Collection<Course> coursesThatIAttend;
+		Recycler recyclerConnected;
+
+		recyclerConnected = this.recyclerService.findByPrincipal();
+
+		coursesThatIAttend = recyclerConnected.getCourses();
+		result = new ModelAndView("course/list");
+		result.addObject("courses", coursesThatIAttend);
+		result.addObject("requestURI", "course/recycler/listOfCoursesThatIAttend.do");
+		result.addObject("assist", false);
+
+		return result;
+	}
 	@RequestMapping(value = "/assist", method = RequestMethod.GET)
 	public ModelAndView publish(@RequestParam final int courseId) {
 		ModelAndView result;

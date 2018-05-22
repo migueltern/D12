@@ -44,12 +44,12 @@ public class RequestService {
 
 	@Autowired
 	private ActorService		actorService;
-	
+
 	@Autowired
-	private MessageService	messageService;
-	
+	private MessageService		messageService;
+
 	@Autowired
-	private RecyclerService recyclerService;
+	private RecyclerService		recyclerService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -117,8 +117,6 @@ public class RequestService {
 
 			//Añadimos el request al item`
 			item.setRequest(result);
-
-			this.itemService.save(item);
 
 			//Añadimos el request al manager cuando lo creamos
 			this.managerService.findByPrincipal().getRequests().add(result);
@@ -223,7 +221,7 @@ public class RequestService {
 		Message message;
 		Message messageSend;
 		Recycler recycler;
-		
+
 		message = null;
 		messageSend = null;
 		recycler = null;
@@ -239,16 +237,14 @@ public class RequestService {
 			result = requestForm;
 		} else {
 			//Solo entra aqui cuando se cambia el status
-			
-			
-			
+
 			requestBD = this.findOne(request.getId());
 			requestBD.setStatus(request.getStatus());
 
 			requestForm.setRequest(requestBD);
-			
+
 			recycler = this.recyclerService.findRecyclerByRequest(requestBD.getId());
-			
+
 			message = this.messageService.create();
 			message.setBody("Your status request has been changed to " + requestBD.getStatus());
 			message.setPriority("HIGH");
@@ -257,7 +253,7 @@ public class RequestService {
 			messageSend = this.messageService.send(message);
 
 			this.messageService.saveMessageInFolder(recycler, "Notification box", messageSend);
-			
+
 			result = requestForm;
 		}
 		this.validator.validate(result, binding);

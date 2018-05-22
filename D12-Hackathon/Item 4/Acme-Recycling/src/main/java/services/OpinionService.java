@@ -13,9 +13,9 @@ import org.springframework.validation.Validator;
 
 import repositories.OpinionRepository;
 import domain.Actor;
-import domain.Course;
-import domain.Item;
+import domain.Opinable;
 import domain.Opinion;
+import domain.Recycler;
 import forms.OpinionForm;
 
 @Service
@@ -30,10 +30,10 @@ public class OpinionService {
 	private ActorService		actorService;
 
 	@Autowired
-	private ItemService			itemService;
+	private RecyclerService		recyclerService;
 
 	@Autowired
-	private CourseService		courseService;
+	private OpinableService		opinableService;
 
 	@Autowired
 	private Validator			validator;
@@ -72,10 +72,12 @@ public class OpinionService {
 		return result;
 	}
 
-	public Opinion save(final Opinion opinion) {
+	public Opinion save(final OpinionForm opinionForm) {
 		final Opinion result;
+		Opinion opinion;
+		Recycler recycler;
 
-		Assert.notNull(opinion);
+		opinion = opinionForm.getOpinion();
 
 		if (opinion.getId() == 0) {
 			Date createdMoment;
@@ -83,9 +85,21 @@ public class OpinionService {
 			createdMoment = new Date(System.currentTimeMillis() - 1000);
 			opinion.setCreatedMoment(createdMoment);
 
+		} else {
+			recycler = this.recyclerService.findByPrincipal();
+			Assert.isTrue(recycler.getOpinions().contains(this.findOne(opinion.getId())), "Cannot commit this operation, because it's illegal");
+			Assert.notNull(opinion);
 		}
 
 		result = this.opinionRepository.save(opinion);
+
+		//Añadimos la opinion al Opinable si es la primera vez que creamos la opinion
+		if (opinion.getId() == 0) {
+			Opinable opinable;
+			opinable = this.opinableService.findOneManual(opinionForm.getOpinableId());
+			opinable.getOpinions().add(result);
+			this.opinableService.save(opinable);
+		}
 
 		return result;
 	}
@@ -118,29 +132,24 @@ public class OpinionService {
 
 	public OpinionForm reconstruct(final OpinionForm opinionForm, final BindingResult bindingResult) {
 		Opinion opinion;
+		Opinion opinionBD;
 
 		opinion = opinionForm.getOpinion();
 
-		//Si no se ha elegido ningun opinable, hacemos que salte en mensaje de notNull
-		if (opinionForm.getOpinableId() == 0)
-			opinionForm.setOpinableId(null);
-
-		//añadimos el opinable a nuestra clase opinion
-		if (opinionForm.isOpinableItem() && opinionForm.getOpinableId() != null) {
-			Item item;
-			item = this.itemService.findOne(opinionForm.getOpinableId());
-			opinion.setOpinable(item);
-		} else if (!opinionForm.isOpinableItem() && opinionForm.getOpinableId() != null) {
-			Course course;
-			course = this.courseService.findOne(opinionForm.getOpinableId());
-			opinion.setOpinable(course);
+		if (opinion.getId() == 0) {
+			//Si no se ha elegido ningun opinable, hacemos que salte en mensaje de notNull
+			if (opinionForm.getOpinableId() == 0)
+				opinionForm.setOpinableId(null);
+		} else {
+			opinionBD = this.opinionRepository.findOne(opinion.getId());
+			opinion.setId(opinionBD.getId());
+			opinion.setVersion(opinionBD.getVersion());
+			opinionForm.setOpinableId(this.opinableService.findByOpinionId(opinion.getId()).getId());
 		}
-
 		opinion.setActor(this.actorService.findPrincipal());
 		opinionForm.setOpinion(opinion);
 		this.validator.validate(opinionForm, bindingResult);
 
 		return opinionForm;
 	}
-
 }

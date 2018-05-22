@@ -25,7 +25,7 @@ public abstract class Opinable extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "opinable")
+	@OneToMany
 	public Collection<Opinion> getOpinions() {
 		return this.opinions;
 	}

@@ -81,20 +81,8 @@ public class Opinion extends DomainEntity {
 
 	// Relationships ---------------------------------------------------------------
 
-	private Opinable	opinable;
-	private Actor		actor;
+	private Actor	actor;
 
-
-	@NotNull
-	@Valid
-	@ManyToOne
-	public Opinable getOpinable() {
-		return this.opinable;
-	}
-
-	public void setOpinable(final Opinable opinable) {
-		this.opinable = opinable;
-	}
 
 	@NotNull
 	@Valid

@@ -130,6 +130,7 @@ public class OpinionRecyclerController extends AbstractController {
 		Opinion opinion;
 		Recycler recycler;
 		final OpinionForm opinionForm;
+		int opinableId;
 
 		recycler = this.recyclerService.findByPrincipal();
 		opinion = this.opinionService.findOne(opinionId);
@@ -139,12 +140,19 @@ public class OpinionRecyclerController extends AbstractController {
 		//Pasar el opinion a opinionform para la vista
 		opinionForm = new OpinionForm();
 		opinionForm.setOpinion(opinion);
-		if (this.opinableService.isItem(opinion))
+		opinableId = this.opinableService.findByOpinionId(opinion.getId()).getId();
+		if (this.opinableService.isItem(opinableId))
 			opinionForm.setOpinableItem(true);
 		else
 			opinionForm.setOpinableItem(false);
 
 		result = this.createEditModelAndView(opinionForm);
+		result.addObject("hiddenSelects", true);
+
+		if (this.opinableService.isItem(opinableId))
+			result.addObject("opinableItem", true);
+		else
+			result.addObject("opinableItem", false);
 
 		return result;
 	}
@@ -159,8 +167,8 @@ public class OpinionRecyclerController extends AbstractController {
 			result = this.createEditModelAndView(opinionForm);
 		else
 			try {
-				this.opinionService.save(opinionForm.getOpinion());
-				if (this.opinableService.isItem(opinionForm.getOpinion()))
+				this.opinionService.save(opinionForm);
+				if (this.opinableService.isItem(opinionForm.getOpinableId()))
 					result = new ModelAndView("redirect:myListOpinionItem.do");
 				else
 					result = new ModelAndView("redirect:myListOpinionCourse.do");
@@ -170,7 +178,6 @@ public class OpinionRecyclerController extends AbstractController {
 			}
 		return result;
 	}
-
 	protected ModelAndView createEditModelAndView(final OpinionForm opinionForm) {
 		Assert.notNull(opinionForm);
 		ModelAndView result;
@@ -191,6 +198,7 @@ public class OpinionRecyclerController extends AbstractController {
 			result.addObject("items", items);
 			result.addObject("selectItems", true);
 			result.addObject("showItem", true);
+			result.addObject("opinableItem", true);
 		} else {
 			Collection<Course> courses;
 
@@ -198,6 +206,7 @@ public class OpinionRecyclerController extends AbstractController {
 			result.addObject("courses", courses);
 			result.addObject("selectCourses", true);
 			result.addObject("showItem", false);
+			result.addObject("opinableFalse", true);
 		}
 
 		result.addObject("opinionForm", opinionForm);

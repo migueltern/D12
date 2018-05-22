@@ -13,7 +13,6 @@ import repositories.OpinableRepository;
 import domain.Course;
 import domain.Item;
 import domain.Opinable;
-import domain.Opinion;
 
 @Service
 @Transactional
@@ -73,14 +72,14 @@ public class OpinableService {
 		this.opinableRepository.flush();
 	}
 
-	public boolean isItem(final Opinion opinion) {
+	public boolean isItem(final int opinableId) {
 		boolean res;
 		Item item;
 
 		res = false;
 		//Lo hago en bloque try porque si peta o devuelve null en el casting significa que es un course
 		try {
-			item = (Item) opinion.getOpinable();
+			item = (Item) this.findOne(opinableId);
 			if (item != null)
 				res = true;
 			else
@@ -90,14 +89,30 @@ public class OpinableService {
 		}
 		return res;
 	}
-	public boolean isCourse(final Opinion opinion) {
+	public boolean isCourse(final int opinableId) {
 		boolean res;
 		Course course;
 
 		res = false;
-		course = (Course) opinion.getOpinable();
+		course = (Course) this.findOne(opinableId);
 		if (course != null)
 			res = true;
 		return res;
+	}
+
+	public Opinable findByOpinionId(final int opinionId) {
+		Opinable result;
+
+		result = this.opinableRepository.findByOpinionId(opinionId);
+
+		return result;
+	}
+
+	public Opinable findOneManual(final Integer opinableId) {
+		Opinable result;
+
+		result = this.opinableRepository.findOneManual(opinableId);
+
+		return result;
 	}
 }

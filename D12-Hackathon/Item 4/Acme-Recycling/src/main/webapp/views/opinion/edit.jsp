@@ -35,6 +35,8 @@
 	<br />
 	<acme:textbox code="opinion.caption" path="opinion.caption" />
 	<br />
+	
+	<jstl:if test="${!hiddenSelects}">
 
 	<jstl:if test="${showItem}">
 		<acme:select items="${products}" itemLabel="title"
@@ -50,8 +52,9 @@
 		<br />
 		<form:hidden path="opinableItem" value="0" />
 	</jstl:if>
-
-
+	
+	</jstl:if>
+	
 	<!-- BOTONES -->
 
 	<input type="submit" name="save"
@@ -66,5 +69,7 @@
 		<acme:cancel url="opinion/recycler/myListOpinionCourse.do?d-16544-p=1"
 			code="opinion.cancel" />
 	</jstl:if>
+	
+	
 </form:form>
 

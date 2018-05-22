@@ -1432,7 +1432,6 @@
 		<property name="value" value="5"></property>
 		<property name="opinions">
 			<list>
-				<ref bean="opinion5" />
 			</list>
 		</property>
 	</bean>
@@ -1950,7 +1949,6 @@
 		<property name="title" value="title 1" />
 		<property name="createdMoment" value="2018/03/04" />
 		<property name="comment" value="comment1" />
-		<property name="opinable" ref="item1" />
 		<property name="photo"
 			value="http://slideplayer.es/slide/4019554/13/images/21/RECICLAJE+DE+PAPEL+GR%C3%81FICO+RESUMEN.jpg" />
 		<property name="caption" value="caption 1" />
@@ -1962,7 +1960,6 @@
 		<property name="title" value="title 2" />
 		<property name="createdMoment" value="2018/02/04" />
 		<property name="comment" value="comment2" />
-		<property name="opinable" ref="item2" />
 		<property name="photo"
 			value="http://vadecuentos.com/wp-content/uploads/2015/05/taller-infantil-creatividad-reciclaje-jueguetes-carton1.png" />
 		<property name="caption" value="caption 2" />
@@ -1973,7 +1970,6 @@
 		<property name="title" value="title 3" />
 		<property name="createdMoment" value="2018/02/03" />
 		<property name="comment" value="comment3" />
-		<property name="opinable" ref="item3" />
 		<property name="photo"
 			value="http://fece.org/wp-content/uploads/2016/12/materiales-reciclables-raee.jpg" />
 		<property name="caption" value="caption 3" />
@@ -1984,7 +1980,6 @@
 		<property name="title" value="title 4" />
 		<property name="createdMoment" value="2018/04/04" />
 		<property name="comment" value="comment4" />
-		<property name="opinable" ref="item4" />
 		<property name="photo"
 			value="https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg" />
 		<property name="caption" value="caption 4" />
@@ -1996,7 +1991,6 @@
 		<property name="title" value="title 5" />
 		<property name="createdMoment" value="2018/05/03" />
 		<property name="comment" value="comment5" />
-		<property name="opinable" ref="item5" />
 		<property name="photo"
 			value="http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg" />
 		<property name="caption" value="caption 5" />

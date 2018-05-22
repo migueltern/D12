@@ -45,9 +45,22 @@
 	<!-- Attributes -->
 
 	<acme:column code="labelMaterial.name" property="name" sortable="true" />
+	
+	<spring:message code="labelMaterial.byDefault" var="byDefault" />
+		<display:column title="${byDefault}">
+			<jstl:if test="${row.byDefault==true}">
+				<div style="width: 30px; height: 30px; margin-left: 20px;">
 
-	<acme:column code="labelMaterial.byDefault" property="byDefault"
-		sortable="true" />
+					<img src="images/yes1.png" width="30" height="30">
+				</div>
+			</jstl:if>
+			<jstl:if test="${row.byDefault==false}">
+				<div style="width: 30px; height: 30px; margin-left: 20px;">
+
+					<img src="images/no1.png" width="30" height="30">
+				</div>
+			</jstl:if>
+		</display:column>
 
 
 	<!--  EDIT -->

@@ -30,8 +30,15 @@
 	<B><acme:textbox code="labelProduct.name" path="name"/></B>
 	<br />
 	
-	<B><acme:textbox code="labelProduct.byDefault" path="byDefault"/></B>
+	<spring:message code="labelProduct.byDefault" var="byDefaultHeader"/>
+	<B><jstl:out value="${byDefaultHeader }"></jstl:out></B>
+	<select name="byDefault" id="byDefault" style="width: 123px">
+		<option value="true" label="true" />
+
+		<option value="false" label="false">
+	</select>
 	<br />
+	<br>
 	
 <!-- BOTONES -->
 

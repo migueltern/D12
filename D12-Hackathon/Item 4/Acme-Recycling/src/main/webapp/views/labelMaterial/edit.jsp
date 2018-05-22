@@ -16,7 +16,8 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
@@ -24,19 +25,25 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-<!-- ATRIBUTOS -->
-	<B><acme:textbox code="labelMaterial.name" path="name"/></B>
+
+	<!-- ATRIBUTOS -->
+	<B><acme:textbox code="labelMaterial.name" path="name" /></B>
 	<br />
 	
-	<B><acme:textbox code="labelMaterial.byDefault" path="byDefault"/></B>
+	<spring:message code="labelMaterial.byDefault" var="byDefaultHeader"/>
+	<B><jstl:out value="${byDefaultHeader }"></jstl:out></B>
+	<select name="byDefault" id="byDefault" style="width: 123px">
+		<option value="true" label="true" />
+
+		<option value="false" label="false">
+	</select>
 	<br />
-	
-<!-- BOTONES -->
+	<br>
+	<!-- BOTONES -->
 
-	<input type="submit" name="save" value="<spring:message code="labelMaterial.save" />" />&nbsp; 
+	<input type="submit" name="save"
+		value="<spring:message code="labelMaterial.save" />" />&nbsp; 
 
-	<acme:cancel
-		url="labelMaterial/manager/list.do?d-16544-p=1"
+	<acme:cancel url="labelMaterial/manager/list.do?d-16544-p=1"
 		code="labelMaterial.cancel" />
 </form:form>

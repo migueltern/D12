@@ -1,6 +1,7 @@
 
 package services;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.GregorianCalendar;
@@ -70,7 +71,7 @@ public class BuyService {
 		buyer = this.buyerService.findByPrincipal();
 		Assert.isTrue(this.checkCreditCard(buy.getCreditCard()), "Invalid credit card");
 
-		Assert.isTrue(!(buy.getMaterial().getQuantity() <= buy.getQuantity()), "Invalid ammount");
+		Assert.isTrue(!(buy.getMaterial().getQuantity() < buy.getQuantity()), "Invalid ammount");
 
 		result = this.buyRepository.save(buy);
 
@@ -80,8 +81,11 @@ public class BuyService {
 		Material material;
 
 		material = result.getMaterial();
+		final DecimalFormat df = new DecimalFormat("#.00");
+		String cantidadnew;
+		cantidadnew = df.format(result.getMaterial().getQuantity() - result.getQuantity());
 
-		material.setQuantity(result.getMaterial().getQuantity() - result.getQuantity());
+		material.setQuantity(Double.parseDouble(cantidadnew));
 
 		this.materialService.save(material);
 		if (buy.getId() == 0)

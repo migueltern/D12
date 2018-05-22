@@ -29,7 +29,6 @@ public class CommentService {
 
 	@Autowired
 	private RecyclerService		recyclerService;
-
 	@Autowired
 	private NewService			newService;
 	//Importar la que pertenece a Spring
@@ -133,12 +132,10 @@ public class CommentService {
 		recycler = this.recyclerService.findRecyclerByComment(comment.getId());
 		new_.getComments().remove(comment);
 		recycler.getComments().remove(comment);
-		this.commentRepository.delete(comment);
-		try {
-			this.commentRepository.flush();
-		} catch (final Throwable oops) {
-			System.out.println(oops);
-		}
+
+		Comment commentBd;
+		commentBd = this.commentRepository.findOne(comment.getId());
+		this.commentRepository.delete(commentBd);
 	}
 	//Other business methods---------------------------------------------------
 

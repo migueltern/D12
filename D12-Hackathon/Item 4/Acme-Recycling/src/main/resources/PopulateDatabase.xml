@@ -1459,32 +1459,61 @@
 	<bean id="labelMaterial1" class="domain.LabelMaterial">
 		<property name="name" value="Cobre" />
 		<property name="byDefault" value="false" />
+		<property name="materials">
+			<list>
+			<ref bean="material1"/>
+			<ref bean="material2"/>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelMaterial2" class="domain.LabelMaterial">
 		<property name="name" value="Aluminio" />
 		<property name="byDefault" value="false" />
+		<property name="materials">
+			<list>
+			<ref bean="material4"/>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelMaterial3" class="domain.LabelMaterial">
 		<property name="name" value="Bronce" />
 		<property name="byDefault" value="false" />
+		<property name="materials">
+			<list>
+			<ref bean="material3"/>
+			<ref bean="material5"/>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelMaterial4" class="domain.LabelMaterial">
 		<property name="name" value="Aceite" />
 		<property name="byDefault" value="false" />
+		<property name="materials">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="labelMaterial5" class="domain.LabelMaterial">
 		<property name="name" value="Baterias" />
 		<property name="byDefault" value="true" />
+		<property name="materials">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 
 	<bean id="labelMaterial6" class="domain.LabelMaterial">
 		<property name="name" value="Vidrio" />
 		<property name="byDefault" value="true" />
+		<property name="materials">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 

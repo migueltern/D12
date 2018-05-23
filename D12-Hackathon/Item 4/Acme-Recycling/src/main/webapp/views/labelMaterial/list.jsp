@@ -30,11 +30,13 @@
 
 		<spring:message code="labelMaterial.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
-			<jstl:if test="${row.byDefault==false }">
-				<spring:url value="labelMaterial/manager/edit.do" var="editURL">
-					<spring:param name="labelMaterialId" value="${row.id}" />
-				</spring:url>
-				<a href="${editURL}"><spring:message code="labelMaterial.edit" /></a>
+			<jstl:if test="${row.materials.size()==0 }">
+				<jstl:if test="${row.byDefault==false }">
+					<spring:url value="labelMaterial/manager/edit.do" var="editURL">
+						<spring:param name="labelMaterialId" value="${row.id}" />
+					</spring:url>
+					<a href="${editURL}"><spring:message code="labelMaterial.edit" /></a>
+				</jstl:if>
 			</jstl:if>
 		</display:column>
 
@@ -45,36 +47,38 @@
 	<!-- Attributes -->
 
 	<acme:column code="labelMaterial.name" property="name" sortable="true" />
-	
+
 	<spring:message code="labelMaterial.byDefault" var="byDefault" />
-		<display:column title="${byDefault}">
-			<jstl:if test="${row.byDefault==true}">
-				<div style="width: 30px; height: 30px; margin-left: 20px;">
+	<display:column title="${byDefault}">
+		<jstl:if test="${row.byDefault==true}">
+			<div style="width: 30px; height: 30px; margin-left: 20px;">
 
-					<img src="images/yes1.png" width="30" height="30">
-				</div>
-			</jstl:if>
-			<jstl:if test="${row.byDefault==false}">
-				<div style="width: 30px; height: 30px; margin-left: 20px;">
+				<img src="images/yes1.png" width="30" height="30">
+			</div>
+		</jstl:if>
+		<jstl:if test="${row.byDefault==false}">
+			<div style="width: 30px; height: 30px; margin-left: 20px;">
 
-					<img src="images/no1.png" width="30" height="30">
-				</div>
-			</jstl:if>
-		</display:column>
+				<img src="images/no1.png" width="30" height="30">
+			</div>
+		</jstl:if>
+	</display:column>
 
 
-	<!--  EDIT -->
+	<!--  DELETE -->
 	<security:authorize access="hasRole('MANAGER')">
 
 		<spring:message code="labelMaterial.delete" var="delete" />
 		<display:column title="${delete}" sortable="true">
-			<jstl:if test="${row.byDefault==false }">
+			<jstl:if test="${row.materials.size()==0 }">
+				<jstl:if test="${row.byDefault==false }">
 
-				<spring:url value="labelMaterial/manager/delete.do" var="deleteURL">
-					<spring:param name="labelMaterialId" value="${row.id}" />
-				</spring:url>
-				<a href="${deleteURL}"><spring:message
-						code="labelMaterial.delete" /></a>
+					<spring:url value="labelMaterial/manager/delete.do" var="deleteURL">
+						<spring:param name="labelMaterialId" value="${row.id}" />
+					</spring:url>
+					<a href="${deleteURL}"><spring:message
+							code="labelMaterial.delete" /></a>
+				</jstl:if>
 			</jstl:if>
 		</display:column>
 

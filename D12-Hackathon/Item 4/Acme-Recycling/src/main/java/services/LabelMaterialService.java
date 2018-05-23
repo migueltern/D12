@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,7 @@ import org.springframework.validation.Validator;
 import repositories.LabelMaterialRepository;
 import domain.LabelMaterial;
 import domain.Manager;
+import domain.Material;
 
 @Service
 @Transactional
@@ -63,22 +65,28 @@ public class LabelMaterialService {
 
 	public LabelMaterial create() {
 		LabelMaterial result;
+		Collection<Material> materials;
+		materials = new ArrayList<Material>();
 
 		result = new LabelMaterial();
 		result.setByDefault(false);
+		result.setMaterials(materials);
+
 		return result;
 	}
 
 	public LabelMaterial save(final LabelMaterial labelMaterial) {
 		final Collection<LabelMaterial> labelMaterialsWithMaterial;
 		labelMaterialsWithMaterial = this.labelMaterialRepository.labelMaterialsOfAllMaterials();
+		LabelMaterial labelMaterialBD;
 
 		Assert.notNull(labelMaterial);
 		Assert.notNull(this.managerService.findByPrincipal());
 		LabelMaterial result;
 		if (labelMaterial.getId() != 0) {
-			Assert.isTrue(labelMaterial.getByDefault() == false);
-			Assert.isTrue(!labelMaterialsWithMaterial.contains(labelMaterial), "This label is asociated with one material or more");
+			labelMaterialBD = this.labelMaterialRepository.findOne(labelMaterial.getId());
+			Assert.isTrue(labelMaterialBD.getByDefault() == false);
+			Assert.isTrue(!labelMaterialsWithMaterial.contains(labelMaterialBD), "This label is asociated with one material or more");
 		}
 		result = this.labelMaterialRepository.save(labelMaterial);
 
@@ -122,8 +130,6 @@ public class LabelMaterialService {
 			labelMaterialBD = this.labelMaterialRepository.findOne(labelMaterial.getId());
 			labelMaterial.setId(labelMaterialBD.getId());
 			labelMaterial.setVersion(labelMaterialBD.getVersion());
-			labelMaterial.setName(labelMaterialBD.getName());
-			labelMaterial.setByDefault(labelMaterialBD.getByDefault());
 
 			result = labelMaterial;
 		}

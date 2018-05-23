@@ -536,6 +536,13 @@
 					<li><a href="welcome/aboutUs.do"><spring:message
 								code="master.page.aboutUs" /></a></li>
 				</ul></li>
+			<li><a class="fNiv"><spring:message
+						code="master.page.administrator.legislation" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="legislation/list.do"><spring:message
+								code="master.page.administrator.legislation" /></a></li>
+				</ul></li>
 		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">

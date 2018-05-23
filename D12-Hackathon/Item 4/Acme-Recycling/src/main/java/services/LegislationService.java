@@ -66,7 +66,6 @@ public class LegislationService {
 	}
 
 	public Collection<Legislation> findAll() {
-		this.adminService.checkPrincipal();
 		Collection<Legislation> result;
 
 		result = this.legislationRepository.findAll();

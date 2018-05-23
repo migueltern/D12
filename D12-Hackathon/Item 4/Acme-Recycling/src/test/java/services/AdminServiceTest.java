@@ -129,7 +129,6 @@ public class AdminServiceTest extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 		super.unauthenticate();
-
 	}
 
 }

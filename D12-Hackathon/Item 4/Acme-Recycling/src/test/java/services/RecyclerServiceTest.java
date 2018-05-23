@@ -3,6 +3,7 @@ package services;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -127,6 +128,68 @@ public class RecyclerServiceTest extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 
+	}
+
+	//Test caso de uso extra: Edit personal data of recycler
+	@Test
+	public void driverEditrecycler() {
+
+		final Object testingData[][] = {
+			{
+				//Edito mi nombre
+				"recycler1", "recycler1 name edited", "surname recycler 1", "Adress recycler 1", "+34655555555", "recycler1@acmerecycling.com", "SEVILLA", null
+			}, {
+				//Edito mis apellidos
+				"recycler1", "recycler 1", "surname recycler 1 edited", "Adress user 1", "+34655555555", "recycler1@acmerecycling.com", "SEVILLA", null
+			}, {
+				//Edito mi dirección
+				"recycler1", "recycler 1", "surname recycler 1", "Adress recycler 1 edited", "+34655555555", "recycler1@acmerecycling.com", "SEVILLA", null
+			}, {
+				//Edito mi email
+				"recycler1", "recycler 1", "surname recycler 1", "Adress recycler 1", "+34655555555", "carrieEDITEDr1@acmerecycling.com", "SEVILLA", null
+			}, {
+				//Edito mi nombre por uno en blanco
+				"recycler1", "", "surname recycler 1", "Adress recycler 1", "+34655555555", "recycler1@acmerecycling.com", "SEVILLA", ConstraintViolationException.class
+			}, {
+				//Edito mis apellidos por uno en blanco
+				"recycler1", "recycler 1", "", "Adress recycler 1", "+34655555555", "recycler1@acmerecycling.com", "SEVILLA", ConstraintViolationException.class
+			}, {
+				//Edito mi email por uno que no cumple el formato
+				"recycler1", "recycler 1", "surname recycler 1", "Adress recycler 1", "+34655555555", "recycler1", "SEVILLA", ConstraintViolationException.class
+			}, {
+				//Edito mi email por uno en blanco
+				"recycler1", "", "surname recycler 1", "Adress recycler 1", "+34655555555", "", "SEVILLA", ConstraintViolationException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditrecycler(super.getEntityId((String) testingData[i][0]), (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (String) testingData[i][6],
+				(Class<?>) testingData[i][7]);
+	}
+	private void templateEditrecycler(final int userNameId, final String name, final String surname, final String Adress, final String phone, final String email, final String province, final Class<?> expected) {
+		Class<?> caught;
+		Recycler recycler;
+		recycler = this.recyclerService.findOne(userNameId);
+
+		caught = null;
+		try {
+			super.authenticate(recycler.getUserAccount().getUsername());
+			recycler.setName(name);
+			recycler.setSurname(surname);
+			recycler.setAddress(Adress);
+			recycler.setPhone(phone);
+			recycler.setEmail(email);
+			recycler.setProvince(province);
+			recycler = this.recyclerService.save(recycler);
+			this.unauthenticate();
+			this.recyclerService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+
+		}
+
+		this.checkExceptions(expected, caught);
 	}
 
 }

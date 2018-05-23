@@ -96,7 +96,7 @@ public class LegislationAdminController extends AbstractController {
 				if (oops.getMessage().equals("palabra tabu en el titulo"))
 					result = this.createEditModelAndView(legislation, "legislation.error.title");
 				else if (oops.getMessage().equals("palabra tabu en el cuerpo"))
-					result = this.createEditModelAndView(legislation, "legislation.error.body");
+					result = this.createEditModelAndView(legislation, "legislation.error.title");
 
 				else
 

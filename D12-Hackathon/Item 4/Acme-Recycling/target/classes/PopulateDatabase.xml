@@ -1622,6 +1622,15 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="labelProduct12" class="domain.LabelProduct">
+		<property name="name" value="Tonner" />
+		<property name="byDefault" value="false" />
+		<property name="items">
+			<list>
+			</list>
+		</property>
+	</bean>
 
 
 

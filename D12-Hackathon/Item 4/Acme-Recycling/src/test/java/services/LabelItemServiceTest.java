@@ -121,10 +121,10 @@ public class LabelItemServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			{
 
-				"manager1", 11, null
+				"manager1", 12, null
 			}, {
 
-				"admin", 12, IllegalArgumentException.class
+				"manager1", 13, IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
@@ -148,6 +148,46 @@ public class LabelItemServiceTest extends AbstractTest {
 			caught = oops.getClass();
 		}
 		this.checkExceptions(expected, caught);
+	}
+
+	@Test
+	public void driverEdit() {
+		final Object testingData[][] = {
+			{
+				//Se edita un product correctamente
+				"manager1", "labelProduct11", "Label edited positive", null
+			}, {
+				//Se edita un product correctamente
+				"manager1", "labelProduct3", "Label edited negative", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEdit((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (Class<?>) testingData[i][3]);
+	}
+
+	private void templateEdit(final String username, final int labelProductId, final String name, final Class<?> expected) {
+		Class<?> caught;
+		LabelProduct labelProduct;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+			labelProduct = this.labelProductService.findOne(labelProductId);
+			labelProduct.setName(name);
+
+			this.labelProductService.save(labelProduct);
+
+			this.entityManager.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
 	}
 
 }

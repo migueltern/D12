@@ -1831,8 +1831,8 @@
 
 	<bean id="configurationSystem" class="domain.ConfigurationSystem">
 		<property name="name" value="Acme-Recycling"></property>
-		<property name="englishWelcomeMessage" value="Welcome to Acme-Recycling"></property>
-		<property name="spanishWelcomeMessage" value="Bienvenido a Acme-Recycling"></property>
+		<property name="englishWelcomeMessage" value="There are people who make the world work better, let's make it work by reducing pollution and recycling."></property>
+		<property name="spanishWelcomeMessage" value="Hay gente que hace que el mundo funcione mejor, hagamos que funcione reduciendo la contaminación y reciclando."></property>
 		<property name="banner"
 			value="http://www.masciudadania.es/wp-content/uploads/2016/04/z-Banner.jpg"></property>
 

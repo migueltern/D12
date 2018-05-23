@@ -400,7 +400,8 @@
 		<property name="province" value="MADRID" />
 		<property name="opinions">
 			<list>
-
+				<ref bean="opinion6" />
+				<ref bean="opinion7" />
 			</list>
 		</property>
 		<property name="news">
@@ -426,6 +427,7 @@
 		<property name="news">
 			<list>
 				<ref bean="new3" />
+				<ref bean="new6" />
 			</list>
 		</property>
 	</bean>
@@ -737,7 +739,7 @@
 		</property>
 		<property name="courses">
 			<list>
-				<ref bean="course5"/>
+				<ref bean="course5" />
 			</list>
 		</property>
 	</bean>
@@ -789,7 +791,7 @@
 		</property>
 		<property name="items">
 			<list>
-
+				<ref bean="item6"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -820,6 +822,7 @@
 		</property>
 		<property name="items">
 			<list>
+			<ref bean="item7"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -843,7 +846,7 @@
 		<property name="province" value="SEVILLA" />
 		<property name="opinions">
 			<list>
-				<ref bean="opinion4" />
+
 			</list>
 		</property>
 		<property name="items">
@@ -1091,6 +1094,24 @@
 		</property>
 	</bean>
 
+	<bean id="new6" class="domain.Newscast">
+		<property name="title" value="title new 6" />
+		<property name="content" value="content new 6" />
+		<property name="creationDate" value="2018/04/07 17:55" />
+		<property name="pictures">
+			<list>
+				<value>http://www.jafcia.cl/wp-content/uploads/2016/11/noticia-2.jpg
+				</value>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+
+
+			</list>
+		</property>
+	</bean>
+
 	<!-- finder -->
 	<bean id="finder1" class="domain.Finder">
 		<property name="keyWord" value="sex" />
@@ -1186,6 +1207,18 @@
 		<property name="name" value="Ubicacion 5" />
 	</bean>
 
+	<bean id="gps6" class="domain.GPS">
+		<property name="longitude" value="5.08" />
+		<property name="latitude" value="34.65" />
+		<property name="name" value="Ubicacion 6" />
+	</bean>
+
+	<bean id="gps7" class="domain.GPS">
+		<property name="longitude" value="12.08" />
+		<property name="latitude" value="20.65" />
+		<property name="name" value="Ubicacion 7" />
+	</bean>
+
 	<!-- Credits Cards -->
 	<bean id="creditCard1" class="domain.CreditCard">
 		<property name="holderName" value="holder name 1" />
@@ -1278,6 +1311,35 @@
 		<property name="material" ref="material5" />
 	</bean>
 
+	<bean id="buy6" class="domain.Buy">
+		<property name="creditCard" ref="creditCard1" />
+		<property name="quantity" value="1.0" />
+		<property name="comment" value="comment buy 6" />
+		<property name="material" ref="material1" />
+	</bean>
+
+	<bean id="buy7" class="domain.Buy">
+		<property name="creditCard" ref="creditCard2" />
+		<property name="quantity" value="2.0" />
+		<property name="comment" value="comment buy 7" />
+		<property name="material" ref="material1" />
+	</bean>
+
+	<bean id="buy8" class="domain.Buy">
+		<property name="creditCard" ref="creditCard4" />
+		<property name="quantity" value="2.0" />
+		<property name="comment" value="comment buy 8" />
+		<property name="material" ref="material2" />
+	</bean>
+	
+	<bean id="buy9" class="domain.Buy">
+		<property name="creditCard" ref="creditCard6" />
+		<property name="quantity" value="9.0" />
+		<property name="comment" value="comment buy 9" />
+		<property name="material" ref="material6" />
+	</bean>
+
+
 
 	<!-- Incidences -->
 
@@ -1323,6 +1385,25 @@
 		<property name="createdMoment" value="2018/05/05 15:50" />
 		<property name="comment" value="comment incidence 5" />
 		<property name="resolved" value="false" />
+		<property name="recycler" ref="recycler5" />
+	</bean>
+	
+	
+	<bean id="incidence6" class="domain.Incidence">
+		<property name="title" value="title incidence 6 sex" />
+		<property name="reasonWhy" value="reason why 6" />
+		<property name="createdMoment" value="2018/05/01 19:20" />
+		<property name="comment" value="comment incidence 6" />
+		<property name="resolved" value="true" />
+		<property name="recycler" ref="recycler4" />
+	</bean>
+	
+	<bean id="incidence7" class="domain.Incidence">
+		<property name="title" value="title incidence 7 sexo" />
+		<property name="reasonWhy" value="reason why 7" />
+		<property name="createdMoment" value="2018/02/22 21:20" />
+		<property name="comment" value="comment incidence 7" />
+		<property name="resolved" value="true" />
 		<property name="recycler" ref="recycler5" />
 	</bean>
 
@@ -1417,6 +1498,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="request" ref="request6" />
 	</bean>
 
 	<bean id="item7" class="domain.Item">
@@ -1431,7 +1513,7 @@
 		<property name="value" value="16"></property>
 		<property name="opinions">
 			<list>
-				
+
 			</list>
 		</property>
 		<property name="request" ref="request2" />
@@ -1444,8 +1526,8 @@
 		<property name="byDefault" value="false" />
 		<property name="materials">
 			<list>
-			<ref bean="material1"/>
-			<ref bean="material2"/>
+				<ref bean="material1" />
+				<ref bean="material2" />
 			</list>
 		</property>
 	</bean>
@@ -1455,7 +1537,7 @@
 		<property name="byDefault" value="false" />
 		<property name="materials">
 			<list>
-			<ref bean="material4"/>
+				<ref bean="material4" />
 			</list>
 		</property>
 	</bean>
@@ -1465,8 +1547,8 @@
 		<property name="byDefault" value="false" />
 		<property name="materials">
 			<list>
-			<ref bean="material3"/>
-			<ref bean="material5"/>
+				<ref bean="material3" />
+				<ref bean="material5" />
 			</list>
 		</property>
 	</bean>
@@ -1604,7 +1686,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="labelProduct12" class="domain.LabelProduct">
 		<property name="name" value="Tonner" />
 		<property name="byDefault" value="false" />
@@ -1845,14 +1927,45 @@
 			</list>
 		</property>
 	</bean>
+	
+	
+	<bean id="course6" class="domain.Course">
+		<property name="title" value="title course 6" />
+		<property name="description" value="description course 6" />
+		<property name="location" ref="gps5" />
+		<property name="realisedMoment" value="2018/11/01" />
+		<property name="picture"
+			value="http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png" />
+		<property name="draftMode" value="false" />
+		<property name="minimumScore" value="2" />
+
+		<property name="materials">
+			<list>
+				<ref bean="material6" />
+			</list>
+		</property>
+		<property name="opinions">
+			<list>
+
+			</list>
+		</property>
+		<property name="lessons">
+			<list>
+				<ref bean="lesson1" />
+				<ref bean="lesson6" />
+			</list>
+		</property>
+	</bean>
 
 
 	<!-- Configuration System -->
 
 	<bean id="configurationSystem" class="domain.ConfigurationSystem">
 		<property name="name" value="Acme-Recycling"></property>
-		<property name="englishWelcomeMessage" value="There are people who make the world work better, let's make it work by reducing pollution and recycling."></property>
-		<property name="spanishWelcomeMessage" value="Hay gente que hace que el mundo funcione mejor, hagamos que funcione reduciendo la contaminación y reciclando."></property>
+		<property name="englishWelcomeMessage"
+			value="There are people who make the world work better, let's make it work by reducing pollution and recycling."></property>
+		<property name="spanishWelcomeMessage"
+			value="Hay gente que hace que el mundo funcione mejor, hagamos que funcione reduciendo la contaminación y reciclando."></property>
 		<property name="banner"
 			value="http://www.masciudadania.es/wp-content/uploads/2016/04/z-Banner.jpg"></property>
 
@@ -1967,6 +2080,8 @@
 		<property name="buys">
 			<list>
 				<ref bean="buy1" />
+				<ref bean="buy6" />
+				<ref bean="buy7" />
 			</list>
 		</property>
 	</bean>
@@ -1981,6 +2096,7 @@
 		<property name="buys">
 			<list>
 				<ref bean="buy2" />
+				<ref bean="buy8" />
 			</list>
 		</property>
 	</bean>
@@ -2026,67 +2142,101 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="material6" class="domain.Material">
+		<property name="title" value="material title 6"></property>
+		<property name="description" value="description 6" />
+		<property name="unitPrice" value="12.0" />
+		<property name="quantity" value="3.2"></property>
+		<property name="totalPrice" value="38.4"></property>
+		<property name="labelMaterial" ref="labelMaterial3" />
+		<property name="buys">
+			<list>
+				<ref bean="buy9" />
+			</list>
+		</property>
+	</bean>
 
 
 	<!-- Opinion -->
 
 	<bean id="opinion1" class="domain.Opinion">
-		<property name="title" value="title 1" />
+		<property name="title" value="title opinion 1" />
 		<property name="createdMoment" value="2018/03/04" />
-		<property name="comment" value="comment1" />
+		<property name="comment" value="comment opinion 1" />
 		<property name="photo"
 			value="http://slideplayer.es/slide/4019554/13/images/21/RECICLAJE+DE+PAPEL+GR%C3%81FICO+RESUMEN.jpg" />
-		<property name="caption" value="caption 1" />
+		<property name="caption" value="caption opinion 1" />
 		<property name="actor" ref="recycler1" />
 	</bean>
 
 
 	<bean id="opinion2" class="domain.Opinion">
-		<property name="title" value="title 2" />
+		<property name="title" value="title opinion 2" />
 		<property name="createdMoment" value="2018/02/04" />
-		<property name="comment" value="comment2" />
+		<property name="comment" value="comment opinion 2" />
 		<property name="photo"
 			value="http://vadecuentos.com/wp-content/uploads/2015/05/taller-infantil-creatividad-reciclaje-jueguetes-carton1.png" />
-		<property name="caption" value="caption 2" />
+		<property name="caption" value="caption opinion 2" />
 		<property name="actor" ref="recycler1" />
 	</bean>
 
 	<bean id="opinion3" class="domain.Opinion">
-		<property name="title" value="title 3" />
+		<property name="title" value="title opinion 3" />
 		<property name="createdMoment" value="2018/02/03" />
-		<property name="comment" value="comment3" />
+		<property name="comment" value="comment opinion 3" />
 		<property name="photo"
 			value="http://fece.org/wp-content/uploads/2016/12/materiales-reciclables-raee.jpg" />
-		<property name="caption" value="caption 3" />
+		<property name="caption" value="caption opinion 3" />
 		<property name="actor" ref="recycler3" />
 	</bean>
 
 	<bean id="opinion4" class="domain.Opinion">
-		<property name="title" value="title 4" />
+		<property name="title" value="title opinion 4" />
 		<property name="createdMoment" value="2018/04/04" />
-		<property name="comment" value="comment4" />
+		<property name="comment" value="comment opinion 4" />
 		<property name="photo"
 			value="https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg" />
-		<property name="caption" value="caption 4" />
+		<property name="caption" value="caption opinion 4" />
 		<property name="actor" ref="recycler4" />
 	</bean>
 
 
 	<bean id="opinion5" class="domain.Opinion">
-		<property name="title" value="title 5" />
+		<property name="title" value="title opinion 5" />
 		<property name="createdMoment" value="2018/05/03" />
-		<property name="comment" value="comment5" />
+		<property name="comment" value="comment opinion 5" />
 		<property name="photo"
 			value="http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg" />
-		<property name="caption" value="caption 5" />
+		<property name="caption" value="caption opinion 5" />
 		<property name="actor" ref="recycler5" />
+	</bean>
+
+	<bean id="opinion6" class="domain.Opinion">
+		<property name="title" value="title opinion 6" />
+		<property name="createdMoment" value="2018/03/03" />
+		<property name="comment" value="comment opinion 6" />
+		<property name="photo"
+			value="http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg" />
+		<property name="caption" value="caption opinion  6" />
+		<property name="actor" ref="editor2" />
+	</bean>
+
+	<bean id="opinion7" class="domain.Opinion">
+		<property name="title" value="title opinion 7" />
+		<property name="createdMoment" value="2018/01/04" />
+		<property name="comment" value="comment opinion 7" />
+		<property name="photo"
+			value="https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg" />
+		<property name="caption" value="caption opinon 7" />
+		<property name="actor" ref="editor2" />
 	</bean>
 
 	<!-- Requests -->
 	<bean id="request1" class="domain.Request">
 		<property name="code" value="DG180131DF"></property>
-		<property name="title" value="title 1"></property>
-		<property name="observation" value="observation 1"></property>
+		<property name="title" value="title request 1"></property>
+		<property name="observation" value="observation request 1"></property>
 		<property name="status" value="CLEAN POINT"></property>
 		<property name="cleanPoints">
 			<list>
@@ -2098,8 +2248,8 @@
 
 	<bean id="request2" class="domain.Request">
 		<property name="code" value="DG180231BB"></property>
-		<property name="title" value="title 2"></property>
-		<property name="observation" value="observation 2"></property>
+		<property name="title" value="title request 2"></property>
+		<property name="observation" value="observation request 2"></property>
 		<property name="status" value="FINISHED"></property>
 		<property name="cleanPoints">
 			<list>
@@ -2111,8 +2261,8 @@
 
 	<bean id="request3" class="domain.Request">
 		<property name="code" value="DG180331CC"></property>
-		<property name="title" value="title 3"></property>
-		<property name="observation" value="observation 3"></property>
+		<property name="title" value="title request 3"></property>
+		<property name="observation" value="observation request 3"></property>
 		<property name="status" value="FINISHED"></property>
 		<property name="cleanPoints">
 
@@ -2126,8 +2276,8 @@
 
 	<bean id="request4" class="domain.Request">
 		<property name="code" value="DG180431DD"></property>
-		<property name="title" value="title 4"></property>
-		<property name="observation" value="observation 4"></property>
+		<property name="title" value="title request 4"></property>
+		<property name="observation" value="observation request 4"></property>
 		<property name="status" value="IN COLLECTION"></property>
 		<property name="cleanPoints">
 			<list>
@@ -2139,9 +2289,22 @@
 
 	<bean id="request5" class="domain.Request">
 		<property name="code" value="DG180131EE"></property>
-		<property name="title" value="title 5"></property>
-		<property name="observation" value="observation 5"></property>
+		<property name="title" value="title request 5"></property>
+		<property name="observation" value="observation request 5"></property>
 		<property name="status" value="PENDING"></property>
+		<property name="cleanPoints">
+			<list>
+
+			</list>
+		</property>
+		<property name="carrier" ref="carrier5" />
+	</bean>
+	
+	<bean id="request6" class="domain.Request">
+		<property name="code" value="DG180731FF"></property>
+		<property name="title" value="title request 6"></property>
+		<property name="observation" value="observation request 6"></property>
+		<property name="status" value="CANCELLED"></property>
 		<property name="cleanPoints">
 			<list>
 
@@ -2161,7 +2324,7 @@
 	</bean>
 
 	<bean id="cleanPoint2" class="domain.CleanPoint">
-		<property name="address" value="address2"></property>
+		<property name="address" value="address clean point 2"></property>
 		<property name="province" value="HUELVA"></property>
 		<property name="phone" value="+654769645"></property>
 		<property name="mobile" value="false"></property>
@@ -2169,7 +2332,7 @@
 	</bean>
 
 	<bean id="cleanPoint3" class="domain.CleanPoint">
-		<property name="address" value="address 3"></property>
+		<property name="address" value="address clean point 3"></property>
 		<property name="province" value="MALAGA"></property>
 		<property name="phone" value="+689354723"></property>
 		<property name="mobile" value="false"></property>
@@ -2177,7 +2340,7 @@
 	</bean>
 
 	<bean id="cleanPoint4" class="domain.CleanPoint">
-		<property name="address" value="address 4"></property>
+		<property name="address" value="address clean point  4"></property>
 		<property name="province" value="MALAGA"></property>
 		<property name="phone" value="+7656573211"></property>
 		<property name="mobile" value="true"></property>
@@ -2185,11 +2348,19 @@
 	</bean>
 
 	<bean id="cleanPoint5" class="domain.CleanPoint">
-		<property name="address" value="address"></property>
+		<property name="address" value="address clean point 5"></property>
 		<property name="province" value="ALMERIA"></property>
 		<property name="phone" value="+676543234"></property>
 		<property name="mobile" value="false"></property>
 		<property name="location" ref="gps5"></property>
+	</bean>
+	
+	<bean id="cleanPoint6" class="domain.CleanPoint">
+		<property name="address" value="address clean point 6"></property>
+		<property name="province" value="HUESCA"></property>
+		<property name="phone" value="+676543255"></property>
+		<property name="mobile" value="true"></property>
+		<property name="location" ref="gps6"></property>
 	</bean>
 
 

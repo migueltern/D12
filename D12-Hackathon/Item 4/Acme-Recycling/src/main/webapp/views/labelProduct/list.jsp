@@ -27,17 +27,19 @@
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('MANAGER')">
-		
-			<spring:message code="labelProduct.edit" var="Edit" />
-			<display:column title="${Edit}" sortable="true">
+
+		<spring:message code="labelProduct.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+			<jstl:if test="${row.items.size()==0 }">
 				<jstl:if test="${row.byDefault==false }">
-				<spring:url value="labelProduct/manager/edit.do" var="editURL">
-					<spring:param name="labelProductId" value="${row.id}" />
-				</spring:url>
-				<a href="${editURL}"><spring:message code="labelProduct.edit" /></a>
-					</jstl:if>
-			</display:column>
-	
+					<spring:url value="labelProduct/manager/edit.do" var="editURL">
+						<spring:param name="labelProductId" value="${row.id}" />
+					</spring:url>
+					<a href="${editURL}"><spring:message code="labelProduct.edit" /></a>
+				</jstl:if>
+			</jstl:if>
+		</display:column>
+
 	</security:authorize>
 
 
@@ -47,37 +49,39 @@
 	<acme:column code="labelProduct.name" property="name" sortable="true" />
 
 	<spring:message code="labelProduct.byDefault" var="byDefault" />
-		<display:column title="${byDefault}">
-			<jstl:if test="${row.byDefault==true}">
-				<div style="width: 30px; height: 30px; margin-left: 20px;">
+	<display:column title="${byDefault}">
+		<jstl:if test="${row.byDefault==true}">
+			<div style="width: 30px; height: 30px; margin-left: 20px;">
 
-					<img src="images/yes1.png" width="30" height="30">
-				</div>
-			</jstl:if>
-			<jstl:if test="${row.byDefault==false}">
-				<div style="width: 30px; height: 30px; margin-left: 20px;">
+				<img src="images/yes1.png" width="30" height="30">
+			</div>
+		</jstl:if>
+		<jstl:if test="${row.byDefault==false}">
+			<div style="width: 30px; height: 30px; margin-left: 20px;">
 
-					<img src="images/no1.png" width="30" height="30">
-				</div>
-			</jstl:if>
-		</display:column>
+				<img src="images/no1.png" width="30" height="30">
+			</div>
+		</jstl:if>
+	</display:column>
 
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('MANAGER')">
-		
-			<spring:message code="labelProduct.delete" var="delete" />
-			<display:column title="${delete}" sortable="true">
-			<jstl:if test="${row.byDefault==false }">
 
-				<spring:url value="labelProduct/manager/delete.do" var="deleteURL">
-					<spring:param name="labelProductId" value="${row.id}" />
-				</spring:url>
-				<a href="${deleteURL}"><spring:message
-						code="labelProduct.delete" /></a>
-						</jstl:if>
-			</display:column>
-	
+		<spring:message code="labelProduct.delete" var="delete" />
+		<display:column title="${delete}" sortable="true">
+			<jstl:if test="${row.items.size()==0 }">
+				<jstl:if test="${row.byDefault==false }">
+
+					<spring:url value="labelProduct/manager/delete.do" var="deleteURL">
+						<spring:param name="labelProductId" value="${row.id}" />
+					</spring:url>
+					<a href="${deleteURL}"><spring:message
+							code="labelProduct.delete" /></a>
+				</jstl:if>
+			</jstl:if>
+		</display:column>
+
 
 
 

@@ -78,13 +78,15 @@ public class LabelProductService {
 	public LabelProduct save(final LabelProduct labelProduct) {
 		final Collection<LabelProduct> labelProductsWithProduct;
 		labelProductsWithProduct = this.labelProductRepository.labelProductsOfAllProducts();
+		LabelProduct labelProductBd;
 
 		Assert.notNull(labelProduct);
 		Assert.notNull(this.managerService.findByPrincipal());
 		LabelProduct result;
 		if (labelProduct.getId() != 0) {
-			Assert.isTrue(labelProduct.getByDefault() == false);
-			Assert.isTrue(!labelProductsWithProduct.contains(labelProduct), "This label is asociated with one product or more");
+			labelProductBd = this.labelProductRepository.findOne(labelProduct.getId());
+			Assert.isTrue(labelProductBd.getByDefault() == false);
+			Assert.isTrue(!labelProductsWithProduct.contains(labelProductBd), "This label is asociated with one product or more");
 		}
 		result = this.labelProductRepository.save(labelProduct);
 
@@ -121,8 +123,7 @@ public class LabelProductService {
 			labelProductBD = this.labelProductRepository.findOne(labelProduct.getId());
 			labelProduct.setId(labelProductBD.getId());
 			labelProduct.setVersion(labelProductBD.getVersion());
-			labelProduct.setName(labelProductBD.getName());
-			labelProduct.setByDefault(labelProductBD.getByDefault());
+			labelProduct.setItems(labelProductBD.getItems());
 
 			result = labelProduct;
 		}

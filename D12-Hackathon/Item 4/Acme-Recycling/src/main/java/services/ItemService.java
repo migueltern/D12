@@ -109,12 +109,11 @@ public class ItemService {
 	}
 	public void delete(final Item item) {
 		Assert.notNull(item);
-		
-		if(item.getRequest() != null){
+
+		if (item.getRequest() != null) {
 			Assert.isTrue(item.getRequest().getCarrier() != null);
 			Assert.isTrue(!item.getRequest().getStatus().equals("FINISHED"));
 		}
-		
 
 		this.itemRepository.delete(item);
 	}
@@ -130,15 +129,15 @@ public class ItemService {
 		return result;
 
 	}
-	
-	public Collection<Item> findItemsWithFinishedRequest(int recyclerId){
-		
+
+	public Collection<Item> findItemsWithFinishedRequest(final int recyclerId) {
+
 		Collection<Item> result;
-		
+
 		result = this.itemRepository.findItemsWithFinishedRequest(recyclerId);
-		
+
 		return result;
-		
+
 	}
 
 	public Item reconstruct(final Item item, final BindingResult bindingResult) {
@@ -178,6 +177,14 @@ public class ItemService {
 			result = item;
 		}
 		this.validator.validate(result, bindingResult);
+		return result;
+	}
+
+	public Collection<Item> findToOpineByActorId(final int actorId) {
+		Collection<Item> result;
+
+		result = this.itemRepository.findToOpineByActorId(actorId);
+
 		return result;
 	}
 

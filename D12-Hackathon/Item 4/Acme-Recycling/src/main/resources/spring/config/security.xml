@@ -94,6 +94,7 @@
 		<security:intercept-url pattern="/editor/admin/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/profile/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/opinion/admin/**" access="hasRole('ADMIN')"/>
 		
 	<!-- 	EDITOR -->
 		<security:intercept-url pattern="/newscast/editor/**" access="hasRole('EDITOR')"/>
@@ -101,6 +102,7 @@
 		<security:intercept-url pattern="/messageFolder/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/message/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/profile/editor/**" access="hasRole('EDITOR')"/>
+		<security:intercept-url pattern="/opinion/editor/**" access="hasRole('EDITOR')"/>
 	
 	<!-- 	RECYCLER -->
 		<security:intercept-url pattern="/comment/recycler/**" access="hasRole('RECYCLER')"/>
@@ -120,6 +122,7 @@
 		<security:intercept-url pattern="/request/carrier/**" access="hasRole('CARRIER')"/>
 		<security:intercept-url pattern="/assessment/carrier/**" access="hasRole('CARRIER')"/>
 		<security:intercept-url pattern="/profile/carrier/**" access="hasRole('CARRIER')"/>
+		<security:intercept-url pattern="/opinion/carrier/**" access="hasRole('CARRIER')"/>
 		
 		
 		

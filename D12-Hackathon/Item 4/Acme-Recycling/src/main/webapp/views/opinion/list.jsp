@@ -37,6 +37,17 @@
 			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
 		</display:column>
 	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<spring:message code="opinion.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="false">
+
+			<spring:url value="opinion/admin/edit.do" var="editURL">
+				<spring:param name="opinionId" value="${row.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
+		</display:column>
+	</security:authorize>
 
 	<!-- ATRIBUTOS -->
 

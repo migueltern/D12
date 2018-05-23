@@ -112,6 +112,23 @@
 
 				</ul></li>
 				
+			<li><a class="fNiv"><spring:message
+						code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="opinion/admin/myListOpinionItem.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a
+						href="opinion/admin/myListOpinionCourse.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionCourse" /></a></li>
+					<li><a href="opinion/admin/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a></li>
+					<li><a href="opinion/admin/createOpinableCourse.do"><spring:message
+								code="master.page.opinion.createOpinableCourse" /></a></li>
+
+				</ul></li>
+				
 			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
 				<ul>
 					<li class="arrow"></li>

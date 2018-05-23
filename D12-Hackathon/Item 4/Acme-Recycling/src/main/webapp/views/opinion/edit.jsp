@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="opinion/recycler/edit.do"
+<form:form action="${requestURI}"
 	modelAttribute="opinionForm">
 
 	<form:hidden path="opinion.id" />
@@ -35,41 +35,109 @@
 	<br />
 	<acme:textbox code="opinion.caption" path="opinion.caption" />
 	<br />
-	
+
 	<jstl:if test="${!hiddenSelects}">
 
-	<jstl:if test="${showItem}">
-		<acme:select items="${products}" itemLabel="title"
-			code="opinion.product" path="opinableId" />
-		<br />
-		<form:hidden path="opinableItem" value="1" />
-	</jstl:if>
+		<jstl:if test="${showItem}">
+			<acme:select items="${products}" itemLabel="title"
+				code="opinion.product" path="opinableId" />
+			<br />
+			<form:hidden path="opinableItem" value="1" />
+		</jstl:if>
 
 
-	<jstl:if test="${!showItem}">
-		<acme:select items="${courses}" itemLabel="title"
-			code="opinion.course" path="opinableId" />
-		<br />
-		<form:hidden path="opinableItem" value="0" />
+		<jstl:if test="${!showItem}">
+			<acme:select items="${courses}" itemLabel="title"
+				code="opinion.course" path="opinableId" />
+			<br />
+			<form:hidden path="opinableItem" value="0" />
+		</jstl:if>
+
 	</jstl:if>
-	
-	</jstl:if>
-	
+
 	<!-- BOTONES -->
 
 	<input type="submit" name="save"
 		value="<spring:message code="opinion.save"/>" />&nbsp;
 		
-	<jstl:if test="${opinableItem}">
-		<acme:cancel url="opinion/recycler/myListOpinionItem.do?d-16544-p=1"
-			code="opinion.cancel" />
-	</jstl:if>
+	<security:authorize access="hasRole('RECYCLER')">
+		<jstl:if test="${opinableItem}">
+			<acme:cancel url="opinion/recycler/myListOpinionItem.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+
+		<jstl:if test="${!opinableItem}">
+			<acme:cancel
+				url="opinion/recycler/myListOpinionCourse.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+	</security:authorize>
 	
-	<jstl:if test="${!opinableItem}">
-		<acme:cancel url="opinion/recycler/myListOpinionCourse.do?d-16544-p=1"
-			code="opinion.cancel" />
-	</jstl:if>
+	<security:authorize access="hasRole('BUYER')">
+		<jstl:if test="${opinableItem}">
+			<acme:cancel url="opinion/buyer/myListOpinionItem.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+
+		<jstl:if test="${!opinableItem}">
+			<acme:cancel
+				url="opinion/buyer/myListOpinionCourse.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+	</security:authorize>
 	
+	<security:authorize access="hasRole('ADMIN')">
+		<jstl:if test="${opinableItem}">
+			<acme:cancel url="opinion/admin/myListOpinionItem.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+
+		<jstl:if test="${!opinableItem}">
+			<acme:cancel
+				url="opinion/admin/myListOpinionCourse.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+	</security:authorize>
 	
+	<security:authorize access="hasRole('CARRIER')">
+		<jstl:if test="${opinableItem}">
+			<acme:cancel url="opinion/carrier/myListOpinionItem.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+
+		<jstl:if test="${!opinableItem}">
+			<acme:cancel
+				url="opinion/carrier/myListOpinionCourse.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('EDITOR')">
+		<jstl:if test="${opinableItem}">
+			<acme:cancel url="opinion/editor/myListOpinionItem.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+
+		<jstl:if test="${!opinableItem}">
+			<acme:cancel
+				url="opinion/editor/myListOpinionCourse.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+	</security:authorize>
+	
+		<security:authorize access="hasRole('MANAGER')">
+		<jstl:if test="${opinableItem}">
+			<acme:cancel url="opinion/manager/myListOpinionItem.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+
+		<jstl:if test="${!opinableItem}">
+			<acme:cancel
+				url="opinion/manager/myListOpinionCourse.do?d-16544-p=1"
+				code="opinion.cancel" />
+		</jstl:if>
+	</security:authorize>
+
+
 </form:form>
 

@@ -35,11 +35,11 @@ public class BuyerServiceTest extends AbstractTest {
 	public void driveLoginBuyer() {
 
 		final Object testingData[][] = {
-			//Admin is registered
+			//Buyer is registered
 			{
 				"buyer1", null
 			},
-			//Admin isn't registered
+			//Buyer isn't registered
 			{
 				"buyerNoRegistrado", IllegalArgumentException.class
 			}

@@ -54,18 +54,32 @@
 		
 	
 	 <!--  EDIT -->
-	<jstl:if test="${assist==true }">
 	<security:authorize access="hasRole('RECYCLER')">
 		<spring:message code="course.assist" var="assist" />
 		<display:column title="${assist}" sortable="true">
+		<jstl:if test="${available==true }">
 			
 				<spring:url value="course/recycler/assist.do" var="assistURL">
 					<spring:param name="courseId" value="${row.id}" />
 				</spring:url>
 				<a href="${assistURL}"><spring:message code="course.assist" /></a>
+				</jstl:if>
 		</display:column>
 	</security:authorize>
-	</jstl:if> 
+	
+	<security:authorize access="hasRole('RECYCLER')">
+		<spring:message code="course.notAssist" var="notAssist" />
+		<display:column title="${notAssist}" sortable="true">
+		<jstl:if test="${available==false }">
+			
+				<spring:url value="course/recycler/notAssist.do" var="notAssistURL">
+					<spring:param name="courseId" value="${row.id}" />
+				</spring:url>
+				<a href="${notAssistURL}"><spring:message code="course.notAssist" /></a>
+				</jstl:if>
+		</display:column>
+	</security:authorize>
+
 	
 	<security:authorize access="hasRole('ADMIN')">
 			<spring:message code="course.delete" var="deleteHeader" />

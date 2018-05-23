@@ -43,7 +43,8 @@ public class CourseRecyclerController extends AbstractController {
 		result = new ModelAndView("course/list");
 		result.addObject("courses", coursesAvailables);
 		result.addObject("requestURI", "course/recycler/listCoursesAvailables.do");
-		result.addObject("assist", true);
+		result.addObject("available", true);
+		result.addObject("notAvailable", false);
 
 		return result;
 	}
@@ -60,7 +61,8 @@ public class CourseRecyclerController extends AbstractController {
 		result = new ModelAndView("course/list");
 		result.addObject("courses", coursesThatIAttend);
 		result.addObject("requestURI", "course/recycler/listOfCoursesThatIAttend.do");
-		result.addObject("assist", false);
+		result.addObject("available", false);
+		result.addObject("notAvailable", true);
 
 		return result;
 	}
@@ -79,6 +81,23 @@ public class CourseRecyclerController extends AbstractController {
 		try {
 			this.courseService.assist(course);
 			result = new ModelAndView("redirect:/course/recycler/listCoursesAvailables.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(course, "course.commit.error");
+		}
+		return result;
+	}
+
+	@RequestMapping(value = "/notAssist", method = RequestMethod.GET)
+	public ModelAndView notAssist(@RequestParam final int courseId) {
+		ModelAndView result;
+		Course course;
+
+		this.recyclerService.checkPrincipal();
+
+		course = this.courseService.findOne(courseId);
+		try {
+			this.courseService.notAssist(course);
+			result = new ModelAndView("redirect:/course/recycler/listOfCoursesThatIAttend.do");
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(course, "course.commit.error");
 		}

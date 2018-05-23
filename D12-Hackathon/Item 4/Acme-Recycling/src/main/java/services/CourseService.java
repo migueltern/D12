@@ -255,6 +255,24 @@ public class CourseService {
 		Assert.notNull(result);
 	}
 
+	public void notAssist(final Course course) {
+		Recycler recyclerConnected;
+		Recycler result;
+
+		recyclerConnected = this.recyclerService.findByPrincipal();
+
+		Assert.notNull(course);
+		Assert.notNull(recyclerConnected);
+
+		recyclerConnected = this.recyclerService.findByPrincipal();
+		Assert.isTrue(recyclerConnected.getCourses().contains(course));
+		recyclerConnected.getCourses().remove(course);
+
+		result = this.recyclerService.save(recyclerConnected);
+
+		Assert.notNull(result);
+	}
+
 	//	RECONSTRUCTOR
 	public Course reconstruct(final Course course, final BindingResult bindingResult) {
 		Course result;

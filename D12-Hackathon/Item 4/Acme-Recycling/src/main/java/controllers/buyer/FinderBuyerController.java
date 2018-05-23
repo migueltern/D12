@@ -97,6 +97,7 @@ public class FinderBuyerController extends AbstractController {
 		result = new ModelAndView("material/list");
 		result.addObject("materials", materials);
 		result.addObject("finder", finder);
+		result.addObject("showSearch", true);
 		result.addObject("requestURI", "finder/buyer/list.do");
 		result.addObject("requestURISearch", "finder/buyer/search.do");
 
@@ -117,6 +118,7 @@ public class FinderBuyerController extends AbstractController {
 
 		result = new ModelAndView("material/list");
 		result.addObject("finder", finder);
+		result.addObject("showSearch", true);
 		result.addObject("message", message);
 
 		return result;

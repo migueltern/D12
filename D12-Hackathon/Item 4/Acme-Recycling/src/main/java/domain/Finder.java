@@ -53,7 +53,6 @@ public class Finder extends DomainEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm")
-	@NotNull
 	public Date getStartCacheTime() {
 		return this.startCacheTime;
 	}

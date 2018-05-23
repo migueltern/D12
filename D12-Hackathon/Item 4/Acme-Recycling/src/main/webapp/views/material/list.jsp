@@ -21,12 +21,10 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<!-- Listing messageFodler -->
-<display:table name="materials" id="row" requestURI="${requestURI}"
-	pagesize="5" class="displaytag">
-	
-	<!-- Finder para el Buyer -->
-	<%-- <security:authorize access="hasRole('BUYER')">
+
+<!-- Finder para el Buyer -->
+	<security:authorize access="hasRole('BUYER')">
+	<jstl:if test="${showSearch}">
 	<form:form action="finder/buyer/search.do" modelAttribute="finder" >
 
 		<form:hidden path="id" />
@@ -41,8 +39,14 @@
 		<br />
 	
 		<input type="submit" name="search" value="<spring:message code="finder.search" />" /> &nbsp; 	 
-	</form:form> 
-	</security:authorize> --%>
+	</form:form>
+	</jstl:if> 
+	</security:authorize>
+
+<!-- Listing messageFodler -->
+<display:table name="materials" id="row" requestURI="${requestURI}"
+	pagesize="5" class="displaytag">
+	
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('ADMIN')">

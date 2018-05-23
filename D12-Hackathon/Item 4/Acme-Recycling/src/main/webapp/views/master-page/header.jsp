@@ -569,7 +569,7 @@
 
 <spring:message code="master.page.new" var="newLanguage" />
 <jstl:choose>
-	<jstl:when test="${newLanguage == 'News'}">
+	<jstl:when test="${newLanguage == 'Newscasts'}">
 		<br>
 		<br>
 		<i><jstl:out value="${EnglishWelcomeMessage}"></jstl:out></i>

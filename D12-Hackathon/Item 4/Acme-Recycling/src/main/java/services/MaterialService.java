@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.MaterialRepository;
 import domain.Buy;
@@ -33,6 +35,9 @@ public class MaterialService {
 
 	@Autowired
 	CourseService		courseService;
+
+	@Autowired
+	private Validator	validator;
 
 
 	public MaterialService() {
@@ -95,5 +100,33 @@ public class MaterialService {
 
 	public void flush() {
 		this.materialRepository.flush();
+	}
+
+	//	RECONSTRUCTOR
+	public Material reconstruct(final Material material, final BindingResult bindingResult) {
+		Material result;
+		Material materialBd;
+
+		if (material.getId() == 0) {
+			Collection<Buy> buys;
+
+			result = material;
+
+			buys = new ArrayList<Buy>();
+
+			if (material.getBuys() == null || material.getBuys().contains(null))
+				material.setBuys(buys);
+
+		}
+
+		else {
+			materialBd = this.materialRepository.findOne(material.getId());
+			material.setId(materialBd.getId());
+			material.setVersion(material.getVersion());
+
+			result = material;
+		}
+		this.validator.validate(result, bindingResult);
+		return result;
 	}
 }

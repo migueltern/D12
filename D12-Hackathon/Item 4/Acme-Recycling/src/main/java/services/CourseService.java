@@ -242,9 +242,12 @@ public class CourseService {
 	public void assist(final Course course) {
 		Recycler recyclerConnected;
 		Recycler result;
+		Collection<Course> coursesAvailables;
 
 		recyclerConnected = this.recyclerService.findByPrincipal();
+		coursesAvailables = this.coursesAvailables(recyclerConnected);
 
+		Assert.isTrue(coursesAvailables.contains(course));
 		Assert.notNull(course);
 		Assert.notNull(recyclerConnected);
 
@@ -262,9 +265,8 @@ public class CourseService {
 		recyclerConnected = this.recyclerService.findByPrincipal();
 
 		Assert.notNull(course);
-		Assert.notNull(recyclerConnected);
 
-		recyclerConnected = this.recyclerService.findByPrincipal();
+		Assert.notNull(recyclerConnected);
 		Assert.isTrue(recyclerConnected.getCourses().contains(course));
 		recyclerConnected.getCourses().remove(course);
 

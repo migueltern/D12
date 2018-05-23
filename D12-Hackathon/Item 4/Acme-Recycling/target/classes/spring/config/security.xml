@@ -57,7 +57,8 @@
 		<security:intercept-url pattern="/welcome/aboutUs.do" access="permitAll"/>
 		<security:intercept-url pattern="/newscast/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/material/list.do" access="permitAll"/>
-		<security:intercept-url pattern="/item/**" access="permitAll"/>
+		<security:intercept-url pattern="/item/list.do" access="permitAll"/>
+		<security:intercept-url pattern="/item/display.do" access="permitAll"/>
 		<security:intercept-url pattern="/newscast/display.do**" access="permitAll"/>
 		<security:intercept-url pattern="/opinion/list.do**" access="permitAll"/>
 		<security:intercept-url pattern="/opinion/displayOpinable.do**" access="permitAll"/>

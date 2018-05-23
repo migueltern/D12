@@ -83,8 +83,13 @@ public class TabooWordAdminController extends AbstractController {
 			try {
 
 				if (tabooWord.getId() == 0) {
-					Assert.isTrue(!this.tabooWordService.findTabooWordByName().contains(tabooWord.getName()), "The list contains word");
+
+					String name;
+					name = tabooWord.getName().toLowerCase();
+					tabooWord.setName(name);
+					Assert.isTrue(!(this.tabooWordService.findTabooWordByName().contains(name)), "The list contains word");
 					tabooWordSaved = this.tabooWordService.save(tabooWord);
+					Assert.isTrue(tabooWordSaved.getName().equals(name));
 					configurationSystem.getTabooWords().add(tabooWordSaved);
 					this.configurationSystemService.save(configurationSystem);
 				} else

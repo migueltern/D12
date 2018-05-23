@@ -138,6 +138,11 @@ public class AssesmentCarrierController extends AbstractController {
 		result.addObject("assessmentForm", assessmentForm);
 		result.addObject("message", messageCode);
 
+		if (assessmentForm.getAssessment().getId() == 0)
+			result.addObject("cancelRedirectToListRequest", true);
+		else
+			result.addObject("cancelRedirectToListAssessment", true);
+
 		return result;
 
 	}

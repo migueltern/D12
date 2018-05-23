@@ -51,7 +51,7 @@
 		</jstl:if>
 		
 		<jstl:if test="${cancelRedirectToListAssessment}">
-		<acme:cancel url="request/carrier/listMyAssessment.do?d-16544-p=1"
+		<acme:cancel url="assessment/carrier/listMyAssessment.do?d-16544-p=1"
 			code="assessment.cancel" />
 		</jstl:if>
 

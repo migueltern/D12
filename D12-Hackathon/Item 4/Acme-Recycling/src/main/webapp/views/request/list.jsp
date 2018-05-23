@@ -47,7 +47,7 @@
 		<spring:message code="request.changeStatus" var="changeStatus" />
 		<display:column title="${changeStatus}" sortable="false">
 			<jstl:if
-				test="${showButtonChangeStatus and (!row.status=='FINISHED' and !row.status=='CANCELLED')}">
+				test="${showButtonChangeStatus and (row.status!='FINISHED' and row.status!='CANCELLED')}">
 				<spring:url value="request/carrier/changeStatus.do" var="editURL">
 					<spring:param name="requestId" value="${row.id}" />
 				</spring:url>

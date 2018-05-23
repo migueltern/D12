@@ -820,7 +820,6 @@
 		</property>
 		<property name="items">
 			<list>
-				<ref bean="item4" />
 			</list>
 		</property>
 		<property name="comments">
@@ -1384,23 +1383,7 @@
 		<property name="request" ref="request3" />
 	</bean>
 
-	<bean id="item4" class="domain.Item">
-		<property name="title" value="title item 4" />
-		<property name="publicationMoment" value="2018/04/12 14:12" />
-		<property name="description" value="description item 4" />
-		<property name="quantity" value="4.0" />
-		<property name="photo"
-			value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2KrmU5hxR4s8lRbGN-XIyBeoyrdYVQHW-PUni2vXNDdK7obBlTw" />
-		<property name="labelProduct" ref="labelProduct3" />
-		<property name="recycler" ref="recycler4" />
-		<property name="value" value="4"></property>
-		<property name="opinions">
-			<list>
-				<ref bean="opinion4" />
-			</list>
-		</property>
-		<property name="request" ref="request4" />
-	</bean>
+
 
 	<bean id="item5" class="domain.Item">
 		<property name="title" value="title item 5" />
@@ -1544,7 +1527,6 @@
 		<property name="byDefault" value="true" />
 		<property name="items">
 			<list>
-				<ref bean="item4" />
 				<ref bean="item5" />
 				<ref bean="item6" />
 			</list>

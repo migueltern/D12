@@ -53,6 +53,7 @@ public class RecyclerService {
 		final Collection<Item> items;
 		final Collection<Comment> comments;
 		final Collection<Course> courses;
+		Collection<Opinion> opinions;
 
 		result = new Recycler();
 		userAccount = new UserAccount();
@@ -60,6 +61,7 @@ public class RecyclerService {
 		items = new ArrayList<>();
 		comments = new ArrayList<>();
 		courses = new ArrayList<>();
+		opinions = new ArrayList<>();
 
 		authority.setAuthority(Authority.RECYCLER);
 		userAccount.addAuthority(authority);
@@ -68,6 +70,7 @@ public class RecyclerService {
 		result.setItems(items);
 		result.setComments(comments);
 		result.setCourses(courses);
+		result.setOpinions(opinions);
 		return result;
 	}
 

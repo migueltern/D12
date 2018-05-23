@@ -52,12 +52,14 @@ public class BuyerService {
 		Authority authority;
 		final Collection<Buy> buys;
 		final Collection<Course> courses;
+		final Collection<Opinion> opinions;
 
 		result = new Buyer();
 		userAccount = new UserAccount();
 		authority = new Authority();
 		buys = new ArrayList<>();
 		courses = new ArrayList<>();
+		opinions = new ArrayList<>();
 
 		authority.setAuthority(Authority.BUYER);
 		userAccount.setActivated(true);
@@ -65,6 +67,7 @@ public class BuyerService {
 		result.setUserAccount(userAccount);
 		result.setBuys(buys);
 		result.setCourses(courses);
+		result.setOpinions(opinions);
 		return result;
 	}
 

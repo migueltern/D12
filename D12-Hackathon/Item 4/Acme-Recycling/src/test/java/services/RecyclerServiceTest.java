@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import security.UserAccount;
 import utilities.AbstractTest;
@@ -180,6 +181,50 @@ public class RecyclerServiceTest extends AbstractTest {
 			recycler.setEmail(email);
 			recycler.setProvince(province);
 			recycler = this.recyclerService.save(recycler);
+			this.unauthenticate();
+			this.recyclerService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+
+		}
+
+		this.checkExceptions(expected, caught);
+	}
+
+	//Test caso de uso 3.b:El reciclador tendrá un perfil personal en el que podrá ver un resumen de todo lo que ha reciclado y sus respectivos puntos.
+	@Test
+	public void driverScoreRecycler() {
+
+		final Object testingData[][] = {
+			{
+				//Recycler con puntuación distinta de 0 al tener algun item
+				"recycler1", 32.0, null
+			}, {
+				//Recycler con puntuación 0 al no tener ningún item
+				"recycler4", 0.0, null
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateScoreRecycler(super.getEntityId((String) testingData[i][0]), (Double) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+
+	private void templateScoreRecycler(final int recyclerId, final Double score, final Class<?> expected) {
+		Class<?> caught;
+		Recycler recycler;
+		Double scoreOfRecycler;
+		recycler = this.recyclerService.findOne(recyclerId);
+
+		caught = null;
+		try {
+			super.authenticate(recycler.getUserAccount().getUsername());
+			scoreOfRecycler = this.recyclerService.puntuationOfRecycler();
+			if (recycler.getUserAccount().getUsername().equals("recycler1"))
+				Assert.isTrue(scoreOfRecycler.equals(score));
+			else
+				Assert.isTrue(scoreOfRecycler.equals(score));
+
 			this.unauthenticate();
 			this.recyclerService.flush();
 		} catch (final Throwable oops) {

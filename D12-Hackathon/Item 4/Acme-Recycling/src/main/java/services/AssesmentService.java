@@ -79,8 +79,12 @@ public class AssesmentService {
 
 		//No se puede crear assessment en un request que no te pertenece
 		request = this.requestService.findOne(assesmentForm.getRequestId());
-		if (assesment.getId() == 0)
+		if (assesment.getId() == 0) {
+			//Solo se puede crear assessment en los request con status finalizado o cancelado
 			Assert.isTrue(request.getStatus().equals("FINISHED") || request.getStatus().equals("CANCELLED"));
+			//No se puede crear un assessment en un request que ya tiene assessment
+			Assert.isTrue(request.getAssesment() == null);
+		}
 		final Collection<Request> requests = this.requestService.findByCarrierId(this.carrierService.findByPrincipal().getId());
 		Assert.isTrue(requests.contains(request));
 

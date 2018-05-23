@@ -77,6 +77,9 @@ public class AssesmentCarrierController extends AbstractController {
 		//Solo se puede crear assessment en los request con status finalizado o cancelado
 		Assert.isTrue(request.getStatus().equals("FINISHED") || request.getStatus().equals("CANCELLED"));
 
+		//No se puede crear un assessment en un request que ya tiene assessment
+		Assert.isTrue(request.getAssesment() == null);
+
 		assessmentForm = this.assessmentService.create(requestId);
 
 		result = this.createEditModelAndView(assessmentForm);

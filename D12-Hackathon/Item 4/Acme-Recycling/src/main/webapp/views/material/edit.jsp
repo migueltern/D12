@@ -26,6 +26,7 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="buys"/>
+	<form:hidden path="totalPrice"/>
 
 	<!-- ATRIBUTOS -->
 	<B><acme:textbox code="material.title" path="title" /></B>

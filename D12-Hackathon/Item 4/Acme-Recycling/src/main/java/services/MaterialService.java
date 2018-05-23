@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,10 @@ public class MaterialService {
 
 	public Material create() {
 		final Material result;
+		Collection<Buy> buys;
+		buys = new ArrayList<Buy>();
 		result = new Material();
+		result.setBuys(buys);
 		return result;
 	}
 
@@ -60,6 +64,7 @@ public class MaterialService {
 	public Material save(final Material material) {
 		Material result;
 		Assert.notNull(material);
+		this.adminService.checkPrincipal();
 
 		material.setTotalPrice(material.getQuantity() * material.getUnitPrice());
 
@@ -86,5 +91,9 @@ public class MaterialService {
 		for (final Course c : coursesOfMaterial)
 			this.courseService.delete(c);
 		this.materialRepository.delete(material);
+	}
+
+	public void flush() {
+		this.materialRepository.flush();
 	}
 }

@@ -28,45 +28,51 @@
 	<!--  CHANGE STATUS -->
 
 	<security:authorize access="hasRole('MANAGER')">
-		<jstl:if test="${showButtonChangeStatus}">
-			<spring:message code="request.changeStatus" var="changeStatus" />
-			<display:column title="${changeStatus}" sortable="false">
 
+		<spring:message code="request.changeStatus" var="changeStatus" />
+		<display:column title="${changeStatus}" sortable="false">
+			<jstl:if
+				test="${showButtonChangeStatus and (row.status!='FINISHED' and row.status!='CANCELLED')}">
 				<spring:url value="request/manager/changeStatus.do" var="editURL">
 					<spring:param name="requestId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="request.changeStatus" /></a>
-			</display:column>
-		</jstl:if>
-	</security:authorize>
-	
-	<security:authorize access="hasRole('CARRIER')">
-		<jstl:if test="${showButtonChangeStatus}">
-			<spring:message code="request.changeStatus" var="changeStatus" />
-			<display:column title="${changeStatus}" sortable="false">
+			</jstl:if>
+		</display:column>
 
+	</security:authorize>
+
+	<security:authorize access="hasRole('CARRIER')">
+
+		<spring:message code="request.changeStatus" var="changeStatus" />
+		<display:column title="${changeStatus}" sortable="false">
+			<jstl:if
+				test="${showButtonChangeStatus and (!row.status=='FINISHED' and !row.status=='CANCELLED')}">
 				<spring:url value="request/carrier/changeStatus.do" var="editURL">
 					<spring:param name="requestId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="request.changeStatus" /></a>
-			</display:column>
-		</jstl:if>
-		
-		<jstl:if test="${showButtonAddAssessment and row.assesment==null}">
-			<spring:message code="request.addAssessment" var="addAssessment" />
-			<display:column title="${addAssessment}" sortable="false">
+			</jstl:if>
+		</display:column>
 
+
+		<spring:message code="request.addAssessment" var="addAssessment" />
+		<display:column title="${addAssessment}" sortable="false">
+			<jstl:if
+				test="${showButtonAddAssessment and row.assesment==null and (row.status=='FINISHED' or row.status=='CANCELLED')}">
 				<spring:url value="assessment/carrier/create.do" var="editURL">
 					<spring:param name="requestId" value="${row.id}" />
 				</spring:url>
-				<a href="${editURL}"><spring:message code="request.addAssessment" /></a>
-			</display:column>
-		</jstl:if>
+				<a href="${editURL}"><spring:message
+						code="request.addAssessment" /></a>
+			</jstl:if>
+		</display:column>
+
 	</security:authorize>
-	
+
 	<!-- MANAGER ADD PUNTUATION  -->
 
- 	<security:authorize access="hasRole('MANAGER')">
+	<security:authorize access="hasRole('MANAGER')">
 		<spring:message code="request.addPuntuation" var="addPuntuation" />
 		<display:column title="${addPuntuation}" sortable="false">
 
@@ -76,21 +82,23 @@
 			<a href="${editURL}"><spring:message code="request.addPuntuation" /></a>
 		</display:column>
 	</security:authorize>
-	
 
 	<!-- ATRIBUTOS -->
-	
+
 	<spring:message code="request.code" var="codeHeader" />
 	<display:column property="code" title="${codeHeader}" sortable="true" />
-	
+
 	<spring:message code="request.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="true" />
-	
+
 	<spring:message code="request.observation" var="observationHeader" />
-	<display:column property="observation" title="${observationHeader}" sortable="true" />
-	
+	<display:column property="observation" title="${observationHeader}"
+		sortable="true" />
+
 	<spring:message code="request.status" var="statusHeader" />
-	<display:column property="status" title="${statusHeader}" sortable="true" />
+	<display:column property="status" title="${statusHeader}"
+		sortable="true" />
+
 
 
 </display:table>

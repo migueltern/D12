@@ -45,17 +45,17 @@ public class AssesmentServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			{
 				//Se edita un product correctamente
-				"carrier3", "request3", "description test", 23.0, null
+				"carrier3", "request3", "description test", 2, null
 			}, {
 				//Se edita un product correctamente
-				"carrier1", "request1", "description test", 12.0, IllegalArgumentException.class
+				"carrier1", "request1", "description test", 5, IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
-			this.templateCreateAndSave((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (Double) testingData[i][3], (Class<?>) testingData[i][4]);
+			this.templateCreateAndSave((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (Integer) testingData[i][3], (Class<?>) testingData[i][4]);
 	}
 
-	private void templateCreateAndSave(final String username, final int requestId, final String description, final Double valuation, final Class<?> expected) {
+	private void templateCreateAndSave(final String username, final int requestId, final String description, final Integer valuation, final Class<?> expected) {
 		Class<?> caught;
 		AssessmentForm assesmentForm;
 

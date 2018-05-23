@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -22,7 +23,7 @@ public class Assesment extends DomainEntity {
 
 	private Date	moment;
 	private String	description;
-	private Double	valuation;
+	private int		valuation;
 
 
 	@Temporal(TemporalType.DATE)
@@ -45,11 +46,12 @@ public class Assesment extends DomainEntity {
 		this.description = description;
 	}
 
-	public Double getValuation() {
+	@Range(min = 1, max = 5)
+	public int getValuation() {
 		return this.valuation;
 	}
 
-	public void setValuation(final Double valuation) {
+	public void setValuation(final int valuation) {
 		this.valuation = valuation;
 	}
 

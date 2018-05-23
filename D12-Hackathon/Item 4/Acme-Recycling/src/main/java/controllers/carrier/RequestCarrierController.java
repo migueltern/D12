@@ -70,6 +70,9 @@ public class RequestCarrierController extends AbstractController {
 		request = this.requestService.findOne(requestId);
 		Assert.isTrue(this.carrierService.findByPrincipal().getRequests().contains(request), "Can not commit this operation because its illegal");
 
+		//Solo se puede cambiar el status de las request cuyo status no este en finalizado o cancelado
+		Assert.isTrue(!request.getStatus().equals("FINISHED") && !request.getStatus().equals("CANCELLED"));
+
 		requestForm = new RequestForm();
 		requestForm.setRequest(request);
 		item = (this.requestService.findItemByRequestId(request.getId()));

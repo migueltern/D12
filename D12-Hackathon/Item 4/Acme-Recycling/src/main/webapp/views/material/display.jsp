@@ -29,11 +29,11 @@
 	<spring:message code="material.material" var="titleMaterial"></spring:message>
 	<display:column title="${titleMaterial }">
 
-		<B><spring:message code="material.title" />:</B>
+		<B><spring:message code="material.title" /><jstl:out value=":"/></B>
 		<jstl:out value="${row.title }"></jstl:out>
 
 		<p>
-			<B><spring:message code="material.description" />:</B>
+			<B><spring:message code="material.description" /><jstl:out value=":"/></B>
 			<jstl:out value="${row.description }"></jstl:out>
 
 		</p>
@@ -41,22 +41,22 @@
 
 
 
-			<B><spring:message code="material.unitPrice" />:</B>
+			<B><spring:message code="material.unitPrice" /><jstl:out value=":"/></B>
 			<jstl:out value="${row.unitPrice }"></jstl:out>
 		</p>
 		<p>
-			<B><spring:message code="material.quantity" />:</B>
+			<B><spring:message code="material.quantity" /><jstl:out value=":"/></B>
 			<jstl:out value="${row.quantity }"></jstl:out>
 		</p>
 		<p>
 
-			<B><spring:message code="material.totalPrice" />:</B>
+			<B><spring:message code="material.totalPrice" /><jstl:out value=":"/></B>
 			<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${row.totalPrice}" />
 		</p>
 
 		<p>
 
-			<B><spring:message code="material.labelMaterial" />:</B>
+			<B><spring:message code="material.labelMaterial" /><jstl:out value=":"/></B>
 			<jstl:out value="${row.labelMaterial.name }"></jstl:out>
 		</p>
 

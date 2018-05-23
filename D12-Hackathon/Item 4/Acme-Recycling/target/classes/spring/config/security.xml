@@ -27,24 +27,13 @@
 	<!-- Access control -->
 
 	<security:http auto-config="true" use-expressions="true">
+	
+	
+	
+	<!-- 	NO AUTENTICADOS -->
 		<security:intercept-url pattern="/" access="permitAll" /> 
-		
-		<security:intercept-url pattern="/profile/admin/**" access="hasRole('ADMIN')"/>
-		<security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
-			
-		<security:intercept-url pattern="/profile/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/recycler/**" access="permitAll" />
-		
-		<security:intercept-url pattern="/profile/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/buyer/**" access="permitAll" />
-		
-		<security:intercept-url pattern="/profile/carrier/**" access="hasRole('CARRIER')"/>
-		<security:intercept-url pattern="/profile/manager/**" access="hasRole('MANAGER')"/>
-		<security:intercept-url pattern="/profile/editor/**" access="hasRole('EDITOR')"/>
-		<security:intercept-url pattern="/carrier/admin/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/manager/admin/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/editor/admin/**" access="hasRole('ADMIN')" />
-
 		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
 		<security:intercept-url pattern="/images/**" access="permitAll" /> 
 		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
@@ -63,11 +52,9 @@
 		<security:intercept-url pattern="/opinion/list.do**" access="permitAll"/>
 		<security:intercept-url pattern="/opinion/displayOpinable.do**" access="permitAll"/>
 		<security:intercept-url pattern="/course/display.do**" access="permitAll"/>
-		<security:intercept-url pattern="/legislation/list.do**" access="permitAll"/>
+		<security:intercept-url pattern="/legislation/list.do" access="permitAll"/>
 		
-		<security:intercept-url pattern="/opinion/recycler/**" access="hasRole('RECYCLER')"/>	
-		
-		
+	
 	<!-- 	MANAGER-->
 		<security:intercept-url pattern="/messageFolder/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/message/manager/**" access="hasRole('MANAGER')"/>
@@ -75,7 +62,7 @@
 		<security:intercept-url pattern="/labelMaterial/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/labelProduct/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/incidence/manager/**" access="hasRole('MANAGER')"/>
-		
+		<security:intercept-url pattern="/profile/manager/**" access="hasRole('MANAGER')"/>
 		
 		
 	<!-- 	BUYER-->
@@ -86,6 +73,7 @@
 		<security:intercept-url pattern="/finder/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/material/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/buy/buyer/**" access="hasRole('BUYER')"/>
+		<security:intercept-url pattern="/profile/buyer/**" access="hasRole('BUYER')"/>
 		
 	<!-- 	ADMIN-->
 
@@ -101,12 +89,18 @@
 		<security:intercept-url pattern="/incidence/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/material/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/actor/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/carrier/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/manager/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/editor/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/profile/admin/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
+		
 	<!-- 	EDITOR -->
 		<security:intercept-url pattern="/newscast/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/comment/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/messageFolder/editor/**" access="hasRole('EDITOR')"/>
 		<security:intercept-url pattern="/message/editor/**" access="hasRole('EDITOR')"/>
-	
+		<security:intercept-url pattern="/profile/editor/**" access="hasRole('EDITOR')"/>
 	
 	<!-- 	RECYCLER -->
 		<security:intercept-url pattern="/comment/recycler/**" access="hasRole('RECYCLER')"/>
@@ -117,12 +111,15 @@
 		<security:intercept-url pattern="/item/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/incidence/recycler/**" access="hasRole('RECYCLER')"/>
 		<security:intercept-url pattern="/request/recycler/display.do" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/opinion/recycler/**" access="hasRole('RECYCLER')"/>
+		<security:intercept-url pattern="/profile/recycler/**" access="hasRole('RECYCLER')"/>	
 		
 	<!-- 	CARRIER -->
 		<security:intercept-url pattern="/messageFolder/carrier/**" access="hasRole('CARRIER')"/>
 		<security:intercept-url pattern="/message/carrier/**" access="hasRole('CARRIER')"/>
 		<security:intercept-url pattern="/request/carrier/**" access="hasRole('CARRIER')"/>
 		<security:intercept-url pattern="/assessment/carrier/**" access="hasRole('CARRIER')"/>
+		<security:intercept-url pattern="/profile/carrier/**" access="hasRole('CARRIER')"/>
 		
 		
 		

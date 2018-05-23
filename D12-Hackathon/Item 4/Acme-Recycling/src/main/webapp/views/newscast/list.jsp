@@ -99,10 +99,11 @@
 
 
 
-<security:authorize access="hasRole('ADMIN')">			
-<spring:message code="new.pictures" var="titleHeader" />
-<jstl:if test="${row.pictures.size()!=0}">
-<display:column  title="${titleHeader}" sortable="true">
+<security:authorize access="hasRole('ADMIN')">
+		<spring:message code="new.pictures" var="draftMode" />
+	<display:column title="${draftMode}">
+		<jstl:if test="${row.pictures.size()!=0}">
+			
 	<table>
 	<tr>
 	<jstl:forEach items="${row.pictures}" var="picture">
@@ -111,14 +112,19 @@
 </tr>
 </table> 
 
-</display:column>
-</jstl:if>
 
-<jstl:if test="${row.pictures.size()==0}">
-	<B><spring:message code="new.pictures"></spring:message></B>
-	<B><spring:message code ="nothing.found.images"></spring:message></B>
-</jstl:if>
-	</security:authorize>		
+
+		</jstl:if>
+		
+		<jstl:if test="${row.pictures.size()==0}">
+			<B><spring:message code="new.pictures"></spring:message></B>
+			<B><spring:message code ="nothing.found.images"></spring:message></B>
+		</jstl:if>
+		
+</display:column>
+		</security:authorize>
+
+
 			
 <!-- CREAR UN COMENTARIO -->
 	<security:authorize access="hasRole('RECYCLER')">
@@ -145,7 +151,7 @@
 				onclick="confirmDelete(${row.id});" />
 		</display:column>
 
-	</security:authorize>
+	</security:authorize> 
 	
 </display:table>
 <security:authorize access="isAnonymous()">

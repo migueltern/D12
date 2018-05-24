@@ -397,4 +397,6 @@ public class CourseServiceTest extends AbstractTest {
 		return result;
 	}
 
+	//Test caso de uso 8.d-IV: Eliminar cursos por parte del admin
+
 }

@@ -34,6 +34,9 @@ public class NewscastServiceTest extends AbstractTest {
 	@Autowired
 	EditorService	editorService;
 
+	@Autowired
+	CommentService	commentService;
+
 	@PersistenceContext
 	EntityManager	entityManager;
 
@@ -108,6 +111,62 @@ public class NewscastServiceTest extends AbstractTest {
 		picturesBadUrls.add("http://www.picture1.com");
 		picturesBadUrls.add("esto no es una url");
 		return picturesBadUrls;
+	}
+
+	//Edit newscasts
+	@SuppressWarnings("unchecked")
+	@Test
+	public void driveEditNewscast() {
+		final Collection<String> picturesOk;
+		final Collection<String> picturesBadUrls;
+
+		picturesOk = this.addPicturesOk();
+		picturesBadUrls = this.addPicturesBadUrls();
+
+		final Object testingData[][] = {
+			//Editar la new1 correctamente
+			{
+				"new1", "admin", "title", "2018/02/24 12:21", "content", picturesOk, null
+			},
+			//Editar la new1 incorrectamente con el título en blanco
+			{
+				"new1", "admin", "", "2018/02/24 12:21", "content", picturesOk, javax.validation.ConstraintViolationException.class
+			},
+			//Editar la new1 incorrectamente poniendo imágenes incorrectas
+			{
+				"new1", "admin", "title1", "2018/02/24 12:21", "content", picturesBadUrls, javax.validation.ConstraintViolationException.class
+
+			}
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditNewscast((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (Collection<String>) testingData[i][5], (Class<?>) testingData[i][6]);
+
+	}
+	public void templateEditNewscast(final String entity, final String username, final String title, final String publicationDate, final String content, final Collection<String> pictures, final Class<?> expected) {
+
+		Class<?> caught;
+		Newscast newscast;
+
+		caught = null;
+
+		try {
+			super.authenticate(username);
+			newscast = this.newscastService.findOne(super.getEntityId(entity));
+			newscast.setTitle(title);
+			newscast.setCreationDate((new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(publicationDate)));
+			newscast.setContent(content);
+			newscast.setPictures(pictures);
+			this.newscastService.save(newscast);
+			this.newscastService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
 	}
 
 }

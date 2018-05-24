@@ -41,7 +41,7 @@ public class NewscastServiceTest extends AbstractTest {
 	EntityManager	entityManager;
 
 
-	//Caso de uso 14: Create a followUp
+	//Caso de uso 14: Create new
 	//@SuppressWarnings("unchecked")
 	@SuppressWarnings("unchecked")
 	@Test

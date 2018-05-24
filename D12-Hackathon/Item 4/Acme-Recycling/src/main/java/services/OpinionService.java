@@ -15,7 +15,6 @@ import repositories.OpinionRepository;
 import domain.Actor;
 import domain.Opinable;
 import domain.Opinion;
-import domain.Recycler;
 import forms.OpinionForm;
 
 @Service
@@ -28,9 +27,6 @@ public class OpinionService {
 
 	@Autowired
 	private ActorService		actorService;
-
-	@Autowired
-	private RecyclerService		recyclerService;
 
 	@Autowired
 	private OpinableService		opinableService;
@@ -75,7 +71,7 @@ public class OpinionService {
 	public Opinion save(final OpinionForm opinionForm) {
 		final Opinion result;
 		Opinion opinion;
-		Recycler recycler;
+		Actor actor;
 
 		opinion = opinionForm.getOpinion();
 
@@ -91,8 +87,8 @@ public class OpinionService {
 			Assert.isTrue(!myOpinables.contains(opinable), "you have an opinion in this opinable");
 
 		} else {
-			recycler = this.recyclerService.findByPrincipal();
-			Assert.isTrue(recycler.getOpinions().contains(this.findOne(opinion.getId())), "Cannot commit this operation, because it's illegal");
+			actor = this.actorService.findPrincipal();
+			Assert.isTrue(actor.getOpinions().contains(this.findOne(opinion.getId())), "Cannot commit this operation, because it's illegal");
 			Assert.notNull(opinion);
 		}
 

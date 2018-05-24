@@ -174,7 +174,10 @@ public class OpinionAdminController extends AbstractController {
 					result = new ModelAndView("redirect:myListOpinionCourse.do");
 
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(opinionForm, "opinion.commit.error");
+				if (oops.getMessage().equals("you have an opinion in this opinable"))
+					result = this.createEditModelAndView(opinionForm, "opinion.duplicateOpinable.error");
+				else
+					result = this.createEditModelAndView(opinionForm, "opinion.commit.error");
 			}
 		return result;
 	}
@@ -194,7 +197,7 @@ public class OpinionAdminController extends AbstractController {
 		if (opinionForm.isOpinableItem()) {
 			Collection<Item> items;
 
-			items = this.itemService.findAll();
+			items = this.itemService.findToOpineByActorId(this.adminService.findByPrincipal().getId());
 			result.addObject("items", items);
 			result.addObject("selectItems", true);
 			result.addObject("showItem", true);
@@ -202,12 +205,15 @@ public class OpinionAdminController extends AbstractController {
 		} else {
 			Collection<Course> courses;
 
-			courses = this.courseService.findAll();
+			courses = this.courseService.findToOpineByActorId(this.adminService.findByPrincipal().getId());
 			result.addObject("courses", courses);
 			result.addObject("selectCourses", true);
 			result.addObject("showItem", false);
 			result.addObject("opinableFalse", true);
 		}
+
+		if (opinionForm.getOpinion().getId() != 0)
+			result.addObject("hiddenSelects", true);
 
 		result.addObject("opinionForm", opinionForm);
 		result.addObject("requestURI", "opinion/admin/edit.do");

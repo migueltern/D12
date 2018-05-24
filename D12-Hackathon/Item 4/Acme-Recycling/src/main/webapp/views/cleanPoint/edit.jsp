@@ -36,7 +36,7 @@
 	<B><acme:booleanselect code="cleanPoint.mobile" path="mobile"/></B>
 	<br />
 	
-	<B><jstl:out value="Coordenadas GPS"></jstl:out></B>
+	<B><jstl:out value="GPS"></jstl:out></B>
 	<fieldset>
 	<B><acme:textbox code="cleanPoint.GPS.name" path="location.name"/></B>
 	<br>

@@ -76,4 +76,40 @@ public class AbstractController {
 		result = this.configurationSystemService.findOne().getSpanishWelcomeMessage();
 		return result;
 	}
+
+	@ModelAttribute(value = "whoAreWeSpanish")
+	public String getwhoAreWe() {
+		String result;
+		result = this.configurationSystemService.findOne().getWhoAreWeSpanish();
+		return result;
+	}
+
+	@ModelAttribute(value = "locationSpanish")
+	public String getlocationSpanish() {
+		String result;
+		result = this.configurationSystemService.findOne().getLocationSpanish();
+		return result;
+	}
+
+	@ModelAttribute(value = "locationEnglish")
+	public String getlocationEnglish() {
+		String result;
+		result = this.configurationSystemService.findOne().getLocationEnglish();
+		return result;
+	}
+
+	@ModelAttribute(value = "whoAreWeEnglish")
+	public String getwhoAreWeEnglish() {
+		String result;
+		result = this.configurationSystemService.findOne().getWhoAreWeEnglish();
+		return result;
+	}
+
+	@ModelAttribute(value = "aboutUsPicture")
+	public String getaboutUsPicture() {
+		String result;
+		result = this.configurationSystemService.findOne().getAboutUsPicture();
+		return result;
+	}
+
 }

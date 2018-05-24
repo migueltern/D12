@@ -25,6 +25,8 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
+	<font size="5" color = "green" face="Georgia" ><B><spring:message code="welcome"  /></B></font>
+	<fieldset>
 	<B><acme:textbox code="configurationSystem.name" path="name"/></B>
 	<br />
 	
@@ -35,15 +37,36 @@
 	<br />
 	
 	<B><acme:textarea code="configurationSystem.spanishWelcomeMessage" path="spanishWelcomeMessage" /></B>
-	<br />
-	
+
+	</fieldset>
+	<br>
+	<font size="5" color = "green" face="Georgia" ><B><spring:message code="finder"  /></B></font>
+	<fieldset>
 	<B><acme:textbox code="configurationSystem.maxNumberFinder" path="maxNumberFinder" /></B>
 	<br />
 	
 	<B><acme:textbox code="configurationSystem.cacheMaxTime" path="cacheMaxTime" /></B>
+	</fieldset>
+	<br>
+	
+	<font size="5" color = "green" face="Georgia" ><B><spring:message code="aboutUs"  /></B></font>
+	<fieldset>
+	<B><acme:textbox code="configurationSystem.whoAreWeSpanish" path="whoAreWeSpanish" /></B>
 	<br />
 	
-			
+	<B><acme:textbox code="configurationSystem.whoAreWeEnglish" path="whoAreWeEnglish" /></B>
+	<br />
+	
+	<B><acme:textbox code="configurationSystem.locationSpanish" path="locationSpanish" /></B>
+	<br />
+	
+	<B><acme:textbox code="configurationSystem.locationEnglish" path="locationEnglish" /></B>
+	<br />
+	
+	<B><acme:textbox code="configurationSystem.aboutUsPicture" path="aboutUsPicture" /></B>
+	<br />
+	</fieldset>
+	<br>
 	
 
 <!-- 	//BOTONES -->

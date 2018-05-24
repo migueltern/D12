@@ -26,7 +26,58 @@ public class ConfigurationSystem extends DomainEntity {
 	private String	spanishWelcomeMessage;
 	private int		maxNumberFinder;
 	private int		cacheMaxTime;
+	private String	whoAreWeSpanish;
+	private String	locationSpanish;
+	private String	whoAreWeEnglish;
+	private String	locationEnglish;
+	private String	aboutUsPicture;
 
+
+	@NotBlank
+	@URL
+	public String getAboutUsPicture() {
+		return this.aboutUsPicture;
+	}
+
+	public void setAboutUsPicture(final String aboutUsPicture) {
+		this.aboutUsPicture = aboutUsPicture;
+	}
+
+	@NotBlank
+	public String getWhoAreWeEnglish() {
+		return this.whoAreWeEnglish;
+	}
+
+	public void setWhoAreWeEnglish(final String whoAreWeEnglish) {
+		this.whoAreWeEnglish = whoAreWeEnglish;
+	}
+
+	@NotBlank
+	public String getLocationEnglish() {
+		return this.locationEnglish;
+	}
+
+	public void setLocationEnglish(final String locationEnglish) {
+		this.locationEnglish = locationEnglish;
+	}
+
+	@NotBlank
+	public String getLocationSpanish() {
+		return this.locationSpanish;
+	}
+
+	public void setLocationSpanish(final String locationSpanish) {
+		this.locationSpanish = locationSpanish;
+	}
+
+	@NotBlank
+	public String getWhoAreWeSpanish() {
+		return this.whoAreWeSpanish;
+	}
+
+	public void setWhoAreWeSpanish(final String whoAreWeSpanish) {
+		this.whoAreWeSpanish = whoAreWeSpanish;
+	}
 
 	@NotBlank
 	public String getEnglishWelcomeMessage() {

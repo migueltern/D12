@@ -1971,7 +1971,11 @@
 
 		<property name="maxNumberFinder" value="40" />
 		<property name="cacheMaxTime" value="2" />
-
+		<property name="whoAreWeSpanish" value="La organización que cuida del medio ambiente a través del reciclaje y el ecodiseño de los envases en España. Hacemos posible que los envases de plástico, latas, cartón, y cualquier objeto puedan tener una segunda oportunidad. " />
+		<property name="locationSpanish" value="Nuestra empresa Acme-Recycler se encuentra ubicada en la capital de Andalucía, concretamente en el municipio español de la provincia de Sevilla." />
+		<property name="whoAreWeEnglish" value="The organization that takes care of the environment through recycling and eco-design of packaging in Spain. We make it possible for plastic containers, cans, paperboard, and any object can have a second chance." />
+		<property name="locationEnglish" value="Our company Acme-Recycler is located in the capital of Andalucia, specifically in the Spanish municipality of the province of Seville." />
+		<property name="aboutUsPicture" value="https://okdiario.com/img/2017/05/03/planeta-655x368.jpg" />
 		<property name="tabooWords">
 			<list>
 				<ref bean="tabooWord1" />

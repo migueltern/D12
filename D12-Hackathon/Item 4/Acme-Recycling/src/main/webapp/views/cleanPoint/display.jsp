@@ -24,12 +24,13 @@
 <display:table name="cleanpoint" class="displaytag"
   requestURI="${requestURI}" id="row">
   <display:column>
-	<spring:message code="cleanPoint.address" />
+  <br>
+	<B><spring:message code="cleanPoint.address" /></B>
 	 <jstl:out value="${row.address },"></jstl:out>
 	 <jstl:out value="${row.province }"></jstl:out><br>
-  	<spring:message code="cleanPoint.phone" />
+  	<B><spring:message code="cleanPoint.phone" /></B>
   <jstl:out value="${row.phone }"></jstl:out><br>
-    <spring:message code="cleanPoint.GPS.name" />
+  <B><spring:message code="cleanPoint.GPS.name" /></B>
   <jstl:out value="${row.location.name }"></jstl:out><br><br>
   
 	<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:C%7C${row.location.latitude },${row.location.longitude }&key=AIzaSyD6k6uBLY3StaXPY0ae8RJLTG0Ycs-QyxI">

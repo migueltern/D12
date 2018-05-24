@@ -203,9 +203,16 @@
 					<li><a href="finder/buyer/list.do?d-16544-p=1"><spring:message
 								code="master.page.finder" /></a></li>
 				</ul></li>
+				
+				<li><a class="fNiv"><spring:message
+						code="master.page.administrator.legislation" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="legislation/list.do"><spring:message
+								code="master.page.administrator.legislation" /></a></li>
+				</ul></li>
+				
 		</security:authorize>
-
-
 
 		<security:authorize access="hasRole('RECYCLER')">
 			<li><a class="fNiv"><spring:message
@@ -292,6 +299,15 @@
 					<li><a href="welcome/aboutUs.do"><spring:message
 								code="master.page.aboutUs" /></a></li>
 				</ul></li>
+				
+				<li><a class="fNiv"><spring:message
+						code="master.page.administrator.legislation" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="legislation/list.do"><spring:message
+								code="master.page.administrator.legislation" /></a></li>
+				</ul></li>
+				
 		</security:authorize>
 
 		<security:authorize access="hasRole('CARRIER')">
@@ -351,6 +367,13 @@
 								code="master.page.aboutUs" /></a></li>
 				</ul></li>
 
+				<li><a class="fNiv"><spring:message
+						code="master.page.administrator.legislation" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="legislation/list.do"><spring:message
+								code="master.page.administrator.legislation" /></a></li>
+				</ul></li>
 		</security:authorize>
 
 		<security:authorize access="hasRole('MANAGER')">
@@ -423,7 +446,13 @@
 								code="master.page.aboutUs" /></a></li>
 				</ul></li>
 
-			
+			<li><a class="fNiv"><spring:message
+						code="master.page.administrator.legislation" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="legislation/list.do"><spring:message
+								code="master.page.administrator.legislation" /></a></li>
+				</ul></li>
 
 		</security:authorize>
 
@@ -475,6 +504,14 @@
 					<li class="arrow"></li>
 					<li><a href="welcome/aboutUs.do"><spring:message
 								code="master.page.aboutUs" /></a></li>
+				</ul></li>
+				
+				<li><a class="fNiv"><spring:message
+						code="master.page.administrator.legislation" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="legislation/list.do"><spring:message
+								code="master.page.administrator.legislation" /></a></li>
 				</ul></li>
 		</security:authorize>
 

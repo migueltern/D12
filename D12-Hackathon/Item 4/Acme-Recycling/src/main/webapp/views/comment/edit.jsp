@@ -44,6 +44,6 @@
 </jstl:if>
 	
 	<acme:cancel
-		url="new_/recycler/list.do?d-16544-p=1"
+		url="comment/recycler/list.do?d-16544-p=1"
 		code="comment.cancel" />
 </form:form>

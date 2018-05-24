@@ -884,6 +884,7 @@
 		<property name="buys">
 			<list>
 				<ref bean="buy1" />
+				<ref bean="buy9"/>
 			</list>
 		</property>
 		<property name="courses">
@@ -964,6 +965,7 @@
 		<property name="buys">
 			<list>
 				<ref bean="buy4" />
+				<ref bean="buy7"/>
 			</list>
 		</property>
 		<property name="courses">
@@ -990,6 +992,8 @@
 		<property name="buys">
 			<list>
 				<ref bean="buy5" />
+				<ref bean="buy6"/>
+				<ref bean="buy8"/>
 			</list>
 		</property>
 		<property name="courses">

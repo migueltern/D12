@@ -1,5 +1,5 @@
 
-package controllers.recycler;
+package controllers.actor;
 
 import java.util.Collection;
 
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.CourseService;
 import services.ItemService;
 import services.OpinableService;
 import services.OpinionService;
-import services.RecyclerService;
 import controllers.AbstractController;
+import domain.Actor;
 import domain.Course;
 import domain.Item;
 import domain.Opinion;
-import domain.Recycler;
 import forms.OpinionForm;
 
 @Controller
-@RequestMapping("/opinion/recycler")
-public class OpinionRecyclerController extends AbstractController {
+@RequestMapping("/opinion/actor")
+public class OpinionActorController extends AbstractController {
 
 	//	//Services--------------------------------------------
 
@@ -34,7 +34,7 @@ public class OpinionRecyclerController extends AbstractController {
 	private OpinionService	opinionService;
 
 	@Autowired
-	private RecyclerService	recyclerService;
+	private ActorService	actorService;
 
 	@Autowired
 	private ItemService		itemService;
@@ -48,7 +48,7 @@ public class OpinionRecyclerController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public OpinionRecyclerController() {
+	public OpinionActorController() {
 		super();
 	}
 
@@ -57,14 +57,14 @@ public class OpinionRecyclerController extends AbstractController {
 	public ModelAndView myListOpinionItem() {
 		ModelAndView result;
 		Collection<Opinion> myOpinions;
-		Recycler recyclerPrincipal;
+		Actor actorPrincipal;
 
-		recyclerPrincipal = this.recyclerService.findByPrincipal();
-		myOpinions = this.opinionService.findOpinableItemByActor(recyclerPrincipal.getId());
+		actorPrincipal = this.actorService.findPrincipal();
+		myOpinions = this.opinionService.findOpinableItemByActor(actorPrincipal.getId());
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);
-		result.addObject("requestURI", "opinion/recycler/myListOpinionItem.do?d-16544-p=1");
+		result.addObject("requestURI", "opinion/actor/myListOpinionItem.do?d-16544-p=1");
 		return result;
 	}
 
@@ -73,14 +73,14 @@ public class OpinionRecyclerController extends AbstractController {
 	public ModelAndView myListOpinionCourse() {
 		ModelAndView result;
 		Collection<Opinion> myOpinions;
-		Recycler recyclerPrincipal;
+		Actor actorPrincipal;
 
-		recyclerPrincipal = this.recyclerService.findByPrincipal();
-		myOpinions = this.opinionService.findOpinableCourseByActor(recyclerPrincipal.getId());
+		actorPrincipal = this.actorService.findPrincipal();
+		myOpinions = this.opinionService.findOpinableCourseByActor(actorPrincipal.getId());
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);
-		result.addObject("requestURI", "opinion/recycler/myListOpinionCourse.do?d-16544-p=1");
+		result.addObject("requestURI", "opinion/actor/myListOpinionCourse.do?d-16544-p=1");
 		return result;
 	}
 
@@ -128,13 +128,13 @@ public class OpinionRecyclerController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int opinionId) {
 		ModelAndView result;
 		Opinion opinion;
-		Recycler recycler;
+		Actor actor;
 		final OpinionForm opinionForm;
 		int opinableId;
 
-		recycler = this.recyclerService.findByPrincipal();
+		actor = this.actorService.findPrincipal();
 		opinion = this.opinionService.findOne(opinionId);
-		Assert.isTrue(recycler.getOpinions().contains(opinion), "Cannot commit this operation, because it's illegal");
+		Assert.isTrue(actor.getOpinions().contains(opinion), "Cannot commit this operation, because it's illegal");
 		Assert.notNull(opinion);
 
 		//Pasar el opinion a opinionform para la vista
@@ -197,7 +197,7 @@ public class OpinionRecyclerController extends AbstractController {
 		if (opinionForm.isOpinableItem()) {
 			Collection<Item> items;
 
-			items = this.itemService.findToOpineByActorId(this.recyclerService.findByPrincipal().getId());
+			items = this.itemService.findToOpineByActorId(this.actorService.findPrincipal().getId());
 			result.addObject("items", items);
 			result.addObject("selectItems", true);
 			result.addObject("showItem", true);
@@ -205,7 +205,7 @@ public class OpinionRecyclerController extends AbstractController {
 		} else {
 			Collection<Course> courses;
 
-			courses = this.courseService.findToOpineByActorId(this.recyclerService.findByPrincipal().getId());
+			courses = this.courseService.findToOpineByActorId(this.actorService.findPrincipal().getId());
 			result.addObject("courses", courses);
 			result.addObject("selectCourses", true);
 			result.addObject("showItem", false);
@@ -216,7 +216,7 @@ public class OpinionRecyclerController extends AbstractController {
 			result.addObject("hiddenSelects", true);
 
 		result.addObject("opinionForm", opinionForm);
-		result.addObject("requestURI", "opinion/recycler/edit.do");
+		result.addObject("requestURI", "opinion/actor/edit.do");
 		result.addObject("message", messageCode);
 		return result;
 

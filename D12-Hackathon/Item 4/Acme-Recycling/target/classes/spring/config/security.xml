@@ -125,7 +125,7 @@
 		<security:intercept-url pattern="/opinion/carrier/**" access="hasRole('CARRIER')"/>
 		
 		
-		
+		<security:intercept-url pattern="/opinion/actor/**" access="isAuthenticated()"/>
 	
 	
 	

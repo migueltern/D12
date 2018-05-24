@@ -145,6 +145,7 @@ public class OpinionService {
 			opinion.setId(opinionBD.getId());
 			opinion.setVersion(opinionBD.getVersion());
 			opinionForm.setOpinableId(this.opinableService.findByOpinionId(opinion.getId()).getId());
+			opinionForm.setOpinableItem(this.opinableService.isItem(opinionForm.getOpinableId()));
 		}
 		opinion.setActor(this.actorService.findPrincipal());
 		opinionForm.setOpinion(opinion);

@@ -112,23 +112,6 @@
 
 				</ul></li>
 				
-			<li><a class="fNiv"><spring:message
-						code="master.page.opinion" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a
-						href="opinion/admin/myListOpinionItem.do?d-16544-p=1"><spring:message
-								code="master.page.opinion.myListOpinionProduct" /></a></li>
-					<li><a
-						href="opinion/admin/myListOpinionCourse.do?d-16544-p=1"><spring:message
-								code="master.page.opinion.myListOpinionCourse" /></a></li>
-					<li><a href="opinion/admin/createOpinableItem.do"><spring:message
-								code="master.page.opinion.createOpinableProduct" /></a></li>
-					<li><a href="opinion/admin/createOpinableCourse.do"><spring:message
-								code="master.page.opinion.createOpinableCourse" /></a></li>
-
-				</ul></li>
-				
 			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -279,23 +262,6 @@
 					<li><a href="incidence/recycler/create.do"><spring:message
 								code="master.page.incidence.create" /></a></li>
 
-
-				</ul></li>
-
-			<li><a class="fNiv"><spring:message
-						code="master.page.opinion" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a
-						href="opinion/recycler/myListOpinionItem.do?d-16544-p=1"><spring:message
-								code="master.page.opinion.myListOpinionProduct" /></a></li>
-					<li><a
-						href="opinion/recycler/myListOpinionCourse.do?d-16544-p=1"><spring:message
-								code="master.page.opinion.myListOpinionCourse" /></a></li>
-					<li><a href="opinion/recycler/createOpinableItem.do"><spring:message
-								code="master.page.opinion.createOpinableProduct" /></a></li>
-					<li><a href="opinion/recycler/createOpinableCourse.do"><spring:message
-								code="master.page.opinion.createOpinableCourse" /></a></li>
 
 				</ul></li>
 
@@ -562,6 +528,24 @@
 					<li><a href="legislation/list.do"><spring:message
 								code="master.page.administrator.legislation" /></a></li>
 				</ul></li>
+		</security:authorize>
+		<security:authorize access="isAuthenticated()">
+			<li><a class="fNiv"><spring:message
+							code="master.page.opinion" /></a>
+					<ul>
+						<li class="arrow"></li>
+						<li><a
+							href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+									code="master.page.opinion.myListOpinionProduct" /></a></li>
+						<li><a
+							href="opinion/actor/myListOpinionCourse.do?d-16544-p=1"><spring:message
+									code="master.page.opinion.myListOpinionCourse" /></a></li>
+						<li><a href="opinion/actor/createOpinableItem.do"><spring:message
+									code="master.page.opinion.createOpinableProduct" /></a></li>
+						<li><a href="opinion/actor/createOpinableCourse.do"><spring:message
+									code="master.page.opinion.createOpinableCourse" /></a></li>
+
+					</ul></li>
 		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">

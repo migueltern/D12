@@ -27,28 +27,18 @@
 
 	<!--  EDIT -->
 
-	<security:authorize access="hasRole('RECYCLER')">
+	<security:authorize access="isAuthenticated()">
 		<spring:message code="opinion.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="false">
 
-			<spring:url value="opinion/recycler/edit.do" var="editURL">
+			<spring:url value="opinion/actor/edit.do" var="editURL">
 				<spring:param name="opinionId" value="${row.id}" />
 			</spring:url>
 			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
 		</display:column>
 	</security:authorize>
 	
-	<security:authorize access="hasRole('ADMIN')">
-		<spring:message code="opinion.edit" var="Edit" />
-		<display:column title="${Edit}" sortable="false">
-
-			<spring:url value="opinion/admin/edit.do" var="editURL">
-				<spring:param name="opinionId" value="${row.id}" />
-			</spring:url>
-			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
-		</display:column>
-	</security:authorize>
-
+	
 	<!-- ATRIBUTOS -->
 
 	<spring:message code="opinion.title" var="titleHeader" />

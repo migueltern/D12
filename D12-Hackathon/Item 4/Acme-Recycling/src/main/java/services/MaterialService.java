@@ -50,6 +50,7 @@ public class MaterialService {
 		Collection<Buy> buys;
 		buys = new ArrayList<Buy>();
 		result = new Material();
+		result.setTotalPrice(0.0);
 		result.setBuys(buys);
 		return result;
 	}

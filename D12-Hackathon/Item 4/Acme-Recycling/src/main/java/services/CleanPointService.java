@@ -21,6 +21,9 @@ public class CleanPointService {
 	@Autowired
 	private CleanPointRepository	cleanPointRepository;
 
+	@Autowired
+	private AdminService			adminService;
+
 	// Supporting services ----------------------------------------------------
 
 	//Importar la que pertenece a Spring
@@ -37,6 +40,7 @@ public class CleanPointService {
 
 	public CleanPoint create() {
 		CleanPoint result;
+		this.adminService.checkPrincipal();
 
 		result = new CleanPoint();
 
@@ -71,7 +75,7 @@ public class CleanPointService {
 	public void delete(final CleanPoint cleanPoint) {
 		Assert.notNull(cleanPoint);
 		Assert.isTrue(cleanPoint.getId() != 0);
-
+		Assert.isTrue(cleanPoint.isMobile() == true);
 		this.cleanPointRepository.delete(cleanPoint);
 	}
 
@@ -98,5 +102,9 @@ public class CleanPointService {
 		}
 		this.validator.validate(result, bindingResult);
 		return result;
+	}
+
+	public void flush() {
+		this.cleanPointRepository.flush();
 	}
 }

@@ -2038,6 +2038,10 @@
 		<property name="name" value="viagra"></property>
 		<property name="default_word" value="true"></property>
 	</bean>
+	<bean id="tabooWord5" class="domain.TabooWord">
+		<property name="name" value="cialis 1"/>
+		<property name="default_word" value="false"/>
+	</bean>
 
 	<!-- laws -->
 	<bean id="law1" class="domain.Legislation">

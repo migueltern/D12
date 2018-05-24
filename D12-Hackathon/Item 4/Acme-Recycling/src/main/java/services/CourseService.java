@@ -319,4 +319,13 @@ public class CourseService {
 		courses = this.courseRepository.findCoursesOfMaterial(materialId);
 		return courses;
 	}
+
+	public Collection<Course> findToOpineByActorId(final int actorId) {
+		Collection<Course> result;
+
+		result = this.findAll();
+		result.removeAll(new ArrayList<Course>(this.courseRepository.findToOpineByActorId(actorId)));
+
+		return result;
+	}
 }

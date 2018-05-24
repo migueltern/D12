@@ -24,4 +24,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 	@Query("select c from Course c join c.materials m where m.id =?1")
 	Collection<Course> findCoursesOfMaterial(int materialId);
 
+	@Query("select c from Course c join c.opinions o where o.actor.id=?1")
+	Collection<Course> findToOpineByActorId(int actorId);
+
 }

@@ -174,7 +174,10 @@ public class OpinionRecyclerController extends AbstractController {
 					result = new ModelAndView("redirect:myListOpinionCourse.do");
 
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(opinionForm, "opinion.commit.error");
+				if (oops.getMessage().equals("you have an opinion in this opinable"))
+					result = this.createEditModelAndView(opinionForm, "opinion.duplicateOpinable.error");
+				else
+					result = this.createEditModelAndView(opinionForm, "opinion.commit.error");
 			}
 		return result;
 	}
@@ -202,12 +205,15 @@ public class OpinionRecyclerController extends AbstractController {
 		} else {
 			Collection<Course> courses;
 
-			courses = this.courseService.findAll();
+			courses = this.courseService.findToOpineByActorId(this.recyclerService.findByPrincipal().getId());
 			result.addObject("courses", courses);
 			result.addObject("selectCourses", true);
 			result.addObject("showItem", false);
 			result.addObject("opinableFalse", true);
 		}
+
+		if (opinionForm.getOpinion().getId() != 0)
+			result.addObject("hiddenSelects", true);
 
 		result.addObject("opinionForm", opinionForm);
 		result.addObject("requestURI", "opinion/recycler/edit.do");

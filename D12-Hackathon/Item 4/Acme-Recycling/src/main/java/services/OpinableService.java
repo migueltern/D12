@@ -115,4 +115,12 @@ public class OpinableService {
 
 		return result;
 	}
+
+	public Collection<Opinable> findByActorId(final int actorId) {
+		Collection<Opinable> result;
+
+		result = this.opinableRepository.findByActorId(actorId);
+
+		return result;
+	}
 }

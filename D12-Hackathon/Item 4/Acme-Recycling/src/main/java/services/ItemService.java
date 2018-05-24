@@ -183,7 +183,8 @@ public class ItemService {
 	public Collection<Item> findToOpineByActorId(final int actorId) {
 		Collection<Item> result;
 
-		result = this.itemRepository.findToOpineByActorId(actorId);
+		result = this.findAll();
+		result.removeAll(new ArrayList<Item>(this.itemRepository.findToOpineByActorId(actorId)));
 
 		return result;
 	}

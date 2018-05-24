@@ -19,7 +19,7 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	@Query("select i from Item i where i.recycler.id = ?1 and i.request.status = 'FINISHED'")
 	Collection<Item> findItemsWithFinishedRequest(int recyclerId);
 
-	@Query("select i from Item i join i.opinions o where o.actor.id!=?1")
+	@Query("select i from Item i join i.opinions o where o.actor.id=?1")
 	Collection<Item> findToOpineByActorId(int actorId);
 
 }

@@ -85,6 +85,11 @@ public class OpinionService {
 			createdMoment = new Date(System.currentTimeMillis() - 1000);
 			opinion.setCreatedMoment(createdMoment);
 
+			//No se puede crear una opinion en un opinable si ya has creado una
+			final Opinable opinable = this.opinableService.findOneManual(opinionForm.getOpinableId());
+			final Collection<Opinable> myOpinables = this.opinableService.findByActorId(opinion.getActor().getId());
+			Assert.isTrue(!myOpinables.contains(opinable), "you have an opinion in this opinable");
+
 		} else {
 			recycler = this.recyclerService.findByPrincipal();
 			Assert.isTrue(recycler.getOpinions().contains(this.findOne(opinion.getId())), "Cannot commit this operation, because it's illegal");
@@ -103,7 +108,6 @@ public class OpinionService {
 
 		return result;
 	}
-
 	public void delete(final Opinion opinion) {
 		Assert.notNull(opinion);
 		Actor actorPrincipal;

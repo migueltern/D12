@@ -238,5 +238,8 @@ public class NewscastService {
 
 		return result;
 	}
+	public void flush() {
+		this.newscastRepository.flush();
+	}
 
 }

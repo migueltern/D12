@@ -89,10 +89,11 @@ public class MaterialAdminController extends AbstractController {
 	//Saving-----------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Material material, final BindingResult binding) {
+	public ModelAndView save(@Valid Material material, final BindingResult binding) {
 
 		ModelAndView result;
 
+		material = this.materialService.reconstruct(material, binding);
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(material);
 		else
@@ -109,47 +110,47 @@ public class MaterialAdminController extends AbstractController {
 	}
 
 	//Delete-----------------
-
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(@Valid final Material material, final BindingResult binding) {
-
-		ModelAndView result;
-
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(material);
-		else
-			try {
-
-				this.materialService.delete(material);
-				result = new ModelAndView("redirect:/material/admin/list.do?d-16544-p=1");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(material, "tabooWord.commit.error");
-			}
-
-		return result;
-
-	}
-
-	//Delete---------------------------------------------------------------------
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(final int materialId) {
-		ModelAndView result;
-		Material material;
-
-		material = this.materialService.findOne(materialId);
-		Assert.notNull(material);
-		try {
-			this.materialService.delete(material);
-			result = new ModelAndView("redirect:list.do");
-		} catch (final Throwable oops) {
-			if (oops.getMessage().equals("Existe un curso que no esta en modo final"))
-				result = this.createDeleteModelAndView(material, "material.course.drafMode");
-			else
-				result = this.createDeleteModelAndView(material, "material.commit.error");
-
-		}
-		return result;
-	}
+	//
+	//	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	//	public ModelAndView delete(@Valid final Material material, final BindingResult binding) {
+	//
+	//		ModelAndView result;
+	//
+	//		if (binding.hasErrors())
+	//			result = this.createEditModelAndView(material);
+	//		else
+	//			try {
+	//
+	//				this.materialService.delete(material);
+	//				result = new ModelAndView("redirect:/material/admin/list.do?d-16544-p=1");
+	//			} catch (final Throwable oops) {
+	//				result = this.createEditModelAndView(material, "tabooWord.commit.error");
+	//			}
+	//
+	//		return result;
+	//
+	//	}
+	//
+	//	//Delete---------------------------------------------------------------------
+	//	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	//	public ModelAndView delete(final int materialId) {
+	//		ModelAndView result;
+	//		Material material;
+	//
+	//		material = this.materialService.findOne(materialId);
+	//		Assert.notNull(material);
+	//		try {
+	//			this.materialService.delete(material);
+	//			result = new ModelAndView("redirect:list.do");
+	//		} catch (final Throwable oops) {
+	//			if (oops.getMessage().equals("Existe un curso que no esta en modo final"))
+	//				result = this.createDeleteModelAndView(material, "material.course.drafMode");
+	//			else
+	//				result = this.createDeleteModelAndView(material, "material.commit.error");
+	//
+	//		}
+	//		return result;
+	//	}
 
 	//	Listing ---------------------------------------------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

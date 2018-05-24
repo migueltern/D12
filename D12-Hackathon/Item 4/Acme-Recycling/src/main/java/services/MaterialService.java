@@ -13,8 +13,6 @@ import org.springframework.validation.Validator;
 
 import repositories.MaterialRepository;
 import domain.Buy;
-import domain.Course;
-import domain.Finder;
 import domain.Material;
 
 @Service
@@ -79,25 +77,25 @@ public class MaterialService {
 		return result;
 	}
 
-	public void delete(final Material material) {
-		this.adminService.checkPrincipal();
-		Assert.notNull(material);
-		Assert.isTrue(material.getId() != 0);
-		Collection<Buy> buysOfMaterial;
-		Collection<Finder> findersOfMaterial;
-		Collection<Course> coursesOfMaterial;
-		buysOfMaterial = this.buyService.findBuysOfMaterial(material.getId());
-		findersOfMaterial = this.finderService.findFindersOfMaterial(material.getId());
-		coursesOfMaterial = this.courseService.findCoursesOfMaterial(material.getId());
-
-		for (final Buy b : buysOfMaterial)
-			this.buyService.delete(b);
-		for (final Finder f : findersOfMaterial)
-			this.finderService.delete(f);
-		for (final Course c : coursesOfMaterial)
-			this.courseService.delete(c);
-		this.materialRepository.delete(material);
-	}
+	//	public void delete(final Material material) {
+	//		this.adminService.checkPrincipal();
+	//		Assert.notNull(material);
+	//		Assert.isTrue(material.getId() != 0);
+	//		Collection<Buy> buysOfMaterial;
+	//		Collection<Finder> findersOfMaterial;
+	//		Collection<Course> coursesOfMaterial;
+	//		buysOfMaterial = this.buyService.findBuysOfMaterial(material.getId());
+	//		findersOfMaterial = this.finderService.findFindersOfMaterial(material.getId());
+	//		coursesOfMaterial = this.courseService.findCoursesOfMaterial(material.getId());
+	//
+	//		for (final Buy b : buysOfMaterial)
+	//			this.buyService.delete(b);
+	//		for (final Finder f : findersOfMaterial)
+	//			this.finderService.delete(f);
+	//		for (final Course c : coursesOfMaterial)
+	//			this.courseService.delete(c);
+	//		this.materialRepository.delete(material);
+	//	}
 
 	public void flush() {
 		this.materialRepository.flush();
@@ -115,7 +113,7 @@ public class MaterialService {
 
 			buys = new ArrayList<Buy>();
 
-			if (material.getBuys() == null || material.getBuys().contains(null))
+			if (material.getBuys() == null || material.getBuys().size() == 0)
 				material.setBuys(buys);
 
 		}
@@ -123,7 +121,7 @@ public class MaterialService {
 		else {
 			materialBd = this.materialRepository.findOne(material.getId());
 			material.setId(materialBd.getId());
-			material.setVersion(material.getVersion());
+			material.setVersion(materialBd.getVersion());
 
 			result = material;
 		}

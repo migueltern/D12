@@ -105,7 +105,7 @@
 			<a href="${deleteURL}"><spring:message code="material.buy" /></a>
 		</display:column>
 	</security:authorize>
-
+<%-- 
 	<!--  DELETE -->
 	<security:authorize access="hasRole('ADMIN')">
 		<spring:message code="material.delete" var="delete" />
@@ -119,7 +119,7 @@
 
 
 
-	</security:authorize>
+	</security:authorize> --%>
 
 
 </display:table>

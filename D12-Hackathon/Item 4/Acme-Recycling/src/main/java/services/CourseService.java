@@ -110,10 +110,15 @@ public class CourseService {
 	public void delete(final Course course) {
 		Assert.notNull(course);
 		Buyer buyer;
-		final Collection<Recycler> recyclers;
-
+		Collection<Recycler> recyclers;
+		Collection<Course> coursesOfBuyer;
 		Collection<Lesson> lessons;
 
+		buyer = this.buyerService.findBuyerByCourse(course);
+		coursesOfBuyer = this.courseRepository.findCoursesCreatedByBuyer(buyer.getId());
+
+		//Solo podrá eliminar los cursos que sean del buyer que esté conectado
+		Assert.isTrue(coursesOfBuyer.contains(course));
 		//Sólo si está en modo borrar se podrá eliminar el course
 		Assert.isTrue(course.isDraftMode(), "Existe un curso que no esta en modo final");
 
@@ -123,10 +128,8 @@ public class CourseService {
 			this.lessonService.delete(l);
 		}
 
-		if (this.buyerService.findBuyerByCourse(course) != null) {
-			buyer = this.buyerService.findBuyerByCourse(course);
+		if (this.buyerService.findBuyerByCourse(course) != null)
 			buyer.getCourses().remove(course);
-		}
 
 		recyclers = this.recyclerService.findRecyclerByCourse(course);
 		for (final Recycler r : recyclers)
@@ -327,5 +330,9 @@ public class CourseService {
 		result.removeAll(new ArrayList<Course>(this.courseRepository.findToOpineByActorId(actorId)));
 
 		return result;
+	}
+
+	public void flush() {
+		this.courseRepository.flush();
 	}
 }

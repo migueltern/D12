@@ -44,10 +44,12 @@ public class OpinionController extends AbstractController {
 	public ModelAndView list(@RequestParam final int opinableId) {
 		ModelAndView result;
 		Collection<Opinion> opinions;
+		Opinable opinable;
 
 		result = new ModelAndView("opinion/list");
 
-		opinions = this.opinableService.findOne(opinableId).getOpinions();
+		opinable = this.opinableService.findOneManual(opinableId);
+		opinions = opinable.getOpinions();
 
 		result.addObject("opinions", opinions);
 

@@ -125,6 +125,7 @@ public class NewscastService {
 		Editor editor;
 
 		editor = this.editorService.findByPrincipal();
+		Assert.isTrue(editor.getNews().contains(newscast), "This new is  not yours");
 
 		if (newscast.getComments().size() != 0)
 			for (final Comment c : newscast.getComments())

@@ -168,5 +168,43 @@ public class NewscastServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 
 	}
+	//Borrar una noticia
+	@Test
+	public void driverDelete() {
+		final Object testingData[][] = {
+			{
+				//Se elimina correctamente la noticia 1
+				"editor1", "new1", null
+
+			}, {
+				//Se elimina incorrectamente la noticia dos porque el editor1 no es su autor
+				"editor2", "new2", java.lang.IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateDelete((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateDelete(final String username, final int newId, final Class<?> expected) {
+		Newscast newscast;
+		Class<?> caught;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+			newscast = this.newscastService.findOne(newId);
+			this.newscastService.delete(newscast);
+
+			this.newscastService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
 
 }

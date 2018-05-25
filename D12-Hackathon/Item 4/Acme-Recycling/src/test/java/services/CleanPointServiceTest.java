@@ -220,4 +220,58 @@ public class CleanPointServiceTest extends AbstractTest {
 		}
 		this.checkExceptions(expected, caught);
 	}
+
+	//Edit cleanPoint
+	@Test
+	public void driveEditcleanPoint() {
+		final Collection<GPS> listGPS;
+		final Iterator<GPS> iterator;
+		GPS gpsOk;
+
+		listGPS = this.createAllGPSForTesting();
+		iterator = listGPS.iterator();
+		gpsOk = iterator.next();
+
+		final Object testingData[][] = {
+			//Editar el punto limpio 4 sin problema
+			{
+				"cleanPoint4", "admin", "address", "", "SEVILLA", gpsOk, false, null
+			}, {
+				//Editar el punto 6 incorrectamente dejando la dirección en blanco
+				"cleanPoint6", "admin", "", "", "SEVILLA", gpsOk, false, javax.validation.ConstraintViolationException.class
+			}
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditNewscast((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (GPS) testingData[i][5], (boolean) testingData[i][6],
+				(Class<?>) testingData[i][7]);
+
+	}
+	public void templateEditNewscast(final String entity, final String username, final String address, final String phone, final String province, final GPS location, final boolean mobile, final Class<?> expected) {
+
+		Class<?> caught;
+		CleanPoint cleanpoint;
+
+		caught = null;
+
+		try {
+			super.authenticate(username);
+			cleanpoint = this.cleanPointService.findOne(super.getEntityId(entity));
+			cleanpoint.setAddress(address);
+			cleanpoint.setLocation(location);
+			cleanpoint.setPhone(phone);
+			cleanpoint.setProvince(province);
+			cleanpoint.setMobile(mobile);
+
+			this.cleanPointService.save(cleanpoint);
+			this.cleanPointService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+	}
 }

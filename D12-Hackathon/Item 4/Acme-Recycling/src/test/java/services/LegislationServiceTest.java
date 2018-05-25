@@ -41,7 +41,7 @@ public class LegislationServiceTest extends AbstractTest {
 	EntityManager				entityManager;
 
 
-	//Create a tabooWord
+	//Create a law
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
@@ -118,7 +118,7 @@ public class LegislationServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
-	//Edit a taboo word
+	//Edit a law
 	@Test
 	public void driveEditLaw() {
 

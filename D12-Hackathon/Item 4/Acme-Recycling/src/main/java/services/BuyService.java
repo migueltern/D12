@@ -87,7 +87,7 @@ public class BuyService {
 
 		material.setQuantity(Double.parseDouble(cantidadnew));
 
-		this.materialService.save(material);
+		this.buyRepository.save(buy);
 		if (buy.getId() == 0)
 			buyer.getBuys().add(result);
 

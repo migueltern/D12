@@ -37,14 +37,22 @@
 					<li><a href="admin/dashboard.do"><spring:message
 								code="master.page.statistics" /></a>
 				</ul></li>
-
-			<li><a class="fNiv"><spring:message
-						code="master.page.course.administrator" /></a>
+				
+				<li><a class="fNiv"><spring:message
+						code="master.page.responsabilidades" /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="course/admin/list.do?d-16544-p=1"><spring:message
 								code="master.page.course.list" /></a></li>
+					<li><a href="cleanPoint/admin/list.do?d-16544-p=1"><spring:message
+								code="master.page.administrator.cleanPoints" /></a></li>
+					<li><a href="material/admin/list.do?d-16544-p=1"><spring:message
+								code="master.page.admin.material.list" /></a></li>
+					<li><a href="actor/admin/list.do?d-16544-p=1"><spring:message
+								code="master.page.ban" /></a></li>
 				</ul></li>
+
+			
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.administrator.register" /></a>
@@ -85,13 +93,6 @@
 								code="master.page.administrator.configurationSystem.edit" /></a></li>
 				</ul></li>
 
-			<li><a class="fNiv"><spring:message
-						code="master.page.administrator.cleanPoints" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="cleanPoint/admin/list.do?d-16544-p=1"><spring:message
-								code="master.page.administrator.cleanPoints" /></a></li>
-				</ul></li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.tabooWord" /></a>
@@ -103,14 +104,6 @@
 								code="master.page.incidence" /></a></li>
 				</ul></li>
 
-			<li><a class="fNiv"><spring:message
-						code="master.page.admin.material" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="material/admin/list.do?d-16544-p=1"><spring:message
-								code="master.page.admin.material.list" /></a></li>
-
-				</ul></li>
 				
 			<li><a class="fNiv"><spring:message	code="master.page.recycler" /></a>
 				<ul>
@@ -120,14 +113,6 @@
 				</ul>
 			</li>
 
-			<li><a class="fNiv"><spring:message code="master.page.actor" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="actor/admin/list.do?d-16544-p=1"><spring:message
-								code="master.page.ban" /></a></li>
-				</ul></li>
-				
-			
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>

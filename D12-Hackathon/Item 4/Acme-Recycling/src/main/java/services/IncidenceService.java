@@ -114,6 +114,7 @@ public class IncidenceService {
 
 		incidence.setCreatedMoment(createdMoment);
 
+		Assert.isTrue(principal.equals(incidence.getRecycler()));
 		Assert.isTrue(principal instanceof Manager || principal instanceof Recycler);
 		
 		if(principal instanceof Recycler)
@@ -130,18 +131,25 @@ public class IncidenceService {
 
 			this.messageService.saveMessageInFolder(incidence.getRecycler(), "Notification box", messageSend);
 		}
+		
+		
 		result = this.incidenceRepository.save(incidence);
 
 		return result;
 
 	}
 
-	public void delete(final Incidence incidence) {
+	public void delete(final Incidence incidence){
+
+		Actor principal;
 
 		Assert.notNull(incidence);
 		Assert.isTrue(incidence.getId() != 0);
-
+		principal = this.actorService.findPrincipal();
+		
+		Assert.isTrue(principal.equals(incidence.getRecycler()));
 		Assert.isTrue(incidence.isResolved() == false);
+		
 		
 		Manager manager;
 		
@@ -230,7 +238,7 @@ public class IncidenceService {
 		
 	}
 	
-public Collection<Incidence> findIncidenceResolved(){
+	public Collection<Incidence> findIncidenceResolved(){
 		
 		Collection<Incidence> result;
 		
@@ -239,5 +247,10 @@ public Collection<Incidence> findIncidenceResolved(){
 		return result;
 		
 	}
-
+	
+	public void flush(){
+		
+		this.incidenceRepository.flush();
+		
+	}
 }

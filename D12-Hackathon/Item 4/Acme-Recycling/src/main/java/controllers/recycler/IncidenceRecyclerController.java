@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.IncidenceService;
 import services.RecyclerService;
 import controllers.AbstractController;
@@ -28,6 +29,9 @@ public class IncidenceRecyclerController extends AbstractController{
 	
 	@Autowired
 	private RecyclerService recyclerService;
+	
+	@Autowired
+	private ActorService actorService;
 	
 //	Constructors
 
@@ -91,10 +95,13 @@ public class IncidenceRecyclerController extends AbstractController{
 	public ModelAndView edit(@RequestParam int incidenceId) {
 		ModelAndView result;
 		Incidence incidence;
+		Actor principal;
 
 		incidence = this.incidenceService.findOne(incidenceId);
+		principal = this.actorService.findPrincipal();
 		Assert.notNull(incidence);
 		Assert.isTrue(incidence.isResolved() == false);
+		Assert.isTrue(principal.equals(incidence.getRecycler()));
 		result = this.createEditModelAndView(incidence);
 
 		return result;

@@ -12,7 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.MaterialRepository;
+import domain.Actor;
+import domain.Admin;
 import domain.Buy;
+import domain.Buyer;
 import domain.Material;
 
 @Service
@@ -33,6 +36,9 @@ public class MaterialService {
 
 	@Autowired
 	CourseService		courseService;
+
+	@Autowired
+	ActorService		actorService;
 
 	@Autowired
 	private Validator	validator;
@@ -68,7 +74,11 @@ public class MaterialService {
 	public Material save(final Material material) {
 		Material result;
 		Assert.notNull(material);
-		this.adminService.checkPrincipal();
+		Actor actor;
+
+		actor = this.actorService.findPrincipal();
+
+		Assert.isTrue(actor instanceof Admin || actor instanceof Buyer);
 
 		material.setTotalPrice(material.getQuantity() * material.getUnitPrice());
 

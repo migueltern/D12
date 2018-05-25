@@ -90,7 +90,7 @@
 		<security:intercept-url pattern="/material/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/actor/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/carrier/admin/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/manager/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/manager_/admin/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/editor/admin/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/profile/admin/**" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>

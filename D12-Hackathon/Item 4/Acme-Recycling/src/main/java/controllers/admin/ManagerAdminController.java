@@ -16,7 +16,7 @@ import domain.Manager;
 import forms.ManagerForm;
 
 @Controller
-@RequestMapping("/manager/admin")
+@RequestMapping("/manager_/admin")
 public class ManagerAdminController extends AbstractController {
 
 	// Services---------------------------------------------------------
@@ -44,7 +44,7 @@ public class ManagerAdminController extends AbstractController {
 
 		result = new ModelAndView("manager/edit");
 		result.addObject("managerForm", cf);
-		result.addObject("requestURI", "manager/admin/edit.do");
+		result.addObject("requestURI", "manager_/admin/edit.do");
 
 		return result;
 	}
@@ -93,7 +93,7 @@ public class ManagerAdminController extends AbstractController {
 		result = new ModelAndView("manager/edit");
 		result.addObject("manager", managerForm);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "manager/admin/edit.do");
+		result.addObject("RequestURI", "manager_/admin/edit.do");
 
 		return result;
 	}

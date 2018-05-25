@@ -217,18 +217,24 @@ public class RequestManagerController extends AbstractController {
 		item = this.requestService.findItemByRequestId(requestId);
 		Assert.isTrue(this.managerService.findByPrincipal().getRequests().contains(item.getRequest()), "Can not commit this operation because its illegal");
 
+		//Solo se puede añadir puntuation en los item cuyas request esten en status "FINISHED"
+		Assert.isTrue(item.getRequest().getStatus().equals("FINISHED"));
+
 		result = new ModelAndView("request/addPuntuation");
 		result.addObject("item", item);
 
 		return result;
 	}
-
 	//Save Request ---------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveAddPuntuation")
 	public ModelAndView saveAddPuntutation(Item item, final BindingResult binding) {
 		ModelAndView result;
 
 		item = this.requestService.reconstructAddPuntuation(item, binding);
+
+		//Solo se puede añadir puntuation en los item cuyas request esten en status "FINISHED"
+		Assert.isTrue(item.getRequest().getStatus().equals("FINISHED"));
+
 		if (binding.hasErrors())
 			result = new ModelAndView("redirect:addPuntuation.do?requestId=" + item.getRequest().getId());
 		else

@@ -75,11 +75,13 @@
 	<security:authorize access="hasRole('MANAGER')">
 		<spring:message code="request.addPuntuation" var="addPuntuation" />
 		<display:column title="${addPuntuation}" sortable="false">
-
-			<spring:url value="request/manager/addPuntuation.do" var="editURL">
-				<spring:param name="requestId" value="${row.id}" />
-			</spring:url>
-			<a href="${editURL}"><spring:message code="request.addPuntuation" /></a>
+			<jstl:if test="${row.status=='FINISHED'}">
+				<spring:url value="request/manager/addPuntuation.do" var="editURL">
+					<spring:param name="requestId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message
+						code="request.addPuntuation" /></a>
+			</jstl:if>
 		</display:column>
 	</security:authorize>
 

@@ -89,6 +89,16 @@
 					onclick="confirmDelete(${row.id});" />
 			</display:column>
 	</security:authorize>
+	
+	<!-- Listar las opiniones de ese item -->
+	<spring:message code="course.opinions" var="opinions"/>		
+	<display:column title="${opinions}" sortable="true">
+		<spring:url value="opinion/list.do" var="displayURL">
+			<spring:param name="opinableId" value="${row.id}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="course.opinions" /></a>
+	</display:column>
+	
 		
 		
 		

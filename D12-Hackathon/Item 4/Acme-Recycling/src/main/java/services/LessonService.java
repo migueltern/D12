@@ -110,6 +110,15 @@ public class LessonService {
 
 	}
 
+	public void deleteAdmin(final Lesson lesson) {
+		Assert.notNull(lesson);
+
+		//Un admin puede eliminar un una lección aunque su curso esté en modo final siempre y cuando no tenga asistentes.
+		lesson.setCourse(null);
+		this.lessonRepository.delete(lesson);
+
+	}
+
 	public Collection<Lesson> findAll() {
 		Collection<Lesson> result;
 

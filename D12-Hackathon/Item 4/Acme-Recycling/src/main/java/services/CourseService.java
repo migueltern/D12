@@ -139,28 +139,23 @@ public class CourseService {
 	public void deleteAdmin(final Course course) {
 		Assert.notNull(course);
 		Buyer buyer;
-		final Collection<Recycler> recyclers;
-
+		Collection<Recycler> recyclers;
 		Collection<Lesson> lessons;
 
+		buyer = this.buyerService.findBuyerByCourse(course);
 		recyclers = this.recyclerService.findRecyclerByCourse(course);
 		Assert.isTrue(recyclers.size() == 0, "No puede tener recicladores");
 
 		lessons = this.lessonService.findLessonsByCourseId(course.getId());
-		for (final Lesson l : lessons) {
-			l.setCourse(null);
-			this.lessonService.delete(l);
-		}
+		if (!lessons.isEmpty())
+			for (final Lesson l : lessons)
+				this.lessonService.deleteAdmin(l);
 
-		if (this.buyerService.findBuyerByCourse(course) != null) {
-			buyer = this.buyerService.findBuyerByCourse(course);
-			buyer.getCourses().remove(course);
-		}
+		//A lso recicladores le quitamos el curso
+		for (final Recycler r : recyclers)
+			r.getCourses().remove(course);
 
-		//recyclers = this.recyclerService.findRecyclerByCourse(course);
-		//for (final Recycler r : recyclers)
-		//r.getCourses().remove(course);
-
+		buyer.getCourses().remove(course);
 		this.courseRepository.delete(course);
 	}
 

@@ -16,6 +16,7 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Admin;
+import domain.ConfigurationSystem;
 import domain.Legislation;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,13 +29,16 @@ public class LegislationServiceTest extends AbstractTest {
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	LegislationService	legislationService;
+	LegislationService			legislationService;
 
 	@Autowired
-	AdminService		adminService;
+	AdminService				adminService;
+
+	@Autowired
+	ConfigurationSystemService	configurationSystemService;
 
 	@PersistenceContext
-	EntityManager		entityManager;
+	EntityManager				entityManager;
 
 
 	//Create a tabooWord
@@ -160,6 +164,49 @@ public class LegislationServiceTest extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 
+	}
+
+	//Remove a law
+	@Test
+	public void driverDelete() {
+		final Object testingData[][] = {
+			{
+				//Se elimina una law correctamente
+				"admin", "law1", null
+
+			}, {
+				//Se elimina una law incorrectamente por un recycler
+				"recycler1", "law2", java.lang.IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateDelete((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+	private void templateDelete(final String username, final int tabooWordId, final Class<?> expected) {
+		Legislation legislation;
+		final ConfigurationSystem configurationSystem;
+		configurationSystem = this.configurationSystemService.findConfigurationSystem();
+		Class<?> caught;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+			legislation = this.legislationService.findOne(tabooWordId);
+			configurationSystem.getLaws().remove(legislation);
+			this.configurationSystemService.save(configurationSystem);
+			this.legislationService.delete(legislation);
+
+			this.legislationService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
 	}
 
 }

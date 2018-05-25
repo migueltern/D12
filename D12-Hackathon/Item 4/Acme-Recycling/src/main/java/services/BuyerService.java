@@ -36,6 +36,9 @@ public class BuyerService {
 
 	@Autowired
 	FinderService			finderService;
+	
+	@Autowired
+	private MessageFolderService messageFolderService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -117,8 +120,8 @@ public class BuyerService {
 		Assert.notNull(result);
 
 		//TODO: Falta método creacion de carpetas por defecto
-		//if (buyer.getId() == 0)
-		//this.messageFolderService.createDefaultMessageFolder(result);
+		if (buyer.getId() == 0)
+			this.messageFolderService.createDefaultMessageFolder(result);
 
 		return result;
 	}

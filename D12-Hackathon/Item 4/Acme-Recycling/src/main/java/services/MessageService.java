@@ -2,6 +2,7 @@ package services;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,9 @@ public class MessageService {
 	
 	@Autowired
 	private ActorService actorService;
+	
+	@Autowired
+	private TabooWordService tabooWordService;
 	
 	@Autowired
 	private Validator	validator;
@@ -114,7 +118,10 @@ public class MessageService {
 		messageRecipient = this.messageRepository.save(message);
 		
 		
-		this.saveMessageInFolder(recipient, "In box", messageRecipient);
+		if(this.checkSpamMessage(messageRecipient)==true)
+			this.saveMessageInFolder(recipient, "Spam box", messageRecipient);
+		else
+			this.saveMessageInFolder(recipient, "In box", messageRecipient);
 		
 		this.saveMessageInFolder(sender, "Out box", messageSaved);
 		
@@ -240,6 +247,37 @@ public class MessageService {
 		Collection<Message> result;
 		
 		result = this.messageRepository.findMessageWithTabooWord(messageFolderId, tabooWord);
+		
+		return result;
+		
+	}
+	
+	public Message findMessageWithTabooWord(String tabooWord, int messageId){
+		
+		Message result;
+		
+		result = this.messageRepository.findMessageWithTabooWord(tabooWord, messageId);
+		
+		return result;
+		
+	}
+	
+	public boolean checkSpamMessage(Message message){
+		
+		boolean result;
+		Collection<String> tabooWords;
+		Iterator<String> it;
+		
+		result = false;
+		tabooWords = this.tabooWordService.findTabooWordByName();
+		it = tabooWords.iterator();
+		
+		while (it.hasNext())
+			if(this.findMessageWithTabooWord(it.next(), message.getId()) != null){
+
+				result = true;
+				break;
+			}
 		
 		return result;
 		

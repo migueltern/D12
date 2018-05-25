@@ -18,10 +18,10 @@ public interface FinderRepository extends JpaRepository<Finder, Integer> {
 	@Query("select m from Material m where (m.title like %?1% or m.description like %?1%)")
 	Page<Material> findByKeyWord(String keyWord, Pageable pageable);
 
-	@Query("select m from Material m where m.totalPrice>=?1")
+	@Query("select m from Material m where m.unitPrice>=?1")
 	Page<Material> findByLowPrice(Double lowPrice, Pageable pageable);
 
-	@Query("select m from Material m where m.totalPrice<=?1")
+	@Query("select m from Material m where m.unitPrice<=?1")
 	Page<Material> findByHighPrice(Double highPrice, Pageable pageable);
 
 	@Query("select f from Finder f join f.materials m where m.id=?1")

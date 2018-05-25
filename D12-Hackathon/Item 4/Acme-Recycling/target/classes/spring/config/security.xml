@@ -52,6 +52,7 @@
 		<security:intercept-url pattern="/opinion/list.do**" access="permitAll"/>
 		<security:intercept-url pattern="/opinion/displayOpinable.do**" access="permitAll"/>
 		<security:intercept-url pattern="/course/display.do**" access="permitAll"/>
+		<security:intercept-url pattern="/course/list.do**" access="permitAll"/>
 		<security:intercept-url pattern="/legislation/list.do" access="permitAll"/>
 		
 	

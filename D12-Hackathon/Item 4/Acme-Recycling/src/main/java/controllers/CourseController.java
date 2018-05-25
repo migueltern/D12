@@ -1,6 +1,8 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,4 +43,18 @@ public class CourseController extends AbstractController {
 		return result;
 	}
 
+	//list ------------------------------------------------------------
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Course> courses;
+
+		courses = this.courseService.findAll();
+
+		result = new ModelAndView("course/list");
+		result.addObject("courses", courses);
+		result.addObject("requestURI", "course/list.do?d-16544-p=1");
+
+		return result;
+	}
 }

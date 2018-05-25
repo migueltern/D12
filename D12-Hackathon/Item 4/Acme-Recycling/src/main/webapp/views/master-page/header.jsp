@@ -536,6 +536,17 @@
 					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a class="fNiv"><spring:message
+						code="master.page.course" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="course/list.do?d-16544-p=1"><spring:message
+								code="master.page.course.listAll" /></a></li>
+				</ul></li>
+				
+			
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
 				<ul>

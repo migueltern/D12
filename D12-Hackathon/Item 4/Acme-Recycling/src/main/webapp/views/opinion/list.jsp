@@ -27,18 +27,20 @@
 
 	<!--  EDIT -->
 
-	<security:authorize access="isAuthenticated()">
-		<spring:message code="opinion.edit" var="Edit" />
-		<display:column title="${Edit}" sortable="false">
+	<jstl:if test="${showButtonEdit}">
+		<security:authorize access="isAuthenticated()">
+			<spring:message code="opinion.edit" var="Edit" />
+			<display:column title="${Edit}" sortable="false">
 
-			<spring:url value="opinion/actor/edit.do" var="editURL">
-				<spring:param name="opinionId" value="${row.id}" />
-			</spring:url>
-			<a href="${editURL}"><spring:message code="opinion.edit" /></a>
-		</display:column>
-	</security:authorize>
-	
-	
+				<spring:url value="opinion/actor/edit.do" var="editURL">
+					<spring:param name="opinionId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="opinion.edit" /></a>
+			</display:column>
+		</security:authorize>
+	</jstl:if>
+
+
 	<!-- ATRIBUTOS -->
 
 	<spring:message code="opinion.title" var="titleHeader" />
@@ -67,14 +69,15 @@
 		sortable="true" />
 
 	<!-- MOSTRAR ITEM O COURSE DE ESA OPINION -->
-	
+
 	<spring:message code="opinion.displayOpinable" var="displayOpinable" />
 	<display:column title="${displayOpinable}" sortable="false">
 
 		<spring:url value="opinion/displayOpinable.do" var="displayURL">
 			<spring:param name="opinionId" value="${row.id}" />
 		</spring:url>
-		<a href="${displayURL}"><spring:message code="opinion.displayOpinable" /></a>
+		<a href="${displayURL}"><spring:message
+				code="opinion.displayOpinable" /></a>
 	</display:column>
 
 

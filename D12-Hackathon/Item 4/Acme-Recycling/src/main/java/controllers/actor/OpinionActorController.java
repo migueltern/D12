@@ -64,6 +64,7 @@ public class OpinionActorController extends AbstractController {
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);
+		result.addObject("showButtonEdit", true);
 		result.addObject("requestURI", "opinion/actor/myListOpinionItem.do?d-16544-p=1");
 		return result;
 	}
@@ -80,6 +81,7 @@ public class OpinionActorController extends AbstractController {
 
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);
+		result.addObject("showButtonEdit", true);
 		result.addObject("requestURI", "opinion/actor/myListOpinionCourse.do?d-16544-p=1");
 		return result;
 	}

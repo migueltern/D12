@@ -51,8 +51,12 @@ public class CourseBuyerController extends AbstractController {
 		final ModelAndView result;
 		Course course = new Course();
 		Collection<Lesson> lessons;
+		Collection<Course> coursesOfBuyer;
 
+		coursesOfBuyer = this.courseService.findCoursesCreatedByBuyer();
 		course = this.courseService.findOne(courseId);
+		//Un buyer solo podrá ver sus cursos.
+		Assert.isTrue(coursesOfBuyer.contains(course));
 		lessons = new ArrayList<>();
 
 		lessons = this.lessonService.findLessonsByCourseId(courseId);

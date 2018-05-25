@@ -77,5 +77,4 @@ public class DashboardAdminController extends AbstractController {
 		return result;
 
 	}
-
 }

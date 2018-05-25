@@ -32,8 +32,8 @@
 	class="displaytag">
 	<spring:message code="new.title" var="nameHeader" />
 	<display:column title="${nameHeader}">
-		<spring:url value="new_/admin/display.do" var="idURL">
-			<spring:param name="newId" value="${row.id }" />
+		<spring:url value="newscast/admin/display.do" var="idURL">
+			<spring:param name="newscastId" value="${row.id }" />
 		</spring:url>
 		<a href="${idURL}"><jstl:out value="${row.title}" /></a>
 	</display:column>
@@ -164,7 +164,7 @@
 	<spring:message code="new.title" var="nameHeader" />
 	<display:column title="${nameHeader}">
 		<spring:url value="item/admin/display.do" var="idURL">
-			<spring:param name="newId" value="${row.id }" />
+			<spring:param name="itemId" value="${row.id }" />
 		</spring:url>
 		<a href="${idURL}"><jstl:out value="${row.title}" /></a>
 	</display:column>

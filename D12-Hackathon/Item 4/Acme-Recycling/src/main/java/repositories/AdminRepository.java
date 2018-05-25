@@ -61,7 +61,7 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	Collection<Item> findLatestItems(Date since);
 
 	//QUERY X Nombre del reciclador y título del Item que más valor tiene del sistema.
-	@Query("select r.name,i.title from Recycler r join r.items i where i.value=(select max(it.value) from Item it)")
+	@Query("select r.name,i.title from Recycler r join r.items i where i.value=(select max(it.value) from Item it)group by r.id")
 	String[] nameTitleRecyclerWithItemMostValue();
 
 	//QUERY XI La media, el mínimo, el máximo y la desviación típica peticiones por manager.

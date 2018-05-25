@@ -75,20 +75,18 @@ public class LessonService {
 		Collection<Course> coursesOfBuyer;
 		Assert.isTrue(lesson.getSummary().length() >= 10, "Summary demasiado pequeño");
 		Assert.isTrue(lesson.getSummary().length() <= 50, "Summary demasiado grande");
-		result = this.lessonRepository.save(lesson);
 
 		course = new Course();
 
 		coursesOfBuyer = new ArrayList<>(this.courseService.findCoursesCreatedByBuyer());
 
-		course = this.courseService.findCourseByLessonId(lesson.getId());
+		course = lesson.getCourse();
 		//Comprobamos que el curso de la lección que queremos editar/crear pertenezca a ese buyer
 		Assert.isTrue(coursesOfBuyer.contains(course));
 		//Comprobamos que el curso NO este en modo final
 		Assert.isTrue(course.isDraftMode());
-
+		result = this.lessonRepository.save(lesson);
 		Assert.notNull(result);
-
 		return result;
 
 	}
@@ -108,29 +106,6 @@ public class LessonService {
 		Assert.isTrue(course.isDraftMode());
 
 		lesson.setCourse(null);
-		this.lessonRepository.delete(lesson);
-
-	}
-
-	public void deleteLesson(final Lesson lesson) {
-		Assert.notNull(lesson);
-		Assert.isTrue(lesson.getId() != 0);
-		Course course;
-
-		final Collection<Course> coursesOfBuyer;
-		course = new Course();
-
-		coursesOfBuyer = new ArrayList<>(this.courseService.findCoursesCreatedByBuyer());
-
-		course = this.courseService.findCourseByLessonId(lesson.getId());
-
-		//Comprobamos que el curso de la lección que queremos eliminar pertenezca a ese buyer
-		Assert.isTrue(coursesOfBuyer.contains(course));
-		//Comprobamos que el curso NO este en modo final
-		Assert.isTrue(course.isDraftMode());
-		lesson.setCourse(null);
-		course.getLessons().remove(lesson);
-		//this.courseService.save(course);
 		this.lessonRepository.delete(lesson);
 
 	}

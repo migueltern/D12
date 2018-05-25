@@ -19,7 +19,6 @@ import services.CourseService;
 import services.LessonService;
 import services.MaterialService;
 import controllers.AbstractController;
-import domain.Buyer;
 import domain.Course;
 import domain.Lesson;
 import domain.Material;
@@ -140,10 +139,9 @@ public class CourseBuyerController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(@ModelAttribute final Course course, final BindingResult bindingResult) {
 		ModelAndView result;
-		Buyer buyer;
 
-		buyer = new Buyer();
-		buyer = this.buyerService.findByPrincipal();
+		//buyer = new Buyer();
+		//buyer = this.buyerService.findByPrincipal();
 		try {
 			//Solo un buyer podrá eliminar un curso
 			Assert.isTrue(this.buyerService.checkPrincipalBoolean());

@@ -140,4 +140,100 @@ public class LessonServiceTest extends AbstractTest {
 		super.unauthenticate();
 
 	}
+
+	//Test caso de uso 6.e-III: Editar lecciones para un curso.
+	@Test
+	public void driverEditAndSave() {
+		final Object testingData[][] = {
+			{
+				//Buyer2 edita el titulo de la leccion 3 correctamente para el curso 3
+				"buyer2", "lesson3", "title test edit", "summary test of lesson", null
+			}, {
+				//Buyer2 intenta editar el titulo de la leccion 3 por uno en blanco para el curso 3
+				"buyer2", "lesson3", "", "summary test of lesson", javax.validation.ConstraintViolationException.class
+			}, {
+				//Buyer2 intenta editar el titulo de la leccion 2 estando el curso de dicha lección en modo final
+				"buyer2", "lesson2", "title test edit", "summary test of lesson", IllegalArgumentException.class
+			}, {
+				//Buyer2 intenta editar el titulo de la leccion 1 siendo esta lección de buyer1
+				"buyer2", "lesson1", "title test edit", "summary test of lesson", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditAndSave(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
+	}
+
+	private void templateEditAndSave(final int buyerId, final int lessonId, final String title, final String summary, final Class<?> expected) {
+		Lesson lessonBD;
+		Buyer buyer;
+
+		buyer = this.buyerService.findOne(buyerId);
+		Class<?> caught;
+
+		caught = null;
+		try {
+			super.authenticate(buyer.getUserAccount().getUsername());
+			lessonBD = this.lessonService.findOne(lessonId);
+			lessonBD.setTitle(title);
+			lessonBD = this.lessonService.save(lessonBD);
+
+			this.lessonService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
+
+	//Test caso de uso 6.e-IV: Eliminar lecciones para un curso.
+	@Test
+	public void driverDelete() {
+		final Object testingData[][] = {
+			{
+				//Buyer2 eliminar la lección 3 correctamente
+				"buyer2", "lesson3", null
+			}, {
+				//Buyer2 intenta eliminar la lección 2 pero no puede al estar su curso en final mode
+				"buyer2", "lesson3", IllegalArgumentException.class
+			}, {
+				//Buyer2 intenta eliminar la lección 1 pero no puede al no pertenecerle  a él
+				"buyer2", "lesson2", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateDelete(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateDelete(final int buyerId, final int lessonId, final Class<?> expected) {
+		Lesson lessonBD;
+		Buyer buyer;
+
+		buyer = this.buyerService.findOne(buyerId);
+		Class<?> caught;
+
+		caught = null;
+		try {
+			super.authenticate(buyer.getUserAccount().getUsername());
+			lessonBD = this.lessonService.findOne(lessonId);
+
+			this.lessonService.delete(lessonBD);
+
+			this.lessonService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
+
 }

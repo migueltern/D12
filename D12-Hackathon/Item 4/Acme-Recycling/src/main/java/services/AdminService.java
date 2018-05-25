@@ -217,7 +217,7 @@ public class AdminService {
 		return result;
 	}
 
-	//QUERY V La media de la solicitudes con el estado Finalizadas
+	//QUERY V La media de las incidencias resueltas
 	public Double avgOfIncidencesResolved() {
 		this.checkPrincipal();
 		Double result;
@@ -251,6 +251,7 @@ public class AdminService {
 
 	//QUERY IX Items que se han subido al sistema en el último mes.
 	public Collection<Item> findLatestItems() {
+		this.checkPrincipal();
 		Collection<Item> result;
 		Calendar calendar;
 		Date since;

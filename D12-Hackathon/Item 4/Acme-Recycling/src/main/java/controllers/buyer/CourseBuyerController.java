@@ -147,7 +147,7 @@ public class CourseBuyerController extends AbstractController {
 		try {
 			//Solo un buyer podrá eliminar un curso
 			Assert.isTrue(this.buyerService.checkPrincipalBoolean());
-			buyer.getCourses().remove(course);
+			//buyer.getCourses().remove(course);
 			this.courseService.delete(course);
 			result = new ModelAndView("redirect:list.do?d-16544-p=1");
 		} catch (final Throwable oops) {

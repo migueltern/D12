@@ -109,13 +109,13 @@ public class CourseService {
 
 	public void delete(final Course course) {
 		Assert.notNull(course);
-		Buyer buyer;
+		Buyer buyerConnected;
 		Collection<Recycler> recyclers;
 		Collection<Course> coursesOfBuyer;
 		Collection<Lesson> lessons;
 
-		buyer = this.buyerService.findBuyerByCourse(course);
-		coursesOfBuyer = this.courseRepository.findCoursesCreatedByBuyer(buyer.getId());
+		buyerConnected = this.buyerService.findByPrincipal();
+		coursesOfBuyer = this.courseRepository.findCoursesCreatedByBuyer(buyerConnected.getId());
 
 		//Solo podrá eliminar los cursos que sean del buyer que esté conectado
 		Assert.isTrue(coursesOfBuyer.contains(course));
@@ -123,18 +123,16 @@ public class CourseService {
 		Assert.isTrue(course.isDraftMode(), "Existe un curso que no esta en modo final");
 
 		lessons = this.lessonService.findLessonsByCourseId(course.getId());
-		for (final Lesson l : lessons) {
-			l.setCourse(null);
-			this.lessonService.delete(l);
-		}
-
-		if (this.buyerService.findBuyerByCourse(course) != null)
-			buyer.getCourses().remove(course);
+		if (!lessons.isEmpty())
+			for (final Lesson l : lessons)
+				this.lessonService.delete(l);
 
 		recyclers = this.recyclerService.findRecyclerByCourse(course);
 		for (final Recycler r : recyclers)
 			r.getCourses().remove(course);
 
+		//Borramos ese curso de la lista de cursos del Buyer
+		buyerConnected.getCourses().remove(course);
 		this.courseRepository.delete(course);
 	}
 
@@ -330,6 +328,13 @@ public class CourseService {
 		result.removeAll(new ArrayList<Course>(this.courseRepository.findToOpineByActorId(actorId)));
 
 		return result;
+	}
+
+	public Course findCourseByLessonId(final int lessonId) {
+		Course course;
+		Assert.notNull(lessonId);
+		course = this.courseRepository.findCourseByLessonId(lessonId);
+		return course;
 	}
 
 	public void flush() {

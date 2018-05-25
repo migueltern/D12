@@ -27,6 +27,18 @@
 
 	<!-- ATRIBUTOS -->
 
+	<security:authorize access="hasRole('BUYER')">
+	<spring:message code="lesson.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="false">
+		<jstl:if test="${row.course.draftMode}">
+			<spring:url value="lesson/buyer/edit.do" var="editURL">
+				<spring:param name="lessonId" value="${row.id}" />
+			</spring:url>
+			<a href="${editURL}"><spring:message code="lesson.edit1" /></a>
+		</jstl:if>
+	</display:column>
+	</security:authorize>
+	
 	<spring:message code="lesson.number" var="numberHeader" />
 	<display:column property="number" title="${numberHeader}" sortable="true"/>
 	

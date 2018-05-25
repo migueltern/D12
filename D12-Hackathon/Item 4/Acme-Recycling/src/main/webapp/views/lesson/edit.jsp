@@ -36,6 +36,13 @@
 
 	<!-- BOTONES -->
 	<input type="submit" name="save" value="<spring:message code="lesson.save"/>" />&nbsp;
+	
+	<jstl:if test="${lesson.id !=0 }">
+			<acme:submit_with_on_click name="delete" code="lesson.delete" code2="lesson.confirm.delete"/>
+			
+			
+			
+	</jstl:if>
 		
 	<acme:cancel url="course/buyer/list.do?d-16544-p=1" code="lesson.cancel" />
 	

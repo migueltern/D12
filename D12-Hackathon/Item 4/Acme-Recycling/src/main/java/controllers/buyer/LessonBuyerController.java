@@ -1,17 +1,20 @@
 
 package controllers.buyer;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.BuyerService;
 import services.CourseService;
 import services.LessonService;
 import controllers.AbstractController;
@@ -28,6 +31,8 @@ public class LessonBuyerController extends AbstractController {
 
 	@Autowired
 	private CourseService	courseService;
+	@Autowired
+	private BuyerService	buyerService;
 
 
 	//Constructor--------------------------------------------------------
@@ -104,6 +109,45 @@ public class LessonBuyerController extends AbstractController {
 				else
 					result = this.createEditModelAndView(lesson, "lesson.commit.error");
 			}
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int lessonId) {
+		ModelAndView result;
+		final Lesson lesson;
+		Course course;
+		Assert.notNull(lessonId);
+		Collection<Course> coursesOfBuyer;
+
+		course = new Course();
+
+		coursesOfBuyer = new ArrayList<>(this.courseService.findCoursesCreatedByBuyer());
+		lesson = this.lessonService.findOne(lessonId);
+		course = this.courseService.findCourseByLessonId(lessonId);
+
+		//Comprobamos que el curso de la lección que queremos editar pertenezca a ese buyer
+		Assert.isTrue(coursesOfBuyer.contains(course));
+		//Comprobamos que el curso NO este en modo final
+		Assert.isTrue(course.isDraftMode());
+
+		result = this.createEditModelAndView(lesson);
+		return result;
+	}
+
+	//Delete -----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@ModelAttribute final Lesson lesson, final BindingResult bindingResult) {
+		ModelAndView result;
+		try {
+			//Solo un buyer podrá eliminar un curso
+			Assert.isTrue(this.buyerService.checkPrincipalBoolean());
+
+			this.lessonService.delete(lesson);
+			result = new ModelAndView("redirect:../../course/buyer/list.do?d-16544-p=1");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(lesson, "lesson.commit.error");
+		}
 		return result;
 	}
 

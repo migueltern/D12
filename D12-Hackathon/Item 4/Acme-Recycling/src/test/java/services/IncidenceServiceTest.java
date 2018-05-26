@@ -28,50 +28,59 @@ public class IncidenceServiceTest extends AbstractTest{
 	@PersistenceContext
 	EntityManager		entityManager;
 	
-	
+	// Create and save an incidence 
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
+			// A recycler create incidence, positive case 
 			{
 
 				"recycler1", "incidence prueba", "reason why prueba", "comment prueba", null
 
 			}, 
+			// A recycler create a incidence with blank title, negative case 
 			{
 
 				"recycler1", "", "reason why prueba", "comment prueba", javax.validation.ConstraintViolationException.class
 
 			},
+			//A recycler reate a incidence with blank reason why, negative case 
 			{
 
 				"recycler1", "incidence prueba", "", "comment prueba", javax.validation.ConstraintViolationException.class
 
 			},
+			//A recycler create incidence with null reason why, negative case 
 			{
 
 				"recycler1", "incidence prueba", null, "comment prueba", javax.validation.ConstraintViolationException.class
 
 			},
+			// A recycler create incidence with blank comment, positive case 
 			{
 
 				"recycler1", "incidence prueba", "reason why prueba", "", null
 
 			},
+			// A buyer try create an incidence, negative case 
 			{
 
 				"buyer1", "incidence prueba", "reason why prueba", "", java.lang.IllegalArgumentException.class
 
 			},
+			// A carrier try create an incidence, negative case
 			{
 
 				"carrier1", "incidence prueba", "reason why prueba", "", java.lang.IllegalArgumentException.class
 
 			},
+			// An editor try create an incidence, negative case
 			{
 
-				"carrier1", "incidence prueba", "reason why prueba", "", java.lang.IllegalArgumentException.class
+				"editor1", "incidence prueba", "reason why prueba", "", java.lang.IllegalArgumentException.class
 
 			},
+			//An admin try create an incidence, negative case
 			{
 
 				"admin", "incidence prueba", "reason why prueba", "", java.lang.IllegalArgumentException.class
@@ -112,24 +121,31 @@ public class IncidenceServiceTest extends AbstractTest{
 		super.unauthenticate();
 	}
 	
+	
+	//Edit an incidence
 	@Test
 	public void driverEdit() {
 		final Object testingData[][] = {
+			
+			//Recycler change title, positive case
 			{
 
 				"recycler1", "incidence1", "title changed", null
 
 			}, 
+			//Recycler change blank title, negative case
 			{
 
 				"recycler1", "incidence1", "", javax.validation.ConstraintViolationException.class
 
 			},
+			//Recycler change  null title, negative case
 			{
 
 				"recycler1", "incidence1", null, javax.validation.ConstraintViolationException.class
 
 			},
+			//Recycler try edit an incidence that is not yours, negative case
 			{
 
 				"recycler2", "incidence1", "title changed", java.lang.IllegalArgumentException.class
@@ -169,16 +185,20 @@ public class IncidenceServiceTest extends AbstractTest{
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
+			
+			//Recycler delete his incidence, positive case
 			{
 
 				"recycler1", "incidence1", null
 
 			}, 
+			//Recycler try delete his finished incidence, negative case
 			{
 
 				"recycler2", "incidence2", java.lang.IllegalArgumentException.class
 
 			},
+			// Recycler try delete other incidence that is not yours, negative case
 			{
 
 				"recycler2", "incidence1", java.lang.IllegalArgumentException.class

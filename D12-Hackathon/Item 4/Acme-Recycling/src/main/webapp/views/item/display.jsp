@@ -61,6 +61,8 @@
 		<jstl:out value=":" />
 		<jstl:out value="${row.labelProduct.name}"></jstl:out>
 		</p>
+		
+		<security:authorize access="hasRole('RECYCLER')">
 		<jstl:if test="${row.request != null and !hiddenRequest}">
 		<p>
 		<B><spring:message code="item.request" /></B>
@@ -71,6 +73,7 @@
 			<a href="${editURL}"><spring:message code="item.request" /></a>
 		</p>
 		</jstl:if>
+		</security:authorize>
 		
 		
 	</display:column>

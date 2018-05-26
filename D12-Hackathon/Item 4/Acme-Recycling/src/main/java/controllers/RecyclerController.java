@@ -10,9 +10,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ItemService;
 import services.RecyclerService;
+import domain.Item;
 import domain.Recycler;
 import forms.RecyclerForm;
 
@@ -23,7 +26,9 @@ public class RecyclerController extends AbstractController {
 	// Services---------------------------------------------------------
 	@Autowired
 	private RecyclerService	recyclerService;
-
+	
+	@Autowired
+	private ItemService itemService;
 
 
 	//Constructor--------------------------------------------------------
@@ -46,12 +51,31 @@ public class RecyclerController extends AbstractController {
 		result.addObject("RequestURIitems", "/item/list.do");
 		result.addObject("showbun", false);
 		result.addObject("showunbun", false);
+		result.addObject("RequestUriDisplay", "/recycler/display.do");
 
 
 		return result;
 	}
 
 	//Displaying--------------------------------------------------------
+	
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView Display(@RequestParam int recyclerId) {
+		final ModelAndView result;
+		Recycler recycler;
+		Collection<Item> items;
+
+		recycler = this.recyclerService.findOne(recyclerId);
+		items = this.itemService.findItemsByRecycler(recycler.getId());
+
+		result = new ModelAndView("recycler/display");
+		result.addObject("recycler", recycler);
+		result.addObject("items", items);
+		result.addObject("requestURI", "/recycler/display.do");
+		result.addObject("requestItemsURL", "/item/listb.do");
+
+		return result;
+	}
 
 	//Create------------------------------------------------------------
 	@RequestMapping(value = "/create", method = RequestMethod.GET)

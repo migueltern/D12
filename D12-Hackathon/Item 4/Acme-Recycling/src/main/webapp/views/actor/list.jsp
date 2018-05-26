@@ -26,6 +26,19 @@
 <display:table name="actors" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 	
+	<spring:message code="actor.display" var="display"/>
+		
+		<display:column title="${display}" sortable="true">
+		
+		
+		<spring:url value="${RequestUriDisplay}" var="displayURL">
+			<spring:param name="recyclerId" value="${row.id}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="actor.display" /></a>
+		
+		
+	</display:column>
+	
 	<!-- Attributes -->
 
 	<acme:column code="actor.name" property="name" sortable ="true"/>

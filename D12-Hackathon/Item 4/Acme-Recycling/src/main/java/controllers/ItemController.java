@@ -44,6 +44,22 @@ public class ItemController extends AbstractController {
 
 		return result;
 	}
+	
+	@RequestMapping(value = "/listb", method = RequestMethod.GET)
+	public ModelAndView listb(@RequestParam final int recyclerId) {
+		ModelAndView result;
+		Collection<Item> items;
+
+		items = this.itemService.findItemsByRecycler(recyclerId);
+
+		result = new ModelAndView("item/list");
+		result.addObject("items", items);
+		result.addObject("showScore", true);
+		result.addObject("RequestUriDisplay", "item/display.do");
+		result.addObject("requestURI", "item/list.do?d-16544-p=1");
+
+		return result;
+	}
 
 	//display-----------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)

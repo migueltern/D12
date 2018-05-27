@@ -73,14 +73,14 @@
 			<div
 				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
 
-				<img src="images/yes.png" width="30" height="30">
+				<img src="images/yes1.png" width="30" height="30">
 			</div>
 		</jstl:if>
 		<jstl:if test="${row.resolved==false}">
 			<div
 				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
 
-				<img src="images/no.png" width="30" height="30">
+				<img src="images/no1.png" width="30" height="30">
 			</div>
 		</jstl:if>
 		

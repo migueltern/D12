@@ -114,12 +114,15 @@ public class IncidenceService {
 
 		incidence.setCreatedMoment(createdMoment);
 
-		Assert.isTrue(principal.equals(incidence.getRecycler()));
+		
 		Assert.isTrue(principal instanceof Manager || principal instanceof Recycler);
 		
-		if(principal instanceof Recycler)
+		if(principal instanceof Recycler){
+			Assert.isTrue(principal.equals(incidence.getRecycler()));
 			Assert.isTrue(!this.itemService.findItemsWithFinishedRequest(principal.getId()).isEmpty(), "You don't create incidence because you don't have any item with Finished request");
 
+		}
+		
 		if (incidence.isResolved() && principal instanceof Manager) {
 
 			message = this.messageService.create();

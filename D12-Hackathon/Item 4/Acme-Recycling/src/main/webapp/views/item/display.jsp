@@ -49,7 +49,7 @@
 		<p>
 		<B><spring:message code="item.photo" /></B>
 		<jstl:out value=":" />
-		<jstl:out value="${row.photo}"></jstl:out>
+		<img src="${row.photo}" width="200" height="200">
 		</p>
 		<p>
 		<B><spring:message code="item.value" /></B>

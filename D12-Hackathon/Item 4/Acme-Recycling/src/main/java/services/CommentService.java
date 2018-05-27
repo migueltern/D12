@@ -30,7 +30,7 @@ public class CommentService {
 	@Autowired
 	private RecyclerService		recyclerService;
 	@Autowired
-	private NewscastService			newService;
+	private NewscastService		newService;
 	//Importar la que pertenece a Spring
 	@Autowired
 	private Validator			validator;
@@ -81,11 +81,17 @@ public class CommentService {
 		Assert.notNull(comment);
 		Date createdMoment;
 		Recycler principal;
+		Collection<Comment> mycomments;
 
 		principal = this.recyclerService.findByPrincipal();
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
 		comment.setCreatedMoment(createdMoment);
+
+		if (comment.getId() != 0) {
+			mycomments = principal.getComments();
+			Assert.isTrue(mycomments.contains(comment));
+		}
 
 		result = this.commentRepository.save(comment);
 		//Le a“ado al reciclador que est∑ logueado el comentario

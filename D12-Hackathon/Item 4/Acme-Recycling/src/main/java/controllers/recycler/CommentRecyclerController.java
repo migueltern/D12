@@ -19,6 +19,7 @@ import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Comment;
 import domain.Newscast;
+import domain.Recycler;
 
 @Controller
 @RequestMapping("/comment/recycler")
@@ -87,8 +88,14 @@ public class CommentRecyclerController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int commentId) {
 		ModelAndView result;
 		Comment comment;
+		Recycler principal;
+		Collection<Comment> mycomments;
+
+		principal = this.recyclerService.findByPrincipal();
+		mycomments = principal.getComments();
 
 		comment = this.commentService.findOne(commentId);
+		Assert.isTrue(mycomments.contains(comment), "You cannot commit this operation, this comment is not yours");
 		Assert.notNull(comment);
 
 		result = this.createEditModelAndView(comment);

@@ -31,7 +31,7 @@
 				path="carrier.userAccount.username" /><br /></B>
 			<B><acme:password code="carrier.password"
 				path="carrier.userAccount.password" /><br /></B>
-			<B><acme:password code="carrier.password" path="arrier.userAccount.password" /></B>
+			<B><acme:password code="carrier.password" path="passwordCheck" /></B>
 			<br />
 		</jstl:if>	
 	

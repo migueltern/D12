@@ -31,7 +31,7 @@
 				path="recycler.userAccount.username" /><br /></B>
 			<B><acme:password code="recycler.password"
 				path="recycler.userAccount.password" /><br /></B>
-			<B><acme:password code="recycler.password" path="recycler.userAccount.password" /></B>
+			<B><acme:password code="recycler.password" path="passwordCheck" /></B>
 			<br />
 		</jstl:if>	
 	

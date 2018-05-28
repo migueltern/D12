@@ -57,7 +57,11 @@ public class CommentRecyclerController extends AbstractController {
 	public ModelAndView create(@RequestParam final int newscastId) {
 		ModelAndView result;
 		final Comment Comment;
+		Newscast newscast;
 
+		newscast = this.newService.findOne(newscastId);
+
+		Assert.isTrue(newscast.getId() == newscastId);
 		Comment = this.commentService.create();
 
 		result = this.createEditModelAndView(Comment);
@@ -116,6 +120,7 @@ public class CommentRecyclerController extends AbstractController {
 			try {
 				comment = this.commentService.save(comment);
 				newscast = this.newService.findOne(newscastId);
+
 				newscast.getComments().add(comment);
 
 				this.newService.saveA(newscast);

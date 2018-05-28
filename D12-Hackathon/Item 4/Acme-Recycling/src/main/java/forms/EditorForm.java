@@ -2,6 +2,7 @@
 package forms;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import domain.Editor;
 
@@ -31,6 +32,7 @@ public class EditorForm {
 		this.editor = editor;
 	}
 
+	@Size(min = 5, max = 32)
 	public String getPasswordCheck() {
 		return this.passwordCheck;
 	}

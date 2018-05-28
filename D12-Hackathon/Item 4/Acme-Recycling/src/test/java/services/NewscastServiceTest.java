@@ -223,7 +223,7 @@ public class NewscastServiceTest extends AbstractTest {
 				//correctamente la noticia 1 ya que es del editor 1
 				"editor1", "new1", "title1", "content", picturesOk, true, null
 			}, {
-				//Se correctamente la noticia 2 ya que es del editor 1 también
+				//correctamente la noticia 2 ya que es del editor 1 también
 				"editor1", "new2", "title", "content", picturesOk, true, null
 			}, {
 				//Se edita incorrectamente la noticia1 ya que el editor1 no es el autor de la noticia 3
@@ -243,7 +243,13 @@ public class NewscastServiceTest extends AbstractTest {
 			}, {
 				//Se edita correctamente ya que las imágenes son opcionales
 				"editor1", "new2", "title", "content", null, true, null
-			}
+			}, {
+				//otro actor recycler intenta editar una noticia
+				"recycler1", "new2", "title", "content", null, true, java.lang.NullPointerException.class
+			}, {
+				//otro actor intenta editar una noticia
+				"buyer1", "new2", "title", "content", null, true, java.lang.NullPointerException.class
+			},
 
 		};
 		for (int i = 0; i < testingData.length; i++)

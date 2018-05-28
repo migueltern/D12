@@ -91,19 +91,19 @@ public class OpinionService {
 			final Collection<Opinable> myOpinables = this.opinableService.findByActorId(opinion.getActor().getId());
 			Assert.isTrue(!myOpinables.contains(opinable), "you have an opinion in this opinable");
 
-			//Solo se crea opiniones de los cursos a los que ha asistido el recycler
-			if (!opinionForm.isOpinableItem()) {
-				Course course;
-				Recycler recyclerPrincipal;
-				recyclerPrincipal = this.recyclerService.findByPrincipal();
-				course = (Course) this.opinableService.findOneManual(opinionForm.getOpinableId());
-				Assert.isTrue(recyclerPrincipal.getCourses().contains(course), "you don't assist to this course");
-			}
-
 		} else {
 			actor = this.actorService.findPrincipal();
 			Assert.isTrue(actor.getOpinions().contains(this.findOne(opinion.getId())), "Cannot commit this operation, because it's illegal");
 			Assert.notNull(opinion);
+		}
+
+		//Solo se crea opiniones de los cursos a los que ha asistido el recycler
+		if (!opinionForm.isOpinableItem()) {
+			Course course;
+			Recycler recyclerPrincipal;
+			recyclerPrincipal = this.recyclerService.findByPrincipal();
+			course = (Course) this.opinableService.findOneManual(opinionForm.getOpinableId());
+			Assert.isTrue(recyclerPrincipal.getCourses().contains(course), "you don't assist to this course");
 		}
 
 		result = this.opinionRepository.save(opinion);
@@ -158,6 +158,7 @@ public class OpinionService {
 			opinionBD = this.opinionRepository.findOne(opinion.getId());
 			opinion.setId(opinionBD.getId());
 			opinion.setVersion(opinionBD.getVersion());
+			opinion.setCreatedMoment(opinionBD.getCreatedMoment());
 			opinionForm.setOpinableId(this.opinableService.findByOpinionId(opinion.getId()).getId());
 			opinionForm.setOpinableItem(this.opinableService.isItem(opinionForm.getOpinableId()));
 		}

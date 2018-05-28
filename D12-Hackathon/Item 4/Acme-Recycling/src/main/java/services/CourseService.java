@@ -320,8 +320,11 @@ public class CourseService {
 
 	public Collection<Course> findToOpineByActorId(final int actorId) {
 		Collection<Course> result;
+		Recycler recyclerPrincipal;
 
-		result = this.findAll();
+		recyclerPrincipal = this.recyclerService.findByPrincipal();
+		result = new ArrayList<Course>(recyclerPrincipal.getCourses());
+		//Se eliminan los cursos en los que ya se ha opinado
 		result.removeAll(new ArrayList<Course>(this.courseRepository.findToOpineByActorId(actorId)));
 
 		return result;

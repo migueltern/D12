@@ -13,8 +13,10 @@ import org.springframework.validation.Validator;
 
 import repositories.OpinionRepository;
 import domain.Actor;
+import domain.Course;
 import domain.Opinable;
 import domain.Opinion;
+import domain.Recycler;
 import forms.OpinionForm;
 
 @Service
@@ -33,6 +35,9 @@ public class OpinionService {
 
 	@Autowired
 	private Validator			validator;
+
+	@Autowired
+	private RecyclerService		recyclerService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -85,6 +90,15 @@ public class OpinionService {
 			final Opinable opinable = this.opinableService.findOneManual(opinionForm.getOpinableId());
 			final Collection<Opinable> myOpinables = this.opinableService.findByActorId(opinion.getActor().getId());
 			Assert.isTrue(!myOpinables.contains(opinable), "you have an opinion in this opinable");
+
+			//Solo se crea opiniones de los cursos a los que ha asistido el recycler
+			if (!opinionForm.isOpinableItem()) {
+				Course course;
+				Recycler recyclerPrincipal;
+				recyclerPrincipal = this.recyclerService.findByPrincipal();
+				course = (Course) this.opinableService.findOneManual(opinionForm.getOpinableId());
+				Assert.isTrue(recyclerPrincipal.getCourses().contains(course), "you don't assist to this course");
+			}
 
 		} else {
 			actor = this.actorService.findPrincipal();

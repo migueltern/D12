@@ -112,6 +112,18 @@
 					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a class="fNiv"><spring:message
+						code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a href="opinion/actor/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a></li>
+				</ul>
+			</li>
 
 
 			<li><a class="fNiv"><spring:message
@@ -166,6 +178,18 @@
 					<li class="arrow"></li>
 					
 					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message
+						code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a href="opinion/actor/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a></li>
 				</ul>
 			</li>
 
@@ -276,6 +300,23 @@
 					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a class="fNiv"><spring:message
+						code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a
+						href="opinion/actor/myListOpinionCourse.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionCourse" /></a></li>
+					<li><a href="opinion/actor/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a></li>
+					<li><a href="opinion/actor/createOpinableCourse.do"><spring:message
+								code="master.page.opinion.createOpinableCourse" /></a></li>
+				</ul>
+			</li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
@@ -341,6 +382,18 @@
 					<li class="arrow"></li>
 					
 					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message
+						code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a href="opinion/actor/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a></li>
 				</ul>
 			</li>
 
@@ -422,6 +475,18 @@
 					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
 				</ul>
 			</li>
+			
+			<li><a class="fNiv"><spring:message
+						code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a href="opinion/actor/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a></li>
+				</ul>
+			</li>
 
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
@@ -480,6 +545,18 @@
 					<li class="arrow"></li>
 					
 					<li><a href="recycler/list.do?d-16544-p=1"><spring:message code="master.page.recycler.list" /></a></li>
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message
+						code="master.page.opinion" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a
+						href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+								code="master.page.opinion.myListOpinionProduct" /></a></li>
+					<li><a href="opinion/actor/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a></li>
 				</ul>
 			</li>
 
@@ -561,24 +638,6 @@
 					<li><a href="legislation/list.do"><spring:message
 								code="master.page.administrator.legislation" /></a></li>
 				</ul></li>
-		</security:authorize>
-		<security:authorize access="isAuthenticated()">
-			<li><a class="fNiv"><spring:message
-							code="master.page.opinion" /></a>
-					<ul>
-						<li class="arrow"></li>
-						<li><a
-							href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
-									code="master.page.opinion.myListOpinionProduct" /></a></li>
-						<li><a
-							href="opinion/actor/myListOpinionCourse.do?d-16544-p=1"><spring:message
-									code="master.page.opinion.myListOpinionCourse" /></a></li>
-						<li><a href="opinion/actor/createOpinableItem.do"><spring:message
-									code="master.page.opinion.createOpinableProduct" /></a></li>
-						<li><a href="opinion/actor/createOpinableCourse.do"><spring:message
-									code="master.page.opinion.createOpinableCourse" /></a></li>
-
-					</ul></li>
 		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
 import services.ActorService;
 import services.CourseService;
 import services.ItemService;
@@ -79,6 +80,11 @@ public class OpinionActorController extends AbstractController {
 		actorPrincipal = this.actorService.findPrincipal();
 		myOpinions = this.opinionService.findOpinableCourseByActor(actorPrincipal.getId());
 
+		//Solo pueden opinar los que asisten a los cursos, es decir, los recyclers
+		final Authority authority = new Authority();
+		authority.setAuthority("RECYCLER");
+		Assert.isTrue(actorPrincipal.getUserAccount().getAuthorities().contains(authority), "must be a recycler");
+
 		result = new ModelAndView("opinion/list");
 		result.addObject("opinions", myOpinions);
 		result.addObject("showButtonEdit", true);
@@ -112,6 +118,11 @@ public class OpinionActorController extends AbstractController {
 		ModelAndView result;
 		Opinion opinion;
 		OpinionForm opinionForm;
+
+		//Solo pueden opinar los que asisten a los cursos, es decir, los recyclers
+		final Authority authority = new Authority();
+		authority.setAuthority("RECYCLER");
+		Assert.isTrue(this.actorService.findPrincipal().getUserAccount().getAuthorities().contains(authority), "must be a recycler");
 
 		opinion = this.opinionService.create();
 
@@ -178,6 +189,8 @@ public class OpinionActorController extends AbstractController {
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("you have an opinion in this opinable"))
 					result = this.createEditModelAndView(opinionForm, "opinion.duplicateOpinable.error");
+				else if (oops.getMessage().equals("you don't assist to this course"))
+					result = this.createEditModelAndView(opinionForm, "opinion.courseNotAssist.error");
 				else
 					result = this.createEditModelAndView(opinionForm, "opinion.commit.error");
 			}

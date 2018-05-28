@@ -104,7 +104,8 @@ public class ItemRecyclerController extends AbstractController {
 		result = new ModelAndView("item/display");
 		result.addObject("item", item);
 		result.addObject("requestURI", "item/recycler/display.do");
-		result.addObject("requestItemsURL", "/request/recycler/display.do");
+		result.addObject("RequestURIedit", "/request/recycler/display.do");
+		
 
 		return result;
 	}

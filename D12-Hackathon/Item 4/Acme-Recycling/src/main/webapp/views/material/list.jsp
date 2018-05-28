@@ -23,30 +23,31 @@
 
 
 <!-- Finder para el Buyer -->
-	<security:authorize access="hasRole('BUYER')">
+<security:authorize access="hasRole('BUYER')">
 	<jstl:if test="${showSearch}">
-	<form:form action="finder/buyer/search.do" modelAttribute="finder" >
+		<form:form action="finder/buyer/search.do" modelAttribute="finder">
 
-		<form:hidden path="id" />
-		<form:hidden path="version" />
-		<form:hidden path="materials" />
+			<form:hidden path="id" />
+			<form:hidden path="version" />
+			<form:hidden path="materials" />
 
-		<acme:textbox code="finder.keyWord" path="keyWord" />
-		<br />
-		<acme:textbox code="finder.lowPrice" path="lowPrice" />
-		<br />
-		<acme:textbox code="finder.highPrice" path="highPrice" />
-		<br />
-	
-		<input type="submit" name="search" value="<spring:message code="finder.search" />" /> &nbsp; 	 
+			<acme:textbox code="finder.keyWord" path="keyWord" />
+			<br />
+			<acme:textbox code="finder.lowPrice" path="lowPrice" />
+			<br />
+			<acme:textbox code="finder.highPrice" path="highPrice" />
+			<br />
+
+			<input type="submit" name="search"
+				value="<spring:message code="finder.search" />" /> &nbsp; 	 
 	</form:form>
-	</jstl:if> 
-	</security:authorize>
+	</jstl:if>
+</security:authorize>
 
 <!-- Listing messageFodler -->
 <display:table name="materials" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
-	
+
 
 	<!--  EDIT -->
 	<security:authorize access="hasRole('ADMIN')">
@@ -61,7 +62,7 @@
 	</security:authorize>
 
 
-<!--  Display -->
+	<!--  Display -->
 	<security:authorize access="hasRole('ADMIN')">
 		<spring:message code="material.display" var="display" />
 		<display:column title="${display}" sortable="true">
@@ -82,19 +83,24 @@
 	<acme:column code="material.description" property="description"
 		sortable="true" />
 
-	<spring:message code="material.format.price" var="patternPrice"/>
+	<spring:message code="material.format.price" var="patternPrice" />
 	<spring:message code="material.unitPrice" var="totalPrice" />
-	<display:column property="unitPrice" title="${totalPrice}" sortable="true" format="${patternPrice}"/>
-		
-		<acme:column code="material.quantity" property="quantity"
+	<display:column property="unitPrice" title="${totalPrice}"
+		sortable="true" format="${patternPrice}" />
+
+	<acme:column code="material.quantity" property="quantity"
+		sortable="true" />
+
+
+	<spring:message code="material.format.price" var="patternPrice" />
+	<spring:message code="material.totalPrice" var="totalPrice" />
+	<display:column property="totalPrice" title="${totalPrice}"
+		sortable="true" format="${patternPrice}" />
+
+	<acme:column code="material.labelMaterial" property="labelMaterial.name"
 		sortable="true" />
 		
-		
-		<spring:message code="material.format.price" var="patternPrice"/>
-	<spring:message code="material.totalPrice" var="totalPrice" />
-	<display:column property="totalPrice" title="${totalPrice}" sortable="true" format="${patternPrice}"/>
-
-<!--  COMPRAR -->
+	<!--  COMPRAR -->
 	<security:authorize access="hasRole('BUYER')">
 		<spring:message code="material.buy" var="buy" />
 		<display:column title="${buy}" sortable="true">
@@ -105,7 +111,7 @@
 			<a href="${deleteURL}"><spring:message code="material.buy" /></a>
 		</display:column>
 	</security:authorize>
-<%-- 
+	<%-- 
 	<!--  DELETE -->
 	<security:authorize access="hasRole('ADMIN')">
 		<spring:message code="material.delete" var="delete" />

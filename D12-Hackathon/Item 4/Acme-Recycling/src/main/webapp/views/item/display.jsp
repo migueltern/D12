@@ -32,9 +32,12 @@
 		<jstl:out value="${row.title}"></jstl:out>
 		</p>
 		<p>
-		<B><spring:message code="item.publicationMoment" /></B>
+		<spring:message code="incidence.format.date" var="pattern"></spring:message>
+		<B><spring:message code="incidence.createdMoment" /></B>
+		<B><spring:message code="item.publicationMoment"  /></B>
 		<jstl:out value=":" />
-		<jstl:out value="${row.publicationMoment}"></jstl:out>
+		<fmt:formatDate value="${row.publicationMoment}" pattern="${pattern}" var="pattern"></fmt:formatDate>
+		<c:out value="${pattern}" />
 		</p>
 		<p>
 		<B><spring:message code="item.description" /></B>

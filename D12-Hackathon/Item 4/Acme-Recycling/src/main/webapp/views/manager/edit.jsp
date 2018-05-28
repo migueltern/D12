@@ -31,7 +31,7 @@
 				path="manager.userAccount.username" /><br /></B>
 			<B><acme:password code="manager.password"
 				path="manager.userAccount.password" /><br /></B>
-			<B><acme:password code="manager.password" path="passwordCheck" /></B>
+			<B><acme:password code="manager.password" path="manager.userAccount.password" /></B>
 			<br />
 		</jstl:if>	
 	

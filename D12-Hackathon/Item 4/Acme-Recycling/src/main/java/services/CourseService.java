@@ -96,8 +96,9 @@ public class CourseService {
 			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
 		//Al menos un material es obligatorio
 		Assert.isTrue(course.getMaterials().size() > 0, "Al menos un material es obligatorio");
-		//Assert.isTrue(!course.getMaterials().contains(null), "Al menos un material es obligatorio");
-		//
+		//El minimumScore no puede ser negativo
+		Assert.isTrue(course.getMinimumScore() > 0, "No puede ser 0 el minimum");
+
 		if (course.getRealisedMoment() != null)
 			Assert.isTrue(course.getRealisedMoment().after(date), "Fecha de realizacion debe ser posterior a la actual");
 

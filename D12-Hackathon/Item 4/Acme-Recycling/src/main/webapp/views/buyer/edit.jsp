@@ -31,7 +31,7 @@
 				path="buyer.userAccount.username" /><br /></B>
 			<B><acme:password code="buyer.password"
 				path="buyer.userAccount.password" /><br /></B>
-			<B><acme:password code="buyer.password" path="passwordCheck" /></B>
+			<B><acme:password code="buyer.password" path="buyer.userAccount.password" /></B>
 			<br />
 		</jstl:if>	
 	

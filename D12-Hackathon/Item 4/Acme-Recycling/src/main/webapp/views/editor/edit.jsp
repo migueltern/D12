@@ -31,7 +31,7 @@
 				path="editor.userAccount.username" /><br /></B>
 			<B><acme:password code="editor.password"
 				path="editor.userAccount.password" /><br /></B>
-			<B><acme:password code="editor.password" path="passwordCheck" /></B>
+			<B><acme:password code="editor.password" path="editor.userAccount.password" /></B>
 			<br />
 		</jstl:if>	
 	

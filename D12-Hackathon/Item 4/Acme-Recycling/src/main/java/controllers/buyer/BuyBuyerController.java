@@ -75,6 +75,8 @@ public class BuyBuyerController extends AbstractController {
 					result = this.createEditModelAndView(buy, "buy.creditCard.Error");
 				else if (oops.getMessage().equals("Invalid ammount"))
 					result = this.createEditModelAndView(buy, "buy.quantity.error");
+				else if (oops.getMessage().equals("La cantidad cero no"))
+					result = this.createEditModelAndView(buy, "buy.cero.error");
 				else
 					result = this.createEditModelAndView(buy, "buy.commit.error");
 

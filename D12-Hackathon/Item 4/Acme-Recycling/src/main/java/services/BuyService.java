@@ -72,7 +72,7 @@ public class BuyService {
 		Assert.isTrue(this.checkCreditCard(buy.getCreditCard()), "Invalid credit card");
 
 		Assert.isTrue(!(buy.getMaterial().getQuantity() < buy.getQuantity()), "Invalid ammount");
-
+		Assert.isTrue(!(buy.getQuantity() == 0), "La cantidad cero no");
 		result = this.buyRepository.save(buy);
 
 		//Tengo que restarle al material lo que he comprado 

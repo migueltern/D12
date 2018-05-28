@@ -256,7 +256,7 @@ public class RequestService {
 
 		recycler = this.recyclerService.findRecyclerByRequest(requestWithNewStatus.getId());
 		message = this.messageService.create();
-		message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus);
+		message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus.getStatus());
 		message.setPriority("HIGH");
 		message.setRecipient(recycler);
 		message.setSubject(requestWithNewStatus.getCode() + ": " + requestWithNewStatus.getTitle());
@@ -267,22 +267,23 @@ public class RequestService {
 
 		if (this.managerService.findByPrincipal() != null)
 			manager = this.managerService.findByPrincipal();
-		else
+		else{
 			//Si el carrier es el que cambia el status, no podemos coger al manager por medio de un findByPrincipal(), por eso hacemos este if else
 			manager = this.managerService.findByRequestId(requestWithNewStatus.getId());
-		message = this.messageService.create();
-		message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus);
-		message.setPriority("HIGH");
-		message.setRecipient(manager);
-		message.setSubject(requestWithNewStatus.getCode() + ": " + requestWithNewStatus.getTitle());
-		messageSend = this.messageService.send(message);
-		this.messageService.saveMessageInFolder(manager, "Notification box", messageSend);
+			message = this.messageService.create();
+			message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus.getStatus());
+			message.setPriority("HIGH");
+			message.setRecipient(manager);
+			message.setSubject(requestWithNewStatus.getCode() + ": " + requestWithNewStatus.getTitle());
+			messageSend = this.messageService.send(message);
+			this.messageService.saveMessageInFolder(manager, "Notification box", messageSend);
 
+		}
 		//Enviamos un mensaje al carrier si tiene asignado un carrier
 		if (requestWithNewStatus.getCarrier() != null) {
 			carrier = requestWithNewStatus.getCarrier();
 			message = this.messageService.create();
-			message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus);
+			message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus.getStatus());
 			message.setPriority("HIGH");
 			message.setRecipient(carrier);
 			message.setSubject(requestWithNewStatus.getCode() + ": " + requestWithNewStatus.getTitle());

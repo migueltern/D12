@@ -44,6 +44,7 @@ public class IncidenceManagerController extends AbstractController{
 			result.addObject("incidences", incidences);
 			result.addObject("requestURI", "incidence/manager/list.do?d-16544-p=1");
 			result.addObject("RequestURIresolve", "incidence/manager/resolve.do");
+			result.addObject("RequestURIdisplay", "incidence/manager/display.do");
 
 
 			return result;
@@ -61,7 +62,24 @@ public class IncidenceManagerController extends AbstractController{
 			result = new ModelAndView("incidence/list");
 			result.addObject("incidences", incidences);
 			result.addObject("requestURI", "incidence/manager/list.do?d-16544-p=1");
+			result.addObject("RequestURIdisplay", "incidence/manager/display.do");
 
+
+			return result;
+		}
+		
+		//Display
+		
+		@RequestMapping(value = "/display", method = RequestMethod.GET)
+		public ModelAndView Display(@RequestParam int incidenceId) {
+			final ModelAndView result;
+			Incidence incidence;
+
+			incidence = this.incidenceService.findOne(incidenceId);
+
+			result = new ModelAndView("incidence/display");
+			result.addObject("incidence", incidence);
+			result.addObject("requestURI", "incidence/manager/display.do");
 
 			return result;
 		}

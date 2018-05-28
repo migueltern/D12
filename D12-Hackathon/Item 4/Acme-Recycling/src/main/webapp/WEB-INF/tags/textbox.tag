@@ -35,11 +35,10 @@
 <%-- Definition --%>
 
 <div>
-	<form:label path="${path}">
+	<%-- <form:label path="${path}">
 		<spring:message code="${code}" />
-	</form:label>
-	<form:input path="${path}" readonly="${readonly}"
-		placeHolder="${placeHolder }" />
+	</form:label> --%>
+	<form:input path="${path}" class="form-control" readonly="${readonly}" placeHolder="${code }" />
 	<form:errors path="${path}" cssClass="error" />
 
 </div>

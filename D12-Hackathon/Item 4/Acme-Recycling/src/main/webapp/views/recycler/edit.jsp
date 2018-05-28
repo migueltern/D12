@@ -22,35 +22,69 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="recycler/edit.do" modelAttribute="recyclerForm">
-	
+	<br>
+
 <form:hidden path="recycler.id" />
 	
 	
 <jstl:if test="${recyclerForm.recycler.id == 0}">
-			<B><acme:textbox code="recycler.username"
+<div class="col">
+			<B><acme:textbox code="username"
 				path="recycler.userAccount.username" /><br /></B>
-			<B><acme:password code="recycler.password"
-				path="recycler.userAccount.password" /><br /></B>
-			<B><acme:password code="recycler.password" path="passwordCheck" /></B>
-			<br />
+</div>
+<div class="col">
+	<B><acme:provinceselect code="Province" path="recycler.province"/></B>
+</div>
+<br>
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
+			<B><acme:password code="password"
+				path="recycler.userAccount.password" /></B>
+</div>
+	<div class="form-group col-md-6">
+			<B><acme:password code="password" path="passwordCheck" /></B>
+</div>
+</div>
+</div>
 		</jstl:if>	
 	
-	<B><acme:textbox code="recycler.name" path="recycler.name"/></B>
+<br>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+	<B><acme:textbox code="Name" path="recycler.name"/></B>
+</div>
 	<br />
-	<B><acme:textbox code="recycler.surname" path="recycler.surname"/></B>
+	<div class="form-group col-md-6">
+	<B><acme:textbox code="Surname" path="recycler.surname"/></B>
+</div>
+</div>
+</div>
 	<br />
-	<B><acme:textbox code="recycler.emailAddress" path="recycler.email"/></B>
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
+	<B><acme:textbox code="Email" path="recycler.email"/></B>
+</div>
 	<br />
-	<B><acme:textbox code="recycler.phoneNumber" path="recycler.phone" /></B>
+	<div class="form-group col-md-6">
+	<B><acme:textbox code="Phone" path="recycler.phone" /></B>
+</div>
+
 	<br />
-	<B><acme:textbox code="recycler.postalAddress" path="recycler.address"/></B>
+<div class="col">
+	<B><acme:textbox code="Address" path="recycler.address"/></B>
+</div>
+</div>
+</div>
 	<br />
-	<B><acme:provinceselect code="recycler.province" path="recycler.province"/></B>
+
 	<br />
 	
 	
 	
-	<acme:submit name="save" code="recycler.save"/>
+	<acme:submit name="save" code="recycler.save" />
 	<acme:cancel url="welcome/index.do" code="recycler.cancel"/>
 	<br />
 	<br/>
@@ -63,3 +97,6 @@
    </jstl:if>
  <br/>
 	</form:form>
+	
+	
+	

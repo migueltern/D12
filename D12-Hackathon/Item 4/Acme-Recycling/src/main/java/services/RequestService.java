@@ -139,7 +139,12 @@ public class RequestService {
 	}
 	public void delete(final Request request) {
 		Assert.notNull(request);
-
+		Manager manager;
+		
+		manager = this.managerService.findByRequestId(request.getId());
+		
+		manager.getRequests().remove(request);
+		
 		this.requestRepository.delete(request);
 	}
 

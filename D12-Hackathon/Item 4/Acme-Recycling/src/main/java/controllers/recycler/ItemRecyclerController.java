@@ -161,9 +161,14 @@ public class ItemRecyclerController extends AbstractController {
 		try {
 			this.itemService.delete(item);
 			result = new ModelAndView("redirect:list.do");
-		} catch (final Throwable oops) {
+		} catch (final Throwable oops){
+			if(oops.getMessage().equals("This item is assigned a carrier"))
+				result = this.listWithMessage("item.commit.error.carrier");
+			else if(oops.getMessage().equals("This item will collect it soon or it has finished its process"))
+				result = this.listWithMessage("item.commit.error.status");
+			else
 
-			result = this.listWithMessage("item.commit.error");
+				result = this.listWithMessage("item.commit.error");
 		}
 
 		return result;

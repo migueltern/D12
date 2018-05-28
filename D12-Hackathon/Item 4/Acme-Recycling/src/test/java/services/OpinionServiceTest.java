@@ -1,13 +1,22 @@
 
 package services;
 
+import java.util.Collection;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Item;
+import domain.Opinion;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -16,25 +25,60 @@ import utilities.AbstractTest;
 @Transactional
 public class OpinionServiceTest extends AbstractTest {
 
-	//	//	// Supporting services ----------------------------------------------------
-	//	@Autowired
-	//	OpinionService	opinionService;
-	//
-	//	@Autowired
-	//	ItemService		itemService;
-	//
-	//	@Autowired
-	//	RecyclerService	recyclerService;
-	//
-	//	@PersistenceContext
-	//	EntityManager	entityManager;
-	//
-	//
+	// Supporting services ----------------------------------------------------
+	@Autowired
+	OpinionService	opinionService;
+
+	@Autowired
+	ItemService		itemService;
+
+	@Autowired
+	RecyclerService	recyclerService;
+
+	@PersistenceContext
+	EntityManager	entityManager;
+
+
+	//Caso de uso 2.d : Listar las opiniones de un ítem, pero los no autenticados no podrán crearlas.
+	@Test
+	public void driverListNonAuthenticated() {
+		final Object testingData[][] = {
+			{
+
+				//Listar las opiniones del item1 y comprobar que la opinion1 pertenece al item1
+				"item1", "opinion1", null
+			}, {
+				//Listar las opiniones del item1 y comprobar que la opinion1 NO pertenece al item2
+				"item2", "opinion1", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListNonAuthenticated(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateListNonAuthenticated(final int itemId, final int opinionId, final Class<?> expected) {
+		Class<?> caught;
+		final Item item;
+		Opinion opinion;
+		final Collection<Opinion> opinions;
+
+		caught = null;
+		try {
+			item = this.itemService.findOne(itemId);
+			opinion = this.opinionService.findOne(opinionId);
+			opinions = item.getOpinions();
+			Assert.isTrue(opinions.contains(opinion));
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+
 	//	@Test
 	//	public void driverCreate() {
 	//		final Object testingData[][] = {
 	//			{
-	//				//Se crea una opinion sobre un itemo correctamente
+	//				//Se crea una opinion sobre un item correctamente
 	//				"manager1", "item1", "title test", "comment test", null
 	//			}
 	//		};
@@ -72,18 +116,6 @@ public class OpinionServiceTest extends AbstractTest {
 	//		this.checkExceptions(expected, caught);
 	//
 	//		super.unauthenticate();
-	//	}
-	//
-	//	@Test
-	//	public void testeandoParaElControlador() {
-	//		final Collection<Opinion> myOpinions;
-	//		Recycler recyclerPrincipal;
-	//		super.authenticate("recycler1");
-	//
-	//		recyclerPrincipal = this.recyclerService.findByPrincipal();
-	//		myOpinions = this.opinionService.findOpinableCourseByActor(recyclerPrincipal.getId());
-	//		Assert.notNull(myOpinions);
-	//
 	//	}
 
 }

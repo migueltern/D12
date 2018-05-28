@@ -668,11 +668,18 @@
 		<br>
 		<br>
 		<i><jstl:out value="${EnglishWelcomeMessage}"></jstl:out></i>
+		<br>
+		<br>
+		<br>
+		
 	</jstl:when>
 
 	<jstl:when test="${newLanguage == 'Noticias'}">
 		<br>
 		<br>
 		<i><jstl:out value="${SpanishWelcomeMessage}"></jstl:out></i>
+		<br>
+		<br>
+		<br>
 	</jstl:when>
 </jstl:choose>

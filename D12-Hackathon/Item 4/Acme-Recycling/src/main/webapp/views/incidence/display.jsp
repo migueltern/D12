@@ -37,9 +37,11 @@
 		<jstl:out value="${row.reasonWhy}"></jstl:out>
 		</p>
 		<p>
+		<spring:message code="incidence.format.date" var="pattern"></spring:message>
 		<B><spring:message code="incidence.createdMoment" /></B>
 		<jstl:out value=":" />
-		<jstl:out value="${row.createdMoment}"></jstl:out>
+		<fmt:formatDate value="${row.createdMoment}" pattern="${pattern}" var="pattern" ></fmt:formatDate>
+		<c:out value="${pattern}" />
 		</p>
 		<p>
 		<B><spring:message code="incidence.comment" /></B>

@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Editor;
@@ -42,7 +43,6 @@ public class NewscastServiceTest extends AbstractTest {
 
 
 	//Caso de uso 14: Create new
-	//@SuppressWarnings("unchecked")
 	@SuppressWarnings("unchecked")
 	@Test
 	public void driverCreateAndSave() {
@@ -196,6 +196,80 @@ public class NewscastServiceTest extends AbstractTest {
 			this.newscastService.delete(newscast);
 
 			this.newscastService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
+
+	//Listar y editar las noticias 
+	@SuppressWarnings("unchecked")
+	@Test
+	public void driverListAndEdit() {
+		final Collection<String> picturesOk;
+		final Collection<String> picturesBadUrls;
+
+		picturesOk = this.addPicturesOk();
+		picturesBadUrls = this.addPicturesBadUrls();
+
+		final Object testingData[][] = {
+
+			{
+				//correctamente la noticia 1 ya que es del editor 1
+				"editor1", "new1", "title1", "content", picturesOk, true, null
+			}, {
+				//Se correctamente la noticia 2 ya que es del editor 1 también
+				"editor1", "new2", "title", "content", picturesOk, true, null
+			}, {
+				//Se edita incorrectamente la noticia1 ya que el editor1 no es el autor de la noticia 3
+				"editor1", "new3", "title", "content", picturesOk, true, IllegalArgumentException.class
+			}, {
+				//Se edita incorrectamente la noticia1 por poner el titulo en blanco
+				"editor1", "new2", "", "content", picturesOk, true, javax.validation.ConstraintViolationException.class
+			}, {
+				//Se edita incorrectamente la noticia1 por poner el content en blanco
+				"editor1", "new2", "title", "", picturesOk, true, javax.validation.ConstraintViolationException.class
+			}, {
+				//Se edita incorrectamente la noticia1 por poner malas urls 
+				"editor1", "new2", "title", "content", picturesBadUrls, true, javax.validation.ConstraintViolationException.class
+			}, {
+				//Se edita incorrectamente ya que el editor no puede ser nulo
+				null, "new2", "title", "content", picturesBadUrls, true, java.lang.IllegalArgumentException.class
+			}, {
+				//Se edita correctamente ya que las imágenes son opcionales
+				"editor1", "new2", "title", "content", null, true, null
+			}
+
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListAndEdit((String) testingData[i][0], (Integer) super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (Collection<String>) testingData[i][4], (boolean) testingData[i][5],
+				(Class<?>) testingData[i][6]);
+	}
+	private void templateListAndEdit(final String username, final Integer newscastId, final String title, final String content, final Collection<String> pictures, final boolean checkList, final Class<?> expected) {
+		Newscast newscast;
+		Collection<Newscast> mynewscast;
+		Class<?> caught;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+			newscast = this.newscastService.findOne(newscastId);
+			if (checkList) {
+				mynewscast = this.editorService.findAllNewByEditor();
+				//Se comprueba que el newspaper pasado por parametro se encuentra en la lista de newspapers no publicados aun
+				Assert.isTrue(mynewscast.contains(newscast), "la noticia no es del editor logueado");
+			}
+			newscast.setTitle(title);
+			newscast.setContent(content);
+			newscast.setPictures(pictures);
+			newscast = this.newscastService.save(newscast);
+			this.newscastService.flush();
+
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test

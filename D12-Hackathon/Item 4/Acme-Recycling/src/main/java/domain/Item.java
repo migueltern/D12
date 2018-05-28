@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
@@ -68,6 +69,7 @@ public class Item extends Opinable {
 		this.description = description;
 	}
 
+	@Min(0)
 	public Double getQuantity() {
 		return this.quantity;
 	}

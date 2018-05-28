@@ -30,7 +30,7 @@
 	<br />
 	<acme:textbox code="opinion.comment" path="opinion.comment" />
 	<br />
-	<acme:textbox code="opinion.photo" path="opinion.photo" />
+	<acme:textbox code="opinion.photo" path="opinion.photo" placeHolder="http://"/>
 	<br />
 	<acme:textbox code="opinion.caption" path="opinion.caption" />
 	<br />

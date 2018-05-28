@@ -3,8 +3,6 @@ package controllers.admin;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -89,7 +87,7 @@ public class MaterialAdminController extends AbstractController {
 	//Saving-----------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid Material material, final BindingResult binding) {
+	public ModelAndView save(Material material, final BindingResult binding) {
 
 		ModelAndView result;
 

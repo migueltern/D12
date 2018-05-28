@@ -26,12 +26,13 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="materials"/>
+	<form:hidden path="byDefault"/>
 
 	<!-- ATRIBUTOS -->
 	<B><acme:textbox code="labelMaterial.name" path="name" /></B>
 	<br />
 	
-	<spring:message code="labelMaterial.byDefault" var="byDefaultHeader"/>
+	<%-- <spring:message code="labelMaterial.byDefault" var="byDefaultHeader"/>
 	<B><jstl:out value="${byDefaultHeader }"></jstl:out></B>
 	<select name="byDefault" id="byDefault" style="width: 123px">
 		<option value="true" label="true" />
@@ -39,7 +40,7 @@
 		<option value="false" label="false">
 	</select>
 	<br />
-	<br>
+	<br> --%>
 	<!-- BOTONES -->
 
 	<input type="submit" name="save"

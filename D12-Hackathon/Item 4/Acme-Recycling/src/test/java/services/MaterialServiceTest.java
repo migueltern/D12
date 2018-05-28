@@ -90,49 +90,12 @@ public class MaterialServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//	@Test
-	//	public void driverDelete() {
-	//		final Object testingData[][] = {
-	//			{
-	//
-	//				"admin", "material3", null
-	//			}, {
-	//
-	//				"admin", "material5", IllegalArgumentException.class
-	//			}
-	//		};
-	//		for (int i = 0; i < testingData.length; i++)
-	//			this.templateDelete((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
-	//	}
-	//	private void templateDelete(final String username, final int materialId, final Class<?> expected) {
-	//		Material material;
-	//		Class<?> caught;
-	//
-	//		caught = null;
-	//		try {
-	//			super.authenticate(username);
-	//			material = this.materialService.findOne(materialId);
-	//			this.materialService.delete(material);
-	//
-	//			this.materialService.flush();
-	//
-	//		} catch (final Throwable oops) {
-	//			caught = oops.getClass();
-	//			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
-	//			this.entityManager.clear();
-	//		}
-	//
-	//		this.checkExceptions(expected, caught);
-	//
-	//		super.unauthenticate();
-	//	}
-
 	@Test
 	public void driverList() {
 		final Object testingData[][] = {
 			{
 
-				"admin", 5, null
+				"admin", 6, null
 			}, {
 
 				"admin", 4, IllegalArgumentException.class

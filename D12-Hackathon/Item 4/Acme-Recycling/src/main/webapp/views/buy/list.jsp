@@ -26,18 +26,25 @@
 
 
 	<!-- ATRIBUTOS -->
+	
+	<spring:message code="buy.material.title"  var="title"/>
+	<display:column title = "${title }" sortable="true">
+		
+		<jstl:out value="${row.material.title}"></jstl:out>
+	</display:column>
+	
+	<spring:message code="buy.comment" var="titleHeader" />
+	<display:column property="comment" title="${titleHeader}" sortable="true" />
 
 	<spring:message code="buy.quantity" var="titleHeader" />
 	<display:column property="quantity" title="${titleHeader}" sortable="true" />
 	
-	<spring:message code="buy.comment" var="titleHeader" />
-	<display:column property="comment" title="${titleHeader}" sortable="true" />
-	<spring:message code="buy.material.title"  var="title"/>
-	<display:column title = "${title }">
+	<spring:message code="buy.creditCard.holderName"  var="title"/>
+	<display:column title = "${title }" sortable="true">
 		
-		<jstl:out value="${row.material.title}"></jstl:out>
-		
+		<jstl:out value="${row.creditCard.holderName}"></jstl:out>
 	</display:column>
+	
 
 	
 </display:table>

@@ -16,23 +16,18 @@
 			
 
 			<jstl:if test="${show}">
-			<%-- <jstl:if test="${m.recipient == null}"> --%>
+			
 				<acme:select code="message.sendTo" path="recipient"
 					items="${actors}" itemLabel="userAccount.username" />
 				<br />
-			<%-- </jstl:if> --%>
+		
 			</jstl:if>
 			
 			<acme:textbox code="message.moment" path="moment" readonly="true"/>
 			<br/>
 			
- 			<form:label path="priority">
-				<spring:message code="message.priority" />:
-			</form:label>
+			<acme:selectPriority code="message.priority" path="priority"/>
 			
-			<form:select path="priority">
-				<form:options items="${priorities}" />
-			</form:select>			
 			<br />
 			<br />	
 					

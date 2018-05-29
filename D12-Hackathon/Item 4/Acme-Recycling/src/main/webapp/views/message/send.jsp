@@ -34,10 +34,11 @@
 			<jstl:if test="${m.recipient != null}">
 				<form:hidden path="recipient" />
 			</jstl:if>
-			<acme:textarea code="message.subject" path="subject" />
+			
+			<acme:textbox code="message.subject" path="subject" />
 			<br />	
 			
-			<acme:textarea code="message.body" path="body" />
+			<acme:textbox code="message.body" path="body" />
 			<br />  
 			
 

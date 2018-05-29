@@ -21,6 +21,7 @@ import domain.Buyer;
 import domain.Course;
 import domain.GPS;
 import domain.Material;
+import domain.Opinion;
 import domain.Recycler;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -51,6 +52,9 @@ public class CourseServiceTest extends AbstractTest {
 
 	@Autowired
 	ManagerService		managerService;
+
+	@Autowired
+	OpinionService		opinionService;
 
 	@Autowired
 	BuyerService		buyerService;
@@ -427,6 +431,49 @@ public class CourseServiceTest extends AbstractTest {
 			this.courseService.deleteAdmin(course);
 
 			this.courseService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
+
+	//Caso de uso 1.d: Listar todos los cursos del sistema y ver sus opiniones. Pero no podrás escribir una opinión ni asistir al curso.
+	@Test
+	public void driverListNonAuthenticated() {
+
+		final Object testingData[][] = {
+			{
+				//Se comprueba que el course3 se encuentra en el listado y que tiene la opinion8
+				"course3", "opinion8", null
+			}, {
+				//Se comprueba que el course1 se encuentra en el listado pero que NO tiene la opinion1 porque no es suya
+				"course1", "opinion1", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListNonAuthenticated(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateListNonAuthenticated(final int courseId, final int opinionId, final Class<?> expected) {
+		Class<?> caught;
+		Collection<Course> courses;
+		Course course;
+		Opinion opinion;
+
+		caught = null;
+
+		try {
+			courses = this.courseService.findAll();
+			course = this.courseService.findOne(courseId);
+			opinion = this.opinionService.findOne(opinionId);
+			Assert.isTrue(courses.contains(course));
+			Assert.isTrue(course.getOpinions().contains(opinion));
+
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test

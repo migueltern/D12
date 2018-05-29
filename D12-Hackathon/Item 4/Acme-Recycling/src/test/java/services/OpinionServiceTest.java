@@ -123,39 +123,60 @@ public class OpinionServiceTest extends AbstractTest {
 	public void driverCreateOpinionItem() {
 		final Object testingData[][] = {
 			{
+				//Un reciclador crea una opinion sobre el course5 correctamente ya que asiste a ese curso
+				"recycler1", "course5", "title test", "comment test", false, null
+			}, {
+				//Un reciclador crea una opinion sobre el course5 incorrectamente ya que NO asiste a ese curso
+				"recycler1", "course1", "title test", "comment test", false, IllegalArgumentException.class
+			}, {
+				//Un buyer crea una opinion sobre el course3 incorrectamente ya que solo los recicladores pueden opinar sobre los cursos
+				"buyer1", "course1", "title test", "comment test", false, NullPointerException.class
+			}, {
+				//Un manager crea una opinion sobre el course3 incorrectamente ya que solo los recicladores pueden opinar sobre los cursos
+				"manager1", "course1", "title test", "comment test", false, NullPointerException.class
+			}, {
+				//Un editor crea una opinion sobre el course3 incorrectamente ya que solo los recicladores pueden opinar sobre los cursos
+				"editor1", "course1", "title test", "comment test", false, NullPointerException.class
+			}, {
+				//Un carrier crea una opinion sobre el course3 incorrectamente ya que solo los recicladores pueden opinar sobre los cursos
+				"carrier1", "course1", "title test", "comment test", false, NullPointerException.class
+			}, {
+				//Un admin crea una opinion sobre el course3 incorrectamente ya que solo los recicladores pueden opinar sobre los cursos
+				"admin", "course1", "title test", "comment test", false, NullPointerException.class
+			}, {
 				//Un reciclador crea una opinion sobre el item3 correctamente
-				"recycler1", "item3", "title test", "comment test", null
+				"recycler1", "item3", "title test", "comment test", true, null
 			}, {
 				//Un reciclador crea una opinion sobre el item1 incorrectamente porque ya tiene una opinion sobre ese item
-				"recycler1", "item1", "title test", "comment test", IllegalArgumentException.class
+				"recycler1", "item1", "title test", "comment test", true, IllegalArgumentException.class
 			}, {
 				//Un manager crea una opinion sobre el item1 correctamente
-				"manager1", "item1", "title test", "comment test", null
+				"manager1", "item1", "title test", "comment test", true, null
 			}, {
 				//Un manager crea una opinion sobre el item6 incorrectamente por dejar el title en null
-				"manager1", "item6", null, "comment test", javax.validation.ConstraintViolationException.class
+				"manager1", "item6", null, "comment test", true, javax.validation.ConstraintViolationException.class
 			}, {
 				//Un editor crea una opinion sobre el item1 correctamente
-				"editor1", "item1", "title test", "comment test", null
+				"editor1", "item1", "title test", "comment test", true, null
 			}, {
 				//Un editor crea una opinion sobre el item6 incorrectamente por dejar el comment en null
-				"editor1", "item6", null, "comment test", javax.validation.ConstraintViolationException.class
+				"editor1", "item6", null, "comment test", true, javax.validation.ConstraintViolationException.class
 			}, {
 				//Un comprador crea una opinion sobre el item1 correctamente
-				"buyer1", "item1", "title test", "comment test", null
+				"buyer1", "item1", "title test", "comment test", true, null
 			}, {
 				//Un transportista crea una opinion sobre el item1 correctamente
-				"carrier1", "item1", "title test", "comment test", null
+				"carrier1", "item1", "title test", "comment test", true, null
 			}, {
 				//Un admin crea una opinion sobre el item1 correctamente
-				"admin", "item1", "title test", "comment test", null
+				"admin", "item1", "title test", "comment test", true, null
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
-			this.templateCreate((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
+			this.templateCreate((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (boolean) testingData[i][4], (Class<?>) testingData[i][5]);
 	}
 
-	private void templateCreate(final String username, final int itemId, final String title, final String comment, final Class<?> expected) {
+	private void templateCreate(final String username, final int itemId, final String title, final String comment, final boolean isOpinableItem, final Class<?> expected) {
 		Opinion opinion;
 		Class<?> caught;
 		final OpinionForm opinionForm;
@@ -168,7 +189,7 @@ public class OpinionServiceTest extends AbstractTest {
 			opinion = this.opinionService.create();
 			opinionForm = new OpinionForm();
 
-			opinionForm.setOpinableItem(true);
+			opinionForm.setOpinableItem(isOpinableItem);
 			opinionForm.setOpinableId(itemId);
 			opinion.setTitle(title);
 			opinion.setComment(comment);

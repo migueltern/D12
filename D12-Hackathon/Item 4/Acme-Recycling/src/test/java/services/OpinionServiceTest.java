@@ -18,6 +18,7 @@ import utilities.AbstractTest;
 import domain.Course;
 import domain.Item;
 import domain.Opinion;
+import forms.OpinionForm;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -38,6 +39,9 @@ public class OpinionServiceTest extends AbstractTest {
 
 	@Autowired
 	RecyclerService	recyclerService;
+
+	@Autowired
+	ActorService	actorService;
 
 	@PersistenceContext
 	EntityManager	entityManager;
@@ -113,48 +117,76 @@ public class OpinionServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
-	//	@Test
-	//	public void driverCreate() {
-	//		final Object testingData[][] = {
-	//			{
-	//				//Se crea una opinion sobre un item correctamente
-	//				"manager1", "item1", "title test", "comment test", null
-	//			}
-	//		};
-	//		for (int i = 0; i < testingData.length; i++)
-	//			this.templateCreate((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
-	//	}
-	//
-	//	private void templateCreate(final String username, final int itemId, final String title, final String comment, final Class<?> expected) {
-	//		Opinion opinion;
-	//		Item item;
-	//		Class<?> caught;
-	//
-	//		caught = null;
-	//		try {
-	//			super.authenticate(username);
-	//			opinion = this.opinionService.create();
-	//
-	//			item = this.itemService.findOne(itemId);
-	//
-	//			opinion.setOpinable(item);
-	//			opinion.setTitle(title);
-	//			opinion.setComment(comment);
-	//			opinion.setPhoto("http://www.photo.com");
-	//			opinion.setCaption("caption");
-	//
-	//			opinion = this.opinionService.save(opinion);
-	//			this.entityManager.flush();
-	//
-	//		} catch (final Throwable oops) {
-	//			caught = oops.getClass();
-	//			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
-	//			this.entityManager.clear();
-	//		}
-	//
-	//		this.checkExceptions(expected, caught);
-	//
-	//		super.unauthenticate();
-	//	}
+	//Caso de uso 3.d: Añadir opiniones en los cursos en los que ha asistido y han finalizado, al igual que a los productos(item).
+	//Caso de uso 9.a: Opinar sobre los productos (ítems) que están en el sistema.
+	@Test
+	public void driverCreateOpinionItem() {
+		final Object testingData[][] = {
+			{
+				//Un reciclador crea una opinion sobre el item3 correctamente
+				"recycler1", "item3", "title test", "comment test", null
+			}, {
+				//Un reciclador crea una opinion sobre el item1 incorrectamente porque ya tiene una opinion sobre ese item
+				"recycler1", "item1", "title test", "comment test", IllegalArgumentException.class
+			}, {
+				//Un manager crea una opinion sobre el item1 correctamente
+				"manager1", "item1", "title test", "comment test", null
+			}, {
+				//Un manager crea una opinion sobre el item6 incorrectamente por dejar el title en null
+				"manager1", "item6", null, "comment test", javax.validation.ConstraintViolationException.class
+			}, {
+				//Un editor crea una opinion sobre el item1 correctamente
+				"editor1", "item1", "title test", "comment test", null
+			}, {
+				//Un editor crea una opinion sobre el item6 incorrectamente por dejar el comment en null
+				"editor1", "item6", null, "comment test", javax.validation.ConstraintViolationException.class
+			}, {
+				//Un comprador crea una opinion sobre el item1 correctamente
+				"buyer1", "item1", "title test", "comment test", null
+			}, {
+				//Un transportista crea una opinion sobre el item1 correctamente
+				"carrier1", "item1", "title test", "comment test", null
+			}, {
+				//Un admin crea una opinion sobre el item1 correctamente
+				"admin", "item1", "title test", "comment test", null
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateCreate((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
+	}
 
+	private void templateCreate(final String username, final int itemId, final String title, final String comment, final Class<?> expected) {
+		Opinion opinion;
+		Class<?> caught;
+		final OpinionForm opinionForm;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+			opinion = this.opinionService.create();
+
+			opinion = this.opinionService.create();
+			opinionForm = new OpinionForm();
+
+			opinionForm.setOpinableItem(true);
+			opinionForm.setOpinableId(itemId);
+			opinion.setTitle(title);
+			opinion.setComment(comment);
+			opinion.setPhoto("http://www.photo.com");
+			opinion.setCaption("caption");
+			opinion.setActor(this.actorService.findPrincipal());
+			opinionForm.setOpinion(opinion);
+			opinion = this.opinionService.save(opinionForm);
+			this.entityManager.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
 }

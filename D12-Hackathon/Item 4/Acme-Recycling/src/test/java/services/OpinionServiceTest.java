@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Course;
 import domain.Item;
 import domain.Opinion;
 
@@ -33,6 +34,9 @@ public class OpinionServiceTest extends AbstractTest {
 	ItemService		itemService;
 
 	@Autowired
+	CourseService	courseService;
+
+	@Autowired
 	RecyclerService	recyclerService;
 
 	@PersistenceContext
@@ -41,7 +45,7 @@ public class OpinionServiceTest extends AbstractTest {
 
 	//Caso de uso 2.d : Listar las opiniones de un ítem, pero los no autenticados no podrán crearlas.
 	@Test
-	public void driverListNonAuthenticated() {
+	public void driverListItemNonAuthenticated() {
 		final Object testingData[][] = {
 			{
 
@@ -53,10 +57,10 @@ public class OpinionServiceTest extends AbstractTest {
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
-			this.templateListNonAuthenticated(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+			this.templateListItemNonAuthenticated(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
 	}
 
-	private void templateListNonAuthenticated(final int itemId, final int opinionId, final Class<?> expected) {
+	private void templateListItemNonAuthenticated(final int itemId, final int opinionId, final Class<?> expected) {
 		Class<?> caught;
 		final Item item;
 		Opinion opinion;
@@ -67,6 +71,41 @@ public class OpinionServiceTest extends AbstractTest {
 			item = this.itemService.findOne(itemId);
 			opinion = this.opinionService.findOne(opinionId);
 			opinions = item.getOpinions();
+			Assert.isTrue(opinions.contains(opinion));
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+
+	//Caso de uso 2.e : Listar los cursos y ver las opiniones de éstos. Solo los recicladores podrán escribir las opiniones de los cursos a los que accede.
+	@Test
+	public void driverListCourseNonAuthenticated() {
+		final Object testingData[][] = {
+			{
+
+				//Listar las opiniones del course3 y comprobar que la opinion8 pertenece al course3
+				"course3", "opinion8", null
+			}, {
+				//Listar las opiniones del course1 y comprobar que la opinion8 NO pertenece al course3
+				"course1", "opinion8", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListCourseNonAuthenticated(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateListCourseNonAuthenticated(final int courseId, final int opinionId, final Class<?> expected) {
+		Class<?> caught;
+		final Course course;
+		Opinion opinion;
+		final Collection<Opinion> opinions;
+
+		caught = null;
+		try {
+			course = this.courseService.findOne(courseId);
+			opinion = this.opinionService.findOne(opinionId);
+			opinions = course.getOpinions();
 			Assert.isTrue(opinions.contains(opinion));
 		} catch (final Throwable oops) {
 			caught = oops.getClass();

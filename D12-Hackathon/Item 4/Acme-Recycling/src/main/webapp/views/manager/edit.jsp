@@ -22,30 +22,64 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="managerForm">
-	
+	<br>
 <form:hidden path="manager.id" />
 	
 	
 <jstl:if test="${managerForm.manager.id == 0}">
+<div class="col">
 			<B><acme:textbox code="manager.username"
-				path="manager.userAccount.username" /><br /></B>
+				path="manager.userAccount.username" /></B>
+</div>
+<br>
+
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
 			<B><acme:password code="manager.password"
-				path="manager.userAccount.password" /><br /></B>
+				path="manager.userAccount.password" /></B>
+				
+</div>
+	<div class="form-group col-md-6">
 			<B><acme:password code="manager.password" path="passwordCheck" /></B>
-			<br />
+</div>
+</div>
+</div>
 		</jstl:if>	
-	
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="manager.name" path="manager.name"/></B>
-	<br />
+</div>
+	<div class="form-group col-md-6">	
 	<B><acme:textbox code="manager.surname" path="manager.surname"/></B>
-	<br />
+</div>
+</div>
+</div>
+
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
 	<B><acme:textbox code="manager.emailAddress" path="manager.email"/></B>
+</div>
 	<br />
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="manager.phoneNumber" path="manager.phone" /></B>
+</div>
+
 	<br />
+<div class="col">
 	<B><acme:textbox code="manager.postalAddress" path="manager.address"/></B>
-	<br />
+</div>
+</div>
+</div>
+<br>
+<div class="col">
 	<B><acme:provinceselect code="manager.province" path="manager.province"/></B>
+</div>
+	<br />
+
 	<br />
 	
 	

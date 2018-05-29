@@ -23,29 +23,64 @@
 
 <form:form action="${requestURI}" modelAttribute="carrierForm">
 	
+	<br>
 <form:hidden path="carrier.id" />
 	
 	
 <jstl:if test="${carrierForm.carrier.id == 0}">
+<div class="col">
 			<B><acme:textbox code="carrier.username"
-				path="carrier.userAccount.username" /><br /></B>
+				path="carrier.userAccount.username" /></B>
+				
+</div>
+<br>
+
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
 			<B><acme:password code="carrier.password"
-				path="carrier.userAccount.password" /><br /></B>
+				path="carrier.userAccount.password" /></B>
+</div>
+	<div class="form-group col-md-6">
 			<B><acme:password code="carrier.password" path="passwordCheck" /></B>
-			<br />
+</div>
+</div>
+</div>
 		</jstl:if>	
 	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="carrier.name" path="carrier.name"/></B>
-	<br />
+</div>
+<div class="form-group col-md-6">	
 	<B><acme:textbox code="carrier.surname" path="carrier.surname"/></B>
-	<br />
+</div>
+</div>
+</div>
+
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
 	<B><acme:textbox code="carrier.emailAddress" path="carrier.email"/></B>
+</div>
 	<br />
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="carrier.phoneNumber" path="carrier.phone" /></B>
+</div>
+
 	<br />
+<div class="col">
 	<B><acme:textbox code="carrier.postalAddress" path="carrier.address"/></B>
-	<br />
+</div>
+</div>
+</div>
+<br>
+<div class="col">
 	<B><acme:provinceselect code="carrier.province" path="carrier.province"/></B>
+</div>
+	<br />
+
 	<br />
 	
 	

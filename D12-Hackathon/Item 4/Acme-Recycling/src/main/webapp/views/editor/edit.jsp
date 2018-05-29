@@ -22,30 +22,64 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="editorForm">
-	
+	<br>
 <form:hidden path="editor.id" />
 	
 	
 <jstl:if test="${editorForm.editor.id == 0}">
+<div class="col">
 			<B><acme:textbox code="editor.username"
-				path="editor.userAccount.username" /><br /></B>
+				path="editor.userAccount.username" /></B>
+</div>
+<br>				
+
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
 			<B><acme:password code="editor.password"
-				path="editor.userAccount.password" /><br /></B>
+				path="editor.userAccount.password" /></B>
+				
+</div>
+	<div class="form-group col-md-6">
 			<B><acme:password code="editor.password" path="passwordCheck" /></B>
-			<br />
+	</div>
+</div>
+</div>
 		</jstl:if>	
-	
+		
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">	
 	<B><acme:textbox code="editor.name" path="editor.name"/></B>
-	<br />
+</div>
+	<div class="form-group col-md-6">	
 	<B><acme:textbox code="editor.surname" path="editor.surname"/></B>
-	<br />
+</div>
+</div>
+</div>
+
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
 	<B><acme:textbox code="editor.emailAddress" path="editor.email"/></B>
+</div>
 	<br />
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="editor.phoneNumber" path="editor.phone" /></B>
+</div>
+
 	<br />
+<div class="col">
 	<B><acme:textbox code="editor.postalAddress" path="editor.address"/></B>
-	<br />
+</div>
+</div>
+</div>
+<br>
+<div class="col">
 	<B><acme:provinceselect code="editor.province" path="editor.province"/></B>
+</div>
+	<br />
+
 	<br />
 	
 	

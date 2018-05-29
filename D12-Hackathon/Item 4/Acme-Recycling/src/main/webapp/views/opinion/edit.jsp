@@ -23,25 +23,45 @@
 
 <form:form action="${requestURI}" modelAttribute="opinionForm">
 
+<br>
 	<form:hidden path="opinion.id" />
 	<form:hidden path="opinion.version" />
 
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<acme:textbox code="opinion.title" path="opinion.title" />
-	<br />
+</div>
+
+	<div class="form-group col-md-6">	
 	<acme:textbox code="opinion.comment" path="opinion.comment" />
-	<br />
-	<acme:textbox code="opinion.photo" path="opinion.photo" placeHolder="http://"/>
-	<br />
+</div>
+</div>
+</div>
+
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+	<acme:textbox code="http://" path="opinion.photo" placeHolder="http://"/>
+</div>
+
+	<div class="form-group col-md-6">	
 	<acme:textbox code="opinion.caption" path="opinion.caption" />
-	<br />
+</div>
+</div>
+</div>
 
 	<jstl:if test="${!hiddenSelects}">
 
 		<jstl:if test="${showItem}">
+		<div class="col">
 			<acme:select items="${products}" itemLabel="title"
 				code="opinion.product" path="opinableId" />
 			<br />
 			<form:hidden path="opinableItem" value="1" />
+			</div>
 		</jstl:if>
 
 
@@ -56,8 +76,7 @@
 
 	<!-- BOTONES -->
 
-	<input type="submit" name="save"
-		value="<spring:message code="opinion.save"/>" />&nbsp;
+	<acme:submit name="save" code="opinion.save"/>
 		
 	<security:authorize access="isAuthenticated()">
 		<jstl:if test="${opinableItem}">

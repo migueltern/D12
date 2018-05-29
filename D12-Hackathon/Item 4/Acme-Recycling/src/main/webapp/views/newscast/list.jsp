@@ -86,10 +86,10 @@
 
 	<!-- ATRIBUTOS -->
 
-	<spring:message code="new.title" var="titleHeader" />
+	<spring:message code="Title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="true" />
 	
-	<spring:message code="new.content" var="titleHeader" />
+	<spring:message code="Content" var="titleHeader" />
 	<display:column property="content" title="${titleHeader}" sortable="true" />
 	
 	<spring:message code="newspaper.format.publicationDate" var="pattern"></spring:message>

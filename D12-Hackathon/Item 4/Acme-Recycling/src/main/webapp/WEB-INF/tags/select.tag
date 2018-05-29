@@ -48,7 +48,8 @@
 		<form:option value="0" label="----" />		
 		<form:options items="${items}" itemValue="id" itemLabel="${itemLabel}" />
 	</form:select>
-	<form:errors path="${path}" cssClass="error" />
+	<br>
+	<form:errors path="${path}" class="alert alert-danger" />
 </div>
 
 

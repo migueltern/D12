@@ -33,10 +33,8 @@
 				path="buyer.userAccount.username" /></B>
 </div>
 <br>
-<div class="col">
-	<B><acme:provinceselect code="buyer.province" path="buyer.province"/></B>
-</div>
-<br>
+
+
 <div class="col">
 <div class="form-row">
 	<div class="form-group col-md-6">
@@ -80,6 +78,10 @@
 
 	</div>
 </div>
+</div>
+<br>
+<div class="col">
+	<B><acme:provinceselect code="buyer.province" path="buyer.province"/></B>
 </div>
 	<br />
 

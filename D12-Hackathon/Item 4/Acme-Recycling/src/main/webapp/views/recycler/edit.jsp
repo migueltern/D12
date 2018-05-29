@@ -32,10 +32,8 @@
 			<B><acme:textbox code="username"
 				path="recycler.userAccount.username" /><br /></B>
 </div>
-<div class="col">
-	<B><acme:provinceselect code="Province" path="recycler.province"/></B>
-</div>
-<br>
+
+
 <div class="col">
 <div class="form-row">
 	<div class="form-group col-md-6">
@@ -80,9 +78,11 @@
 </div>
 	<br />
 
-	<br />
 	
-	
+<div class="col">
+	<B><acme:provinceselect code="Province" path="recycler.province"/></B>
+</div>
+	<br>
 	
 	<acme:submit name="save" code="recycler.save" />
 	<acme:cancel url="welcome/index.do" code="recycler.cancel"/>

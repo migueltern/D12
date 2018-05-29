@@ -67,6 +67,7 @@
 	<div>
 		<tiles:insertAttribute name="header" />
 	</div>
+	<!-- <div class="mx-3"> -->
 	<div>
 		<h1>
 			<tiles:insertAttribute name="title" />

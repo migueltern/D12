@@ -25,28 +25,59 @@
 	
 <form:hidden path="admin.id" />
 	
-	
+	<br>
 <jstl:if test="${adminForm.admin.id == 0}">
+
+
+
 			<B><acme:textbox code="admin.username"
 				path="admin.userAccount.username" /><br /></B>
+
+
+			
 			<B><acme:password code="admin.password"
 				path="admin.userAccount.password" /><br /></B>
+				
+			
 			<B><acme:password code="admin.password" path="passwordCheck" /></B>
 			<br />
+			
+
+			
 		</jstl:if>	
 	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="admin.name" path="admin.name"/></B>
-	<br />
+	</div>
+
+	<div class="form-group col-md-6">	
 	<B><acme:textbox code="admin.surname" path="admin.surname"/></B>
-	<br />
+</div>
+</div>
+</div>
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
 	<B><acme:textbox code="admin.emailAddress" path="admin.email"/></B>
+	</div>
 	<br />
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="admin.phoneNumber" path="admin.phone" /></B>
+	</div>
+
 	<br />
+<div class="col">
 	<B><acme:textbox code="admin.postalAddress" path="admin.address"/></B>
+	</div>
+</div>
+</div>
 	<br />
+<div class="col">
 	<B><acme:provinceselect code="admin.province" path="admin.province"/></B>
 	<br />
+</div>
 	
 	
 	

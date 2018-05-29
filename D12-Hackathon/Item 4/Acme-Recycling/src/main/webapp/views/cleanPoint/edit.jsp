@@ -25,34 +25,64 @@
 <form:hidden path="id" />
 <form:hidden path="version" />
 	
-	
+	<br>
 <!-- ATRIBUTOS -->
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="cleanPoint.address" path="address"/></B>
-	<br />
-	<B><acme:provinceselect code="cleanPoint.province" path="province"/></B>
-	<br />
+</div>
+
+	<div class="form-group col-md-6">	
 	<B><acme:textbox code="cleanPoint.phone" path="phone"/></B>
-	<br />
+</div>
+</div>
+</div>
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+	<B><acme:provinceselect code="cleanPoint.province" path="province"/></B>
+</div>
+
+	<div class="form-group col-md-6">	
 	<B><acme:booleanselect code="cleanPoint.mobile" path="mobile"/></B>
-	<br />
-	
+</div>
+</div>
+</div>
+	<br>
+	<div class="col">	
 	<B><jstl:out value="GPS"></jstl:out></B>
-	<fieldset>
+	</div>
+<div class="col">	
+<br>
 	<B><acme:textbox code="cleanPoint.GPS.name" path="location.name"/></B>
+</div>
+<br>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+ 	
+	<B><acme:textbox2 code="cleanPoint.GPS.latitude" path="location.latitude" /></B>
+</div>
+
+	<div class="form-group col-md-6">	
+	<B><acme:textbox2 code="cleanPoint.GPS.longitude" path="location.longitude"/></B>
+</div>
+</div>
+</div>
 	<br>
-	<B><acme:textbox code="cleanPoint.GPS.latitude" path="location.latitude"/></B>
-	<br>
-	<B><acme:textbox code="cleanPoint.GPS.longitude" path="location.longitude"/></B>
-	<br>
-	</fieldset>
+
 	<br>
 <!-- BOTONES -->
 
-	<input type="submit" name="save" value="<spring:message code="cleanPoint.save" />" />&nbsp; 
+<acme:submit name="save" code="cleanPoint.save"/>
+	
 
 
 <jstl:if test="${cleanPoint.id != 0}">
-		<input type="submit" name="delete"
+		<input type="submit" name="delete" class="btn btn-secondary"
 			value="<spring:message code="cleanPoint.delete" />"
 			onclick="javascript: return confirm('<spring:message code="cleanPoint.confirm.delete" />')" />&nbsp;
 	</jstl:if>

@@ -28,27 +28,41 @@
 	<form:hidden path="buys"/>
 	<form:hidden path="totalPrice"/>
 
+<br>
 	<!-- ATRIBUTOS -->
+	<div class="col">
 	<B><acme:textbox code="material.title" path="title" /></B>
-	<br />
-
+	</div>
+<br>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="material.description" path="description" /></B>
+</div>
 	<br />
-
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="material.unitPrice" path="unitPrice" /></B>
-	<br />
-	
+</div>
+</div>
+</div>
+
+
+ <div class="col">
 	<B><acme:select items="${labelMaterials }" itemLabel="name" code="material.labelMaterial" path="labelMaterial"/></B>
+
+</div>
 	<br />
 	
+	<div class="col">
 	<B><acme:textbox code="material.quantity" path="quantity" /></B>
-	<br />
+</div>
+<br>
+
 	
 
 	<!-- BOTONES -->
-
-	<input type="submit" name="save"
-		value="<spring:message code="material.save" />" />&nbsp; 
+<acme:submit name="save" code="material.save" />
+	 
 
 	<acme:cancel url="material/admin/list.do?d-16544-p=1"
 		code="material.cancel" />

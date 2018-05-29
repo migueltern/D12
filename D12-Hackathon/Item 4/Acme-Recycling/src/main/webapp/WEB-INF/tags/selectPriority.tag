@@ -24,8 +24,7 @@
 
 <%@ attribute name="path" required="true" %>
 <%@ attribute name="code" required="true" %>
-<%@ attribute name="items" required="true" type="java.util.Collection" %>
-<%@ attribute name="itemLabel" required="true" %>
+
 
 <%@ attribute name="id" required="false" %>
 <%@ attribute name="onchange" required="false" %>
@@ -44,11 +43,10 @@
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>	
-	<form:select id="${id}" path="${path}" onchange="${onchange}" class="form-control">
-		<form:option value="0" label="----" />
-		<form:options items="${items}" itemValue="id" itemLabel="${itemLabel}" />
+	<form:select id="${id}" path="${path}" onchange="${onchange}">
+		<form:option value="1" label="HIGH"/>
+		<form:option value="1" label="NEUTRAL"/>
+		<form:option value="0" label="LOW"/> 
 	</form:select>
-	<form:errors path="${path}" class="alert alert-danger" />
+	<form:errors path="${path}" cssClass="error" />
 </div>
-
-

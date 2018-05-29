@@ -38,11 +38,14 @@
 	<B><acme:booleanselect code="course.draftMode" path="draftMode"/></B>
 	<br />
 	
+	
 	<B><acme:selectmultiple items="${materials}" itemLabel="title" code="course.materials" path="materials"/></B>
 	<br />
 	
-	<acme:textarea code="course.description" path="description" />
+	<div class="col">
+	<acme:textbox code="course.description" path="description" />
 	<br />	
+	</div>
 	
 	<B><jstl:out value="Coordenadas GPS"></jstl:out></B>
 	<fieldset>

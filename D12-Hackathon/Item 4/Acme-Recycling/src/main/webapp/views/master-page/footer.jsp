@@ -132,9 +132,10 @@
       <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
 
         <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">Company name</h6>
+        <h6 class="text-uppercase font-weight-bold"><spring:message code="ourCompany"></spring:message></h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+       <p> <spring:message code="final"></spring:message></p>
+        
 
       </div>
       <!-- Grid column -->
@@ -143,10 +144,10 @@
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold"></h6>
+        <h6 class="text-uppercase font-weight-bold"><spring:message code="terms"></spring:message></h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-           <a class="dark-grey-text" href="welcome/legal.do">Términos y condiciones</a>
+           <a class="dark-grey-text" href="welcome/legal.do"><spring:message code="terms"></spring:message></a>
         </p>
         
       </div>
@@ -156,7 +157,7 @@
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+        <h6 class="text-uppercase font-weight-bold"><spring:message code="usefulLinks"></spring:message></h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a class="dark-grey-text" href="https://www.instagram.com/ecoembes/">Instagram</a>
@@ -178,7 +179,7 @@
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <h6 class="text-uppercase font-weight-bold"><spring:message code="contact"></spring:message></h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <i class="fa fa-home mr-3"></i> Sevilla, Paradas 41610, ES</p>

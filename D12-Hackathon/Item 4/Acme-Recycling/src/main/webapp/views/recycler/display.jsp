@@ -31,32 +31,32 @@
   <!-- Attributes -->
 	
 	<display:column>
-	<B><spring:message code="recycler.name" />:</B>
+	<B><spring:message code="recycler.name" /></B>
 	<jstl:out value="${row.name}"></jstl:out>
 	
 
 	<p>
-		<B><spring:message code="recycler.surname" />:</B>
+		<B><spring:message code="recycler.surname" /></B>
 		<jstl:out value="${row.surname}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.phoneNumber" />:</B>
+		<B><spring:message code="recycler.phoneNumber" /></B>
 		<jstl:out value="${row.phone}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.emailAddress" />:</B>
+		<B><spring:message code="recycler.emailAddress" /></B>
 		<jstl:out value="${row.email}"></jstl:out>
 	</p>
 		<p>
-		<B><spring:message code="recycler.postalAddress" />:</B>
+		<B><spring:message code="recycler.postalAddress" /></B>
 		<jstl:out value="${row.address}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.province" />:</B>
+		<B><spring:message code="recycler.province" /></B>
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.items" />:</B>
+		<B><spring:message code="recycler.items" /></B>
 			<spring:url value="${requestItemsURL}" var="itemsURL">
 			<spring:param name="recyclerId" value="${row.id }" />
 			<spring:param name="d-16544-p" value="1" />

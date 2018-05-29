@@ -19,9 +19,11 @@ import utilities.AbstractTest;
 import domain.Carrier;
 import domain.CleanPoint;
 import domain.Item;
+import domain.Manager;
 import domain.Message;
 import domain.MessageFolder;
 import domain.Recycler;
+import domain.Request;
 import forms.RequestForm;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -48,6 +50,9 @@ public class RequestServiceTest extends AbstractTest {
 
 	@Autowired
 	MessageService			messageService;
+
+	@Autowired
+	ManagerService			managerService;
 
 	@PersistenceContext
 	EntityManager			entityManager;
@@ -150,4 +155,89 @@ public class RequestServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
+	//Caso de uso 4.b) Cancelar la solicitud o ponerla en finalizado en cualquier momento. Cada vez que se cambie el estado se enviará un mensaje a cada actor que intervenga en dicha solicitud. Una vez el estado esté en finalizado o cancelado no se puede volver a cambiar.
+	//Caso de uso 7.c) Cambiar el status a "FINALIZADO" o "CANCELADO" de las solicitudes que tiene asignado. Una vez se cambie el estado a "FINALIZADO" o "CANCELADO" no se puede volver a cambiar.
+	@Test
+	public void driverChangeStatus() {
+		final Object testingData[][] = {
+			{
+
+				//El manager5 cambia el status de la request5 a FINISHED y se envia el mensaje a todos los actores que intervienen correctamente
+				"manager5", "manager5", "recycler5", "carrier5", "request5", "FINISHED", null
+			}, {
+				//El carrier5 cambia el status de la request5 a FINISHED y se envia el mensaje a todos los actores que intervienen correctamente
+				"carrier5", "manager5", "recycler5", "carrier5", "request5", "FINISHED", null
+			}, {
+				//El manager1 cambia el status de la request6 a FINISHED pero falla porque no le pertenece esa request
+				"manager1", "manager1", "recycler5", "carrier5", "request5", "FINISHED", IllegalArgumentException.class
+			}, {
+				//El carrier1 cambia el status de la request6 a FINISHED pero falla porque no le pertenece esa request
+				"carrier1", "manager5", "recycler5", "carrier5", "request5", "FINISHED", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateChangeStatus((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), super.getEntityId((String) testingData[i][2]), super.getEntityId((String) testingData[i][3]), super.getEntityId((String) testingData[i][4]),
+				(String) testingData[i][5], (Class<?>) testingData[i][6]);
+	}
+	private void templateChangeStatus(final String username, final int managerId, final int recyclerId, final int carrierId, final int requestId, final String status, final Class<?> expected) {
+		Class<?> caught;
+		RequestForm requestForm;
+		Request request;
+		Recycler recycler;
+		Carrier carrier;
+		Manager manager;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+
+			manager = this.managerService.findOne(managerId);
+			carrier = this.carrierService.findOne(carrierId);
+			recycler = this.recyclerService.findOne(recyclerId);
+
+			request = this.requestService.findOne(requestId);
+			request.setStatus(status);
+			requestForm = new RequestForm();
+			requestForm.setRequest(request);
+
+			this.requestService.save(requestForm);
+			this.entityManager.flush();
+
+			//Comprobamos que el recycler de ese item recibe un mensaje de que se ha cambiado el status de su request
+			MessageFolder notificationBox = this.messageFolderService.findMessageFolderByNameAndActor("Notification Box", recycler.getId());
+			boolean existsMessage = false;
+			Collection<Message> messages = this.messageService.findMessagesByMessageFolder(notificationBox.getId());
+			for (final Message m : messages)
+				if (m.getSubject().equals(requestForm.getRequest().getCode() + ": " + requestForm.getRequest().getTitle()))
+					existsMessage = true;
+			Assert.isTrue(existsMessage);
+
+			//Comprobamos que el manager de ese item recibe un mensaje de que se ha cambiado el status de su request
+			notificationBox = this.messageFolderService.findMessageFolderByNameAndActor("Notification Box", manager.getId());
+			existsMessage = false;
+			messages = this.messageService.findMessagesByMessageFolder(notificationBox.getId());
+			for (final Message m : messages)
+				if (m.getSubject().equals(requestForm.getRequest().getCode() + ": " + requestForm.getRequest().getTitle()))
+					existsMessage = true;
+			Assert.isTrue(existsMessage);
+
+			//Comprobamos que el carrier de ese item recibe un mensaje de que se ha cambiado el status de su request
+			notificationBox = this.messageFolderService.findMessageFolderByNameAndActor("Notification Box", carrier.getId());
+			existsMessage = false;
+			messages = this.messageService.findMessagesByMessageFolder(notificationBox.getId());
+			for (final Message m : messages)
+				if (m.getSubject().equals(requestForm.getRequest().getCode() + ": " + requestForm.getRequest().getTitle()))
+					existsMessage = true;
+			Assert.isTrue(existsMessage);
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
 }

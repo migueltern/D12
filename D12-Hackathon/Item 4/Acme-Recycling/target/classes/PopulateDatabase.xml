@@ -706,6 +706,7 @@
 		<property name="requests">
 			<list>
 				<ref bean="request5" />
+				<ref bean="request6" />
 			</list>
 		</property>
 	</bean>
@@ -2265,7 +2266,6 @@
 				<ref bean="cleanPoint1" />
 			</list>
 		</property>
-		<property name="carrier" ref="carrier1" />
 	</bean>
 
 	<bean id="request2" class="domain.Request">
@@ -2313,7 +2313,7 @@
 		<property name="code" value="DG180131EE"></property>
 		<property name="title" value="title request 5"></property>
 		<property name="observation" value="observation request 5"></property>
-		<property name="status" value="PENDING"></property>
+		<property name="status" value="IN COLLECTION"></property>
 		<property name="cleanPoints">
 			<list>
 

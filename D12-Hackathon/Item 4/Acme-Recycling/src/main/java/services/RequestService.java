@@ -140,11 +140,11 @@ public class RequestService {
 	public void delete(final Request request) {
 		Assert.notNull(request);
 		Manager manager;
-		
+
 		manager = this.managerService.findByRequestId(request.getId());
-		
+
 		manager.getRequests().remove(request);
-		
+
 		this.requestRepository.delete(request);
 	}
 
@@ -255,7 +255,7 @@ public class RequestService {
 		Message messageSend;
 		Recycler recycler;
 		Manager manager;
-		Carrier carrier;
+		final Carrier carrier;
 
 		//Enviamos un mensaje al recycler
 
@@ -272,18 +272,16 @@ public class RequestService {
 
 		if (this.managerService.findByPrincipal() != null)
 			manager = this.managerService.findByPrincipal();
-		else{
-			//Si el carrier es el que cambia el status, no podemos coger al manager por medio de un findByPrincipal(), por eso hacemos este if else
+		else
 			manager = this.managerService.findByRequestId(requestWithNewStatus.getId());
-			message = this.messageService.create();
-			message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus.getStatus());
-			message.setPriority("HIGH");
-			message.setRecipient(manager);
-			message.setSubject(requestWithNewStatus.getCode() + ": " + requestWithNewStatus.getTitle());
-			messageSend = this.messageService.send(message);
-			this.messageService.saveMessageInFolder(manager, "Notification box", messageSend);
+		message = this.messageService.create();
+		message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus.getStatus());
+		message.setPriority("HIGH");
+		message.setRecipient(manager);
+		message.setSubject(requestWithNewStatus.getCode() + ": " + requestWithNewStatus.getTitle());
+		messageSend = this.messageService.send(message);
+		this.messageService.saveMessageInFolder(manager, "Notification box", messageSend);
 
-		}
 		//Enviamos un mensaje al carrier si tiene asignado un carrier
 		if (requestWithNewStatus.getCarrier() != null) {
 			carrier = requestWithNewStatus.getCarrier();

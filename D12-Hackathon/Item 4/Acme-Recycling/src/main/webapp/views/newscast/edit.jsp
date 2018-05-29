@@ -25,25 +25,37 @@
 <form:hidden path="version" />
 <form:hidden path="comments" />
 
-	
+	<br>
 <!-- ATRIBUTOS -->
 
-<fieldset>
+
 	
 	
-<B><acme:textarea code="new.title" path="title"/></B>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+<B><acme:textbox code="Title" path="title"/></B>
+</div>
 
+	<div class="form-group col-md-6">	
+<B><acme:textbox code="Content" path="content"/></B>
+</div>
+</div>
+</div>
 
-<B><acme:textarea code="new.content" path="content"/></B>
-<B><acme:textarea code="new.pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
+<div class="col">
+<B><acme:textbox code="Pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
+</div>
 
-<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true"/></B>
-	</fieldset>
+<div class="col">
+<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true" /></B>
+</div>
 
 	<br>
 <!-- BOTONES -->
 
-	<input type="submit" name="save" value="<spring:message code="new.save" />" />&nbsp; 
+<acme:submit name="save" code="new.save"/>
+	
 
 	<jstl:if test="${newscast.id != 0}">
 		<input type="submit" name="delete"

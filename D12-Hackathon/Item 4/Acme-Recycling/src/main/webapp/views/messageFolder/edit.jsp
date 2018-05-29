@@ -24,7 +24,7 @@
 
 <form:form action="${requestURI }" modelAttribute="messageFolder">
 
-
+	<br>
 	<form:hidden path="id" />
 
 	
@@ -37,7 +37,7 @@
 	<acme:submit name="save" code="messageFolder.save"/>
 	
 	<jstl:if test="${messageFolder.id != 0 }">
-		<acme:submit_with_on_click code2="messageFolder.confirm.delete" name="delete" code="messageFolder.delete"/>
+		<acme:submit_with_on_click code2="messageFolder.confirm.delete"  name="delete" code="messageFolder.delete"/>
 	</jstl:if>
 	
 	<acme:cancel url="${RequestURIcancel}" code="messageFolder.cancel"/>

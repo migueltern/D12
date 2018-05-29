@@ -28,6 +28,6 @@
 
 <%-- Definition --%>
 
-<input type="submit" name="${name}"
+<input type="submit" name="${name}" class="btn btn-secondary"
 			value="<spring:message code="${code}" />"
 			onclick="javascript: return confirm('<spring:message code="${code2}" />')" />&nbsp;

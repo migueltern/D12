@@ -26,16 +26,8 @@
 	<form:hidden path="request.id" />
 	<form:hidden path="request.version" />
 
-	<div>
-		<form:label path="request.status">
-			<spring:message code="request.status" />
-		</form:label>
-		<form:select path="request.status">
-			<form:option value="FINISHED" label="FINISHED" />
-			<form:option value="CANCELLED" label="CANCELLED" />
-		</form:select>
-		<form:errors path="request.status" cssClass="error" />
-	</div>
+	<acme:changeStatus code="request.status" path="request.status"/>
+	
 
 	<!-- BOTONES -->
 

@@ -23,33 +23,70 @@
 
 <form:form action="buyer/edit.do" modelAttribute="buyerForm">
 	
+	<br>
 <form:hidden path="buyer.id" />
 	
 	
 <jstl:if test="${buyerForm.buyer.id == 0}">
+<div class="col">
 			<B><acme:textbox code="buyer.username"
-				path="buyer.userAccount.username" /><br /></B>
+				path="buyer.userAccount.username" /></B>
+</div>
+<br>
+<div class="col">
+	<B><acme:provinceselect code="buyer.province" path="buyer.province"/></B>
+</div>
+<br>
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
 			<B><acme:password code="buyer.password"
-				path="buyer.userAccount.password" /><br /></B>
+				path="buyer.userAccount.password" /></B>
+</div>
+	<div class="form-group col-md-6">
 			<B><acme:password code="buyer.password" path="passwordCheck" /></B>
-			<br />
+</div>
+</div>
+</div>
+
 		</jstl:if>	
 	
-	<B><acme:textbox code="buyer.name" path="buyer.name"/></B>
-	<br />
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+	<acme:textbox code="buyer.name" path="buyer.name"/>
+</div>
+
+	<div class="form-group col-md-6">	
 	<B><acme:textbox code="buyer.surname" path="buyer.surname"/></B>
-	<br />
+</div>
+</div>
+</div>
+		
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
 	<B><acme:textbox code="buyer.emailAddress" path="buyer.email"/></B>
+</div>
 	<br />
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="buyer.phoneNumber" path="buyer.phone" /></B>
+</div>
+
 	<br />
+<div class="col">
 	<B><acme:textbox code="buyer.postalAddress" path="buyer.address"/></B>
+
+	</div>
+</div>
+</div>
 	<br />
-	<B><acme:provinceselect code="buyer.province" path="buyer.province"/></B>
+
 	<br />
 	
-	
-	
+
+ 
 	<acme:submit name="save" code="buyer.save"/>
 	<acme:cancel url="welcome/index.do" code="buyer.cancel"/>
 	<br />
@@ -62,4 +99,8 @@
 		<form:errors cssClass="error" path="conditions"/>
    </jstl:if>
  <br/>
+ 
 	</form:form>
+	
+	
+  

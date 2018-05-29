@@ -49,7 +49,7 @@
 </div>
 		</jstl:if>	
 	
-<br>
+
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
@@ -61,18 +61,18 @@
 </div>
 </div>
 </div>
-	<br />
+	
 <div class="col">
 	<div class="form-row">
 		<div class="form-group col-md-6">
 	<B><acme:textbox code="Email" path="recycler.email"/></B>
 </div>
-	<br />
+	
 	<div class="form-group col-md-6">
 	<B><acme:textbox code="Phone" path="recycler.phone" /></B>
 </div>
 
-	<br />
+
 <div class="col">
 	<B><acme:textbox code="Address" path="recycler.address"/></B>
 </div>

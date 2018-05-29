@@ -39,6 +39,7 @@
 		<spring:message code="${code}" />
 	</form:label> --%>
 	<form:input path="${path}" class="form-control" readonly="${readonly}" placeHolder="${code }" />
-	<form:errors path="${path}" cssClass="error" />
+	<br>
+	<form:errors path="${path}" class="alert alert-danger" />
 
 </div>

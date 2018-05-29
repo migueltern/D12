@@ -31,28 +31,28 @@
   <!-- Attributes -->
 	
 	<display:column>
-	<B><spring:message code="recycler.name" />:</B>
+	<B><spring:message code="Name" /></B>
 	<jstl:out value="${row.name}"></jstl:out>
 	
 
 	<p>
-		<B><spring:message code="recycler.surname" />:</B>
+		<B><spring:message code="Surname" /></B>
 		<jstl:out value="${row.surname}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.phoneNumber" />:</B>
+		<B><spring:message code="Phone" /></B>
 		<jstl:out value="${row.phone}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.emailAddress" />:</B>
+		<B><spring:message code="Email" /></B>
 		<jstl:out value="${row.email}"></jstl:out>
 	</p>
 		<p>
-		<B><spring:message code="recycler.postalAddress" />:</B>
+		<B><spring:message code="Address" /></B>
 		<jstl:out value="${row.address}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.province" />:</B>
+		<B><spring:message code="Province" /></B>
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
 	<p>

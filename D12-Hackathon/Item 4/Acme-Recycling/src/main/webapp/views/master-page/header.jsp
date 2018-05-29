@@ -22,7 +22,7 @@
 	<img src="${bannerURL}" alt="Acme-Recycling Co., Inc." />
 </div>
 
-<div>
+	<div>
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		<security:authorize access="hasRole('ADMIN')">
@@ -659,6 +659,7 @@
 	<a href="?language=en">en</a> | <a href="?language=es">es</a>
 </div>
 <br>
+	<div class="text-center">
 <font size="6" color="green" face="Georgia"><B><jstl:out
 			value="${Name}"></jstl:out></B></font>
 
@@ -683,3 +684,4 @@
 		<br>
 	</jstl:when>
 </jstl:choose>
+</div>

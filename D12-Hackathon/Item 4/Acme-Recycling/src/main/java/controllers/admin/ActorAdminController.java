@@ -46,6 +46,7 @@ public class ActorAdminController extends AbstractController{
 		result.addObject("RequestURIunban", "actor/admin/unban.do");
 		result.addObject("showbun", true);
 		result.addObject("showunbun", true);
+		result.addObject("RequestUriDisplay", "/recycler/display.do");
 
 		return result;
 

@@ -754,7 +754,7 @@
 		<property name="province" value="BILBAO" />
 		<property name="opinions">
 			<list>
-
+				<ref bean="opinion8" />
 			</list>
 		</property>
 		<property name="items">
@@ -1862,7 +1862,7 @@
 		</property>
 		<property name="opinions">
 			<list>
-
+				<ref bean="opinion8" />
 			</list>
 		</property>
 		<property name="lessons">
@@ -2242,6 +2242,16 @@
 			value="https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg" />
 		<property name="caption" value="caption opinon 7" />
 		<property name="actor" ref="editor2" />
+	</bean>
+	
+	<bean id="opinion8" class="domain.Opinion">
+		<property name="title" value="title opinion 8" />
+		<property name="createdMoment" value="2018/01/04" />
+		<property name="comment" value="comment opinion 8" />
+		<property name="photo"
+			value="https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg" />
+		<property name="caption" value="caption opinon 8" />
+		<property name="actor" ref="recycler2" />
 	</bean>
 
 	<!-- Requests -->

@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,6 +36,7 @@ public class Finder extends DomainEntity {
 		this.keyWord = keyWord;
 	}
 
+	@Min(0)
 	public Double getLowPrice() {
 		return this.lowPrice;
 	}
@@ -43,6 +45,7 @@ public class Finder extends DomainEntity {
 		this.lowPrice = lowPrice;
 	}
 
+	@Min(0)
 	public Double getHighPrice() {
 		return this.highPrice;
 	}

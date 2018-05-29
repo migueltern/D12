@@ -21,7 +21,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="labelProduct">
-
+<br>
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="items"/>
@@ -43,8 +43,8 @@
 	
 <!-- BOTONES -->
 
-	<input type="submit" name="save" value="<spring:message code="labelProduct.save" />" />&nbsp; 
-
+	
+<acme:submit name="save" code="labelProduct.save"/>
 	<acme:cancel
 		url="labelProduct/manager/list.do?d-16544-p=1"
 		code="labelProduct.cancel" />

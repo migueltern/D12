@@ -274,6 +274,7 @@ public class RequestService {
 			manager = this.managerService.findByPrincipal();
 		else
 			manager = this.managerService.findByRequestId(requestWithNewStatus.getId());
+
 		message = this.messageService.create();
 		message.setBody("The status of the request " + requestWithNewStatus.getTitle() + " with code: " + requestWithNewStatus.getCode() + " has been changed to " + requestWithNewStatus.getStatus());
 		message.setPriority("HIGH");

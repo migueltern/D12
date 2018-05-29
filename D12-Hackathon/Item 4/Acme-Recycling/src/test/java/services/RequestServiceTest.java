@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -239,5 +240,40 @@ public class RequestServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 
 		super.unauthenticate();
+	}
+
+	//Caso de uso 4.e: Puntuar los productos a los cuales ha añadido una solicitud. Un Manager no puede puntuar los productos que no le pertenecen a su solicitud. Solo se pueden puntuar los productos cuyo status de la solicitud esté en "Finalizado".
+	@Test
+	public void driverAddPuntuation() {
+		final Object testingData[][] = {
+			{
+				//El manager1 añade la puntuacion al item1 correctamente
+				"manager1", "item1", 200, null
+			}, {
+				//El manager2 añade la puntuacion al item1 incorrectamente porque no le pertenece ese item
+				"manager2", "item1", 200, IllegalArgumentException.class
+			}, {
+				//El manager1 añade la puntuacion al item1 incorrectamente porque la puntuacion esta fuera del rango
+				"manager1", "item1", 501, ConstraintViolationException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateAddPuntuation((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (int) testingData[i][2], (Class<?>) testingData[i][3]);
+	}
+	private void templateAddPuntuation(final String username, final int itemId, final int value, final Class<?> expected) {
+		Class<?> caught;
+		Item item;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+			item = this.itemService.findOne(itemId);
+			item.setValue(value);
+			this.itemService.save(item);
+			this.entityManager.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
 	}
 }

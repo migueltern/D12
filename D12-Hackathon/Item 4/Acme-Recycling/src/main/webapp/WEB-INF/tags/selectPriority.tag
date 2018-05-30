@@ -43,10 +43,12 @@
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>	
-	<form:select id="${id}" path="${path}" onchange="${onchange}"  class="form-control">
-		<form:option value="0" label="HIGH"/>
-		<form:option value="1" label="NEUTRAL"/>
-		<form:option value="2" label="LOW"/> 
+
+	<form:select id="${id}" path="${path}" onchange="${onchange}">
+		<form:option value="HIGH" label="HIGH"/>
+		<form:option value="NEUTRAL" label="NEUTRAL"/>
+		<form:option value="LOW" label="LOW"/> 
+
 	</form:select>
 	<form:errors path="${path}" class="alert alert-danger" />
 </div>

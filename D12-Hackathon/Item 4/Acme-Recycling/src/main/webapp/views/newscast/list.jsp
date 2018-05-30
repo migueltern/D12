@@ -30,7 +30,7 @@
 			  window.location.href ="newscast/admin/list.do";
 	}
 </script>
-
+<div class="table-responsive">
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="newscast" requestURI="${requestURI}" id="row">
 	
@@ -154,6 +154,7 @@
 	</security:authorize> 
 	
 </display:table>
+</div>
 <security:authorize access="isAnonymous()">
 <B><spring:message code="aviso1" /></B>
 <a href="buyer/create.do"><spring:message code="aviso2"  /></a>

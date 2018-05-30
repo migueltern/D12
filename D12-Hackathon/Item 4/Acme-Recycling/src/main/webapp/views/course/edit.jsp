@@ -44,7 +44,7 @@
 	<acme:textarea code="course.description" path="description" />
 	<br />	
 	
-	<B><jstl:out value="Coordenadas GPS"></jstl:out></B>
+	<B><jstl:out value="GPS"></jstl:out></B>
 	<fieldset>
 	<B><acme:textbox code="course.location.name" path="location.name"/></B>
 	<br>

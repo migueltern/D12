@@ -1853,7 +1853,7 @@
 		<property name="realisedMoment" value="2018/12/13" />
 		<property name="picture"
 			value="http://www.gsesoftware.com/wp-content/uploads/2017/02/LOGO-FORMACI%C3%93N-300x119.png" />
-		<property name="draftMode" value="true" />
+		<property name="draftMode" value="false" />
 		<property name="minimumScore" value="3" />
 
 		<property name="materials">
@@ -1938,10 +1938,10 @@
 		<property name="title" value="title course 6" />
 		<property name="description" value="description course 6" />
 		<property name="location" ref="gps5" />
-		<property name="realisedMoment" value="2018/11/01" />
+		<property name="realisedMoment" value="2019/11/01" />
 		<property name="picture"
 			value="http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png" />
-		<property name="draftMode" value="false" />
+		<property name="draftMode" value="true" />
 		<property name="minimumScore" value="2" />
 
 		<property name="materials">

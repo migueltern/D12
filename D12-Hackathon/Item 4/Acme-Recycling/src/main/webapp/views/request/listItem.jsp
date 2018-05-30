@@ -40,8 +40,20 @@
 	
 	<!-- ATRIBUTOS -->
 	
-	<spring:message code="request.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" sortable="true" />
+	<%-- <spring:message code="request.title" var="titleHeader" />
+	<display:column property="title" title="${titleHeader}" sortable="true" /> --%>
+	
+	<security:authorize access="hasRole('MANAGER')">
+		<spring:message code="request.title" var="display"/>
+		<display:column title="${display}" sortable="true">
+		<spring:url value="${RequestUriDisplay}" var="displayURL">
+			<spring:param name="itemId" value="${row.id}" />
+		</spring:url>
+		<a href="${displayURL}"><jstl:out value="${row.title}"></jstl:out></a>
+		</display:column>
+	</security:authorize>
+	
+	
 	
 
 	

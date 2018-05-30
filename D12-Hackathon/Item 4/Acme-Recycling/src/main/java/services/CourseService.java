@@ -259,7 +259,12 @@ public class CourseService {
 	public void notAssist(final Course course) {
 		Recycler recyclerConnected;
 		Recycler result;
+		final Date actual = new Date();
+		final Long diaMili = (long) 86400000;
+		final Long dosSemanas = diaMili * 14;
 
+		final Long restaFechas = course.getRealisedMoment().getTime() - actual.getTime();
+		Assert.isTrue(restaFechas > dosSemanas);
 		recyclerConnected = this.recyclerService.findByPrincipal();
 
 		Assert.notNull(course);

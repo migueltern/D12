@@ -137,3 +137,9 @@
 
 </security:authorize>
 
+<security:authorize access="isAnonymous()">
+<B><spring:message code="aviso.material" /></B>
+<a href="buyer/create.do"><spring:message code="aviso2"  /></a>
+
+
+</security:authorize>

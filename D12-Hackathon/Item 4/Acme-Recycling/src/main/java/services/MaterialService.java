@@ -138,4 +138,12 @@ public class MaterialService {
 		this.validator.validate(result, bindingResult);
 		return result;
 	}
+
+	public Collection<Material> allMaterialWithoutQuantity() {
+		Collection<Material> result;
+
+		result = this.materialRepository.allMaterialWithoutQuantity();
+
+		return result;
+	}
 }

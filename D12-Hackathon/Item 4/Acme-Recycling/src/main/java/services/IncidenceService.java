@@ -16,6 +16,7 @@ import org.springframework.validation.Validator;
 
 import repositories.IncidenceRepository;
 import domain.Actor;
+import domain.Admin;
 import domain.Incidence;
 import domain.Manager;
 import domain.Message;
@@ -150,7 +151,7 @@ public class IncidenceService {
 		Assert.isTrue(incidence.getId() != 0);
 		principal = this.actorService.findPrincipal();
 		
-		Assert.isTrue(principal.equals(incidence.getRecycler()));
+		Assert.isTrue(principal.equals(incidence.getRecycler()) || principal instanceof Admin);
 		Assert.isTrue(incidence.isResolved() == false);
 		
 		

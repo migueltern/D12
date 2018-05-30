@@ -193,6 +193,13 @@
 				</ul>
 			</li>
 
+				<li><a href="newscast/buyer/list.do"><spring:message
+						code="master.page.New.list" /></a></li>
+
+		
+			
+				
+				
 			<li><a class="fNiv"><spring:message
 						code="master.page.aboutUs" /></a>
 				<ul>

@@ -97,7 +97,7 @@ public class CourseRecyclerController extends AbstractController {
 			this.courseService.assist(course);
 			result = new ModelAndView("redirect:/course/recycler/listCoursesAvailables.do");
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(course, "course.commit.error");
+			result = this.createAssistModelAndView(course, "course.commit.error");
 		}
 		return result;
 	}
@@ -114,7 +114,7 @@ public class CourseRecyclerController extends AbstractController {
 			this.courseService.notAssist(course);
 			result = new ModelAndView("redirect:/course/recycler/listOfCoursesThatIAttend.do");
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(course, "course.commit.error");
+			result = this.createNotAssistModelAndView(course, "course.commit.error");
 		}
 		return result;
 	}
@@ -125,18 +125,52 @@ public class CourseRecyclerController extends AbstractController {
 
 		Assert.notNull(course);
 		ModelAndView result;
-		result = this.createEditModelAndView(course, null);
+		result = this.createAssistModelAndView(course, null);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final Course course, final String messageCode) {
+	protected ModelAndView createAssistModelAndView(final Course course, final String messageCode) {
 		assert course != null;
 
 		ModelAndView result;
+		Collection<Course> coursesAvailables;
+		Recycler recyclerConnected;
+		recyclerConnected = this.recyclerService.findByPrincipal();
+		coursesAvailables = this.courseService.coursesAvailables(recyclerConnected);
 
 		result = new ModelAndView("course/list");
 		result.addObject("course", course);
+		result.addObject("courses", coursesAvailables);
 		result.addObject("message", messageCode);
+		result.addObject("requestURI", "course/recycler/listCoursesAvailables.do");
+
+		return result;
+
+	}
+
+	protected ModelAndView createNotAssistModelAndView(final Course course) {
+
+		Assert.notNull(course);
+		ModelAndView result;
+		result = this.createNotAssistModelAndView(course, null);
+		return result;
+	}
+
+	protected ModelAndView createNotAssistModelAndView(final Course course, final String messageCode) {
+		assert course != null;
+
+		ModelAndView result;
+		Collection<Course> coursesAssist;
+		Recycler recyclerConnected;
+		recyclerConnected = this.recyclerService.findByPrincipal();
+		coursesAssist = recyclerConnected.getCourses();
+
+		result = new ModelAndView("course/list");
+		result.addObject("course", course);
+		result.addObject("courses", coursesAssist);
+		result.addObject("message", messageCode);
+		result.addObject("requestURI", "course/recycler/listOfCoursesThatIAttend.do");
+
 		return result;
 
 	}

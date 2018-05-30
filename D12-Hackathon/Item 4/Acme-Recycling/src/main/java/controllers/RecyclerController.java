@@ -43,8 +43,9 @@ public class RecyclerController extends AbstractController {
 		ModelAndView result;
 		Collection<Recycler> recyclers;
 		
+		
 		recyclers = this.recyclerService.findAll();
-
+		
 		result = new ModelAndView("actor/list");
 		result.addObject("actors", recyclers);
 		result.addObject("requestURI", "recycler/list.do?d-16544-p=1");
@@ -64,13 +65,17 @@ public class RecyclerController extends AbstractController {
 		final ModelAndView result;
 		Recycler recycler;
 		Collection<Item> items;
+		Double puntuation;
 
 		recycler = this.recyclerService.findOne(recyclerId);
 		items = this.itemService.findItemsByRecycler(recycler.getId());
+		puntuation = this.recyclerService.puntuationOfRecycler1(recyclerId);
+
 
 		result = new ModelAndView("recycler/display");
 		result.addObject("recycler", recycler);
 		result.addObject("items", items);
+		result.addObject("puntuation", puntuation);
 		result.addObject("requestURI", "/recycler/display.do");
 		result.addObject("requestItemsURL", "/item/listb.do");
 

@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,14 +41,18 @@ public class AssesmentServiceTest extends AbstractTest {
 	CarrierService		carrierService;
 
 
+	//Caso de uso 7.a) El transportista creará una evaluación cada vez que recoja un producto(Item). Solo podrá crear una evaluación cuando el estado esté "FINALIZADO" o "CANCELADO". Una vez el estado esté en "FINALIZADO" o "CANCELADO" no se puede volver a cambiar.
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
-				"carrier3", "request3", "description test", 2, null
+				//Se crea un assessment correctamente
+				"carrier5", "request6", "description test", 2, null
 			}, {
-				//Se edita un product correctamente
+				//Se edita un assessment incorrectamente porque ya tiene un assessment esa request
+				"carrier3", "request3", "description test", 5, IllegalArgumentException.class
+			}, {
+				//Se edita un assessment incorrectamente porque ya la request no esta con status finished ni cancelled
 				"carrier1", "request1", "description test", 5, IllegalArgumentException.class
 			}
 		};
@@ -80,22 +85,23 @@ public class AssesmentServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	//Caso de uso 7.d) Listar y editar las evaluaciones que ha creado para una solicitud que le pertenece. Las evaluaciones no se pueden borrar del sistema, solamente modificarlas. (I)
 	@Test
 	public void driverEdit() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
-				"carrier3", "assesment3", "request3", "description test", null
+				//Se edita un assessment correctamente
+				"carrier3", "assesment2", "request2", "description test", 2, null
 			}, {
-				//Se edita un product correctamente
-				"carrier1", "assesment3", "request1", "description test", IllegalArgumentException.class
+				//Se edita un assessment incorrectamente porque el atributo valuation esta fuera del rango
+				"carrier3", "assesment2", "request2", "description test", 6, ConstraintViolationException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
-			this.templateEdit((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), super.getEntityId((String) testingData[i][2]), (String) testingData[i][3], (Class<?>) testingData[i][4]);
+			this.templateEdit((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), super.getEntityId((String) testingData[i][2]), (String) testingData[i][3], (int) testingData[i][4], (Class<?>) testingData[i][5]);
 	}
 
-	private void templateEdit(final String username, final int assesmentId, final int requestId, final String description, final Class<?> expected) {
+	private void templateEdit(final String username, final int assesmentId, final int requestId, final String description, final int valuation, final Class<?> expected) {
 		Class<?> caught;
 		Assesment assessment;
 		AssessmentForm assesmentForm;
@@ -108,6 +114,7 @@ public class AssesmentServiceTest extends AbstractTest {
 			assesmentForm.setAssessment(assessment);
 			assesmentForm.setRequestId(requestId);
 			assesmentForm.getAssessment().setDescription(description);
+			assesmentForm.getAssessment().setValuation(valuation);
 
 			this.assesmentService.save(assesmentForm);
 
@@ -124,25 +131,25 @@ public class AssesmentServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	//Caso de uso 7.d) Listar y editar las evaluaciones que ha creado para una solicitud que le pertenece. Las evaluaciones no se pueden borrar del sistema, solamente modificarlas. (II)
 	@Test
 	public void driverList() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
-				"carrier1", "request1", 1, null
+				//Se listan las assessments correctamente porque la assessment2 pertenece al carrier3
+				"carrier3", "assesment2", null
 			}, {
-				//Se edita un product correctamente
-				"carrier2", "request3", 2, IllegalArgumentException.class
+				//Se listan las assessments incorrectamente porque la assessment2 no pertenece al carrier2
+				"carrier2", "request2", IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
-			this.templateList((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Integer) testingData[i][2], (Class<?>) testingData[i][3]);
+			this.templateList((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
 	}
 
-	private void templateList(final String username, final int requestId, final Integer size, final Class<?> expected) {
+	private void templateList(final String username, final int assesmentId, final Class<?> expected) {
 		Class<?> caught;
-		final Assesment assessment;
-		final AssessmentForm assesmentForm;
+		final Assesment assesment;
 		Collection<Assesment> assesments;
 		Carrier carrierConnected;
 
@@ -151,7 +158,8 @@ public class AssesmentServiceTest extends AbstractTest {
 			super.authenticate(username);
 			carrierConnected = this.carrierService.findByPrincipal();
 			assesments = this.assesmentService.findByCarrierId(carrierConnected.getId());
-			Assert.isTrue(assesments.size() == size);
+			assesment = this.assesmentService.findOne(assesmentId);
+			Assert.isTrue(assesments.contains(assesment));
 
 			this.entityManager.flush();
 

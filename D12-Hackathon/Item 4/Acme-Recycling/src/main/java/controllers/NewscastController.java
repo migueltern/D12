@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,10 +55,14 @@ public class NewscastController extends AbstractController {
 		final ModelAndView result;
 		Newscast newscast = new Newscast();
 		Collection<Comment> comments;
+		Collection<Newscast> news;
 
 		newscast = this.newscastService.findOne(newscastId);
 		comments = new ArrayList<>();
 
+		news = this.newscastService.findAllNewsInDescOrder();
+
+		Assert.isTrue(news.contains(newscast), "You cannot see this one, sorry");
 		comments = this.newscastService.findCommentsByNew(newscastId);
 
 		result = new ModelAndView("newscast/display");

@@ -76,6 +76,7 @@
 		<security:intercept-url pattern="/material/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/buy/buyer/**" access="hasRole('BUYER')"/>
 		<security:intercept-url pattern="/profile/buyer/**" access="hasRole('BUYER')"/>
+		<security:intercept-url pattern="/newscast/buyer/**" access="hasRole('BUYER')"/>
 		
 	<!-- 	ADMIN-->
 

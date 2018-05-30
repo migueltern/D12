@@ -28,6 +28,7 @@
 	<form:hidden path="opinion.version" />
 
 
+
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
@@ -52,6 +53,16 @@
 </div>
 </div>
 </div>
+
+	<B><acme:textbox code="opinion.title" path="opinion.title" /></B>
+	<br />
+	<B><acme:textbox code="opinion.comment" path="opinion.comment" /></B>
+	<br />
+	<B><acme:textbox code="opinion.photo" path="opinion.photo" placeHolder="http://"/></B>
+	<br />
+	<B><acme:textbox code="opinion.caption" path="opinion.caption" /></B>
+	<br />
+
 
 	<jstl:if test="${!hiddenSelects}">
 

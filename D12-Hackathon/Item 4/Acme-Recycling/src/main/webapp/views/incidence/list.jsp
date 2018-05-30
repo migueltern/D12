@@ -116,24 +116,7 @@
 
 <acme:column code="incidence.comment" property="comment" sortable ="true"/>
 
-<spring:message code="resolved" var="resolved" />
-	<display:column title="${resolved}">
-		<jstl:if test="${row.resolved==true}">
-			<div
-				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
 
-				<img src="images/yes.jpeg" width="30" height="30">
-			</div>
-		</jstl:if>
-		<jstl:if test="${row.resolved==false}">
-			<div
-				style="position: relative; width: 30px; height: 30px; margin-left: auto; margin-right: auto;">
-
-				<img src="images/no.jpeg" width="30" height="30">
-			</div>
-		</jstl:if>
-		
-</display:column>
 
 
 <!-- Boton de delete para el admin ya que puede borrar las noticias que quiera pero no editarlas -->

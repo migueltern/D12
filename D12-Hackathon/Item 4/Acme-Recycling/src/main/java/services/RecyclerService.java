@@ -229,6 +229,15 @@ public class RecyclerService {
 			result = 0.;
 		return result;
 	}
+	
+	public Double puntuationOfRecycler1(int recyclerId){
+		
+		Double result;
+		
+		result = this.recyclerRepository.puntuationOfRecycler(recyclerId);
+		return result;
+		
+	}
 
 	public Collection<Recycler> findRecyclerByCourse(final Course course) {
 		Collection<Recycler> result;

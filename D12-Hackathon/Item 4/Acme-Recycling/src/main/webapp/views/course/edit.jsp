@@ -42,12 +42,17 @@
 	<B><acme:selectmultiple items="${materials}" itemLabel="title" code="course.materials" path="materials"/></B>
 	<br />
 	
+
 	<div class="col">
 	<acme:textbox code="course.description" path="description" />
 	<br />	
 	</div>
+
+	<acme:textarea code="course.description" path="description" />
+
 	
-	<B><jstl:out value="Coordenadas GPS"></jstl:out></B>
+	
+	<B><jstl:out value="GPS"></jstl:out></B>
 	<fieldset>
 	<B><acme:textbox code="course.location.name" path="location.name"/></B>
 	<br>

@@ -248,6 +248,7 @@ public class CourseService {
 		Assert.isTrue(coursesAvailables.contains(course));
 		Assert.notNull(course);
 		Assert.notNull(recyclerConnected);
+		Assert.isTrue(!course.isDraftMode());
 
 		recyclerConnected.getCourses().add(course);
 
@@ -259,7 +260,12 @@ public class CourseService {
 	public void notAssist(final Course course) {
 		Recycler recyclerConnected;
 		Recycler result;
+		final Date actual = new Date();
+		final Long diaMili = (long) 86400000;
+		final Long dosSemanas = diaMili * 14;
 
+		final Long restaFechas = course.getRealisedMoment().getTime() - actual.getTime();
+		Assert.isTrue(restaFechas > dosSemanas);
 		recyclerConnected = this.recyclerService.findByPrincipal();
 
 		Assert.notNull(course);
@@ -267,6 +273,7 @@ public class CourseService {
 		Assert.notNull(recyclerConnected);
 		Assert.isTrue(recyclerConnected.getCourses().contains(course));
 		recyclerConnected.getCourses().remove(course);
+		Assert.isTrue(!course.isDraftMode());
 
 		result = this.recyclerService.save(recyclerConnected);
 

@@ -26,13 +26,13 @@
 	<form:hidden path="opinion.id" />
 	<form:hidden path="opinion.version" />
 
-	<acme:textbox code="opinion.title" path="opinion.title" />
+	<B><acme:textbox code="opinion.title" path="opinion.title" /></B>
 	<br />
-	<acme:textbox code="opinion.comment" path="opinion.comment" />
+	<B><acme:textbox code="opinion.comment" path="opinion.comment" /></B>
 	<br />
-	<acme:textbox code="opinion.photo" path="opinion.photo" placeHolder="http://"/>
+	<B><acme:textbox code="opinion.photo" path="opinion.photo" placeHolder="http://"/></B>
 	<br />
-	<acme:textbox code="opinion.caption" path="opinion.caption" />
+	<B><acme:textbox code="opinion.caption" path="opinion.caption" /></B>
 	<br />
 
 	<jstl:if test="${!hiddenSelects}">

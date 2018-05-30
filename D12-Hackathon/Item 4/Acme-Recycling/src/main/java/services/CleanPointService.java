@@ -87,16 +87,12 @@ public class CleanPointService {
 		CleanPoint result;
 		final CleanPoint cleanPointBd;
 
-		if (cleanPoint.getId() == 0) {
-			cleanPoint.setMobile(true);
+		if (cleanPoint.getId() == 0)
 			result = cleanPoint;
-		}
-
 		else {
 			cleanPointBd = this.cleanPointRepository.findOne(cleanPoint.getId());
 			cleanPoint.setId(cleanPointBd.getId());
 			cleanPoint.setVersion(cleanPointBd.getVersion());
-			cleanPoint.setMobile(cleanPointBd.isMobile());
 
 			result = cleanPoint;
 		}

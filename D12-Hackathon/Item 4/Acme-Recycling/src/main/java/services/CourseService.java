@@ -337,6 +337,12 @@ public class CourseService {
 		return course;
 	}
 
+	public Collection<Course> findCoursesNoAuthenticate() {
+		Collection<Course> courses;
+		courses = this.courseRepository.findCoursesNoAuthenticate();
+		return courses;
+	}
+
 	public void flush() {
 		this.courseRepository.flush();
 	}

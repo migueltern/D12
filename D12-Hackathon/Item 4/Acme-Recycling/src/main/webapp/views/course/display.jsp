@@ -66,6 +66,9 @@
 	<B><spring:message code="course.minimumScore" /></B>
 	<jstl:out value="${row.minimumScore}"></jstl:out>
 	</p>
+	
+	<security:authorize access="hasRole('BUYER')">
+	
 	<p>
 	
 	
@@ -83,7 +86,9 @@
 				</div>
 				<img src="images/no1.png" width="100" height="100">
 			</jstl:if>
+			</security:authorize>
 		</display:column>
+		
 
 	<spring:message code="course.location" var="titleHeader" />
 	<display:column title="${titleHeader}">

@@ -20,6 +20,11 @@
 
 <br>
 
+<div class="text-center"><B><spring:message code="security.login"></spring:message></B></div>
+
+<div class=" offset-md-3 col-md-6 ">
+
+<br>
 	<form:label path="username">
 		<spring:message code="security.username" />
 	</form:label>
@@ -41,6 +46,6 @@
 	</jstl:if>
 	
 	<input type="submit" class="btn btn-lg btn-primary btn-block" value="<spring:message code="security.login" />" />
-	
+</div>	
 </form:form>
 </div>

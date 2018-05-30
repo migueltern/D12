@@ -27,9 +27,9 @@
 
 
 	<B><acme:textbox code="course.title" path="title"/></B>
-	<br />
+	<br /> 
 	
-	<B><acme:textbox code="course.realisedMoment" path="realisedMoment" placeHolder="yyyy/MM/dd"/></B>
+	<B><acme:textbox code="course.realisedMoment" path="realisedMoment" id="datepicker" placeHolder="yyyy/MM/dd"/></B>
 	<br />
 	
 	<B><acme:textbox code="course.minimumScore" path="minimumScore"/></B>
@@ -71,3 +71,15 @@
 <acme:cancel url="course/buyer/list.do?d-16544-p=1"	code="course.cancel" />
 
 </form:form>
+
+
+
+<script>
+$( function() {
+    $( "#datepicker" ).datepicker({ 
+    	dateFormat: 'yy/mm/dd', 
+    	firstDay: 1
+    	});
+
+  } );
+ </script>

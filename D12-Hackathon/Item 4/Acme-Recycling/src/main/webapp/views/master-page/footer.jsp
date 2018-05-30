@@ -92,27 +92,7 @@
         <!-- Grid column -->
         <div class="col-md-6 col-lg-7 text-center text-md-right">
 
-          <!-- Facebook -->
-          <a class="fb-ic">
-            <i class="fa fa-facebook white-text mr-4"> </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="fa fa-twitter white-text mr-4"> </i>
-          </a>
-          <!-- Google +-->
-          <a class="gplus-ic">
-            <i class="fa fa-google-plus white-text mr-4"> </i>
-          </a>
-          <!--Linkedin -->
-          <a class="li-ic">
-            <i class="fa fa-linkedin white-text mr-4"> </i>
-          </a>
-          <!--Instagram-->
-          <a class="ins-ic">
-            <i class="fa fa-instagram white-text"> </i>
-          </a>
-
+          
         </div>
         <!-- Grid column -->
 
@@ -182,7 +162,7 @@
         <h6 class="text-uppercase font-weight-bold"><spring:message code="contact"></spring:message></h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <i class="fa fa-home mr-3"></i> Sevilla, Paradas 41610, ES</p>
+          <i class="fa fa-map-marker mr-3"></i> Sevilla, Paradas 41610, ES</p>
         <p>
           <i class="fa fa-envelope mr-3"></i> acme-recycling@example.com</p>
         <p>

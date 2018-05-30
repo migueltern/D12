@@ -248,6 +248,7 @@ public class CourseService {
 		Assert.isTrue(coursesAvailables.contains(course));
 		Assert.notNull(course);
 		Assert.notNull(recyclerConnected);
+		Assert.isTrue(!course.isDraftMode());
 
 		recyclerConnected.getCourses().add(course);
 
@@ -272,6 +273,7 @@ public class CourseService {
 		Assert.notNull(recyclerConnected);
 		Assert.isTrue(recyclerConnected.getCourses().contains(course));
 		recyclerConnected.getCourses().remove(course);
+		Assert.isTrue(!course.isDraftMode());
 
 		result = this.recyclerService.save(recyclerConnected);
 

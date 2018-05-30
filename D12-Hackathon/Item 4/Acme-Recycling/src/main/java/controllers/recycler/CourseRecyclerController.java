@@ -30,6 +30,21 @@ public class CourseRecyclerController extends AbstractController {
 	private RecyclerService	recyclerService;
 
 
+	//display ------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int courseId) {
+		ModelAndView result;
+		Course course;
+
+		course = this.courseService.findOne(courseId);
+		Assert.isTrue(course.isDraftMode() == false);
+		result = new ModelAndView("course/display");
+		result.addObject("course", course);
+		result.addObject("requestURI", "course/display.do?courseId=" + courseId);
+
+		return result;
+	}
+
 	//	Listing ---------------------------------------------------------
 	@RequestMapping(value = "/listCoursesAvailables", method = RequestMethod.GET)
 	public ModelAndView list() {

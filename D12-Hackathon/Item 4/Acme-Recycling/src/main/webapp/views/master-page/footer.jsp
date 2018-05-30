@@ -85,7 +85,7 @@
 
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">More info!</h6>
+          <h6 >More info!</h6>
         </div>
         <!-- Grid column -->
 
@@ -112,7 +112,7 @@
       <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
 
         <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold"><spring:message code="ourCompany"></spring:message></h6>
+        <h6 class="text-uppercase font-weight-bold"><i class="fas fa-info fa-fw"></i><spring:message code="ourCompany"></spring:message></h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
        <p> <spring:message code="final"></spring:message></p>
         

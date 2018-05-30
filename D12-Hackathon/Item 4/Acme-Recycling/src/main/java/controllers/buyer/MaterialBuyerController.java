@@ -36,6 +36,7 @@ public class MaterialBuyerController extends AbstractController {
 		final Collection<Material> materials;
 
 		materials = this.materialService.findAll();
+		materials.removeAll(this.materialService.allMaterialWithoutQuantity());
 
 		result = new ModelAndView("material/list");
 		result.addObject("materials", materials);

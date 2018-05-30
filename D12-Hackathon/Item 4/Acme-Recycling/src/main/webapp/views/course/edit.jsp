@@ -42,7 +42,7 @@
 	<br />
 	
 	<acme:textarea code="course.description" path="description" />
-	<br />	
+	
 	
 	<B><jstl:out value="GPS"></jstl:out></B>
 	<fieldset>

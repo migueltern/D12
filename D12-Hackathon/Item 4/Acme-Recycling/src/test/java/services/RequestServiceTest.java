@@ -276,4 +276,39 @@ public class RequestServiceTest extends AbstractTest {
 		}
 		this.checkExceptions(expected, caught);
 	}
+
+	//Caso de uso 7.b) Listar las solicitudes que le ha asignado el manager previamente.
+	@Test
+	public void driverListMyRequestAssigned() {
+		final Object testingData[][] = {
+			{
+				//El carrier3 lista sus solicitudes y tiene la request3
+				"carrier3", "request3", null
+			}, {
+				//El carrier3 lista sus solicitudes y no tiene la request4
+				"carrier3", "request4", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListMyRequestAssigned((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateListMyRequestAssigned(final String username, final int requestId, final Class<?> expected) {
+		Class<?> caught;
+		Collection<Request> requests;
+		final Request request;
+
+		caught = null;
+		try {
+			super.authenticate(username);
+			requests = this.carrierService.findByPrincipal().getRequests();
+			request = this.requestService.findOne(requestId);
+
+			Assert.isTrue(requests.contains(request));
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+		super.unauthenticate();
+	}
 }

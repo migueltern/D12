@@ -26,7 +26,7 @@
 	<form:hidden path="request.id" />
 	<form:hidden path="request.version" />
 
-	<acme:changeStatus code="request.status" path="request.status"/>
+	<B><acme:changeStatus code="request.status" path="request.status"/></B>
 
 	<!-- BOTONES -->
 <br>

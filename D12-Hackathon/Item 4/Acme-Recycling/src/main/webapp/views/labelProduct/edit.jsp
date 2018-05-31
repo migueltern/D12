@@ -22,6 +22,7 @@
 
 <form:form action="${requestURI}" modelAttribute="labelProduct">
 <br>
+<div class="col-md-8 col-centered">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="items"/>
@@ -48,4 +49,6 @@
 	<acme:cancel
 		url="labelProduct/manager/list.do?d-16544-p=1"
 		code="labelProduct.cancel" />
+		
+</div>
 </form:form>

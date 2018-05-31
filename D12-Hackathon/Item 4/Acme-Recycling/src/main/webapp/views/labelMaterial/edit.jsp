@@ -22,7 +22,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="labelMaterial">
-
+<div class="col-md-8 col-centered">
 <br>
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -50,4 +50,6 @@
 
 	<acme:cancel url="labelMaterial/manager/list.do?d-16544-p=1"
 		code="labelMaterial.cancel" />
+		
+</div>
 </form:form>

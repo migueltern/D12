@@ -344,8 +344,8 @@ public class CourseServiceTest extends AbstractTest {
 	public void driverDeleteBuyer() {
 		final Object testingData[][] = {
 			{
-				//Buyer 2 elimina el course3 correctamente
-				"buyer2", "course3", null
+				//Buyer 4 elimina el course5 correctamente
+				"buyer4", "course6", null
 			}, {
 				//Buyer 2 intenta eliminar el course 1 que NO es suyo.
 				"buyer2", "course1", IllegalArgumentException.class

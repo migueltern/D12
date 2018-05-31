@@ -91,20 +91,17 @@ public class LessonServiceTest extends AbstractTest {
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
 			{
-				//Buyer2 crea una leccion correctamente para el curso 3
-				"buyer2", "course3", "title test", "summary test of lesson", null
+				//Buyer4 crea una leccion correctamente para el curso 6
+				"buyer4", "course6", "title test", "summary test of lesson", null
 			}, {
-				//Buyer2 crea una leccion para el curso 3 con el titulo en blanco
-				"buyer2", "course3", "", "summary test of lesson", javax.validation.ConstraintViolationException.class
+				//Buyer4 crea una leccion para el curso 6 con el titulo en blanco
+				"buyer4", "course6", "", "summary test of lesson", javax.validation.ConstraintViolationException.class
 			}, {
-				//Buyer2 crea una leccion para el curso 3 con el tamaño de summary demasiado corto
-				"buyer2", "course3", "title test", "summary", IllegalArgumentException.class
+				//Buyer4 crea una leccion para el curso 6 con el tamaño de summary demasiado corto
+				"buyer4", "course6", "title test", "summary", IllegalArgumentException.class
 			}, {
-				//Buyer2 intenta crear una leccion para el curso 2 que está en modo final
-				"buyer2", "course2", "title test", "summary test of lesson", IllegalArgumentException.class
-			}, {
-				//Buyer2 intenta crear una leccion para el curso 1 que que NO pertenece a él.
-				"buyer2", "course1", "title test", "summary test of lesson", IllegalArgumentException.class
+				//Buyer4 intenta crear una leccion para el curso 1 que que NO pertenece a él.
+				"buyer4", "course1", "title test", "summary test of lesson", IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
@@ -146,17 +143,14 @@ public class LessonServiceTest extends AbstractTest {
 	public void driverEditAndSave() {
 		final Object testingData[][] = {
 			{
-				//Buyer2 edita el titulo de la leccion 3 correctamente para el curso 3
-				"buyer2", "lesson3", "title test edit", "summary test of lesson", null
+				//Buyer4 edita el titulo de la leccion 6 correctamente para el curso 6
+				"buyer4", "lesson6", "title test edit", "summary test of lesson", null
 			}, {
-				//Buyer2 intenta editar el titulo de la leccion 3 por uno en blanco para el curso 3
-				"buyer2", "lesson3", "", "summary test of lesson", javax.validation.ConstraintViolationException.class
+				//Buyer4 intenta editar el titulo de la leccion 6 por uno en blanco para el curso 6
+				"buyer4", "lesson6", "", "summary test of lesson", javax.validation.ConstraintViolationException.class
 			}, {
-				//Buyer2 intenta editar el titulo de la leccion 2 estando el curso de dicha lección en modo final
-				"buyer2", "lesson2", "title test edit", "summary test of lesson", IllegalArgumentException.class
-			}, {
-				//Buyer2 intenta editar el titulo de la leccion 1 siendo esta lección de buyer1
-				"buyer2", "lesson1", "title test edit", "summary test of lesson", IllegalArgumentException.class
+				//Buyer4 intenta editar el titulo de la leccion 1 siendo esta lección de buyer1
+				"buyer4", "lesson1", "title test edit", "summary test of lesson", IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
@@ -195,14 +189,14 @@ public class LessonServiceTest extends AbstractTest {
 	public void driverDelete() {
 		final Object testingData[][] = {
 			{
-				//Buyer2 eliminar la lección 3 correctamente
-				"buyer2", "lesson3", null
+				//Buyer4 eliminar la lección 6 correctamente
+				"buyer4", "lesson6", null
 			}, {
-				//Buyer2 intenta eliminar la lección 2 pero no puede al estar su curso en final mode
-				"buyer2", "lesson3", IllegalArgumentException.class
+				//Buyer4 intenta eliminar la lección 6 pero no puede al estar su curso en final mode
+				"buyer4", "lesson6", IllegalArgumentException.class
 			}, {
-				//Buyer2 intenta eliminar la lección 1 pero no puede al no pertenecerle  a él
-				"buyer2", "lesson2", IllegalArgumentException.class
+				//Buyer4 intenta eliminar la lección 1 pero no puede al no pertenecerle  a él
+				"buyer4", "lesson1", IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)

@@ -282,7 +282,7 @@
 				</bean>
 			</list>
 		</property>
-		<property name="activated" value="False"></property>
+		<property name="activated" value="True"></property>
 	</bean>
 
 	<bean id="userAccountBuyer1" class="security.UserAccount">
@@ -729,7 +729,7 @@
 		<property name="items">
 			<list>
 				<ref bean="item1" />
-				<ref bean="item2" />
+				<ref bean="item7" />
 			</list>
 		</property>
 		<property name="comments">
@@ -760,7 +760,7 @@
 		</property>
 		<property name="items">
 			<list>
-
+				<ref bean="item2" />
 			</list>
 		</property>
 		<property name="comments">
@@ -792,7 +792,7 @@
 		</property>
 		<property name="items">
 			<list>
-				<ref bean="item6"/>
+				<ref bean="item3"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -823,7 +823,7 @@
 		</property>
 		<property name="items">
 			<list>
-			<ref bean="item7"/>
+			
 			</list>
 		</property>
 		<property name="comments">
@@ -853,6 +853,7 @@
 		<property name="items">
 			<list>
 				<ref bean="item5" />
+				<ref bean="item6"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -971,7 +972,7 @@
 		</property>
 		<property name="courses">
 			<list>
-				<ref bean="course4" />
+				<ref bean="course6" />
 			</list>
 		</property>
 		<property name="finder" ref="finder4" />
@@ -1363,7 +1364,7 @@
 		<property name="createdMoment" value="2018/02/02 12:20" />
 		<property name="comment" value="comment incidence 2" />
 		<property name="resolved" value="true" />
-		<property name="recycler" ref="recycler2" />
+		<property name="recycler" ref="recycler1" />
 	</bean>
 
 	<bean id="incidence3" class="domain.Incidence">
@@ -1381,7 +1382,7 @@
 		<property name="createdMoment" value="2018/04/04 14:40" />
 		<property name="comment" value="comment incidence 4" />
 		<property name="resolved" value="false" />
-		<property name="recycler" ref="recycler4" />
+		<property name="recycler" ref="recycler3" />
 	</bean>
 
 	<bean id="incidence5" class="domain.Incidence">
@@ -1390,7 +1391,7 @@
 		<property name="createdMoment" value="2018/05/05 15:50" />
 		<property name="comment" value="comment incidence 5" />
 		<property name="resolved" value="false" />
-		<property name="recycler" ref="recycler5" />
+		<property name="recycler" ref="recycler3" />
 	</bean>
 	
 	
@@ -1400,7 +1401,7 @@
 		<property name="createdMoment" value="2018/05/01 19:20" />
 		<property name="comment" value="comment incidence 6" />
 		<property name="resolved" value="true" />
-		<property name="recycler" ref="recycler4" />
+		<property name="recycler" ref="recycler1" />
 	</bean>
 	
 	<bean id="incidence7" class="domain.Incidence">
@@ -1409,7 +1410,7 @@
 		<property name="createdMoment" value="2018/02/22 21:20" />
 		<property name="comment" value="comment incidence 7" />
 		<property name="resolved" value="true" />
-		<property name="recycler" ref="recycler5" />
+		<property name="recycler" ref="recycler3" />
 	</bean>
 
 
@@ -1836,11 +1837,7 @@
 		</property>
 		<property name="lessons">
 			<list>
-				<ref bean="lesson1" />
-				<ref bean="lesson2" />
 				<ref bean="lesson3" />
-				<ref bean="lesson4" />
-				<ref bean="lesson5" />
 			</list>
 		</property>
 	</bean>
@@ -1853,7 +1850,7 @@
 		<property name="realisedMoment" value="2018/12/13" />
 		<property name="picture"
 			value="http://www.gsesoftware.com/wp-content/uploads/2017/02/LOGO-FORMACI%C3%93N-300x119.png" />
-		<property name="draftMode" value="true" />
+		<property name="draftMode" value="false" />
 		<property name="minimumScore" value="3" />
 
 		<property name="materials">
@@ -1868,6 +1865,7 @@
 		</property>
 		<property name="lessons">
 			<list>
+				<ref bean="lesson4" />
 			</list>
 		</property>
 	</bean>
@@ -1894,9 +1892,7 @@
 		</property>
 		<property name="lessons">
 			<list>
-				<ref bean="lesson1" />
-				<ref bean="lesson2" />
-				<ref bean="lesson3" />
+				
 			</list>
 		</property>
 	</bean>
@@ -1907,7 +1903,7 @@
 		<property name="location" ref="gps5" />
 		<property name="realisedMoment" value="2018/12/15" />
 		<property name="picture"
-			value="http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png" />
+			value="https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-34-638.jpg?cb=1380200215" />
 		<property name="draftMode" value="false" />
 		<property name="minimumScore" value="5" />
 
@@ -1923,12 +1919,7 @@
 		</property>
 		<property name="lessons">
 			<list>
-				<ref bean="lesson1" />
-				<ref bean="lesson2" />
-				<ref bean="lesson3" />
-				<ref bean="lesson4" />
 				<ref bean="lesson5" />
-				<ref bean="lesson6" />
 			</list>
 		</property>
 	</bean>
@@ -1938,10 +1929,10 @@
 		<property name="title" value="title course 6" />
 		<property name="description" value="description course 6" />
 		<property name="location" ref="gps5" />
-		<property name="realisedMoment" value="2018/11/01" />
+		<property name="realisedMoment" value="2019/11/01" />
 		<property name="picture"
-			value="http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png" />
-		<property name="draftMode" value="false" />
+			value="https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-5-638.jpg?cb=1380200215" />
+		<property name="draftMode" value="true" />
 		<property name="minimumScore" value="2" />
 
 		<property name="materials">
@@ -1956,7 +1947,6 @@
 		</property>
 		<property name="lessons">
 			<list>
-				<ref bean="lesson1" />
 				<ref bean="lesson6" />
 			</list>
 		</property>
@@ -2013,6 +2003,247 @@
 		<property name="sender" ref="recycler1" />
 		<property name="recipient" ref="admin" />
 	</bean>
+	
+	<bean id="message2" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1 viagra" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="HIGH" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message3" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1 viagra" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message4" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message5" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message6" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 3 cialis" />
+		<property name="body" value="body 3" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message7" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 3 cialis" />
+		<property name="body" value="body 3" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message8" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 4 sexo" />
+		<property name="body" value="body 4" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message9" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 4 sexo" />
+		<property name="body" value="body 4" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message10" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 5" />
+		<property name="body" value="body 5 viagra" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message11" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 5" />
+		<property name="body" value="body 5 viagra" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message12" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 6" />
+		<property name="body" value="body 6 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message13" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 6" />
+		<property name="body" value="body 6 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message14" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1 viagra" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="HIGH" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message15" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1 viagra" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxBuyer5" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message16" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message17" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxBuyer5" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message18" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 3 cialis" />
+		<property name="body" value="body 3" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message19" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 3 cialis" />
+		<property name="body" value="body 3" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxBuyer5" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message20" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 4 sexo" />
+		<property name="body" value="body 4" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message21" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 4 sexo" />
+		<property name="body" value="body 4" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxBuyer5" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message22" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 5" />
+		<property name="body" value="body 5 viagra" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message23" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 5" />
+		<property name="body" value="body 5 viagra" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxBuyer5" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message24" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 6" />
+		<property name="body" value="body 6 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message25" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 6" />
+		<property name="body" value="body 6 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxBuyer5" />
+		<property name="sender" ref="buyer5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
 
 	<!-- Messages Folders -->
 
@@ -2414,14 +2645,14 @@
 	<bean id="lesson1" class="domain.Lesson">
 		<property name="title" value="title 1" />
 		<property name="summary" value="summary of lesson 1" />
-		<property name="number" value="11" />
+		<property name="number" value="1" />
 		<property name="course" ref="course1" />
 	</bean>
 
 	<bean id="lesson2" class="domain.Lesson">
 		<property name="title" value="title 2" />
 		<property name="summary" value="summary of lesson 2" />
-		<property name="number" value="12" />
+		<property name="number" value="2" />
 		<property name="course" ref="course2" />
 
 	</bean>
@@ -2429,7 +2660,7 @@
 	<bean id="lesson3" class="domain.Lesson">
 		<property name="title" value="title 3" />
 		<property name="summary" value="summary of lesson 3" />
-		<property name="number" value="13" />
+		<property name="number" value="1" />
 		<property name="course" ref="course3" />
 
 	</bean>
@@ -2437,7 +2668,7 @@
 	<bean id="lesson4" class="domain.Lesson">
 		<property name="title" value="title 4" />
 		<property name="summary" value="summary of lesson 4" />
-		<property name="number" value="14" />
+		<property name="number" value="1" />
 		<property name="course" ref="course4" />
 
 	</bean>
@@ -2445,7 +2676,7 @@
 	<bean id="lesson5" class="domain.Lesson">
 		<property name="title" value="title 5" />
 		<property name="summary" value="summary of lesson 5" />
-		<property name="number" value="15" />
+		<property name="number" value="1" />
 		<property name="course" ref="course5" />
 
 	</bean>
@@ -2453,8 +2684,8 @@
 	<bean id="lesson6" class="domain.Lesson">
 		<property name="title" value="title 6" />
 		<property name="summary" value="summary of lesson 6" />
-		<property name="number" value="16" />
-		<property name="course" ref="course1" />
+		<property name="number" value="1" />
+		<property name="course" ref="course6" />
 
 	</bean>
 

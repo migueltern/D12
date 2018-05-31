@@ -1962,7 +1962,7 @@
 		<property name="spanishWelcomeMessage"
 			value="Hay gente que hace que el mundo funcione mejor, hagamos que funcione reduciendo la contaminación y reciclando."></property>
 		<property name="banner"
-			value="http://www.masciudadania.es/wp-content/uploads/2016/04/z-Banner.jpg"></property>
+			value="https://image.ibb.co/dSZ17d/adv_Acmeenture.png"></property>
 
 		<property name="maxNumberFinder" value="40" />
 		<property name="cacheMaxTime" value="2" />

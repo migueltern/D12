@@ -17,15 +17,15 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<br>
 <div>
-	<img src="${bannerURL}" class="img-fluid" alt="Acme-Recycling Co., Inc." />
+	<img src="${bannerURL}"  class="center" alt="Acme-Recycling Co., Inc."   />
 </div>
 
-
+<br>
 <nav class="navbar navbar-expand-md navbar-light font-weight-bold text_menu" style="background-color: #F5F5F5">
 
-	<div class="collapse navbar-collapse" id="navbarColor01" >
+	<div class="collapse navbar-collapse " id="navbarColor01" >
 		<ul class = "navbar-nav mr-auto">
 		
 <!-- 		PARA TODOS -->

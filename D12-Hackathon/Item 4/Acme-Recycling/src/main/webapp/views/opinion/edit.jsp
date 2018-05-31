@@ -22,7 +22,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="opinionForm">
-
+<div class="col-md-8 col-centered">
 <br>
 	<form:hidden path="opinion.id" />
 	<form:hidden path="opinion.version" />
@@ -54,14 +54,7 @@
 </div>
 </div>
 
-	<B><acme:textbox code="opinion.title" path="opinion.title" /></B>
-	<br />
-	<B><acme:textbox code="opinion.comment" path="opinion.comment" /></B>
-	<br />
-	<B><acme:textbox code="opinion.photo" path="opinion.photo" placeHolder="http://"/></B>
-	<br />
-	<B><acme:textbox code="opinion.caption" path="opinion.caption" /></B>
-	<br />
+	
 
 
 	<jstl:if test="${!hiddenSelects}">
@@ -75,14 +68,14 @@
 			</div>
 		</jstl:if>
 
-
+<div class="col">
 		<jstl:if test="${!showItem}">
 			<acme:select items="${courses}" itemLabel="title"
 				code="opinion.course" path="opinableId" />
 			<br />
 			<form:hidden path="opinableItem" value="0" />
 		</jstl:if>
-
+</div>
 	</jstl:if>
 
 	<!-- BOTONES -->
@@ -100,6 +93,6 @@
 				code="opinion.cancel" />
 		</jstl:if>
 	</security:authorize>
-
+</div>
 </form:form>
 

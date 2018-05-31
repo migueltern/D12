@@ -27,6 +27,6 @@
 
 <%-- Definition --%>
 
-<button type="submit" name="${name}" class="btn btn-secondary">
+<button type="submit" name="${name}" class="btn btn-success">
 	<spring:message code="${code}" />
 </button>

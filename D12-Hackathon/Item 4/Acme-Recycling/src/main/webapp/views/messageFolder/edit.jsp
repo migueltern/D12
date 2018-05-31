@@ -23,7 +23,7 @@
 
 
 <form:form action="${requestURI }" modelAttribute="messageFolder">
-
+<div class="col-md-8 col-centered">	
 	<br>
 	<form:hidden path="id" />
 
@@ -42,6 +42,6 @@
 	
 	<acme:cancel url="${RequestURIcancel}" code="messageFolder.cancel"/>
 	<br />
-
+</div>
 	
 </form:form>

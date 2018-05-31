@@ -22,7 +22,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="buyer/edit.do" modelAttribute="buyerForm">
-	
+	<div class="col-md-8 col-centered">
 	<br>
 <form:hidden path="buyer.id" />
 	
@@ -101,7 +101,7 @@
 		<form:errors cssClass="error" path="conditions"/>
    </jstl:if>
  <br/>
- 
+ </div>
 	</form:form>
 	
 	

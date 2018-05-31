@@ -21,7 +21,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-
+<br>
 <h2><spring:message code="recycler.score" />
 <jstl:out value="${puntuation}"></jstl:out></h2>
 
@@ -30,9 +30,11 @@
   
   <!-- Attributes -->
 	
-	<display:column>
+	
+<display:column>
+<p>
 	<B><spring:message code="Name" /></B>
-	<jstl:out value="${row.name}"></jstl:out>
+	<jstl:out value="${row.name}"></jstl:out></p>
 	
 
 	<p>
@@ -56,7 +58,7 @@
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="recycler.items" />:</B>
+		<B><spring:message code="recycler.items" /></B>
 			<spring:url value="${requestItemsURL}" var="itemsURL">
 			<spring:param name="recyclerId" value="${row.id }" />
 			<spring:param name="d-16544-p" value="1" />

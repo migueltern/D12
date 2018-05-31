@@ -24,12 +24,14 @@
 <form:hidden path="id" />
 <form:hidden path="version" />
 <form:hidden path="comments" />
-
+<div class="col-md-8 col-centered">
 	<br>
 <!-- ATRIBUTOS -->
 
 
-	
+	<div class="col">
+<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true" /></B>
+</div>
 	
 <div class="col">
  <div class="form-row">
@@ -47,9 +49,7 @@
 <B><acme:textbox code="Pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
 </div>
 
-<div class="col">
-<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true" /></B>
-</div>
+
 
 	<br>
 <!-- BOTONES -->
@@ -58,7 +58,7 @@
 	
 
 	<jstl:if test="${newscast.id != 0}">
-		<input type="submit" name="delete"
+		<input type="submit" name="delete" class="btn btn-danger"
 			value="<spring:message code="new.delete" />"
 			onclick="javascript: return confirm('<spring:message code="new.confirm.delete" />')" />&nbsp;
 	</jstl:if>
@@ -66,4 +66,5 @@
 	<acme:cancel
 		url="newscast/editor/list.do?d-16544-p=1"
 		code="new.cancel" />
+</div>
 </form:form>

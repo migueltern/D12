@@ -24,7 +24,7 @@
 <form:form action="${requestURI}" modelAttribute="editorForm">
 	<br>
 <form:hidden path="editor.id" />
-	
+<div class="col-md-8 col-centered">	
 	
 <jstl:if test="${editorForm.editor.id == 0}">
 <div class="col">
@@ -96,4 +96,5 @@
 		<form:errors cssClass="error" path="conditions"/>
    </jstl:if>
  <br/>
+ </div>
 	</form:form>

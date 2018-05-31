@@ -23,28 +23,44 @@
 
 
 <form:form action="${requestURI}" modelAttribute="item">
-
-
+<div class="col-md-8 col-centered">
+<br>
 	<form:hidden path="id" />
-
 	
-	<B><acme:textbox code="item.title" path="title"/></B>
-	<br />
 	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="item.publicationMoment" path="publicationMoment" readonly="true"/></B>
-	<br />
+</div>
+
+	<div class="form-group col-md-6">
+		<B><acme:textbox code="item.title" path="title"/></B>
+</div>
+</div>
+</div>
 	
-	<B><acme:textarea code="item.description" path="description"/></B>
-	<br />
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+	<B><acme:textbox code="item.description" path="description"/></B>
+</div>
+
+	<div class="form-group col-md-6">
 	
 	<B><acme:textbox code="item.quantity" path="quantity"/></B>
-	<br />
+</div>
+</div>
+</div>
 	
+<div class="col">
 	<B><acme:textbox code="item.photo" path="photo" placeHolder="http://"/></B>
-	<br />
 	
+</div>
+
+<div class="col">	
 	<B><acme:select items="${labelsProduct}" itemLabel="name" code="item.labelProduct" path="labelProduct"/></B>
-	<br />
+</div>
 	
 	
 	<!-- 	//BOTONES -->
@@ -58,5 +74,5 @@
 	<acme:cancel url="${RequestURIcancel}" code="item.cancel"/>
 	<br />
 
-	
+	</div>
 </form:form>

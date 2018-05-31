@@ -23,7 +23,7 @@
 
 <form:form action="recycler/edit.do" modelAttribute="recyclerForm">
 	<br>
-
+<div class="col-md-8 col-centered">
 <form:hidden path="recycler.id" />
 	
 	
@@ -96,6 +96,7 @@
 		<form:errors cssClass="error" path="conditions"/>
    </jstl:if>
  <br/>
+ </div>
 	</form:form>
 	
 	

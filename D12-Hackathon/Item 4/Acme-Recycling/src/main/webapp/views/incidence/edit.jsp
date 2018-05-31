@@ -24,21 +24,38 @@
 
 <form:form action="${requestURI}" modelAttribute="incidence">
 
-
+<div class="col-md-8 col-centered">
+<br>
 	<form:hidden path="id" />
 
 	
-	<B><acme:textbox code="incidence.title" path="title"/></B>
-	<br />
-	
-	<B><acme:textarea code="incidence.reasonWhy" path="reasonWhy"/></B>
-	<br />
-	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="incidence.createdMoment" path="createdMoment" readonly="true"/></B>
-	<br />
+</div>
+
+	<div class="form-group col-md-6">
 	
-	<B><acme:textarea code="incidence.comment" path="comment"/></B>
-	<br />
+	<B><acme:textbox code="incidence.reasonWhy" path="reasonWhy"/></B>
+</div>
+</div>
+</div>
+
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+		<B><acme:textbox code="incidence.title" path="title"/></B>
+	
+</div>
+
+	<div class="form-group col-md-6">
+	
+	<B><acme:textbox code="incidence.comment" path="comment"/></B>
+</div>
+</div>
+</div>
 	
 	
 	<!-- 	//BOTONES -->
@@ -52,5 +69,5 @@
 	<acme:cancel url="${RequestURIcancel}" code="incidence.cancel"/>
 	<br />
 
-	
+	</div>
 </form:form>

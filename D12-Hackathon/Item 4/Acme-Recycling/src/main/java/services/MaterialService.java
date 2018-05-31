@@ -79,7 +79,6 @@ public class MaterialService {
 		actor = this.actorService.findPrincipal();
 
 		Assert.isTrue(actor instanceof Admin || actor instanceof Buyer);
-		Assert.isTrue(!(material.getUnitPrice() == 0), "The unitPrice must be greater than to 0");
 
 		material.setTotalPrice(material.getQuantity() * material.getUnitPrice());
 

@@ -114,7 +114,7 @@ public class ItemService {
 		Assert.notNull(item);
 
 		if (item.getRequest() != null) {
-			Assert.isTrue(item.getRequest().getCarrier() == null, "This item is assigned a carrier");
+			Assert.isTrue(item.getRequest().getCarrier() == null || !item.getRequest().getStatus().equals("IN COLLECTION"), "This item is assigned a carrier");
 			Assert.isTrue(item.getRequest().getStatus().equals("PENDING") || item.getRequest().getStatus().equals("CLEAN POINT"), "This item will collect it soon or it has finished its process");
 			this.requestService.delete(item.getRequest());
 		}

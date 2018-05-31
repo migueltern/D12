@@ -1,8 +1,10 @@
 
 package controllers;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,6 +20,7 @@ import services.LabelMaterialService;
 import services.MaterialService;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import domain.Material;
 
@@ -62,11 +65,13 @@ public class MaterialJSONController extends AbstractController {
 	}, method = RequestMethod.GET)
 	public String list() {
 
-		final Material material = this.materialService.findAll().iterator().next();
-		material.setBuys(null);
+		final Collection<Material> materials = this.materialService.findAll();
 		//Quitamos la bidireccionalidad para que no nos salga un stack overflow al intentar mapearlo a json
-		material.getLabelMaterial().setMaterials(null);
-		final String serialize = new Gson().toJson(material);
+		for (final Material m : materials) {
+			m.setBuys(null);
+			m.getLabelMaterial().setMaterials(null);
+		}
+		final String serialize = new Gson().toJson(materials);
 		return serialize;
 	}
 
@@ -88,22 +93,19 @@ public class MaterialJSONController extends AbstractController {
 	public ModelAndView addMaterial() {
 
 		ModelAndView result;
-		//final Material material;
-		final Collection<Material> materials = new ArrayList<Material>();
 
 		final RestTemplate restTemplate = new RestTemplate();
 		//Si intento convertirlo a la clase Material.class no funcionaria, por lo tanto lo convertimos a una clase String y despues hacemos la conversion con Gson
 		final String string = restTemplate.getForObject("http://localhost:8080/Acme-Recycling/materialJSON/listJSON.do", String.class);
 		//Hacemos la conversion con Gson
 		final Gson gson = new Gson();
-		final Material material = gson.fromJson(string, Material.class);
-
-		//Lo añadimos a la lista
-		materials.add(material);
+		final Type listType = new TypeToken<ArrayList<Material>>() {
+		}.getType();
+		final List<Material> materials = gson.fromJson(string, listType);
 
 		result = new ModelAndView("material/list");
 		result.addObject("materials", materials);
-		result.addObject("requestURI", "materialSON/list.do");
+		result.addObject("requestURI", "materialJSON/list.do");
 
 		return result;
 	}

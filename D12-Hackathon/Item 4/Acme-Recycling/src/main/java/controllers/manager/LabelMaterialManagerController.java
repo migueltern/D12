@@ -46,7 +46,7 @@ public class LabelMaterialManagerController extends AbstractController {
 
 		result = new ModelAndView("labelMaterial/list");
 		result.addObject("labelMaterials", labelMaterials);
-		result.addObject("requestURI", "labelMaterial/manager/list.do");
+		result.addObject("requestURI", "labelMaterial/manager/list.do?d-16544-p=1");
 		result.addObject("RequestURIedit", "messageFolder/manager/edit.do");
 		result.addObject("RequestURImessages", "message/manager/list.do?d-16544-p=1");
 
@@ -93,7 +93,7 @@ public class LabelMaterialManagerController extends AbstractController {
 		else
 			try {
 				this.labelMaterialService.save(labelMaterial);
-				result = new ModelAndView("redirect:/labelMaterial/manager/list.do");
+				result = new ModelAndView("redirect:/labelMaterial/manager/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("This label is asociated with one material or more"))
 					result = this.createEditModelAndView(labelMaterial, "labelMaterial.labelContainsMaterial.error");
@@ -116,7 +116,7 @@ public class LabelMaterialManagerController extends AbstractController {
 		Assert.notNull(labelMaterial);
 		try {
 			this.labelMaterialService.delete(labelMaterial);
-			result = new ModelAndView("redirect:list.do");
+			result = new ModelAndView("redirect:list.do?d-16544-p=1");
 		} catch (final Throwable oops) {
 			if (oops.getMessage().equals("This label is asociated with one material or more"))
 				result = this.createDeleteModelAndView(labelMaterial, "labelMaterial.labelContainsMaterial.error");
@@ -161,7 +161,7 @@ public class LabelMaterialManagerController extends AbstractController {
 		result.addObject("labelMaterial", labelMaterial);
 		result.addObject("labelMaterials", labelMaterials);
 		result.addObject("message", messageCode);
-		result.addObject("requestURI", "labelMaterial/manager/list.do");
+		result.addObject("requestURI", "labelMaterial/manager/list.do?d-16544-p=1");
 
 		return result;
 

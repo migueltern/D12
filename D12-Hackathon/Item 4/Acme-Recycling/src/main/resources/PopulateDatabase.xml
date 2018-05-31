@@ -2013,6 +2013,127 @@
 		<property name="sender" ref="recycler1" />
 		<property name="recipient" ref="admin" />
 	</bean>
+	
+	<bean id="message2" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1 viagra" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="HIGH" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message3" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1 viagra" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message4" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message5" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message6" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 3 cialis" />
+		<property name="body" value="body 3" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message7" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 3 cialis" />
+		<property name="body" value="body 3" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message8" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 4 sexo" />
+		<property name="body" value="body 4" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message9" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 4 sexo" />
+		<property name="body" value="body 4" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message10" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 5" />
+		<property name="body" value="body 5 viagra" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message11" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 5" />
+		<property name="body" value="body 5 viagra" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message12" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 6" />
+		<property name="body" value="body 6 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="SpamBoxAdmin" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message13" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 6" />
+		<property name="body" value="body 6 sex" />
+		<property name="priority" value="LOW" />
+		<property name="messageFolder" ref="OutBoxManager5" />
+		<property name="sender" ref="manager5" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
 
 	<!-- Messages Folders -->
 

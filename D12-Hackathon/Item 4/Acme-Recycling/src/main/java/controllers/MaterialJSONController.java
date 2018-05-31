@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,24 +45,10 @@ public class MaterialJSONController extends AbstractController {
 		super();
 	}
 
-	//	Listing ---------------------------------------------------------
-	//	@RequestMapping(value = "/list", produces = {
-	//		MediaType.APPLICATION_JSON_VALUE
-	//	}, method = RequestMethod.GET)
-	//	public Material list() {
-	//
-	//		final Material material = this.materialService.findAll().iterator().next();
-	//		material.setBuys(null);
-	//		material.setLabelMaterial(null);
-	//		//		final String serialize = new Gson().toJson(material);
-	//		return material;
-	//	}
-
-	@ResponseBody
 	@RequestMapping(value = "/listJSON", produces = {
 		MediaType.APPLICATION_JSON_VALUE
 	}, method = RequestMethod.GET)
-	public String list() {
+	public String listJSON() {
 
 		final Collection<Material> materials = this.materialService.findAll();
 		//Quitamos la bidireccionalidad para que no nos salga un stack overflow al intentar mapearlo a json
@@ -75,22 +60,8 @@ public class MaterialJSONController extends AbstractController {
 		return serialize;
 	}
 
-	//	@RequestMapping(value = "/addMaterial", method = RequestMethod.POST)
-	//	public ModelAndView addMaterial(final Material material) {
-	//
-	//		ModelAndView result;
-	//		//final Material material;
-	//		final Collection<Material> materials = new ArrayList<Material>();
-	//
-	//		result = new ModelAndView("material/list");
-	//		result.addObject("materials", materials);
-	//		result.addObject("requestURI", "materialSON/listJSON.do");
-	//
-	//		return result;
-	//	}
-
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView addMaterial() {
+	public ModelAndView list() {
 
 		ModelAndView result;
 

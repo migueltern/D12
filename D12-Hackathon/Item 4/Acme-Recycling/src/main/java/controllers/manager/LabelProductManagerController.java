@@ -72,8 +72,14 @@ public class LabelProductManagerController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int labelProductId) {
 		ModelAndView result;
 		LabelProduct labelProduct;
+		final Collection<LabelProduct> labelProductsWithProduct;
+		labelProductsWithProduct = this.labelProductService.labelProductsOfAllProducts();
 
 		labelProduct = this.labelProductService.findOne(labelProductId);
+
+		Assert.isTrue(labelProduct.getByDefault() == false);
+		Assert.isTrue(!labelProductsWithProduct.contains(labelProduct), "This label is asociated with one product or more");
+
 		Assert.notNull(labelProduct);
 		result = this.createEditModelAndView(labelProduct);
 

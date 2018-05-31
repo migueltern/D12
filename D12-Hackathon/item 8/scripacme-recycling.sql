@@ -41,6 +41,7 @@ CREATE TABLE `admin` (
   `userAccount_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_gfgqmtp2f9i5wsojt33xm0uth` (`userAccount_id`),
+  KEY `AdminUK_cgls5lrufx91ufsyh467spwa3` (`userAccount_id`),
   CONSTRAINT `FK_gfgqmtp2f9i5wsojt33xm0uth` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -51,7 +52,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1426,0,'Adress admin 1','admin@acmenewspaper.com','admin 1','+34611111111','SEVILLA','surname admin 1',1400);
+INSERT INTO `admin` VALUES (3946,0,'Adress admin 1','admin@acmenewspaper.com','admin 1','+34611111111','SEVILLA','surname admin 1',3920);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +79,7 @@ CREATE TABLE `assesment` (
 
 LOCK TABLES `assesment` WRITE;
 /*!40000 ALTER TABLE `assesment` DISABLE KEYS */;
-INSERT INTO `assesment` VALUES (1539,0,'description 2','2018-02-02',2),(1540,0,'description 3','2018-03-02',5);
+INSERT INTO `assesment` VALUES (4059,0,'description 2','2018-02-02',2),(4060,0,'description 3','2018-03-02',5);
 /*!40000 ALTER TABLE `assesment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +114,7 @@ CREATE TABLE `buy` (
 
 LOCK TABLES `buy` WRITE;
 /*!40000 ALTER TABLE `buy` DISABLE KEYS */;
-INSERT INTO `buy` VALUES (1677,0,'comment buy 1','Brand name 1',123,'06','20','holder name 1','4388576018410707',8,1513),(1678,0,'comment buy 2','Brand name 2',123,'01','21','holder name 2','4388576018410707',2,1514),(1679,0,'comment buy 3','Brand name 3',614,'01','19','holder name 3','4388576018410707',3,1515),(1680,0,'comment buy 4','Brand name 4',614,'01','19','holder name 4','4388576018410707',4,1516),(1681,0,'comment buy 5','Brand name 5',614,'01','19','Agent1 holder name 5','4388576018410707',5,1517),(1682,0,'comment buy 6','Brand name 1',123,'06','20','holder name 1','4388576018410707',1,1513),(1683,0,'comment buy 7','Brand name 2',123,'01','21','holder name 2','4388576018410707',2,1513),(1684,0,'comment buy 8','Brand name 4',614,'01','19','holder name 4','4388576018410707',2,1514),(1685,0,'comment buy 9','Brand name 6',614,'01','19','Agent2 holder name 6','4388576018410707',9,1518);
+INSERT INTO `buy` VALUES (4197,0,'comment buy 1','Brand name 1',123,'06','20','holder name 1','4388576018410707',8,4033),(4198,0,'comment buy 2','Brand name 2',123,'01','21','holder name 2','4388576018410707',2,4034),(4199,0,'comment buy 3','Brand name 3',614,'01','19','holder name 3','4388576018410707',3,4035),(4200,0,'comment buy 4','Brand name 4',614,'01','19','holder name 4','4388576018410707',4,4036),(4201,0,'comment buy 5','Brand name 5',614,'01','19','Agent1 holder name 5','4388576018410707',5,4037),(4202,0,'comment buy 6','Brand name 1',123,'06','20','holder name 1','4388576018410707',1,4033),(4203,0,'comment buy 7','Brand name 2',123,'01','21','holder name 2','4388576018410707',2,4033),(4204,0,'comment buy 8','Brand name 4',614,'01','19','holder name 4','4388576018410707',2,4034),(4205,0,'comment buy 9','Brand name 6',614,'01','19','Agent2 holder name 6','4388576018410707',9,4038);
 /*!40000 ALTER TABLE `buy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,6 +138,7 @@ CREATE TABLE `buyer` (
   `finder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_n1u0aujikrqor6qt4sc7dxi6y` (`userAccount_id`),
+  KEY `BuyerUK_cgls5lrufx91ufsyh467spwa3` (`userAccount_id`),
   KEY `FK_n4qyus4u40veu4jljxd5fdf6d` (`finder_id`),
   CONSTRAINT `FK_n1u0aujikrqor6qt4sc7dxi6y` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`),
   CONSTRAINT `FK_n4qyus4u40veu4jljxd5fdf6d` FOREIGN KEY (`finder_id`) REFERENCES `finder` (`id`)
@@ -149,7 +151,7 @@ CREATE TABLE `buyer` (
 
 LOCK TABLES `buyer` WRITE;
 /*!40000 ALTER TABLE `buyer` DISABLE KEYS */;
-INSERT INTO `buyer` VALUES (1447,1,'Adress buyer 1','buyer1@acmerecycling.com','buyer 1','+34666666666','ALMERIA','surname buyer 1',1421,1458),(1448,1,'Adress buyer 2','buyer2@acmerecycling.com','buyer 2','+34612666666','ALMERIA','surname buyer 2',1422,1459),(1449,1,'Adress buyer 3','buyer3@acmerecycling.com','buyer 3','+34136666666','GIRONA','surname buyer 3',1423,1460),(1450,1,'Adress buyer 4','buyer4@acmerecycling.com','buyer 4','+34614666666','BADAJOZ','surname buyer 4',1424,1461),(1451,1,'Adress buyer 5','buyer5@acmerecycling.com','buyer 5','+34615666666','CADIZ','surname buyer 5',1425,1462);
+INSERT INTO `buyer` VALUES (3967,1,'Adress buyer 1','buyer1@acmerecycling.com','buyer 1','+34666666666','ALMERIA','surname buyer 1',3941,3978),(3968,1,'Adress buyer 2','buyer2@acmerecycling.com','buyer 2','+34612666666','ALMERIA','surname buyer 2',3942,3979),(3969,1,'Adress buyer 3','buyer3@acmerecycling.com','buyer 3','+34136666666','GIRONA','surname buyer 3',3943,3980),(3970,1,'Adress buyer 4','buyer4@acmerecycling.com','buyer 4','+34614666666','BADAJOZ','surname buyer 4',3944,3981),(3971,1,'Adress buyer 5','buyer5@acmerecycling.com','buyer 5','+34615666666','CADIZ','surname buyer 5',3945,3982);
 /*!40000 ALTER TABLE `buyer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +178,7 @@ CREATE TABLE `buyer_buy` (
 
 LOCK TABLES `buyer_buy` WRITE;
 /*!40000 ALTER TABLE `buyer_buy` DISABLE KEYS */;
-INSERT INTO `buyer_buy` VALUES (1447,1677),(1447,1685),(1448,1678),(1448,1679),(1450,1680),(1450,1683),(1451,1681),(1451,1682),(1451,1684);
+INSERT INTO `buyer_buy` VALUES (3967,4197),(3967,4205),(3968,4198),(3968,4199),(3970,4200),(3970,4203),(3971,4201),(3971,4202),(3971,4204);
 /*!40000 ALTER TABLE `buyer_buy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +205,7 @@ CREATE TABLE `buyer_course` (
 
 LOCK TABLES `buyer_course` WRITE;
 /*!40000 ALTER TABLE `buyer_course` DISABLE KEYS */;
-INSERT INTO `buyer_course` VALUES (1447,1496),(1448,1497),(1448,1498),(1450,1499),(1451,1500);
+INSERT INTO `buyer_course` VALUES (3967,4016),(3968,4017),(3968,4018),(3970,4021),(3971,4020);
 /*!40000 ALTER TABLE `buyer_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,6 +228,7 @@ CREATE TABLE `carrier` (
   `userAccount_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_62tsjlw490ys898otivsrx4dx` (`userAccount_id`),
+  KEY `CarrierUK_cgls5lrufx91ufsyh467spwa3` (`userAccount_id`),
   CONSTRAINT `FK_62tsjlw490ys898otivsrx4dx` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -236,7 +239,7 @@ CREATE TABLE `carrier` (
 
 LOCK TABLES `carrier` WRITE;
 /*!40000 ALTER TABLE `carrier` DISABLE KEYS */;
-INSERT INTO `carrier` VALUES (1432,0,'Adress carrier 1','carrier1@acmerecycling.com','carrier 1','+34633333333','SEVILLA','surname carrier 1',1406),(1433,0,'Adress carrier 2','carrier2@acmerecycling.com','carrier 2','+34612333333','CADIZ','surname carrier 2',1407),(1434,0,'Adress carrier 3','carrier3@acmerecycling.com','carrier 3','+34613333333','HUELVA','surname carrier 3',1408),(1435,0,'Adress carrier 4','carrier4@acmerecycling.com','carrier 4','+34614333333','JAEN','surname carrier 4',1409),(1436,0,'Adress carrier 5','carrier5@acmerecycling.com','carrier 5','+34615333333','SEVILLA','surname carrier 5',1410);
+INSERT INTO `carrier` VALUES (3952,0,'Adress carrier 1','carrier1@acmerecycling.com','carrier 1','+34633333333','SEVILLA','surname carrier 1',3926),(3953,0,'Adress carrier 2','carrier2@acmerecycling.com','carrier 2','+34612333333','CADIZ','surname carrier 2',3927),(3954,0,'Adress carrier 3','carrier3@acmerecycling.com','carrier 3','+34613333333','HUELVA','surname carrier 3',3928),(3955,0,'Adress carrier 4','carrier4@acmerecycling.com','carrier 4','+34614333333','JAEN','surname carrier 4',3929),(3956,0,'Adress carrier 5','carrier5@acmerecycling.com','carrier 5','+34615333333','SEVILLA','surname carrier 5',3930);
 /*!40000 ALTER TABLE `carrier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +270,7 @@ CREATE TABLE `cleanpoint` (
 
 LOCK TABLES `cleanpoint` WRITE;
 /*!40000 ALTER TABLE `cleanpoint` DISABLE KEYS */;
-INSERT INTO `cleanpoint` VALUES (1533,0,'ctra arahal-paradas',37.35,-5.98,'ubicacion 1','\0','+652582643','SEVILLA'),(1534,0,'address clean point 2',37.28,-5.49,'Ubicacion 2','\0','+654769645','HUELVA'),(1535,0,'address clean point 3',40.6,5.5,'Ubicacion 3','\0','+689354723','MALAGA'),(1536,0,'address clean point  4',41.34,2.09,'Ubicacion 4','','+7656573211','MALAGA'),(1537,0,'address clean point 5',43.65,7.08,'Ubicacion 5','\0','+676543234','ALMERIA'),(1538,0,'address clean point 6',34.65,5.08,'Ubicacion 6','','+676543255','HUESCA');
+INSERT INTO `cleanpoint` VALUES (4053,0,'ctra arahal-paradas',37.35,-5.98,'ubicacion 1','\0','+652582643','SEVILLA'),(4054,0,'address clean point 2',37.28,-5.49,'Ubicacion 2','\0','+654769645','HUELVA'),(4055,0,'address clean point 3',40.6,5.5,'Ubicacion 3','\0','+689354723','MALAGA'),(4056,0,'address clean point  4',41.34,2.09,'Ubicacion 4','','+7656573211','MALAGA'),(4057,0,'address clean point 5',43.65,7.08,'Ubicacion 5','\0','+676543234','ALMERIA'),(4058,0,'address clean point 6',34.65,5.08,'Ubicacion 6','','+676543255','HUESCA');
 /*!40000 ALTER TABLE `cleanpoint` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,7 +299,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1488,0,'body 1','2018-01-02 13:31:00',NULL),(1489,0,'body 2','2018-02-02 12:31:00',NULL),(1490,0,'body 3','2018-01-02 13:31:00',NULL),(1491,0,'body 4','2018-04-02 14:31:00',NULL),(1492,0,'body 5','2018-05-02 15:31:00',NULL),(1493,0,'body 6','2018-05-06 15:31:00',1488),(1494,0,'body 7','2018-05-07 15:31:00',1488),(1495,0,'body 8','2018-05-08 15:31:00',1492);
+INSERT INTO `comment` VALUES (4008,0,'body 1','2018-01-02 13:31:00',NULL),(4009,0,'body 2','2018-02-02 12:31:00',NULL),(4010,0,'body 3','2018-01-02 13:31:00',NULL),(4011,0,'body 4','2018-04-02 14:31:00',NULL),(4012,0,'body 5','2018-05-02 15:31:00',NULL),(4013,0,'body 6','2018-05-06 15:31:00',4008),(4014,0,'body 7','2018-05-07 15:31:00',4008),(4015,0,'body 8','2018-05-08 15:31:00',4012);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +334,7 @@ CREATE TABLE `configurationsystem` (
 
 LOCK TABLES `configurationsystem` WRITE;
 /*!40000 ALTER TABLE `configurationsystem` DISABLE KEYS */;
-INSERT INTO `configurationsystem` VALUES (1502,0,'https://okdiario.com/img/2017/05/03/planeta-655x368.jpg','http://www.masciudadania.es/wp-content/uploads/2016/04/z-Banner.jpg',2,'There are people who make the world work better, let\'s make it work by reducing pollution and recycling.','Our company Acme-Recycler is located in the capital of Andalucia, specifically in the Spanish municipality of the province of Seville.','Nuestra empresa Acme-Recycler se encuentra ubicada en la capital de Andalucía, concretamente en el municipio español de la provincia de Sevilla.',40,'Acme-Recycling','Hay gente que hace que el mundo funcione mejor, hagamos que funcione reduciendo la contaminación y reciclando.','The organization that takes care of the environment through recycling and eco-design of packaging in Spain. We make it possible for plastic containers, cans, paperboard, and any object can have a second chance.','La organización que cuida del medio ambiente a través del reciclaje y el ecodiseño de los envases en España. Hacemos posible que los envases de plástico, latas, cartón, y cualquier objeto puedan tener una segunda oportunidad. ');
+INSERT INTO `configurationsystem` VALUES (4022,0,'https://okdiario.com/img/2017/05/03/planeta-655x368.jpg','http://www.masciudadania.es/wp-content/uploads/2016/04/z-Banner.jpg',2,'There are people who make the world work better, let\'s make it work by reducing pollution and recycling.','Our company Acme-Recycler is located in the capital of Andalucia, specifically in the Spanish municipality of the province of Seville.','Nuestra empresa Acme-Recycler se encuentra ubicada en la capital de Andalucía, concretamente en el municipio español de la provincia de Sevilla.',40,'Acme-Recycling','Hay gente que hace que el mundo funcione mejor, hagamos que funcione reduciendo la contaminación y reciclando.','The organization that takes care of the environment through recycling and eco-design of packaging in Spain. We make it possible for plastic containers, cans, paperboard, and any object can have a second chance.','La organización que cuida del medio ambiente a través del reciclaje y el ecodiseño de los envases en España. Hacemos posible que los envases de plástico, latas, cartón, y cualquier objeto puedan tener una segunda oportunidad. ');
 /*!40000 ALTER TABLE `configurationsystem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +361,7 @@ CREATE TABLE `configurationsystem_legislation` (
 
 LOCK TABLES `configurationsystem_legislation` WRITE;
 /*!40000 ALTER TABLE `configurationsystem_legislation` DISABLE KEYS */;
-INSERT INTO `configurationsystem_legislation` VALUES (1502,1509),(1502,1510),(1502,1511),(1502,1512);
+INSERT INTO `configurationsystem_legislation` VALUES (4022,4029),(4022,4030),(4022,4031),(4022,4032);
 /*!40000 ALTER TABLE `configurationsystem_legislation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,7 +388,7 @@ CREATE TABLE `configurationsystem_tabooword` (
 
 LOCK TABLES `configurationsystem_tabooword` WRITE;
 /*!40000 ALTER TABLE `configurationsystem_tabooword` DISABLE KEYS */;
-INSERT INTO `configurationsystem_tabooword` VALUES (1502,1504),(1502,1505),(1502,1506),(1502,1507);
+INSERT INTO `configurationsystem_tabooword` VALUES (4022,4024),(4022,4025),(4022,4026),(4022,4027);
 /*!40000 ALTER TABLE `configurationsystem_tabooword` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,7 +411,8 @@ CREATE TABLE `course` (
   `picture` varchar(255) DEFAULT NULL,
   `realisedMoment` date DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `UK_rn6vlan03m96oonvb1bx79xnh` (`title`,`description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -418,7 +422,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1496,0,'description course 1','\0',37.35,-5.98,'ubicacion 1',1,'http://cuellar7.com/wp-content/uploads/2014/09/Curso-2-Coca.jpg','2018-12-12','title course 1'),(1497,0,'description course 2','\0',37.28,-5.49,'Ubicacion 2',2,'https://spseguridad.files.wordpress.com/2013/05/curso_presencial1.jpg','2018-02-12','title course 2'),(1498,0,'description course 3','',40.6,5.5,'Ubicacion 3',3,'http://www.gsesoftware.com/wp-content/uploads/2017/02/LOGO-FORMACI%C3%93N-300x119.png','2018-12-13','title course 3'),(1499,0,'description course 4','\0',41.34,2.09,'Ubicacion 4',4,'https://www.panamaparaninos.com/image/cache/data/Eventos/Culturales/Mu%C3%B1ecosPapelMacheBibadabook_01-600x600.jpg','2018-04-12','title course 4'),(1500,0,'description course 5','\0',43.65,7.08,'Ubicacion 5',5,'http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png','2018-12-15','title course 5'),(1501,0,'description course 6','\0',43.65,7.08,'Ubicacion 5',2,'http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png','2018-11-01','title course 6');
+INSERT INTO `course` VALUES (4016,0,'description course 1','\0',37.35,-5.98,'ubicacion 1',1,'http://cuellar7.com/wp-content/uploads/2014/09/Curso-2-Coca.jpg','2018-12-12','title course 1'),(4017,0,'description course 2','\0',37.28,-5.49,'Ubicacion 2',2,'https://spseguridad.files.wordpress.com/2013/05/curso_presencial1.jpg','2018-02-12','title course 2'),(4018,0,'description course 3','\0',40.6,5.5,'Ubicacion 3',3,'http://www.gsesoftware.com/wp-content/uploads/2017/02/LOGO-FORMACI%C3%93N-300x119.png','2018-12-13','title course 3'),(4019,0,'description course 4','\0',41.34,2.09,'Ubicacion 4',4,'https://www.panamaparaninos.com/image/cache/data/Eventos/Culturales/Mu%C3%B1ecosPapelMacheBibadabook_01-600x600.jpg','2018-04-12','title course 4'),(4020,0,'description course 5','\0',43.65,7.08,'Ubicacion 5',5,'https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-34-638.jpg?cb=1380200215','2018-12-15','title course 5'),(4021,0,'description course 6','',43.65,7.08,'Ubicacion 5',2,'https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-5-638.jpg?cb=1380200215','2019-11-01','title course 6');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +449,7 @@ CREATE TABLE `course_material` (
 
 LOCK TABLES `course_material` WRITE;
 /*!40000 ALTER TABLE `course_material` DISABLE KEYS */;
-INSERT INTO `course_material` VALUES (1496,1513),(1497,1514),(1498,1515),(1499,1516),(1500,1517),(1501,1518);
+INSERT INTO `course_material` VALUES (4016,4033),(4017,4034),(4018,4035),(4019,4036),(4020,4037),(4021,4038);
 /*!40000 ALTER TABLE `course_material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,6 +472,7 @@ CREATE TABLE `editor` (
   `userAccount_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_n206xwfkcb9yc6xokpt7nil48` (`userAccount_id`),
+  KEY `EditorUK_cgls5lrufx91ufsyh467spwa3` (`userAccount_id`),
   CONSTRAINT `FK_n206xwfkcb9yc6xokpt7nil48` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -478,7 +483,7 @@ CREATE TABLE `editor` (
 
 LOCK TABLES `editor` WRITE;
 /*!40000 ALTER TABLE `editor` DISABLE KEYS */;
-INSERT INTO `editor` VALUES (1427,0,'Adress editor 1','editor1@acmerecycling.com','editor 1','+34622222222','SEVILLA','surname editor 1',1416),(1428,0,'Adress editor 2','editor2@acmerecycling.com','editor 2','+34635222222','MADRID','surname editor 2',1417),(1429,0,'Adress editor 3','editor3@acmerecycling.com','editor 3','+34667222222','LUGO','surname editor 3',1418),(1430,0,'Adress editor 4','editor4@acmerecycling.com','editor 4','+34619222222','VALENCIA','surname editor 4',1419),(1431,0,'Adress editor 5','editor5@acmerecycling.com','editor 5','+34615222222','ZARAGOZA','surname editor 5',1420);
+INSERT INTO `editor` VALUES (3947,0,'Adress editor 1','editor1@acmerecycling.com','editor 1','+34622222222','SEVILLA','surname editor 1',3936),(3948,0,'Adress editor 2','editor2@acmerecycling.com','editor 2','+34635222222','MADRID','surname editor 2',3937),(3949,0,'Adress editor 3','editor3@acmerecycling.com','editor 3','+34667222222','LUGO','surname editor 3',3938),(3950,0,'Adress editor 4','editor4@acmerecycling.com','editor 4','+34619222222','VALENCIA','surname editor 4',3939),(3951,0,'Adress editor 5','editor5@acmerecycling.com','editor 5','+34615222222','ZARAGOZA','surname editor 5',3940);
 /*!40000 ALTER TABLE `editor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +510,7 @@ CREATE TABLE `editor_newscast` (
 
 LOCK TABLES `editor_newscast` WRITE;
 /*!40000 ALTER TABLE `editor_newscast` DISABLE KEYS */;
-INSERT INTO `editor_newscast` VALUES (1427,1452),(1427,1453),(1429,1454),(1429,1457),(1430,1455),(1431,1456);
+INSERT INTO `editor_newscast` VALUES (3947,3972),(3947,3973),(3949,3974),(3949,3977),(3950,3975),(3951,3976);
 /*!40000 ALTER TABLE `editor_newscast` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -523,7 +528,8 @@ CREATE TABLE `finder` (
   `keyWord` varchar(255) DEFAULT NULL,
   `lowPrice` double DEFAULT NULL,
   `startCacheTime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `UK_i7gvuyaofx4ru2qxvk0d7i53v` (`keyWord`,`lowPrice`,`highPrice`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -533,7 +539,7 @@ CREATE TABLE `finder` (
 
 LOCK TABLES `finder` WRITE;
 /*!40000 ALTER TABLE `finder` DISABLE KEYS */;
-INSERT INTO `finder` VALUES (1458,0,3.1,'sex',1,'2018-12-12 18:34:00'),(1459,0,3.1,'sex2',1,'2018-12-12 18:34:00'),(1460,0,3.1,'sex3',1,'2018-12-12 18:34:00'),(1461,0,3.1,'sex4',1,'2018-12-12 18:34:00'),(1462,0,3.1,'sex5',1,'2018-12-12 18:34:00');
+INSERT INTO `finder` VALUES (3978,0,3.1,'sex',1,'2018-12-12 18:34:00'),(3979,0,3.1,'sex2',1,'2018-12-12 18:34:00'),(3980,0,3.1,'sex3',1,'2018-12-12 18:34:00'),(3981,0,3.1,'sex4',1,'2018-12-12 18:34:00'),(3982,0,3.1,'sex5',1,'2018-12-12 18:34:00');
 /*!40000 ALTER TABLE `finder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -560,7 +566,7 @@ CREATE TABLE `finder_material` (
 
 LOCK TABLES `finder_material` WRITE;
 /*!40000 ALTER TABLE `finder_material` DISABLE KEYS */;
-INSERT INTO `finder_material` VALUES (1458,1513),(1458,1514),(1460,1515),(1461,1516),(1462,1517);
+INSERT INTO `finder_material` VALUES (3978,4033),(3978,4034),(3980,4035),(3981,4036),(3982,4037);
 /*!40000 ALTER TABLE `finder_material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,7 +622,7 @@ CREATE TABLE `incidence` (
 
 LOCK TABLES `incidence` WRITE;
 /*!40000 ALTER TABLE `incidence` DISABLE KEYS */;
-INSERT INTO `incidence` VALUES (1463,0,'comment incidence 1','2018-01-01 11:20:00','reason why 1','\0','title incidence 1 viagra',1442),(1464,0,'comment incidence 2','2018-02-02 12:20:00','reason why 2','','title incidence 2',1443),(1465,0,'comment incidence 3','2018-03-03 13:30:00','reason why 3','','title incidence 3',1444),(1466,0,'comment incidence 4','2018-04-04 14:40:00','reason why 4','\0','title incidence 4',1445),(1467,0,'comment incidence 5','2018-05-05 15:50:00','reason why 5','\0','title incidence 5',1446),(1468,0,'comment incidence 6','2018-05-01 19:20:00','reason why 6','','title incidence 6 sex',1445),(1469,0,'comment incidence 7','2018-02-22 21:20:00','reason why 7','','title incidence 7 sexo',1446);
+INSERT INTO `incidence` VALUES (3983,0,'comment incidence 1','2018-01-01 11:20:00','reason why 1','\0','title incidence 1 viagra',3962),(3984,0,'comment incidence 2','2018-02-02 12:20:00','reason why 2','','title incidence 2',3962),(3985,0,'comment incidence 3','2018-03-03 13:30:00','reason why 3','','title incidence 3',3964),(3986,0,'comment incidence 4','2018-04-04 14:40:00','reason why 4','\0','title incidence 4',3964),(3987,0,'comment incidence 5','2018-05-05 15:50:00','reason why 5','\0','title incidence 5',3964),(3988,0,'comment incidence 6','2018-05-01 19:20:00','reason why 6','','title incidence 6 sex',3962),(3989,0,'comment incidence 7','2018-02-22 21:20:00','reason why 7','','title incidence 7 sexo',3964);
 /*!40000 ALTER TABLE `incidence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -656,7 +662,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1686,0,'description item 1','https://pimientosytomates.files.wordpress.com/2009/08/lavadora-vieja.jpg','2018-01-12 12:12:00',23,'title item 1',16,1476,1442,1527),(1687,0,'description item 2','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSWZaE9DvgcQGN3ekP2yPWphBpe78dohdbXxsLnkGy7ed1QeQ4QA','2018-02-12 12:12:00',2,'title item 2',2,1476,1443,NULL),(1688,0,'description item 3','http://www.cafedelescritor.com/wp-content/uploads/libros-viejos.jpg','2018-03-12 12:12:00',3,'title item 3',3,1477,1444,1529),(1689,0,'description item 5','http://fotografias.lasexta.com/clipping/cmsimages01/2014/11/25/AE4222C6-A8BC-470C-BB56-73743D2FBD16/58.jpg','2018-05-12 15:12:00',5,'title item 5',5,1478,1446,1531),(1690,0,'description item 6','http://fotografias.lasexta.com/clipping/cmsimages01/2014/11/25/AE4222C6-A8BC-470C-BB56-73743D2FBD16/58.jpg','2018-05-12 15:12:00',5,'title item 6',5,1478,1446,1532),(1691,0,'description item 7','https://pimientosytomates.files.wordpress.com/2009/08/lavadora-vieja.jpg','2018-01-16 12:12:00',7,'title item 7',16,1476,1442,1528);
+INSERT INTO `item` VALUES (4206,0,'description item 1','https://pimientosytomates.files.wordpress.com/2009/08/lavadora-vieja.jpg','2018-01-12 12:12:00',23,'title item 1',16,3996,3962,4047),(4207,0,'description item 2','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSWZaE9DvgcQGN3ekP2yPWphBpe78dohdbXxsLnkGy7ed1QeQ4QA','2018-02-12 12:12:00',2,'title item 2',2,3996,3963,NULL),(4208,0,'description item 3','http://www.cafedelescritor.com/wp-content/uploads/libros-viejos.jpg','2018-03-12 12:12:00',3,'title item 3',3,3997,3964,4049),(4209,0,'description item 5','http://fotografias.lasexta.com/clipping/cmsimages01/2014/11/25/AE4222C6-A8BC-470C-BB56-73743D2FBD16/58.jpg','2018-05-12 15:12:00',5,'title item 5',5,3998,3966,4051),(4210,0,'description item 6','http://fotografias.lasexta.com/clipping/cmsimages01/2014/11/25/AE4222C6-A8BC-470C-BB56-73743D2FBD16/58.jpg','2018-05-12 15:12:00',5,'title item 6',5,3998,3966,4052),(4211,0,'description item 7','https://pimientosytomates.files.wordpress.com/2009/08/lavadora-vieja.jpg','2018-01-16 12:12:00',7,'title item 7',16,3996,3962,4048);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -683,7 +689,7 @@ CREATE TABLE `labelmaterial` (
 
 LOCK TABLES `labelmaterial` WRITE;
 /*!40000 ALTER TABLE `labelmaterial` DISABLE KEYS */;
-INSERT INTO `labelmaterial` VALUES (1470,0,'\0','Cobre'),(1471,0,'\0','Aluminio'),(1472,0,'\0','Bronce'),(1473,0,'\0','Aceite'),(1474,0,'','Baterias'),(1475,0,'','Vidrio');
+INSERT INTO `labelmaterial` VALUES (3990,0,'\0','Cobre'),(3991,0,'\0','Aluminio'),(3992,0,'\0','Bronce'),(3993,0,'\0','Aceite'),(3994,0,'','Baterias'),(3995,0,'','Vidrio');
 /*!40000 ALTER TABLE `labelmaterial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -710,7 +716,7 @@ CREATE TABLE `labelproduct` (
 
 LOCK TABLES `labelproduct` WRITE;
 /*!40000 ALTER TABLE `labelproduct` DISABLE KEYS */;
-INSERT INTO `labelproduct` VALUES (1476,0,'','Aluminio'),(1477,0,'','Cemento'),(1478,0,'','Papel'),(1479,0,'','Pilas y baterias'),(1480,0,'','Plastico'),(1481,0,'','Ordenador'),(1482,0,'','Telefono'),(1483,0,'','Textil'),(1484,0,'','Vidrio'),(1485,0,'','Otros'),(1486,0,'\0','Cables'),(1487,0,'\0','Tonner');
+INSERT INTO `labelproduct` VALUES (3996,0,'','Aluminio'),(3997,0,'','Cemento'),(3998,0,'','Papel'),(3999,0,'','Pilas y baterias'),(4000,0,'','Plastico'),(4001,0,'','Ordenador'),(4002,0,'','Telefono'),(4003,0,'','Textil'),(4004,0,'','Vidrio'),(4005,0,'','Otros'),(4006,0,'\0','Cables'),(4007,0,'\0','Tonner');
 /*!40000 ALTER TABLE `labelproduct` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -737,7 +743,7 @@ CREATE TABLE `legislation` (
 
 LOCK TABLES `legislation` WRITE;
 /*!40000 ALTER TABLE `legislation` DISABLE KEYS */;
-INSERT INTO `legislation` VALUES (1509,0,'body 1','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 1'),(1510,0,'body 2','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 2'),(1511,0,'body 3','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 3'),(1512,0,'body 4','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 4');
+INSERT INTO `legislation` VALUES (4029,0,'body 1','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 1'),(4030,0,'body 2','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 2'),(4031,0,'body 3','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 3'),(4032,0,'body 4','http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png','title 4');
 /*!40000 ALTER TABLE `legislation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -756,6 +762,7 @@ CREATE TABLE `lesson` (
   `title` varchar(255) DEFAULT NULL,
   `course_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  KEY `UK_7q0wr758ruqshn5n1xwv4pa9g` (`title`,`summary`,`course_id`),
   KEY `FK_swxtnpbei5seidnpkvxyqph49` (`course_id`),
   CONSTRAINT `FK_swxtnpbei5seidnpkvxyqph49` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -767,7 +774,7 @@ CREATE TABLE `lesson` (
 
 LOCK TABLES `lesson` WRITE;
 /*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
-INSERT INTO `lesson` VALUES (1541,0,11,'summary of lesson 1','title 1',1496),(1542,0,12,'summary of lesson 2','title 2',1497),(1543,0,13,'summary of lesson 3','title 3',1498),(1544,0,14,'summary of lesson 4','title 4',1499),(1545,0,15,'summary of lesson 5','title 5',1500),(1546,0,16,'summary of lesson 6','title 6',1496);
+INSERT INTO `lesson` VALUES (4061,0,1,'summary of lesson 1','title 1',4016),(4062,0,2,'summary of lesson 2','title 2',4017),(4063,0,1,'summary of lesson 3','title 3',4018),(4064,0,1,'summary of lesson 4','title 4',4019),(4065,0,1,'summary of lesson 5','title 5',4020),(4066,0,1,'summary of lesson 6','title 6',4021);
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -790,6 +797,7 @@ CREATE TABLE `manager` (
   `userAccount_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_84bmmxlq61tiaoc7dy7kdcghh` (`userAccount_id`),
+  KEY `ManagerUK_cgls5lrufx91ufsyh467spwa3` (`userAccount_id`),
   CONSTRAINT `FK_84bmmxlq61tiaoc7dy7kdcghh` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -800,7 +808,7 @@ CREATE TABLE `manager` (
 
 LOCK TABLES `manager` WRITE;
 /*!40000 ALTER TABLE `manager` DISABLE KEYS */;
-INSERT INTO `manager` VALUES (1437,0,'Adress manager 1','manager1@acmerecycling.com','manager 1','+34644444444','SEVILLA','surname manager 1',1401),(1438,0,'Adress manager 2','manager2@acmerecycling.com','manager 2','+34612444444','PALENCIA','surname manager 2',1402),(1439,0,'Adress manager 3','manager3@acmerecycling.com','manager 3','+34613444444','CIUDAD REAL','surname manager 3',1403),(1440,0,'Adress manager 4','manager4@acmerecycling.com','manager 4','+34614444444','BARCELONA','surname manager 4',1404),(1441,0,'Adress manager 5','manager5@acmerecycling.com','manager 5','+34615444444','SEVILLA','surname manager 5',1405);
+INSERT INTO `manager` VALUES (3957,0,'Adress manager 1','manager1@acmerecycling.com','manager 1','+34644444444','SEVILLA','surname manager 1',3921),(3958,0,'Adress manager 2','manager2@acmerecycling.com','manager 2','+34612444444','PALENCIA','surname manager 2',3922),(3959,0,'Adress manager 3','manager3@acmerecycling.com','manager 3','+34613444444','CIUDAD REAL','surname manager 3',3923),(3960,0,'Adress manager 4','manager4@acmerecycling.com','manager 4','+34614444444','BARCELONA','surname manager 4',3924),(3961,0,'Adress manager 5','manager5@acmerecycling.com','manager 5','+34615444444','SEVILLA','surname manager 5',3925);
 /*!40000 ALTER TABLE `manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -827,7 +835,7 @@ CREATE TABLE `manager_incidence` (
 
 LOCK TABLES `manager_incidence` WRITE;
 /*!40000 ALTER TABLE `manager_incidence` DISABLE KEYS */;
-INSERT INTO `manager_incidence` VALUES (1437,1463),(1437,1464),(1439,1465),(1440,1466),(1441,1467);
+INSERT INTO `manager_incidence` VALUES (3957,3983),(3957,3984),(3959,3985),(3960,3986),(3961,3987);
 /*!40000 ALTER TABLE `manager_incidence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -854,7 +862,7 @@ CREATE TABLE `manager_request` (
 
 LOCK TABLES `manager_request` WRITE;
 /*!40000 ALTER TABLE `manager_request` DISABLE KEYS */;
-INSERT INTO `manager_request` VALUES (1437,1527),(1439,1529),(1440,1530),(1441,1531);
+INSERT INTO `manager_request` VALUES (3957,4047),(3959,4049),(3960,4050),(3961,4051),(3961,4052);
 /*!40000 ALTER TABLE `manager_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -875,6 +883,7 @@ CREATE TABLE `material` (
   `unitPrice` double DEFAULT NULL,
   `labelMaterial_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
+  KEY `UK_lpviqy4yxestjxg2t8b4on8y7` (`title`,`description`,`unitPrice`),
   KEY `FK_tpq6xjbrtre04u39tqf803vh7` (`labelMaterial_id`),
   CONSTRAINT `FK_tpq6xjbrtre04u39tqf803vh7` FOREIGN KEY (`labelMaterial_id`) REFERENCES `labelmaterial` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -886,7 +895,7 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1513,0,'description 1',2.2,'material title 1',4.4,2,1470),(1514,0,'description 2',2.2,'material title 2',4.4,2,1470),(1515,0,'description 3',3.2,'material title 3',9.92,3.1,1471),(1516,0,'description 4',4.2,'material title 4',17.64,4.2,1471),(1517,0,'description 5',5.2,'material title 5',26,5,1472),(1518,0,'description 6',3.2,'material title 6',38.4,12,1472);
+INSERT INTO `material` VALUES (4033,0,'description 1',2.2,'material title 1',4.4,2,3990),(4034,0,'description 2',2.2,'material title 2',4.4,2,3990),(4035,0,'description 3',3.2,'material title 3',9.92,3.1,3991),(4036,0,'description 4',4.2,'material title 4',17.64,4.2,3991),(4037,0,'description 5',5.2,'material title 5',26,5,3992),(4038,0,'description 6',3.2,'material title 6',38.4,12,3992);
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -908,7 +917,7 @@ CREATE TABLE `message` (
   `recipient_id` int(11) NOT NULL,
   `sender_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_iq38mox9qghnx2rc8hpdtmros` (`messageFolder_id`),
+  KEY `UK_h27p9c2qmr2peaojb34sh9axv` (`messageFolder_id`,`subject`,`body`),
   CONSTRAINT `FK_iq38mox9qghnx2rc8hpdtmros` FOREIGN KEY (`messageFolder_id`) REFERENCES `messagefolder` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -919,7 +928,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1692,0,'body 1','2017-10-01 15:20:00','HIGH','subject 1',1503,1426,1442);
+INSERT INTO `message` VALUES (4212,0,'body 1','2017-10-01 15:20:00','HIGH','subject 1',4023,3946,3962),(4213,0,'body 1','2017-10-01 15:20:00','HIGH','subject 1 viagra',4196,3946,3961),(4214,0,'body 1','2017-10-01 15:20:00','LOW','subject 1 viagra',4138,3946,3961),(4215,0,'body 2 sex','2017-10-01 15:20:00','LOW','subject 2',4196,3946,3961),(4216,0,'body 2 sex','2017-10-01 15:20:00','LOW','subject 2',4138,3946,3961),(4217,0,'body 3','2017-10-01 15:20:00','LOW','subject 3 cialis',4196,3946,3961),(4218,0,'body 3','2017-10-01 15:20:00','LOW','subject 3 cialis',4138,3946,3961),(4219,0,'body 4','2017-10-01 15:20:00','LOW','subject 4 sexo',4196,3946,3961),(4220,0,'body 4','2017-10-01 15:20:00','LOW','subject 4 sexo',4138,3946,3961),(4221,0,'body 5 viagra','2017-10-01 15:20:00','LOW','subject 5',4196,3946,3961),(4222,0,'body 5 viagra','2017-10-01 15:20:00','LOW','subject 5',4138,3946,3961),(4223,0,'body 6 sex','2017-10-01 15:20:00','LOW','subject 6',4196,3946,3961),(4224,0,'body 6 sex','2017-10-01 15:20:00','LOW','subject 6',4138,3946,3961),(4225,0,'body 1','2017-10-01 15:20:00','HIGH','subject 1 viagra',4196,3946,3971),(4226,0,'body 1','2017-10-01 15:20:00','LOW','subject 1 viagra',4113,3946,3971),(4227,0,'body 2 sex','2017-10-01 15:20:00','LOW','subject 2',4196,3946,3971),(4228,0,'body 2 sex','2017-10-01 15:20:00','LOW','subject 2',4113,3946,3971),(4229,0,'body 3','2017-10-01 15:20:00','LOW','subject 3 cialis',4196,3946,3971),(4230,0,'body 3','2017-10-01 15:20:00','LOW','subject 3 cialis',4113,3946,3971),(4231,0,'body 4','2017-10-01 15:20:00','LOW','subject 4 sexo',4196,3946,3971),(4232,0,'body 4','2017-10-01 15:20:00','LOW','subject 4 sexo',4113,3946,3971),(4233,0,'body 5 viagra','2017-10-01 15:20:00','LOW','subject 5',4196,3946,3971),(4234,0,'body 5 viagra','2017-10-01 15:20:00','LOW','subject 5',4113,3946,3971),(4235,0,'body 6 sex','2017-10-01 15:20:00','LOW','subject 6',4196,3946,3971),(4236,0,'body 6 sex','2017-10-01 15:20:00','LOW','subject 6',4113,3946,3971);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -936,7 +945,8 @@ CREATE TABLE `messagefolder` (
   `modifiable` bit(1) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `actor_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `UK_qtw36ey8a18uy89ca2xvcpsb4` (`actor_id`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -946,7 +956,7 @@ CREATE TABLE `messagefolder` (
 
 LOCK TABLES `messagefolder` WRITE;
 /*!40000 ALTER TABLE `messagefolder` DISABLE KEYS */;
-INSERT INTO `messagefolder` VALUES (1503,0,'','folder 1',1442),(1547,0,'\0','In box',1442),(1548,0,'\0','Out box',1442),(1549,0,'\0','Notification box',1442),(1550,0,'\0','Trash box',1442),(1551,0,'\0','Spam box',1442),(1552,0,'\0','In box',1443),(1553,0,'\0','Out box',1443),(1554,0,'\0','Notification box',1443),(1555,0,'\0','Trash box',1443),(1556,0,'\0','Spam box',1443),(1557,0,'\0','In box',1444),(1558,0,'\0','Out box',1444),(1559,0,'\0','Notification box',1444),(1560,0,'\0','Trash box',1444),(1561,0,'\0','Spam box',1444),(1562,0,'\0','In box',1445),(1563,0,'\0','Out box',1445),(1564,0,'\0','Notification box',1445),(1565,0,'\0','Trash box',1445),(1566,0,'\0','Spam box',1445),(1567,0,'\0','In box',1446),(1568,0,'\0','Out box',1446),(1569,0,'\0','Notification box',1446),(1570,0,'\0','Trash box',1446),(1571,0,'\0','Spam box',1446),(1572,0,'\0','In box',1447),(1573,0,'\0','Out box',1447),(1574,0,'\0','Notification box',1447),(1575,0,'\0','Trash box',1447),(1576,0,'\0','Spam box',1447),(1577,0,'\0','In box',1448),(1578,0,'\0','Out box',1448),(1579,0,'\0','Notification box',1448),(1580,0,'\0','Trash box',1448),(1581,0,'\0','Spam box',1448),(1582,0,'\0','In box',1449),(1583,0,'\0','Out box',1449),(1584,0,'\0','Notification box',1449),(1585,0,'\0','Trash box',1449),(1586,0,'\0','Spam box',1449),(1587,0,'\0','In box',1450),(1588,0,'\0','Out box',1450),(1589,0,'\0','Notification box',1450),(1590,0,'\0','Trash box',1450),(1591,0,'\0','Spam box',1450),(1592,0,'\0','In box',1451),(1593,0,'\0','Out box',1451),(1594,0,'\0','Notification box',1451),(1595,0,'\0','Trash box',1451),(1596,0,'\0','Spam box',1451),(1597,0,'\0','In box',1437),(1598,0,'\0','Out box',1437),(1599,0,'\0','Notification box',1437),(1600,0,'\0','Trash box',1437),(1601,0,'\0','Spam box',1437),(1602,0,'\0','In box',1438),(1603,0,'\0','Out box',1438),(1604,0,'\0','Notification box',1438),(1605,0,'\0','Trash box',1438),(1606,0,'\0','Spam box',1438),(1607,0,'\0','In box',1439),(1608,0,'\0','Out box',1439),(1609,0,'\0','Notification box',1439),(1610,0,'\0','Trash box',1439),(1611,0,'\0','Spam box',1439),(1612,0,'\0','In box',1440),(1613,0,'\0','Out box',1440),(1614,0,'\0','Notification box',1440),(1615,0,'\0','Trash box',1440),(1616,0,'\0','Spam box',1440),(1617,0,'\0','In box',1441),(1618,0,'\0','Out box',1441),(1619,0,'\0','Notification box',1441),(1620,0,'\0','Trash box',1441),(1621,0,'\0','Spam box',1441),(1622,0,'\0','In box',1427),(1623,0,'\0','Out box',1427),(1624,0,'\0','Notification box',1427),(1625,0,'\0','Trash box',1427),(1626,0,'\0','Spam box',1427),(1627,0,'\0','In box',1428),(1628,0,'\0','Out box',1428),(1629,0,'\0','Notification box',1428),(1630,0,'\0','Trash box',1428),(1631,0,'\0','Spam box',1428),(1632,0,'\0','In box',1429),(1633,0,'\0','Out box',1429),(1634,0,'\0','Notification box',1429),(1635,0,'\0','Trash box',1429),(1636,0,'\0','Spam box',1429),(1637,0,'\0','In box',1430),(1638,0,'\0','Out box',1430),(1639,0,'\0','Notification box',1430),(1640,0,'\0','Trash box',1430),(1641,0,'\0','Spam box',1430),(1642,0,'\0','In box',1431),(1643,0,'\0','Out box',1431),(1644,0,'\0','Notification box',1431),(1645,0,'\0','Trash box',1431),(1646,0,'\0','Spam box',1431),(1647,0,'\0','In box',1432),(1648,0,'\0','Out box',1432),(1649,0,'\0','Notification box',1432),(1650,0,'\0','Trash box',1432),(1651,0,'\0','Spam box',1432),(1652,0,'\0','In box',1433),(1653,0,'\0','Out box',1433),(1654,0,'\0','Notification box',1433),(1655,0,'\0','Trash box',1433),(1656,0,'\0','Spam box',1433),(1657,0,'\0','In box',1434),(1658,0,'\0','Out box',1434),(1659,0,'\0','Notification box',1434),(1660,0,'\0','Trash box',1434),(1661,0,'\0','Spam box',1434),(1662,0,'\0','In box',1435),(1663,0,'\0','Out box',1435),(1664,0,'\0','Notification box',1435),(1665,0,'\0','Trash box',1435),(1666,0,'\0','Spam box',1435),(1667,0,'\0','In box',1436),(1668,0,'\0','Out box',1436),(1669,0,'\0','Notification box',1436),(1670,0,'\0','Trash box',1436),(1671,0,'\0','Spam box',1436),(1672,0,'\0','In box',1426),(1673,0,'\0','Out box',1426),(1674,0,'\0','Notification box',1426),(1675,0,'\0','Trash box',1426),(1676,0,'\0','Spam box',1426);
+INSERT INTO `messagefolder` VALUES (4023,0,'','folder 1',3962),(4067,0,'\0','In box',3962),(4068,0,'\0','Out box',3962),(4069,0,'\0','Notification box',3962),(4070,0,'\0','Trash box',3962),(4071,0,'\0','Spam box',3962),(4072,0,'\0','In box',3963),(4073,0,'\0','Out box',3963),(4074,0,'\0','Notification box',3963),(4075,0,'\0','Trash box',3963),(4076,0,'\0','Spam box',3963),(4077,0,'\0','In box',3964),(4078,0,'\0','Out box',3964),(4079,0,'\0','Notification box',3964),(4080,0,'\0','Trash box',3964),(4081,0,'\0','Spam box',3964),(4082,0,'\0','In box',3965),(4083,0,'\0','Out box',3965),(4084,0,'\0','Notification box',3965),(4085,0,'\0','Trash box',3965),(4086,0,'\0','Spam box',3965),(4087,0,'\0','In box',3966),(4088,0,'\0','Out box',3966),(4089,0,'\0','Notification box',3966),(4090,0,'\0','Trash box',3966),(4091,0,'\0','Spam box',3966),(4092,0,'\0','In box',3967),(4093,0,'\0','Out box',3967),(4094,0,'\0','Notification box',3967),(4095,0,'\0','Trash box',3967),(4096,0,'\0','Spam box',3967),(4097,0,'\0','In box',3968),(4098,0,'\0','Out box',3968),(4099,0,'\0','Notification box',3968),(4100,0,'\0','Trash box',3968),(4101,0,'\0','Spam box',3968),(4102,0,'\0','In box',3969),(4103,0,'\0','Out box',3969),(4104,0,'\0','Notification box',3969),(4105,0,'\0','Trash box',3969),(4106,0,'\0','Spam box',3969),(4107,0,'\0','In box',3970),(4108,0,'\0','Out box',3970),(4109,0,'\0','Notification box',3970),(4110,0,'\0','Trash box',3970),(4111,0,'\0','Spam box',3970),(4112,0,'\0','In box',3971),(4113,0,'\0','Out box',3971),(4114,0,'\0','Notification box',3971),(4115,0,'\0','Trash box',3971),(4116,0,'\0','Spam box',3971),(4117,0,'\0','In box',3957),(4118,0,'\0','Out box',3957),(4119,0,'\0','Notification box',3957),(4120,0,'\0','Trash box',3957),(4121,0,'\0','Spam box',3957),(4122,0,'\0','In box',3958),(4123,0,'\0','Out box',3958),(4124,0,'\0','Notification box',3958),(4125,0,'\0','Trash box',3958),(4126,0,'\0','Spam box',3958),(4127,0,'\0','In box',3959),(4128,0,'\0','Out box',3959),(4129,0,'\0','Notification box',3959),(4130,0,'\0','Trash box',3959),(4131,0,'\0','Spam box',3959),(4132,0,'\0','In box',3960),(4133,0,'\0','Out box',3960),(4134,0,'\0','Notification box',3960),(4135,0,'\0','Trash box',3960),(4136,0,'\0','Spam box',3960),(4137,0,'\0','In box',3961),(4138,0,'\0','Out box',3961),(4139,0,'\0','Notification box',3961),(4140,0,'\0','Trash box',3961),(4141,0,'\0','Spam box',3961),(4142,0,'\0','In box',3947),(4143,0,'\0','Out box',3947),(4144,0,'\0','Notification box',3947),(4145,0,'\0','Trash box',3947),(4146,0,'\0','Spam box',3947),(4147,0,'\0','In box',3948),(4148,0,'\0','Out box',3948),(4149,0,'\0','Notification box',3948),(4150,0,'\0','Trash box',3948),(4151,0,'\0','Spam box',3948),(4152,0,'\0','In box',3949),(4153,0,'\0','Out box',3949),(4154,0,'\0','Notification box',3949),(4155,0,'\0','Trash box',3949),(4156,0,'\0','Spam box',3949),(4157,0,'\0','In box',3950),(4158,0,'\0','Out box',3950),(4159,0,'\0','Notification box',3950),(4160,0,'\0','Trash box',3950),(4161,0,'\0','Spam box',3950),(4162,0,'\0','In box',3951),(4163,0,'\0','Out box',3951),(4164,0,'\0','Notification box',3951),(4165,0,'\0','Trash box',3951),(4166,0,'\0','Spam box',3951),(4167,0,'\0','In box',3952),(4168,0,'\0','Out box',3952),(4169,0,'\0','Notification box',3952),(4170,0,'\0','Trash box',3952),(4171,0,'\0','Spam box',3952),(4172,0,'\0','In box',3953),(4173,0,'\0','Out box',3953),(4174,0,'\0','Notification box',3953),(4175,0,'\0','Trash box',3953),(4176,0,'\0','Spam box',3953),(4177,0,'\0','In box',3954),(4178,0,'\0','Out box',3954),(4179,0,'\0','Notification box',3954),(4180,0,'\0','Trash box',3954),(4181,0,'\0','Spam box',3954),(4182,0,'\0','In box',3955),(4183,0,'\0','Out box',3955),(4184,0,'\0','Notification box',3955),(4185,0,'\0','Trash box',3955),(4186,0,'\0','Spam box',3955),(4187,0,'\0','In box',3956),(4188,0,'\0','Out box',3956),(4189,0,'\0','Notification box',3956),(4190,0,'\0','Trash box',3956),(4191,0,'\0','Spam box',3956),(4192,0,'\0','In box',3946),(4193,0,'\0','Out box',3946),(4194,0,'\0','Notification box',3946),(4195,0,'\0','Trash box',3946),(4196,0,'\0','Spam box',3946);
 /*!40000 ALTER TABLE `messagefolder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -963,7 +973,8 @@ CREATE TABLE `newscast` (
   `content` varchar(255) DEFAULT NULL,
   `creationDate` datetime DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `UK_admvb507fe6dx8oy3fgbd7phm` (`title`,`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -973,7 +984,7 @@ CREATE TABLE `newscast` (
 
 LOCK TABLES `newscast` WRITE;
 /*!40000 ALTER TABLE `newscast` DISABLE KEYS */;
-INSERT INTO `newscast` VALUES (1452,0,'content new 1','2018-04-04 12:22:00','title new viagra 1'),(1453,0,'content new 2','2018-04-01 13:01:00','title new 2 viagra'),(1454,0,'content new 3','2018-04-03 13:33:00','title new 3'),(1455,0,'content new 4','2018-04-04 14:44:00','title new 4'),(1456,0,'content new 5','2018-04-05 15:55:00','title new 5'),(1457,0,'content new 6','2018-04-07 17:55:00','title new 6');
+INSERT INTO `newscast` VALUES (3972,0,'content new 1','2018-04-04 12:22:00','title new viagra 1'),(3973,0,'content new 2','2018-04-01 13:01:00','title new 2 viagra'),(3974,0,'content new 3','2018-04-03 13:33:00','title new 3'),(3975,0,'content new 4','2018-04-04 14:44:00','title new 4'),(3976,0,'content new 5','2018-04-05 15:55:00','title new 5'),(3977,0,'content new 6','2018-04-07 17:55:00','title new 6');
 /*!40000 ALTER TABLE `newscast` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1000,7 +1011,7 @@ CREATE TABLE `newscast_comment` (
 
 LOCK TABLES `newscast_comment` WRITE;
 /*!40000 ALTER TABLE `newscast_comment` DISABLE KEYS */;
-INSERT INTO `newscast_comment` VALUES (1452,1488),(1452,1489),(1452,1493),(1452,1494),(1454,1490),(1455,1491),(1456,1492),(1456,1495);
+INSERT INTO `newscast_comment` VALUES (3972,4008),(3972,4009),(3972,4013),(3972,4014),(3974,4010),(3975,4011),(3976,4012),(3976,4015);
 /*!40000 ALTER TABLE `newscast_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1025,7 +1036,7 @@ CREATE TABLE `newscast_pictures` (
 
 LOCK TABLES `newscast_pictures` WRITE;
 /*!40000 ALTER TABLE `newscast_pictures` DISABLE KEYS */;
-INSERT INTO `newscast_pictures` VALUES (1452,'http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png\n				'),(1452,'http://www.cantillana.es/opencms/export/sites/default/cantillana/galeriaInterior/noticias/Elreciclajetienesupunto.jpg\n				'),(1453,'http://www.rocianadelcondado.es/export/sites/rociana/.galleries/000126.jpg\n				'),(1454,'http://www.minambiente.gov.co/images/sala-de-prensa/imagenes-noticias/noticias_2015/diciembre/17-mayo-reciclaje.jpg\n				'),(1455,'http://www.jafcia.cl/wp-content/uploads/2016/11/noticia-1.jpg\n				'),(1456,'http://www.jafcia.cl/wp-content/uploads/2016/11/noticia-2.jpg\n				'),(1457,'http://www.jafcia.cl/wp-content/uploads/2016/11/noticia-2.jpg\n				');
+INSERT INTO `newscast_pictures` VALUES (3972,'http://www.mpcambiental.com/MPCAmbiental-imagenes/MPC-NoticiasMPC201206-01.png\n				'),(3972,'http://www.cantillana.es/opencms/export/sites/default/cantillana/galeriaInterior/noticias/Elreciclajetienesupunto.jpg\n				'),(3973,'http://www.rocianadelcondado.es/export/sites/rociana/.galleries/000126.jpg\n				'),(3974,'http://www.minambiente.gov.co/images/sala-de-prensa/imagenes-noticias/noticias_2015/diciembre/17-mayo-reciclaje.jpg\n				'),(3975,'http://www.jafcia.cl/wp-content/uploads/2016/11/noticia-1.jpg\n				'),(3976,'http://www.jafcia.cl/wp-content/uploads/2016/11/noticia-2.jpg\n				'),(3977,'http://www.jafcia.cl/wp-content/uploads/2016/11/noticia-2.jpg\n				');
 /*!40000 ALTER TABLE `newscast_pictures` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1050,7 +1061,7 @@ CREATE TABLE `opinable_opinion` (
 
 LOCK TABLES `opinable_opinion` WRITE;
 /*!40000 ALTER TABLE `opinable_opinion` DISABLE KEYS */;
-INSERT INTO `opinable_opinion` VALUES (1686,1519),(1687,1520),(1688,1521),(1689,1523),(1498,1526);
+INSERT INTO `opinable_opinion` VALUES (4206,4039),(4207,4040),(4208,4041),(4209,4043),(4018,4046);
 /*!40000 ALTER TABLE `opinable_opinion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1070,7 +1081,8 @@ CREATE TABLE `opinion` (
   `photo` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `actor_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `UK_sh88e130et0akt8xxoygv3gyv` (`actor_id`,`title`,`createdMoment`,`comment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1080,7 +1092,7 @@ CREATE TABLE `opinion` (
 
 LOCK TABLES `opinion` WRITE;
 /*!40000 ALTER TABLE `opinion` DISABLE KEYS */;
-INSERT INTO `opinion` VALUES (1519,0,'caption opinion 1','comment opinion 1','2018-03-04 00:00:00','http://slideplayer.es/slide/4019554/13/images/21/RECICLAJE+DE+PAPEL+GR%C3%81FICO+RESUMEN.jpg','title opinion 1',1442),(1520,0,'caption opinion 2','comment opinion 2','2018-02-04 00:00:00','http://vadecuentos.com/wp-content/uploads/2015/05/taller-infantil-creatividad-reciclaje-jueguetes-carton1.png','title opinion 2',1442),(1521,0,'caption opinion 3','comment opinion 3','2018-02-03 00:00:00','http://fece.org/wp-content/uploads/2016/12/materiales-reciclables-raee.jpg','title opinion 3',1444),(1522,0,'caption opinion 4','comment opinion 4','2018-04-04 00:00:00','https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg','title opinion 4',1445),(1523,0,'caption opinion 5','comment opinion 5','2018-05-03 00:00:00','http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg','title opinion 5',1446),(1524,0,'caption opinion  6','comment opinion 6','2018-03-03 00:00:00','http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg','title opinion 6',1428),(1525,0,'caption opinon 7','comment opinion 7','2018-01-04 00:00:00','https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg','title opinion 7',1428),(1526,0,'caption opinon 8','comment opinion 8','2018-01-04 00:00:00','https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg','title opinion 8',1443);
+INSERT INTO `opinion` VALUES (4039,0,'caption opinion 1','comment opinion 1','2018-03-04 00:00:00','http://slideplayer.es/slide/4019554/13/images/21/RECICLAJE+DE+PAPEL+GR%C3%81FICO+RESUMEN.jpg','title opinion 1',3962),(4040,0,'caption opinion 2','comment opinion 2','2018-02-04 00:00:00','http://vadecuentos.com/wp-content/uploads/2015/05/taller-infantil-creatividad-reciclaje-jueguetes-carton1.png','title opinion 2',3962),(4041,0,'caption opinion 3','comment opinion 3','2018-02-03 00:00:00','http://fece.org/wp-content/uploads/2016/12/materiales-reciclables-raee.jpg','title opinion 3',3964),(4042,0,'caption opinion 4','comment opinion 4','2018-04-04 00:00:00','https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg','title opinion 4',3965),(4043,0,'caption opinion 5','comment opinion 5','2018-05-03 00:00:00','http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg','title opinion 5',3966),(4044,0,'caption opinion  6','comment opinion 6','2018-03-03 00:00:00','http://publicaciones.unicartagena.edu.co/images/catalogo/portadas/El-reciclaje-es-un-negocio-con-beneficio-economico-social-y-ambiental.jpg','title opinion 6',3948),(4045,0,'caption opinon 7','comment opinion 7','2018-01-04 00:00:00','https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg','title opinion 7',3948),(4046,0,'caption opinon 8','comment opinion 8','2018-01-04 00:00:00','https://culturaeinformacioninma.files.wordpress.com/2015/03/81dd0-por-qu25c325a9-reciclar.jpg','title opinion 8',3963);
 /*!40000 ALTER TABLE `opinion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1103,6 +1115,7 @@ CREATE TABLE `recycler` (
   `userAccount_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_j9etl5bw3fdbgeunx12x8uslx` (`userAccount_id`),
+  KEY `RecyclerUK_cgls5lrufx91ufsyh467spwa3` (`userAccount_id`),
   CONSTRAINT `FK_j9etl5bw3fdbgeunx12x8uslx` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1113,7 +1126,7 @@ CREATE TABLE `recycler` (
 
 LOCK TABLES `recycler` WRITE;
 /*!40000 ALTER TABLE `recycler` DISABLE KEYS */;
-INSERT INTO `recycler` VALUES (1442,0,'Adress recycler 1','recycler1@acmerecycling.com','recycler 1','+34655555555','SEVILLA','surname recycler 1',1411),(1443,0,'Adress recycler 2','recycler2@acmerecycling.com','recycler 2','+34612555555','BILBAO','surname recycler 2',1412),(1444,0,'Adress recycler 3','recycler3@acmerecycling.com','recycler 3','+34613555555','GRANADA','surname recycler 3',1413),(1445,0,'Adress recycler 4','recycler4@acmerecycling.com','recycler 4','+34614555555','SEVILLA','surname recycler 4',1414),(1446,0,'Adress recycler 5','recycler5@acmerecycling.com','recycler 5','+34615555555','SEVILLA','surname recycler 5',1415);
+INSERT INTO `recycler` VALUES (3962,0,'Adress recycler 1','recycler1@acmerecycling.com','recycler 1','+34655555555','SEVILLA','surname recycler 1',3931),(3963,0,'Adress recycler 2','recycler2@acmerecycling.com','recycler 2','+34612555555','BILBAO','surname recycler 2',3932),(3964,0,'Adress recycler 3','recycler3@acmerecycling.com','recycler 3','+34613555555','GRANADA','surname recycler 3',3933),(3965,0,'Adress recycler 4','recycler4@acmerecycling.com','recycler 4','+34614555555','SEVILLA','surname recycler 4',3934),(3966,0,'Adress recycler 5','recycler5@acmerecycling.com','recycler 5','+34615555555','SEVILLA','surname recycler 5',3935);
 /*!40000 ALTER TABLE `recycler` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1140,7 +1153,7 @@ CREATE TABLE `recycler_comment` (
 
 LOCK TABLES `recycler_comment` WRITE;
 /*!40000 ALTER TABLE `recycler_comment` DISABLE KEYS */;
-INSERT INTO `recycler_comment` VALUES (1442,1488),(1442,1489),(1443,1493),(1443,1494),(1444,1490),(1444,1495),(1445,1491),(1446,1492);
+INSERT INTO `recycler_comment` VALUES (3962,4008),(3962,4009),(3963,4013),(3963,4014),(3964,4010),(3964,4015),(3965,4011),(3966,4012);
 /*!40000 ALTER TABLE `recycler_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1167,7 +1180,7 @@ CREATE TABLE `recycler_course` (
 
 LOCK TABLES `recycler_course` WRITE;
 /*!40000 ALTER TABLE `recycler_course` DISABLE KEYS */;
-INSERT INTO `recycler_course` VALUES (1442,1500),(1443,1498),(1444,1498);
+INSERT INTO `recycler_course` VALUES (3962,4020),(3963,4018),(3964,4018);
 /*!40000 ALTER TABLE `recycler_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1188,8 +1201,8 @@ CREATE TABLE `request` (
   `assesment_id` int(11) DEFAULT NULL,
   `carrier_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  KEY `UK_dyvisf1kwsc6vnhb4k4900t7e` (`carrier_id`,`assesment_id`,`code`,`title`),
   KEY `FK_e49ye2s4qr7xmbm5ietd056f5` (`assesment_id`),
-  KEY `FK_h0j2w5l8lhry4fc3urybmt8q2` (`carrier_id`),
   CONSTRAINT `FK_h0j2w5l8lhry4fc3urybmt8q2` FOREIGN KEY (`carrier_id`) REFERENCES `carrier` (`id`),
   CONSTRAINT `FK_e49ye2s4qr7xmbm5ietd056f5` FOREIGN KEY (`assesment_id`) REFERENCES `assesment` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1201,7 +1214,7 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (1527,0,'DG180131DF','observation request 1','CLEAN POINT','title request 1',NULL,1432),(1528,1,'DG180231BB','observation request 2','FINISHED','title request 2',1539,1434),(1529,1,'DG180331CC','observation request 3','FINISHED','title request 3',1540,1434),(1530,0,'DG180431DD','observation request 4','IN COLLECTION','title request 4',NULL,1435),(1531,0,'DG180131EE','observation request 5','PENDING','title request 5',NULL,1436),(1532,0,'DG180731FF','observation request 6','CANCELLED','title request 6',NULL,1436);
+INSERT INTO `request` VALUES (4047,0,'DG180131DF','observation request 1','CLEAN POINT','title request 1',NULL,NULL),(4048,1,'DG180231BB','observation request 2','FINISHED','title request 2',4059,3954),(4049,1,'DG180331CC','observation request 3','FINISHED','title request 3',4060,3954),(4050,0,'DG180431DD','observation request 4','IN COLLECTION','title request 4',NULL,3955),(4051,0,'DG180131EE','observation request 5','IN COLLECTION','title request 5',NULL,3956),(4052,0,'DG180731FF','observation request 6','CANCELLED','title request 6',NULL,3956);
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1228,7 +1241,7 @@ CREATE TABLE `request_cleanpoint` (
 
 LOCK TABLES `request_cleanpoint` WRITE;
 /*!40000 ALTER TABLE `request_cleanpoint` DISABLE KEYS */;
-INSERT INTO `request_cleanpoint` VALUES (1527,1533);
+INSERT INTO `request_cleanpoint` VALUES (4047,4053);
 /*!40000 ALTER TABLE `request_cleanpoint` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1254,7 +1267,7 @@ CREATE TABLE `tabooword` (
 
 LOCK TABLES `tabooword` WRITE;
 /*!40000 ALTER TABLE `tabooword` DISABLE KEYS */;
-INSERT INTO `tabooword` VALUES (1504,0,'','sex'),(1505,0,'','sexo'),(1506,0,'','cialis'),(1507,0,'','viagra'),(1508,0,'\0','cialis 1');
+INSERT INTO `tabooword` VALUES (4024,0,'','sex'),(4025,0,'','sexo'),(4026,0,'','cialis'),(4027,0,'','viagra'),(4028,0,'\0','cialis 1');
 /*!40000 ALTER TABLE `tabooword` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1282,7 +1295,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
-INSERT INTO `useraccount` VALUES (1400,0,'','21232f297a57a5a743894a0e4a801fc3','admin'),(1401,0,'','c240642ddef994358c96da82c0361a58','manager1'),(1402,0,'','8df5127cd164b5bc2d2b78410a7eea0c','manager2'),(1403,0,'','2d3a5db4a2a9717b43698520a8de57d0','manager3'),(1404,0,'','e1ec6fc941af3ba79a4ac5242dd39735','manager4'),(1405,0,'\0','029cb1d27c0b9c551703ccba2591c334','manager5'),(1406,0,'','8d2f089b195fc8ca1415db70968a461f','carrier1'),(1407,0,'','e9c83d20abca1fe451b73b6f74d9f411','carrier2'),(1408,0,'','8dee391cf2bfda3504283d0dc1af7a2e','carrier3'),(1409,0,'','cde726b4067344e0cf4228f72f213c19','carrier4'),(1410,0,'','447b827b64e3dbffe93784f27b09f112','carrier5'),(1411,0,'','9125428c3007c097eab9a4afd9b0167b','recycler1'),(1412,0,'','39024b6a5dafff9f862b3f72a02a4293','recycler2'),(1413,0,'','93ca7571542659a3378f0e05c34b438a','recycler3'),(1414,0,'','6e6ffd409bf417b2088be41af53b8f4f','recycler4'),(1415,0,'','709116e0126b66542e3d4089234d6422','recycler5'),(1416,0,'','c9330587565205a5b8345f60c620ecc6','editor1'),(1417,0,'','0a96c5e164b4f259b4b8f6f565b55fe2','editor2'),(1418,0,'','8ae4e8e6f68f3f6cb50817e40111abd6','editor3'),(1419,0,'','a05298fc2d0052a29953bf41945cc109','editor4'),(1420,0,'\0','dbdcd9bbf4c35245b19be25d60f51480','editor5'),(1421,0,'','5cbd9d629096842872fdc665d2d03ba3','buyer1'),(1422,0,'','ba71d29d4efdd8753c516db594fab6d8','buyer2'),(1423,0,'','3cb52c98f366dad959eb21181107c7a7','buyer3'),(1424,0,'','1757397eb4f922f8c89b65f08333a96f','buyer4'),(1425,0,'\0','adeeaf80af67860d2a1e966d61e61841','buyer5');
+INSERT INTO `useraccount` VALUES (3920,0,'','21232f297a57a5a743894a0e4a801fc3','admin'),(3921,0,'','c240642ddef994358c96da82c0361a58','manager1'),(3922,0,'','8df5127cd164b5bc2d2b78410a7eea0c','manager2'),(3923,0,'','2d3a5db4a2a9717b43698520a8de57d0','manager3'),(3924,0,'','e1ec6fc941af3ba79a4ac5242dd39735','manager4'),(3925,0,'\0','029cb1d27c0b9c551703ccba2591c334','manager5'),(3926,0,'','8d2f089b195fc8ca1415db70968a461f','carrier1'),(3927,0,'','e9c83d20abca1fe451b73b6f74d9f411','carrier2'),(3928,0,'','8dee391cf2bfda3504283d0dc1af7a2e','carrier3'),(3929,0,'','cde726b4067344e0cf4228f72f213c19','carrier4'),(3930,0,'','447b827b64e3dbffe93784f27b09f112','carrier5'),(3931,0,'','9125428c3007c097eab9a4afd9b0167b','recycler1'),(3932,0,'','39024b6a5dafff9f862b3f72a02a4293','recycler2'),(3933,0,'','93ca7571542659a3378f0e05c34b438a','recycler3'),(3934,0,'','6e6ffd409bf417b2088be41af53b8f4f','recycler4'),(3935,0,'','709116e0126b66542e3d4089234d6422','recycler5'),(3936,0,'','c9330587565205a5b8345f60c620ecc6','editor1'),(3937,0,'','0a96c5e164b4f259b4b8f6f565b55fe2','editor2'),(3938,0,'','8ae4e8e6f68f3f6cb50817e40111abd6','editor3'),(3939,0,'','a05298fc2d0052a29953bf41945cc109','editor4'),(3940,0,'','dbdcd9bbf4c35245b19be25d60f51480','editor5'),(3941,0,'','5cbd9d629096842872fdc665d2d03ba3','buyer1'),(3942,0,'','ba71d29d4efdd8753c516db594fab6d8','buyer2'),(3943,0,'','3cb52c98f366dad959eb21181107c7a7','buyer3'),(3944,0,'','1757397eb4f922f8c89b65f08333a96f','buyer4'),(3945,0,'\0','adeeaf80af67860d2a1e966d61e61841','buyer5');
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1307,7 +1320,7 @@ CREATE TABLE `useraccount_authorities` (
 
 LOCK TABLES `useraccount_authorities` WRITE;
 /*!40000 ALTER TABLE `useraccount_authorities` DISABLE KEYS */;
-INSERT INTO `useraccount_authorities` VALUES (1400,'ADMIN'),(1401,'MANAGER'),(1402,'MANAGER'),(1403,'MANAGER'),(1404,'MANAGER'),(1405,'MANAGER'),(1406,'CARRIER'),(1407,'CARRIER'),(1408,'CARRIER'),(1409,'CARRIER'),(1410,'CARRIER'),(1411,'RECYCLER'),(1412,'RECYCLER'),(1413,'RECYCLER'),(1414,'RECYCLER'),(1415,'RECYCLER'),(1416,'EDITOR'),(1417,'EDITOR'),(1418,'EDITOR'),(1419,'EDITOR'),(1420,'EDITOR'),(1421,'BUYER'),(1422,'BUYER'),(1423,'BUYER'),(1424,'BUYER'),(1425,'BUYER');
+INSERT INTO `useraccount_authorities` VALUES (3920,'ADMIN'),(3921,'MANAGER'),(3922,'MANAGER'),(3923,'MANAGER'),(3924,'MANAGER'),(3925,'MANAGER'),(3926,'CARRIER'),(3927,'CARRIER'),(3928,'CARRIER'),(3929,'CARRIER'),(3930,'CARRIER'),(3931,'RECYCLER'),(3932,'RECYCLER'),(3933,'RECYCLER'),(3934,'RECYCLER'),(3935,'RECYCLER'),(3936,'EDITOR'),(3937,'EDITOR'),(3938,'EDITOR'),(3939,'EDITOR'),(3940,'EDITOR'),(3941,'BUYER'),(3942,'BUYER'),(3943,'BUYER'),(3944,'BUYER'),(3945,'BUYER');
 /*!40000 ALTER TABLE `useraccount_authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1320,5 +1333,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-29 10:48:48
+-- Dump completed on 2018-05-31 14:23:38
 commit;

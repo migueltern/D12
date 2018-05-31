@@ -112,6 +112,12 @@ public class ItemService {
 	}
 	public void delete(final Item item) {
 		Assert.notNull(item);
+		Recycler principal;
+		
+		principal = this.recyclerService.findByPrincipal();
+		
+		Assert.isTrue(principal.equals(item.getRecycler()));
+		
 
 		if (item.getRequest() != null) {
 			Assert.isTrue(item.getRequest().getCarrier() == null || !item.getRequest().getStatus().equals("IN COLLECTION"), "This item is assigned a carrier");

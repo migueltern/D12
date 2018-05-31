@@ -99,8 +99,10 @@ public class MaterialAdminController extends AbstractController {
 				this.materialService.save(material);
 				result = new ModelAndView("redirect:/material/admin/list.do?d-16544-p=1");
 			} catch (final Throwable oops) {
-
-				result = this.createEditModelAndView(material, "material.commit.error");
+				if (oops.getMessage().equals("The unitPrice must be greater than to 0"))
+					result = this.createEditModelAndView(material, "material.commit.error.unitPrice0");
+				else
+					result = this.createEditModelAndView(material, "material.commit.error");
 			}
 
 		return result;

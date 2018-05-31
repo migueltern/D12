@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -47,7 +46,6 @@ public class Material extends DomainEntity {
 		this.description = description;
 	}
 	@NotNull
-	@Min(0)
 	public Double getUnitPrice() {
 		return this.unitPrice;
 	}

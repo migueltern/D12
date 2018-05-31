@@ -1903,7 +1903,7 @@
 		<property name="location" ref="gps5" />
 		<property name="realisedMoment" value="2018/12/15" />
 		<property name="picture"
-			value="http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png" />
+			value="https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-34-638.jpg?cb=1380200215" />
 		<property name="draftMode" value="false" />
 		<property name="minimumScore" value="5" />
 
@@ -1931,7 +1931,7 @@
 		<property name="location" ref="gps5" />
 		<property name="realisedMoment" value="2019/11/01" />
 		<property name="picture"
-			value="http://metalurgico.integrando.unicen.edu.ar/wp-content/uploads/2012/11/Folleto-talleres-ReCICLADO-NUEVO.png" />
+			value="https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-5-638.jpg?cb=1380200215" />
 		<property name="draftMode" value="true" />
 		<property name="minimumScore" value="2" />
 

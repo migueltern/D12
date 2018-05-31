@@ -98,7 +98,7 @@ public class LabelProductService {
 		final Manager manager;
 		final Collection<LabelProduct> labelProductsWithProduct;
 
-		labelProductsWithProduct = this.labelProductRepository.labelProductsOfAllProducts();
+		labelProductsWithProduct = this.labelProductsOfAllProducts();
 
 		manager = this.managerService.findByPrincipal();
 		Assert.notNull(manager);
@@ -133,5 +133,13 @@ public class LabelProductService {
 
 	public void flush() {
 		this.labelProductRepository.flush();
+	}
+
+	public Collection<LabelProduct> labelProductsOfAllProducts() {
+		Collection<LabelProduct> labelProductsOfAllProducts;
+
+		labelProductsOfAllProducts = this.labelProductRepository.labelProductsOfAllProducts();
+
+		return labelProductsOfAllProducts;
 	}
 }

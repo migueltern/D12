@@ -729,7 +729,7 @@
 		<property name="items">
 			<list>
 				<ref bean="item1" />
-				<ref bean="item2" />
+				<ref bean="item7" />
 			</list>
 		</property>
 		<property name="comments">
@@ -760,7 +760,7 @@
 		</property>
 		<property name="items">
 			<list>
-
+				<ref bean="item2" />
 			</list>
 		</property>
 		<property name="comments">
@@ -792,7 +792,7 @@
 		</property>
 		<property name="items">
 			<list>
-				<ref bean="item6"/>
+				<ref bean="item3"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -823,7 +823,7 @@
 		</property>
 		<property name="items">
 			<list>
-			<ref bean="item7"/>
+			
 			</list>
 		</property>
 		<property name="comments">
@@ -853,6 +853,7 @@
 		<property name="items">
 			<list>
 				<ref bean="item5" />
+				<ref bean="item6"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -1363,7 +1364,7 @@
 		<property name="createdMoment" value="2018/02/02 12:20" />
 		<property name="comment" value="comment incidence 2" />
 		<property name="resolved" value="true" />
-		<property name="recycler" ref="recycler2" />
+		<property name="recycler" ref="recycler1" />
 	</bean>
 
 	<bean id="incidence3" class="domain.Incidence">
@@ -1381,7 +1382,7 @@
 		<property name="createdMoment" value="2018/04/04 14:40" />
 		<property name="comment" value="comment incidence 4" />
 		<property name="resolved" value="false" />
-		<property name="recycler" ref="recycler4" />
+		<property name="recycler" ref="recycler3" />
 	</bean>
 
 	<bean id="incidence5" class="domain.Incidence">
@@ -1390,7 +1391,7 @@
 		<property name="createdMoment" value="2018/05/05 15:50" />
 		<property name="comment" value="comment incidence 5" />
 		<property name="resolved" value="false" />
-		<property name="recycler" ref="recycler5" />
+		<property name="recycler" ref="recycler3" />
 	</bean>
 	
 	
@@ -1400,7 +1401,7 @@
 		<property name="createdMoment" value="2018/05/01 19:20" />
 		<property name="comment" value="comment incidence 6" />
 		<property name="resolved" value="true" />
-		<property name="recycler" ref="recycler4" />
+		<property name="recycler" ref="recycler1" />
 	</bean>
 	
 	<bean id="incidence7" class="domain.Incidence">
@@ -1409,7 +1410,7 @@
 		<property name="createdMoment" value="2018/02/22 21:20" />
 		<property name="comment" value="comment incidence 7" />
 		<property name="resolved" value="true" />
-		<property name="recycler" ref="recycler5" />
+		<property name="recycler" ref="recycler3" />
 	</bean>
 
 

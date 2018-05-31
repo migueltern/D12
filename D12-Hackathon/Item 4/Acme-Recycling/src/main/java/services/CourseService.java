@@ -270,10 +270,10 @@ public class CourseService {
 		Recycler result;
 		final Date actual = new Date();
 		final Long diaMili = (long) 86400000;
-		final Long dosSemanas = diaMili * 14;
+		final Long semana = diaMili * 7;
 
 		final Long restaFechas = course.getRealisedMoment().getTime() - actual.getTime();
-		Assert.isTrue(restaFechas > dosSemanas);
+		Assert.isTrue(restaFechas > semana, "This course will start in one week or less");
 		recyclerConnected = this.recyclerService.findByPrincipal();
 
 		Assert.notNull(course);

@@ -1,6 +1,7 @@
 
 package controllers.recycler;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CourseService;
+import services.LessonService;
 import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Course;
+import domain.Lesson;
 import domain.Recycler;
 
 @Controller
@@ -25,6 +28,9 @@ public class CourseRecyclerController extends AbstractController {
 
 	@Autowired
 	private CourseService	courseService;
+
+	@Autowired
+	private LessonService	lessonService;
 
 	@Autowired
 	private RecyclerService	recyclerService;
@@ -86,6 +92,7 @@ public class CourseRecyclerController extends AbstractController {
 		ModelAndView result;
 		Course course;
 		Recycler recyclerConnected;
+		Collection<Lesson> lessonsOfCourse;
 
 		recyclerConnected = this.recyclerService.findByPrincipal();
 
@@ -93,6 +100,10 @@ public class CourseRecyclerController extends AbstractController {
 
 		course = this.courseService.findOne(courseId);
 		Assert.isTrue(this.courseService.coursesAvailables(recyclerConnected).contains(course));
+		lessonsOfCourse = new ArrayList<>();
+		lessonsOfCourse = this.lessonService.findLessonsByCourseId(courseId);
+		Assert.isTrue(!lessonsOfCourse.isEmpty());
+
 		try {
 			this.courseService.assist(course);
 			result = new ModelAndView("redirect:/course/recycler/listCoursesAvailables.do");
@@ -101,7 +112,6 @@ public class CourseRecyclerController extends AbstractController {
 		}
 		return result;
 	}
-
 	@RequestMapping(value = "/notAssist", method = RequestMethod.GET)
 	public ModelAndView notAssist(@RequestParam final int courseId) {
 		ModelAndView result;

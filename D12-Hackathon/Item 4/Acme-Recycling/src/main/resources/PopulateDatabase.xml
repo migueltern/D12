@@ -2684,7 +2684,7 @@
 		<property name="title" value="title 6" />
 		<property name="summary" value="summary of lesson 6" />
 		<property name="number" value="1" />
-		<property name="course" ref="course1" />
+		<property name="course" ref="course6" />
 
 	</bean>
 

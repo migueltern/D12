@@ -124,7 +124,7 @@
 	
 	<spring:message code="incidence.delete" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">
-			<input type="button" name="delete"
+			<input type="button" name="delete" class="btn btn-danger"
 				value="<spring:message code="incidence.delete" />"
 				onclick="confirmDelete(${row.id});" />
 		</display:column>

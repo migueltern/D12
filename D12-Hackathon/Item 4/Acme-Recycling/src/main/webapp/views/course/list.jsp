@@ -94,10 +94,10 @@
 	</security:authorize>
 
 
-	<security:authorize access="hasRole('ADMIN')">
+	<security:authorize access="hasRole('ADMIN')"> 
 		<spring:message code="course.delete" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">
-			<input type="button" name="delete"
+			<input type="button" name="delete" class="btn btn-danger"
 				value="<spring:message code="course.delete" />"
 				onclick="confirmDelete(${row.id});" />
 		</display:column>

@@ -27,28 +27,29 @@
   <!-- Attributes -->
 	
 	<display:column>
-	<B><spring:message code="admin.name" />:</B>
+	<p>
+	<B><spring:message code="admin.name" /></B>
 	<jstl:out value="${row.name}"></jstl:out>
 	
-
+	</p>
 	<p>
-		<B><spring:message code="admin.surname" />:</B>
+		<B><spring:message code="admin.surname" /></B>
 		<jstl:out value="${row.surname}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="admin.phoneNumber" />:</B>
+		<B><spring:message code="admin.phoneNumber" /></B>
 		<jstl:out value="${row.phone}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="admin.emailAddress" />:</B>
+		<B><spring:message code="admin.emailAddress" /></B>
 		<jstl:out value="${row.email}"></jstl:out>
 	</p>
 		<p>
-		<B><spring:message code="admin.postalAddress" />:</B>
+		<B><spring:message code="admin.postalAddress" /></B>
 		<jstl:out value="${row.address}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="admin.province" />:</B>
+		<B><spring:message code="admin.province" /></B>
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
 	

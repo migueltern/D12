@@ -24,55 +24,6 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <hr />
-<%-- <footer class="page-footer font-small mdb-color lighten-3 pt-4 mt-4">
-
-<div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
-
-        <!-- Content -->
-        <h5 class="font-weight-bold text-uppercase mb-4">Content</h5>
-        <p>Here you can use rows and columns here to organize your footer content.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum.</p>
-
-      </div>
-     
-<div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1"> 
-	<h2 class="font-weight-bold text-uppercase mb-4">Aviso Legal</h2>
-
-    <div class="font-weight-bold text-uppercase mb-4">
-
-        <a href="welcome/legal.do">Términos y condiciones</a>
-     
-    </div>
-    <br/>
-</div>
-
-<div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
-
-        <!-- Contact details -->
-        <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
-
-        <ul class="list-unstyled">
-          <li><p><i class="fa fa-home mr-3"></i> New York, NY 10012, US</p></li>
-          <li><p><i class="fa fa-envelope mr-3"></i> info@example.com</p></li>
-          <li><p><i class="fa fa-phone mr-3"></i> + 01 234 567 88</p></li>
-          <li><p><i class="fa fa-print mr-3"></i> + 01 234 567 89</p></li>
-        </ul>
-
-      </div>
-
-</div>
-
-
-<!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <fmt:formatDate value="${date}" pattern="yyyy" /> Acme-Recycling Co., Inc.
-  </div>
-</footer> --%>
-
-
 
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5 mt-4">
@@ -81,16 +32,12 @@
     <div class="container">
 
       <!-- Grid row-->
-      <div class="row py-4 d-flex align-items-center">
+      <div class="row py-2 d-flex align-items-center">
 
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 >More info!</h6>
-        </div>
+       
         <!-- Grid column -->
 
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
+        
 
           
         </div>
@@ -100,7 +47,7 @@
       <!-- Grid row-->
 
     </div>
-  </div>
+ 
 
   <!-- Footer Links -->
   <div class="container text-center text-md-left mt-5">
@@ -112,7 +59,7 @@
       <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
 
         <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold"><i class="fas fa-info fa-fw"></i><spring:message code="ourCompany"></spring:message></h6>
+        <h6 class="text-uppercase font-weight-bold"><spring:message code="ourCompany"></spring:message></h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
        <p> <spring:message code="final"></spring:message></p>
         

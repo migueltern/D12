@@ -111,7 +111,7 @@
 
 
 <security:authorize access="hasRole('ADMIN')">
-		<spring:message code="new.pictures" var="draftMode" />
+		<spring:message code="Pictures" var="draftMode" />
 	<display:column title="${draftMode}">
 		<jstl:if test="${row.pictures.size()!=0}">
 			
@@ -157,7 +157,7 @@
 	
 	<spring:message code="new.delete" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">
-			<input type="button" name="delete"
+			<input type="button" name="delete" class="btn btn-danger"
 				value="<spring:message code="new.delete" />"
 				onclick="confirmDelete(${row.id});" />
 		</display:column>

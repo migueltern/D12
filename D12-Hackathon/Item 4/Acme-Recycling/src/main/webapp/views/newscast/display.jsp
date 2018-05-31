@@ -29,11 +29,11 @@
 	
  <display:column>
 
-	<B><spring:message code="new.title" /></B>
+	<B><spring:message code="Title" /></B>
 	<jstl:out value="${row.title}"></jstl:out>
 	<p>
 	
-	<B><spring:message code="new.content" /></B>
+	<B><spring:message code="Content" /></B>
 	<jstl:out value="${row.content}"></jstl:out>
 	<p>
 	
@@ -45,8 +45,8 @@
 			
 
 <p>
-<B><spring:message code="new.pictures"></spring:message></B>
-	<spring:message code="new.pictures" var="titleHeader" />
+<B><spring:message code="Pictures"></spring:message></B>
+	<spring:message code="Pictures" var="titleHeader" />
 	<jstl:if test="${row.pictures.size()!=0}">
 	<table>
 	<tr>

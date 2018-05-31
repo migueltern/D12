@@ -25,34 +25,39 @@
 
 <nav class="navbar navbar-expand-md navbar-light font-weight-bold text_menu" style="background-color: #F5F5F5">
 
-	<div class="collapse navbar-collapse" id="navbarColor01">
+	<div class="collapse navbar-collapse" id="navbarColor01" >
 		<ul class = "navbar-nav mr-auto">
 		
-		<security:authorize access="isAnonymous()">
-			<li class="nav-item transform">
-			
-			<a class="nav-link" >
-			
-			
-			<spring:message code="master.page.logout"></spring:message>
-			</a>
-			</li>
-		
-		
-		
-		
-		
+<!-- 		PARA TODOS -->
+		<security:authorize access="isAuthenticated()">
+						
+		<a class="nav-link" >	
+		<spring:message
+						code="master.page.profile" /> (<security:authentication
+						property="principal.username" />)
+		</a>
 		<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
 					<div class="dropdown-menu" x-placement="bottom-start"
 						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-						<a class="dropdown-item" href="profile/display.do"><%-- <spring:message
-								code="master.page.profile.display" /> --%><spring:message
-							code="master.page.profile" /></a>
-						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="j_spring_security_logout"><spring:message
-								code="master.page.logout" /></a>
+							code="master.page.logout" /></a>
+						
 					</div></li>
+		
+		</security:authorize>
+		
+		<!-- PARA LOS NO AUTENTICADOS -->
+		<security:authorize access="isAnonymous()">
+			<li class="nav-item transform">
+		
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="security/login.do">
+					
+					<spring:message code="master.page.login" />
+					</a>
+
+				</li>
 				
 		<a class="nav-link" >	
 		<spring:message code="master.page.register"></spring:message>
@@ -68,7 +73,273 @@
 								code="master.page.buyer.register" /></a>
 					</div></li>
 					
+					
+					
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="newscast/list.do?d-16544-p=1">
+					
+					<spring:message code="master.page.New.list" />
+					</a>
+
+				</li>
+				
+				
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="material/list.do?d-16544-p=1">
+					
+					<spring:message code="master.page.admin.material.list" />
+					</a>
+
+				</li>
+				
+		
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="recycler/list.do?d-16544-p=1">
+					
+					<spring:message code="master.page.recycler.list" />
+					</a>
+
+				</li>
+				
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="course/list.do?d-16544-p=1">
+					
+					<spring:message code="master.page.course.listAll" />
+					</a>
+
+				</li>
+				
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="welcome/aboutUs.do">
+					
+					<spring:message code="master.page.aboutUs" />
+					</a>
+
+				</li>
+				
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="legislation/list.do?d-16544-p=1">
+					
+					<spring:message code="master.page.administrator.legislation" />
+					</a>
+
+				</li>
+				
 	</security:authorize>				
+
+
+
+	<security:authorize access="hasRole('ADMIN')">
+	
+	
+	<a class="nav-link" >	
+		<spring:message code="master.page.administrator"></spring:message>
+		</a>
+		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
+					<div class="dropdown-menu" x-placement="bottom-start"
+						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+						<a class="dropdown-item" href="profile/admin/edit.do"><spring:message
+							code="master.page.buyer.edit" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="profile/admin/display.do"><spring:message
+								code="master.page.buyer.profile" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="admin/dashboard.do"><spring:message
+								code="master.page.statistics" /></a>
+					</div></li>
+					
+		
+		<a class="nav-link" >	
+		<spring:message code="master.page.responsabilidades"></spring:message>
+		</a>
+		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
+					<div class="dropdown-menu" x-placement="bottom-start"
+						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+						<a class="dropdown-item" href="course/admin/list.do?d-16544-p=1"><spring:message
+							code="master.page.course.list" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="cleanPoint/admin/list.do?d-16544-p=1"><spring:message
+								code="master.page.administrator.cleanPoints" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="material/admin/list.do?d-16544-p=1"><spring:message
+								code="master.page.admin.material.list" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="actor/admin/list.do?d-16544-p=1"><spring:message
+								code="master.page.ban" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="recycler/list.do?d-16544-p=1"><spring:message
+								code="master.page.recycler" /></a>
+					</div></li>
+	
+	<a class="nav-link" >	
+		<spring:message code="master.page.administrator.register"></spring:message>
+		</a>
+		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
+					<div class="dropdown-menu" x-placement="bottom-start"
+						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+						<a class="dropdown-item" href="carrier/admin/create.do"><spring:message
+							code="master.page.admin.carrier.edit" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="manager_/admin/create.do"><spring:message
+								code="master.page.admin.manager.edit" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="editor/admin/create.do"><spring:message
+								code="master.page.admin.editor.edit" /></a>
+					</div></li>
+					
+		
+	<a class="nav-link" >	
+		<spring:message code="master.page.messageFolder"></spring:message>
+		</a>
+		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
+					<div class="dropdown-menu" x-placement="bottom-start"
+						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+						<a class="dropdown-item" href="messageFolder/admin/list.do?d-16544-p=1"><spring:message
+							code="master.page.messageFolder.myList" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="messageFolder/admin/create.do"><spring:message
+								code="master.page.messageFolder.create" /></a>
+					</div></li>
+	
+		
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="message/admin/send.do">
+					
+					<spring:message code="master.page.message.send" />
+					</a>
+
+				</li>
+				
+				
+		
+		<a class="nav-link" >	
+		<spring:message code="master.page.administrator.configurationSystem"></spring:message>
+		</a>
+		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
+					<div class="dropdown-menu" x-placement="bottom-start"
+						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+						<a class="dropdown-item" href="configurationSystem/admin/tabooWord/list.do?d-16544-p=1"><spring:message
+							code="master.page.administrator.tabooWords" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="configurationSystem/admin/legislation/list.do?d-16544-p=1"><spring:message
+								code="master.page.administrator.legislation" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="configurationSystem/admin/edit.do"><spring:message
+								code="master.page.administrator.configurationSystem.edit" /></a>
+					</div></li>
+					
+			
+			
+			<a class="nav-link" >	
+		<spring:message code="master.page.tabooWord"></spring:message>
+		</a>
+		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
+					<div class="dropdown-menu" x-placement="bottom-start"
+						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+						<a class="dropdown-item" href="newscast/admin/list.do?d-16544-p=1"><spring:message
+							code="master.page.news.tabooWord" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="incidence/admin/list.do?d-16544-p=1"><spring:message
+								code="master.page.incidence" /></a>
+						
+					</div></li>
+					
+					
+			
+			<li class="nav-item transform"> 
+					<a class="nav-link" href="welcome/aboutUs.do">
+					
+					<spring:message code="master.page.aboutUs" />
+					</a>
+
+				</li>
+				
+				
+			
+			<a class="nav-link" >	
+		<spring:message code="master.page.opinion"></spring:message>
+		</a>
+		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle transform" data-toggle="dropdown">  </a>
+					<div class="dropdown-menu " x-placement="bottom-start"
+						style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+						<a class="dropdown-item" href="opinion/actor/myListOpinionItem.do?d-16544-p=1"><spring:message
+							code="master.page.opinion.myListOpinionProduct" /></a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="opinion/actor/createOpinableItem.do"><spring:message
+								code="master.page.opinion.createOpinableProduct" /></a>
+						
+					</div></li>
+
+	</security:authorize>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			</ul>
 	

@@ -20,6 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<div class="col-md-8 col-centered">
 <form:form action="${requestURI}" modelAttribute="cleanPoint">
 
 <form:hidden path="id" />
@@ -92,3 +93,4 @@
 		url="cleanPoint/admin/list.do?d-16544-p=1"
 		code="cleanPoint.cancel" />
 </form:form>
+</div>

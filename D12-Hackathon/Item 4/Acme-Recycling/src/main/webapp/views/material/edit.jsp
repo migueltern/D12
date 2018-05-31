@@ -20,7 +20,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<div class="col-md-8 col-centered">
 <form:form action="${requestURI}" modelAttribute="material">
 
 	<form:hidden path="id" />
@@ -67,3 +67,4 @@
 	<acme:cancel url="material/admin/list.do?d-16544-p=1"
 		code="material.cancel" />
 </form:form>
+</div>

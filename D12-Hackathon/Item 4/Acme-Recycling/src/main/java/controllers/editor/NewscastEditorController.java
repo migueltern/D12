@@ -18,7 +18,6 @@ import services.EditorService;
 import services.NewscastService;
 import controllers.AbstractController;
 import domain.Comment;
-import domain.Editor;
 import domain.Newscast;
 
 @Controller
@@ -97,14 +96,14 @@ public class NewscastEditorController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int newscastId) {
 		ModelAndView result;
 		Newscast newscast;
-		Editor principal;
+		//Editor principal;
 
-		principal = this.editorService.findByPrincipal();
+		//principal = this.editorService.findByPrincipal();
 
 		newscast = this.newscastService.findOne(newscastId);
 
 		Assert.notNull(newscast);
-		Assert.isTrue(principal.getNews().contains(newscast), "This new is  not yours");
+		//Assert.isTrue(principal.getNews().contains(newscast), "This new is  not yours");
 		result = this.createEditModelAndView(newscast);
 
 		return result;

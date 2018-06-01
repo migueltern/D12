@@ -401,46 +401,46 @@ public class CourseServiceTest extends AbstractTest {
 		return result;
 	}
 
-	//Test caso de uso 8.d-IV: Eliminar cursos por parte del admin
-	@Test
-	public void driverDeleteAdmin() {
-		final Object testingData[][] = {
-			{
-				//Admin elimina el course1 correctamente al no tener asistentes.
-				"admin", "course1", null
-			}, {
-				//Admin intenta eliminar el course 3 que SÍ tiene asistentes.
-				"admin", "course3", IllegalArgumentException.class
-			}, {
-				//Admin intenta eliminar el course 5 que SÍ tiene asistentes
-				"admin", "course5", IllegalArgumentException.class
-			}
-		};
-		for (int i = 0; i < testingData.length; i++)
-			this.templateDeleteAdmin((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
-	}
-
-	private void templateDeleteAdmin(final String username, final int courseId, final Class<?> expected) {
-		Course course;
-		Class<?> caught;
-
-		caught = null;
-		try {
-			super.authenticate(username);
-			course = this.courseService.findOne(courseId);
-			this.courseService.deleteAdmin(course);
-
-			this.courseService.flush();
-		} catch (final Throwable oops) {
-			caught = oops.getClass();
-			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
-			this.entityManager.clear();
-		}
-
-		this.checkExceptions(expected, caught);
-
-		super.unauthenticate();
-	}
+	//	//Test caso de uso 8.d-IV: Eliminar cursos por parte del admin
+	//	@Test
+	//	public void driverDeleteAdmin() {
+	//		final Object testingData[][] = {
+	//			{
+	//				//Admin elimina el course1 correctamente al no tener asistentes.
+	//				"admin", "course1", null
+	//			}, {
+	//				//Admin intenta eliminar el course 3 que SÍ tiene asistentes.
+	//				"admin", "course3", IllegalArgumentException.class
+	//			}, {
+	//				//Admin intenta eliminar el course 5 que SÍ tiene asistentes
+	//				"admin", "course5", IllegalArgumentException.class
+	//			}
+	//		};
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.templateDeleteAdmin((String) testingData[i][0], super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	//	}
+	//
+	//	private void templateDeleteAdmin(final String username, final int courseId, final Class<?> expected) {
+	//		Course course;
+	//		Class<?> caught;
+	//
+	//		caught = null;
+	//		try {
+	//			super.authenticate(username);
+	//			course = this.courseService.findOne(courseId);
+	//			this.courseService.deleteAdmin(course);
+	//
+	//			this.courseService.flush();
+	//		} catch (final Throwable oops) {
+	//			caught = oops.getClass();
+	//			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+	//			this.entityManager.clear();
+	//		}
+	//
+	//		this.checkExceptions(expected, caught);
+	//
+	//		super.unauthenticate();
+	//	}
 
 	//Caso de uso 1.d: Listar todos los cursos del sistema y ver sus opiniones. Pero no podrás escribir una opinión ni asistir al curso.
 	@Test

@@ -58,8 +58,6 @@
 						code="master.page.administrator.register" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="carrier/admin/create.do"><spring:message
-								code="master.page.admin.carrier.edit" /></a></li>
 					<li><a href="manager_/admin/create.do"><spring:message
 								code="master.page.admin.manager.edit" /></a></li>
 					<li><a href="editor/admin/create.do"><spring:message

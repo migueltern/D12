@@ -55,7 +55,7 @@ public class CourseAdminController extends AbstractController {
 		course = this.courseService.findOne(courseId);
 		Assert.notNull(course);
 		try {
-			this.courseService.deleteAdmin(course);
+			this.courseService.delete(course);
 			result = new ModelAndView("redirect:list.do?d-16544-p=1");
 		} catch (final Throwable oops) {
 			if (oops.getMessage().equals("No puede tener recicladores"))

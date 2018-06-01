@@ -2018,7 +2018,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 1 viagra" />
 		<property name="body" value="body 1" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="HIGH" />
 		<property name="messageFolder" ref="OutBoxManager5" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2028,7 +2028,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 2" />
 		<property name="body" value="body 2 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="HIGH" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2038,7 +2038,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 2" />
 		<property name="body" value="body 2 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxManager5" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2048,7 +2048,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 3 cialis" />
 		<property name="body" value="body 3" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="HIGH" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2058,7 +2058,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 3 cialis" />
 		<property name="body" value="body 3" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxManager5" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2068,7 +2068,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 4 sexo" />
 		<property name="body" value="body 4" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="HIGH" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2078,7 +2078,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 4 sexo" />
 		<property name="body" value="body 4" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxManager5" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2088,7 +2088,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 5" />
 		<property name="body" value="body 5 viagra" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2098,7 +2098,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 5" />
 		<property name="body" value="body 5 viagra" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxManager5" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2108,7 +2108,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 6" />
 		<property name="body" value="body 6 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2118,7 +2118,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 6" />
 		<property name="body" value="body 6 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="HIGH" />
 		<property name="messageFolder" ref="OutBoxManager5" />
 		<property name="sender" ref="manager5" />
 		<property name="recipient" ref="admin" />
@@ -2138,7 +2138,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 1 viagra" />
 		<property name="body" value="body 1" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxBuyer5" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2148,7 +2148,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 2" />
 		<property name="body" value="body 2 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2158,7 +2158,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 2" />
 		<property name="body" value="body 2 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxBuyer5" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2168,7 +2168,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 3 cialis" />
 		<property name="body" value="body 3" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2178,7 +2178,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 3 cialis" />
 		<property name="body" value="body 3" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="HIGH" />
 		<property name="messageFolder" ref="OutBoxBuyer5" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2188,7 +2188,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 4 sexo" />
 		<property name="body" value="body 4" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="HIGH" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2198,7 +2198,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 4 sexo" />
 		<property name="body" value="body 4" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxBuyer5" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2208,7 +2208,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 5" />
 		<property name="body" value="body 5 viagra" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2218,7 +2218,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 5" />
 		<property name="body" value="body 5 viagra" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxBuyer5" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2228,7 +2228,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 6" />
 		<property name="body" value="body 6 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="SpamBoxAdmin" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />
@@ -2238,7 +2238,7 @@
 		<property name="moment" value="2017/10/01 15:20" />
 		<property name="subject" value="subject 6" />
 		<property name="body" value="body 6 sex" />
-		<property name="priority" value="LOW" />
+		<property name="priority" value="NEUTRAL" />
 		<property name="messageFolder" ref="OutBoxBuyer5" />
 		<property name="sender" ref="buyer5" />
 		<property name="recipient" ref="admin" />

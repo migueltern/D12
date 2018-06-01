@@ -37,7 +37,7 @@ public class IncidenceAdminController extends AbstractController {
 		final ModelAndView result;
 		Collection<Incidence> incidences;
 
-		incidences = this.incidenceService.incidencesWithTabooWord();
+		incidences = this.incidenceService.findAll();
 
 		incidences.removeAll(this.incidenceService.findIncidenceResolved());
 

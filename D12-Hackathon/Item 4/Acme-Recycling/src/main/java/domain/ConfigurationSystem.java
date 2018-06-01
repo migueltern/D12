@@ -79,7 +79,6 @@ public class ConfigurationSystem extends DomainEntity {
 		this.whoAreWeSpanish = whoAreWeSpanish;
 	}
 
-	@NotBlank
 	public String getEnglishWelcomeMessage() {
 		return this.englishWelcomeMessage;
 	}
@@ -88,7 +87,6 @@ public class ConfigurationSystem extends DomainEntity {
 		this.englishWelcomeMessage = englishWelcomeMessage;
 	}
 
-	@NotBlank
 	public String getSpanishWelcomeMessage() {
 		return this.spanishWelcomeMessage;
 	}
@@ -97,7 +95,6 @@ public class ConfigurationSystem extends DomainEntity {
 		this.spanishWelcomeMessage = spanishWelcomeMessage;
 	}
 
-	@NotBlank
 	public String getName() {
 		return this.name;
 	}
@@ -106,7 +103,6 @@ public class ConfigurationSystem extends DomainEntity {
 		this.name = name;
 	}
 	@URL
-	@NotBlank
 	public String getBanner() {
 		return this.banner;
 	}

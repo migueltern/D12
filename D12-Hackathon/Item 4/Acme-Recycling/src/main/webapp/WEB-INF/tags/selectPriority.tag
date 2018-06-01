@@ -46,7 +46,6 @@
 	<form:select id="${id}" path="${path}" onchange="${onchange}">
 		<form:option value="HIGH" label="HIGH"/>
 		<form:option value="NEUTRAL" label="NEUTRAL"/>
-		<form:option value="LOW" label="LOW"/> 
 	</form:select>
 	<form:errors path="${path}" cssClass="error" />
 </div>

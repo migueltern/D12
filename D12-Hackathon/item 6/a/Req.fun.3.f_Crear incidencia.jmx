@@ -5,9 +5,9 @@
       <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
       <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
         <boolProp name="LoopController.continue_forever">false</boolProp>
-        <stringProp name="LoopController.loops">15</stringProp>
+        <stringProp name="LoopController.loops">30</stringProp>
       </elementProp>
-      <stringProp name="ThreadGroup.num_threads">15</stringProp>
+      <stringProp name="ThreadGroup.num_threads">30</stringProp>
       <stringProp name="ThreadGroup.ramp_time">1</stringProp>
       <longProp name="ThreadGroup.start_time">1527606293000</longProp>
       <longProp name="ThreadGroup.end_time">1527606293000</longProp>
@@ -122,6 +122,11 @@
           <stringProp name="RandomTimer.range">100.0</stringProp>
         </GaussianRandomTimer>
         <hashTree/>
+        <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">1500</stringProp>
+          <stringProp name="RandomTimer.range">100.0</stringProp>
+        </GaussianRandomTimer>
+        <hashTree/>
       </hashTree>
       <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/j_spring_security_check" enabled="true">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -131,12 +136,14 @@
               <stringProp name="Argument.name">username</stringProp>
               <stringProp name="Argument.value">recycler1</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
             </elementProp>
             <elementProp name="password" elementType="HTTPArgument">
               <boolProp name="HTTPArgument.always_encode">false</boolProp>
               <stringProp name="Argument.name">password</stringProp>
               <stringProp name="Argument.value">recycler1</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
             </elementProp>
           </collectionProp>
         </elementProp>
@@ -309,6 +316,11 @@
           <stringProp name="RandomTimer.range">100.0</stringProp>
         </GaussianRandomTimer>
         <hashTree/>
+        <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">1500</stringProp>
+          <stringProp name="RandomTimer.range">100.0</stringProp>
+        </GaussianRandomTimer>
+        <hashTree/>
       </hashTree>
       <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/incidence/recycler/create.do" enabled="true">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -421,18 +433,21 @@
               <stringProp name="Argument.name">Name</stringProp>
               <stringProp name="Argument.value">Acme-Recycling</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
             </elementProp>
             <elementProp name="bannerURL" elementType="HTTPArgument">
               <boolProp name="HTTPArgument.always_encode">false</boolProp>
               <stringProp name="Argument.name">bannerURL</stringProp>
               <stringProp name="Argument.value">http%3A%2F%2Fwww.masciudadania.es%2Fwp-content%2Fuploads%2F2016%2F04%2Fz-Banner.jpg</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
             </elementProp>
             <elementProp name="whoAreWeSpanish" elementType="HTTPArgument">
               <boolProp name="HTTPArgument.always_encode">false</boolProp>
               <stringProp name="Argument.name">whoAreWeSpanish</stringProp>
               <stringProp name="Argument.value">La+organizaci%F3n+que+cuida+del+medio+ambiente+a+trav%E9s+del+reciclaje+y+el+ecodise%F1o+de+los+envases+en+Espa%F1a.+Hacemos+posible+que+los+envases+de+pl%E1stico%2C+latas%2C+cart%F3n%2C+y+cualquier+objeto+puedan+tener+una+segunda+oportunidad.+</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
             </elementProp>
             <elementProp name="d-16544-p" elementType="HTTPArgument">
               <boolProp name="HTTPArgument.always_encode">false</boolProp>

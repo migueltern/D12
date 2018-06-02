@@ -16,9 +16,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
-import domain.Actor;
 import domain.Item;
 import domain.LabelProduct;
+import domain.Recycler;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -42,6 +42,9 @@ public class ItemServiceTest extends AbstractTest {
 
 	@Autowired
 	ActorService		actorService;
+	
+	@Autowired
+	RecyclerService recyclerService;
 
 	@Autowired
 	LabelProductService	labelItemService;
@@ -148,30 +151,32 @@ public class ItemServiceTest extends AbstractTest {
 			//Encontrar los productos de ese reciclador, caso positivo
 			{
 
-				"manager1", "recycler1", 1, null
+				"recycler1", "item1", 2, null
 			}, 
 			//No encuentra los productos de ese reciclador, caso negativo
 			{
 
-				"manager1", "recycler5", 3, IllegalArgumentException.class
+				"recycler5", "item1", 3, IllegalArgumentException.class
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)
-			this.templateFindItemsByRecycler(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (int) testingData[i][2], (Class<?>) testingData[i][3]);
+			this.templateFindItemsByRecycler((String) testingData[i][0], (String) testingData[i][1], (int) testingData[i][2], (Class<?>) testingData[i][3]);
 	}
 
-	private void templateFindItemsByRecycler(final int usernameId, final int recyclerId, final int size, final Class<?> expected) {
+	private void templateFindItemsByRecycler(final String recycler, final String itemEntity, final int size, final Class<?> expected) {
 		Class<?> caught;
-		Actor actorConnected;
-		actorConnected = this.actorService.findOne(usernameId);
+		Item item;
 		Collection<Item> items;
+		Recycler recyclerId;
 
 		caught = null;
 		try {
-			super.authenticate(actorConnected.getUserAccount().getUsername());
-			items = this.itemService.findItemsByRecycler(recyclerId);
+			item = this.itemService.findOne(super.getEntityId(itemEntity));
+			recyclerId = this.recyclerService.findOne(super.getEntityId(recycler));
+			items = this.itemService.findItemsByRecycler(recyclerId.getId());
 			Assert.isTrue(items.size() == size);
-			this.unauthenticate();
+			Assert.isTrue(items.contains(item));
+			
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}

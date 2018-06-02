@@ -28,6 +28,8 @@
 <form:hidden path="id" />
 <form:hidden path="version" />
 
+
+
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
@@ -119,7 +121,7 @@
 
 
 
-<script>
+<script type="text/javascript">
 $( function() {
     $( "#datepicker" ).datepicker({ 
     	dateFormat: 'yy/mm/dd', 

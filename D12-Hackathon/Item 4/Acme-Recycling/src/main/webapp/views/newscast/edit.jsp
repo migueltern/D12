@@ -30,23 +30,27 @@
 
 
 	<div class="col">
+
 <B><acme:textbox code="new.creationDate" path="creationDate" readonly="true" /></B>
 </div>
 	
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-<B><acme:textbox code="Title" path="title"/></B>
+ 	<spring:message code="Title" var="Edit" /> 
+<B><acme:textbox title="${Edit}" path="title"/></B>
 </div>
 
-	<div class="form-group col-md-6">	
-<B><acme:textbox code="Content" path="content"/></B>
+	<div class="form-group col-md-6">
+<spring:message code="Content" var="Edit" />	
+<B><acme:textbox title="${Edit}" path="content"/></B>
 </div>
 </div>
 </div>
 
 <div class="col">
-<B><acme:textbox code="Pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
+<spring:message code="Pictures" var="Edit" />
+<B><acme:textbox title="${Edit}" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
 </div>
 
 

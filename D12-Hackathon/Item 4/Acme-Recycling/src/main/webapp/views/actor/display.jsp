@@ -26,10 +26,12 @@
   
   <!-- Attributes -->
 	
+	
 	<display:column>
+	<p>
 	<B><spring:message code="recycler.name" /></B>
 	<jstl:out value="${row.name}"></jstl:out>
-	
+	</p>
 
 	<p>
 		<B><spring:message code="recycler.surname" /></B>

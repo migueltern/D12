@@ -1,3 +1,4 @@
+
 package controllers.admin;
 
 import java.util.Collection;
@@ -13,26 +14,25 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import controllers.AbstractController;
 import domain.Actor;
-import domain.Item;
-import domain.Recycler;
 
 @Controller
 @RequestMapping("/actor/admin")
-public class ActorAdminController extends AbstractController{
-	
-//	Services --------------------------------------------------------
-	
+public class ActorAdminController extends AbstractController {
+
+	//	Services --------------------------------------------------------
+
 	@Autowired
-	private ActorService actorService;
-	
-//	Constructors
-	
-	public ActorAdminController(){
+	private ActorService	actorService;
+
+
+	//	Constructors
+
+	public ActorAdminController() {
 		super();
 	}
-	
-//	Listing ---------------------------------------------------------
-	
+
+	//	Listing ---------------------------------------------------------
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 
@@ -53,14 +53,13 @@ public class ActorAdminController extends AbstractController{
 		return result;
 
 	}
-	
+
 	//Displaying--------------------------------------------------------
-	
+
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView Display(@RequestParam int recyclerId) {
+	public ModelAndView Display(@RequestParam final int recyclerId) {
 		final ModelAndView result;
 		Actor actor;
-
 
 		actor = this.actorService.findOne(recyclerId);
 
@@ -70,61 +69,55 @@ public class ActorAdminController extends AbstractController{
 
 		return result;
 	}
-	
+
 	// Ban---------------------------------------------------------------
-	
+
 	@RequestMapping(value = "/ban", method = RequestMethod.GET)
-	public ModelAndView ban(@RequestParam int actorId) {
+	public ModelAndView ban(@RequestParam final int actorId) {
 		ModelAndView result;
 		Actor actor;
 
 		actor = this.actorService.findOne(actorId);
 		Assert.notNull(actor);
-		
-		try{
+
+		try {
 			this.actorService.ban(actor.getUserAccount());
 			result = new ModelAndView("redirect:list.do");
-		}catch (Throwable oops) {
+		} catch (final Throwable oops) {
 			result = this.listWithMessage("actor.commit.error");
 		}
-		
-		
 
 		return result;
 
 	}
-	
+
 	// Ban---------------------------------------------------------------
-	
+
 	@RequestMapping(value = "/unban", method = RequestMethod.GET)
-	public ModelAndView unban(@RequestParam int actorId) {
+	public ModelAndView unban(@RequestParam final int actorId) {
 		ModelAndView result;
 		Actor actor;
 
 		actor = this.actorService.findOne(actorId);
 		Assert.notNull(actor);
-		
-		try{
+
+		try {
 			this.actorService.unban(actor.getUserAccount());
 			result = new ModelAndView("redirect:list.do");
-		}catch (Throwable oops) {
+		} catch (final Throwable oops) {
 			result = this.listWithMessage("actor.commit.error");
 		}
-		
-		
 
 		return result;
 
 	}
-	
-	
+
 	//Other
-	
-	protected ModelAndView listWithMessage(String message) {
+
+	protected ModelAndView listWithMessage(final String message) {
 		ModelAndView result;
 		Collection<Actor> actors;
 
-		
 		actors = this.actorService.actorForBan();
 
 		result = new ModelAndView("actor/list");

@@ -32,11 +32,13 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<acme:textbox code="opinion.title" path="opinion.title" />
+ 	  <spring:message code="opinion.title" var="Edit" />
+	<acme:textbox title="${Edit}" path="opinion.title" />
 </div>
 
-	<div class="form-group col-md-6">	
-	<acme:textbox code="opinion.comment" path="opinion.comment" />
+	<div class="form-group col-md-6">
+	<spring:message code="opinion.comment" var="Edit" />	
+	<acme:textbox title="${Edit}" path="opinion.comment" />
 </div>
 </div>
 </div>
@@ -45,11 +47,13 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<acme:textbox code="http://" path="opinion.photo" placeHolder="http://"/>
+ 	 <spring:message code="opinion.photo" var="Edit" />
+	<acme:textbox title="${Edit}" path="opinion.photo" placeHolder="http://"/>
 </div>
 
-	<div class="form-group col-md-6">	
-	<acme:textbox code="opinion.caption" path="opinion.caption" />
+	<div class="form-group col-md-6">
+	<spring:message code="opinion.caption" var="Edit" />	
+	<acme:textbox title="${Edit}" path="opinion.caption" />
 </div>
 </div>
 </div>

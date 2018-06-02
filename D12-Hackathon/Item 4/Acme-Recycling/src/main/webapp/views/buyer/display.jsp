@@ -27,28 +27,29 @@
   <!-- Attributes -->
 	
 	<display:column>
-	<B><spring:message code="buyer.name" />:</B>
+	<p>
+	<B><spring:message code="buyer.name" /></B>
 	<jstl:out value="${row.name}"></jstl:out>
-	
+	</p>
 
 	<p>
-		<B><spring:message code="buyer.surname" />:</B>
+		<B><spring:message code="buyer.surname" /></B>
 		<jstl:out value="${row.surname}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="buyer.phoneNumber" />:</B>
+		<B><spring:message code="buyer.phoneNumber" /></B>
 		<jstl:out value="${row.phone}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="buyer.emailAddress" />:</B>
+		<B><spring:message code="buyer.emailAddress" /></B>
 		<jstl:out value="${row.email}"></jstl:out>
 	</p>
 		<p>
-		<B><spring:message code="buyer.postalAddress" />:</B>
+		<B><spring:message code="buyer.postalAddress" /></B>
 		<jstl:out value="${row.address}"></jstl:out>
 	</p>
 	<p>
-		<B><spring:message code="buyer.province" />:</B>
+		<B><spring:message code="buyer.province" /></B>
 		<jstl:out value="${row.province}"></jstl:out>
 	</p>
 	

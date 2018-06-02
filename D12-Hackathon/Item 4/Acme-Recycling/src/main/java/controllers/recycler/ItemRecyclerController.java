@@ -142,8 +142,13 @@ public class ItemRecyclerController extends AbstractController {
 				this.itemService.save(itemReconstruct);
 				result = new ModelAndView("redirect:/item/recycler/list.do");
 			} catch (final Throwable oops) {
+				if(oops.getMessage().equals("The quantity must be greater than")){
+					result = this.createEditModelAndView(itemReconstruct, "item.commit.error.quanty");
+				}else{
+					result = this.createEditModelAndView(itemReconstruct, "item.commit.error");
+				}
 
-				result = this.createEditModelAndView(itemReconstruct, "item.commit.error");
+				
 			}
 
 		return result;
@@ -193,6 +198,7 @@ public class ItemRecyclerController extends AbstractController {
 		result.addObject("labelsProduct", labelsProduct);
 		result.addObject("requestURI", "item/recycler/create.do");
 		result.addObject("RequestURIcancel", "item/recycler/list.do");
+		result.addObject("message", messageCode);
 
 		return result;
 

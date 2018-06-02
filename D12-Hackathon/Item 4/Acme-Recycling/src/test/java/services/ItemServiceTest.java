@@ -47,14 +47,18 @@ public class ItemServiceTest extends AbstractTest {
 	LabelProductService	labelItemService;
 
 
+	//3.e. El reciclador podrá subir sus productos(items) al sistema. Una vez que esté subido al sistema no se 
+	//podrán editar sus atributos, pero sí se podrá eliminar siempre y cuando no haya un transportista asociado 
+	//ya a ese producto. También hay que tener en cuenta que tampoco se podrá borrar si todo el proceso ha sido finalizado.
+
 	@Test
-	public void driverCreateAndSave() {
+	public void driverCreateAndEdit() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
+				//Se edita un product correctamente, caso positivo
 				"recycler1", "labelProduct1", "title test", "description test", 20.0, "http://www.photoTest.com", null
 			}, {
-				//Se edita un product correctamente
+				//No se edita el producto correctamente con el título nulo, caso negativo
 				"recycler1", "labelProduct1", null, "description test", 20.0, "http://www.photoTest.com", ConstraintViolationException.class
 			}
 		};
@@ -91,14 +95,19 @@ public class ItemServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 	}
+	
+	
+	//3.e. El reciclador podrá subir sus productos(items) al sistema. Una vez que esté subido al sistema no se 
+	//podrán editar sus atributos, pero sí se podrá eliminar siempre y cuando no haya un transportista asociado 
+	//ya a ese producto. También hay que tener en cuenta que tampoco se podrá borrar si todo el proceso ha sido finalizado.
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
+				//Borrar un producto, caso positivo
 				"recycler1", "item1", null
 			}, {
-				//Se edita un product correctamente
+				//Borrar un producto que no es suyo, caso negativo
 				"recycler1", "item3", IllegalArgumentException.class
 			}
 		};
@@ -129,13 +138,20 @@ public class ItemServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	
+	//3.e. El reciclador podrá subir sus productos(items) al sistema. Una vez que esté subido al sistema no se 
+	//podrán editar sus atributos, pero sí se podrá eliminar siempre y cuando no haya un transportista asociado 
+	//ya a ese producto. También hay que tener en cuenta que tampoco se podrá borrar si todo el proceso ha sido finalizado.
 	@Test
 	public void driverFindItemsByRecycler() {
 		final Object testingData[][] = {
+			//Encontrar los productos de ese reciclador, caso positivo
 			{
 
 				"manager1", "recycler1", 1, null
-			}, {
+			}, 
+			//No encuentra los productos de ese reciclador, caso negativo
+			{
 
 				"manager1", "recycler5", 3, IllegalArgumentException.class
 			}

@@ -21,6 +21,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <div class="col-md-6 col-centered">
+
 <form:form action="course/buyer/edit.do" modelAttribute="course">
 <br>
 <form:hidden path="id" />
@@ -111,10 +112,11 @@
 	
 <acme:cancel url="course/buyer/list.do?d-16544-p=1"	code="course.cancel" />
 
+
+
+
 </form:form>
 </div>
-
-
 <script>
 $( function() {
     $( "#datepicker" ).datepicker({ 

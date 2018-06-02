@@ -20,20 +20,23 @@
 
 <br>
 
-<div class="text-center"><B><spring:message code="security.login"></spring:message></B></div>
+<div class="text-center"><B>
+
+<font size="6" color=#0B3B0B face="Bebas Neue">
+<spring:message code="security.login"></spring:message></font></B></div>
 
 <div class=" offset-md-3 col-md-6 ">
 
 <br>
 	<form:label path="username">
-		<spring:message code="security.username" />
+		<B><spring:message code="security.username" /></B>
 	</form:label>
 	<form:input path="username" class="form-control input-lg"/>	
 	<form:errors class="error" path="username" />
 	<br />
 
 	<form:label path="password">
-		<spring:message code="security.password" />
+		<B><spring:message code="security.password" /></B>
 	</form:label>
 	<form:password path="password" class="form-control input-lg"/>	
 	<form:errors class="error" path="password" />

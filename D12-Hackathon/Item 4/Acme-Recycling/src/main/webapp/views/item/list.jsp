@@ -71,12 +71,14 @@
 	
 	<spring:message code="item.photo" var="photoVar" />
 		<display:column title="${photoVar}" sortable="true">
-			<div
-				style="position: relative; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
-
-				<img src="${row.photo}" width="100" height="100">
-			</div>
-					
+			<jstl:if test="${row.photo!=''}">
+				<div
+					style="position: relative; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
+				<jstl:if test="${!row.photo}">	
+					<img src="${row.photo}" width="100" height="100">
+				</jstl:if>
+				</div>
+			</jstl:if>
 		</display:column>
 	
 	

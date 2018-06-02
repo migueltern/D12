@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import controllers.AbstractController;
 import domain.Actor;
+import domain.Item;
+import domain.Recycler;
 
 @Controller
 @RequestMapping("/actor/admin")
@@ -46,10 +48,27 @@ public class ActorAdminController extends AbstractController{
 		result.addObject("RequestURIunban", "actor/admin/unban.do");
 		result.addObject("showbun", true);
 		result.addObject("showunbun", true);
-		result.addObject("RequestUriDisplay", "/recycler/display.do");
+		result.addObject("RequestUriDisplay", "actor/admin/display.do");
 
 		return result;
 
+	}
+	
+	//Displaying--------------------------------------------------------
+	
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView Display(@RequestParam int recyclerId) {
+		final ModelAndView result;
+		Actor actor;
+
+
+		actor = this.actorService.findOne(recyclerId);
+
+		result = new ModelAndView("actor/display");
+		result.addObject("actor", actor);
+		result.addObject("requestURI", "actor/admin/display.do");
+
+		return result;
 	}
 	
 	// Ban---------------------------------------------------------------

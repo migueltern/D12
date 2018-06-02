@@ -15,10 +15,12 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Incidence;
+import domain.Recycler;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
+	
 })
 @Transactional
 public class IncidenceServiceTest extends AbstractTest{
@@ -27,9 +29,63 @@ public class IncidenceServiceTest extends AbstractTest{
 	@Autowired
 	private IncidenceService incidenceService;
 	
+	@Autowired
+	private RecyclerService recyclerService;
 	
 	@PersistenceContext
 	EntityManager		entityManager;
+	
+	
+	// 3.f Los recicladores que hayan realizado operaciones con la empresa podrán crear, editar, borrar y listar las incidencia
+	@Test
+	public void driverList() {
+		final Object testingData[][] = {
+			
+			//La incidencia1 está contenida en las incidencias del reciclador, caso positivo
+			{
+
+				"recycler1", "incidence1", null
+
+			},
+			//La incidencia1 no contenida en las incidencias del reciclador, caso negativo
+			{
+
+				"recycler1", "incidence3", IllegalArgumentException.class
+
+			}
+			
+			
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateList((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+	
+	
+	private void templateList(String username, String incidenceId, Class<?> expected) {
+		Class<?> caught;
+		Incidence incidence;
+		Collection<Incidence> incidences;
+		Recycler recycler;
+		caught = null;
+
+		try {
+			super.authenticate(username);
+			recycler = this.recyclerService.findOne(super.getEntityId(username));
+			incidence = this.incidenceService.findOne(super.getEntityId(incidenceId));
+			incidences = this.incidenceService.findIncidencesByRecycler(recycler.getId());
+			Assert.isTrue(incidences.contains(incidence));
+			this.incidenceService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
 	
 	// 3.f Los recicladores que hayan realizado operaciones con la empresa podrán crear, editar, borrar y listar las incidencias  
 	@Test

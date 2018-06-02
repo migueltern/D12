@@ -1471,6 +1471,24 @@
 	</bean>
 
 
+	<bean id="item4" class="domain.Item">
+		<property name="title" value="title item 4" />
+		<property name="publicationMoment" value="2018/04/10 15:12" />
+		<property name="description" value="description item 4" />
+		<property name="quantity" value="10.0" />
+		<property name="photo"
+			value="https://imagessl4.casadellibro.com/a/l/t1/64/9788408077664.jpg" />
+		<property name="labelProduct" ref="labelProduct7" />
+		<property name="recycler" ref="recycler5" />
+		<property name="value" value="5"></property>
+		<property name="opinions">
+			<list>
+				
+			</list>
+		</property>
+		<property name="request" ref="request4" />
+	</bean>
+
 
 	<bean id="item5" class="domain.Item">
 		<property name="title" value="title item 5" />

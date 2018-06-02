@@ -35,7 +35,8 @@
 </div>
 
 	<div class="form-group col-md-6">
-		<B><acme:textbox code="item.title" path="title"/></B>
+<spring:message code="item.title" var="Edit" />
+		<B><acme:textbox title="${Edit}" path="title"/></B>
 </div>
 </div>
 </div>
@@ -43,18 +44,20 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<B><acme:textbox code="item.description" path="description"/></B>
+ 	  <spring:message code="item.description" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="description"/></B>
 </div>
 
 	<div class="form-group col-md-6">
-	
-	<B><acme:textbox code="item.quantity" path="quantity"/></B>
+	 <spring:message code="item.quantity" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="quantity"/></B>
 </div>
 </div>
 </div>
 	
 <div class="col">
-	<B><acme:textbox code="item.photo" path="photo" placeHolder="http://"/></B>
+<spring:message code="item.photo" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="photo" placeHolder="http://"/></B>
 	
 </div>
 

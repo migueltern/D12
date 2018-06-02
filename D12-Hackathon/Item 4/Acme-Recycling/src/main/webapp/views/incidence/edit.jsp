@@ -36,8 +36,8 @@
 </div>
 
 	<div class="form-group col-md-6">
-	
-	<B><acme:textbox code="incidence.reasonWhy" path="reasonWhy"/></B>
+<spring:message code="incidence.reasonWhy" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="reasonWhy"/></B>
 </div>
 </div>
 </div>
@@ -46,13 +46,14 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-		<B><acme:textbox code="incidence.title" path="title"/></B>
+<spring:message code="incidence.title" var="Edit" />
+		<B><acme:textbox title="${Edit}" path="title"/></B>
 	
 </div>
 
 	<div class="form-group col-md-6">
-	
-	<B><acme:textbox code="incidence.comment" path="comment"/></B>
+<spring:message code="incidence.comment" var="Edit" />	
+	<B><acme:textbox title="${Edit}" path="comment"/></B>
 </div>
 </div>
 </div>

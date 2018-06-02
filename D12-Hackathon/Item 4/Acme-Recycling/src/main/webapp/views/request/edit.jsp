@@ -36,11 +36,13 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<acme:textbox code="request.title" path="request.title" />
+ <spring:message code="request.title" var="Edit" />
+	<acme:textbox title="${Edit}" path="request.title" />
 </div>
 
 	<div class="form-group col-md-6">
-	<acme:textbox code="request.observation" path="request.observation" />
+<spring:message code="request.observation" var="Edit" />
+	<acme:textbox title="${Edit}" path="request.observation" />
 </div>
 </div>
 </div>

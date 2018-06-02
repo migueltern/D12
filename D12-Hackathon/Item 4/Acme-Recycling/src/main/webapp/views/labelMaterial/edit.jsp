@@ -31,7 +31,8 @@
 
 	<!-- ATRIBUTOS -->
 	<div class="col">
-	<B><acme:textbox code="labelMaterial.name" path="name" /></B>
+	<spring:message code="labelMaterial.name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="name" /></B>
 	<br />
 	</div>
 	

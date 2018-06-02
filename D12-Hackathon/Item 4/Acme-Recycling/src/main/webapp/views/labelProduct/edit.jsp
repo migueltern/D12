@@ -29,7 +29,8 @@
 	<form:hidden path="byDefault"/>
 	
 <!-- ATRIBUTOS -->
-	<B><acme:textbox code="labelProduct.name" path="name"/></B>
+<spring:message code="labelProduct.name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="name"/></B>
 	<br />
 	
 	<%-- <spring:message code="labelProduct.byDefault" var="byDefaultHeader"/>

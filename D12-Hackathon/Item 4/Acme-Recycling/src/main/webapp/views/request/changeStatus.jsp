@@ -20,9 +20,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<div class="col-md-8 col-centered">
 <form:form action="${requestURI}" modelAttribute="requestForm">
-
+<br>
 	<form:hidden path="request.id" />
 	<form:hidden path="request.version" />
 
@@ -33,11 +33,9 @@
 
 
 
-	<input type="submit" name="saveChangeStatus" class="btn btn-secondary"
-
 	
-
-		value="<spring:message code="request.save"/>" />&nbsp;
+		
+	<acme:submit name="saveChangeStatus" code="request.save"/>
 		
 		<security:authorize access="hasRole('MANAGER')">
 		<acme:cancel url="request/manager/listMyRequest.do?d-16544-p=1"
@@ -52,3 +50,4 @@
 
 </form:form>
 
+</div>

@@ -41,7 +41,7 @@ public class ActorAdminController extends AbstractController{
 
 		actors = this.actorService.actorForBan();
 
-		result = new ModelAndView("actor/list");
+		result = new ModelAndView("actor/listActor");
 		result.addObject("actors", actors);
 		result.addObject("requestURI", "actor/admin/list.do");
 		result.addObject("RequestURIban", "actor/admin/ban.do");

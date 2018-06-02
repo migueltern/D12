@@ -111,7 +111,7 @@
 
 
 <security:authorize access="hasRole('ADMIN')">
-		<spring:message code="Pictures" var="draftMode" />
+		<spring:message code="pictures" var="draftMode" />
 	<display:column title="${draftMode}">
 		<jstl:if test="${row.pictures.size()!=0}">
 			

@@ -21,8 +21,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<display:table name="admin" class="displaytag"
-  requestURI="${requestURI}" id="row">
+<display:table name="admin" class="displaytag "
+  requestURI="${requestURI}" id="row" >
   
   <!-- Attributes -->
 	

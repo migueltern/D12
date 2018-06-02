@@ -102,7 +102,7 @@
 		<spring:message code="recycler.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="recycler.legal.moreinfo"/></a>
 		</form:label>
 		<form:checkbox id="conditions" path="conditions"/>
-		<form:errors cssClass="error" path="conditions"/>
+		<form:errors class="alert alert-danger" path="conditions"/>
    </jstl:if>
  <br/>
  </div>

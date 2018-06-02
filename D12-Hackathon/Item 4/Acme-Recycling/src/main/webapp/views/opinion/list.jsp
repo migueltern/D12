@@ -55,7 +55,7 @@
 	<display:column property="createdMoment" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
 
-	<spring:message code="opinion.photo" var="photoVar" />
+	<spring:message code="photo" var="photoVar" />
 	<display:column title="${photoVar}" sortable="true">
 		<div
 			style="position: relative; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">

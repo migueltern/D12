@@ -86,7 +86,7 @@
 
 
 <jstl:if test="${cleanPoint.id != 0}">
-		<input type="submit" name="delete" class="btn btn-secondary"
+		<input type="submit" name="delete" class="btn btn-danger"
 			value="<spring:message code="cleanPoint.delete" />"
 			onclick="javascript: return confirm('<spring:message code="cleanPoint.confirm.delete" />')" />&nbsp;
 	</jstl:if>

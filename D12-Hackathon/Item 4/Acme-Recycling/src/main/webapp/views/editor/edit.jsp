@@ -28,7 +28,8 @@
 	
 <jstl:if test="${editorForm.editor.id == 0}">
 <div class="col">
-			<B><acme:textbox code="editor.username"
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox title="${Edit}"
 				path="editor.userAccount.username" /></B>
 </div>
 <br>				
@@ -36,12 +37,14 @@
 <div class="col">
 <div class="form-row">
 	<div class="form-group col-md-6">
-			<B><acme:password code="editor.password"
+<spring:message code="password" var="Edit" />
+			<B><acme:password title="${Edit}"
 				path="editor.userAccount.password" /></B>
 				
 </div>
 	<div class="form-group col-md-6">
-			<B><acme:password code="editor.password" path="passwordCheck" /></B>
+<spring:message code="password" var="Edit" />
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
 	</div>
 </div>
 </div>
@@ -50,10 +53,12 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">	
-	<B><acme:textbox code="editor.name" path="editor.name"/></B>
+<spring:message code="Name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.name"/></B>
 </div>
 	<div class="form-group col-md-6">	
-	<B><acme:textbox code="editor.surname" path="editor.surname"/></B>
+<spring:message code="Surname" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.surname"/></B>
 </div>
 </div>
 </div>
@@ -61,16 +66,19 @@
 <div class="col">
 	<div class="form-row">
 		<div class="form-group col-md-6">
-	<B><acme:textbox code="editor.emailAddress" path="editor.email"/></B>
+<spring:message code="Email" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.email"/></B>
 </div>
 	<br />
 	<div class="form-group col-md-6">
-	<B><acme:textbox code="editor.phoneNumber" path="editor.phone" /></B>
+<spring:message code="Phone" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.phone" /></B>
 </div>
 
 	<br />
 <div class="col">
-	<B><acme:textbox code="editor.postalAddress" path="editor.address"/></B>
+<spring:message code="Address" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.address"/></B>
 </div>
 </div>
 </div>

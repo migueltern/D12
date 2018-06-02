@@ -28,7 +28,8 @@
 	
 <jstl:if test="${managerForm.manager.id == 0}">
 <div class="col">
-			<B><acme:textbox code="manager.username"
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox title="${Edit}"
 				path="manager.userAccount.username" /></B>
 </div>
 <br>
@@ -36,12 +37,14 @@
 <div class="col">
 <div class="form-row">
 	<div class="form-group col-md-6">
-			<B><acme:password code="manager.password"
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}"
 				path="manager.userAccount.password" /></B>
 				
 </div>
 	<div class="form-group col-md-6">
-			<B><acme:password code="manager.password" path="passwordCheck" /></B>
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
 </div>
 </div>
 </div>
@@ -50,10 +53,12 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<B><acme:textbox code="manager.name" path="manager.name"/></B>
+ 	<spring:message code="Name" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="manager.name"/></B>
 </div>
 	<div class="form-group col-md-6">	
-	<B><acme:textbox code="manager.surname" path="manager.surname"/></B>
+<spring:message code="Surname" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="manager.surname"/></B>
 </div>
 </div>
 </div>
@@ -61,16 +66,19 @@
 <div class="col">
 	<div class="form-row">
 		<div class="form-group col-md-6">
-	<B><acme:textbox code="manager.emailAddress" path="manager.email"/></B>
+<spring:message code="Email" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="manager.email"/></B>
 </div>
 	<br />
 	<div class="form-group col-md-6">
-	<B><acme:textbox code="manager.phoneNumber" path="manager.phone" /></B>
+<spring:message code="Phone" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="manager.phone" /></B>
 </div>
 
 	<br />
 <div class="col">
-	<B><acme:textbox code="manager.postalAddress" path="manager.address"/></B>
+<spring:message code="Address" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="manager.address"/></B>
 </div>
 </div>
 </div>

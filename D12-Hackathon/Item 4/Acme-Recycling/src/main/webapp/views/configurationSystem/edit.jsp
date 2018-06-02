@@ -20,62 +20,84 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<div class="col-md-8 col-centered">	
 <form:form action="${RequestURI }" modelAttribute="configurationSystem">
-
+<br>
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
 	<font size="5" color = "green" face="Georgia" ><B><spring:message code="welcome"  /></B></font>
 	<fieldset>
+	<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="configurationSystem.name" path="name"/></B>
-	<br />
+</div>
+	<div class="form-group col-md-6">
 	
 	<B><acme:textbox code="configurationSystem.banner" path="banner" /></B>
-	<br />
+</div>
+</div>
+</div>
 		
-	<B><acme:textarea code="configurationSystem.englishWelcomeMessage" path="englishWelcomeMessage" /></B>
-	<br />
+		<div class="col">
+	<B><acme:textbox code="configurationSystem.englishWelcomeMessage" path="englishWelcomeMessage" /></B>
+	</div>
 	
-	<B><acme:textarea code="configurationSystem.spanishWelcomeMessage" path="spanishWelcomeMessage" /></B>
-
+	<div class="col">
+	<B><acme:textbox code="configurationSystem.spanishWelcomeMessage" path="spanishWelcomeMessage" /></B>
+	</div>
 	</fieldset>
 	<br>
 	<font size="5" color = "green" face="Georgia" ><B><spring:message code="finder"  /></B></font>
-	<fieldset>
+	
+	<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
 	<B><acme:textbox code="configurationSystem.maxNumberFinder" path="maxNumberFinder" /></B>
-	<br />
+</div>
+	<div class="form-group col-md-6">
 	
 	<B><acme:textbox code="configurationSystem.cacheMaxTime" path="cacheMaxTime" /></B>
-	</fieldset>
-	<br>
+	
+</div>
+</div>
+</div>
 	
 	<font size="5" color = "green" face="Georgia" ><B><spring:message code="aboutUs"  /></B></font>
 	<fieldset>
+	<div class="col">
 	<B><acme:textbox code="configurationSystem.whoAreWeSpanish" path="whoAreWeSpanish" /></B>
-	<br />
+	</div>
 	
+	<div class="col">
 	<B><acme:textbox code="configurationSystem.whoAreWeEnglish" path="whoAreWeEnglish" /></B>
-	<br />
+	</div>
 	
+	<div class="col">
 	<B><acme:textbox code="configurationSystem.locationSpanish" path="locationSpanish" /></B>
-	<br />
+	</div>
 	
+	<div class="col">
 	<B><acme:textbox code="configurationSystem.locationEnglish" path="locationEnglish" /></B>
-	<br />
+	</div>
 	
+	<div class="col">
 	<B><acme:textbox code="configurationSystem.aboutUsPicture" path="aboutUsPicture" /></B>
-	<br />
+	</div>
 	</fieldset>
 	<br>
 	
 
 <!-- 	//BOTONES -->
 	
-	<input type="submit" name="save"
-		value="<spring:message code="configurationSystem.save" />" />&nbsp; 
+	<acme:submit name="save" code="configurationSystem.save"/>
 	
-	<input type="button" name="cancel"
-		value="<spring:message code="configurationSystem.cancel" />"
-		onclick="javascript:  window.location.replace('welcome/index.do');" />
+
+		
+		<acme:cancel
+		url="welcome/index.do"
+		code="configurationSystem.cancel" />
 	<br />
 </form:form>
+</div>

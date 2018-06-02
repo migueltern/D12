@@ -20,18 +20,22 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<div class="col-md-8 col-centered">	
 <form:form action="legislation/admin/edit.do" modelAttribute="legislation">
-
+<br>
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<B><acme:textbox code="legislation.title" path="title"/></B>
+<spring:message code="legislation.title" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="title"/></B>
 	<br />
 	
-	<B><acme:textbox code="legislation.body" path="body" /></B>
+<spring:message code="legislation.body" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="body" /></B>
 	<br />
 	
-	<B><acme:textbox code="legislation.link" path="link" placeHolder="http://imagen1"/></B>
+<spring:message code="legislation.link" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="link" placeHolder="http://imagen1"/></B>
 	<br />
 		
 	
@@ -41,15 +45,15 @@
 
 <!-- 	//BOTONES -->
 	
-	<input type="submit" name="save"
-		value="<spring:message code="legislation.save" />" />&nbsp; 
+	<acme:submit name="save" code="legislation.save"/>
+
 	
 	<jstl:if test="${legislation.id != 0 }">
 	 	<acme:submit_with_on_click name="delete" code="legislation.delete" code2="legislation.confirm.delete"/>
 	</jstl:if>
 	
-	<input type="button" name="cancel"
-		value="<spring:message code="legislation.cancel" />"
-		onclick="javascript:  window.location.replace('configurationSystem/admin/legislation/list.do?d-16544-p=1');" />
+	<acme:cancel url="configurationSystem/admin/legislation/list.do?d-16544-p=1" code="legislation.cancel"/>
+	
 	<br />
 </form:form>
+</div>

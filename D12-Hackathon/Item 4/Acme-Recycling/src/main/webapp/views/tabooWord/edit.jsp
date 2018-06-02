@@ -19,13 +19,14 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<div class="col-md-8 col-centered">	
 <form:form action="tabooWord/admin/edit.do" modelAttribute="tabooWord">
-
+<br>
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<B><acme:textbox code="tabooWord.name" path="name"/></B>
+<spring:message code="Name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="name"/></B>
 	<br />
 			
 	
@@ -41,3 +42,4 @@
 	<acme:cancel url="configurationSystem/admin/tabooWord/list.do?d-16544-p=1" code="tabooWord.cancel"/>
 	<br />
 </form:form>
+</div>

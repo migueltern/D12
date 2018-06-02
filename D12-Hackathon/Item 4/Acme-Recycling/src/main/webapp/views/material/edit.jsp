@@ -31,17 +31,20 @@
 <br>
 	<!-- ATRIBUTOS -->
 	<div class="col">
-	<B><acme:textbox code="material.title" path="title" /></B>
+<spring:message code="material.title" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="title" /></B>
 	</div>
 <br>
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<B><acme:textbox code="material.description" path="description" /></B>
+<spring:message code="material.description" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="description" /></B>
 </div>
 	<br />
 	<div class="form-group col-md-6">
-	<B><acme:textbox code="material.unitPrice" path="unitPrice" /></B>
+<spring:message code="material.unitPrice" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="unitPrice" /></B>
 </div>
 </div>
 </div>
@@ -54,7 +57,8 @@
 	<br />
 	
 	<div class="col">
-	<B><acme:textbox code="material.quantity" path="quantity" /></B>
+<spring:message code="material.quantity" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="quantity" /></B>
 </div>
 <br>
 

@@ -34,12 +34,12 @@
 				path="admin.userAccount.username" /><br /></B>
 
 
-			
-			<B><acme:password code="admin.password"
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}"
 				path="admin.userAccount.password" /><br /></B>
 				
-			
-			<B><acme:password code="admin.password" path="passwordCheck" /></B>
+<spring:message code="password" var="Edit" /> 		
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
 			<br />
 			
 
@@ -49,27 +49,32 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<B><acme:textbox code="admin.name" path="admin.name"/></B>
+ <spring:message code="Name" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="admin.name"/></B>
 	</div>
 
 	<div class="form-group col-md-6">	
-	<B><acme:textbox code="admin.surname" path="admin.surname"/></B>
+<spring:message code="Surname" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="admin.surname"/></B>
 </div>
 </div>
 </div>
 <div class="col">
 	<div class="form-row">
 		<div class="form-group col-md-6">
-	<B><acme:textbox code="admin.emailAddress" path="admin.email"/></B>
+<spring:message code="Email" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="admin.email"/></B>
 	</div>
 	<br />
 	<div class="form-group col-md-6">
-	<B><acme:textbox code="admin.phoneNumber" path="admin.phone" /></B>
+<spring:message code="Phone" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="admin.phone" /></B>
 	</div>
 
 	<br />
 <div class="col">
-	<B><acme:textbox code="admin.postalAddress" path="admin.address"/></B>
+<spring:message code="Address" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="admin.address"/></B>
 	</div>
 </div>
 </div>

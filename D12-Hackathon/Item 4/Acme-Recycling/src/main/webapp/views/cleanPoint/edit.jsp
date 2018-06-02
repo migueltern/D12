@@ -32,11 +32,13 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<B><acme:textbox code="cleanPoint.address" path="address"/></B>
+<spring:message code="Address" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="address"/></B>
 </div>
 
 	<div class="form-group col-md-6">	
-	<B><acme:textbox code="cleanPoint.phone" path="phone"/></B>
+<spring:message code="Phone" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="phone"/></B>
 </div>
 </div>
 </div>
@@ -58,7 +60,8 @@
 	</div>
 <div class="col">	
 <br>
-	<B><acme:textbox code="cleanPoint.GPS.name" path="location.name"/></B>
+<spring:message code="cleanPoint.GPS.name" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="location.name"/></B>
 </div>
 <br>
 <div class="col">

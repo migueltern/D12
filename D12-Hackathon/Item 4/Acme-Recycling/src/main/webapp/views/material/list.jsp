@@ -138,7 +138,7 @@
 </security:authorize>
 
 <security:authorize access="isAnonymous()">
-<B><spring:message code="aviso.material" /></B>
+<font size="3" color=black face="Bebas Neue"><B><spring:message code="aviso.material" /></B></font>
 <a href="buyer/create.do"><spring:message code="aviso2"  /></a>
 
 

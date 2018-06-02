@@ -27,8 +27,8 @@
 	<br>
 	<form:hidden path="id" />
 
-	
-	<B><acme:textbox code="messageFolder.name" path="name"/></B>
+<spring:message code="messageFolder.name" var="Edit" />	
+	<B><acme:textbox title="${Edit}" path="name"/></B>
 	<br />
 	
 	

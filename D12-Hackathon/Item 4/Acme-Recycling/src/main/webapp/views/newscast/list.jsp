@@ -167,9 +167,9 @@
 </display:table>
 </div>
 <security:authorize access="isAnonymous()">
-<B><spring:message code="aviso1" /></B>
+<font size="3" color=black face="Bebas Neue"><B><spring:message code="aviso1" /></B></font>
 <a href="buyer/create.do"><spring:message code="aviso2"  /></a>
-<B><spring:message code="aviso4" /></B>
+<font size="3" color=black face="Bebas Neue"><B><spring:message code="aviso4" /></B></font>
 <a href="recycler/create.do"><spring:message code="aviso3"  /></a>
 
 </security:authorize>

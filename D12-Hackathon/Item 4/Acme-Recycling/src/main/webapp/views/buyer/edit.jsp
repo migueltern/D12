@@ -29,7 +29,8 @@
 	
 <jstl:if test="${buyerForm.buyer.id == 0}">
 <div class="col">
-			<B><acme:textbox code="buyer.username"
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox  title="${Edit}"
 				path="buyer.userAccount.username" /></B>
 </div>
 <br>
@@ -38,11 +39,13 @@
 <div class="col">
 <div class="form-row">
 	<div class="form-group col-md-6">
-			<B><acme:password code="buyer.password"
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}"
 				path="buyer.userAccount.password" /></B>
 </div>
 	<div class="form-group col-md-6">
-			<B><acme:password code="buyer.password" path="passwordCheck" /></B>
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
 </div>
 </div>
 </div>
@@ -53,11 +56,13 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<acme:textbox code="buyer.name" path="buyer.name"/>
+<spring:message code="Name" var="Edit" /> 
+	<acme:textbox title="${Edit}" path="buyer.name"/>
 </div>
 
 	<div class="form-group col-md-6">	
-	<B><acme:textbox code="buyer.surname" path="buyer.surname"/></B>
+<spring:message code="Surname" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.surname"/></B>
 </div>
 </div>
 </div>
@@ -65,16 +70,19 @@
 <div class="col">
 	<div class="form-row">
 		<div class="form-group col-md-6">
-	<B><acme:textbox code="buyer.emailAddress" path="buyer.email"/></B>
+<spring:message code="Email" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.email"/></B>
 </div>
 	<br />
 	<div class="form-group col-md-6">
-	<B><acme:textbox code="buyer.phoneNumber" path="buyer.phone" /></B>
+<spring:message code="Phone" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.phone" /></B>
 </div>
 
 	<br />
 <div class="col">
-	<B><acme:textbox code="buyer.postalAddress" path="buyer.address"/></B>
+<spring:message code="Address" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.address"/></B>
 
 	</div>
 </div>

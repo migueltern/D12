@@ -29,7 +29,8 @@
 	
 <jstl:if test="${recyclerForm.recycler.id == 0}">
 <div class="col">
-			<B><acme:textbox code="username"
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox  title="${Edit}" 
 				path="recycler.userAccount.username" /><br /></B>
 </div>
 
@@ -37,11 +38,13 @@
 <div class="col">
 <div class="form-row">
 	<div class="form-group col-md-6">
-			<B><acme:password code="password"
-				path="recycler.userAccount.password" /></B>
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}"
+				path="recycler.userAccount.password" /></B>   
 </div>
 	<div class="form-group col-md-6">
-			<B><acme:password code="password" path="passwordCheck" /></B>
+<spring:message code="password" var="Edit" />
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
 </div>
 </div>
 </div>
@@ -51,11 +54,13 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
-	<B><acme:textbox code="Name" path="recycler.name"/></B>
+<spring:message code="Name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.name"/></B>
 </div>
 	<br />
 	<div class="form-group col-md-6">
-	<B><acme:textbox code="Surname" path="recycler.surname"/></B>
+<spring:message code="Surname" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.surname"/></B>
 </div>
 </div>
 </div>
@@ -63,16 +68,19 @@
 <div class="col">
 	<div class="form-row">
 		<div class="form-group col-md-6">
-	<B><acme:textbox code="Email" path="recycler.email"/></B>
+<spring:message code="Email" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.email"/></B>
 </div>
 	
 	<div class="form-group col-md-6">
-	<B><acme:textbox code="Phone" path="recycler.phone" /></B>
+<spring:message code="Phone" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.phone" /></B>
 </div>
 
 
 <div class="col">
-	<B><acme:textbox code="Address" path="recycler.address"/></B>
+<spring:message code="Address" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.address"/></B>
 </div>
 </div>
 </div>
@@ -85,6 +93,7 @@
 	<br>
 	
 	<acme:submit name="save" code="recycler.save" />
+	
 	<acme:cancel url="welcome/index.do" code="recycler.cancel"/>
 	<br />
 	<br/>

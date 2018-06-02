@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<div class="col-md-8 col-centered">
 <form:form action="${requestURI}" modelAttribute="carrierForm">
 	
 	<br>
@@ -106,3 +106,4 @@
    </jstl:if>
  <br/>
 	</form:form>
+</div>

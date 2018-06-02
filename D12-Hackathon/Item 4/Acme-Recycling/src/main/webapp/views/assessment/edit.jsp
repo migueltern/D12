@@ -33,8 +33,8 @@
 	<form:hidden path="requestId" />
 
 
-
-	<acme:textbox code="assessment.description"
+<spring:message code="assessment.description" var="Edit" />
+	<acme:textbox title="${Edit}"
 		path="assessment.description" />
 
 

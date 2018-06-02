@@ -37,7 +37,8 @@
 </div>
 
 	<div class="form-group col-md-6">
-		<B><acme:textbox code="comment.body" path="body"/></B>
+<spring:message code="comment.body" var="Edit" />
+		<B><acme:textbox title="${Edit}" path="body"/></B>
 </div>
 </div>
 </div>

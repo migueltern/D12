@@ -45,6 +45,7 @@ public class AdminServiceTest extends AbstractTest {
 	private NewscastService		newscastService;
 	@Autowired
 	private RecyclerService		recyclerService;
+	
 
 	@PersistenceContext
 	EntityManager				entityManager;
@@ -151,7 +152,9 @@ public class AdminServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 		super.unauthenticate();
 	}
-
+	
+	
+	
 	//8.i	-Las noticias que contengan más comentarios.
 	@Test
 	public void findNewWithMoreComments() {

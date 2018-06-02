@@ -161,4 +161,8 @@ public class ActorService {
 		return result;
 
 	}
+	
+	public void flush(){
+		this.actorRepository.flush();
+	}
 }

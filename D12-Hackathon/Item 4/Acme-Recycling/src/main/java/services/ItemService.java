@@ -98,8 +98,11 @@ public class ItemService {
 			Date publicationMoment;
 			publicationMoment = new Date(System.currentTimeMillis() - 1000);
 			item.setPublicationMoment(publicationMoment);
+			Assert.isTrue(item.getQuantity()>0.0, "The quantity must be greater than");
 		}
-
+		
+		
+		
 		//Si eres MANAGER Solo se puede añadir puntuation a los items de TUS requests
 		final Authority authorityForManager = new Authority();
 		authorityForManager.setAuthority("MANAGER");

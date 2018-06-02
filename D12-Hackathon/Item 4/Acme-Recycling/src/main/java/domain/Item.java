@@ -69,7 +69,7 @@ public class Item extends Opinable {
 		this.description = description;
 	}
 
-	@Min(1)
+	@Min(0)
 	public Double getQuantity() {
 		return this.quantity;
 	}

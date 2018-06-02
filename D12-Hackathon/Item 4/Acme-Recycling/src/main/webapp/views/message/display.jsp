@@ -82,10 +82,5 @@
 		</jstl:if>
 
 	</display:column>
-	
-	
-		
-		
-
 
 </display:table>

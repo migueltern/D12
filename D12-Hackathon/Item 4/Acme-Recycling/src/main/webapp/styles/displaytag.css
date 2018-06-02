@@ -28,7 +28,7 @@ table {
 
 th,td {
 	padding: 0.7rem;
-	text-align: center;
+	text-align: left; /* en vez de en el centro */
 /* 	vertical-align: top; */
 }
 

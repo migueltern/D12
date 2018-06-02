@@ -69,7 +69,7 @@
 	
 	<acme:column code="item.labelProduct" property="labelProduct.name" sortable ="true"/>
 	
-	<spring:message code="item.photo" var="photoVar" />
+	<spring:message code="photo" var="photoVar" />
 		<display:column title="${photoVar}" sortable="true">
 			<div
 				style="position: relative; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">

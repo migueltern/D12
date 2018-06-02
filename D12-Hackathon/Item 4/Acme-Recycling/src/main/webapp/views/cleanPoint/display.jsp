@@ -27,9 +27,15 @@
   <br>
 	<B><spring:message code="cleanPoint.address" /></B>
 	 <jstl:out value="${row.address },"></jstl:out>
+	 
 	 <jstl:out value="${row.province }"></jstl:out><br>
+	 
+	 
+	  <jstl:if test="${!(row.phone=='')}">
   	<B><spring:message code="cleanPoint.phone" /></B>
-  <jstl:out value="${row.phone }"></jstl:out><br>
+  <jstl:out value="${row.phone }"></jstl:out><br></jstl:if>
+  
+  
   <B><spring:message code="cleanPoint.GPS.name" /></B>
   <jstl:out value="${row.location.name }"></jstl:out><br><br>
   

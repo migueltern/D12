@@ -37,29 +37,31 @@
 <br>
 <div class="col">
  <div class="form-row">
- 	  <div class="form-group col-md-6">
+ 	  <div class="form-group col-md-4">
 <spring:message code="material.description" var="Edit" /> 
 	<B><acme:textbox title="${Edit}" path="description" /></B>
 </div>
 	<br />
-	<div class="form-group col-md-6">
+	<div class="form-group col-md-4">
 <spring:message code="material.unitPrice" var="Edit" /> 
 	<B><acme:textbox title="${Edit}" path="unitPrice" /></B>
 </div>
+
+	<div class="form-group col-md-4">
+<spring:message code="material.quantity" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="quantity" /></B>
 </div>
 </div>
-
-
+</div>
  <div class="col">
 	<B><acme:select items="${labelMaterials }" itemLabel="name" code="material.labelMaterial" path="labelMaterial"/></B>
 
 </div>
 	<br />
 	
-	<div class="col">
-<spring:message code="material.quantity" var="Edit" /> 
-	<B><acme:textbox title="${Edit}" path="quantity" /></B>
-</div>
+	
+
+
 <br>
 
 	

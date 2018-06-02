@@ -78,20 +78,28 @@
 	
 <div class="col">
 	<B><jstl:out value="GPS"></jstl:out></B>
-	<br>
-	<br>
-	<spring:message code="course.location.name" var="Edit" />
+	</div>
+<div class="col">	
+<br>
+<spring:message code="cleanPoint.GPS.name" var="Edit" /> 
 	<B><acme:textbox title="${Edit}" path="location.name"/></B>
-	<br>
-	<spring:message code="course.location.latitude" var="Edit" />
-	<B><acme:textbox title="${Edit}" path="location.latitude"/></B>
-	<br>
-	<spring:message code="course.location.longitude" var="Edit" />
-	<B><acme:textbox title="${Edit}" path="location.longitude"/></B>
-	<br>
-	
-	<br>
 </div>
+<br>
+	<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+ 	
+	<B><acme:textbox2 code="cleanPoint.GPS.latitude" path="location.latitude" /></B>
+</div>
+
+	<div class="form-group col-md-6">	
+	<B><acme:textbox2 code="cleanPoint.GPS.longitude" path="location.longitude"/></B>
+</div>
+</div>
+</div>
+</div>
+
+<br>
 <acme:submit name="save" code="course.save"/>
 
 	<jstl:if test="${course.id !=0 }">

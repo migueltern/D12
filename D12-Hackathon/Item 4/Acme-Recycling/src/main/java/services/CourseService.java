@@ -76,6 +76,7 @@ public class CourseService {
 		Assert.notNull(course);
 		final Course result;
 		Collection<Course> courses;
+		Collection<Lesson> lessonsOfCourse;
 		Buyer buyer;
 		Date date;
 
@@ -83,6 +84,7 @@ public class CourseService {
 		buyer = new Buyer();
 		buyer = this.buyerService.findByPrincipal();
 		courses = new ArrayList<>(this.courseRepository.findCoursesCreatedByBuyer(buyer.getId()));
+		lessonsOfCourse = new ArrayList<>(this.lessonService.findLessonsByCourseId(course.getId()));
 
 		//Un buyer solo podrá editar un curso que haya creado él.
 		if (course.getId() != 0)
@@ -92,8 +94,10 @@ public class CourseService {
 		//Sólo si está en modo borrador se podrá editar el course
 		//Assert.isTrue(course.isDraftMode());
 		//Si está en modo final la fecha es obligatoria
-		if (!course.isDraftMode())
+		if (!course.isDraftMode()) {
 			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
+			Assert.isTrue(!lessonsOfCourse.isEmpty(), "Al menos una lección");
+		}
 		//Al menos un material es obligatorio
 		Assert.isTrue(course.getMaterials().size() > 0, "Al menos un material es obligatorio");
 		//El minimumScore no puede ser negativo

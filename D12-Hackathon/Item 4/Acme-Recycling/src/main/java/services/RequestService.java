@@ -232,7 +232,6 @@ public class RequestService {
 
 		if (request.getId() == 0) {
 
-			request.setCode(this.generatedTicker());
 			request.setStatus("PENDING");
 
 			requestForm.setRequest(request);

@@ -25,10 +25,12 @@
 
 	<form:hidden path="request.id" />
 	<form:hidden path="request.version" />
-<%-- 	<form:hidden path="code" />
+	<%-- 	<form:hidden path="code" />
 	<form:hidden path="status" /> --%>
 	<form:hidden path="itemId" />
 
+	<acme:textbox code="request.code" path="request.code" readonly="true" />
+	<br />
 	<acme:textbox code="request.title" path="request.title" />
 	<br />
 	<acme:textbox code="request.observation" path="request.observation" />

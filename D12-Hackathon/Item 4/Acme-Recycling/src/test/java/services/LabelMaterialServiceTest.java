@@ -38,16 +38,16 @@ public class LabelMaterialServiceTest extends AbstractTest {
 	@Autowired
 	ManagerService			managerService;
 
-
+	//4.a) Crear label product.
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
 			{
-				//Se crea un chirp correctamenre estando logeado como user1
+				//Se va a proceder a crear y guardar una etiqueta para material con el manager1, esto debe ser posible
 				"manager1", "prueba labelMaterial", false, null
 
 			}, {
-				//Se crea un chirp incorrectamente ya que estamos logeados como admin
+				//Se va a proceder a crear una etiqueta para material con el admin, este rol no debe poder crear etiquetas.
 				"admin", "prueba labelMaterial", false, IllegalArgumentException.class
 			}
 		};
@@ -78,15 +78,16 @@ public class LabelMaterialServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 	}
-
+	
+	//4.a) Borrar etiqueta de material.
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
 			{
-
+				//Se va a borrar la etiqueta de material existente labelMaterial4 con el manager1, esto deberia de dar positivo.
 				"manager1", "labelMaterial4", null
 			}, {
-
+				//Se va a borrar la etiqueta de material existente labelMaterial1 con el manager1, esto debe fallar puesto que esa etiqueta tiene asociados materiales.
 				"manager1", "labelMaterial1", IllegalArgumentException.class
 			}
 		};
@@ -116,14 +117,15 @@ public class LabelMaterialServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	//4.a) Listar las etiquetas de material.
 	@Test
 	public void driverList() {
 		final Object testingData[][] = {
 			{
-
+				//El manager1 tiene un total de 6 etiquetas para los materiales por tanto debe ser positivo.
 				"manager1", 6, null
 			}, {
-
+				//El manager1 no tiene 7 etiquetas para los materiales, por tanto debe ser negativo.
 				"manager1", 7, IllegalArgumentException.class
 			}
 		};
@@ -150,14 +152,15 @@ public class LabelMaterialServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
+	//4.a) Editar una etiqueta para material.
 	@Test
 	public void driverEdit() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
+				//Se edita una etiqueta para material correctamente
 				"manager1", "labelMaterial4", "Label edited positive", null
 			}, {
-				//Se edita un product correctamente
+				//Se edita una etiqueta para material incorrectamente.
 				"manager1", "labelMaterial1", "Label edited negative", IllegalArgumentException.class
 			}
 		};

@@ -59,16 +59,16 @@ public class CourseServiceTest extends AbstractTest {
 	@Autowired
 	BuyerService		buyerService;
 
-
+	//3.c) Asistir a un curso.
 	@Test
 	public void driverAssist() {
 		final Object testingData[][] = {
 			{
-
+				//El recycler1 va a asistir al curso 1, esto debe dar positivo
 				"recycler1", "course1", null
 
 			}, {
-
+				//El recycler1 va a intentar asistir al curso 2 pero no va a ser posible puesto que ya ha sido realizado
 				"recycler1", "course2", IllegalArgumentException.class
 			}
 		};
@@ -101,15 +101,15 @@ public class CourseServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	@Test
+	//3.c) Dejar de asistir a un curso
 	public void driverNotAssist() {
 		final Object testingData[][] = {
 			{
-
+				//El recycler1 va a dejar de asistir al curso 5.
 				"recycler1", "course5", null
 
 			}, {
-
+				//El recycler1 va a intentar dejar de asistir al curso 2.
 				"recycler1", "course2", IllegalArgumentException.class
 			}
 		};

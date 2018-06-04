@@ -57,9 +57,9 @@
 	
 	
 	<p>
-	<spring:message code="course.format.realisedMoment1" var="pattern"></spring:message>
-	<fmt:formatDate value="${row.realisedMoment}" pattern="${pattern}" var="newdatevar" />
-	<B><spring:message code="course.realisedMoment"></spring:message></B>
+	<spring:message code="course.format.startDate1" var="pattern"></spring:message>
+	<fmt:formatDate value="${row.startDate}" pattern="${pattern}" var="newdatevar" />
+	<B><spring:message code="course.startDate"></spring:message></B>
 	<c:out value="${newdatevar}" />
 	</p>
 		<p>

@@ -29,7 +29,7 @@
 	<B><acme:textbox code="course.title" path="title"/></B>
 	<br />
 	
-	<B><acme:textbox code="course.realisedMoment" path="realisedMoment" placeHolder="yyyy/MM/dd"/></B>
+	<B><acme:textbox code="course.startDate" path="startDate" placeHolder="yyyy/MM/dd"/></B>
 	<br />
 	
 	<B><acme:textbox code="course.minimumScore" path="minimumScore"/></B>

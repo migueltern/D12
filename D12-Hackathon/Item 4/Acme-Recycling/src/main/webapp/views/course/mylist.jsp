@@ -114,9 +114,9 @@
 	<spring:message code="course.description" var="titleHeader" />
 	<display:column property="description" title="${titleHeader}" sortable="true" />
 		
-	<spring:message code="course.format.realisedMoment" var="pattern"></spring:message>
-	<spring:message code="course.realisedMoment" var="postedHeader" />
-	<display:column property="realisedMoment" title="${postedHeader}" sortable="true" format="${pattern}" />
+	<spring:message code="course.format.startDate" var="pattern"></spring:message>
+	<spring:message code="course.startDate" var="postedHeader" />
+	<display:column property="startDate" title="${postedHeader}" sortable="true" format="${pattern}" />
 
 	<spring:message code="course.minimumScore" var="titleHeader" />
 	<display:column property="minimumScore" title="${titleHeader}" sortable="true" />

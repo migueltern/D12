@@ -154,6 +154,7 @@
 			<display:column title="${lessonHeader}" sortable="false">
 				<spring:url value="lesson/buyer/list.do" var="lessonURL">
 					<spring:param name="courseId" value="${row.id }" />
+					<spring:param name="d-16544-p" value="1" />
 				</spring:url>
 				<a href="${lessonURL}"><spring:message code="course.lesson.list2" /></a>
 			</display:column>

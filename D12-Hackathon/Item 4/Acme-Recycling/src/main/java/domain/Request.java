@@ -15,6 +15,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -41,6 +43,7 @@ public class Request extends DomainEntity {
 		this.code = code;
 	}
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getTitle() {
 		return this.title;
 	}
@@ -49,6 +52,7 @@ public class Request extends DomainEntity {
 		this.title = title;
 	}
 
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getObservation() {
 		return this.observation;
 	}

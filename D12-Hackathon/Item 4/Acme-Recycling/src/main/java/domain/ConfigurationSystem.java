@@ -12,7 +12,9 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -44,6 +46,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getWhoAreWeEnglish() {
 		return this.whoAreWeEnglish;
 	}
@@ -53,6 +56,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getLocationEnglish() {
 		return this.locationEnglish;
 	}
@@ -62,6 +66,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getLocationSpanish() {
 		return this.locationSpanish;
 	}
@@ -71,6 +76,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getWhoAreWeSpanish() {
 		return this.whoAreWeSpanish;
 	}
@@ -80,6 +86,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getEnglishWelcomeMessage() {
 		return this.englishWelcomeMessage;
 	}
@@ -89,6 +96,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getSpanishWelcomeMessage() {
 		return this.spanishWelcomeMessage;
 	}
@@ -98,6 +106,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getName() {
 		return this.name;
 	}

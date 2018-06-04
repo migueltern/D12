@@ -38,7 +38,7 @@ public class BuyServiceTest extends AbstractTest {
 	EntityManager	entityManager;
 
 
-	//Crear y salvar una compra
+	//Requisito 6.a) Comprar los productos que ofrece nuestra empresa.
 	@Test
 	public void driverCreateAndSaveComment() {
 		final Collection<CreditCard> listCreditCards;

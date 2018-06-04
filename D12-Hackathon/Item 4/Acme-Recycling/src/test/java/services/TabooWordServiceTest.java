@@ -37,7 +37,7 @@ public class TabooWordServiceTest extends AbstractTest {
 	EntityManager		entityManager;
 
 
-	//Edit a taboo word
+	//Requisito 8.f)Editar una palabra tabú
 	@Test
 	public void driveEditTabooWord() {
 
@@ -91,7 +91,7 @@ public class TabooWordServiceTest extends AbstractTest {
 
 	}
 
-	//Create a tabooWord
+	//Requisito 8.f) Crear una palabra tabú
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
@@ -133,7 +133,7 @@ public class TabooWordServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Remove a tabooWord
+	//Requisito 8.f) Borrar una palabra tabú
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
@@ -172,7 +172,7 @@ public class TabooWordServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Listar todas las palabras tabú de mi sistema
+	//Requisito 8.f)Listar todas las palabras tabú de mi sistema
 	@Test
 	public void driverListTabooWords() {
 		final Object testingData[][] = {

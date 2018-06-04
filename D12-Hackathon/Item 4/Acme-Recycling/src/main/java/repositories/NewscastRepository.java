@@ -31,4 +31,8 @@ public interface NewscastRepository extends JpaRepository<Newscast, Integer> {
 	//Dado un comentario devuelveme su noticia
 	@Query("select n from Newscast n join n.comments c where c.id=?1")
 	Newscast findNewscastByComment(int commentId);
+
+	//Me devuelve todos los comentarios que tiene una noticia
+	@Query("select c from Newscast n join n.comments c where n.id=?1")
+	Collection<Comment> findAllCommentsByNewscast(int newscastId);
 }

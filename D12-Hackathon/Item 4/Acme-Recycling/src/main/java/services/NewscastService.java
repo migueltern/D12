@@ -244,4 +244,10 @@ public class NewscastService {
 		this.newscastRepository.flush();
 	}
 
+	public Collection<Comment> findAllCommentsByNewscast(final int newscastId) {
+		Collection<Comment> result;
+		result = this.newscastRepository.findAllCommentsByNewscast(newscastId);
+		return result;
+	}
+
 }

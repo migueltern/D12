@@ -224,7 +224,7 @@ public class CourseServiceTest extends AbstractTest {
 				(String) testingData[i][6], (String) testingData[i][7], (Double) testingData[i][8], (Double) testingData[i][9], (Class<?>) testingData[i][10]);
 	}
 
-	private void templateCreateAndSave(final int buyerId, final String title, final String realisedMoment, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description, final String nameCoordenate,
+	private void templateCreateAndSave(final int buyerId, final String title, final String startDate, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description, final String nameCoordenate,
 		final Double latitude, final Double longitud, final Class<?> expected) {
 		Course course;
 		Buyer buyer;
@@ -240,7 +240,7 @@ public class CourseServiceTest extends AbstractTest {
 			course = this.courseService.create();
 
 			course.setTitle(title);
-			course.setRealisedMoment((new SimpleDateFormat("yyyy/MM/dd").parse(realisedMoment)));
+			course.setStartDate((new SimpleDateFormat("yyyy/MM/dd").parse(startDate)));
 			course.setMinimumScore(minimumScore);
 			course.setDraftMode(draftMode);
 			course.setMaterials(materials);
@@ -300,7 +300,7 @@ public class CourseServiceTest extends AbstractTest {
 				(Collection<Material>) testingData[i][6], (String) testingData[i][7], (String) testingData[i][8], (Double) testingData[i][9], (Double) testingData[i][10], (Integer) testingData[i][11], (Class<?>) testingData[i][12]);
 	}
 
-	private void templateEditAndSave(final int buyerId, final int courseId, final String title, final String realisedMoment, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description,
+	private void templateEditAndSave(final int buyerId, final int courseId, final String title, final String startDate, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description,
 		final String nameCoordenate, final Double latitude, final Double longitud, final Integer aux, final Class<?> expected) {
 		Course course;
 		Buyer buyer;
@@ -322,7 +322,7 @@ public class CourseServiceTest extends AbstractTest {
 				course = this.courseService.save(course);
 				//Para el tercer caso editamos la fecha por una en pasado
 			} else if (aux == 3) {
-				course.setRealisedMoment((new SimpleDateFormat("yyyy/MM/dd").parse(realisedMoment)));
+				course.setStartDate((new SimpleDateFormat("yyyy/MM/dd").parse(startDate)));
 				course = this.courseService.save(course);
 			}
 

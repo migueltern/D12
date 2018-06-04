@@ -145,12 +145,13 @@ public class NewscastService {
 
 		editor = this.editorService.findEditorByNew(newscast.getId());
 
-		editor.getNews().remove(newscast);
-
-		if (newscast.getComments().size() != 0)
-			for (final Comment c : newscast.getComments())
+		if (newscast.getComments().size() != 0) {
+			Collection<Comment> comments;
+			comments = this.newscastRepository.findCommentsByNewscast(newscast.getId());
+			for (final Comment c : comments)
 				if (c.getCommentTo() == null)
 					this.commentService.delete(c);
+		}
 
 		editor.getNews().remove(newscast);
 		newscast = this.findOne(newscast.getId());

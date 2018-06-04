@@ -64,7 +64,7 @@ public class RequestManagerController extends AbstractController {
 		result = new ModelAndView("request/listItem");
 		result.addObject("items", itemsNonRequest);
 		result.addObject("showButtonRequest", true);
-		result.addObject("requestURI", "request/manager/listItemNonRequest.do?d-16544-p=1");
+		result.addObject("requestURI", "request/manager/listItemsNonRequest.do?d-16544-p=1");
 		result.addObject("RequestUriDisplay", "item/display.do");
 		return result;
 	}

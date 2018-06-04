@@ -108,6 +108,7 @@
 	<display:column title="${opinions}" sortable="true">
 		<spring:url value="opinion/list.do" var="displayURL">
 			<spring:param name="opinableId" value="${row.id}" />
+			<spring:param name="d-16544-p" value="1" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="course.opinions" /></a>
 	</display:column>

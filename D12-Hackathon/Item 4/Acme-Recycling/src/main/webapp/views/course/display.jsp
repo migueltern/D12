@@ -115,7 +115,7 @@
 	<h2><spring:message code="course.lessons" /></h2>	
 	<display:table name="lessons" id="row" class="displaytag">
 	<spring:message code="course.lesson.number" var="titleHeader" />
-	<display:column property="number" title="${titleHeader}" sortable="true" />
+	<display:column property="number" title="${titleHeader}" sortable="false" />
 	
 	<spring:message code="course.lesson.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="false" />

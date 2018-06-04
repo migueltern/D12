@@ -57,11 +57,13 @@
 
 	<spring:message code="photo" var="photoVar" />
 	<display:column title="${photoVar}" sortable="true">
+		<jstl:if test="${row.photo!=''}">
 		<div
 			style="position: relative; width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
 
 			<img src="${row.photo}" width="100" height="100">
 		</div>
+		</jstl:if>
 	</display:column>
 
 	<spring:message code="opinion.caption" var="captionHeader" />

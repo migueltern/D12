@@ -28,21 +28,28 @@
 
 	<form:hidden path="request.id" />
 	<form:hidden path="request.version" />
-<%-- 	<form:hidden path="code" />
+	<%-- 	<form:hidden path="code" />
 	<form:hidden path="status" /> --%>
 	<form:hidden path="itemId" />
 
 
+
 <div class="col">
  <div class="form-row">
- 	  <div class="form-group col-md-6">
- <spring:message code="request.title" var="Edit" />
-	<acme:textbox title="${Edit}" path="request.title" />
+ 	  <div class="form-group col-md-4">
+ 
+	<acme:textbox code="request.code" path="request.code" readonly="true" />
 </div>
 
-	<div class="form-group col-md-6">
+	<div class="form-group col-md-4">
 <spring:message code="request.observation" var="Edit" />
 	<acme:textbox title="${Edit}" path="request.observation" />
+	
+	</div>
+
+	<div class="form-group col-md-4">
+	<spring:message code="request.title" var="Edit" />
+	<acme:textbox title="${Edit}" path="request.title" />
 </div>
 </div>
 </div>
@@ -50,6 +57,7 @@
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
+
 	<acme:select items="${carriers}" itemLabel="name"
 		code="request.carrier" path="request.carrier" />
 </div>

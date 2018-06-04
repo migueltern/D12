@@ -131,6 +131,8 @@ public class CourseBuyerController extends AbstractController {
 					result = this.createEditModelAndView(course, "request.course.date.error");
 				else if (oops.getMessage().equals("No puede ser 0 el minimum"))
 					result = this.createEditModelAndView(course, "request.course.minimumScore.error");
+				else if (oops.getMessage().equals("Al menos una lección"))
+					result = this.createEditModelAndView(course, "request.course.lesson1.error");
 				else
 					result = this.createEditModelAndView(course, "request.commit.error");
 			}

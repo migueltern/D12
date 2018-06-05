@@ -61,7 +61,7 @@ public class IncidenceManagerController extends AbstractController{
 
 			result = new ModelAndView("incidence/list");
 			result.addObject("incidences", incidences);
-			result.addObject("requestURI", "incidence/manager/list.do?d-16544-p=1");
+			result.addObject("requestURI", "incidence/manager/listResolved.do?d-16544-p=1");
 			result.addObject("RequestURIdisplay", "incidence/manager/display.do");
 
 

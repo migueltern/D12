@@ -30,11 +30,11 @@ public class ItemController extends AbstractController {
 	//Listing-----------------------------------------------------------
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(@RequestParam final int actorId) {
+	public ModelAndView list(@RequestParam final int recyclerId) {
 		ModelAndView result;
 		Collection<Item> items;
 
-		items = this.itemService.findItemsByRecycler(actorId);
+		items = this.itemService.findItemsByRecycler(recyclerId);
 
 		result = new ModelAndView("item/list");
 		result.addObject("items", items);

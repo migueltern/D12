@@ -1443,7 +1443,7 @@
 			value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSWZaE9DvgcQGN3ekP2yPWphBpe78dohdbXxsLnkGy7ed1QeQ4QA" />
 		<property name="labelProduct" ref="labelProduct1" />
 		<property name="recycler" ref="recycler2" />
-		<property name="value" value="2"></property>
+		<!-- <property name="value" value="2"></property> -->
 		<property name="opinions">
 			<list>
 				<ref bean="opinion2" />

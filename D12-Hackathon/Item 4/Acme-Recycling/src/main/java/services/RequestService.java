@@ -361,4 +361,12 @@ public class RequestService {
 		return result;
 	}
 
+	public Collection<CleanPoint> allCleanPointsByRequest() {
+		Collection<CleanPoint> result;
+
+		result = this.requestRepository.allCleanPointsByRequest();
+
+		return result;
+	}
+
 }

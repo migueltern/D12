@@ -120,7 +120,11 @@ public class CleanPointAdminController extends AbstractController {
 			this.cleanPointService.delete(cleanPoint);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(cleanPoint, "cleanPoint.commit.error");
+			if (oops.getMessage().equals("no se puede"))
+				result = this.createEditModelAndView(cleanPoint, "cleanPoint.request.error");
+			else
+				result = this.createEditModelAndView(cleanPoint, "cleanPoint.commit.error");
+
 		}
 
 		return result;

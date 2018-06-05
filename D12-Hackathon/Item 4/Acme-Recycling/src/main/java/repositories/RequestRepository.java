@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import domain.CleanPoint;
 import domain.Item;
 import domain.Request;
 
@@ -27,5 +28,9 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
 
 	@Query("select r from Request r where r.assesment.id=?1")
 	Request findByAssessmentId(int assessmentId);
+
+	//Me devuelve los puntos limpios de una request
+	@Query("select c from Request r join r.cleanPoints c")
+	Collection<CleanPoint> allCleanPointsByRequest();
 
 }

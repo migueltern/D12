@@ -111,7 +111,9 @@
 	</p>
 	
 	<p>
+	<jstl:if test="${row.photo!='' }">
 		<a href="${row.photo}"><spring:message code = "recycler.photo"></spring:message></a>
+</jstl:if>
 	</p>
 	
 	</display:column>

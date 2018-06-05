@@ -20,20 +20,27 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<script type="text/javascript">
+	function confirmDelete(commentId) {
+		confirm=confirm('<spring:message code="comment.confirm.delete"/>');
+		if (confirm)
+		  window.location.href ="comment/recycler/delete.do?commentId=" + commentId;
+		  else
+			  window.location.href ="comment/recycler/list.do";
+	}
+</script>
+
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="comments" requestURI="${requestURI}" id="row">
 	
-<!--  EDIT -->
-	<security:authorize access="hasRole('RECYCLER')">
-		<spring:message code="comment.edit" var="Edit" />
-		<display:column title="${Edit}" sortable="true">
-			
-				<spring:url value="comment/recycler/edit.do" var="editURL">
-					<spring:param name="commentId" value="${row.id}" />
-				</spring:url>
-				<a href="${editURL}"><spring:message code="comment.edit" /></a>
+<security:authorize access="hasRole('RECYCLER')">
+	<spring:message code="comment.delete" var="deleteHeader" />
+		<display:column title="${deleteHeader}" sortable="true">
+			<input type="button" name="delete"
+				value="<spring:message code="comment.delete" />"
+				onclick="confirmDelete(${row.id});" />
 		</display:column>
-	</security:authorize>
+	</security:authorize> 
 
 
 	<!-- ATRIBUTOS -->

@@ -28,12 +28,13 @@
 	<form:hidden path="replys" />
 	
 <!-- ATRIBUTOS -->
-	<B><acme:textbox code="comment.body" path="body"/></B>
+	<B><acme:textbox code="comment.body" path="body" /></B>
 	<br />
 	<B><acme:textbox code="comment.createdMoment" path="createdMoment" readonly="true"/></B>
 	<br />
 	
 <!-- BOTONES -->
+
 
 	<input type="submit" name="save" value="<spring:message code="comment.save" />" />&nbsp; 
 

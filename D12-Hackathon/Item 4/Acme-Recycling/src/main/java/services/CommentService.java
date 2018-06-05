@@ -167,6 +167,11 @@ public class CommentService {
 			comment.setId(CommentBd.getId());
 			comment.setVersion(CommentBd.getVersion());
 			comment.setCreatedMoment(CommentBd.getCreatedMoment());
+
+			if (comment.getReplys() == null)
+				comment.setReplys(new ArrayList<Comment>());
+			else
+				comment.setReplys(CommentBd.getReplys());
 			comment.setReplys(CommentBd.getReplys());
 
 			result = comment;

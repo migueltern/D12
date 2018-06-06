@@ -278,7 +278,7 @@ public class AdminServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			//admin positive
 			{
-				"admin", 1., 0., 2.0, 0.6325, null
+				"admin", 1.20, 0., 2.0, 0.7483, null
 			},
 			//admin negative
 			{

@@ -66,7 +66,13 @@
           		</ul>
        		</li>
 					
+		<li class="nav-item transform"> 
+					<a class="nav-link" href="materialJSON/list.do?d-16544-p=1">
 					
+					<spring:message code="master.page.JSON" />
+					</a>
+
+				</li>		
 					
 		<li class="nav-item transform"> 
 					<a class="nav-link" href="newscast/list.do?d-16544-p=1">

@@ -18,7 +18,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -33,13 +35,14 @@ public class Course extends Opinable {
 	private String	title;
 	private String	description;
 	private GPS		location;
-	private Date	realisedMoment;
+	private Date	startDate;
 	private String	picture;
 	private boolean	draftMode;
 	private Integer	minimumScore;
 
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getTitle() {
 		return this.title;
 	}
@@ -49,6 +52,7 @@ public class Course extends Opinable {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getDescription() {
 		return this.description;
 	}
@@ -68,12 +72,12 @@ public class Course extends Opinable {
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	public Date getRealisedMoment() {
-		return this.realisedMoment;
+	public Date getStartDate() {
+		return this.startDate;
 	}
 
-	public void setRealisedMoment(final Date realisedMoment) {
-		this.realisedMoment = realisedMoment;
+	public void setStartDate(final Date startDate) {
+		this.startDate = startDate;
 	}
 
 	@URL

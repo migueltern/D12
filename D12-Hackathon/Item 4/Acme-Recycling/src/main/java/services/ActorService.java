@@ -27,22 +27,22 @@ public class ActorService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private ActorRepository	actorRepository;
-
+	private ActorRepository			actorRepository;
 
 	// Supporting services ----------------------------------------------------
-	
+
 	@Autowired
-	private MessageService messageService;
-	
+	private MessageService			messageService;
+
 	@Autowired
-	private TabooWordService tabooWordService;
-	
+	private TabooWordService		tabooWordService;
+
 	@Autowired
-	private MessageFolderService messageFolderService;
-	
+	private MessageFolderService	messageFolderService;
+
 	@Autowired
-	private AdminService adminService;
+	private AdminService			adminService;
+
 
 	// Constructors -----------------------------------------------------------
 	public ActorService() {
@@ -61,17 +61,17 @@ public class ActorService {
 		return result;
 
 	}
-	
-	public Collection<Actor> findAll(){
-		
+
+	public Collection<Actor> findAll() {
+
 		Collection<Actor> result;
-		
+
 		result = this.actorRepository.findAll();
-		
+
 		return result;
-		
+
 	}
-	
+
 	// Other business methods -------------------------------------------------
 
 	public boolean isAuthenticated() {
@@ -82,7 +82,7 @@ public class ActorService {
 			result = true;
 		return result;
 	}
-	
+
 	public Actor findPrincipal() {
 		Actor result;
 		int userAccountId;
@@ -91,54 +91,45 @@ public class ActorService {
 		Assert.notNull(result);
 
 		return result;
-	} 
+	}
 
-	
-	
-	
-	public Collection<Actor> actorForBan(){
-		
+	public Collection<Actor> actorForBan() {
+
 		Collection<Actor> result;
 		Set<Message> messages;
 		Collection<TabooWord> tabooWords;
 		Collection<Actor> actors;
 		MessageFolder messageFolder;
 		Admin princial;
-		
+
 		tabooWords = this.tabooWordService.findAll();
 		result = new ArrayList<>();
 		actors = this.actorRepository.findAll();
 		messageFolder = null;
 		princial = this.adminService.findByPrincipal();
-		
+
 		Assert.isTrue(princial instanceof Admin);
-		
+
 		actors.remove(princial);
-		
-		
-		
-		for(Actor a: actors){
+
+		for (final Actor a : actors) {
 			messages = new HashSet<>();
-			
-			for(TabooWord t: tabooWords){
-				
+
+			for (final TabooWord t : tabooWords) {
+
 				messageFolder = this.messageFolderService.findMessageFolderByNameAndActor("Out box", a.getId());
-								
+
 				messages.addAll(this.messageService.findMessageWithTabooWord(messageFolder.getId(), t.getName()));
-				
-				
-				
+
 			}
-			if(messages.size() > 5){
+			if (messages.size() > 5)
 				result.add(a);
-				
-			}
 		}
-		
+
 		return result;
 	}
-	
-	public boolean ban(UserAccount userAcount) {
+
+	public boolean ban(final UserAccount userAcount) {
 
 		boolean result;
 
@@ -150,7 +141,7 @@ public class ActorService {
 
 	}
 
-	public boolean unban(UserAccount userAccount) {
+	public boolean unban(final UserAccount userAccount) {
 
 		boolean result;
 
@@ -161,8 +152,8 @@ public class ActorService {
 		return result;
 
 	}
-	
-	public void flush(){
+
+	public void flush() {
 		this.actorRepository.flush();
 	}
 }

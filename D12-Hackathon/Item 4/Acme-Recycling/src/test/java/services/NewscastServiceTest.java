@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Admin;
 import domain.Editor;
 import domain.Newscast;
 
@@ -41,8 +42,11 @@ public class NewscastServiceTest extends AbstractTest {
 	@PersistenceContext
 	EntityManager	entityManager;
 
+	@Autowired
+	AdminService	adminService;
 
-	//Caso de uso 14: Create new
+
+	//Caso de uso 5.a) Manejar las noticias, que implica crearlas.
 	@SuppressWarnings("unchecked")
 	@Test
 	public void driverCreateAndSave() {
@@ -113,7 +117,7 @@ public class NewscastServiceTest extends AbstractTest {
 		return picturesBadUrls;
 	}
 
-	//Edit newscasts
+	//Caso de uso 5.a) Manejar las noticias, que implica editarlas.
 	@SuppressWarnings("unchecked")
 	@Test
 	public void driveEditNewscast() {
@@ -168,7 +172,7 @@ public class NewscastServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 
 	}
-	//Borrar una noticia
+	//Caso de uso 5.a) Manejar las noticias, que implica borrarlas
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
@@ -207,7 +211,7 @@ public class NewscastServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Listar y editar las noticias 
+	//Listar y editar las noticias 10 casos de uso
 	@SuppressWarnings("unchecked")
 	@Test
 	public void driverListAndEdit() {
@@ -287,4 +291,87 @@ public class NewscastServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	//Requisito 1.c)Listar las 5 últimas noticias para los no autenticados
+	@Test
+	public void driverListLast5News() {
+		final Object testingData[][] = {
+			{
+				//La noticia 1 está entre las últimas
+				5, "new1", null
+
+			}, {
+				//La noticia no está entre las últimas
+				5, "new2", java.lang.IllegalArgumentException.class
+			}, {
+				//El tamaño de la lista es 5 no 6
+				6, "new1", java.lang.IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListLast5News((int) testingData[i][0], (Integer) super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateListLast5News(final int size, final Integer newscastId, final Class<?> expected) {
+		Class<?> caught;
+
+		Collection<Newscast> news;
+		Newscast newcast;
+
+		newcast = this.newscastService.findOne(newscastId);
+
+		caught = null;
+		try {
+
+			news = this.newscastService.findAllNewsInDescOrder();
+			Assert.isTrue(news.size() == size);
+			Assert.isTrue(news.contains(newcast));
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+
+	//Requisito 8.h) Listar las noticias que contienen palabras tabú
+	@Test
+	public void driverListNewsWithTabooWords() {
+		final Object testingData[][] = {
+			{
+				//El admin lista y borra la noticia 2 sin problemas ya que contiene una palabra tabú
+				"admin", 2, "new1", null
+			}, {
+				//El admin lista incorrectamente la noticia 3 ya que no contiene una palabra tabú
+				"admin", 2, "new3", IllegalArgumentException.class
+			}, {
+				//El tamaño de la lista de noticias con palabras tabú es de 2 no de 3
+				"admin", 3, "new3", IllegalArgumentException.class
+			}
+
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListNewsWithTabooWords(super.getEntityId((String) testingData[i][0]), (int) testingData[i][1], (Integer) super.getEntityId((String) testingData[i][2]), (Class<?>) testingData[i][3]);
+	}
+
+	private void templateListNewsWithTabooWords(final int usernameId, final int size, final Integer newscastId, final Class<?> expected) {
+		Class<?> caught;
+		Admin adminConnected;
+		adminConnected = this.adminService.findOne(usernameId);
+		Collection<Newscast> newscasts;
+		Newscast newscast;
+
+		caught = null;
+		try {
+
+			super.authenticate(adminConnected.getUserAccount().getUsername());
+			newscasts = this.newscastService.newWithTabooWord();
+			newscast = this.newscastService.findOne(newscastId);
+			Assert.isTrue(newscasts.size() == size);
+			Assert.isTrue(newscasts.contains(newscast));
+			this.newscastService.deleteAdmin(newscast);
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
 }

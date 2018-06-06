@@ -1,3 +1,4 @@
+
 package services;
 
 import java.util.Collection;
@@ -14,33 +15,37 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Admin;
 import domain.Incidence;
 import domain.Recycler;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
-	
+
 })
 @Transactional
-public class IncidenceServiceTest extends AbstractTest{
-	
+public class IncidenceServiceTest extends AbstractTest {
+
 	//Supporting services ----------------------------------------------------
 	@Autowired
-	private IncidenceService incidenceService;
-	
+	private IncidenceService	incidenceService;
+
 	@Autowired
-	private RecyclerService recyclerService;
-	
+	private RecyclerService		recyclerService;
+
+	@Autowired
+	private AdminService		adminService;
+
 	@PersistenceContext
-	EntityManager		entityManager;
-	
-	
+	EntityManager				entityManager;
+
+
 	// 3.f Los recicladores que hayan realizado operaciones con la empresa podrán crear, editar, borrar y listar las incidencia
 	@Test
 	public void driverList() {
 		final Object testingData[][] = {
-			
+
 			//La incidencia1 está contenida en las incidencias del reciclador, caso positivo
 			{
 
@@ -53,15 +58,13 @@ public class IncidenceServiceTest extends AbstractTest{
 				"recycler1", "incidence3", IllegalArgumentException.class
 
 			}
-			
-			
+
 		};
 		for (int i = 0; i < testingData.length; i++)
 			this.templateList((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
 	}
-	
-	
-	private void templateList(String username, String incidenceId, Class<?> expected) {
+
+	private void templateList(final String username, final String incidenceId, final Class<?> expected) {
 		Class<?> caught;
 		Incidence incidence;
 		Collection<Incidence> incidences;
@@ -86,7 +89,7 @@ public class IncidenceServiceTest extends AbstractTest{
 
 		super.unauthenticate();
 	}
-	
+
 	// 3.f Los recicladores que hayan realizado operaciones con la empresa podrán crear, editar, borrar y listar las incidencias  
 	@Test
 	public void driverCreateAndSave() {
@@ -96,7 +99,7 @@ public class IncidenceServiceTest extends AbstractTest{
 
 				"recycler1", "incidence prueba", "reason why prueba", "comment prueba", null
 
-			}, 
+			},
 			//Un reciclador crea una incidencia con el título en blanco, caso negativo 
 			{
 
@@ -145,16 +148,13 @@ public class IncidenceServiceTest extends AbstractTest{
 				"admin", "incidence prueba", "reason why prueba", "", java.lang.IllegalArgumentException.class
 
 			}
-			
-			
-			
+
 		};
 		for (int i = 0; i < testingData.length; i++)
-			this.templateCreateAndSave((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3],(Class<?>) testingData[i][4]);
+			this.templateCreateAndSave((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
 	}
-	
-	
-	private void templateCreateAndSave(String username, String title, String reasonWhy, String comment, Class<?> expected) {
+
+	private void templateCreateAndSave(final String username, final String title, final String reasonWhy, final String comment, final Class<?> expected) {
 		Class<?> caught;
 		Incidence incidence;
 		caught = null;
@@ -179,19 +179,18 @@ public class IncidenceServiceTest extends AbstractTest{
 
 		super.unauthenticate();
 	}
-	
-	
+
 	// 3.f Los recicladores que hayan realizado operaciones con la empresa podrán crear, editar, borrar y listar las incidencias
 	@Test
 	public void driverEdit() {
 		final Object testingData[][] = {
-			
+
 			//Reciclador cambia el título, caso positivo
 			{
 
 				"recycler1", "incidence1", "title changed", null
 
-			}, 
+			},
 			//Reciclador cambia el títutlo a blanco, caso negativo
 			{
 
@@ -210,14 +209,13 @@ public class IncidenceServiceTest extends AbstractTest{
 				"recycler2", "incidence1", "title changed", java.lang.IllegalArgumentException.class
 
 			}
-			
+
 		};
 		for (int i = 0; i < testingData.length; i++)
 			this.templateEdit((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Class<?>) testingData[i][3]);
 	}
-	
-	
-	private void templateEdit(String username, String incidenceId, String title,  Class<?> expected) {
+
+	private void templateEdit(final String username, final String incidenceId, final String title, final Class<?> expected) {
 		Class<?> caught;
 		Incidence incidence;
 		caught = null;
@@ -240,18 +238,18 @@ public class IncidenceServiceTest extends AbstractTest{
 
 		super.unauthenticate();
 	}
-	
+
 	// 3.f Los recicladores que hayan realizado operaciones con la empresa podrán crear, editar, borrar y listar las incidencias
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
-			
+
 			//Reciclador borra su incidencia, caso positivo
 			{
 
 				"recycler1", "incidence1", null
 
-			}, 
+			},
 			//Reciclador intenta borrar una indicencia que está finalizada, caso negativo
 			{
 
@@ -264,14 +262,13 @@ public class IncidenceServiceTest extends AbstractTest{
 				"recycler2", "incidence1", java.lang.IllegalArgumentException.class
 
 			}
-			
+
 		};
 		for (int i = 0; i < testingData.length; i++)
 			this.templateDelete((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
 	}
-	
-	
-	private void templateDelete(String username, String incidenceId, Class<?> expected) {
+
+	private void templateDelete(final String username, final String incidenceId, final Class<?> expected) {
 		Class<?> caught;
 		Incidence incidence;
 		caught = null;
@@ -293,53 +290,92 @@ public class IncidenceServiceTest extends AbstractTest{
 
 		super.unauthenticate();
 	}
-	
+
 	// 4.d El manager resolverá las incidencias y una vez que estén resueltas, la incidencia pasará a estar en modo resuelta.
-		@Test
-		public void driverResolved() {
-			final Object testingData[][] = {
-				
-				//La incidencia1 está contenida en las incidencias para resolver
-				{
+	@Test
+	public void driverResolved() {
+		final Object testingData[][] = {
 
-					"Manager1", "incidence1", null
+			//La incidencia1 está contenida en las incidencias para resolver
+			{
 
-				},
-				//La incidencia1 está contenida en las incidencias para resolver
-				{
+				"Manager1", "incidence1", null
 
-					"Manager1", "incidence2", IllegalArgumentException.class
+			},
+			//La incidencia1 está contenida en las incidencias para resolver
+			{
 
-				}
-				
-				
-			};
-			for (int i = 0; i < testingData.length; i++)
-				this.templateResolved((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
-		}
-		
-		
-		private void templateResolved(String username, String incidenceId, Class<?> expected) {
-			Class<?> caught;
-			Incidence incidence;
-			Collection<Incidence> incidences;
-			caught = null;
+				"Manager1", "incidence2", IllegalArgumentException.class
 
-			try {
-				super.authenticate(username);
-				incidence = this.incidenceService.findOne(super.getEntityId(incidenceId));
-				incidences = this.incidenceService.findIncidenceNoResolved();
-				Assert.isTrue(incidences.contains(incidence));
-				this.incidenceService.flush();
-
-			} catch (final Throwable oops) {
-				caught = oops.getClass();
-				//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
-				this.entityManager.clear();
 			}
 
-			this.checkExceptions(expected, caught);
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateResolved((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
 
-			super.unauthenticate();
+	private void templateResolved(final String username, final String incidenceId, final Class<?> expected) {
+		Class<?> caught;
+		Incidence incidence;
+		Collection<Incidence> incidences;
+		caught = null;
+
+		try {
+			super.authenticate(username);
+			incidence = this.incidenceService.findOne(super.getEntityId(incidenceId));
+			incidences = this.incidenceService.findIncidenceNoResolved();
+			Assert.isTrue(incidences.contains(incidence));
+			this.incidenceService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
 		}
+
+		this.checkExceptions(expected, caught);
+
+		super.unauthenticate();
+	}
+
+	//Requisito 8.h) Listar las noticias que contienen palabras tabú
+	@Test
+	public void driverListIncidencesWithTabooWords() {
+		final Object testingData[][] = {
+			{
+				//El admin lista la incidencia 1 y la borra sin problemas
+				"admin", 1, "incidence1", null
+			}, {
+				//El admin lista incorrectamente la incidencia 2 ya que no tiene una palabra tabú
+				"admin", 1, "incidence2", IllegalArgumentException.class
+			}
+
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListIncidencesWithTabooWords(super.getEntityId((String) testingData[i][0]), (int) testingData[i][1], (Integer) super.getEntityId((String) testingData[i][2]), (Class<?>) testingData[i][3]);
+	}
+
+	private void templateListIncidencesWithTabooWords(final int usernameId, final int size, final Integer incidenceId, final Class<?> expected) {
+		Class<?> caught;
+		Admin adminConnected;
+		adminConnected = this.adminService.findOne(usernameId);
+		Collection<Incidence> incidences;
+		Incidence incidence;
+
+		caught = null;
+		try {
+
+			super.authenticate(adminConnected.getUserAccount().getUsername());
+			incidences = this.incidenceService.incidencesWithTabooWord();
+			incidence = this.incidenceService.findOne(incidenceId);
+			incidences.removeAll(this.incidenceService.findIncidenceResolved());
+			Assert.isTrue(incidences.size() == size);
+			Assert.isTrue(incidences.contains(incidence));
+			this.incidenceService.delete(incidence);
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
 }

@@ -1,0 +1,1 @@
+Los tests funcionales se encuentran en el proyecto el cual se encuentra en Item 4. El test del listado con 10 pruebas se encuentra en la clase "NewscastServiceTest"

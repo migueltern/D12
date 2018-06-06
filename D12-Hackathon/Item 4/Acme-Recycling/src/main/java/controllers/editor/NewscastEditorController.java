@@ -50,7 +50,7 @@ public class NewscastEditorController extends AbstractController {
 		newscast = this.newscastService.findOne(newscastId);
 		comments = new ArrayList<>();
 
-		comments = this.newscastService.findCommentsByNew(newscastId);
+		comments = this.newscastService.findAllCommentsByNewscast(newscastId);
 
 		result = new ModelAndView("newscast/display");
 		result.addObject("newscast", newscast);

@@ -24,6 +24,9 @@ public class CleanPointService {
 	@Autowired
 	private AdminService			adminService;
 
+	@Autowired
+	private RequestService			requestService;
+
 	// Supporting services ----------------------------------------------------
 
 	//Importar la que pertenece a Spring
@@ -76,6 +79,7 @@ public class CleanPointService {
 		Assert.notNull(cleanPoint);
 		Assert.isTrue(cleanPoint.getId() != 0);
 		Assert.isTrue(cleanPoint.isMobile() == true);
+		Assert.isTrue(!this.requestService.allCleanPointsByRequest().contains(cleanPoint), "no se puede");
 		this.cleanPointRepository.delete(cleanPoint);
 	}
 

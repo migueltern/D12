@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -41,6 +43,7 @@ public class Buy extends DomainEntity {
 		this.quantity = quantity;
 	}
 
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getComment() {
 		return this.comment;
 	}

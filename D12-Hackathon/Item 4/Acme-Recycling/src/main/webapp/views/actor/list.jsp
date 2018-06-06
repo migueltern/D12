@@ -57,6 +57,7 @@
 		<display:column title="${items}" sortable="true">
 			<spring:url value="${RequestURIitems}" var="itemsURL">
 				<spring:param name="actorId" value="${row.id}" />
+				<spring:param name="d-16544-p" value="1" />
 			</spring:url>
 			<a href="${itemsURL}"><spring:message code="actor.items" /></a>
 		</display:column>

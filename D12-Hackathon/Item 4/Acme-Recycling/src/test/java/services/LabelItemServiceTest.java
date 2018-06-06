@@ -38,16 +38,16 @@ public class LabelItemServiceTest extends AbstractTest {
 	@Autowired
 	ManagerService		managerService;
 
-
+	//4.a) Crear label product.
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
 			{
-
+				//Se va a proceder a crear y guardar una etiqueta para producto con el manager1, esto debe ser posible
 				"manager1", "prueba labelProduct", false, null
 
 			}, {
-
+				//Se va a proceder a crear una etiqueta para producto con el admin, este rol no debe poder crear etiquetas.
 				"admin", "prueba labelProduct", false, IllegalArgumentException.class
 			}
 		};
@@ -79,14 +79,15 @@ public class LabelItemServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	//4.a) Borrar etiqueta de producto.
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
 			{
-
+				//Se va a borrar la etiqueta de producto existente labelProduct11 con el manager1, esto deberia de dar positivo.
 				"manager1", "labelProduct11", null
 			}, {
-
+				//Se va a borrar la etiqueta de producto existente labelProduct10 con el manager1, esto debe fallar puesto que esa etiqueta es por defecto
 				"manager1", "labelProduct10", IllegalArgumentException.class
 			}
 		};
@@ -116,14 +117,15 @@ public class LabelItemServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	//4.a) Listar las etiquetas de producto.
 	@Test
 	public void driverList() {
 		final Object testingData[][] = {
 			{
-
+				//El manager1 tiene un total de 12 etiquetas para los productos por tanto debe ser positivo.
 				"manager1", 12, null
 			}, {
-
+				//El manager1 no tiene 13 etiquetas para los productos, por tanto debe ser negativo.
 				"manager1", 13, IllegalArgumentException.class
 			}
 		};
@@ -150,14 +152,15 @@ public class LabelItemServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
+	//4.a) Editar una etiqueta para producto.
 	@Test
 	public void driverEdit() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
+				//Se edita una etiqueta para producto correctamente
 				"manager1", "labelProduct11", "Label edited positive", null
 			}, {
-				//Se edita un product correctamente
+				//Se edita una etiqueta para producto incorrectamente.
 				"manager1", "labelProduct3", "Label edited negative", IllegalArgumentException.class
 			}
 		};

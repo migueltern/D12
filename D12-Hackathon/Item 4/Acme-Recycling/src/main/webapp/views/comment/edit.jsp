@@ -47,6 +47,15 @@
 
 	
 	<acme:submit name="save" code="comment.save"/>
+
+	
+	
+
+
+
+	
+
+
 <jstl:if test="${comment.id != 0}">
 		<input type="submit" name="delete" class="btn btn-danger"
 			value="<spring:message code="comment.delete" />"

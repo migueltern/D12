@@ -46,7 +46,7 @@ public class RecyclerController extends AbstractController {
 		
 		recyclers = this.recyclerService.findAll();
 		
-		result = new ModelAndView("actor/list");
+		result = new ModelAndView("actor/listActor");
 		result.addObject("actors", recyclers);
 		result.addObject("requestURI", "recycler/list.do?d-16544-p=1");
 		result.addObject("RequestURIitems", "/item/list.do");

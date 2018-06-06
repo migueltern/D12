@@ -57,9 +57,9 @@
 	
 	
 	<p>
-	<spring:message code="course.format.realisedMoment1" var="pattern"></spring:message>
-	<fmt:formatDate value="${row.realisedMoment}" pattern="${pattern}" var="newdatevar" />
-	<B><spring:message code="course.realisedMoment"></spring:message></B>
+	<spring:message code="course.format.startDate1" var="pattern"></spring:message>
+	<fmt:formatDate value="${row.startDate}" pattern="${pattern}" var="newdatevar" />
+	<B><spring:message code="course.startDate"></spring:message></B>
 	<c:out value="${newdatevar}" />
 	</p>
 		<p>
@@ -115,7 +115,7 @@
 	<h2><spring:message code="course.lessons" /></h2>	
 	<display:table name="lessons" id="row" class="displaytag">
 	<spring:message code="course.lesson.number" var="titleHeader" />
-	<display:column property="number" title="${titleHeader}" sortable="true" />
+	<display:column property="number" title="${titleHeader}" sortable="false" />
 	
 	<spring:message code="course.lesson.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="false" />

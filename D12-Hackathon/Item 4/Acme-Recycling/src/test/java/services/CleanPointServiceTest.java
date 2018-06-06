@@ -40,7 +40,7 @@ public class CleanPointServiceTest extends AbstractTest {
 	EntityManager		entityManager;
 
 
-	//Crate and save cleanPoint
+	//Requisito 8.e)Crate and save cleanPoint
 	@Test
 	public void driverCreateAndSave() {
 		final Collection<GPS> listGPS;
@@ -149,7 +149,7 @@ public class CleanPointServiceTest extends AbstractTest {
 		return result;
 	}
 
-	//Remove a cleanPoint
+	//Requisito 8.e)Borrar un punto limpio
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {
@@ -187,7 +187,7 @@ public class CleanPointServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Listar todos los puntos limpios de mi sistema
+	//Requisito 8.e)Listar todos los puntos limpios de mi sistema
 	@Test
 	public void driverListCleanPoints() {
 		final Object testingData[][] = {
@@ -221,7 +221,7 @@ public class CleanPointServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
-	//Edit cleanPoint
+	//Requisito 8.e)Editar un punto limpio
 	@Test
 	public void driveEditcleanPoint() {
 		final Collection<GPS> listGPS;

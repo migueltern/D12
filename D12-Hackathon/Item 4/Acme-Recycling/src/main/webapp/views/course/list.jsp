@@ -52,9 +52,9 @@
 	<display:column property="description" title="${descriptionHeader}"
 		sortable="true" />
 
-	<spring:message code="course.format.realisedMoment" var="pattern"></spring:message>
-	<spring:message code="course.realisedMoment" var="realisedHeader" />
-	<display:column property="realisedMoment" title="${realisedHeader}"
+	<spring:message code="course.format.startDate" var="pattern"></spring:message>
+	<spring:message code="course.startDate" var="startHeader" />
+	<display:column property="startDate" title="${startHeader}"
 		sortable="true" format="${pattern}" />
 
 	<spring:message code="course.minimumScore" var="minimumScoreHeader" />
@@ -108,6 +108,7 @@
 	<display:column title="${opinions}" sortable="true">
 		<spring:url value="opinion/list.do" var="displayURL">
 			<spring:param name="opinableId" value="${row.id}" />
+			<spring:param name="d-16544-p" value="1" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="course.opinions" /></a>
 	</display:column>

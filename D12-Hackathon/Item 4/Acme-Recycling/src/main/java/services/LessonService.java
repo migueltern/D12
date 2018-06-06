@@ -57,8 +57,8 @@ public class LessonService {
 		//El curso debe de estar en modo borrador
 		Assert.isTrue(course.isDraftMode());
 		//No puedo crear lecciones para un curso que ya ha pasado
-		if (course.getRealisedMoment() != null)
-			Assert.isTrue(course.getRealisedMoment().after(date));
+		if (course.getStartDate() != null)
+			Assert.isTrue(course.getStartDate().after(date));
 		//No puedo crear lecciones para un curso que no sea del buyer conectado
 		Assert.isTrue(buyer.getCourses().contains(course));
 

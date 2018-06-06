@@ -71,7 +71,7 @@ public class OpinionController extends AbstractController {
 		Item item;
 		Course course;
 		ModelAndView result;
-		final Actor actor;
+		Actor actor;
 		final Authority authorityRecycler;
 		final Authority authorityBuyer;
 		final Authority authorityAdmin;
@@ -87,16 +87,26 @@ public class OpinionController extends AbstractController {
 		if (item != null)
 			result = new ModelAndView("redirect:/item/display.do?itemId=" + item.getId());
 		else if (course != null) {
-			actor = this.actorService.findPrincipal();
 
-			//Si el usuario logueado es un recycler, lo redirijo a su controlador
-			if (actor.getUserAccount().getAuthorities().contains(authorityRecycler))
-				result = new ModelAndView("redirect:/course/recycler/display.do?courseId=" + course.getId());
-			else if (actor.getUserAccount().getAuthorities().contains(authorityBuyer))
-				result = new ModelAndView("redirect:/course/buyer/display.do?courseId=" + course.getId());
-			else if (actor.getUserAccount().getAuthorities().contains(authorityAdmin))
-				result = new ModelAndView("redirect:/course/admin/display.do?courseId=" + course.getId());
-			else
+			try {
+				actor = this.actorService.findPrincipal();
+			} catch (final Throwable oops) {
+				//Si entra aqui significa que el usuario no esta logueado
+				actor = null;
+			}
+
+			//Si el usuario esta logueado entra dentro del if
+			if (actor != null) {
+				//Si el usuario logueado es un recycler, lo redirijo a su controlador
+				if (actor.getUserAccount().getAuthorities().contains(authorityRecycler))
+					result = new ModelAndView("redirect:/course/recycler/display.do?courseId=" + course.getId());
+				else if (actor.getUserAccount().getAuthorities().contains(authorityBuyer))
+					result = new ModelAndView("redirect:/course/buyer/display.do?courseId=" + course.getId());
+				else if (actor.getUserAccount().getAuthorities().contains(authorityAdmin))
+					result = new ModelAndView("redirect:/course/admin/display.do?courseId=" + course.getId());
+				else
+					result = new ModelAndView("redirect:/course/display.do?courseId=" + course.getId());
+			} else
 				result = new ModelAndView("redirect:/course/display.do?courseId=" + course.getId());
 		} else
 			Assert.isTrue(false, "The opinable isn't a item or course");

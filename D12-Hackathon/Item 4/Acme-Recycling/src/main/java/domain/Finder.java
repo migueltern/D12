@@ -16,6 +16,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -33,6 +35,7 @@ public class Finder extends DomainEntity {
 	private Date	startCacheTime;
 
 
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getKeyWord() {
 		return this.keyWord;
 	}

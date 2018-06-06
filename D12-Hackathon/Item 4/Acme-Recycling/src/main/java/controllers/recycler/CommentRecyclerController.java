@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +18,6 @@ import services.RecyclerService;
 import controllers.AbstractController;
 import domain.Comment;
 import domain.Newscast;
-import domain.Recycler;
 
 @Controller
 @RequestMapping("/comment/recycler")
@@ -86,28 +84,6 @@ public class CommentRecyclerController extends AbstractController {
 		return result;
 	}
 
-	// Edit---------------------------------------------------------------
-
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam final int commentId) {
-		ModelAndView result;
-		Comment comment;
-		Recycler principal;
-		Collection<Comment> mycomments;
-
-		principal = this.recyclerService.findByPrincipal();
-		mycomments = principal.getComments();
-
-		comment = this.commentService.findOne(commentId);
-		Assert.isTrue(mycomments.contains(comment), "You cannot commit this operation, this comment is not yours");
-		Assert.notNull(comment);
-
-		result = this.createEditModelAndView(comment);
-
-		return result;
-
-	}
-
 	@RequestMapping(value = "/addNewscast", method = RequestMethod.POST, params = "save")
 	public ModelAndView addNewspaper(Comment comment, final BindingResult bindingResult, @RequestParam final int newscastId) {
 		ModelAndView result;
@@ -152,15 +128,19 @@ public class CommentRecyclerController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(@ModelAttribute final Comment comment, final BindingResult bindingResult) {
+	//Delete---------------------------------------------------------------------
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(final int commentId) {
 		ModelAndView result;
+		Comment comment;
 
+		comment = this.commentService.findOne(commentId);
+		Assert.notNull(comment);
 		try {
 			this.commentService.delete(comment);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(comment, "comment.commit.error");
+			result = this.listWithMessage("comment.commit.error");
 		}
 
 		return result;
@@ -168,6 +148,17 @@ public class CommentRecyclerController extends AbstractController {
 
 	// Ancillary methods ------------------------------------------------------
 
+	protected ModelAndView listWithMessage(final String message) {
+		final ModelAndView result;
+		Collection<Comment> comments;
+		comments = this.commentService.findAll();
+		result = new ModelAndView("comment/list");
+		result.addObject("comments", comments);
+		result.addObject("requestURI", "/comment/recycler/list.do");
+		result.addObject("message", message);
+		return result;
+
+	}
 	protected ModelAndView createEditModelAndView(final Comment comment) {
 		assert comment != null;
 		ModelAndView result;

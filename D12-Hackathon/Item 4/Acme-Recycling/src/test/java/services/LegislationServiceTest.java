@@ -41,7 +41,7 @@ public class LegislationServiceTest extends AbstractTest {
 	EntityManager				entityManager;
 
 
-	//Create a law
+	//Requisito 8.c) Crear leyes
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
@@ -84,7 +84,7 @@ public class LegislationServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Listar todas las leyes del sistema
+	//Requisito 8.c)Listar todas las leyes del sistema
 	@Test
 	public void driverListLaws() {
 		final Object testingData[][] = {
@@ -118,7 +118,7 @@ public class LegislationServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
-	//Edit a law
+	//Requisito 8.c) Editar leyes
 	@Test
 	public void driveEditLaw() {
 
@@ -166,7 +166,7 @@ public class LegislationServiceTest extends AbstractTest {
 
 	}
 
-	//Remove a law
+	//Requisito 8.c) Borrar leyes
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {

@@ -70,10 +70,11 @@
 	<h2><spring:message code="new.comments" /></h2>	
 	<display:table name="comments" id="row" class="displaytag">
 	<spring:message code="comment.body" var="titleHeader" />
-	<display:column property="body" title="${titleHeader}" sortable="true" />
+	<display:column property="body" title="${titleHeader}" />
+	
 	<security:authorize access="hasRole('RECYCLER')">
 	<spring:message code="new.comment.reply" var="Edit" />
-		<display:column title="${Edit}" sortable="true">
+		<display:column title="${Edit}" >
 			
 				<spring:url value="comment/recycler/createReply.do" var="editURL">
 					<spring:param name="commentId" value="${row.id}" />
@@ -85,7 +86,7 @@
 	
 	<security:authorize access="hasRole('EDITOR')">
 		<spring:message code="new.display.comment" var="Edit" />
-		<display:column title="${Edit}" sortable="true">
+		<display:column title="${Edit}">
 			
 				<spring:url value="comment/editor/display.do" var="editURL">
 					<spring:param name="commentId" value="${row.id}" />

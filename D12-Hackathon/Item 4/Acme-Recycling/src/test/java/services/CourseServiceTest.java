@@ -59,16 +59,16 @@ public class CourseServiceTest extends AbstractTest {
 	@Autowired
 	BuyerService		buyerService;
 
-
+	//3.c) Asistir a un curso.
 	@Test
 	public void driverAssist() {
 		final Object testingData[][] = {
 			{
-
+				//El recycler1 va a asistir al curso 1, esto debe dar positivo
 				"recycler1", "course1", null
 
 			}, {
-
+				//El recycler1 va a intentar asistir al curso 2 pero no va a ser posible puesto que ya ha sido realizado
 				"recycler1", "course2", IllegalArgumentException.class
 			}
 		};
@@ -101,15 +101,15 @@ public class CourseServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	@Test
+	//3.c) Dejar de asistir a un curso
 	public void driverNotAssist() {
 		final Object testingData[][] = {
 			{
-
+				//El recycler1 va a dejar de asistir al curso 5.
 				"recycler1", "course5", null
 
 			}, {
-
+				//El recycler1 va a intentar dejar de asistir al curso 2.
 				"recycler1", "course2", IllegalArgumentException.class
 			}
 		};
@@ -224,7 +224,7 @@ public class CourseServiceTest extends AbstractTest {
 				(String) testingData[i][6], (String) testingData[i][7], (Double) testingData[i][8], (Double) testingData[i][9], (Class<?>) testingData[i][10]);
 	}
 
-	private void templateCreateAndSave(final int buyerId, final String title, final String realisedMoment, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description, final String nameCoordenate,
+	private void templateCreateAndSave(final int buyerId, final String title, final String startDate, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description, final String nameCoordenate,
 		final Double latitude, final Double longitud, final Class<?> expected) {
 		Course course;
 		Buyer buyer;
@@ -240,7 +240,7 @@ public class CourseServiceTest extends AbstractTest {
 			course = this.courseService.create();
 
 			course.setTitle(title);
-			course.setRealisedMoment((new SimpleDateFormat("yyyy/MM/dd").parse(realisedMoment)));
+			course.setStartDate((new SimpleDateFormat("yyyy/MM/dd").parse(startDate)));
 			course.setMinimumScore(minimumScore);
 			course.setDraftMode(draftMode);
 			course.setMaterials(materials);
@@ -300,7 +300,7 @@ public class CourseServiceTest extends AbstractTest {
 				(Collection<Material>) testingData[i][6], (String) testingData[i][7], (String) testingData[i][8], (Double) testingData[i][9], (Double) testingData[i][10], (Integer) testingData[i][11], (Class<?>) testingData[i][12]);
 	}
 
-	private void templateEditAndSave(final int buyerId, final int courseId, final String title, final String realisedMoment, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description,
+	private void templateEditAndSave(final int buyerId, final int courseId, final String title, final String startDate, final Integer minimumScore, final boolean draftMode, final Collection<Material> materials, final String description,
 		final String nameCoordenate, final Double latitude, final Double longitud, final Integer aux, final Class<?> expected) {
 		Course course;
 		Buyer buyer;
@@ -322,7 +322,7 @@ public class CourseServiceTest extends AbstractTest {
 				course = this.courseService.save(course);
 				//Para el tercer caso editamos la fecha por una en pasado
 			} else if (aux == 3) {
-				course.setRealisedMoment((new SimpleDateFormat("yyyy/MM/dd").parse(realisedMoment)));
+				course.setStartDate((new SimpleDateFormat("yyyy/MM/dd").parse(startDate)));
 				course = this.courseService.save(course);
 			}
 

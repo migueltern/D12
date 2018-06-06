@@ -95,7 +95,7 @@ public class CourseService {
 		//Assert.isTrue(course.isDraftMode());
 		//Si está en modo final la fecha es obligatoria
 		if (!course.isDraftMode()) {
-			Assert.notNull(course.getRealisedMoment(), "La fecha no puede ser nula");
+			Assert.notNull(course.getStartDate(), "La fecha no puede ser nula");
 			Assert.isTrue(!lessonsOfCourse.isEmpty(), "Al menos una lección");
 		}
 		//Al menos un material es obligatorio
@@ -104,8 +104,8 @@ public class CourseService {
 		if (course.getMinimumScore() != null)
 			Assert.isTrue(course.getMinimumScore() > 0, "No puede ser 0 el minimum");
 
-		if (course.getRealisedMoment() != null)
-			Assert.isTrue(course.getRealisedMoment().after(date), "Fecha de realizacion debe ser posterior a la actual");
+		if (course.getStartDate() != null)
+			Assert.isTrue(course.getStartDate().after(date), "Fecha de comienzo debe ser posterior a la actual");
 
 		result = this.courseRepository.save(course);
 		if (course.getId() == 0)
@@ -276,7 +276,7 @@ public class CourseService {
 		final Long diaMili = (long) 86400000;
 		final Long semana = diaMili * 7;
 
-		final Long restaFechas = course.getRealisedMoment().getTime() - actual.getTime();
+		final Long restaFechas = course.getStartDate().getTime() - actual.getTime();
 		Assert.isTrue(restaFechas > semana, "This course will start in one week or less");
 		recyclerConnected = this.recyclerService.findByPrincipal();
 

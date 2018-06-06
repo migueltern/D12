@@ -43,17 +43,19 @@ public class MaterialServiceTest extends AbstractTest {
 	MaterialService			materialService;
 
 
+	//8.g) Crear un material
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
 			{
-
+				//El admin va a crear un material con todos los valores correctos.Esto debe ser positivo.
 				"admin", "title test material", "description test material", 2.0, 2.9, "labelMaterial1", null
 
 			}, {
-
+				//Un manager no puede crear un material por tanto debe de dar error.
 				"manager1", "title test material", "description test material", 2.0, 2.9, "labelMaterial1", IllegalArgumentException.class
 			}, {
+				//El admin va a crear un material con el titulo en blanco, esto debe dar un error de validacion.
 				"admin", "", "description test material", 2.0, 2.9, "labelMaterial1", ConstraintViolationException.class
 			}
 		};
@@ -90,14 +92,15 @@ public class MaterialServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	//8.g) Listar los materiales
 	@Test
 	public void driverList() {
 		final Object testingData[][] = {
 			{
-
+				//Existen un total de 6 materiales en el sistema, por tanto debe ser positivo.
 				"admin", 6, null
 			}, {
-
+				//No existen solamente 4 materiales en el sistema, por tanto debe ser negativo.
 				"admin", 4, IllegalArgumentException.class
 			}
 		};
@@ -124,14 +127,15 @@ public class MaterialServiceTest extends AbstractTest {
 		this.checkExceptions(expected, caught);
 	}
 
+	//8.g) Editar un material
 	@Test
 	public void driverEdit() {
 		final Object testingData[][] = {
 			{
-				//Se edita un product correctamente
+				//Se edita un material correctamente
 				"admin", "material3", "title test positive", null
 			}, {
-				//Se edita un product correctamente
+				//Se edita un material incorrectamente
 				"manager1", "material4", "title test negative", IllegalArgumentException.class
 			}
 		};
@@ -165,5 +169,36 @@ public class MaterialServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 	}
+	
+		//1.b) Listar los materiales por parte de los no autenticados.
+		@Test
+		public void driverListNotAuthenticated() {
+			final Object testingData[][] = {
+				{
+					//Existen un total de 6 materiales en el sistema, por tanto debe ser positivo.
+					 6, null
+				}, {
+					//No existen solamente 4 materiales en el sistema, por tanto debe ser negativo.
+					 4, IllegalArgumentException.class
+				}
+			};
+			for (int i = 0; i < testingData.length; i++)
+				this.templateListNotAuthenticated((int) testingData[i][0], (Class<?>) testingData[i][1]);
+		}
+
+		private void templateListNotAuthenticated(final int size, final Class<?> expected) {
+			Class<?> caught;
+			Collection<Material> materials;
+
+			caught = null;
+			try {
+				materials = this.materialService.findAll();
+				Assert.isTrue(materials.size() == size);
+				this.unauthenticate();
+			} catch (final Throwable oops) {
+				caught = oops.getClass();
+			}
+			this.checkExceptions(expected, caught);
+		}
 
 }

@@ -1443,7 +1443,7 @@
 			value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSWZaE9DvgcQGN3ekP2yPWphBpe78dohdbXxsLnkGy7ed1QeQ4QA" />
 		<property name="labelProduct" ref="labelProduct1" />
 		<property name="recycler" ref="recycler2" />
-		<property name="value" value="2"></property>
+		<!-- <property name="value" value="2"></property> -->
 		<property name="opinions">
 			<list>
 				<ref bean="opinion2" />
@@ -1809,7 +1809,7 @@
 		<property name="title" value="title course 1" />
 		<property name="description" value="description course 1" />
 		<property name="location" ref="gps1" />
-		<property name="realisedMoment" value="2018/12/12" />
+		<property name="startDate" value="2018/12/12" />
 		<property name="picture"
 			value="http://cuellar7.com/wp-content/uploads/2014/09/Curso-2-Coca.jpg" />
 		<property name="draftMode" value="false" />
@@ -1837,7 +1837,7 @@
 		<property name="title" value="title course 2" />
 		<property name="description" value="description course 2" />
 		<property name="location" ref="gps2" />
-		<property name="realisedMoment" value="2018/02/12" />
+		<property name="startDate" value="2018/02/12" />
 		<property name="picture"
 			value="https://spseguridad.files.wordpress.com/2013/05/curso_presencial1.jpg" />
 		<property name="draftMode" value="false" />
@@ -1865,7 +1865,7 @@
 		<property name="title" value="title course 3" />
 		<property name="description" value="description course 3" />
 		<property name="location" ref="gps3" />
-		<property name="realisedMoment" value="2018/12/13" />
+		<property name="startDate" value="2018/12/13" />
 		<property name="picture"
 			value="http://www.gsesoftware.com/wp-content/uploads/2017/02/LOGO-FORMACI%C3%93N-300x119.png" />
 		<property name="draftMode" value="false" />
@@ -1892,7 +1892,7 @@
 		<property name="title" value="title course 4" />
 		<property name="description" value="description course 4" />
 		<property name="location" ref="gps4" />
-		<property name="realisedMoment" value="2018/04/12" />
+		<property name="startDate" value="2018/04/12" />
 		<property name="picture"
 			value="https://www.panamaparaninos.com/image/cache/data/Eventos/Culturales/Mu%C3%B1ecosPapelMacheBibadabook_01-600x600.jpg" />
 		<property name="draftMode" value="false" />
@@ -1919,7 +1919,7 @@
 		<property name="title" value="title course 5" />
 		<property name="description" value="description course 5" />
 		<property name="location" ref="gps5" />
-		<property name="realisedMoment" value="2018/12/15" />
+		<property name="startDate" value="2018/12/15" />
 		<property name="picture"
 			value="https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-34-638.jpg?cb=1380200215" />
 		<property name="draftMode" value="false" />
@@ -1947,7 +1947,7 @@
 		<property name="title" value="title course 6" />
 		<property name="description" value="description course 6" />
 		<property name="location" ref="gps5" />
-		<property name="realisedMoment" value="2019/11/01" />
+		<property name="startDate" value="2019/11/01" />
 		<property name="picture"
 			value="https://image.slidesharecdn.com/presentacincrac-130926082730-phpapp01/95/presentacin-del-curso-de-reciclaje-artstico-y-creativo-5-638.jpg?cb=1380200215" />
 		<property name="draftMode" value="true" />

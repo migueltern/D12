@@ -30,6 +30,7 @@
 
 
 
+
 <div class="col">
  <div class="form-row">
  	  <div class="form-group col-md-6">
@@ -39,11 +40,12 @@
 </div>
 
 	<div class="form-group col-md-6">	
-<spring:message code="course.realisedMoment" var="Edit" />
-	<B><acme:textbox title="${Edit}" path="realisedMoment" id="datepicker" placeHolder="yyyy/MM/dd"/></B>
+<spring:message code="course.startDate" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="startDate" id="datepicker" placeHolder="yyyy/MM/dd"/></B>
 </div>
 </div>
 </div>
+
 	
 
 	

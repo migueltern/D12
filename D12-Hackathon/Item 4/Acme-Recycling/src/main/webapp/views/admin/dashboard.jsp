@@ -24,10 +24,10 @@
 
 
 
-<caption class="caption">
+<div class="text-center">
 <!-- C1 -->
-	<spring:message code="dashboard.findNewWithMoreComments" />
-</caption>
+	<B><spring:message code="dashboard.findNewWithMoreComments" /></B>
+</div>
 <display:table name="findNewWithMoreComments" id="row"
 	class="displaytag">
 	<spring:message code="new.title" var="nameHeader" />
@@ -39,12 +39,12 @@
 	</display:column>
 </display:table>
 
+<br>
 
-
-<caption class="caption">
+<div class="text-center">
 <!-- C2 -->
-	<spring:message code="dashboard.findEditorsWithMoreNewsRedacted" />
-</caption>
+	<B><spring:message code="dashboard.findEditorsWithMoreNewsRedacted" /></B>
+</div>
 <display:table name="findEditorsWithMoreNewsRedacted" id="row"
 	class="displaytag">
 	<spring:message code="editor.name" var="nameHeader" />
@@ -56,12 +56,13 @@
 	</display:column>
 </display:table>
 
+<br>
 
 
-<caption class="caption">
 <!-- C3 -->
-	<spring:message code="dashboard.findTop5LabelProducts" />
-</caption>
+<div class="text-center">
+	<B><spring:message code="dashboard.findTop5LabelProducts" /></B>
+</div>
 <display:table name="findTop5LabelProducts" id="row"
 	class="displaytag">
 	<spring:message code="editor.name" var="nameHeader" />
@@ -70,15 +71,15 @@
 	</display:column>
 </display:table>
 
-
-
+<br>
+	<div class="text-center">
 <table>
 <!-- C4 -->
-	<caption class="caption">
 
-		<spring:message
-			code="dashboard.avgMinMaxAndStddevOfCoursesByBuyer" />
-	</caption>
+
+		<B><spring:message
+			code="dashboard.avgMinMaxAndStddevOfCoursesByBuyer" /></B>
+	
 	<tr>
 		<th><spring:message code="dashboard.AVG" /></th>
 		<th><spring:message code="dashboard.MIN" /></th>
@@ -92,54 +93,65 @@
 		</jstl:forEach>
 	</tr>
 </table>
+</div>
 
 
-
+<br>
+<div class="text-center">
 <table>
 <!-- C5 -->
-	<caption class="caption">
-		<spring:message
-			code="dashboard.avgOfIncidencesResolved" />
-	</caption>
+	
+		<B><spring:message
+			code="dashboard.avgOfIncidencesResolved" /></B>
+	
 
 	<tr>
 		<td><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${avgOfIncidencesResolved}" /></td>
 	</tr>
 </table>
+</div>
 
 
+<br>
+<div class="text-center">
 <table>
 <!-- C6 -->
-	<caption class="caption">
-		<spring:message
-			code="dashboard.avgOfRecyclerWithAtLeastOneProduct" />
-	</caption>
+	
+		<B><spring:message
+			code="dashboard.avgOfRecyclerWithAtLeastOneProduct" /></B>
+
 
 	<tr>
 		<td><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${avgOfRecyclerWithAtLeastOneProduct}" /></td>
 	</tr>
 </table>
+</div>
 
-
+<br>
+<div class="text-center">
 <table>
 <!-- C7 -->
-	<caption class="caption">
-		<spring:message
-			code="dashboard.avgOfUsersBanned" />
-	</caption>
+	
+		<B><spring:message
+			code="dashboard.avgOfUsersBanned" /></B>
+	
 
 	<tr>
 		<td><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${avgOfUsersBanned}" /></td>
 	</tr>
 </table>
+</div>
 
+
+<br>
+<div class="text-center">
 <table>
 <!-- C8 -->
-	<caption class="caption">
+	
 
-		<spring:message
-			code="dashboard.avgMinMaxAndStddevOfCommentsByNews" />
-	</caption>
+		<B><spring:message
+			code="dashboard.avgMinMaxAndStddevOfCommentsByNews" /></B>
+	
 	<tr>
 		<th><spring:message code="dashboard.AVG" /></th>
 		<th><spring:message code="dashboard.MIN" /></th>
@@ -153,12 +165,17 @@
 		</jstl:forEach>
 	</tr>
 </table>
+</div>
 
+<br>
 
-<caption class="caption">
+<div class="text-center">
 <!-- C9 -->
-	<spring:message code="dashboard.findLatestItems" />
-</caption>
+	<B><spring:message code="dashboard.findLatestItems" /></B>
+</div>
+
+<br>
+
 <display:table name="findLatestItems" id="row"
 	class="displaytag">
 	<spring:message code="new.title" var="nameHeader" />
@@ -170,15 +187,15 @@
 	</display:column>
 </display:table>
 
-
-
+<br>
+<div class="text-center">
 <table>
 <!-- C10 -->
-	<caption class="caption">
+	
 
-		<spring:message
-			code="dashboard.nameTitleRecyclerWithItemMostValue" />
-	</caption>
+		<B><spring:message
+			code="dashboard.nameTitleRecyclerWithItemMostValue" /></B>
+
 	<tr>
 		<th><spring:message code="editor.name" /></th>
 		<th><spring:message code="new.title" /></th>
@@ -191,15 +208,17 @@
 		</jstl:forEach>
 	</tr>
 </table>
+</div>
 
-
+<br>
+<div class="text-center">
 <table>
 <!-- C11 -->
-	<caption class="caption">
+	
 
-		<spring:message
-			code="dashboard.avgMinMaxAndStddevOfRequestByManager" />
-	</caption>
+		<B><spring:message
+			code="dashboard.avgMinMaxAndStddevOfRequestByManager" /></B>
+
 	<tr>
 		<th><spring:message code="dashboard.AVG" /></th>
 		<th><spring:message code="dashboard.MIN" /></th>
@@ -213,12 +232,16 @@
 		</jstl:forEach>
 	</tr>
 </table>
+</div>
 
 
-<caption class="caption">
+<br>
+<div class="text-center">
 <!-- C12 -->
-	<spring:message code="dashboard.findTop3Materials" />
-</caption>
+	<B><spring:message code="dashboard.findTop3Materials" /></B>
+</div>
+
+<br>
 <display:table name="findTop3Materials" id="row"
 	class="displaytag">
 	<spring:message code="editor.name" var="nameHeader" />
@@ -230,15 +253,17 @@
 	</display:column>
 </display:table>
 
-
+<br>
+<div class="text-center">
 <table>
 <!-- C13 -->
-	<caption class="caption">
-		<spring:message
+	
+		<B><spring:message
 			code="dashboard.ratioCarrierWithAtLeastOneRequestVersusCarrierWithNoOneRequest" />
-	</caption>
+	</B>
 
 	<tr>
 		<td><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${ratioCarrierWithAtLeastOneRequestVersusCarrierWithNoOneRequest}" /></td>
 	</tr>
 </table>
+</div>

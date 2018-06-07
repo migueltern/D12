@@ -33,7 +33,7 @@ public class CommentServiceTest extends AbstractTest {
 	EntityManager	entityManager;
 
 
-	//Crear y salvar un comentario
+	//Caso de uso 3.g)Crear y salvar un comentario
 	@Test
 	public void driverCreateAndSaveComment() {
 
@@ -70,7 +70,7 @@ public class CommentServiceTest extends AbstractTest {
 
 	}
 
-	//Delete comment
+	//Caso de uso 3.g)Delete comment
 	@Test
 	public void driveDeleteComment() {
 

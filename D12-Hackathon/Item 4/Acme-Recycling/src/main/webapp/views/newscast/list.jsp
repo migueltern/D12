@@ -166,10 +166,12 @@
 	
 </display:table>
 </div>
+<div class="text-center">
 <security:authorize access="isAnonymous()">
-<font size="3" color=black face="Bebas Neue"><B><spring:message code="aviso1" /></B></font>
+<font size="4" color=black face="Bebas Neue"><B><spring:message code="aviso1" /></B></font>
 <a href="buyer/create.do"><spring:message code="aviso2"  /></a>
-<font size="3" color=black face="Bebas Neue"><B><spring:message code="aviso4" /></B></font>
+<font size="4" color=black face="Bebas Neue"><B><spring:message code="aviso4" /></B></font>
 <a href="recycler/create.do"><spring:message code="aviso3"  /></a>
 
 </security:authorize>
+</div>

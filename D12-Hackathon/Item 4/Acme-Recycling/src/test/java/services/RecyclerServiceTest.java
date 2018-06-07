@@ -199,11 +199,17 @@ public class RecyclerServiceTest extends AbstractTest {
 
 		final Object testingData[][] = {
 			{
-				//Recycler con puntuación distinta de 0 al tener algun item
+				//Recycler1 con puntuación distinta de 0 al tener algun item
 				"recycler1", 32.0, null
 			}, {
-				//Recycler con puntuación 0 al no tener ningún item
+				//Recycler4 con puntuación 0 al no tener ningún item
 				"recycler4", 0.0, null
+			}, {
+				//Recycler3 tiene puntuacion 3.0 no 4.0 por lo tanto falla
+				"recycler3", 4.0, IllegalArgumentException.class
+			}, {
+				//Recycler3 tiene puntuacion 3.0
+				"recycler3", 3.0, null
 			}
 		};
 		for (int i = 0; i < testingData.length; i++)

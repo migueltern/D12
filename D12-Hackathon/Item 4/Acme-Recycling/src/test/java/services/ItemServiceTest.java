@@ -42,9 +42,9 @@ public class ItemServiceTest extends AbstractTest {
 
 	@Autowired
 	ActorService		actorService;
-	
+
 	@Autowired
-	RecyclerService recyclerService;
+	RecyclerService		recyclerService;
 
 	@Autowired
 	LabelProductService	labelItemService;
@@ -98,8 +98,7 @@ public class ItemServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 	}
-	
-	
+
 	//3.e. El reciclador podrá subir sus productos(items) al sistema. Una vez que esté subido al sistema no se 
 	//podrán editar sus atributos, pero sí se podrá eliminar siempre y cuando no haya un transportista asociado 
 	//ya a ese producto. También hay que tener en cuenta que tampoco se podrá borrar si todo el proceso ha sido finalizado.
@@ -141,7 +140,6 @@ public class ItemServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	
 	//3.e. El reciclador podrá subir sus productos(items) al sistema. Una vez que esté subido al sistema no se 
 	//podrán editar sus atributos, pero sí se podrá eliminar siempre y cuando no haya un transportista asociado 
 	//ya a ese producto. También hay que tener en cuenta que tampoco se podrá borrar si todo el proceso ha sido finalizado.
@@ -152,7 +150,7 @@ public class ItemServiceTest extends AbstractTest {
 			{
 
 				"recycler1", "item1", 2, null
-			}, 
+			},
 			//No encuentra los productos de ese reciclador, caso negativo
 			{
 
@@ -176,10 +174,56 @@ public class ItemServiceTest extends AbstractTest {
 			items = this.itemService.findItemsByRecycler(recyclerId.getId());
 			Assert.isTrue(items.size() == size);
 			Assert.isTrue(items.contains(item));
-			
+
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
+		this.checkExceptions(expected, caught);
+	}
+
+	//Test caso de uso 2.b: Listar recycladores, navegar por su perfil y listar sus items
+	@Test
+	public void driverList() {
+
+		final Object testingData[][] = {
+			{
+				//Listamos los recicladores, cogemos el reciclador 2 y debe de contener el item 2
+				"recycler2", "item2", null
+			}, {
+				//Listamos los recicladores, cogemos el reciclador 2 y NO debe de contener el item 5
+				"recycler2", "item5", IllegalArgumentException.class
+			}
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateList(super.getEntityId((String) testingData[i][0]), super.getEntityId((String) testingData[i][1]), (Class<?>) testingData[i][2]);
+	}
+
+	private void templateList(final int recyclerId, final int itemId, final Class<?> expected) {
+		Class<?> caught;
+		Recycler recycler;
+		Item item;
+		Collection<Item> items;
+		Collection<Recycler> recyclers;
+		caught = null;
+
+		try {
+			recyclers = this.recyclerService.findAll();
+			recycler = this.recyclerService.findOne(recyclerId);
+			items = this.itemService.findItemsByRecycler(recycler.getId());
+			item = this.itemService.findOne(itemId);
+			//El recyclador que le pasamos sí está en el listado.
+			Assert.isTrue(recyclers.contains(recycler));
+			//El item que le pasamos sí pertenece al reciclador.
+			Assert.isTrue(items.contains(item));
+
+			this.entityManager.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			//Se borra la cache para que no salte siempre el error del primer objeto que ha fallado en el test
+			this.entityManager.clear();
+		}
+
 		this.checkExceptions(expected, caught);
 	}
 }

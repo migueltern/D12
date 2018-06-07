@@ -90,13 +90,13 @@
           <a class="dark-grey-text" href="https://www.instagram.com/ecoembes/">Instagram</a>
         </p>
         <p>
-          <a class="dark-grey-text" href="#!">Twitter</a>
+          <a class="dark-grey-text" href="https://twitter.com/ecoembes">Twitter</a>
         </p>
         <p>
-          <a class="dark-grey-text" href="#!">Facebook</a>
+          <a class="dark-grey-text" href="https://es-es.facebook.com/ecoembes/">Facebook</a>
         </p>
         <p>
-          <a class="dark-grey-text" href="#!">Help</a>
+       <!--    <a class="dark-grey-text" href="#!">Help</a> -->
         </p>
 
       </div>

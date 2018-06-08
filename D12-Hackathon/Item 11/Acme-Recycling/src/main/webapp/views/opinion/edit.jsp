@@ -22,42 +22,69 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="opinionForm">
-
+<div class="col-md-8 col-centered">
+<br>
 	<form:hidden path="opinion.id" />
 	<form:hidden path="opinion.version" />
 
-	<B><acme:textbox code="opinion.title" path="opinion.title" /></B>
-	<br />
-	<B><acme:textbox code="opinion.comment" path="opinion.comment" /></B>
-	<br />
-	<B><acme:textbox code="opinion.photo" path="opinion.photo" placeHolder="http://"/></B>
-	<br />
-	<B><acme:textbox code="opinion.caption" path="opinion.caption" /></B>
-	<br />
+
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+ 	  <spring:message code="opinion.title" var="Edit" />
+	<acme:textbox title="${Edit}" path="opinion.title" />
+</div>
+
+	<div class="form-group col-md-6">
+	<spring:message code="opinion.comment" var="Edit" />	
+	<acme:textbox title="${Edit}" path="opinion.comment" />
+</div>
+</div>
+</div>
+
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+ 	 <spring:message code="opinion.photo" var="Edit" />
+	<acme:textbox title="${Edit}" path="opinion.photo" placeHolder="http://"/>
+</div>
+
+	<div class="form-group col-md-6">
+	<spring:message code="opinion.caption" var="Edit" />	
+	<acme:textbox title="${Edit}" path="opinion.caption" />
+</div>
+</div>
+</div>
+
+	
+
 
 	<jstl:if test="${!hiddenSelects}">
 
 		<jstl:if test="${showItem}">
+		<div class="col">
 			<acme:select items="${products}" itemLabel="title"
 				code="opinion.product" path="opinableId" />
 			<br />
 			<form:hidden path="opinableItem" value="1" />
+			</div>
 		</jstl:if>
 
-
+<div class="col">
 		<jstl:if test="${!showItem}">
 			<acme:select items="${courses}" itemLabel="title"
 				code="opinion.course" path="opinableId" />
 			<br />
 			<form:hidden path="opinableItem" value="0" />
 		</jstl:if>
-
+</div>
 	</jstl:if>
 
 	<!-- BOTONES -->
 
-	<input type="submit" name="save"
-		value="<spring:message code="opinion.save"/>" />&nbsp;
+	<acme:submit name="save" code="opinion.save"/>
 		
 	<security:authorize access="isAuthenticated()">
 		<jstl:if test="${opinableItem}">
@@ -70,6 +97,6 @@
 				code="opinion.cancel" />
 		</jstl:if>
 	</security:authorize>
-
+</div>
 </form:form>
 

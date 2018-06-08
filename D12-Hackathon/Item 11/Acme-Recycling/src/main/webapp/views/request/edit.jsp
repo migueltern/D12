@@ -22,6 +22,9 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="request/manager/edit.do" modelAttribute="requestForm">
+<div class="col-md-8 col-centered">
+
+<br> 
 
 	<form:hidden path="request.id" />
 	<form:hidden path="request.version" />
@@ -29,25 +32,51 @@
 	<form:hidden path="status" /> --%>
 	<form:hidden path="itemId" />
 
+
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-4">
+ 
 	<acme:textbox code="request.code" path="request.code" readonly="true" />
-	<br />
-	<acme:textbox code="request.title" path="request.title" />
-	<br />
-	<acme:textbox code="request.observation" path="request.observation" />
-	<br />
+</div>
+
+	<div class="form-group col-md-4">
+<spring:message code="request.observation" var="Edit" />
+	<acme:textbox title="${Edit}" path="request.observation" />
+	
+	</div>
+
+	<div class="form-group col-md-4">
+	<spring:message code="request.title" var="Edit" />
+	<acme:textbox title="${Edit}" path="request.title" />
+</div>
+</div>
+</div>
+	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+
 	<acme:select items="${carriers}" itemLabel="name"
 		code="request.carrier" path="request.carrier" />
-	<br />
+</div>
+
+	<div class="form-group col-md-6">	
 	<acme:selectmultiple items="${cleanPoints}" itemLabel="address"
 		code="request.cleanPoint" path="request.cleanPoints" />
-	<br />
+</div>
+</div>
+</div>
 
 	<!-- BOTONES -->
+	
+	<acme:submit name="save" code="request.save"/>
 
-	<input type="submit" name="save"
-		value="<spring:message code="request.save"/>" />&nbsp;
+
 		
 		<acme:cancel url="request/manager/listItemsNonRequest.do?d-16544-p=1"
 		code="request.cancel" />
+</div>
 </form:form>
 

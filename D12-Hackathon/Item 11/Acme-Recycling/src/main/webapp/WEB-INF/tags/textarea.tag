@@ -37,14 +37,14 @@
 <table id="miestilo" >
 	<tr> 
 	<th>
-	<form:label path="${path}">
+	<%-- <form:label path="${path}">
 		<spring:message code="${code}" />
-	</form:label>
+	</form:label> --%>
 	</th>
 	<th>
-	<form:textarea path="${path}" rows="5px" cols="22px" readonly="${readonly}" placeHolder="${placeHolder }" />
+	<form:textarea path="${path}" class="form-control" rows="5px" cols="22px" readonly="${readonly}" placeHolder="${code }" />
 	
-	<form:errors path="${path}" cssClass="error" />
+	<form:errors path="${path}" class="alert alert-danger" />
 	</th>
 	</tr>
 	</table>

@@ -20,7 +20,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<div class="col-md-8 col-centered">
 <form:form action="${requestURI}" modelAttribute="material">
 
 	<form:hidden path="id" />
@@ -28,28 +28,49 @@
 	<form:hidden path="buys"/>
 	<form:hidden path="totalPrice"/>
 
+<br>
 	<!-- ATRIBUTOS -->
-	<B><acme:textbox code="material.title" path="title" /></B>
+	<div class="col">
+<spring:message code="material.title" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="title" /></B>
+	</div>
+<br>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-4">
+<spring:message code="material.description" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="description" /></B>
+</div>
 	<br />
+	<div class="form-group col-md-4">
+<spring:message code="material.unitPrice" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="unitPrice" /></B>
+</div>
 
-	<B><acme:textbox code="material.description" path="description" /></B>
-	<br />
-
-	<B><acme:textbox code="material.unitPrice" path="unitPrice" /></B>
-	<br />
-	
+	<div class="form-group col-md-4">
+<spring:message code="material.quantity" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="quantity" /></B>
+</div>
+</div>
+</div>
+ <div class="col">
 	<B><acme:select items="${labelMaterials }" itemLabel="name" code="material.labelMaterial" path="labelMaterial"/></B>
+
+</div>
 	<br />
 	
-	<B><acme:textbox code="material.quantity" path="quantity" /></B>
-	<br />
+	
+
+
+<br>
+
 	
 
 	<!-- BOTONES -->
-
-	<input type="submit" name="save"
-		value="<spring:message code="material.save" />" />&nbsp; 
+<acme:submit name="save" code="material.save" />
+	 
 
 	<acme:cancel url="material/admin/list.do?d-16544-p=1"
 		code="material.cancel" />
 </form:form>
+</div>

@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-
+<br>
 <!-- Finder para el Buyer -->
 <security:authorize access="hasRole('BUYER')">
 	<jstl:if test="${showSearch}">
@@ -30,16 +30,36 @@
 			<form:hidden path="id" />
 			<form:hidden path="version" />
 			<form:hidden path="materials" />
+<div class="col-md-12 col-centered">
+<div class="col ">
+ <div class="form-row">
+ 	  <div class="form-group col-md-3">
+<spring:message code="finder.keyWord" var="Edit" /> 
+			<acme:textbox title="${Edit}" path="keyWord" />
 
-			<acme:textbox code="finder.keyWord" path="keyWord" />
-			<br />
-			<acme:textbox code="finder.lowPrice" path="lowPrice" />
-			<br />
-			<acme:textbox code="finder.highPrice" path="highPrice" />
-			<br />
+</div>
 
-			<input type="submit" name="search"
-				value="<spring:message code="finder.search" />" /> &nbsp; 	 
+	<div class="form-group col-md-3">	
+<spring:message code="finder.lowPrice" var="Edit" /> 
+			<acme:textbox title="${Edit}" path="lowPrice" />
+
+</div>
+
+	<div class="form-group col-md-3">	
+<spring:message code="finder.highPrice" var="Edit" /> 
+			<acme:textbox title="${Edit}" path="highPrice" />
+
+
+</div>
+
+	<div class="form-group col-md-3">
+			<input type="submit" name="search" class="btn btn-success"
+				value="<spring:message code="finder.search" />" /> &nbsp; 
+				
+</div>
+</div>
+</div>
+</div>	 
 	</form:form>
 	</jstl:if>
 </security:authorize>
@@ -129,17 +149,17 @@
 
 
 </display:table>
-
+<div class="text-center">
 <security:authorize access="hasRole('ADMIN')">
 
 	<spring:url value="material/admin/create.do" var="createURL" />
 	<a href="${createURL}"><spring:message code="material.create" /></a>
 
 </security:authorize>
-
+</div>
+<div class="text-center">
 <security:authorize access="isAnonymous()">
-<B><spring:message code="aviso.material" /></B>
+<font size="4" color=black face="Bebas Neue"><B><spring:message code="aviso.material" /></B></font>
 <a href="buyer/create.do"><spring:message code="aviso2"  /></a>
-
-
 </security:authorize>
+</div>

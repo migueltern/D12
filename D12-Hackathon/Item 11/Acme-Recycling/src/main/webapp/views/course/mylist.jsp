@@ -166,7 +166,7 @@
 
 </display:table>
 
-
+<div class="text-center">
 <security:authorize access="hasRole('BUYER')">
 	<div>
 		<a href="course/buyer/create.do"> <spring:message
@@ -174,3 +174,4 @@
 		</a>
 	</div>
 </security:authorize>
+</div>

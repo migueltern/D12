@@ -24,9 +24,11 @@
 <%-- Attributes --%>
 
 <%@ attribute name="path" required="true"%>
-<%@ attribute name="code" required="true"%>
+<%@ attribute name="code" required="false"%>
 <%@ attribute name="placeHolder" required="false"%>
 <%@ attribute name="readonly" required="false"%>
+<%@ attribute name="id" required="false"%>
+<%@ attribute name="title" required="false"%>
 
 <jstl:if test="${readonly == null}">
 	<jstl:set var="readonly" value="false" />
@@ -35,11 +37,11 @@
 <%-- Definition --%>
 
 <div>
-	<form:label path="${path}">
+	<%-- <form:label path="${path}">
 		<spring:message code="${code}" />
-	</form:label>
-	<form:input path="${path}" readonly="${readonly}"
-		placeHolder="${placeHolder }" />
-	<form:errors path="${path}" cssClass="error" />
+	</form:label> --%>
+	<form:input path="${path}" class="form-control" id="${id}" readonly="${readonly}" title="${var}" placeHolder="${title }" />
+	<br>
+	<form:errors path="${path}" class="alert alert-danger" />
 
 </div>

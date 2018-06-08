@@ -28,18 +28,36 @@
 	<form:hidden path="replys" />
 	
 <!-- ATRIBUTOS -->
-	<B><acme:textbox code="comment.body" path="body" /></B>
-	<br />
-	<B><acme:textbox code="comment.createdMoment" path="createdMoment" readonly="true"/></B>
-	<br />
+<br>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+ 	  <B><acme:textbox code="comment.createdMoment" path="createdMoment" readonly="true"/></B>
+
+</div>
+
+	<div class="form-group col-md-6">
+<spring:message code="comment.body" var="Edit" />
+		<B><acme:textbox title="${Edit}" path="body"/></B>
+</div>
+</div>
+</div>
 	
 <!-- BOTONES -->
 
+	
+	<acme:submit name="save" code="comment.save"/>
 
-	<input type="submit" name="save" value="<spring:message code="comment.save" />" />&nbsp; 
+	
+	
+
+
+
+	
+
 
 <jstl:if test="${comment.id != 0}">
-		<input type="submit" name="delete"
+		<input type="submit" name="delete" class="btn btn-danger"
 			value="<spring:message code="comment.delete" />"
 			onclick="javascript: return confirm('<spring:message code="comment.confirm.delete" />')" />&nbsp;
 </jstl:if>

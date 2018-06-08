@@ -55,7 +55,7 @@
 	<display:column property="createdMoment" title="${postedHeader}"
 		sortable="true" format="${pattern}" />
 
-	<spring:message code="opinion.photo" var="photoVar" />
+	<spring:message code="photo" var="photoVar" />
 	<display:column title="${photoVar}" sortable="true">
 		<jstl:if test="${row.photo!=''}">
 		<div

@@ -50,8 +50,9 @@
 		<jstl:out value="${row.quantity}"></jstl:out>
 		</p>
 		<p>
-		
-		<B><spring:message code="item.photo" /></B>
+
+		<B><spring:message code="photo" /></B>
+
 		<jstl:out value=":" />
 		<jstl:if test="${row.photo!=''}">
 			<img src="${row.photo}" width="200" height="200">

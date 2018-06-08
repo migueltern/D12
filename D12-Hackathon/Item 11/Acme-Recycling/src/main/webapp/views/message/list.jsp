@@ -119,7 +119,7 @@
 	
 	<spring:message code="message.delete.link" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">
-			<input type="button" name="delete"
+			<input type="button" name="delete" class="btn btn-danger"
 				value="<spring:message code="message.delete.link" />"
 				onclick="confirmDelete(${row.id}, ${row.messageFolder.id});" />
 		</display:column>

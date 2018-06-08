@@ -24,21 +24,39 @@
 
 <form:form action="${requestURI}" modelAttribute="incidence">
 
-
+<div class="col-md-8 col-centered">
+<br>
 	<form:hidden path="id" />
 
 	
-	<B><acme:textbox code="incidence.title" path="title"/></B>
-	<br />
-	
-	<B><acme:textarea code="incidence.reasonWhy" path="reasonWhy"/></B>
-	<br />
-	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:textbox code="incidence.createdMoment" path="createdMoment" readonly="true"/></B>
-	<br />
+</div>
+
+	<div class="form-group col-md-6">
+<spring:message code="incidence.reasonWhy" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="reasonWhy"/></B>
+</div>
+</div>
+</div>
+
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+<spring:message code="incidence.title" var="Edit" />
+		<B><acme:textbox title="${Edit}" path="title"/></B>
 	
-	<B><acme:textarea code="incidence.comment" path="comment"/></B>
-	<br />
+</div>
+
+	<div class="form-group col-md-6">
+<spring:message code="incidence.comment" var="Edit" />	
+	<B><acme:textbox title="${Edit}" path="comment"/></B>
+</div>
+</div>
+</div>
 	
 	
 	<!-- 	//BOTONES -->
@@ -52,5 +70,5 @@
 	<acme:cancel url="${RequestURIcancel}" code="incidence.cancel"/>
 	<br />
 
-	
+	</div>
 </form:form>

@@ -24,26 +24,34 @@
 <form:form action="assessment/carrier/edit.do"
 	modelAttribute="assessmentForm">
 
+<div class="col-md-8 col-centered">
+<br>
+
 	<form:hidden path="assessment.id" />
 	<form:hidden path="assessment.version" />
 	<form:hidden path="assessment.moment" />
 	<form:hidden path="requestId" />
 
-	<acme:textbox code="assessment.description"
+
+<spring:message code="assessment.description" var="Edit" />
+	<acme:textbox title="${Edit}"
 		path="assessment.description" />
-	<br />
+
+
+	<div class="cool">	
 
 	<spring:message code="assessment.valuation" var="valuation" />
-	<jstl:out value="${valuation}"></jstl:out>
-	<form:input path="assessment.valuation" type="number"
-		value="${assessmentForm.assessment.valuation}" max="5" min="1" />
-	<br />
+	<B><jstl:out value="${valuation}"></jstl:out></B>
+	<form:input path="assessment.valuation" type="number" class="form-control"
+		class="form-control" value="${assessmentForm.assessment.valuation}" max="5" min="1" />
+</div>
 
 
+<br>
 	<!-- BOTONES -->
-
-	<input type="submit" name="save"
-		value="<spring:message code="assessment.save"/>" />&nbsp;
+	
+	<acme:submit name="save" code="assessment.save"/>
+	
 		
 		<jstl:if test="${cancelRedirectToListRequest}">
 		<acme:cancel url="request/carrier/listMyRequest.do?d-16544-p=1"
@@ -54,6 +62,6 @@
 		<acme:cancel url="assessment/carrier/listMyAssessment.do?d-16544-p=1"
 			code="assessment.cancel" />
 		</jstl:if>
-
+</div>
 </form:form>
 

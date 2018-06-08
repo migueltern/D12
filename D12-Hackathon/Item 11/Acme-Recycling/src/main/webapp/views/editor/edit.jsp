@@ -22,30 +22,72 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="editorForm">
-	
+	<br>
 <form:hidden path="editor.id" />
-	
+<div class="col-md-8 col-centered">	
 	
 <jstl:if test="${editorForm.editor.id == 0}">
-			<B><acme:textbox code="editor.username"
-				path="editor.userAccount.username" /><br /></B>
-			<B><acme:password code="editor.password"
-				path="editor.userAccount.password" /><br /></B>
-			<B><acme:password code="editor.password" path="passwordCheck" /></B>
-			<br />
+<div class="col">
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox title="${Edit}"
+				path="editor.userAccount.username" /></B>
+</div>
+<br>				
+
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" />
+			<B><acme:password title="${Edit}"
+				path="editor.userAccount.password" /></B>
+				
+</div>
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" />
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
+	</div>
+</div>
+</div>
 		</jstl:if>	
-	
-	<B><acme:textbox code="editor.name" path="editor.name"/></B>
+		
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">	
+<spring:message code="Name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.name"/></B>
+</div>
+	<div class="form-group col-md-6">	
+<spring:message code="Surname" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.surname"/></B>
+</div>
+</div>
+</div>
+
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
+<spring:message code="Email" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.email"/></B>
+</div>
 	<br />
-	<B><acme:textbox code="editor.surname" path="editor.surname"/></B>
+	<div class="form-group col-md-6">
+<spring:message code="Phone" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.phone" /></B>
+</div>
+
 	<br />
-	<B><acme:textbox code="editor.emailAddress" path="editor.email"/></B>
-	<br />
-	<B><acme:textbox code="editor.phoneNumber" path="editor.phone" /></B>
-	<br />
-	<B><acme:textbox code="editor.postalAddress" path="editor.address"/></B>
-	<br />
+<div class="col">
+<spring:message code="Address" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="editor.address"/></B>
+</div>
+</div>
+</div>
+<br>
+<div class="col">
 	<B><acme:provinceselect code="editor.province" path="editor.province"/></B>
+</div>
+	<br />
+
 	<br />
 	
 	
@@ -62,4 +104,5 @@
 		<form:errors cssClass="error" path="conditions"/>
    </jstl:if>
  <br/>
+ </div>
 	</form:form>

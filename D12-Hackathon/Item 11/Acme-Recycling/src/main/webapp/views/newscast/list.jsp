@@ -30,7 +30,7 @@
 			  window.location.href ="newscast/admin/list.do";
 	}
 </script>
-
+<div class="table-responsive">
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="newscast" requestURI="${requestURI}" id="row">
 	
@@ -97,10 +97,10 @@
 
 	<!-- ATRIBUTOS -->
 
-	<spring:message code="new.title" var="titleHeader" />
+	<spring:message code="Title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="true" />
 	
-	<spring:message code="new.content" var="titleHeader" />
+	<spring:message code="Content" var="titleHeader" />
 	<display:column property="content" title="${titleHeader}" sortable="true" />
 	
 	<spring:message code="newspaper.format.publicationDate" var="pattern"></spring:message>
@@ -111,7 +111,7 @@
 
 
 <security:authorize access="hasRole('ADMIN')">
-		<spring:message code="new.pictures" var="draftMode" />
+		<spring:message code="pictures" var="draftMode" />
 	<display:column title="${draftMode}">
 		<jstl:if test="${row.pictures.size()!=0}">
 			
@@ -157,7 +157,7 @@
 	
 	<spring:message code="new.delete" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">
-			<input type="button" name="delete"
+			<input type="button" name="delete" class="btn btn-danger"
 				value="<spring:message code="new.delete" />"
 				onclick="confirmDelete(${row.id});" />
 		</display:column>
@@ -165,10 +165,13 @@
 	</security:authorize> 
 	
 </display:table>
+</div>
+<div class="text-center">
 <security:authorize access="isAnonymous()">
-<B><spring:message code="aviso1" /></B>
+<font size="4" color=black face="Bebas Neue"><B><spring:message code="aviso1" /></B></font>
 <a href="buyer/create.do"><spring:message code="aviso2"  /></a>
-<B><spring:message code="aviso4" /></B>
+<font size="4" color=black face="Bebas Neue"><B><spring:message code="aviso4" /></B></font>
 <a href="recycler/create.do"><spring:message code="aviso3"  /></a>
 
 </security:authorize>
+</div>

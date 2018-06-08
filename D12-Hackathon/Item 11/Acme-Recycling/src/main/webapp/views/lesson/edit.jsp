@@ -21,21 +21,34 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<div class="col-md-6 col-centered">
 <form:form action="lesson/buyer/edit.do" modelAttribute="lesson">
-
+<br>
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="course" />
 	<form:hidden path="number" />
 
 	<!-- ATRIBUTOS -->
-	<B><acme:textbox code="lesson.title" path="title" /></B>
-	<br />	
-	<acme:textarea code="lesson.summary" path="summary" />
-	<br />
+	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+	<spring:message code="lesson.title" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="title" /></B>
+	
+</div>
+
+	<div class="form-group col-md-6">	
+	<spring:message code="lesson.summary" var="Edit" />
+	<acme:textbox title="${Edit}" path="summary" />
+</div>
+</div>
+</div>
 
 	<!-- BOTONES -->
-	<input type="submit" name="save" value="<spring:message code="lesson.save"/>" />&nbsp;
+	<acme:submit name="save" code="lesson.save"/>
+	
 	
 	<jstl:if test="${lesson.id !=0 }">
 			<acme:submit_with_on_click name="delete" code="lesson.delete" code2="lesson.confirm.delete"/>
@@ -47,4 +60,4 @@
 	<acme:cancel url="course/buyer/list.do?d-16544-p=1" code="lesson.cancel" />
 	
 </form:form>
-
+</div>

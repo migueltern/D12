@@ -23,12 +23,12 @@
 
 
 <form:form action="${requestURI }" modelAttribute="messageFolder">
-
-
+<div class="col-md-8 col-centered">	
+	<br>
 	<form:hidden path="id" />
 
-	
-	<B><acme:textbox code="messageFolder.name" path="name"/></B>
+<spring:message code="messageFolder.name" var="Edit" />	
+	<B><acme:textbox title="${Edit}" path="name"/></B>
 	<br />
 	
 	
@@ -37,11 +37,11 @@
 	<acme:submit name="save" code="messageFolder.save"/>
 	
 	<jstl:if test="${messageFolder.id != 0 }">
-		<acme:submit_with_on_click code2="messageFolder.confirm.delete" name="delete" code="messageFolder.delete"/>
+		<acme:submit_with_on_click code2="messageFolder.confirm.delete"  name="delete" code="messageFolder.delete"/>
 	</jstl:if>
 	
 	<acme:cancel url="${RequestURIcancel}" code="messageFolder.cancel"/>
 	<br />
-
+</div>
 	
 </form:form>

@@ -28,10 +28,10 @@
 
 	<spring:message code="material.material" var="titleMaterial"></spring:message>
 	<display:column title="${titleMaterial }">
-
+		<p>
 		<B><spring:message code="material.title" /><jstl:out value=":"/></B>
 		<jstl:out value="${row.title }"></jstl:out>
-
+	</p>
 		<p>
 			<B><spring:message code="material.description" /><jstl:out value=":"/></B>
 			<jstl:out value="${row.description }"></jstl:out>

@@ -40,13 +40,15 @@
 <%-- Definition --%>
 
 <div>
-	<form:label path="${path}">
+	<B><form:label path="${path}">
 		<spring:message code="${code}" />
-	</form:label>	
-	<form:select id="${id}" path="${path}" onchange="${onchange}">
+	</form:label></B>
+
+	<form:select id="${id}" path="${path}" onchange="${onchange}" class="form-control">
 		<form:option value="HIGH" label="HIGH"/>
 		<form:option value="NEUTRAL" label="NEUTRAL"/>
 		<form:option value="LOW" label="LOW"/> 
+
 	</form:select>
-	<form:errors path="${path}" cssClass="error" />
+	<form:errors path="${path}" class="alert alert-danger" />
 </div>

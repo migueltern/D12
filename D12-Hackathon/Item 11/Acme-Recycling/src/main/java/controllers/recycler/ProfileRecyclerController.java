@@ -56,7 +56,7 @@ public class ProfileRecyclerController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveAgent(@ModelAttribute("agentForm") RecyclerForm recyclerForm, final BindingResult bindingResult) {
+	public ModelAndView saveAgent(@ModelAttribute("recyclerForm") RecyclerForm recyclerForm, final BindingResult bindingResult) {
 		ModelAndView result;
 
 		recyclerForm = this.recyclerService.reconstruct(recyclerForm, bindingResult);

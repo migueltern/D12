@@ -34,6 +34,7 @@
 	 <jstl:if test="${!(row.phone=='') }">
   	<B><spring:message code="cleanPoint.phone" /></B>
   <jstl:out value="${row.phone }"></jstl:out><br></jstl:if>
+
   <B><spring:message code="cleanPoint.GPS.name" /></B>
   <jstl:out value="${row.location.name }"></jstl:out><br><br>
   

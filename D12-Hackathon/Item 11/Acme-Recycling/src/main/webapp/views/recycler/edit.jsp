@@ -22,35 +22,78 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="recycler/edit.do" modelAttribute="recyclerForm">
-	
+	<br>
+<div class="col-md-8 col-centered">
 <form:hidden path="recycler.id" />
 	
 	
 <jstl:if test="${recyclerForm.recycler.id == 0}">
-			<B><acme:textbox code="recycler.username"
+<div class="col">
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox  title="${Edit}" 
 				path="recycler.userAccount.username" /><br /></B>
-			<B><acme:password code="recycler.password"
-				path="recycler.userAccount.password" /><br /></B>
-			<B><acme:password code="recycler.password" path="passwordCheck" /></B>
-			<br />
+</div>
+
+
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}"
+				path="recycler.userAccount.password" /></B>   
+</div>
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" />
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
+</div>
+</div>
+</div>
 		</jstl:if>	
 	
-	<B><acme:textbox code="recycler.name" path="recycler.name"/></B>
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+<spring:message code="Name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.name"/></B>
+</div>
 	<br />
-	<B><acme:textbox code="recycler.surname" path="recycler.surname"/></B>
-	<br />
-	<B><acme:textbox code="recycler.emailAddress" path="recycler.email"/></B>
-	<br />
-	<B><acme:textbox code="recycler.phoneNumber" path="recycler.phone" /></B>
-	<br />
-	<B><acme:textbox code="recycler.postalAddress" path="recycler.address"/></B>
-	<br />
-	<B><acme:provinceselect code="recycler.province" path="recycler.province"/></B>
-	<br />
+	<div class="form-group col-md-6">
+<spring:message code="Surname" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.surname"/></B>
+</div>
+</div>
+</div>
 	
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
+<spring:message code="Email" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.email"/></B>
+</div>
 	
+	<div class="form-group col-md-6">
+<spring:message code="Phone" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.phone" /></B>
+</div>
+
+
+<div class="col">
+<spring:message code="Address" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="recycler.address"/></B>
+</div>
+</div>
+</div>
+	<br />
+
 	
-	<acme:submit name="save" code="recycler.save"/>
+<div class="col">
+	<B><acme:provinceselect code="Province" path="recycler.province"/></B>
+</div>
+	<br>
+	
+	<acme:submit name="save" code="recycler.save" />
+	
 	<acme:cancel url="welcome/index.do" code="recycler.cancel"/>
 	<br />
 	<br/>
@@ -59,7 +102,11 @@
 		<spring:message code="recycler.legal.accept"/> - <a href="welcome/legal.do"><spring:message code="recycler.legal.moreinfo"/></a>
 		</form:label>
 		<form:checkbox id="conditions" path="conditions"/>
-		<form:errors cssClass="error" path="conditions"/>
+		<form:errors class="alert alert-danger" path="conditions"/>
    </jstl:if>
  <br/>
+ </div>
 	</form:form>
+	
+	
+	

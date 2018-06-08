@@ -1,3 +1,4 @@
+
 <%--
  * select.tag
  *
@@ -43,9 +44,10 @@
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>	
-	<form:select id="${id}" path="${path}" onchange="${onchange}">
+	<form:select id="${id}" path="${path}" onchange="${onchange}" class="form-control">
 		<form:option value="FINISHED" label="FINISHED"/>
 		<form:option value="CANCELLED" label="CANCELLED"/>
 	</form:select>
-	<form:errors path="${path}" cssClass="error" />
+	<br>
+	<form:errors path="${path}" class="alert alert-danger" />
 </div>

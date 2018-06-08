@@ -60,6 +60,7 @@
 	<display:column property="phone" title="${titleHeader}" sortable="true" />
 	
 </display:table>
+<div class="text-center">
 <security:authorize access="hasRole('ADMIN')">
 	<div>
 		<a href="cleanPoint/admin/create.do"> <spring:message
@@ -67,3 +68,4 @@
 		</a>
 	</div>
 </security:authorize>
+</div>

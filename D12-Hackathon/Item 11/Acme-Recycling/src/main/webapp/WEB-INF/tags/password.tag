@@ -23,14 +23,17 @@
 <%-- Attributes --%> 
  
 <%@ attribute name="path" required="true" rtexprvalue="true" %>
-<%@ attribute name="code" required="true" rtexprvalue="true" %>
+<%-- <%@ attribute name="code" required="true" rtexprvalue="false" %> --%>
+<%@ attribute name="placeHolder" required="false"%>
+<%@ attribute name="title" required="false"%>
 
 <%-- Definition --%>
 
 <div>
-	<form:label path="${path}">
+	<%-- <form:label path="${path}">
 		<spring:message code="${code}" />
-	</form:label>
-	<form:password path="${path}"/>
-	<form:errors path="${path}" cssClass="error" />
+	</form:label> --%>
+	<form:password path="${path}" placeHolder="${title }" title="${var}" class="form-control"/>
+	<br>
+	<form:errors path="${path}" class="alert alert-danger" />
 </div>

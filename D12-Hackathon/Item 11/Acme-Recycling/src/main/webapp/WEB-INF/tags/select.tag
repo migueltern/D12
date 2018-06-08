@@ -23,12 +23,13 @@
 <%-- Attributes --%> 
 
 <%@ attribute name="path" required="true" %>
-<%@ attribute name="code" required="true" %>
+<%@ attribute name="code" required="false" %>
 <%@ attribute name="items" required="true" type="java.util.Collection" %>
 <%@ attribute name="itemLabel" required="true" %>
 
 <%@ attribute name="id" required="false" %>
 <%@ attribute name="onchange" required="false" %>
+<%@ attribute name="title" required="false"%>
 
 <jstl:if test="${id == null}">
 	<jstl:set var="id" value="${UUID.randomUUID().toString()}" />
@@ -41,14 +42,16 @@
 <%-- Definition --%>
 
 <div>
-	<form:label path="${path}">
+	<B><form:label path="${path}">
 		<spring:message code="${code}" />
-	</form:label>	
-	<form:select id="${id}" path="${path}" onchange="${onchange}">
+	</form:label></B>	
+	<form:select id="${id}" path="${path}" onchange="${onchange}" title="${var}" placeHolder="${title }"  class="form-control">
 		<form:option value="0" label="----" />		
 		<form:options items="${items}" itemValue="id" itemLabel="${itemLabel}" />
 	</form:select>
-	<form:errors path="${path}" cssClass="error" />
+	<br>
+	<form:errors path="${path}" class="alert alert-danger" />
+	<br>
 </div>
 
 

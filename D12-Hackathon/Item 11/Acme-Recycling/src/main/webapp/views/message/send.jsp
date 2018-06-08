@@ -13,18 +13,16 @@
 	<div class="well bs-component">
 		<form:form action="${requestURI}" modelAttribute="m">
 		
-			
+			<br>
 
 			<jstl:if test="${show}">
-			
+
 				<acme:select code="message.sendTo" path="recipient"
 					items="${actors}" itemLabel="userAccount.username" />
-				<br />
-		
 			</jstl:if>
 			
 			<acme:textbox code="message.moment" path="moment" readonly="true"/>
-			<br/>
+			<br>
 			
 			<acme:selectPriority code="message.priority" path="priority"/>
 			
@@ -34,10 +32,13 @@
 			<jstl:if test="${m.recipient != null}">
 				<form:hidden path="recipient" />
 			</jstl:if>
-			<acme:textarea code="message.subject" path="subject" />
+
+<spring:message code="message.subject" var="Edit" />
+			<acme:textbox title="${Edit}"  path="subject" />
 			<br />	
-			
-			<acme:textarea code="message.body" path="body" />
+	
+<spring:message code="message.body" var="Edit" />		
+			<acme:textbox title="${Edit}" path="body" />
 			<br />  
 			
 

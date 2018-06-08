@@ -43,7 +43,7 @@
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>	
-	<form:select id="${id}" path="${path}" onchange="${onchange}">
+	<form:select id="${id}" path="${path}" onchange="${onchange}" placeHolder="${code }" class="form-control">
 		<form:option value="ÁLAVA" label="ÁLAVA"/>
 		<form:option value="ALBACETE" label="ALBACETE"/> 
 		<form:option value="ALICANTE" label="ALICANTE"/> 

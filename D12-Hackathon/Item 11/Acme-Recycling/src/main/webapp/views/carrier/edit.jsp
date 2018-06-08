@@ -20,32 +20,75 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<div class="col-md-8 col-centered">
 <form:form action="${requestURI}" modelAttribute="carrierForm">
 	
+	<br>
 <form:hidden path="carrier.id" />
 	
 	
 <jstl:if test="${carrierForm.carrier.id == 0}">
-			<B><acme:textbox code="carrier.username"
-				path="carrier.userAccount.username" /><br /></B>
-			<B><acme:password code="carrier.password"
-				path="carrier.userAccount.password" /><br /></B>
-			<B><acme:password code="carrier.password" path="passwordCheck" /></B>
-			<br />
+<div class="col">
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox title="${Edit}"
+				path="carrier.userAccount.username" /></B>
+				
+</div>
+<br>
+
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}"
+				path="carrier.userAccount.password" /></B>
+</div>
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" />
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
+</div>
+</div>
+</div>
 		</jstl:if>	
 	
-	<B><acme:textbox code="carrier.name" path="carrier.name"/></B>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+<spring:message code="Name" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="carrier.name"/></B>
+</div>
+<div class="form-group col-md-6">	
+<spring:message code="Surname" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="carrier.surname"/></B>
+</div>
+</div>
+</div>
+
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
+<spring:message code="Email" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="carrier.email"/></B>
+</div>
 	<br />
-	<B><acme:textbox code="carrier.surname" path="carrier.surname"/></B>
+	<div class="form-group col-md-6">
+<spring:message code="Phone" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="carrier.phone" /></B>
+</div>
+
 	<br />
-	<B><acme:textbox code="carrier.emailAddress" path="carrier.email"/></B>
-	<br />
-	<B><acme:textbox code="carrier.phoneNumber" path="carrier.phone" /></B>
-	<br />
-	<B><acme:textbox code="carrier.postalAddress" path="carrier.address"/></B>
-	<br />
+<div class="col">
+<spring:message code="Address" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="carrier.address"/></B>
+</div>
+</div>
+</div>
+<br>
+<div class="col">
 	<B><acme:provinceselect code="carrier.province" path="carrier.province"/></B>
+</div>
+	<br />
+
 	<br />
 	
 	
@@ -63,3 +106,4 @@
    </jstl:if>
  <br/>
 	</form:form>
+</div>

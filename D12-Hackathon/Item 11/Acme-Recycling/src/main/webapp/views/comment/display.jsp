@@ -28,9 +28,10 @@
 
 	
  <display:column>
-
+	<p>
 	<B><spring:message code="comment.body" /></B>
 	<jstl:out value="${row.body}"></jstl:out>
+	</p>
 	<p>
 	
 	
@@ -51,10 +52,10 @@
 	id="row">
 	
 	<display:column>
-	
+	<p>
 	<B><spring:message code="recycler.name" /></B>
 	<jstl:out value="${row.name}"></jstl:out>
-	
+	</p>
 
 	<p>
 		<B><spring:message code="recycler.surname" /></B>
@@ -93,17 +94,17 @@
 	<p>
 	<B><spring:message code="recycler.items.title" /></B>
 	<jstl:out value="${row.title}"></jstl:out>
-	
-</p>
+	</p>
+<p>
 <spring:message code="article.format.publishedMoment1" var="pattern"></spring:message>
 	<fmt:formatDate value="${row.publicationMoment}" pattern="${pattern}" var="newdatevar" />
 	<B><spring:message code="recycler.publicationMoment"></spring:message></B>
 	<c:out value="${newdatevar}" />
 	
-	<p>
+	</p>
 		<B><spring:message code="recycler.descripción" /></B>
 		<jstl:out value="${row.description}"></jstl:out>
-	</p>
+	<p>
 	
 	<p>
 		<B><spring:message code="recycler.quantity" /></B>

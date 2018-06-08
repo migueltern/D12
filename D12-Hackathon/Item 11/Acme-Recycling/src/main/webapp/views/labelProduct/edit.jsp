@@ -21,14 +21,16 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="${requestURI}" modelAttribute="labelProduct">
-
+<br>
+<div class="col-md-8 col-centered">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="items"/>
 	<form:hidden path="byDefault"/>
 	
 <!-- ATRIBUTOS -->
-	<B><acme:textbox code="labelProduct.name" path="name"/></B>
+<spring:message code="labelProduct.name" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="name"/></B>
 	<br />
 	
 	<%-- <spring:message code="labelProduct.byDefault" var="byDefaultHeader"/>
@@ -43,9 +45,11 @@
 	
 <!-- BOTONES -->
 
-	<input type="submit" name="save" value="<spring:message code="labelProduct.save" />" />&nbsp; 
-
+	
+<acme:submit name="save" code="labelProduct.save"/>
 	<acme:cancel
 		url="labelProduct/manager/list.do?d-16544-p=1"
 		code="labelProduct.cancel" />
+		
+</div>
 </form:form>

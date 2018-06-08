@@ -24,29 +24,45 @@
 <form:hidden path="id" />
 <form:hidden path="version" />
 <form:hidden path="comments" />
-
-	
+<div class="col-md-8 col-centered">
+	<br>
 <!-- ATRIBUTOS -->
 
-<fieldset>
+
+	<div class="col">
+
+<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true" /></B>
+</div>
 	
-	
-<B><acme:textarea code="new.title" path="title"/></B>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+ 	<spring:message code="Title" var="Edit" /> 
+<B><acme:textbox title="${Edit}" path="title"/></B>
+</div>
+
+	<div class="form-group col-md-6">
+<spring:message code="Content" var="Edit" />	
+<B><acme:textbox title="${Edit}" path="content"/></B>
+</div>
+</div>
+</div>
+
+<div class="col">
+<spring:message code="Pictures" var="Edit" />
+<B><acme:textbox title="${Edit}" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
+</div>
 
 
-<B><acme:textarea code="new.content" path="content"/></B>
-<B><acme:textarea code="new.pictures" path="pictures" placeHolder="http://imagen1, http://imagen2"/></B>
-
-<B><acme:textbox code="new.creationDate" path="creationDate" readonly="true"/></B>
-	</fieldset>
 
 	<br>
 <!-- BOTONES -->
 
-	<input type="submit" name="save" value="<spring:message code="new.save" />" />&nbsp; 
+<acme:submit name="save" code="new.save"/>
+	
 
 	<jstl:if test="${newscast.id != 0}">
-		<input type="submit" name="delete"
+		<input type="submit" name="delete" class="btn btn-danger"
 			value="<spring:message code="new.delete" />"
 			onclick="javascript: return confirm('<spring:message code="new.confirm.delete" />')" />&nbsp;
 	</jstl:if>
@@ -54,4 +70,5 @@
 	<acme:cancel
 		url="newscast/editor/list.do?d-16544-p=1"
 		code="new.cancel" />
+</div>
 </form:form>

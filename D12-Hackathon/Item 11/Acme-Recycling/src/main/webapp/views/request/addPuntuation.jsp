@@ -20,23 +20,30 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<br>
+<div class="col-md-8 col-centered">
 <form:form action="request/manager/edit.do" modelAttribute="item">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
-	<spring:message code="item.puntuation" var="puntuation"/>
-	<jstl:out value="${puntuation}"></jstl:out>
-	<form:input path="value" type="number" value = "${item.value}" max="500" min ="0"/>
 
+<div class="cool">	
+
+	<spring:message code="item.puntuation" var="puntuation"/>
+	<B><jstl:out value="${puntuation}"></jstl:out></B>
+	<form:input path="value" type="number" class="form-control"
+			value = "${item.value}" max="500" min ="0"/>
+
+</div>
 	<!-- BOTONES -->
 
-	<input type="submit" name="saveAddPuntuation"
-		value="<spring:message code="request.save"/>" />&nbsp;
+<br>
+<br>
+<acme:submit name="saveAddPuntuation" code="request.save"/>
 		
 		<acme:cancel url="request/manager/listMyRequest.do?d-16544-p=1"
 		code="request.cancel" />
 
 </form:form>
-
+</div>

@@ -27,9 +27,10 @@
   <!-- Attributes -->
 	
 	<display:column>
+	<p>
 	<B><spring:message code="carrier.name" />:</B>
 	<jstl:out value="${row.name}"></jstl:out>
-	
+	</p>
 
 	<p>
 		<B><spring:message code="carrier.surname" />:</B>

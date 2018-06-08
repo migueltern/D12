@@ -20,44 +20,94 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+
+<div class="col-md-8 col-centered">
 <form:form action="course/buyer/edit.do" modelAttribute="course">
 
+<br>
 <form:hidden path="id" />
 <form:hidden path="version" />
 
 
-	<B><acme:textbox code="course.title" path="title"/></B>
-	<br />
+
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+<spring:message code="course.title" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="title"/></B>
+
+</div>
+
+	<div class="form-group col-md-6">	
+<spring:message code="course.startDate" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="startDate" id="datepicker" placeHolder="yyyy/MM/dd"/></B>
+</div>
+</div>
+</div>
+
 	
-	<B><acme:textbox code="course.startDate" path="startDate" placeHolder="yyyy/MM/dd"/></B>
-	<br />
+
 	
-	<B><acme:textbox code="course.minimumScore" path="minimumScore"/></B>
-	<br />
-	
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
 	<B><acme:booleanselect code="course.draftMode" path="draftMode"/></B>
-	<br />
-	
+
+</div>
+
+	<div class="form-group col-md-6">	
 	<B><acme:selectmultiple items="${materials}" itemLabel="title" code="course.materials" path="materials"/></B>
-	<br />
+</div>
+</div>
+</div>
+
+<br>
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+<spring:message code="course.minimumScore" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="minimumScore"/></B>
+</div>
+
+	<div class="form-group col-md-6">
 	
-	<acme:textarea code="course.description" path="description" />
 	
+<spring:message code="course.description" var="Edit" />
+	<acme:textbox title="${Edit}" path="description" />
 	
+</div>
+</div>
+</div>
+	
+
+	
+<div class="col">
 	<B><jstl:out value="GPS"></jstl:out></B>
-	<fieldset>
-	<B><acme:textbox code="course.location.name" path="location.name"/></B>
-	<br>
-	<B><acme:textbox code="course.location.latitude" path="location.latitude"/></B>
-	<br>
-	<B><acme:textbox code="course.location.longitude" path="location.longitude"/></B>
-	<br>
-	</fieldset>
-	<br>
+	</div>
+<div class="col">	
+<br>
+<spring:message code="cleanPoint.GPS.name" var="Edit" /> 
+	<B><acme:textbox title="${Edit}" path="location.name"/></B>
+</div>
+<br>
+	<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+ 	
+	<B><acme:textbox2 code="cleanPoint.GPS.latitude" path="location.latitude" /></B>
+</div>
+
+	<div class="form-group col-md-6">	
+	<B><acme:textbox2 code="cleanPoint.GPS.longitude" path="location.longitude"/></B>
+</div>
+</div>
+</div>
 
 
-<input type="submit" name="save" value="<spring:message code="course.save" />" />&nbsp; 
-	
+<br>
+<acme:submit name="save" code="course.save"/>
+
 	<jstl:if test="${course.id !=0 }">
 			<acme:submit_with_on_click name="delete" code="course.delete" code2="course.confirm.delete"/>
 			
@@ -67,4 +117,19 @@
 	
 <acme:cancel url="course/buyer/list.do?d-16544-p=1"	code="course.cancel" />
 
+
 </form:form>
+</div>
+
+
+
+<script type="text/javascript">
+$( function() {
+    $( "#datepicker" ).datepicker({ 
+    	dateFormat: 'yy/mm/dd', 
+    	minDate: 0,
+    	firstDay: 1
+    	});
+
+  } );
+ </script>

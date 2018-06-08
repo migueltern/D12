@@ -69,7 +69,7 @@
 	
 	<acme:column code="item.labelProduct" property="labelProduct.name" sortable ="true"/>
 	
-	<spring:message code="item.photo" var="photoVar" />
+	<spring:message code="photo" var="photoVar" />
 		<display:column title="${photoVar}" sortable="true">
 			<jstl:if test="${row.photo!=''}">
 				<div
@@ -86,7 +86,7 @@
 	<jstl:if test="${showDelete}">
  	<spring:message code="item.delete" var="deleteHeader" />
 		<display:column title="${deleteHeader}" sortable="true">
-			<input type="button" name="delete"
+			<input type="button" name="delete" class="btn btn-danger"
 				value="<spring:message code="item.delete" />"
 				onclick="confirmDelete(${row.id});" />
 	</display:column>

@@ -27,13 +27,13 @@
 
 	<!-- Attributes -->
 	<display:column>
-		
+		<p>
 		 <spring:message code="message.format.date1" var="pattern"></spring:message>
 		<fmt:formatDate value="${row.moment}" pattern="${pattern}" var="hola" />
 		<B><spring:message code="message.moment"></spring:message></B>
 		<jstl:out value=":" />
 		<c:out value="${hola}" />
-
+	</p>
 		<p>
 			<B><spring:message code="message.subject"></spring:message></B>
 			<jstl:out value=":" />
@@ -82,10 +82,5 @@
 		</jstl:if>
 
 	</display:column>
-	
-	
-		
-		
-
 
 </display:table>

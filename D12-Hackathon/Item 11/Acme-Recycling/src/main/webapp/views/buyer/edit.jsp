@@ -22,34 +22,81 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="buyer/edit.do" modelAttribute="buyerForm">
-	
+	<div class="col-md-8 col-centered">
+	<br>
 <form:hidden path="buyer.id" />
 	
 	
 <jstl:if test="${buyerForm.buyer.id == 0}">
-			<B><acme:textbox code="buyer.username"
-				path="buyer.userAccount.username" /><br /></B>
-			<B><acme:password code="buyer.password"
-				path="buyer.userAccount.password" /><br /></B>
-			<B><acme:password code="buyer.password" path="passwordCheck" /></B>
-			<br />
+<div class="col">
+<spring:message code="username" var="Edit" />
+			<B><acme:textbox  title="${Edit}"
+				path="buyer.userAccount.username" /></B>
+</div>
+<br>
+
+
+<div class="col">
+<div class="form-row">
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}"
+				path="buyer.userAccount.password" /></B>
+</div>
+	<div class="form-group col-md-6">
+<spring:message code="password" var="Edit" /> 
+			<B><acme:password title="${Edit}" path="passwordCheck" /></B>
+</div>
+</div>
+</div>
+
 		</jstl:if>	
 	
-	<B><acme:textbox code="buyer.name" path="buyer.name"/></B>
+
+<div class="col">
+ <div class="form-row">
+ 	  <div class="form-group col-md-6">
+<spring:message code="Name" var="Edit" /> 
+	<acme:textbox title="${Edit}" path="buyer.name"/>
+</div>
+
+	<div class="form-group col-md-6">	
+<spring:message code="Surname" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.surname"/></B>
+</div>
+</div>
+</div>
+		
+<div class="col">
+	<div class="form-row">
+		<div class="form-group col-md-6">
+<spring:message code="Email" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.email"/></B>
+</div>
 	<br />
-	<B><acme:textbox code="buyer.surname" path="buyer.surname"/></B>
+	<div class="form-group col-md-6">
+<spring:message code="Phone" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.phone" /></B>
+</div>
+
 	<br />
-	<B><acme:textbox code="buyer.emailAddress" path="buyer.email"/></B>
-	<br />
-	<B><acme:textbox code="buyer.phoneNumber" path="buyer.phone" /></B>
-	<br />
-	<B><acme:textbox code="buyer.postalAddress" path="buyer.address"/></B>
-	<br />
+<div class="col">
+<spring:message code="Address" var="Edit" />
+	<B><acme:textbox title="${Edit}" path="buyer.address"/></B>
+
+	</div>
+</div>
+</div>
+<br>
+<div class="col">
 	<B><acme:provinceselect code="buyer.province" path="buyer.province"/></B>
+</div>
+	<br />
+
 	<br />
 	
-	
-	
+
+ 
 	<acme:submit name="save" code="buyer.save"/>
 	<acme:cancel url="welcome/index.do" code="buyer.cancel"/>
 	<br />
@@ -62,4 +109,8 @@
 		<form:errors cssClass="error" path="conditions"/>
    </jstl:if>
  <br/>
+ </div>
 	</form:form>
+	
+	
+  

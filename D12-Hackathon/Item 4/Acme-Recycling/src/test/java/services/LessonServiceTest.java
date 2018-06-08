@@ -39,7 +39,7 @@ public class LessonServiceTest extends AbstractTest {
 	EntityManager	entityManager;
 
 
-	//Test caso de uso 6.e-I: Listar las lecciones para un curso.
+	//Test caso de uso 6.d-I: Listar las lecciones para un curso.
 	@Test
 	public void driverList() {
 
@@ -86,7 +86,7 @@ public class LessonServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 	}
-	//Test caso de uso 6.e-II: Crear lecciones para un curso.
+	//Test caso de uso 6.d-II: Crear lecciones para un curso.
 	@Test
 	public void driverCreateAndSave() {
 		final Object testingData[][] = {
@@ -138,7 +138,7 @@ public class LessonServiceTest extends AbstractTest {
 
 	}
 
-	//Test caso de uso 6.e-III: Editar lecciones para un curso.
+	//Test caso de uso 6.d-III: Editar lecciones para un curso.
 	@Test
 	public void driverEditAndSave() {
 		final Object testingData[][] = {
@@ -184,7 +184,7 @@ public class LessonServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Test caso de uso 6.e-IV: Eliminar lecciones para un curso.
+	//Test caso de uso 6.d-IV: Eliminar lecciones para un curso.
 	@Test
 	public void driverDelete() {
 		final Object testingData[][] = {

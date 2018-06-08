@@ -59,6 +59,7 @@ public class CourseServiceTest extends AbstractTest {
 	@Autowired
 	BuyerService		buyerService;
 
+
 	//3.c) Asistir a un curso.
 	@Test
 	public void driverAssist() {
@@ -142,7 +143,7 @@ public class CourseServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Test caso de uso 6.c-I: Listar cursos
+	//Test caso de uso 6.b-I: Listar cursos
 	@Test
 	public void driverList() {
 
@@ -187,7 +188,7 @@ public class CourseServiceTest extends AbstractTest {
 
 		super.unauthenticate();
 	}
-	//Test caso de uso 6.c-II: Crear cursos
+	//Test caso de uso 6.b-II: Crear cursos
 	@SuppressWarnings("unchecked")
 	@Test
 	public void driverCreateAndSave() {
@@ -263,7 +264,7 @@ public class CourseServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Test caso de uso 6.c-III: Editar cursos
+	//Test caso de uso 6.b-III: Editar cursos
 	@SuppressWarnings("unchecked")
 	@Test
 	public void driverEditAndSave() {
@@ -339,7 +340,7 @@ public class CourseServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//Test caso de uso 6.c-IV: Eliminar cursos
+	//Test caso de uso 6.b-IV: Eliminar cursos
 	@Test
 	public void driverDeleteBuyer() {
 		final Object testingData[][] = {

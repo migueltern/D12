@@ -41,6 +41,7 @@ public class Lesson extends DomainEntity {
 
 	@NotBlank
 	@Size(min = 10, max = 50)
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getSummary() {
 		return this.summary;
 	}

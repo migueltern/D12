@@ -43,7 +43,7 @@
 	<spring:message code="assessment.valuation" var="valuation" />
 	<B><jstl:out value="${valuation}"></jstl:out></B>
 	<form:input path="assessment.valuation" type="number" class="form-control"
-		value="${assessmentForm.assessment.valuation}" max="5" min="1" />
+		class="form-control" value="${assessmentForm.assessment.valuation}" max="5" min="1" />
 </div>
 
 

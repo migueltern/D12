@@ -1,0 +1,3 @@
+- Con respecto el A+ de APIREST, para ver la lista de materiales que consume de nuestra API pulsar en el botón "JSON List material" como no autenticado en el proyecto que tiene los A+
+	-url para consultar el JSON: http://localhost:8080/Acme-Recycling/materialJSON/listJSON.do
+	-url para consultar la lista de materiales que consume de nuestro JSON: http://localhost:8080/Acme-Recycling/materialJSON/list.do
